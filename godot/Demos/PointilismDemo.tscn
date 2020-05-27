@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Shaders/pointilism.shader" type="Shader" id=1]
+[ext_resource path="res://Demos/ImpossibleCubeDemo.tscn" type="PackedScene" id=2]
+
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+
+[sub_resource type="ViewportTexture" id=2]
+viewport_path = NodePath("ViewportContainer/Viewport")
+
+[node name="PointilismDemo" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+size = Vector2( 1280, 720 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Spatial" parent="ViewportContainer/Viewport" instance=ExtResource( 2 )]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 2 )
+stretch_mode = 1
+flip_v = true

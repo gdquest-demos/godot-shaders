@@ -29,7 +29,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Utils/PostProcessStep.gd"
 }, {
-"base": "MeshInstance",
+"base": "Reference",
 "class": "SmoothNormalsMeshInstance",
 "language": "GDScript",
 "path": "res://Demos/Outline/Outline3D/SmoothNormalsMeshInstance.gd"

@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Demos/Xray2d/Watcher.gd" type="Script" id=2]
+[ext_resource path="res://assets/robi_shaded.png" type="Texture" id=3]
+
+
+
+
+[sub_resource type="Animation" id=1]
+resource_name = "sweep"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -60.0, 60.0, -60.0 ]
+}
+
+[node name="MainScene" type="Node2D"]
+
+[node name="Robi" type="Sprite" parent="."]
+position = Vector2( 1020, 365 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+flip_h = true
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Robi"]
+update_scale = false
+
+[node name="Watcher" type="Node2D" parent="."]
+position = Vector2( 324, 346 )
+rotation = -1.0472
+script = ExtResource( 2 )
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Watcher"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Watcher"]
+playback_process_mode = 0
+anims/sweep = SubResource( 1 )
