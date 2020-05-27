@@ -1,0 +1,142 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://assets/robi_shaded.png" type="Texture" id=1]
+[ext_resource path="res://Outline/Outline2D/shaders/outline2D_inner_outer.shader" type="Shader" id=2]
+[ext_resource path="res://Outline/Outline2D/shaders/outline2D_outer.shader" type="Shader" id=3]
+[ext_resource path="res://Outline/Outline2D/shaders/outline2D_inner.shader" type="Shader" id=4]
+[ext_resource path="res://Outline/Outline2D/Outline.gd" type="Script" id=5]
+[ext_resource path="res://assets/mouse_cursor.png" type="Texture" id=6]
+[ext_resource path="res://Outline/Outline2D/Cursor.gd" type="Script" id=7]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0.0192261, 0.175781, 0.0913882, 1, 0.153564, 0.177912, 0.289063, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 3 )
+shader_param/line_color = Color( 0.921569, 0.505882, 0.0666667, 0 )
+shader_param/line_thickness = 5.0
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 4 )
+shader_param/line_color = Color( 1, 1, 1, 0 )
+shader_param/line_thickness = 5.0
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 2 )
+shader_param/line_color = Color( 0.0823529, 0.690196, 0.92549, 0 )
+shader_param/line_thickness = 5.0
+
+[sub_resource type="Animation" id=6]
+resource_name = "SETUP"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -114.127, 356.787 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 3.8
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9, 1.4, 2.1, 2.9, 3.7 ),
+"transitions": PoolRealArray( 2, 0.535887, 1.86607, 1, 1.86607, 0.5 ),
+"update": 0,
+"values": [ Vector2( -114.127, 356.787 ), Vector2( 208.674, 458.783 ), Vector2( 282.021, 480.243 ), Vector2( 639.811, 478.619 ), Vector2( 696.844, 470.291 ), Vector2( 1171.14, 316.787 ) ]
+}
+
+[node name="Outline2D" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+texture = SubResource( 2 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OutlineOuter" type="Sprite" parent="."]
+material = SubResource( 3 )
+position = Vector2( 213, 360 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( -19.6232, -16.3372, 464.135, 778.833 )
+script = ExtResource( 5 )
+line_color = Color( 0.937255, 0.470588, 0.0941176, 1 )
+
+[node name="Tween" type="Tween" parent="OutlineOuter"]
+
+[node name="Area2D" type="Area2D" parent="OutlineOuter"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OutlineOuter/Area2D"]
+polygon = PoolVector2Array( -144.602, -325.29, -73.6878, -320.857, -41.1855, -374.043, 50.4119, -326.767, 159.738, -300.174, 201.104, -229.26, 196.672, -130.276, 156.783, -75.6128, 56.3214, -65.2712, 149.396, -25.382, 207.014, 55.8738, 208.491, 140.084, 156.783, 194.747, 96.2106, 125.311, 97.688, 187.36, 125.758, 258.275, 82.9142, 268.616, 94.7332, 383.852, 62.231, 380.897, 25.2965, 276.003, -5.72842, 277.48, -44.1403, 383.852, -64.8236, 377.942, -66.3009, 267.139, -138.692, 234.637, -150.511, 193.27, -190.401, 187.36, -206.652, 131.22, -203.697, 82.4666, -147.557, -34.2462, -54.4819, -56.4069, -138.692, -69.7033, -200.742, -124.366, -221.426, -251.421 )
+
+[node name="OutlineInner" type="Sprite" parent="."]
+material = SubResource( 4 )
+position = Vector2( 649.972, 360 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 1 )
+flip_h = true
+script = ExtResource( 5 )
+line_color = Color( 0.121569, 0.898039, 0.427451, 1 )
+
+[node name="Tween" type="Tween" parent="OutlineInner"]
+
+[node name="Area2D" type="Area2D" parent="OutlineInner"]
+scale = Vector2( -1, 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OutlineInner/Area2D"]
+polygon = PoolVector2Array( -144.602, -325.29, -73.6878, -320.857, -41.1855, -374.043, 50.4119, -326.767, 159.738, -300.174, 201.104, -229.26, 196.672, -130.276, 156.783, -75.6128, 56.3214, -65.2712, 149.396, -25.382, 207.014, 55.8738, 208.491, 140.084, 156.783, 194.747, 96.2106, 125.311, 97.688, 187.36, 125.758, 258.275, 82.9142, 268.616, 94.7332, 383.852, 62.231, 380.897, 25.2965, 276.003, -5.72842, 277.48, -44.1403, 383.852, -64.8236, 377.942, -66.3009, 267.139, -138.692, 234.637, -150.511, 193.27, -190.401, 187.36, -206.652, 131.22, -203.697, 82.4666, -147.557, -34.2462, -54.4819, -56.4069, -138.692, -69.7033, -200.742, -124.366, -221.426, -251.421 )
+
+[node name="OutlineBothDirections" type="Sprite" parent="."]
+material = SubResource( 5 )
+position = Vector2( 1065, 360 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 1 )
+flip_h = true
+region_enabled = true
+region_rect = Rect2( -3, -3, 426, 751 )
+script = ExtResource( 5 )
+line_color = Color( 0.109804, 0.603922, 0.898039, 1 )
+
+[node name="Tween" type="Tween" parent="OutlineBothDirections"]
+
+[node name="Area2D" type="Area2D" parent="OutlineBothDirections"]
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OutlineBothDirections/Area2D"]
+polygon = PoolVector2Array( -144.602, -325.29, -73.6878, -320.857, -41.1855, -374.043, 50.4119, -326.767, 159.738, -300.174, 201.104, -229.26, 196.672, -130.276, 156.783, -75.6128, 56.3214, -65.2712, 149.396, -25.382, 207.014, 55.8738, 208.491, 140.084, 156.783, 194.747, 96.2106, 125.311, 97.688, 187.36, 125.758, 258.275, 82.9142, 268.616, 94.7332, 383.852, 62.231, 380.897, 25.2965, 276.003, -5.72842, 277.48, -44.1403, 383.852, -64.8236, 377.942, -66.3009, 267.139, -138.692, 234.637, -150.511, 193.27, -190.401, 187.36, -206.652, 131.22, -203.697, 82.4666, -147.557, -34.2462, -54.4819, -56.4069, -138.692, -69.7033, -200.742, -124.366, -221.426, -251.421 )
+
+[node name="Cursor" type="Sprite" parent="."]
+position = Vector2( -114.127, 356.787 )
+texture = ExtResource( 6 )
+script = ExtResource( 7 )
+
+[node name="Area2D" type="Area2D" parent="Cursor"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cursor/Area2D"]
+position = Vector2( 0, -0.513367 )
+polygon = PoolVector2Array( -39.0948, -61.4028, -39.6081, 47.4257, -15.9944, 26.3787, 2.48593, 63.8527, 29.6931, 49.9924, 11.2127, 17.1385, 39.9599, 17.6519 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cursor"]
+autoplay = "SETUP"
+anims/SETUP = SubResource( 6 )
+anims/scroll = SubResource( 7 )

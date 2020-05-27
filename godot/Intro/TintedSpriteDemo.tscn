@@ -1,0 +1,94 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/textured_square.png" type="Texture" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "//Affects 2D sprites and GUI controls
+shader_type canvas_item;
+
+//Color we can set in the inspector
+uniform vec4 tint1 : hint_color;
+
+//Color we can set in the inspector
+uniform vec4 tint2 : hint_color;
+
+//Proportion of tint1 and tint2. 0 being all tint1, 1 being all tint2
+uniform float tint_proportion : hint_range(0,1) = 0.5;
+
+//Amount of tint to apply onto the sprite, 0 being none, 1 being fully tinted.
+uniform float tint_amount : hint_range(0,1);
+
+void fragment() {
+    //Get the sprite's actual texture at this point in screen space
+    vec4 output_color = texture(TEXTURE, UV);
+
+    //Linearly interpolate between tint1 and tint2
+    vec4 tint = mix(tint1, tint2, tint_proportion);
+
+    //Apply the final mixture to the final color by interpolating between white
+    // and tint, and multiplying the sprite's color
+    COLOR = output_color * mix(vec4(1.0), tint, tint_amount);
+}
+"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/tint1 = Color( 0.12549, 1, 0, 1 )
+shader_param/tint2 = Color( 0.8, 0.0862745, 0.901961, 1 )
+shader_param/tint_proportion = 0.5
+shader_param/tint_amount = 0.0
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 1 )
+shader_param/tint1 = Color( 0, 0.952941, 1, 1 )
+shader_param/tint2 = Color( 0.8, 0.0862745, 0.901961, 1 )
+shader_param/tint_proportion = 0.0
+shader_param/tint_amount = 1.0
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 1 )
+shader_param/tint1 = Color( 0.12549, 1, 0, 1 )
+shader_param/tint2 = Color( 0.8, 0.0862745, 0.901961, 1 )
+shader_param/tint_proportion = 1.0
+shader_param/tint_amount = 1.0
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 1 )
+shader_param/tint1 = Color( 0, 0.858824, 1, 1 )
+shader_param/tint2 = Color( 0.8, 0.0862745, 0.901961, 1 )
+shader_param/tint_proportion = 0.5
+shader_param/tint_amount = 1.0
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 1 )
+shader_param/tint1 = Color( 0, 0.929412, 1, 1 )
+shader_param/tint2 = Color( 0.8, 0.0862745, 0.901961, 1 )
+shader_param/tint_proportion = 0.5
+shader_param/tint_amount = 0.5
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 2 )
+position = Vector2( 64, 64 )
+texture = ExtResource( 1 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+material = SubResource( 3 )
+position = Vector2( 192, 64 )
+texture = ExtResource( 1 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+material = SubResource( 4 )
+position = Vector2( 320, 64 )
+texture = ExtResource( 1 )
+
+[node name="Sprite4" type="Sprite" parent="."]
+material = SubResource( 5 )
+position = Vector2( 448, 64 )
+texture = ExtResource( 1 )
+
+[node name="Sprite5" type="Sprite" parent="."]
+material = SubResource( 6 )
+position = Vector2( 576, 64 )
+texture = ExtResource( 1 )

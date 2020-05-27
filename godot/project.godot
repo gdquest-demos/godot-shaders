@@ -1,0 +1,62 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Reference",
+"class": "AnimatedOutline",
+"language": "GDScript",
+"path": "res://Outline/Outline3D/AnimatedOutline.gd"
+}, {
+"base": "Control",
+"class": "DebugViewer",
+"language": "GDScript",
+"path": "res://Utils/DebugViewer.gd"
+}, {
+"base": "Control",
+"class": "PostProcessBuilder",
+"language": "GDScript",
+"path": "res://Utils/PostProcessBuilder.gd"
+}, {
+"base": "Resource",
+"class": "PostProcessStep",
+"language": "GDScript",
+"path": "res://Utils/PostProcessStep.gd"
+}, {
+"base": "MeshInstance",
+"class": "SmoothNormalsMeshInstance",
+"language": "GDScript",
+"path": "res://Outline/Outline3D/SmoothNormalsMeshInstance.gd"
+} ]
+_global_script_class_icons={
+"AnimatedOutline": "",
+"DebugViewer": "",
+"PostProcessBuilder": "",
+"PostProcessStep": "",
+"SmoothNormalsMeshInstance": ""
+}
+
+[application]
+
+config/name="Godot Shader Secrets"
+config/icon="res://icon.png"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+
+[rendering]
+
+quality/2d/use_pixel_snap=true
+quality/shadow_atlas/size=8192
+quality/shadows/filter_mode=2
+quality/reflections/irradiance_max_size=2048
+quality/filters/msaa=4
+environment/default_environment="res://default_env.tres"

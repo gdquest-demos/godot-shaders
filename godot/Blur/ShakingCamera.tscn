@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Blur/ShakingCamera.gd" type="Script" id=1]
+
+[node name="ShakingCamera" type="Camera2D"]
+current = true
+smoothing_enabled = true
+script = ExtResource( 1 )
+amplitude = 8.0
+duration = 0.8
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true

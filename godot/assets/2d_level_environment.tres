@@ -1,0 +1,7 @@
+[gd_resource type="Environment" format=2]
+
+[resource]
+background_mode = 4
+glow_enabled = true
+glow_blend_mode = 0
+glow_bicubic_upscale = true

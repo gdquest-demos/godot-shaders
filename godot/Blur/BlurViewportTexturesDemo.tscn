@@ -1,0 +1,189 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Blur/BlurDirection.gd" type="Script" id=1]
+[ext_resource path="res://Blur/MotionBlurShip.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Blur/MotionBlurScene.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Blur/shaders/gaussian_blur.shader" type="Shader" id=4]
+[ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=5]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 4 )
+shader_param/blur_scale = Vector2( 0, 0 )
+
+[sub_resource type="ViewportTexture" id=2]
+flags = 4
+viewport_path = NodePath("SceneView/Viewport")
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 4 )
+shader_param/blur_scale = Vector2( 0, 0 )
+
+[sub_resource type="ViewportTexture" id=4]
+flags = 4
+viewport_path = NodePath("BlurView1/Viewport")
+
+[sub_resource type="ViewportTexture" id=5]
+flags = 4
+viewport_path = NodePath("BlurView2/Viewport")
+
+[sub_resource type="Shader" id=6]
+code = "shader_type canvas_item;
+
+void fragment() {
+	vec4 out_color = texture(TEXTURE, UV);
+	
+	COLOR.rgb = out_color.rgb;
+	COLOR.a = min(1.0, out_color.r + out_color.g + out_color.b);
+}"
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = SubResource( 6 )
+
+[sub_resource type="ViewportTexture" id=8]
+viewport_path = NodePath("ShipView/Viewport")
+
+[node name="BlurredScene" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SceneView" type="ViewportContainer" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="SceneView"]
+size = Vector2( 1280, 720 )
+handle_input_locally = false
+usage = 0
+render_target_update_mode = 3
+
+[node name="MotionBlurScene" parent="SceneView/Viewport" instance=ExtResource( 3 )]
+trail_length = 24000.0
+
+[node name="ShakingCamera" parent="SceneView/Viewport/MotionBlurScene" index="0"]
+smoothing_speed = 25.0
+amplitude = 100.0
+duration = 5.0
+DAMP_EASING = 6.0
+
+[node name="ShipView" type="ViewportContainer" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="ShipView"]
+size = Vector2( 1280, 720 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Ship" parent="ShipView/Viewport" instance=ExtResource( 2 )]
+position = Vector2( 640, 360 )
+travel_speed = 10000.0
+blur_provider_path = NodePath("../../../SceneView/Viewport/MotionBlurScene")
+shaking_camera_background_path = NodePath("../../../SceneView/Viewport/MotionBlurScene/ShakingCamera")
+
+[node name="BackgroundRemoteTransform" parent="ShipView/Viewport/Ship" index="0"]
+remote_path = NodePath("../../../../SceneView/Viewport/MotionBlurScene/ShakingCamera")
+
+[node name="Camera2D" type="Camera2D" parent="ShipView/Viewport"]
+position = Vector2( 640, 360 )
+current = true
+zoom = Vector2( 2, 2 )
+smoothing_enabled = true
+smoothing_speed = 25.0
+
+[node name="BlurView1" type="ViewportContainer" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="BlurView1"]
+size = Vector2( 1280, 720 )
+handle_input_locally = false
+usage = 0
+render_target_update_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="BlurView1/Viewport"]
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 2 )
+expand = true
+stretch_mode = 1
+script = ExtResource( 1 )
+direction_provider_path = NodePath("../../../SceneView/Viewport/MotionBlurScene")
+blur_scale = Vector2( 4.8, -4 )
+
+[node name="BlurView2" type="ViewportContainer" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="BlurView2"]
+size = Vector2( 1280, 720 )
+handle_input_locally = false
+usage = 0
+render_target_update_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="BlurView2/Viewport"]
+material = SubResource( 3 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 4 )
+expand = true
+stretch_mode = 1
+script = ExtResource( 1 )
+direction_provider_path = NodePath("../../../SceneView/Viewport/MotionBlurScene")
+blur_scale = Vector2( 0.9, 1 )
+
+[node name="PresentationBackground" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 5 )
+expand = true
+stretch_mode = 1
+flip_v = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PresentationShip" type="TextureRect" parent="."]
+material = SubResource( 7 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 8 )
+expand = true
+stretch_mode = 1
+flip_v = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DebugViewer" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 5 )
+
+[editable path="SceneView/Viewport/MotionBlurScene"]
+
+[editable path="ShipView/Viewport/Ship"]

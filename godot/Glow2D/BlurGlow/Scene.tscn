@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/robi_shaded.png" type="Texture" id=1]
+
+[node name="Scene" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 640, 360 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 1 )
