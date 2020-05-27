@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Demo/Glow2D/GlowFader.gd" type="Script" id=1]
+[ext_resource path="res://assets/glowy_arrow.png" type="Texture" id=2]
+[ext_resource path="res://assets/black.png" type="Texture" id=3]
+[ext_resource path="res://Shaders/baked_sprite_glow.shader" type="Shader" id=4]
+
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 4 )
+shader_param/alpha_falloff_front = 0.5
+shader_param/tint_front = Color( 0.8, 1.5, 1.41797, 1 )
+shader_param/alpha_falloff_back = 3.0
+shader_param/tint_back = Color( 0.09, 0.89, 3.5, 1 )
+shader_param/blend_amount = 1.0
+shader_param/falloff_max_alpha = 0.5
+
+[node name="PreBakedGlowDemo" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 1280, 720 )
+texture = ExtResource( 3 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 1 )
+position = Vector2( 674, 348 )
+rotation = 1.5708
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+
+[node name="Tween" type="Tween" parent="Sprite"]
+repeat = true
+playback/repeat = true

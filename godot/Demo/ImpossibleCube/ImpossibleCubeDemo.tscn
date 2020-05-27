@@ -1,0 +1,288 @@
+[gd_scene load_steps=38 format=2]
+
+[ext_resource path="res://assets/level_environment.tres" type="Environment" id=1]
+[ext_resource path="res://assets/cube_full.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Shaders/stencil_mask.shader" type="Shader" id=3]
+[ext_resource path="res://assets/cube_stencil.png" type="Texture" id=4]
+[ext_resource path="res://Demo/ImpossibleCube/Rotate.gd" type="Script" id=5]
+[ext_resource path="res://assets/cube_hollow.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=7]
+
+
+[sub_resource type="Environment" id=1]
+background_mode = 1
+
+[sub_resource type="World" id=2]
+environment = SubResource( 1 )
+
+[sub_resource type="SpatialMaterial" id=3]
+flags_unshaded = true
+flags_do_not_receive_shadows = true
+flags_disable_ambient_light = true
+albedo_texture = ExtResource( 4 )
+
+[sub_resource type="Environment" id=4]
+background_mode = 1
+
+[sub_resource type="World" id=5]
+environment = SubResource( 4 )
+
+[sub_resource type="SphereMesh" id=6]
+
+[sub_resource type="SpatialMaterial" id=7]
+flags_unshaded = true
+albedo_color = Color( 0, 1, 0.858824, 1 )
+
+[sub_resource type="Environment" id=8]
+background_mode = 1
+
+[sub_resource type="World" id=9]
+environment = SubResource( 8 )
+
+[sub_resource type="CylinderMesh" id=10]
+
+[sub_resource type="SpatialMaterial" id=11]
+flags_unshaded = true
+albedo_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="Environment" id=12]
+background_mode = 1
+
+[sub_resource type="World" id=13]
+environment = SubResource( 12 )
+
+[sub_resource type="CapsuleMesh" id=14]
+
+[sub_resource type="SpatialMaterial" id=15]
+flags_unshaded = true
+albedo_color = Color( 0.027451, 0.137255, 0.854902, 1 )
+
+[sub_resource type="CubeMesh" id=16]
+
+[sub_resource type="SpatialMaterial" id=17]
+flags_unshaded = true
+albedo_color = Color( 0.054902, 1, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=18]
+albedo_color = Color( 0.709804, 0.713726, 0.760784, 1 )
+metallic = 0.56
+metallic_specular = 0.24
+roughness = 0.63
+
+[sub_resource type="ViewportTexture" id=19]
+flags = 16
+viewport_path = NodePath("StencilView")
+
+[sub_resource type="ShaderMaterial" id=20]
+resource_local_to_scene = true
+shader = ExtResource( 3 )
+shader_param/albedo = Color( 0.0431373, 0.941176, 0.921569, 1 )
+shader_param/stencil_color = Color( 0, 1, 1, 1 )
+shader_param/stencil = SubResource( 19 )
+
+[sub_resource type="ViewportTexture" id=21]
+viewport_path = NodePath("StencilView")
+
+[sub_resource type="ShaderMaterial" id=22]
+resource_local_to_scene = true
+shader = ExtResource( 3 )
+shader_param/albedo = Color( 0.956863, 0.376471, 0.0588235, 1 )
+shader_param/stencil_color = Color( 1, 0, 0, 1 )
+shader_param/stencil = SubResource( 21 )
+
+[sub_resource type="ViewportTexture" id=23]
+viewport_path = NodePath("StencilView")
+
+[sub_resource type="ShaderMaterial" id=24]
+resource_local_to_scene = true
+shader = ExtResource( 3 )
+shader_param/albedo = Color( 0.0470588, 0.168627, 0.945098, 1 )
+shader_param/stencil_color = Color( 0, 0, 1, 1 )
+shader_param/stencil = SubResource( 23 )
+
+[sub_resource type="CubeMesh" id=25]
+
+[sub_resource type="ViewportTexture" id=26]
+viewport_path = NodePath("StencilView")
+
+[sub_resource type="ShaderMaterial" id=27]
+resource_local_to_scene = true
+shader = ExtResource( 3 )
+shader_param/albedo = Color( 0.0705882, 0.94902, 0.290196, 1 )
+shader_param/stencil_color = Color( 0, 1, 0, 1 )
+shader_param/stencil = SubResource( 26 )
+
+[sub_resource type="SpatialMaterial" id=28]
+albedo_color = Color( 0.623529, 0.635294, 0.662745, 1 )
+
+[sub_resource type="QuadMesh" id=29]
+material = SubResource( 28 )
+size = Vector2( 100, 100 )
+
+[sub_resource type="SpatialMaterial" id=30]
+metallic = 0.49
+metallic_specular = 0.06
+roughness = 0.36
+
+[node name="ImpossibleCubeDemo" type="Spatial"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 1 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.296699, -0.185551, 0.936771, -0.020768, 0.979456, 0.200584, -0.954745, -0.078968, 0.28675, 3.98713, 3.1131, 1.61636 )
+
+[node name="RemoteTransform" type="RemoteTransform" parent="Camera"]
+remote_path = NodePath("../../StencilView/Camera")
+
+[node name="DebugTransform" type="RemoteTransform" parent="Camera"]
+remote_path = NodePath("../../Debug1/Camera")
+
+[node name="DebugTransform2" type="RemoteTransform" parent="Camera"]
+remote_path = NodePath("../../Debug2/Camera")
+
+[node name="DebugTransform3" type="RemoteTransform" parent="Camera"]
+remote_path = NodePath("../../Debug3/Camera")
+
+[node name="DebugTransform4" type="RemoteTransform" parent="Camera"]
+remote_path = NodePath("../../Debug3/Camera")
+
+[node name="StencilView" type="Viewport" parent="."]
+size = Vector2( 1280, 720 )
+own_world = true
+world = SubResource( 2 )
+keep_3d_linear = true
+usage = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="StencilView"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.5, 0 )
+mesh = ExtResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="Camera" type="Camera" parent="StencilView"]
+transform = Transform( 0.296699, -0.185551, 0.936771, -0.020768, 0.979456, 0.200584, -0.954745, -0.0789679, 0.28675, 3.98713, 3.1131, 1.61636 )
+
+[node name="Debug1" type="Viewport" parent="."]
+size = Vector2( 1280, 720 )
+own_world = true
+world = SubResource( 5 )
+
+[node name="Sphere" type="MeshInstance" parent="Debug1"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 2.5, 0 )
+mesh = SubResource( 6 )
+material/0 = SubResource( 7 )
+
+[node name="Camera" type="Camera" parent="Debug1"]
+transform = Transform( 0.296699, -0.185551, 0.936771, -0.020768, 0.979456, 0.200584, -0.954745, -0.0789679, 0.28675, 3.98713, 3.1131, 1.61636 )
+
+[node name="Debug2" type="Viewport" parent="."]
+size = Vector2( 1280, 720 )
+own_world = true
+world = SubResource( 9 )
+
+[node name="Cylinder" type="MeshInstance" parent="Debug2"]
+transform = Transform( 0.5, 0, 0, 0, 0.353554, -0.353554, 0, 0.353554, 0.353554, 0, 2.5, 0 )
+mesh = SubResource( 10 )
+material/0 = SubResource( 11 )
+
+[node name="Camera" type="Camera" parent="Debug2"]
+transform = Transform( 0.296699, -0.185551, 0.936771, -0.020768, 0.979456, 0.200584, -0.954745, -0.0789679, 0.28675, 3.98713, 3.1131, 1.61636 )
+
+[node name="Debug3" type="Viewport" parent="."]
+size = Vector2( 1280, 720 )
+own_world = true
+world = SubResource( 13 )
+
+[node name="Capsule" type="MeshInstance" parent="Debug3"]
+transform = Transform( 0.5, 0, 0, 0, -8.14604e-08, -0.5, 0, 0.5, -8.14604e-08, 0, 2.5, 0 )
+mesh = SubResource( 14 )
+material/0 = SubResource( 15 )
+
+[node name="Camera" type="Camera" parent="Debug3"]
+transform = Transform( 0.296699, -0.185551, 0.936771, -0.020768, 0.979456, 0.200584, -0.954745, -0.0789679, 0.28675, 3.98713, 3.1131, 1.61636 )
+
+[node name="Debug4" type="Viewport" parent="."]
+size = Vector2( 1280, 720 )
+own_world = true
+world = SubResource( 13 )
+
+[node name="Cube" type="MeshInstance" parent="Debug4"]
+transform = Transform( 0.212132, -0.15, -0.15, 0, 0.212132, -0.212132, 0.212132, 0.15, 0.15, 0, 2.5, 0 )
+mesh = SubResource( 16 )
+material/0 = SubResource( 17 )
+
+[node name="Camera" type="Camera" parent="Debug4"]
+transform = Transform( 0.297425, -0.25349, 0.920479, 0, 0.964109, 0.265505, -0.954745, -0.078968, 0.28675, 4.81983, 2.50102, 1.90518 )
+
+[node name="CubeShell" type="MeshInstance" parent="."]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.5, 0 )
+layers = 3
+mesh = ExtResource( 6 )
+material/0 = SubResource( 18 )
+script = ExtResource( 5 )
+
+[node name="Sphere" type="MeshInstance" parent="CubeShell"]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0 )
+layers = 3
+mesh = SubResource( 6 )
+material/0 = SubResource( 20 )
+
+[node name="DebugTransform" type="RemoteTransform" parent="CubeShell/Sphere"]
+remote_path = NodePath("../../../Debug1/Sphere")
+
+[node name="Cylinder" type="MeshInstance" parent="CubeShell"]
+transform = Transform( 0.25, 0, 0, 0, 0.176777, -0.176777, 0, 0.176777, 0.176777, 0, 0, 0 )
+layers = 3
+mesh = SubResource( 10 )
+material/0 = SubResource( 22 )
+
+[node name="DebugTransform" type="RemoteTransform" parent="CubeShell/Cylinder"]
+remote_path = NodePath("../../../Debug2/Cylinder")
+
+[node name="Capsule" type="MeshInstance" parent="CubeShell"]
+transform = Transform( 0.25, 0, 0, 0, -4.07302e-08, -0.25, 0, 0.25, -4.07302e-08, 0, 0, 0 )
+layers = 3
+mesh = SubResource( 14 )
+material/0 = SubResource( 24 )
+
+[node name="DebugTransform" type="RemoteTransform" parent="CubeShell/Capsule"]
+remote_path = NodePath("../../../Debug3/Capsule")
+
+[node name="Cube" type="MeshInstance" parent="CubeShell"]
+transform = Transform( 0.106066, -0.075, -0.075, 0, 0.106066, -0.106066, 0.106066, 0.075, 0.075, 0, 0, 0 )
+layers = 3
+mesh = SubResource( 25 )
+material/0 = SubResource( 27 )
+
+[node name="DebugTransform" type="RemoteTransform" parent="CubeShell/Cube"]
+remote_path = NodePath("../../../Debug4/Cube")
+
+[node name="RemoteTransform" type="RemoteTransform" parent="CubeShell"]
+remote_path = NodePath("../../StencilView/MeshInstance")
+
+[node name="OmniLight" type="OmniLight" parent="CubeShell"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.0194656, 0 )
+light_color = Color( 0.313726, 0.54902, 1, 1 )
+light_energy = 3.44
+light_specular = 1.0
+light_bake_mode = 2
+light_cull_mask = 4294967294
+omni_attenuation = 1.7411
+
+[node name="Sun" type="DirectionalLight" parent="."]
+transform = Transform( 0.919232, 0.337966, -0.201972, 0, 0.512987, 0.858397, 0.393717, -0.789065, 0.471554, 0, 3.77878, 6.87228 )
+light_color = Color( 0.917647, 0.85098, 0.72549, 1 )
+shadow_enabled = true
+
+[node name="Ground" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0 )
+mesh = SubResource( 29 )
+material/0 = SubResource( 30 )
+
+[node name="DebugViewer" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
