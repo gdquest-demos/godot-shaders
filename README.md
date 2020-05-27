@@ -27,9 +27,9 @@ Here's a list of available shaders:
 
 ## How to use
 
-Download the Godot project.
+You can find the shaders in the `Shaders/` directory. Most shaders come with a demo scene. All demos are in the `Demos/` directory.
 
-The shaders can be found in the Shaders directory.
+The `Intro/` directory contains an intro animation to the shader pipeline, that we use in our shader course.
 
 ## Contributing
 
