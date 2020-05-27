@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "AnimatedOutline",
 "language": "GDScript",
-"path": "res://Demo/Outline/Outline3D/AnimatedOutline.gd"
+"path": "res://Demos/Outline/Outline3D/AnimatedOutline.gd"
 }, {
 "base": "Control",
 "class": "DebugViewer",
@@ -29,10 +29,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Utils/PostProcessStep.gd"
 }, {
-"base": "Reference",
+"base": "MeshInstance",
 "class": "SmoothNormalsMeshInstance",
 "language": "GDScript",
-"path": "res://Demo/Outline/Outline3D/SmoothNormalsMeshInstance.gd"
+"path": "res://Demos/Outline/Outline3D/SmoothNormalsMeshInstance.gd"
 } ]
 _global_script_class_icons={
 "AnimatedOutline": "",

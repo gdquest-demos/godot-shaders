@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Demo/Blur/ShakingCamera.gd" type="Script" id=1]
+[ext_resource path="res://Demos/Blur/ShakingCamera.gd" type="Script" id=1]
+
 
 
 [node name="ShakingCamera" type="Camera2D"]

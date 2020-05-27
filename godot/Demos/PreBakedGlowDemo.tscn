@@ -1,9 +1,10 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Demo/Glow2D/GlowFader.gd" type="Script" id=1]
+[ext_resource path="res://Demos/Glow2D/GlowFader.gd" type="Script" id=1]
 [ext_resource path="res://assets/glowy_arrow.png" type="Texture" id=2]
 [ext_resource path="res://assets/black.png" type="Texture" id=3]
 [ext_resource path="res://Shaders/baked_sprite_glow.shader" type="Shader" id=4]
+
 
 
 [sub_resource type="ShaderMaterial" id=1]

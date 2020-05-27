@@ -4,9 +4,10 @@
 [ext_resource path="res://Shaders/outline2D_inner_outer.shader" type="Shader" id=2]
 [ext_resource path="res://Shaders/outline2D_outer.shader" type="Shader" id=3]
 [ext_resource path="res://Shaders/outline2D_inner.shader" type="Shader" id=4]
-[ext_resource path="res://Demo/Outline/Outline2D/Outline.gd" type="Script" id=5]
+[ext_resource path="res://Demos/Outline/Outline2D/Outline.gd" type="Script" id=5]
 [ext_resource path="res://assets/mouse_cursor.png" type="Texture" id=6]
-[ext_resource path="res://Demo/Outline/Outline2D/Cursor.gd" type="Script" id=7]
+[ext_resource path="res://Demos/Outline/Outline2D/Cursor.gd" type="Script" id=7]
+
 
 
 

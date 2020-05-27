@@ -1,9 +1,10 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Demo/Blur/MotionBlurScene.gd" type="Script" id=1]
-[ext_resource path="res://Demo/Blur/ShakingCamera.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Demo/Blur/AsteroidTrail.gd" type="Script" id=3]
+[ext_resource path="res://Demos/Blur/MotionBlurScene.gd" type="Script" id=1]
+[ext_resource path="res://Demos/Blur/ShakingCamera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Demos/Blur/AsteroidTrail.gd" type="Script" id=3]
 [ext_resource path="res://assets/asteroid-round.svg" type="Texture" id=4]
+
 
 
 [sub_resource type="Gradient" id=1]

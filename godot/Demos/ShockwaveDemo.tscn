@@ -1,8 +1,9 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Demo/Shockwave/ShockwaveMaterial.tres" type="Material" id=1]
-[ext_resource path="res://Demo/Shockwave/Shockwave.gd" type="Script" id=2]
+[ext_resource path="res://Demos/Shockwave/ShockwaveMaterial.tres" type="Material" id=1]
+[ext_resource path="res://Demos/Shockwave/Shockwave.gd" type="Script" id=2]
 [ext_resource path="res://assets/white.png" type="Texture" id=3]
+
 
 
 [sub_resource type="CubeMesh" id=1]
