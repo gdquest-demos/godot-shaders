@@ -3,7 +3,8 @@
 [ext_resource path="res://Glow2D/Fade.gd" type="Script" id=1]
 [ext_resource path="res://assets/glowy_arrow.png" type="Texture" id=2]
 [ext_resource path="res://assets/black.png" type="Texture" id=3]
-[ext_resource path="res://Glow2D/shaders/baked_sprite_glow.shader" type="Shader" id=4]
+[ext_resource path="res://Shaders/baked_sprite_glow.shader" type="Shader" id=4]
+
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 4 )

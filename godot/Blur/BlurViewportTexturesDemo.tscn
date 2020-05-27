@@ -3,7 +3,7 @@
 [ext_resource path="res://Blur/BlurDirection.gd" type="Script" id=1]
 [ext_resource path="res://Blur/MotionBlurShip.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Blur/MotionBlurScene.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Blur/shaders/gaussian_blur.shader" type="Shader" id=4]
+[ext_resource path="res://Shaders/gaussian_blur.shader" type="Shader" id=4]
 [ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=5]
 
 [sub_resource type="ShaderMaterial" id=1]

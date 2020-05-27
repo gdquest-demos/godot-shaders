@@ -2,12 +2,13 @@
 
 [ext_resource path="res://Glow2D/BlurGlow/Scene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/black.png" type="Texture" id=2]
-[ext_resource path="res://Blur/shaders/gaussian_blur.shader" type="Shader" id=3]
-[ext_resource path="res://Glow2D/shaders/compose.shader" type="Shader" id=4]
-[ext_resource path="res://Glow2D/shaders/glow_prepass.shader" type="Shader" id=5]
+[ext_resource path="res://Shaders/gaussian_blur.shader" type="Shader" id=3]
+[ext_resource path="res://Shaders/compose.shader" type="Shader" id=4]
+[ext_resource path="res://Shaders/glow_prepass.shader" type="Shader" id=5]
 [ext_resource path="res://assets/robi_shaded.png" type="Texture" id=6]
 [ext_resource path="res://Glow2D/Move.gd" type="Script" id=7]
 [ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=8]
+
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )

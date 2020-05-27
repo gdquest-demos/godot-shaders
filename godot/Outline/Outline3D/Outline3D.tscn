@@ -1,12 +1,13 @@
 [gd_scene load_steps=28 format=2]
 
-[ext_resource path="res://Outline/Outline3D/shaders/outline3D_smooth_normals_color.shader" type="Shader" id=1]
+[ext_resource path="res://Shaders/outline3D_smooth_normals_color.shader" type="Shader" id=1]
 [ext_resource path="res://Outline/Outline3D/SmoothNormalsMeshInstance.gd" type="Script" id=2]
-[ext_resource path="res://Outline/Outline3D/shaders/outline3D.shader" type="Shader" id=3]
+[ext_resource path="res://Shaders/outline3D.shader" type="Shader" id=3]
 [ext_resource path="res://Outline/Outline3D/CameraScroll.gd" type="Script" id=4]
 [ext_resource path="res://Outline/Outline3D/OutlinePopArea.gd" type="Script" id=5]
 [ext_resource path="res://assets/crosshair.png" type="Texture" id=6]
 [ext_resource path="res://assets/level_environment.tres" type="Environment" id=7]
+
 
 [sub_resource type="CubeMesh" id=1]
 

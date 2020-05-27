@@ -1,12 +1,13 @@
 [gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/robi_shaded.png" type="Texture" id=1]
-[ext_resource path="res://Outline/Outline2D/shaders/outline2D_inner_outer.shader" type="Shader" id=2]
-[ext_resource path="res://Outline/Outline2D/shaders/outline2D_outer.shader" type="Shader" id=3]
-[ext_resource path="res://Outline/Outline2D/shaders/outline2D_inner.shader" type="Shader" id=4]
+[ext_resource path="res://Shaders/outline2D_inner_outer.shader" type="Shader" id=2]
+[ext_resource path="res://Shaders/outline2D_outer.shader" type="Shader" id=3]
+[ext_resource path="res://Shaders/outline2D_inner.shader" type="Shader" id=4]
 [ext_resource path="res://Outline/Outline2D/Outline.gd" type="Script" id=5]
 [ext_resource path="res://assets/mouse_cursor.png" type="Texture" id=6]
 [ext_resource path="res://Outline/Outline2D/Cursor.gd" type="Script" id=7]
+
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.0192261, 0.175781, 0.0913882, 1, 0.153564, 0.177912, 0.289063, 1 )

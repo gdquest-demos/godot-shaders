@@ -29,6 +29,8 @@ Here's a list of available shaders:
 
 Download the Godot project.
 
+The shaders can be found in the Shaders directory.
+
 ## Contributing
 
 Contributors are welcome!
