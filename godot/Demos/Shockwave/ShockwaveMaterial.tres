@@ -1,16 +1,13 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=2]
 
-[ext_resource path="res://Shaders/VisualShader/shockwave.tres" type="Shader" id=1]
-
-
-
+[ext_resource path="res://Shaders/shockwave.shader" type="Shader" id=1]
 
 [resource]
 shader = ExtResource( 1 )
-shader_param/displacement_amount = 0.01
-shader_param/center = Vector3( 0.5, 0.25, 0 )
-shader_param/size = Vector3( 1.78, 1, 0 )
-shader_param/radius = -0.1
-shader_param/thickness = 0.117
-shader_param/hardness = 1.677
-shader_param/invert = -1.0
+shader_param/torus_thickness = 0.286
+shader_param/torus_hardness = 0.19
+shader_param/torus_radius = -0.1
+shader_param/torus_invert = -1.0
+shader_param/torus_center = Vector2( 0.5, 0.25 )
+shader_param/torus_size = Vector2( 1.78, 1 )
+shader_param/displacement_amount = 0.5

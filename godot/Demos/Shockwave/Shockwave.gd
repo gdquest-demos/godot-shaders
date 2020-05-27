@@ -1,5 +1,5 @@
 tool
-extends TextureRect
+extends ViewportContainer
 
 export var shockwave_duration := 0.75
 
@@ -19,4 +19,4 @@ func blast() -> void:
 
 
 func shockwave(value: float) -> void:
-	material.set_shader_param("radius", value)
+	material.set_shader_param("torus_radius", value)

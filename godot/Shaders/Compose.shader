@@ -1,9 +1,14 @@
 shader_type canvas_item;
 
+uniform sampler2D prepass_texture;
+uniform sampler2D blur_texture;
+uniform float glow_intensity;
+
 void fragment() {
-	vec4 output_color = texture(TEXTURE, UV);
-	if(output_color.r == 0.0 && output_color.g == 0.0 && output_color.b == 0.0) {
-		discard;
-	}
-	COLOR = vec4(output_color.rgb, step(0.01, min(1.0, output_color.r + output_color.g + output_color.b)));
+	vec4 color = texture(TEXTURE, UV);
+	vec4 prepass = texture(prepass_texture, UV);
+	vec4 blurred = texture(blur_texture, UV);
+	vec3 glow = max(vec3(0.0), blurred.rgb-prepass.rgb);
+	
+	COLOR = vec4(color.rgb + glow.rgb * glow_intensity, 1.0);
 }
