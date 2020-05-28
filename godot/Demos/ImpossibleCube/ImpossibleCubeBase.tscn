@@ -1,12 +1,10 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=33 format=2]
 
-[ext_resource path="res://assets/level_environment.tres" type="Environment" id=1]
 [ext_resource path="res://assets/cube_full.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://Shaders/stencil_mask.shader" type="Shader" id=3]
 [ext_resource path="res://assets/cube_stencil.png" type="Texture" id=4]
 [ext_resource path="res://Demos/ImpossibleCube/Rotate.gd" type="Script" id=5]
 [ext_resource path="res://assets/cube_hollow.obj" type="ArrayMesh" id=6]
-[ext_resource path="res://assets/materials/basic_grey.tres" type="Material" id=8]
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
@@ -111,17 +109,7 @@ shader_param/albedo = Color( 0.0705882, 0.94902, 0.290196, 1 )
 shader_param/stencil_color = Color( 0, 1, 0, 1 )
 shader_param/stencil = SubResource( 26 )
 
-[sub_resource type="SpatialMaterial" id=28]
-albedo_color = Color( 0.623529, 0.635294, 0.662745, 1 )
-
-[sub_resource type="QuadMesh" id=29]
-material = SubResource( 28 )
-size = Vector2( 100, 100 )
-
 [node name="ImpossibleCubeDemo" type="Spatial"]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource( 1 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 0.296699, -0.185551, 0.936771, -0.020768, 0.979456, 0.200584, -0.954745, -0.078968, 0.28675, 3.98713, 3.1131, 1.61636 )
@@ -262,13 +250,3 @@ light_specular = 1.0
 light_bake_mode = 2
 light_cull_mask = 4294967294
 omni_attenuation = 1.7411
-
-[node name="Sun" type="DirectionalLight" parent="."]
-transform = Transform( 0.919232, 0.337966, -0.201972, 0, 0.512987, 0.858397, 0.393717, -0.789065, 0.471554, 0, 3.77878, 6.87228 )
-light_color = Color( 0.917647, 0.85098, 0.72549, 1 )
-shadow_enabled = true
-
-[node name="Ground" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0 )
-mesh = SubResource( 29 )
-material/0 = ExtResource( 8 )
