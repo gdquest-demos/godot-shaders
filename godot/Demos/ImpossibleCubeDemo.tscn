@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Common/BaseDemo3D.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Demos/ImpossibleCube/ImpossibleCubeBase.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=3]
 
 [node name="BaseDemo3D" instance=ExtResource( 1 )]
 
@@ -10,5 +11,12 @@
 [node name="RichTextLabel" parent="DemoInterface/MarginContainer" index="0"]
 bbcode_text = "Uses viewports to simulate stencil tests, making objects [fade]disappear[/fade] depending on what color is facing the camera on the stencil view. The stencil supports up to 7 colors of masks."
 text = "Uses viewports to simulate stencil tests, making objects disappear depending on what color is facing the camera on the stencil view. The stencil supports up to 7 colors of masks."
+
+[node name="DebugViewer" type="Control" parent="." index="2"]
+margin_top = 120.0
+margin_right = 40.0
+margin_bottom = 160.0
+rect_scale = Vector2( 0.9, 0.9 )
+script = ExtResource( 3 )
 
 [editable path="DemoInterface"]

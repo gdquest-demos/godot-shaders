@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://assets/level_environment.tres" type="Environment" id=1]
 [ext_resource path="res://assets/cube_full.obj" type="ArrayMesh" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://assets/cube_stencil.png" type="Texture" id=4]
 [ext_resource path="res://Demos/ImpossibleCube/Rotate.gd" type="Script" id=5]
 [ext_resource path="res://assets/cube_hollow.obj" type="ArrayMesh" id=6]
-[ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=7]
 [ext_resource path="res://assets/materials/basic_grey.tres" type="Material" id=8]
 
 [sub_resource type="Environment" id=1]
@@ -273,11 +272,3 @@ shadow_enabled = true
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0 )
 mesh = SubResource( 29 )
 material/0 = ExtResource( 8 )
-
-[node name="DebugViewer" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-script = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}

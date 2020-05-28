@@ -38,5 +38,5 @@ void fragment() {
 		point = step(mod(xy.x, size), 1.0) * step(mod(xy.y, size), 1.0);
 	}
 	
-	COLOR = vec4(vec3(point), 1.0);
+	COLOR = vec4(vec3(1.0), point);
 }
