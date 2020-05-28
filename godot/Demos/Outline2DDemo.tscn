@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://Common/BaseDemo2D.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/theme/gdquest.theme" type="Theme" id=1]
 [ext_resource path="res://assets/robi_shaded.png" type="Texture" id=2]
 [ext_resource path="res://assets/mouse_cursor.png" type="Texture" id=3]
 [ext_resource path="res://Demos/Outline/Outline2D/Cursor.gd" type="Script" id=4]
@@ -8,6 +8,8 @@
 [ext_resource path="res://Shaders/outline2D_outer.shader" type="Shader" id=6]
 [ext_resource path="res://Shaders/outline2D_inner.shader" type="Shader" id=7]
 [ext_resource path="res://Shaders/outline2D_inner_outer.shader" type="Shader" id=8]
+[ext_resource path="res://Common/Demo2DBackground.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Common/DemoInterface.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 6 )
@@ -54,9 +56,17 @@ tracks/0/keys = {
 "values": [ Vector2( -114.127, 356.787 ), Vector2( 208.674, 458.783 ), Vector2( 282.021, 480.243 ), Vector2( 639.811, 478.619 ), Vector2( 696.844, 470.291 ), Vector2( 1171.14, 316.787 ) ]
 }
 
-[node name="Outline2DDemo" instance=ExtResource( 1 )]
+[node name="Outline2DDemo" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="OutlineOuter" type="Sprite" parent="." index="1"]
+[node name="Demo2DBackground" parent="." instance=ExtResource( 9 )]
+
+[node name="OutlineOuter" type="Sprite" parent="."]
 material = SubResource( 1 )
 position = Vector2( 213, 360 )
 scale = Vector2( 0.75, 0.75 )
@@ -66,14 +76,14 @@ region_rect = Rect2( -19.6232, -16.3372, 464.135, 778.833 )
 script = ExtResource( 5 )
 line_color = Color( 0.937255, 0.470588, 0.0941176, 1 )
 
-[node name="Tween" type="Tween" parent="OutlineOuter" index="0"]
+[node name="Tween" type="Tween" parent="OutlineOuter"]
 
-[node name="Area2D" type="Area2D" parent="OutlineOuter" index="1"]
+[node name="Area2D" type="Area2D" parent="OutlineOuter"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OutlineOuter/Area2D" index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OutlineOuter/Area2D"]
 polygon = PoolVector2Array( -144.602, -325.29, -73.6878, -320.857, -41.1855, -374.043, 50.4119, -326.767, 159.738, -300.174, 201.104, -229.26, 196.672, -130.276, 156.783, -75.6128, 56.3214, -65.2712, 149.396, -25.382, 207.014, 55.8738, 208.491, 140.084, 156.783, 194.747, 96.2106, 125.311, 97.688, 187.36, 125.758, 258.275, 82.9142, 268.616, 94.7332, 383.852, 62.231, 380.897, 25.2965, 276.003, -5.72842, 277.48, -44.1403, 383.852, -64.8236, 377.942, -66.3009, 267.139, -138.692, 234.637, -150.511, 193.27, -190.401, 187.36, -206.652, 131.22, -203.697, 82.4666, -147.557, -34.2462, -54.4819, -56.4069, -138.692, -69.7033, -200.742, -124.366, -221.426, -251.421 )
 
-[node name="OutlineInner" type="Sprite" parent="." index="2"]
+[node name="OutlineInner" type="Sprite" parent="."]
 material = SubResource( 2 )
 position = Vector2( 649.972, 360 )
 scale = Vector2( 0.75, 0.75 )
@@ -82,15 +92,15 @@ flip_h = true
 script = ExtResource( 5 )
 line_color = Color( 0.121569, 0.898039, 0.427451, 1 )
 
-[node name="Tween" type="Tween" parent="OutlineInner" index="0"]
+[node name="Tween" type="Tween" parent="OutlineInner"]
 
-[node name="Area2D" type="Area2D" parent="OutlineInner" index="1"]
+[node name="Area2D" type="Area2D" parent="OutlineInner"]
 scale = Vector2( -1, 1 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OutlineInner/Area2D" index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OutlineInner/Area2D"]
 polygon = PoolVector2Array( -144.602, -325.29, -73.6878, -320.857, -41.1855, -374.043, 50.4119, -326.767, 159.738, -300.174, 201.104, -229.26, 196.672, -130.276, 156.783, -75.6128, 56.3214, -65.2712, 149.396, -25.382, 207.014, 55.8738, 208.491, 140.084, 156.783, 194.747, 96.2106, 125.311, 97.688, 187.36, 125.758, 258.275, 82.9142, 268.616, 94.7332, 383.852, 62.231, 380.897, 25.2965, 276.003, -5.72842, 277.48, -44.1403, 383.852, -64.8236, 377.942, -66.3009, 267.139, -138.692, 234.637, -150.511, 193.27, -190.401, 187.36, -206.652, 131.22, -203.697, 82.4666, -147.557, -34.2462, -54.4819, -56.4069, -138.692, -69.7033, -200.742, -124.366, -221.426, -251.421 )
 
-[node name="OutlineBothDirections" type="Sprite" parent="." index="3"]
+[node name="OutlineBothDirections" type="Sprite" parent="."]
 material = SubResource( 3 )
 position = Vector2( 1065, 360 )
 scale = Vector2( 0.75, 0.75 )
@@ -101,30 +111,32 @@ region_rect = Rect2( -3, -3, 426, 751 )
 script = ExtResource( 5 )
 line_color = Color( 0.109804, 0.603922, 0.898039, 1 )
 
-[node name="Tween" type="Tween" parent="OutlineBothDirections" index="0"]
+[node name="Tween" type="Tween" parent="OutlineBothDirections"]
 
-[node name="Area2D" type="Area2D" parent="OutlineBothDirections" index="1"]
+[node name="Area2D" type="Area2D" parent="OutlineBothDirections"]
 rotation = -3.14159
 scale = Vector2( 1, -1 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OutlineBothDirections/Area2D" index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OutlineBothDirections/Area2D"]
 polygon = PoolVector2Array( -144.602, -325.29, -73.6878, -320.857, -41.1855, -374.043, 50.4119, -326.767, 159.738, -300.174, 201.104, -229.26, 196.672, -130.276, 156.783, -75.6128, 56.3214, -65.2712, 149.396, -25.382, 207.014, 55.8738, 208.491, 140.084, 156.783, 194.747, 96.2106, 125.311, 97.688, 187.36, 125.758, 258.275, 82.9142, 268.616, 94.7332, 383.852, 62.231, 380.897, 25.2965, 276.003, -5.72842, 277.48, -44.1403, 383.852, -64.8236, 377.942, -66.3009, 267.139, -138.692, 234.637, -150.511, 193.27, -190.401, 187.36, -206.652, 131.22, -203.697, 82.4666, -147.557, -34.2462, -54.4819, -56.4069, -138.692, -69.7033, -200.742, -124.366, -221.426, -251.421 )
 
-[node name="Cursor" type="Sprite" parent="." index="4"]
+[node name="Cursor" type="Sprite" parent="."]
 position = Vector2( -114.127, 356.787 )
 texture = ExtResource( 3 )
 script = ExtResource( 4 )
 
-[node name="Area2D" type="Area2D" parent="Cursor" index="0"]
+[node name="Area2D" type="Area2D" parent="Cursor"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cursor/Area2D" index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cursor/Area2D"]
 position = Vector2( 0, -0.513367 )
 polygon = PoolVector2Array( -39.0948, -61.4028, -39.6081, 47.4257, -15.9944, 26.3787, 2.48593, 63.8527, 29.6931, 49.9924, 11.2127, 17.1385, 39.9599, 17.6519 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Cursor" index="1"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cursor"]
 autoplay = "SETUP"
 anims/SETUP = SubResource( 4 )
 anims/scroll = SubResource( 5 )
+
+[node name="DemoText" parent="." instance=ExtResource( 10 )]
 
 [node name="RichTextLabel" parent="DemoText/MarginContainer" index="0"]
 bbcode_text = "Uses shaders to outline 2D sprites - outlining only outside the pixels, inside, or both."

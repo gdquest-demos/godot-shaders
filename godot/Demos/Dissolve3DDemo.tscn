@@ -1,26 +1,51 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
+[ext_resource path="res://assets/theme/gdquest.theme" type="Theme" id=1]
 [ext_resource path="res://Demos/Dissolve3D/DissolvingSphere.gd" type="Script" id=2]
 [ext_resource path="res://Demos/Dissolve3D/DissolveMaterial.tres" type="Material" id=3]
-[ext_resource path="res://Common/BaseDemo3D.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Common/DemoInterface.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Common/Demo3DEnvironment.tscn" type="PackedScene" id=5]
 
 [sub_resource type="SphereMesh" id=1]
 
-[node name="Dissolve3DDemo" instance=ExtResource( 5 )]
+[node name="Dissolve3DDemo" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Viewport" parent="DemoView" index="0"]
+[node name="DemoView" type="ViewportContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="DemoView"]
+size = Vector2( 1280, 720 )
+handle_input_locally = false
+msaa = 2
+render_target_update_mode = 3
+shadow_atlas_size = 8192
 shadow_atlas_quad_0 = 1
 
-[node name="Camera" type="Camera" parent="DemoView/Viewport" index="0"]
+[node name="Camera" type="Camera" parent="DemoView/Viewport"]
 transform = Transform( 0.965167, 0.12949, -0.227342, 0, 0.868934, 0.494928, 0.261633, -0.477688, 0.838667, -1.06311, 3.15031, 4.81822 )
 
-[node name="DissolvingSphere" type="MeshInstance" parent="DemoView/Viewport" index="1"]
+[node name="DissolvingSphere" type="MeshInstance" parent="DemoView/Viewport"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 mesh = SubResource( 1 )
 material/0 = ExtResource( 3 )
 script = ExtResource( 2 )
 
-[node name="Tween" type="Tween" parent="DemoView/Viewport/DissolvingSphere" index="0"]
+[node name="Tween" type="Tween" parent="DemoView/Viewport/DissolvingSphere"]
+
+[node name="Demo3DEnvironment" parent="DemoView/Viewport" instance=ExtResource( 5 )]
+
+[node name="DemoInterface" parent="." instance=ExtResource( 4 )]
 
 [node name="RichTextLabel" parent="DemoInterface/MarginContainer" index="0"]
 bbcode_text = "Uses a noise mask to make a 3D object dissolve."

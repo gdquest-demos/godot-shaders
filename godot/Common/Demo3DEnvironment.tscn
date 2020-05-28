@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/level_environment.tres" type="Environment" id=1]
+[ext_resource path="res://assets/materials/basic_grey.tres" type="Material" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.623529, 0.635294, 0.662745, 1 )
+
+[sub_resource type="QuadMesh" id=2]
+material = SubResource( 1 )
+size = Vector2( 100, 100 )
+
+[node name="Demo3DEnvironment" type="Spatial"]
+
+[node name="BaseWorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 1 )
+
+[node name="Sun" type="DirectionalLight" parent="."]
+transform = Transform( 0.919232, 0.337965, -0.201972, 0, 0.512987, 0.858396, 0.393717, -0.789065, 0.471554, 0, 3.77878, 6.87228 )
+light_color = Color( 0.917647, 0.85098, 0.72549, 1 )
+shadow_enabled = true
+
+[node name="Ground" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 2 )

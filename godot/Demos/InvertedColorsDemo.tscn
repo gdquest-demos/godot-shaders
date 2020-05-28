@@ -1,18 +1,43 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Common/BaseDemo3D.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/theme/gdquest.theme" type="Theme" id=1]
 [ext_resource path="res://Demos/ImpossibleCube/ImpossibleCubeBase.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Shaders/invert.shader" type="Shader" id=3]
+[ext_resource path="res://Common/Demo3DEnvironment.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Common/DemoInterface.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )
 
-[node name="InvertedColorsDemo" instance=ExtResource( 1 )]
+[node name="InvertedColorsDemo" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="DemoView" parent="." index="0"]
+[node name="DemoView" type="ViewportContainer" parent="."]
 material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="ImpossibleCubeDemo" parent="DemoView/Viewport" index="0" instance=ExtResource( 2 )]
+[node name="Viewport" type="Viewport" parent="DemoView"]
+size = Vector2( 1280, 720 )
+handle_input_locally = false
+msaa = 2
+render_target_update_mode = 3
+shadow_atlas_size = 8192
+
+[node name="ImpossibleCubeDemo" parent="DemoView/Viewport" instance=ExtResource( 2 )]
+
+[node name="Demo3DEnvironment" parent="DemoView/Viewport" instance=ExtResource( 4 )]
+
+[node name="DemoInterface" parent="." instance=ExtResource( 5 )]
 
 [node name="RichTextLabel" parent="DemoInterface/MarginContainer" index="0"]
 bbcode_text = "Takes the colors output by the demo viewport and inverts the colors - [color=black]white[/color] is [color=white]black[/color], [color=red]blue[/color] is [color=aqua]red[/color], etc."
