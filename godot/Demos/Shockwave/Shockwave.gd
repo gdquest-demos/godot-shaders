@@ -1,7 +1,7 @@
 tool
 extends ViewportContainer
 
-export var shockwave_duration := 0.75
+export var shockwave_duration := 1.0
 
 onready var tween := $Tween
 
