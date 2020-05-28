@@ -15,7 +15,7 @@ shader_param/tint_back = Color( 0.09, 0.89, 3.5, 1 )
 shader_param/blend_amount = 1.0
 shader_param/falloff_max_alpha = 0.5
 
-[node name="BaseDemo2D" instance=ExtResource( 1 )]
+[node name="PreBakedGlowDemo" instance=ExtResource( 1 )]
 
 [node name="Sprite" type="Sprite" parent="." index="1"]
 material = SubResource( 1 )

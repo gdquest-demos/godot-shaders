@@ -24,17 +24,17 @@ shader_param/glow_color = Color( 0.156863, 0.580392, 0.886275, 1 )
 [sub_resource type="ViewportTexture" id=4]
 viewport_path = NodePath("MaskView/Viewport")
 
-[sub_resource type="ViewportTexture" id=7]
+[sub_resource type="ViewportTexture" id=5]
 viewport_path = NodePath("MaskView/Viewport/Blur2/Viewport/Blur1/Viewport")
 
 [sub_resource type="ShaderMaterial" id=6]
 resource_local_to_scene = true
 shader = ExtResource( 4 )
 shader_param/glow_intensity = 8.0
-shader_param/prepass_texture = SubResource( 7 )
+shader_param/prepass_texture = SubResource( 5 )
 shader_param/blur_texture = SubResource( 4 )
 
-[node name="BaseDemo2D" instance=ExtResource( 1 )]
+[node name="BlurGlowDemo" instance=ExtResource( 1 )]
 
 [node name="MaskView" type="ViewportContainer" parent="." index="1"]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -122,7 +122,7 @@ __meta__ = {
 
 [node name="RichTextLabel" parent="DemoInterface/MarginContainer" index="0"]
 bbcode_text = "Takes a sprite with a flat [color=aqua]color[/color] and blurs it (Blur1, Blur2). This is used as a mask (MaskView), which is fed into the MainView shader. The mainview is composed with the glowing image."
-text = "Takes a sprite with a flat color and blurs it. This is used as a mask in the main shader, composing it in a way that makes the scene glow."
+text = "Takes a sprite with a flat color and blurs it (Blur1, Blur2). This is used as a mask (MaskView), which is fed into the MainView shader. The mainview is composed with the glowing image."
 
 [editable path="MainView/Viewport/Scene"]
 

@@ -51,7 +51,7 @@ glow_strength = 0.87
 glow_blend_mode = 0
 glow_bicubic_upscale = true
 
-[node name="BaseDemo2D" instance=ExtResource( 1 )]
+[node name="Dissolve2DDemo" instance=ExtResource( 1 )]
 
 [node name="Dissolve2DControls" type="Node" parent="." index="1"]
 script = ExtResource( 14 )

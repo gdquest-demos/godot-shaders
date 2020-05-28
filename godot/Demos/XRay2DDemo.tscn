@@ -10,7 +10,7 @@
 [ext_resource path="res://Demos/Xray2d/Watcher.gd" type="Script" id=8]
 [ext_resource path="res://Common/DemoInterface.tscn" type="PackedScene" id=9]
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=1]
 resource_name = "sweep"
 length = 6.0
 loop = true
@@ -27,23 +27,23 @@ tracks/0/keys = {
 "values": [ -60.0, 60.0 ]
 }
 
-[sub_resource type="ViewportTexture" id=1]
+[sub_resource type="ViewportTexture" id=2]
 viewport_path = NodePath("XRayView/Viewport")
 
-[sub_resource type="ViewportTexture" id=2]
+[sub_resource type="ViewportTexture" id=3]
 viewport_path = NodePath("MaskView/Viewport")
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=4]
 resource_local_to_scene = true
 shader = ExtResource( 5 )
 shader_param/dim_main_view = 0.2
-shader_param/alternate_viewport = SubResource( 1 )
-shader_param/mask_viewport = SubResource( 2 )
+shader_param/alternate_viewport = SubResource( 2 )
+shader_param/mask_viewport = SubResource( 3 )
 
-[sub_resource type="ViewportTexture" id=4]
+[sub_resource type="ViewportTexture" id=5]
 viewport_path = NodePath("MainView/Viewport")
 
-[node name="BaseDemo2D" instance=ExtResource( 1 )]
+[node name="XRay2DDemo" instance=ExtResource( 1 )]
 
 [node name="MainView" type="ViewportContainer" parent="." index="1"]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -60,7 +60,7 @@ transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 3
 
-[node name="MainScene" type="Node2D" parent="MainView/Viewport" index="0" instance=ExtResource( 2 )]
+[node name="MainScene" parent="MainView/Viewport" index="0" instance=ExtResource( 2 )]
 
 [node name="Robi" type="Sprite" parent="MainView/Viewport/MainScene" index="0"]
 position = Vector2( 1020, 365 )
@@ -82,7 +82,7 @@ remote_path = NodePath("../../../../../MaskView/Viewport/Cone")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MainView/Viewport/MainScene/Watcher" index="1"]
 playback_process_mode = 0
-anims/sweep = SubResource( 5 )
+anims/sweep = SubResource( 1 )
 
 [node name="XRayView" type="ViewportContainer" parent="." index="2"]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -99,7 +99,7 @@ transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 3
 
-[node name="GearTrain" type="Node2D" parent="XRayView/Viewport" index="0" instance=ExtResource( 3 )]
+[node name="GearTrain" parent="XRayView/Viewport" index="0" instance=ExtResource( 3 )]
 position = Vector2( 1020, 365 )
 
 [node name="MaskView" type="ViewportContainer" parent="." index="3"]
@@ -123,10 +123,10 @@ rotation = 0.877586
 script = ExtResource( 4 )
 
 [node name="Presentation" type="TextureRect" parent="." index="4"]
-material = SubResource( 3 )
+material = SubResource( 4 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = SubResource( 4 )
+texture = SubResource( 5 )
 flip_v = true
 __meta__ = {
 "_edit_use_anchors_": false
