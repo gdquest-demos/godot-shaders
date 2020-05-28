@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/level_environment.tres" type="Environment" id=1]
 [ext_resource path="res://Demos/Dissolve3D/DissolvingSphere.gd" type="Script" id=2]
 [ext_resource path="res://Demos/Dissolve3D/DissolveMaterial.tres" type="Material" id=3]
-
-
+[ext_resource path="res://assets/materials/basic_grey.tres" type="Material" id=4]
 
 [sub_resource type="SphereMesh" id=1]
 
@@ -22,7 +21,6 @@ transform = Transform( 0.965167, 0.12949, -0.227342, 0, 0.868934, 0.494928, 0.26
 
 [node name="SunLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.399023, 0.540624, -0.740613, 0.134466, 0.764467, 0.630483, 0.907028, -0.351165, 0.232344, -3.92699, 6.41711, 2.92414 )
-light_energy = 0.5
 shadow_enabled = true
 
 [node name="DissolvingSphere" type="MeshInstance" parent="."]
@@ -34,8 +32,10 @@ script = ExtResource( 2 )
 [node name="Tween" type="Tween" parent="DissolvingSphere"]
 
 [node name="FloorPlane" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0136046, -0.027678, 0.0290079 )
 mesh = SubResource( 3 )
-material/0 = null
+material/0 = ExtResource( 4 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 1 )
+[connection signal="tween_all_completed" from="DissolvingSphere/Tween" to="DissolvingSphere" method="_on_Tween_tween_all_completed"]

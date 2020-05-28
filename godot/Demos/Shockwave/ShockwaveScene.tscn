@@ -2,18 +2,14 @@
 
 [ext_resource path="res://assets/level_environment.tres" type="Environment" id=1]
 [ext_resource path="res://assets/materials/basic_blue.tres" type="Material" id=2]
+[ext_resource path="res://assets/materials/basic_grey.tres" type="Material" id=3]
 
 [sub_resource type="CubeMesh" id=1]
 
 [sub_resource type="SphereMesh" id=2]
 
-[sub_resource type="PlaneMesh" id=4]
+[sub_resource type="PlaneMesh" id=3]
 size = Vector2( 100, 100 )
-
-[sub_resource type="SpatialMaterial" id=5]
-albedo_color = Color( 0.552941, 0.533333, 0.545098, 1 )
-metallic = 0.05
-metallic_specular = 1.0
 
 [node name="ShockwaveScene" type="Spatial"]
 
@@ -42,8 +38,8 @@ transform = Transform( 0.907712, -0.114994, 0.40353, 0, 0.961713, 0.27406, -0.41
 fov = 53.5
 
 [node name="Ground" type="MeshInstance" parent="."]
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 3 )
+material/0 = ExtResource( 3 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.540693, -0.667021, 0.512576, -0.142634, 0.527808, 0.837301, -0.829039, -0.525834, 0.190242, 0, 9.43333, -0.026844 )

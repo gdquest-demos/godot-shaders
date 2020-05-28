@@ -7,8 +7,7 @@
 [ext_resource path="res://Demos/ImpossibleCube/Rotate.gd" type="Script" id=5]
 [ext_resource path="res://assets/cube_hollow.obj" type="ArrayMesh" id=6]
 [ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=7]
-
-
+[ext_resource path="res://assets/materials/basic_grey.tres" type="Material" id=8]
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
@@ -119,11 +118,6 @@ albedo_color = Color( 0.623529, 0.635294, 0.662745, 1 )
 [sub_resource type="QuadMesh" id=29]
 material = SubResource( 28 )
 size = Vector2( 100, 100 )
-
-[sub_resource type="SpatialMaterial" id=30]
-metallic = 0.49
-metallic_specular = 0.06
-roughness = 0.36
 
 [node name="ImpossibleCubeDemo" type="Spatial"]
 
@@ -278,7 +272,7 @@ shadow_enabled = true
 [node name="Ground" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0 )
 mesh = SubResource( 29 )
-material/0 = SubResource( 30 )
+material/0 = ExtResource( 8 )
 
 [node name="DebugViewer" type="Control" parent="."]
 margin_right = 40.0
