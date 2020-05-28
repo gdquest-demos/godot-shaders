@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/noise_tex.tres" type="Texture" id=1]
 [ext_resource path="res://assets/color_ramp.tres" type="Gradient" id=2]
@@ -12,10 +12,7 @@
 [ext_resource path="res://assets/robi_shaded.png" type="Texture" id=10]
 [ext_resource path="res://Demos/Dissolve2D/Dissolve2DDemo.gd" type="Script" id=11]
 [ext_resource path="res://Shaders/dissolve2D_mask.shader" type="Shader" id=12]
-
-
-
-
+[ext_resource path="res://assets/TempGradientBackground.tres" type="Texture" id=13]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 12 )
@@ -55,6 +52,18 @@ glow_bicubic_upscale = true
 
 [node name="Dissolve2D" type="Node2D"]
 script = ExtResource( 11 )
+debug_dissolve_control = 0.0
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 1280, 720 )
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MaskView" type="Viewport" parent="."]
 size = Vector2( 1280, 720 )
@@ -121,6 +130,7 @@ scale_amount_curve = SubResource( 4 )
 color_ramp = SubResource( 5 )
 script = ExtResource( 5 )
 emission_mask = SubResource( 6 )
+is_force_stopped = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 7 )

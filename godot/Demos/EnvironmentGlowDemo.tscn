@@ -1,12 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/robi_shaded.png" type="Texture" id=1]
 [ext_resource path="res://Shaders/outline2D_outer.shader" type="Shader" id=2]
+[ext_resource path="res://assets/TempGradientBackground.tres" type="Texture" id=3]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
 shader_param/line_color = Color( 1.74, 1, 2.31, 1 )
-shader_param/line_thickness = 1.0
+shader_param/line_thickness = 1.323
 
 [sub_resource type="Environment" id=2]
 background_mode = 4
@@ -16,6 +17,18 @@ glow_blend_mode = 0
 glow_bicubic_upscale = true
 
 [node name="EnvironmentGlowDemo" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1280.0
+margin_bottom = 720.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 1 )

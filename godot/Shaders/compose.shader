@@ -10,5 +10,7 @@ void fragment() {
 	vec4 blurred = texture(blur_texture, UV);
 	vec3 glow = max(vec3(0.0), blurred.rgb-prepass.rgb);
 	
-	COLOR = vec4(color.rgb + glow.rgb * glow_intensity, 1.0);
+	vec3 out_color = color.rgb + glow.rgb * glow_intensity;
+	
+	COLOR = vec4(out_color, clamp(out_color.r + out_color.g + out_color.b, 0, 1));
 }

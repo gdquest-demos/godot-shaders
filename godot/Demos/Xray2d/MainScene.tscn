@@ -3,24 +3,21 @@
 [ext_resource path="res://Demos/Xray2d/Watcher.gd" type="Script" id=2]
 [ext_resource path="res://assets/robi_shaded.png" type="Texture" id=3]
 
-
-
-
 [sub_resource type="Animation" id=1]
 resource_name = "sweep"
 length = 6.0
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rotation_degrees")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 3, 6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -60.0, 60.0, -60.0 ]
+"values": [ -60.0, 60.0 ]
 }
 
 [node name="MainScene" type="Node2D"]

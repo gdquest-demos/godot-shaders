@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Shaders/xray_mask.shader" type="Shader" id=1]
 [ext_resource path="res://Demos/Xray2d/GearTrain.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Demos/Xray2d/Cone.gd" type="Script" id=3]
 [ext_resource path="res://Demos/Xray2d/MainScene.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/TempGradientBackground.tres" type="Texture" id=5]
 
 [sub_resource type="ViewportTexture" id=1]
 viewport_path = NodePath("XRayView/Viewport")
@@ -42,10 +43,24 @@ size = Vector2( 1280, 720 )
 handle_input_locally = false
 render_target_update_mode = 3
 
+[node name="Background" type="TextureRect" parent="MainView/Viewport"]
+margin_right = 1280.0
+margin_bottom = 720.0
+rect_min_size = Vector2( 1280, 720 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MainScene" parent="MainView/Viewport" instance=ExtResource( 4 )]
 
 [node name="RemoteTransform2D" parent="MainView/Viewport/MainScene/Robi" index="0"]
 remote_path = NodePath("../../../../../XRayView/Viewport/GearTrain")
+
+[node name="Watcher" parent="MainView/Viewport/MainScene" index="1"]
+rotation = 0.877586
 
 [node name="RemoteTransform2D" parent="MainView/Viewport/MainScene/Watcher" index="0"]
 remote_path = NodePath("../../../../../MaskView/Viewport/Cone")
@@ -85,7 +100,7 @@ render_target_update_mode = 3
 
 [node name="Cone" type="Node2D" parent="MaskView/Viewport"]
 position = Vector2( 324, 346 )
-rotation = -1.0472
+rotation = 0.877586
 script = ExtResource( 3 )
 
 [node name="Presentation" type="TextureRect" parent="."]
