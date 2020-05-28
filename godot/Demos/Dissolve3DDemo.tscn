@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/level_environment.tres" type="Environment" id=1]
 [ext_resource path="res://Demos/Dissolve3D/DissolvingSphere.gd" type="Script" id=2]
 [ext_resource path="res://Demos/Dissolve3D/DissolveMaterial.tres" type="Material" id=3]
 [ext_resource path="res://assets/materials/basic_grey.tres" type="Material" id=4]
+[ext_resource path="res://Common/BaseDemo3D.tscn" type="PackedScene" id=5]
 
 [sub_resource type="SphereMesh" id=1]
 
@@ -14,28 +15,37 @@ albedo_color = Color( 0.211765, 0.266667, 0.333333, 1 )
 material = SubResource( 2 )
 size = Vector2( 50, 50 )
 
-[node name="DissolveDemo" type="Spatial"]
+[node name="BaseDemo3D" instance=ExtResource( 5 )]
 
-[node name="Camera" type="Camera" parent="."]
+[node name="Viewport" parent="DemoView" index="0"]
+shadow_atlas_quad_0 = 1
+
+[node name="Camera" type="Camera" parent="DemoView/Viewport" index="0"]
 transform = Transform( 0.965167, 0.12949, -0.227342, 0, 0.868934, 0.494928, 0.261633, -0.477688, 0.838667, -1.06311, 3.15031, 4.81822 )
 
-[node name="SunLight" type="DirectionalLight" parent="."]
+[node name="SunLight" type="DirectionalLight" parent="DemoView/Viewport" index="1"]
 transform = Transform( 0.399023, 0.540624, -0.740613, 0.134466, 0.764467, 0.630483, 0.907028, -0.351165, 0.232344, -3.92699, 6.41711, 2.92414 )
 shadow_enabled = true
 
-[node name="DissolvingSphere" type="MeshInstance" parent="."]
+[node name="DissolvingSphere" type="MeshInstance" parent="DemoView/Viewport" index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 mesh = SubResource( 1 )
 material/0 = ExtResource( 3 )
 script = ExtResource( 2 )
 
-[node name="Tween" type="Tween" parent="DissolvingSphere"]
+[node name="Tween" type="Tween" parent="DemoView/Viewport/DissolvingSphere" index="0"]
 
-[node name="FloorPlane" type="MeshInstance" parent="."]
+[node name="FloorPlane" type="MeshInstance" parent="DemoView/Viewport" index="3"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0136046, -0.027678, 0.0290079 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 4 )
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="DemoView/Viewport" index="4"]
 environment = ExtResource( 1 )
-[connection signal="tween_all_completed" from="DissolvingSphere/Tween" to="DissolvingSphere" method="_on_Tween_tween_all_completed"]
+
+[node name="RichTextLabel" parent="DemoInterface/MarginContainer" index="0"]
+bbcode_text = "Uses a noise mask to make a 3D object dissolve."
+text = "Uses a noise mask to make a 3D object dissolve."
+[connection signal="tween_all_completed" from="DemoView/Viewport/DissolvingSphere/Tween" to="DemoView/Viewport/DissolvingSphere" method="_on_Tween_tween_all_completed"]
+
+[editable path="DemoInterface"]

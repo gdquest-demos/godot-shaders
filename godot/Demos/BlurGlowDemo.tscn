@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Common/BaseDemo2D.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Demos/Glow2D/BlurGlow/Scene.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://Shaders/compose.shader" type="Shader" id=4]
 [ext_resource path="res://Shaders/glow_prepass.shader" type="Shader" id=5]
 [ext_resource path="res://assets/robi_shaded.png" type="Texture" id=6]
-[ext_resource path="res://Common/DemoInterface.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=8]
 
 [sub_resource type="ShaderMaterial" id=1]
@@ -118,12 +117,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DemoInterface" parent="." index="4" instance=ExtResource( 7 )]
-
-[node name="RichTextLabel" parent="DemoInterface/MarginContainer" index="0"]
+[node name="RichTextLabel" parent="DemoText/MarginContainer" index="0"]
 bbcode_text = "Takes a sprite with a flat [color=aqua]color[/color] and blurs it (Blur1, Blur2). This is used as a mask (MaskView), which is fed into the MainView shader. The mainview is composed with the glowing image."
 text = "Takes a sprite with a flat color and blurs it (Blur1, Blur2). This is used as a mask (MaskView), which is fed into the MainView shader. The mainview is composed with the glowing image."
 
 [editable path="MainView/Viewport/Scene"]
 
-[editable path="DemoInterface"]
+[editable path="DemoText"]

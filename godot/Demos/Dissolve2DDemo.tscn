@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Common/BaseDemo2D.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/color_ramp.tres" type="Gradient" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://Demos/Dissolve2D/DissolveController.gd" type="Script" id=8]
 [ext_resource path="res://assets/black.png" type="Texture" id=9]
 [ext_resource path="res://assets/robi_shaded.png" type="Texture" id=10]
-[ext_resource path="res://Common/DemoInterface.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Shaders/dissolve2D_mask.shader" type="Shader" id=12]
 [ext_resource path="res://assets/noise_tex.tres" type="Texture" id=13]
 [ext_resource path="res://Demos/Dissolve2D/Dissolve2DControls.gd" type="Script" id=14]
@@ -136,10 +135,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DemoInterface" parent="." index="8" instance=ExtResource( 11 )]
-
-[node name="RichTextLabel" parent="DemoInterface/MarginContainer" index="0"]
+[node name="RichTextLabel" parent="DemoText/MarginContainer" index="0"]
 bbcode_text = "Uses a Noise mask to dissolve a sprite. Also generates a mask that is use to set the emission points array of a CPUParticles2D."
 text = "Uses a Noise mask to dissolve a sprite. Also generates a mask that is use to set the emission points array of a CPUParticles2D."
 
-[editable path="DemoInterface"]
+[editable path="DemoText"]

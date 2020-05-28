@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Common/BaseDemo2D.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Demos/Xray2d/MainScene.tscn" type="PackedScene" id=2]
@@ -6,26 +6,6 @@
 [ext_resource path="res://Demos/Xray2d/Cone.gd" type="Script" id=4]
 [ext_resource path="res://Shaders/xray_mask.shader" type="Shader" id=5]
 [ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=6]
-[ext_resource path="res://assets/robi_shaded.png" type="Texture" id=7]
-[ext_resource path="res://Demos/Xray2d/Watcher.gd" type="Script" id=8]
-[ext_resource path="res://Common/DemoInterface.tscn" type="PackedScene" id=9]
-
-[sub_resource type="Animation" id=1]
-resource_name = "sweep"
-length = 6.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rotation_degrees")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ -60.0, 60.0 ]
-}
 
 [sub_resource type="ViewportTexture" id=2]
 viewport_path = NodePath("XRayView/Viewport")
@@ -62,27 +42,11 @@ render_target_update_mode = 3
 
 [node name="MainScene" parent="MainView/Viewport" index="0" instance=ExtResource( 2 )]
 
-[node name="Robi" type="Sprite" parent="MainView/Viewport/MainScene" index="0"]
-position = Vector2( 1020, 365 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 7 )
-flip_h = true
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="MainView/Viewport/MainScene/Robi" index="0"]
+[node name="RemoteTransform2D" parent="MainView/Viewport/MainScene/Robi" index="0"]
 remote_path = NodePath("../../../../../XRayView/Viewport/GearTrain")
-update_scale = false
 
-[node name="Watcher" type="Node2D" parent="MainView/Viewport/MainScene" index="1"]
-position = Vector2( 324, 346 )
-rotation = 0.877586
-script = ExtResource( 8 )
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="MainView/Viewport/MainScene/Watcher" index="0"]
+[node name="RemoteTransform2D" parent="MainView/Viewport/MainScene/Watcher" index="0"]
 remote_path = NodePath("../../../../../MaskView/Viewport/Cone")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MainView/Viewport/MainScene/Watcher" index="1"]
-playback_process_mode = 0
-anims/sweep = SubResource( 1 )
 
 [node name="XRayView" type="ViewportContainer" parent="." index="2"]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -119,7 +83,7 @@ render_target_update_mode = 3
 
 [node name="Cone" type="Node2D" parent="MaskView/Viewport" index="0"]
 position = Vector2( 324, 346 )
-rotation = 0.877586
+rotation = -1.0472
 script = ExtResource( 4 )
 
 [node name="Presentation" type="TextureRect" parent="." index="4"]
@@ -141,12 +105,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DemoInterface" parent="." index="6" instance=ExtResource( 9 )]
-
-[node name="RichTextLabel" parent="DemoInterface/MarginContainer" index="0"]
+[node name="RichTextLabel" parent="DemoText/MarginContainer" index="0"]
 bbcode_text = "Generates a black and white mask that determines where color information from the XRay view should override color information from the Main view."
 text = "Generates a black and white mask that determines where color information from the XRay view should override color information from the Main view."
 
 [editable path="MainView/Viewport/MainScene"]
 
-[editable path="DemoInterface"]
+[editable path="DemoText"]

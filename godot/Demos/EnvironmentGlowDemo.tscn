@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Common/BaseDemo2D.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Common/DemoInterface.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Shaders/outline2D_outer.shader" type="Shader" id=3]
 [ext_resource path="res://assets/robi_shaded.png" type="Texture" id=4]
 
@@ -37,10 +36,8 @@ Glow levels: to taste.
 Glow blend mode: Additive"
 }
 
-[node name="DemoInterface" parent="." index="3" instance=ExtResource( 2 )]
-
-[node name="RichTextLabel" parent="DemoInterface/MarginContainer" index="0"]
+[node name="RichTextLabel" parent="DemoText/MarginContainer" index="0"]
 bbcode_text = "Achieves a glow on 2D objects with a WorldEnvironment node."
 text = "Achieves a glow on 2D objects with a WorldEnvironment node."
 
-[editable path="DemoInterface"]
+[editable path="DemoText"]
