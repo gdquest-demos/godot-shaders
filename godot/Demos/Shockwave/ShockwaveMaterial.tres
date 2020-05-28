@@ -6,7 +6,7 @@
 shader = ExtResource( 1 )
 shader_param/torus_thickness = 0.286
 shader_param/torus_hardness = 0.19
-shader_param/torus_radius = -0.1
+shader_param/torus_radius = -0.25
 shader_param/torus_invert = -1.0
 shader_param/torus_center = Vector2( 0.5, 0.25 )
 shader_param/torus_size = Vector2( 1.78, 1 )

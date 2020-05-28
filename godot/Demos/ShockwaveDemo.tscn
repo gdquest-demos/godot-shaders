@@ -31,7 +31,7 @@ void fragment() {
 shader = SubResource( 1 )
 shader_param/torus_thickness = 0.635
 shader_param/torus_hardness = 1.176
-shader_param/torus_radius = 0.986
+shader_param/torus_radius = -0.25
 shader_param/torus_invert = -1.0
 shader_param/torus_center = Vector2( 0.5, 0.5 )
 shader_param/torus_size = Vector2( 4.45, 2.5 )
