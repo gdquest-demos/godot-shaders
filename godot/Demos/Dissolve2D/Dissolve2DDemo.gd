@@ -6,6 +6,11 @@ export (float, 0, 1) var debug_dissolve_control := 0.0 setget _set_debug_control
 onready var mask := $MaskView/RobiMask
 onready var robi := $Robi
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"):
+		mask.dissolve()
+		robi.dissolve()
+
 
 func _set_debug_control(value: float) -> void:
 	debug_dissolve_control = value
