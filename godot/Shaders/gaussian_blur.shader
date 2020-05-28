@@ -21,9 +21,9 @@ void fragment() {
 	
 	for(int i=-int(SAMPLES)/2; i < int(SAMPLES)/2; ++i) {
 		weight = gaussian(float(i));
-		color.rgb += texture(TEXTURE, UV + scale * vec2(float(i))).rgb * weight;
+		color += texture(TEXTURE, UV + scale * vec2(float(i))) * weight;
 		total_weight += weight;
 	}
 	
-	COLOR.rgb = color.rgb / total_weight;
+	COLOR = color / total_weight;
 }
