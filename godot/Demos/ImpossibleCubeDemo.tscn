@@ -4,7 +4,7 @@
 [ext_resource path="res://Demos/ImpossibleCube/ImpossibleCubeBase.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=3]
 
-[node name="BaseDemo3D" instance=ExtResource( 1 )]
+[node name="ImpossibleCubeDemo" instance=ExtResource( 1 )]
 
 [node name="ImpossibleCubeDemo" parent="DemoView/Viewport" index="0" instance=ExtResource( 2 )]
 

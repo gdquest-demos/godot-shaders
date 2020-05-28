@@ -6,7 +6,7 @@
 
 [sub_resource type="SphereMesh" id=1]
 
-[node name="BaseDemo3D" instance=ExtResource( 5 )]
+[node name="Dissolve3DDemo" instance=ExtResource( 5 )]
 
 [node name="Viewport" parent="DemoView" index="0"]
 shadow_atlas_quad_0 = 1
