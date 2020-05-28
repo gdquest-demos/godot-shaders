@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Demos/Blur/Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Demos/Blur/SpaceBackground.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Demos/Blur/BlurDirection.gd" type="Script" id=3]
 [ext_resource path="res://Shaders/gaussian_blur.shader" type="Shader" id=4]
 [ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=5]
+[ext_resource path="res://Common/DemoInterface.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 4 )
@@ -45,15 +46,13 @@ __meta__ = {
 material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 40.0
-margin_bottom = 40.0
 stretch = true
 script = ExtResource( 3 )
 direction_provider_path = NodePath("../../../BlurViewportContainersDemo/Presentation/BlurView2/Viewport/BlurView/Viewport/MotionBlurSceneBackground")
 blur_scale = Vector2( 1, -1 )
 
 [node name="Viewport" type="Viewport" parent="Presentation/BlurView2"]
-size = Vector2( 1320, 760 )
+size = Vector2( 1280, 720 )
 handle_input_locally = false
 usage = 0
 render_target_update_mode = 3
@@ -62,15 +61,13 @@ render_target_update_mode = 3
 material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 40.0
-margin_bottom = 40.0
 stretch = true
 script = ExtResource( 3 )
 direction_provider_path = NodePath("../../../../../BlurViewportContainersDemo/Presentation/BlurView2/Viewport/BlurView/Viewport/MotionBlurSceneBackground")
 blur_scale = Vector2( 4, -4 )
 
 [node name="Viewport" type="Viewport" parent="Presentation/BlurView2/Viewport/BlurView"]
-size = Vector2( 1360, 800 )
+size = Vector2( 1280, 720 )
 handle_input_locally = false
 usage = 0
 render_target_update_mode = 3
@@ -82,12 +79,10 @@ trail_length = 24000.0
 material = SubResource( 4 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 40.0
-margin_bottom = 40.0
 stretch = true
 
 [node name="Viewport" type="Viewport" parent="Presentation/ShipView"]
-size = Vector2( 1320, 760 )
+size = Vector2( 1280, 720 )
 transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 3
@@ -109,13 +104,22 @@ smoothing_enabled = true
 smoothing_speed = 15.0
 
 [node name="DebugViewer" type="Control" parent="."]
+margin_top = 120.0
 margin_right = 40.0
-margin_bottom = 40.0
+margin_bottom = 160.0
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="DemoInterface" parent="." instance=ExtResource( 6 )]
+
+[node name="RichTextLabel" parent="DemoInterface/MarginContainer" index="0"]
+bbcode_text = "Uses ViewportContainers to compose a scene that uses gaussian blur as motion blur."
+text = "Uses ViewportContainers to compose a scene that uses gaussian blur as motion blur."
+
 [editable path="Presentation/BlurView2/Viewport/BlurView/Viewport/MotionBlurSceneBackground"]
 
 [editable path="Presentation/ShipView/Viewport/Ship"]
+
+[editable path="DemoInterface"]

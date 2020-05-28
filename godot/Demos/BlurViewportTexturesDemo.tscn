@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Demos/Blur/BlurDirection.gd" type="Script" id=1]
 [ext_resource path="res://Demos/Blur/Ship.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Demos/Blur/SpaceBackground.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Shaders/gaussian_blur.shader" type="Shader" id=4]
 [ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=5]
+[ext_resource path="res://Common/DemoInterface.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 4 )
@@ -180,10 +181,22 @@ __meta__ = {
 }
 
 [node name="DebugViewer" type="Control" parent="."]
+margin_top = 120.0
 margin_right = 40.0
-margin_bottom = 40.0
+margin_bottom = 160.0
 script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DemoInterface" parent="." instance=ExtResource( 6 )]
+
+[node name="RichTextLabel" parent="DemoInterface/MarginContainer" index="0"]
+bbcode_text = "Uses TextureRects to compose a scene that uses gaussian blur as motion blur."
+text = "Uses TextureRects to compose a scene that uses gaussian blur as motion blur."
 
 [editable path="SceneView/Viewport/MotionBlurScene"]
 
 [editable path="ShipView/Viewport/Ship"]
+
+[editable path="DemoInterface"]
