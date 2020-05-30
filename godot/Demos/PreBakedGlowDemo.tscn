@@ -38,9 +38,4 @@ repeat = true
 playback/repeat = true
 
 [node name="DemoText" parent="." instance=ExtResource( 6 )]
-
-[node name="RichTextLabel" parent="DemoText/MarginContainer" index="0"]
-bbcode_text = "Uses a shader on a sprite to control a glow. The glow effect is part of the sprite's texture, and the shader manipulates the amount of alpha and color intensity."
-text = "Uses a shader on a sprite to control a glow. The glow effect is part of the sprite's texture, and the shader manipulates the amount of alpha and color intensity."
-
-[editable path="DemoText"]
+text_bbcode = "Uses a shader on a sprite to control a glow. The glow effect is part of the sprite's texture, and the shader manipulates the amount of alpha and color intensity."

@@ -190,13 +190,8 @@ __meta__ = {
 }
 
 [node name="DemoInterface" parent="." instance=ExtResource( 6 )]
-
-[node name="RichTextLabel" parent="DemoInterface/MarginContainer" index="0"]
-bbcode_text = "Uses TextureRects to compose a scene that uses gaussian blur as motion blur."
-text = "Uses TextureRects to compose a scene that uses gaussian blur as motion blur."
+text_bbcode = "Uses TextureRects to compose a scene that uses gaussian blur as motion blur."
 
 [editable path="SceneView/Viewport/MotionBlurScene"]
 
 [editable path="ShipView/Viewport/Ship"]
-
-[editable path="DemoInterface"]

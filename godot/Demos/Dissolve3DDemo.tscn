@@ -46,10 +46,5 @@ script = ExtResource( 2 )
 [node name="Demo3DEnvironment" parent="DemoView/Viewport" instance=ExtResource( 5 )]
 
 [node name="DemoInterface" parent="." instance=ExtResource( 4 )]
-
-[node name="RichTextLabel" parent="DemoInterface/MarginContainer" index="0"]
-bbcode_text = "Uses a noise mask to make a 3D object dissolve."
-text = "Uses a noise mask to make a 3D object dissolve."
+text_bbcode = "Uses a noise mask to make a 3D object dissolve."
 [connection signal="tween_all_completed" from="DemoView/Viewport/DissolvingSphere/Tween" to="DemoView/Viewport/DissolvingSphere" method="_on_Tween_tween_all_completed"]
-
-[editable path="DemoInterface"]

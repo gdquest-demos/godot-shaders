@@ -33,9 +33,4 @@ shadow_atlas_size = 8192
 [node name="Demo3DEnvironment" parent="DemoView/Viewport" instance=ExtResource( 4 )]
 
 [node name="DemoInterface" parent="." instance=ExtResource( 3 )]
-
-[node name="RichTextLabel" parent="DemoInterface/MarginContainer" index="0"]
-bbcode_text = "Uses shaders to draw an outline around 3D object, effectively drawing them a second time, but bigger, and inverting the culling so it draws behind the object."
-text = "Uses shaders to draw an outline around 3D object, effectively drawing them a second time, but bigger, and inverting the culling so it draws behind the object."
-
-[editable path="DemoInterface"]
+text_bbcode = "Uses shaders to draw an outline around 3D object, effectively drawing them a second time, but bigger, and inverting the culling so it draws behind the object."

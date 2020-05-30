@@ -137,9 +137,4 @@ anims/SETUP = SubResource( 4 )
 anims/scroll = SubResource( 5 )
 
 [node name="DemoText" parent="." instance=ExtResource( 10 )]
-
-[node name="RichTextLabel" parent="DemoText/MarginContainer" index="0"]
-bbcode_text = "Uses shaders to outline 2D sprites - outlining only outside the pixels, inside, or both."
-text = "Uses shaders to outline 2D sprites - outlining only outside the pixels, inside, or both."
-
-[editable path="DemoText"]
+text_bbcode = "Uses shaders to outline 2D sprites - outlining only outside the pixels, inside, or both."

@@ -1,24 +1,20 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/theme/gdquest.theme" type="Theme" id=1]
+[ext_resource path="res://Common/DemoInterface.gd" type="Script" id=2]
 
-[node name="DemoInterface" type="PanelContainer"]
+[node name="DemoInterface" type="Panel"]
 anchor_right = 1.0
 margin_bottom = 120.0
 theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 1264.0
+margin_bottom = 104.0
+bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
-margin_right = 1280.0
-margin_bottom = 120.0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer"]
-margin_left = 24.0
-margin_top = 24.0
-margin_right = 1256.0
-margin_bottom = 96.0
-bbcode_enabled = true
-bbcode_text = "Replace this text for the demo."
-text = "Replace this text for the demo."

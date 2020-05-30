@@ -34,10 +34,7 @@ shadow_atlas_size = 8192
 [node name="Demo3DEnvironment" parent="DemoView/Viewport" instance=ExtResource( 4 )]
 
 [node name="DemoInterface" parent="." instance=ExtResource( 5 )]
-
-[node name="RichTextLabel" parent="DemoInterface/MarginContainer" index="0"]
-bbcode_text = "Uses viewports to simulate stencil tests, making objects [fade]disappear[/fade] depending on what color is facing the camera on the stencil view. The stencil supports up to 7 colors of masks."
-text = "Uses viewports to simulate stencil tests, making objects disappear depending on what color is facing the camera on the stencil view. The stencil supports up to 7 colors of masks."
+text_bbcode = "Uses viewports to simulate stencil tests, making objects disappear depending on what color is facing the camera on the stencil view. The stencil supports up to 7 colors of masks."
 
 [node name="DebugViewer" type="Control" parent="."]
 margin_top = 120.0
@@ -45,5 +42,3 @@ margin_right = 40.0
 margin_bottom = 160.0
 rect_scale = Vector2( 0.9, 0.9 )
 script = ExtResource( 3 )
-
-[editable path="DemoInterface"]

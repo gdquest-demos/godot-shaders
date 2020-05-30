@@ -128,11 +128,6 @@ __meta__ = {
 }
 
 [node name="DemoText" parent="." instance=ExtResource( 9 )]
-
-[node name="RichTextLabel" parent="DemoText/MarginContainer" index="0"]
-bbcode_text = "Takes a sprite with a flat [color=aqua]color[/color] and blurs it (Blur1, Blur2). This is used as a mask (MaskView), which is fed into the MainView shader. The mainview is composed with the glowing image."
-text = "Takes a sprite with a flat color and blurs it (Blur1, Blur2). This is used as a mask (MaskView), which is fed into the MainView shader. The mainview is composed with the glowing image."
+text_bbcode = "Takes a sprite with a flat color and blurs it (Blur1, Blur2). This is used as a mask (MaskView), which is fed into the MainView shader. The mainview is composed with the glowing image."
 
 [editable path="MainView/Viewport/Scene"]
-
-[editable path="DemoText"]

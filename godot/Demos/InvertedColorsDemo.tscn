@@ -38,9 +38,4 @@ shadow_atlas_size = 8192
 [node name="Demo3DEnvironment" parent="DemoView/Viewport" instance=ExtResource( 4 )]
 
 [node name="DemoInterface" parent="." instance=ExtResource( 5 )]
-
-[node name="RichTextLabel" parent="DemoInterface/MarginContainer" index="0"]
-bbcode_text = "Takes the colors output by the demo viewport and inverts the colors - [color=black]white[/color] is [color=white]black[/color], [color=red]blue[/color] is [color=aqua]red[/color], etc."
-text = "Takes the colors output by the demo viewport and inverts the colors - white is black, blue is red, etc."
-
-[editable path="DemoInterface"]
+text_bbcode = "Takes the colors output by the demo viewport and inverts the colors - white is black, blue is red, etc."

@@ -116,11 +116,6 @@ __meta__ = {
 }
 
 [node name="DemoText" parent="." instance=ExtResource( 8 )]
-
-[node name="RichTextLabel" parent="DemoText/MarginContainer" index="0"]
-bbcode_text = "Generates a black and white mask that determines where color information from the XRay view should override color information from the Main view."
-text = "Generates a black and white mask that determines where color information from the XRay view should override color information from the Main view."
+text_bbcode = "Generates a black and white mask that determines where color information from the XRay view should override color information from the Main view."
 
 [editable path="MainView/Viewport/MainScene"]
-
-[editable path="DemoText"]

@@ -106,9 +106,4 @@ __meta__ = {
 }
 
 [node name="DemoInterface" parent="." instance=ExtResource( 5 )]
-
-[node name="RichTextLabel" parent="DemoInterface/MarginContainer" index="0"]
-bbcode_text = "Uses a shader to generate a torus, black and white mask, the data of which is used to distort the UVs of the demo viewports to make a shockwave heat distortion effect."
-text = "Uses a shader to generate a torus, black and white mask, the data of which is used to distort the UVs of the demo viewports to make a shockwave heat distortion effect."
-
-[editable path="DemoInterface"]
+text_bbcode = "Uses a shader to generate a torus, black and white mask, the data of which is used to distort the UVs of the demo viewports to make a shockwave heat distortion effect."

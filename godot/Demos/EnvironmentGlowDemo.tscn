@@ -47,9 +47,4 @@ Glow blend mode: Additive"
 }
 
 [node name="DemoText" parent="." instance=ExtResource( 5 )]
-
-[node name="RichTextLabel" parent="DemoText/MarginContainer" index="0"]
-bbcode_text = "Achieves a glow on 2D objects with a WorldEnvironment node."
-text = "Achieves a glow on 2D objects with a WorldEnvironment node."
-
-[editable path="DemoText"]
+text_bbcode = "Achieves a glow on 2D objects with a WorldEnvironment node."

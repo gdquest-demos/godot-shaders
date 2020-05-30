@@ -146,9 +146,4 @@ __meta__ = {
 }
 
 [node name="DemoText" parent="." instance=ExtResource( 15 )]
-
-[node name="RichTextLabel" parent="DemoText/MarginContainer" index="0"]
-bbcode_text = "Uses a Noise mask to dissolve a sprite. Also generates a mask that is use to set the emission points array of a CPUParticles2D."
-text = "Uses a Noise mask to dissolve a sprite. Also generates a mask that is use to set the emission points array of a CPUParticles2D."
-
-[editable path="DemoText"]
+text_bbcode = "Uses a Noise mask to dissolve a sprite. Also generates a mask that is use to set the emission points array of a CPUParticles2D."
