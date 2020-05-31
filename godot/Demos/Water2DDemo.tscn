@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Demos/Water2D/Water2D.gd" type="Script" id=1]
+[ext_resource path="res://Demos/Water2D/water_normal.png" type="Texture" id=2]
+[ext_resource path="res://Demos/Water2D/water_diffuse.png" type="Texture" id=3]
+[ext_resource path="res://Demos/Water2D/water_2D_material.tres" type="Material" id=4]
+[ext_resource path="res://Common/DemoInterface.tscn" type="PackedScene" id=5]
+
+[node name="Water2DDemo" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Water2D" type="Sprite" parent="."]
+material = ExtResource( 4 )
+position = Vector2( 640, 360 )
+scale = Vector2( 5, 2.8125 )
+texture = ExtResource( 3 )
+normal_map = ExtResource( 2 )
+script = ExtResource( 1 )
+
+[node name="DemoInterface" parent="." instance=ExtResource( 5 )]
+text_bbcode = "Example of a 2D water. The diffuse color texture has no light information. The shadows are calculated in the shader.
+You can use the [code]modulate[/code] property to tint the water."
+[connection signal="item_rect_changed" from="Water2D" to="Water2D" method="_on_item_rect_changed"]
