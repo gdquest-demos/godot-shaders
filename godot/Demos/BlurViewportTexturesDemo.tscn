@@ -190,7 +190,8 @@ __meta__ = {
 }
 
 [node name="DemoInterface" parent="." instance=ExtResource( 6 )]
-text_bbcode = "Uses TextureRects to compose a scene that uses gaussian blur as motion blur."
+text_bbcode = "Uses TextureRects to compose a scene that uses gaussian blur as motion blur.
+It's an alternative setup to produce a result like BlurViewportTexturesDemo.tscn."
 
 [editable path="SceneView/Viewport/MotionBlurScene"]
 

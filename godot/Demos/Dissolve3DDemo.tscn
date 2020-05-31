@@ -33,7 +33,7 @@ shadow_atlas_size = 8192
 shadow_atlas_quad_0 = 1
 
 [node name="Camera" type="Camera" parent="DemoView/Viewport"]
-transform = Transform( 0.965167, 0.12949, -0.227342, 0, 0.868934, 0.494928, 0.261633, -0.477688, 0.838667, -1.06311, 3.15031, 4.81822 )
+transform = Transform( 0.965167, 0.12949, -0.227342, 0, 0.868934, 0.494928, 0.261633, -0.477688, 0.838667, -1.30066, 3.15031, 4.68298 )
 
 [node name="DissolvingSphere" type="MeshInstance" parent="DemoView/Viewport"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )

@@ -64,7 +64,6 @@ __meta__ = {
 
 [node name="Dissolve2DControls" type="Node" parent="."]
 script = ExtResource( 14 )
-debug_dissolve_control = 0.0
 
 [node name="MaskView" type="Viewport" parent="."]
 size = Vector2( 1280, 720 )
@@ -88,13 +87,13 @@ script = ExtResource( 7 )
 [node name="Tween" type="Tween" parent="MaskView/RobiMask"]
 
 [node name="ScaledView" type="Viewport" parent="."]
-size = Vector2( 160, 90 )
+size = Vector2( 64, 36 )
 usage = 0
 render_target_update_mode = 3
 
 [node name="TextureRect" type="TextureRect" parent="ScaledView"]
-margin_right = 160.0
-margin_bottom = 90.0
+margin_right = 64.0
+margin_bottom = 36.0
 texture = SubResource( 2 )
 expand = true
 stretch_mode = 1
@@ -131,7 +130,6 @@ scale_amount_curve = SubResource( 4 )
 color_ramp = SubResource( 5 )
 script = ExtResource( 5 )
 emission_mask = SubResource( 6 )
-is_force_stopped = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 7 )
@@ -146,4 +144,5 @@ __meta__ = {
 }
 
 [node name="DemoText" parent="." instance=ExtResource( 15 )]
-text_bbcode = "Uses a Noise mask to dissolve a sprite. Also generates a mask that is use to set the emission points array of a CPUParticles2D."
+text_bbcode = "Uses a Noise mask to dissolve a sprite. Also generates a mask that is use to set the emission points array of a CPUParticles2D.
+To generate the particles mask, we scale down the dissolve mask (ScaledView) and loop over that texture's pixels in GDScript (CPUParticles2D)."

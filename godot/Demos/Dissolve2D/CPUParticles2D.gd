@@ -24,7 +24,7 @@ func _process_texture(texture: Texture) -> void:
 			var idx := y * w + x
 			var byte: int = raw[idx]
 			if byte > 76:
-				positions.append(Vector2(x, y) * 8)
+				positions.append(Vector2(x, y) * 20)
 
 	if positions.size() > 0:
 		emitting = true

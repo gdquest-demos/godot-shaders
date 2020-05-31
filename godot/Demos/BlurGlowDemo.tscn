@@ -12,11 +12,11 @@
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )
-shader_param/blur_scale = Vector2( 0, 2 )
+shader_param/blur_scale = Vector2( 0, 4 )
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 3 )
-shader_param/blur_scale = Vector2( 2, 0 )
+shader_param/blur_scale = Vector2( 4, 0 )
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 5 )
@@ -129,6 +129,8 @@ __meta__ = {
 }
 
 [node name="DemoText" parent="." instance=ExtResource( 9 )]
-text_bbcode = "Takes a sprite with a flat color and blurs it (Blur1, Blur2). This is used as a mask (MaskView), which is fed into the MainView shader. The mainview is composed with the glowing image."
+text_bbcode = "Takes a sprite with a flat color and blurs it in two passes: Blur1, Blur2.
+This blurred texture is used as a mask (MaskView), which is fed into the MainView's shader. 
+The MainView applies the glow around the character."
 
 [editable path="MainView/Viewport/Scene"]

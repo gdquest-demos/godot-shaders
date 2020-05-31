@@ -23,9 +23,6 @@ func dissolve() -> void:
 		self, "dissolve_color", 0, 1, 3.0, Tween.TRANS_LINEAR, Tween.EASE_OUT
 	)
 	tween.start()
-	yield(tween, "tween_all_completed")
-	visible = false
-
 
 
 func dissolve_amount(value: float) -> void:
