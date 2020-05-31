@@ -120,8 +120,9 @@ render_target_update_mode = 3
 remote_path = NodePath("../../../../../MaskView/Viewport/Blur2/Viewport/Blur1/Viewport/Sprite")
 
 [node name="DebugViewer" type="Control" parent="."]
+margin_top = 120.0
 margin_right = 40.0
-margin_bottom = 40.0
+margin_bottom = 160.0
 script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
