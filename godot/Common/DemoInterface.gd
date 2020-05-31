@@ -1,7 +1,7 @@
 tool
 extends Control
 
-export var text_bbcode := "" setget set_text_bbcode
+export(String, MULTILINE) var text_bbcode := "" setget set_text_bbcode
 
 onready var rich_text_label := $RichTextLabel
 
