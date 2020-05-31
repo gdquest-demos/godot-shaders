@@ -36,11 +36,12 @@ void fragment() {
 	vec2 texture_based_offset = texture(texture_offset_uv, base_uv_offset).rg * 2.0 - 1.0;
 	vec2 sine_offset = calculate_sine_wave(TIME, sine_time_scale, adjusted_uv, sine_offset_scale);
 
-	vec2 final_waves_uvs = adjusted_uv + texture_based_offset * texture_offset_height + sine_offset * sine_wave_size;
+	vec2 sine_uv_offset = sine_offset * sine_wave_size;
+	vec2 final_waves_uvs = adjusted_uv + texture_based_offset * texture_offset_height + sine_uv_offset;
 	float water_height = (sine_offset.y + texture_based_offset.y) * 0.5;
 
 //	COLOR = vec4(water_height, water_height, water_height, 1.0); // visualize water height
 	vec4 diffuse_color = texture(TEXTURE, final_waves_uvs);
 	COLOR = mix(diffuse_color, shadow_color, water_height * 0.4);
-	NORMALMAP = texture(NORMAL_TEXTURE, adjusted_uv / 5.0).rgb;
+	NORMALMAP = texture(NORMAL_TEXTURE, (adjusted_uv + sine_uv_offset) / 5.0).rgb;
 }
