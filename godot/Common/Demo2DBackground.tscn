@@ -53,6 +53,7 @@ layer = -1
 modulate = Color( 0.0509804, 0.403922, 0.501961, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 7

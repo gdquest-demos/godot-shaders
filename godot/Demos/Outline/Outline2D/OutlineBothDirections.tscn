@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Demos/Outline/Outline2D/Outline.gd" type="Script" id=1]
+[ext_resource path="res://Shaders/outline2D_inner_outer.shader" type="Shader" id=2]
+[ext_resource path="res://assets/robi_shaded.png" type="Texture" id=3]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/line_color = Color( 0.0823529, 0.690196, 0.92549, 0 )
+shader_param/line_thickness = 5.0
+
+[node name="OutlineBothDirections" type="Sprite"]
+material = SubResource( 1 )
+scale = Vector2( 0.644905, 0.644905 )
+texture = ExtResource( 3 )
+flip_h = true
+region_enabled = true
+region_rect = Rect2( -3, -3, 426, 751 )
+script = ExtResource( 1 )
+line_color = Color( 0.109804, 0.603922, 0.898039, 1 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+monitorable = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PoolVector2Array( -144.602, -325.29, -73.6878, -320.857, -41.1855, -374.043, 50.4119, -326.767, 159.738, -300.174, 201.104, -229.26, 196.672, -130.276, 156.783, -75.6128, 56.3214, -65.2712, 149.396, -25.382, 207.014, 55.8738, 208.491, 140.084, 156.783, 194.747, 96.2106, 125.311, 97.688, 187.36, 125.758, 258.275, 82.9142, 268.616, 94.7332, 383.852, 62.231, 380.897, 25.2965, 276.003, -5.72842, 277.48, -44.1403, 383.852, -64.8236, 377.942, -66.3009, 267.139, -138.692, 234.637, -150.511, 193.27, -190.401, 187.36, -206.652, 131.22, -203.697, 82.4666, -147.557, -34.2462, -54.4819, -56.4069, -138.692, -69.7033, -200.742, -124.366, -221.426, -251.421 )

@@ -7,18 +7,18 @@ var _alpha := 0.0
 onready var tween := $Tween
 
 func _ready() -> void:
-	$Area2D.connect("area_entered", self, "_on_Area2D_area_entered")
-	$Area2D.connect("area_exited", self, "_on_Area2D_area_exited")
+	$Area2D.connect("mouse_entered", self, "_on_Area2D_mouse_entered")
+	$Area2D.connect("mouse_exited", self, "_on_Area2D_mouse_exited")
 	line_color.a = 0
 
 
-func _on_Area2D_area_entered(area: Area2D) -> void:
-	tween.interpolate_method(self, "outline_alpha", _alpha, 1, 0.25, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+func _on_Area2D_mouse_entered() -> void:
+	tween.interpolate_method(self, "outline_alpha", _alpha, 1.0, 0.25, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	tween.start()
 
 
-func _on_Area2D_area_exited(area: Area2D) -> void:
-	tween.interpolate_method(self, "outline_alpha", _alpha, 0, 0.25, Tween.TRANS_LINEAR, Tween.EASE_IN)
+func _on_Area2D_mouse_exited() -> void:
+	tween.interpolate_method(self, "outline_alpha", _alpha, 0.0, 0.25, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	tween.start()
 
 
