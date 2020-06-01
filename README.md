@@ -41,3 +41,10 @@ If you want to contribute to the project, for instance by fixing a bug or adding
 
 1. [Contributor guidelines](https://www.gdquest.com/docs/guidelines/contributing-to/gdquest-projects/).
 1. [GDScript style guide](https://www.gdquest.com/docs/guidelines/best-practices/godot-gdscript/)
+
+## Licenses
+
+This project is dual-licensed:
+
+- The source code is available under the MIT license.
+- Art assets (images, audio files) are [CC-By 4.0](https://creativecommons.org/licenses/by/4.0/). You can attribute them to `GDQuest and contributors (https://www.gdquest.com/)`.
