@@ -24,6 +24,7 @@ Here's a list of available shaders:
 - Dissolve 2D
 - Dissolve 3D
 - Blur
+- Water 2D
 
 ## How to use
 
