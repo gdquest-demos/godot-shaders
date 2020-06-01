@@ -40,8 +40,8 @@ void fragment() {
 	vec2 final_waves_uvs = adjusted_uv + texture_based_offset * texture_offset_height + sine_uv_offset;
 	float water_height = (sine_offset.y + texture_based_offset.y) * 0.5;
 
-//	COLOR = vec4(water_height, water_height, water_height, 1.0); // visualize water height
 	vec4 diffuse_color = texture(TEXTURE, final_waves_uvs);
-	COLOR = mix(diffuse_color, shadow_color, water_height * 0.4);
+	COLOR = mix(diffuse_color, shadow_color, water_height * NORMALMAP.b * 0.4);
 	NORMALMAP = texture(NORMAL_TEXTURE, (adjusted_uv + sine_uv_offset) / 5.0).rgb;
+	NORMALMAP.z *= 1.0 - water_height;
 }
