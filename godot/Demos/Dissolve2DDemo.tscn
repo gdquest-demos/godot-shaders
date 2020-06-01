@@ -60,6 +60,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="DemoText" parent="." instance=ExtResource( 15 )]
+text_bbcode = "Uses a Noise mask to dissolve a sprite. Also generates a mask that is use to set the emission points array of a CPUParticles2D.
+To generate the particles mask, we scale down the dissolve mask (ScaledView) and loop over that texture's pixels in GDScript (CPUParticles2D)."
+
 [node name="Demo2DBackground" parent="." instance=ExtResource( 11 )]
 
 [node name="Dissolve2DControls" type="Node" parent="."]
@@ -142,7 +146,3 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="DemoText" parent="." instance=ExtResource( 15 )]
-text_bbcode = "Uses a Noise mask to dissolve a sprite. Also generates a mask that is use to set the emission points array of a CPUParticles2D.
-To generate the particles mask, we scale down the dissolve mask (ScaledView) and loop over that texture's pixels in GDScript (CPUParticles2D)."
