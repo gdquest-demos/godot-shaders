@@ -29,7 +29,7 @@ scale = Vector2( 0.203903, 0.355556 )
 texture = ExtResource( 6 )
 texture_scale = 1.54
 color = Color( 0.909804, 0.698039, 0.2, 1 )
-energy = 1.5
+energy = 1.1
 range_height = 66.4
 
 [node name="Light2D2" type="Light2D" parent="Water2D"]
@@ -38,7 +38,7 @@ scale = Vector2( 0.203903, 0.355556 )
 texture = ExtResource( 6 )
 texture_scale = 1.54
 color = Color( 0.909804, 0.698039, 0.2, 1 )
-energy = 1.5
+energy = 1.1
 range_height = 66.4
 
 [node name="DemoInterface" parent="." instance=ExtResource( 5 )]
