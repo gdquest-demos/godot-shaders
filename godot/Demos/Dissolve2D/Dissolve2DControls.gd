@@ -3,8 +3,8 @@ extends Node
 
 export (float, 0, 1) var debug_dissolve_control := 0.0 setget _set_debug_control
 
-onready var mask := get_parent().get_node("MaskView/RobiMask")
-onready var robi := get_parent().get_node("Robi")
+onready var mask := owner.get_node("MaskView/Viewport/RobiMask")
+onready var robi := owner.get_node("Robi")
 
 
 func _unhandled_input(event: InputEvent) -> void:
