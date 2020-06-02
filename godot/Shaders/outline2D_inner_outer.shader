@@ -16,7 +16,7 @@ void fragment() {
 	float rd = texture(TEXTURE, UV + vec2(size.x, -size.y)).a;
 	
 	vec4 color = texture(TEXTURE, UV);
-	float outline = max(max(max(l, r), max(u, d)), max(max(lu, ru), max(ld, rd))) - color.a;
+	float outline = min(1.0, l+r+u+d+lu+ru+ld+rd) - color.a;
 	float inline = (1.0 - l * r * u * d * lu * ru * rd * ld) * color.a;
 	
 	vec4 outlined_result = mix(color, line_color, outline + inline);
