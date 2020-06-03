@@ -1,11 +1,11 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Shaders/outline3D_smooth_normals_color.shader" type="Shader" id=1]
 [ext_resource path="res://Demos/Outline/Outline3D/SmoothNormalsMeshInstance.gd" type="Script" id=2]
 [ext_resource path="res://Shaders/outline3D.shader" type="Shader" id=3]
-[ext_resource path="res://Demos/Outline/Outline3D/CameraScroll.gd" type="Script" id=4]
+[ext_resource path="res://Demos/Outline/Outline3D/CameraMouseHover.gd" type="Script" id=4]
 [ext_resource path="res://Demos/Outline/Outline3D/OutlinePopArea.gd" type="Script" id=5]
-[ext_resource path="res://assets/crosshair.png" type="Texture" id=6]
+
 
 [sub_resource type="CubeMesh" id=1]
 
@@ -62,36 +62,6 @@ shader_param/outline_color = Color( 0.0705882, 0.509804, 0.933333, 1 )
 
 [sub_resource type="SpatialMaterial" id=16]
 next_pass = SubResource( 15 )
-
-[sub_resource type="Animation" id=17]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:translation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( -8.692, 3.743, -10.5221 ) ]
-}
-
-[sub_resource type="Animation" id=18]
-length = 12.0
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:translation")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 12 ),
-"transitions": PoolRealArray( -2, -0.5 ),
-"update": 0,
-"values": [ Vector3( -8.692, 3.743, -10.5221 ), Vector3( -8.692, 3.743, 10.4758 ) ]
-}
 
 [node name="Outline3D" type="Spatial"]
 
@@ -164,29 +134,11 @@ shape = SubResource( 14 )
 [node name="Tween" type="Tween" parent="CylinderSmoothed"]
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.0148172, 0.332849, -0.942864, 0, 0.942967, 0.332886, 0.99989, -0.00493243, 0.0139721, -8.692, 3.743, -10.5221 )
+transform = Transform( 0.0148172, 0.332849, -0.942864, 0, 0.942967, 0.332886, 0.99989, -0.00493243, 0.0139721, -8.692, 3.743, 0 )
 current = true
 script = ExtResource( 4 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera"]
-anims/SETUP = SubResource( 17 )
-anims/scroll = SubResource( 18 )
 
 [node name="RayCast" type="RayCast" parent="Camera"]
 cast_to = Vector3( 0, 1.092, -20 )
 collide_with_areas = true
 collide_with_bodies = false
-
-[node name="CenterContainer" type="CenterContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="CenterContainer"]
-margin_left = 608.0
-margin_top = 328.0
-margin_right = 672.0
-margin_bottom = 392.0
-texture = ExtResource( 6 )
