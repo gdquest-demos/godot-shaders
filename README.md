@@ -6,7 +6,7 @@ Godot Shaders is a repository of Free shaders, part of which we made for our cou
 
 ➡ Follow us on [Twitter](https://twitter.com/NathanGDQuest) and [YouTube](https://www.youtube.com/c/gdquest/) for free game creation tutorials, tips, and news! Get one of our [Godot game creation courses](https://gdquest.mavenseed.com/) to support our work on Free Software.
 
-![Laser effect](./img/robi-in-flames.png)
+![2D dissolve shader, showing a character burning](./img/robi-in-flames.png)
 
 ## The shaders
 
@@ -25,6 +25,8 @@ Here's a list of available shaders:
 - Dissolve 3D
 - Blur
 - Water 2D
+
+![2D water shader with light support](./img/water2d.png)
 
 ## How to use
 
