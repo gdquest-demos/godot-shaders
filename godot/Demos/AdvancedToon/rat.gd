@@ -11,6 +11,16 @@ onready var _body: MeshInstance = $body1
 onready var _eyes: MeshInstance = $eyes1
 onready var _teeth: MeshInstance = $teeth1
 onready var _head: MeshInstance = $head1
+onready var camera: Camera = get_parent().get_node("Camera")
+
+
+func _process(delta: float) -> void:
+	body_material.set_shader_param(
+		"world_camera_position", camera.global_transform.origin
+	)
+	eyes_material.set_shader_param("world_camera_position", camera.global_transform.origin)
+	head_material.set_shader_param("world_camera_position", camera.global_transform.origin)
+	teeth_material.set_shader_param("world_camera_position", camera.global_transform.origin)
 
 
 func _set_body_material(value: ShaderMaterial) -> void:

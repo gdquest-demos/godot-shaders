@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/ratModel/rat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Demos/AdvancedToon/rat.gd" type="Script" id=2]
 [ext_resource path="res://Shaders/AdvancedToonBase.shader" type="Shader" id=3]
 [ext_resource path="res://assets/ratModel/rat_body_tex.png" type="Texture" id=4]
 [ext_resource path="res://assets/ratModel/rat_head_tex.png" type="Texture" id=5]
+[ext_resource path="res://Shaders/outline3D.shader" type="Shader" id=6]
 
 [sub_resource type="World" id=1]
 
@@ -14,51 +15,71 @@ glow_levels/6 = true
 glow_blend_mode = 0
 glow_bicubic_upscale = true
 
-[sub_resource type="Gradient" id=8]
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 6 )
+shader_param/thickness = 0.01
+shader_param/outline_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="Gradient" id=4]
 offsets = PoolRealArray( 0.195122, 0.810976 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0.231707, 0.292683 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+
+[sub_resource type="Gradient" id=8]
+offsets = PoolRealArray( 0.146341, 0.310976 )
 
 [sub_resource type="GradientTexture" id=9]
 gradient = SubResource( 8 )
 
-[sub_resource type="Gradient" id=5]
-offsets = PoolRealArray( 0.231707, 0.292683 )
-
-[sub_resource type="GradientTexture" id=6]
-gradient = SubResource( 5 )
-
-[sub_resource type="Gradient" id=10]
-offsets = PoolRealArray( 0.146341, 0.310976 )
-
-[sub_resource type="GradientTexture" id=11]
-gradient = SubResource( 10 )
-
-[sub_resource type="ViewportTexture" id=3]
+[sub_resource type="ViewportTexture" id=10]
 viewport_path = NodePath("LightData/Viewport")
 
-[sub_resource type="ShaderMaterial" id=7]
+[sub_resource type="Gradient" id=15]
+offsets = PoolRealArray( 0.506098, 0.542683 )
+colors = PoolColorArray( 1, 1, 1, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=16]
+gradient = SubResource( 15 )
+
+[sub_resource type="ShaderMaterial" id=11]
+next_pass = SubResource( 3 )
 shader = ExtResource( 3 )
 shader_param/base_color = Color( 1, 1, 1, 1 )
 shader_param/key_light_color = Color( 1, 1, 1, 1 )
 shader_param/fill_light_color = Color( 0, 0, 0, 1 )
 shader_param/kick_light_color = Color( 0.882353, 0.941176, 0.945098, 1 )
-shader_param/shadow_color = Color( 0.0941176, 0.160784, 0.219608, 1 )
-shader_param/light_data = SubResource( 3 )
-shader_param/key_light_ramp = SubResource( 6 )
-shader_param/fill_light_ramp = SubResource( 9 )
-shader_param/kick_light_ramp = SubResource( 11 )
+shader_param/shadow_color = Color( 0.0862745, 0.164706, 0.231373, 1 )
+shader_param/world_camera_position = Vector3( 0, 2.03908, 3.98533 )
+shader_param/lit_outline_factor = 12.0
+shader_param/light_data = SubResource( 10 )
+shader_param/key_light_ramp = SubResource( 7 )
+shader_param/fill_light_ramp = SubResource( 5 )
+shader_param/kick_light_ramp = SubResource( 9 )
+shader_param/outline_ramp = SubResource( 16 )
 shader_param/base_color_texture = ExtResource( 4 )
 
 [sub_resource type="ShaderMaterial" id=12]
+next_pass = SubResource( 3 )
 shader = ExtResource( 3 )
 shader_param/base_color = Color( 1, 1, 1, 1 )
 shader_param/key_light_color = Color( 1, 1, 1, 1 )
 shader_param/fill_light_color = Color( 0, 0, 0, 1 )
 shader_param/kick_light_color = Color( 0.882353, 0.941176, 0.945098, 1 )
 shader_param/shadow_color = Color( 0.0941176, 0.160784, 0.219608, 1 )
-shader_param/light_data = SubResource( 3 )
-shader_param/key_light_ramp = SubResource( 6 )
-shader_param/fill_light_ramp = SubResource( 9 )
-shader_param/kick_light_ramp = SubResource( 11 )
+shader_param/world_camera_position = Vector3( 0, 2.03908, 3.98533 )
+shader_param/lit_outline_factor = 2.0
+shader_param/light_data = SubResource( 10 )
+shader_param/key_light_ramp = SubResource( 7 )
+shader_param/fill_light_ramp = SubResource( 5 )
+shader_param/kick_light_ramp = SubResource( 9 )
+shader_param/outline_ramp = SubResource( 16 )
 shader_param/base_color_texture = ExtResource( 5 )
 
 [sub_resource type="PlaneMesh" id=13]
@@ -91,16 +112,16 @@ render_target_update_mode = 3
 transform = Transform( 0.537255, 0, 0.84342, 0, 1, 0, -0.84342, 0, 0.537255, 0, 0, 0 )
 
 [node name="KeyLight" type="DirectionalLight" parent="LightData/Viewport"]
-transform = Transform( -0.854195, -0.0846621, 0.513015, 0.368728, -0.794276, 0.482872, 0.366594, 0.60163, 0.709683, 3.68143, 1.90643, 0.182134 )
+transform = Transform( 0.350045, -0.910924, 0.218372, 0.777761, 0.412557, 0.474221, -0.52207, 0.00384295, 0.852894, 3.68834, 1.90977, 0.178915 )
 light_color = Color( 1, 0, 0, 1 )
 
 [node name="FillLight" type="DirectionalLight" parent="LightData/Viewport"]
-transform = Transform( 0.984656, 2.84309e-08, -0.174508, 0.173655, -0.0987294, 0.979845, -0.017229, -0.995114, -0.0972145, -2.86581, 1.90643, 0.182134 )
+transform = Transform( 0.984656, 3.57672e-08, -0.174508, 0.173655, -0.0987294, 0.979845, -0.017229, -0.995114, -0.0972145, -2.86581, 1.90643, 0.182134 )
 light_color = Color( 0, 1, 0, 1 )
 light_specular = 0.0
 
 [node name="KickLight" type="DirectionalLight" parent="LightData/Viewport"]
-transform = Transform( -0.961075, -0.20508, 0.18514, -0.170543, 0.967549, 0.186453, -0.21737, 0.147621, -0.964862, 1.26558, 1.90643, -2.29419 )
+transform = Transform( -0.961075, -0.20508, 0.18514, -0.155388, 0.95529, 0.251547, -0.22845, 0.212987, -0.949972, 1.26558, 1.90643, -2.29419 )
 light_color = Color( 0, 0, 1, 1 )
 light_specular = 0.0
 
@@ -114,11 +135,11 @@ environment = SubResource( 2 )
 [node name="rat" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.537255, 0, 0.84342, 0, 1, 0, -0.84342, 0, 0.537255, 0, 0, 0 )
 script = ExtResource( 2 )
-body_material = SubResource( 7 )
+body_material = SubResource( 11 )
 eyes_material = SubResource( 12 )
 head_material = SubResource( 12 )
 teeth_material = SubResource( 12 )
-light_data = SubResource( 3 )
+light_data = SubResource( 10 )
 
 [node name="RemoteTransform" type="RemoteTransform" parent="rat"]
 remote_path = NodePath("../../LightData/Viewport/rat")
@@ -132,7 +153,7 @@ transform = Transform( 1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0 )
 remote_path = NodePath("../../LightData/Viewport/Camera")
 
 [node name="KeyLight" type="DirectionalLight" parent="."]
-transform = Transform( -0.854195, -0.0846621, 0.513015, 0.368728, -0.794276, 0.482872, 0.366594, 0.60163, 0.709683, 3.68143, 1.90643, 0.182134 )
+transform = Transform( 0.350045, -0.910924, 0.218372, 0.777761, 0.412557, 0.474221, -0.52207, 0.00384295, 0.852894, 3.68834, 1.90977, 0.178915 )
 layers = 0
 light_cull_mask = 4294967294
 
@@ -148,7 +169,7 @@ shadow_contact = 0.2
 remote_path = NodePath("../../LightData/Viewport/FillLight")
 
 [node name="KickLight" type="DirectionalLight" parent="."]
-transform = Transform( -0.961075, -0.20508, 0.18514, -0.170543, 0.967549, 0.186453, -0.21737, 0.147621, -0.964862, 1.26558, 1.90643, -2.29419 )
+transform = Transform( -0.961075, -0.20508, 0.18514, -0.155388, 0.95529, 0.251547, -0.22845, 0.212987, -0.949972, 1.26558, 1.90643, -2.29419 )
 layers = 0
 light_cull_mask = 4294967294
 
