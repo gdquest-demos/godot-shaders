@@ -21,11 +21,10 @@ uniform vec3 world_camera_position;
 
 uniform float lit_outline_factor = 1.0;
 
-varying float fresnel_term;
+varying vec3 world_pos;
 
 void vertex() {
-	vec3 eye_normal = normalize(VERTEX - world_camera_position);
-	fresnel_term = -0.5 + 0.5 * pow(1.0 + dot(eye_normal, NORMAL), 32.0);
+	world_pos = VERTEX;
 }
 
 void fragment() {
@@ -53,7 +52,9 @@ void fragment() {
 	out_color += kick_light_value * kick_light_color.rgb;
 	
 	//Outline
-	float fresnel_factor = pow(fresnel_term, diffuse.r * 16.0);
+	vec3 eye_normal = normalize(world_pos - world_camera_position);
+	float fresnel_term = 0.0 + 0.5 * pow(1.0 + dot(eye_normal, NORMAL), 32.0);
+	float fresnel_factor = pow(fresnel_term, diffuse.r * 12.0);
 	float outline_amount = texture(outline_ramp, normalize(vec2(fresnel_factor, 0))).r;
 	
 	out_color = mix(vec3(0.0), out_color, outline_amount);
