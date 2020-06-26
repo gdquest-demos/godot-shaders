@@ -42,7 +42,10 @@ uniform sampler2D high_frequency_anisotropic_noise;
 uniform sampler2D low_frequency_anisotropic_noise;
 uniform sampler2D spottiness_anisotropic_noise;
 uniform vec4 anisotropic_specular_color : hint_color = vec4(1);
+uniform float anisotropic_specular_width = 10.0;
 uniform float anisotropic_specular_strength : hint_range(0, 1) = 0.0;
+uniform float anisotropic_specular_contrast : hint_range(0, 12) = 5.0;
+uniform float anisotropic_specular_brightness : hint_range(0, 2) = 0.85;
 
 varying vec3 world_position;
 varying vec3 world_normal;
@@ -76,58 +79,62 @@ void fragment() {
 	out_color += fill_light_value * fill_light_color.rgb;
 	
 	//Metalness
-	vec2 metalness_uv = (NORMAL.xy * vec2(0.5, -0.5) + vec2(0.5, 0.5));
-	vec3 metalness_value = texture(metalness_texture, metalness_uv).rgb;
-	
-	metalness_value = pow(metalness_value, vec3(metalness_contrast_factor));
-	metalness_value = 1.0 - (1.0 - metalness_value) * (1.0 - dark_metalness_color.rgb);
-	metalness_value = metalness_value + light_metalness_color.rgb - 1.0;
-	
-	out_color = mix(out_color, metalness_value, metalness);
+	if(metalness > 0.0) {
+		vec2 metalness_uv = (NORMAL.xy * vec2(0.5, -0.5) + vec2(0.5, 0.5));
+		vec3 metalness_value = texture(metalness_texture, metalness_uv).rgb;
+		
+		metalness_value = pow(metalness_value, vec3(metalness_contrast_factor));
+		metalness_value = 1.0 - (1.0 - metalness_value) * (1.0 - dark_metalness_color.rgb);
+		metalness_value = metalness_value + light_metalness_color.rgb - 1.0;
+		
+		out_color = mix(out_color, metalness_value, metalness);
+	}
 	
 	//specular
 	float specular = texture(specular_data, SCREEN_UV).r;
-	vec3 soft_specular = texture(soft_specular_ramp, vec2(specular * specular_size, 0)).rgb;
-	vec3 hard_specular = texture(hard_specular_ramp, vec2(specular * specular_size/2.0, 0)).rgb;
-	
-	vec3 specular_out = mix(hard_specular, soft_specular, specular_softness) * specular_color.rgb;
-	
-	out_color += specular_out;
+	if(specular_size > 0.0) {
+		vec3 soft_specular = texture(soft_specular_ramp, vec2(specular * specular_size, 0)).rgb;
+		vec3 hard_specular = texture(hard_specular_ramp, vec2(specular * specular_size*0.75, 0)).rgb;
+		
+		vec3 specular_out = mix(hard_specular, soft_specular, specular_softness) * specular_color.rgb;
+		
+		out_color += specular_out;
+	}
 	
 	//Additive mix kick light
 	out_color += kick_light_value * kick_light_color.rgb;
 	
 	//Anisotropic specular
-	float anisotropic_angle = down_camera_angle.z * 0.3;
-	float high_anisotropic_noise_value = texture(high_frequency_anisotropic_noise, vec2(UV.x)).r;
-	high_anisotropic_noise_value = (high_anisotropic_noise_value - 0.5) * 0.2;
-	
-	float low_anisotropic_noise_value = texture(low_frequency_anisotropic_noise, vec2(UV.x)).r;
-	low_anisotropic_noise_value = (low_anisotropic_noise_value - 0.5) * 0.2;
-	
-	float anisotropic_specular_hotspot = texture(soft_specular_ramp, vec2(specular * 12.0, 0)).r;
-	
-	float spottiness_anisotropic_noise_value = texture(spottiness_anisotropic_noise, vec2(UV.x)).r;
-	spottiness_anisotropic_noise_value = (spottiness_anisotropic_noise_value - 0.5) * 5.0 + 0.85;
-	
-	float anisotropic_uv = UV.y + high_anisotropic_noise_value + low_anisotropic_noise_value - anisotropic_angle;
-	
-	float anisotropic_value = (texture(anisotropic_ramp, vec2(anisotropic_uv, 0)).rgb * spottiness_anisotropic_noise_value * anisotropic_specular_hotspot).r;
-	anisotropic_value = texture(anisotropic_sharpness_ramp, vec2(anisotropic_value, 0.0)).r;
-	
-	float soft_anisotropic_value = (texture(anisotropic_softness_ramp, vec2(anisotropic_uv, 0)).rgb * spottiness_anisotropic_noise_value * anisotropic_specular_hotspot).r;
-	
-	anisotropic_value = mix(anisotropic_value, soft_anisotropic_value, 0.04);
-	vec3 anisotropic_color = mix(vec3(0), anisotropic_specular_color.rgb, anisotropic_value);
-	
-	out_color = out_color + (anisotropic_color *  anisotropic_specular_strength);
+	if(anisotropic_specular_strength > 0.0) {
+		float anisotropic_angle = down_camera_angle.z * 0.33;
+		
+		float high_anisotropic_noise_value = (texture(high_frequency_anisotropic_noise, vec2(UV.x)).r - 0.5) * 0.2;
+		float low_anisotropic_noise_value = (texture(low_frequency_anisotropic_noise, vec2(UV.x)).r - 0.5) * 0.2;
+		
+		float anisotropic_specular_hotspot = texture(soft_specular_ramp, vec2(specular * anisotropic_specular_width, 0)).r;
+		float spottiness_anisotropic_noise_value = (texture(spottiness_anisotropic_noise, vec2(UV.x)).r - 0.5) * anisotropic_specular_contrast + anisotropic_specular_brightness;
+		
+		float anisotropic_uv = UV.y + high_anisotropic_noise_value + low_anisotropic_noise_value - anisotropic_angle;
+		
+		float anisotropic_sample = (texture(anisotropic_ramp, vec2(anisotropic_uv, 0)).rgb * spottiness_anisotropic_noise_value * anisotropic_specular_hotspot).r;
+		
+		float sharp_anisotropic_value = texture(anisotropic_sharpness_ramp, vec2(anisotropic_sample, 0.0)).r;
+		float soft_anisotropic_value = texture(anisotropic_softness_ramp, vec2(anisotropic_sample, 0.0)).r;
+		
+		float anisotropic_value = mix(sharp_anisotropic_value, soft_anisotropic_value, 0.5);
+		vec3 anisotropic_color = mix(vec3(0), anisotropic_specular_color.rgb, anisotropic_value);
+		
+		out_color = out_color + (anisotropic_color *  anisotropic_specular_strength);
+	}
 	
 	//Outline
-	float fresnel_factor = (outline_size) - dot(normalize(VIEW), NORMAL);
-	float outline_factor = pow(fresnel_factor, diffuse.r * pow(2.0, 8.0));
-	float outline_amount = texture(outline_ramp, normalize(vec2(outline_factor, 0))).r;
-	
-	out_color = mix(outline_color.rgb, out_color, outline_amount);
+	if(outline_size > 0.0) {
+		float fresnel_factor = (outline_size) - dot(normalize(VIEW), NORMAL);
+		float outline_factor = pow(fresnel_factor, diffuse.r * pow(2.0, 8.0));
+		float outline_amount = texture(outline_ramp, normalize(vec2(outline_factor, 0))).r;
+		
+		out_color = mix(outline_color.rgb, out_color, outline_amount);
+	}
 	
 	ALBEDO = out_color;
 }

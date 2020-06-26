@@ -59,7 +59,6 @@ window/stretch/aspect="expand"
 
 quality/2d/use_pixel_snap=true
 quality/directional_shadow/size=8192
-quality/shadow_atlas/size=8192
 quality/shadows/filter_mode=2
 quality/reflections/irradiance_max_size=2048
 quality/filters/msaa=3

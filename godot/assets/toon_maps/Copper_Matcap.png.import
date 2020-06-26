@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Copper_Matcap.png-4d553c06fe9b00c23845bbde7e3387be.s3tc.stex"
-path.etc2="res://.import/Copper_Matcap.png-4d553c06fe9b00c23845bbde7e3387be.etc2.stex"
+path.s3tc="res://.import/Copper_Matcap.png-eca280674de3f64e5da1cca0541a9589.s3tc.stex"
+path.etc2="res://.import/Copper_Matcap.png-eca280674de3f64e5da1cca0541a9589.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Copper_Matcap.png"
-dest_files=[ "res://.import/Copper_Matcap.png-4d553c06fe9b00c23845bbde7e3387be.s3tc.stex", "res://.import/Copper_Matcap.png-4d553c06fe9b00c23845bbde7e3387be.etc2.stex" ]
+source_file="res://assets/toon_maps/Copper_Matcap.png"
+dest_files=[ "res://.import/Copper_Matcap.png-eca280674de3f64e5da1cca0541a9589.s3tc.stex", "res://.import/Copper_Matcap.png-eca280674de3f64e5da1cca0541a9589.etc2.stex" ]
 
 [params]
 
