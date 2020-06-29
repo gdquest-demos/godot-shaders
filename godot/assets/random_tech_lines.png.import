@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/rat_head_tex.png-c98c097914d3f63639ef8b74a3a7995a.s3tc.stex"
-path.etc2="res://.import/rat_head_tex.png-c98c097914d3f63639ef8b74a3a7995a.etc2.stex"
+path.s3tc="res://.import/random_tech_lines.png-e85c4369b393ac77487ed717110389e4.s3tc.stex"
+path.etc2="res://.import/random_tech_lines.png-e85c4369b393ac77487ed717110389e4.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/ratModel/rat_head_tex.png"
-dest_files=[ "res://.import/rat_head_tex.png-c98c097914d3f63639ef8b74a3a7995a.s3tc.stex", "res://.import/rat_head_tex.png-c98c097914d3f63639ef8b74a3a7995a.etc2.stex" ]
+source_file="res://assets/random_tech_lines.png"
+dest_files=[ "res://.import/random_tech_lines.png-e85c4369b393ac77487ed717110389e4.s3tc.stex", "res://.import/random_tech_lines.png-e85c4369b393ac77487ed717110389e4.etc2.stex" ]
 
 [params]
 
@@ -25,7 +25,7 @@ flags/repeat=true
 flags/filter=true
 flags/mipmaps=true
 flags/anisotropic=false
-flags/srgb=1
+flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false

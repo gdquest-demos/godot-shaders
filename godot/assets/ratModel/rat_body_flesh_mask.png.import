@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/rat_body_tex.png-c5a79843c44e1082a63f9a77ca027fc9.s3tc.stex"
-path.etc2="res://.import/rat_body_tex.png-c5a79843c44e1082a63f9a77ca027fc9.etc2.stex"
+path.s3tc="res://.import/rat_body_flesh_mask.png-2d5b7475ea4a8b8575e013ce49bd683c.s3tc.stex"
+path.etc2="res://.import/rat_body_flesh_mask.png-2d5b7475ea4a8b8575e013ce49bd683c.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/ratModel/rat_body_tex.png"
-dest_files=[ "res://.import/rat_body_tex.png-c5a79843c44e1082a63f9a77ca027fc9.s3tc.stex", "res://.import/rat_body_tex.png-c5a79843c44e1082a63f9a77ca027fc9.etc2.stex" ]
+source_file="res://assets/ratModel/rat_body_flesh_mask.png"
+dest_files=[ "res://.import/rat_body_flesh_mask.png-2d5b7475ea4a8b8575e013ce49bd683c.s3tc.stex", "res://.import/rat_body_flesh_mask.png-2d5b7475ea4a8b8575e013ce49bd683c.etc2.stex" ]
 
 [params]
 
@@ -25,7 +25,7 @@ flags/repeat=true
 flags/filter=true
 flags/mipmaps=true
 flags/anisotropic=false
-flags/srgb=1
+flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
