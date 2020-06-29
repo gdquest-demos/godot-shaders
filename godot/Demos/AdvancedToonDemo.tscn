@@ -229,7 +229,7 @@ light_specular = 0.0
 shadow_enabled = true
 
 [node name="FillLight" type="DirectionalLight" parent="LightData/Viewport"]
-transform = Transform( 0.738701, 0.341194, -0.581298, 0.0955811, 0.800678, 0.591421, 0.667222, -0.492445, 0.55885, 5.18076, 3.89918, 1.07525 )
+transform = Transform( 0.96157, -0.0411718, -0.271455, 0.254558, 0.504142, 0.825252, 0.102875, -0.862639, 0.495249, 5.18076, 3.89918, 1.07525 )
 light_color = Color( 0, 1, 0, 1 )
 light_specular = 0.0
 
@@ -339,10 +339,11 @@ remote_path = NodePath("../../LightData/Viewport/KeyLight")
 remote_path = NodePath("../../SpecularData/Viewport/KeyLight")
 
 [node name="FillRemote" type="RemoteTransform" parent="KeyLight"]
+transform = Transform( 0.803284, -0.557799, 0.208795, 0.481241, 0.81441, 0.324259, -0.350916, -0.159992, 0.922638, 0, 0, 0 )
 remote_path = NodePath("../../FillLight")
 
 [node name="FillLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.738701, 0.341194, -0.581298, 0.0955811, 0.800678, 0.591421, 0.667222, -0.492445, 0.55885, 5.18076, 3.89918, 1.07525 )
+transform = Transform( 0.96157, -0.0411717, -0.271456, 0.254558, 0.504143, 0.825252, 0.102875, -0.862639, 0.495249, 5.18076, 3.89918, 1.07525 )
 shadow_enabled = true
 shadow_bias = 0.0
 shadow_contact = 0.25
