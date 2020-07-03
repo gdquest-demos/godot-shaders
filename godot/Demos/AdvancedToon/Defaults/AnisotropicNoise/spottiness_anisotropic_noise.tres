@@ -2,7 +2,7 @@
 
 [sub_resource type="OpenSimplexNoise" id=1]
 seed = 154
-octaves = 9
+octaves = 6
 period = 8.0
 
 [resource]

@@ -33,13 +33,43 @@ _global_script_classes=[ {
 "class": "SmoothNormalsMeshInstance",
 "language": "GDScript",
 "path": "res://Demos/Outline/Outline3D/SmoothNormalsMeshInstance.gd"
+}, {
+"base": "Camera",
+"class": "ToonCamera",
+"language": "GDScript",
+"path": "res://Demos/AdvancedToon/ToonCamera.gd"
+}, {
+"base": "EditorInspectorPlugin",
+"class": "ToonInspector",
+"language": "GDScript",
+"path": "res://addons/gdquest.toon-controller/ToonInspector.gd"
+}, {
+"base": "Node",
+"class": "ToonProxyBuilder",
+"language": "GDScript",
+"path": "res://Demos/AdvancedToon/ToonProxyBuilder.gd"
+}, {
+"base": "Node",
+"class": "ToonSceneBuilder",
+"language": "GDScript",
+"path": "res://Demos/AdvancedToon/ToonSceneBuilder.gd"
+}, {
+"base": "ViewportContainer",
+"class": "ToonViewportContainer",
+"language": "GDScript",
+"path": "res://Demos/AdvancedToon/ToonViewportContainer.gd"
 } ]
 _global_script_class_icons={
 "AnimatedOutline": "",
 "DebugViewer": "",
 "PostProcessBuilder": "",
 "PostProcessStep": "",
-"SmoothNormalsMeshInstance": ""
+"SmoothNormalsMeshInstance": "",
+"ToonCamera": "",
+"ToonInspector": "",
+"ToonProxyBuilder": "",
+"ToonSceneBuilder": "",
+"ToonViewportContainer": ""
 }
 
 [application]
@@ -57,12 +87,11 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "gdquest.toon-preview" )
+enabled=PoolStringArray( "gdquest.toon-controller" )
 
 [rendering]
 
 quality/2d/use_pixel_snap=true
-quality/directional_shadow/size=8192
 quality/shadows/filter_mode=2
 quality/reflections/irradiance_max_size=2048
 quality/filters/msaa=3
