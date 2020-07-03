@@ -22,6 +22,9 @@ func _ready():
 	
 	builder = scene_root.find_node("ToonSceneBuilder", true, false)
 	
+	if not builder:
+		return
+	
 	var parent := get_parent()
 	light_proxy = builder.light_data.find_node(parent.name, true, false)
 	specular_proxy = builder.specular_data.find_node(parent.name, true, false)
@@ -60,33 +63,32 @@ func _ready():
 		light_remote = parent.find_node("LightRemote", true, false)
 	
 	if specular_missing:
-		if not parent is Light or light_role == LightRole.KEY:
-			specular_proxy = parent.duplicate()
-			
-			specular_remote = RemoteTransform.new()
-			
-			parent.add_child(specular_remote)
-			specular_remote.owner = scene_root
-			
-			builder.specular_data.add_child(specular_proxy)
-			specular_proxy.owner = scene_root
-			
-			specular_remote.remote_path = "../%s" % parent.get_path_to(specular_proxy)
-			specular_remote.name = "SpecularRemote"
-			
-			if parent is Light:
-				specular_proxy.light_specular = 1.0
-				specular_proxy.shadow_enabled = false
-				match light_role:
-					LightRole.KEY:
-						specular_proxy.light_energy = 1
-						specular_proxy.show()
-					LightRole.FILL:
-						specular_proxy.light_energy = 0
-						specular_proxy.hide()
-					LightRole.KICK:
-						specular_proxy.light_energy = 0
-						specular_proxy.hide()
+		specular_proxy = parent.duplicate()
+		
+		specular_remote = RemoteTransform.new()
+		
+		parent.add_child(specular_remote)
+		specular_remote.owner = scene_root
+		
+		builder.specular_data.add_child(specular_proxy)
+		specular_proxy.owner = scene_root
+		
+		specular_remote.remote_path = "../%s" % parent.get_path_to(specular_proxy)
+		specular_remote.name = "SpecularRemote"
+		
+		if parent is Light:
+			specular_proxy.light_specular = 1.0
+			specular_proxy.shadow_enabled = false
+			match light_role:
+				LightRole.KEY:
+					specular_proxy.light_energy = 1
+					specular_proxy.show()
+				LightRole.FILL:
+					specular_proxy.light_energy = 0
+					specular_proxy.hide()
+				LightRole.KICK:
+					specular_proxy.light_energy = 0
+					specular_proxy.hide()
 	else:
 		specular_remote = parent.find_node("SpecularRemote", true, false)
 	_set_materials(specular_proxy, ToonSceneBuilder.DataType.SPECULAR)
@@ -101,6 +103,8 @@ func _ready():
 
 
 func _set_materials(parent: Node, type: int) -> void:
+	if not parent:
+		return
 	if parent is MeshInstance:
 		var mat_count: int = parent.get_surface_material_count()
 		for mat in range(mat_count):

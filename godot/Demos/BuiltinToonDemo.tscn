@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/ratModel/rat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Demos/AdvancedToon/KeyLightRotate.gd" type="Script" id=2]
@@ -25,6 +25,10 @@ metallic_specular = 0.0
 roughness = 0.03
 
 [sub_resource type="SpatialMaterial" id=4]
+flags_unshaded = true
+albedo_color = Color( 0.968627, 1, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=5]
 next_pass = SubResource( 2 )
 flags_do_not_receive_shadows = true
 params_diffuse_mode = 4
@@ -34,15 +38,15 @@ albedo_texture = ExtResource( 4 )
 metallic_specular = 0.0
 roughness = 0.03
 
-[sub_resource type="SphereMesh" id=5]
+[sub_resource type="SphereMesh" id=6]
 
-[sub_resource type="ShaderMaterial" id=6]
+[sub_resource type="ShaderMaterial" id=7]
 shader = ExtResource( 3 )
 shader_param/thickness = 0.015
 shader_param/outline_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="SpatialMaterial" id=7]
-next_pass = SubResource( 6 )
+[sub_resource type="SpatialMaterial" id=8]
+next_pass = SubResource( 7 )
 flags_do_not_receive_shadows = true
 params_diffuse_mode = 4
 params_specular_mode = 3
@@ -51,10 +55,10 @@ metallic = 0.76
 metallic_specular = 0.63
 roughness = 0.02
 
-[sub_resource type="PlaneMesh" id=8]
+[sub_resource type="PlaneMesh" id=9]
 size = Vector2( 100, 100 )
 
-[sub_resource type="SpatialMaterial" id=9]
+[sub_resource type="SpatialMaterial" id=10]
 albedo_color = Color( 0.235294, 0.235294, 0.235294, 1 )
 
 [node name="BuiltInToonDemo" type="Spatial"]
@@ -72,29 +76,29 @@ material/0 = SubResource( 3 )
 material/0 = SubResource( 4 )
 
 [node name="head1" parent="rat" index="2"]
-material/0 = SubResource( 4 )
+material/0 = SubResource( 5 )
 
 [node name="teeth1" parent="rat" index="3"]
-material/0 = SubResource( 4 )
+material/0 = SubResource( 5 )
 
 [node name="Sphere" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44328, 3.11, 1.45094 )
-mesh = SubResource( 5 )
-material/0 = SubResource( 7 )
+mesh = SubResource( 6 )
+material/0 = SubResource( 8 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.908916, 0.416978, 0, -0.416978, 0.908916, 0, 3.34385, 7.32658 )
 current = true
 
-[node name="KeyLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.982831, 0.0182895, -0.183599, 0.0955811, 0.800678, 0.591421, 0.15782, -0.598816, 0.785183, 5.18076, 3.89918, 1.07525 )
+[node name="FillLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.982831, 0.0182895, -0.183598, 0.0955811, 0.800678, 0.591421, 0.15782, -0.598816, 0.785183, 5.18076, 3.89918, 1.07525 )
 layers = 0
 light_cull_mask = 4294967294
 script = ExtResource( 2 )
 
 [node name="Floor" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0020504, -0.0073359, 0.00449657 )
-mesh = SubResource( 8 )
-material/0 = SubResource( 9 )
+mesh = SubResource( 9 )
+material/0 = SubResource( 10 )
 
 [editable path="rat"]
