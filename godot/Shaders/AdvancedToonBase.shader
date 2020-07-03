@@ -49,6 +49,12 @@ uniform vec4 kick_light_color : hint_color = vec4(1.0);
 
 uniform vec4 shadow_color : hint_color = vec4(0, 0, 0, 1);
 
+uniform sampler2D ambient_occlusion : hint_black_albedo;
+uniform float ambient_occlusion_softness : hint_range(0, 1) = 0.5;
+uniform float ambient_occlusion_opacity : hint_range(0, 1) = 0.0;
+uniform float ambient_occlusion_shadow_limit : hint_range(0, 1) = 1.0;
+uniform vec4 ambient_occlusion_color : hint_color = vec4(0, 0, 0, 1);
+
 uniform vec4 dark_metalness_color : hint_color = vec4(0, 0, 0, 1);
 uniform vec4 light_metalness_color : hint_color = vec4(1, 1, 1, 1);
 uniform float metalness_contrast_factor : hint_range(0, 5) = 1.0;
@@ -179,6 +185,17 @@ void fragment()
 	}
 
 	// AO
+	if(ambient_occlusion_opacity > 0.0) {
+		float ambient = texture(ambient_occlusion, UV).r;
+		float sharp_ambient = smoothstep(0.48, 0.52, ambient);
+		float soft_ambient = ambient;
+		float ambient_out = mix(sharp_ambient, soft_ambient, ambient_occlusion_softness);
+		
+		ambient_out = mix(1, ambient_out, ambient_occlusion_opacity);
+		ambient_out = mix(ambient_out, 1, mix(key_light_value, 0, 1.0 - ambient_occlusion_shadow_limit));
+		
+		out_color = mix(ambient_occlusion_color.rgb, out_color, ambient_out);
+	}
 
-	ALBEDO = out_color;
+	ALBEDO = vec3(out_color);
 }
