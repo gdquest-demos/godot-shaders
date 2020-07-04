@@ -48,6 +48,7 @@ uniform vec4 fill_light_color : hint_color = vec4(1.0);
 uniform vec4 kick_light_color : hint_color = vec4(1.0);
 
 uniform vec4 shadow_color : hint_color = vec4(0, 0, 0, 1);
+uniform sampler2D shadow_paint : hint_black_albedo;
 
 uniform sampler2D ambient_occlusion : hint_black_albedo;
 uniform float ambient_occlusion_softness : hint_range(0, 1) = 0.5;
@@ -92,6 +93,8 @@ void fragment()
 	float key_light_value = texture(key_light_ramp, vec2(diffuse.r, 0)).r;
 	float fill_light_value = texture(fill_light_ramp, vec2(diffuse.g, 0)).r;
 	float kick_light_value = texture(kick_light_ramp, vec2(diffuse.b, 0)).r;
+	
+	key_light_value = mix(key_light_value, 0, texture(shadow_paint, UV).r);
 
 	// Lighten mix shadow color and out color
 	vec3 out_color = key_light_value * key_light_color.rgb;

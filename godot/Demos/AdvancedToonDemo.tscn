@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://Demos/AdvancedToon/ToonSceneBuilder.gd" type="Script" id=1]
 [ext_resource path="res://assets/ratModel/rat.tscn" type="PackedScene" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://Demos/AdvancedToon/Defaults/Ramps/key_light_ramp.tres" type="Texture" id=17]
 [ext_resource path="res://assets/ratModel/rat_body_ao.png" type="Texture" id=18]
 [ext_resource path="res://assets/ratModel/rat_head_ao.png" type="Texture" id=19]
+[ext_resource path="res://assets/ratModel/rat_shadow_paint.png" type="Texture" id=20]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0, 0, 0, 1 )
@@ -83,9 +84,9 @@ shader_param/fill_light_color = Color( 0.113725, 0.0235294, 0.152941, 1 )
 shader_param/kick_light_color = Color( 1, 1, 1, 1 )
 shader_param/shadow_color = Color( 0.32549, 0.329412, 0.352941, 1 )
 shader_param/ambient_occlusion_softness = 0.687
-shader_param/ambient_occlusion_opacity = 0.618
-shader_param/ambient_occlusion_shadow_limit = 0.735
-shader_param/ambient_occlusion_color = Color( 0.227451, 0.0235294, 0.215686, 1 )
+shader_param/ambient_occlusion_opacity = 1.0
+shader_param/ambient_occlusion_shadow_limit = 0.676
+shader_param/ambient_occlusion_color = Color( 0.258824, 0.0313726, 0.109804, 1 )
 shader_param/dark_metalness_color = Color( 0, 0, 0, 1 )
 shader_param/light_metalness_color = Color( 1, 1, 1, 1 )
 shader_param/metalness_contrast_factor = 1.0
@@ -151,6 +152,7 @@ shader_param/paint_mask2 = ExtResource( 15 )
 shader_param/key_light_ramp = SubResource( 10 )
 shader_param/fill_light_ramp = SubResource( 8 )
 shader_param/kick_light_ramp = SubResource( 12 )
+shader_param/shadow_paint = ExtResource( 20 )
 shader_param/ambient_occlusion = ExtResource( 19 )
 
 [sub_resource type="ShaderMaterial" id=18]
@@ -242,7 +244,7 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="ToonLightDataView"]
-size = Vector2( 2889, 1219 )
+size = Vector2( 2889, 915 )
 world = SubResource( 2 )
 transparent_bg = true
 handle_input_locally = false
@@ -259,12 +261,12 @@ mesh = SubResource( 3 )
 material/0 = null
 
 [node name="ToonCamera" type="Camera" parent="ToonLightDataView/Viewport"]
-transform = Transform( 0.990156, -0.0328046, 0.136069, 0, 0.972147, 0.234372, -0.139968, -0.232065, 0.962577, -0.772492, 2.38133, 4.93492 )
+transform = Transform( 0.689123, -0.00448482, 0.724631, 0, 0.999981, 0.00618899, -0.724645, -0.00426497, 0.68911, 1.68123, 0.956143, 2.10181 )
 current = true
 script = ExtResource( 4 )
 
 [node name="KeyLight" type="OmniLight" parent="ToonLightDataView/Viewport"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.597119, 2.53676, 2.60426 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.597119, 2.2464, 2.05377 )
 light_color = Color( 1, 0, 0, 1 )
 light_specular = 0.0
 
@@ -288,7 +290,7 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="ToonSpecularDataView"]
-size = Vector2( 2889, 1219 )
+size = Vector2( 2889, 915 )
 world = SubResource( 4 )
 transparent_bg = true
 handle_input_locally = false
@@ -304,12 +306,12 @@ mesh = SubResource( 3 )
 material/0 = SubResource( 1 )
 
 [node name="ToonCamera" type="Camera" parent="ToonSpecularDataView/Viewport"]
-transform = Transform( 0.990156, -0.0328046, 0.136069, 0, 0.972147, 0.234372, -0.139968, -0.232065, 0.962577, -0.772492, 2.38133, 4.93492 )
+transform = Transform( 0.689123, -0.00448482, 0.724631, 0, 0.999981, 0.00618899, -0.724645, -0.00426497, 0.68911, 1.68123, 0.956143, 2.10181 )
 current = true
 script = ExtResource( 4 )
 
 [node name="KeyLight" type="OmniLight" parent="ToonSpecularDataView/Viewport"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.597119, 2.53676, 2.60426 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.597119, 2.2464, 2.05377 )
 light_specular = 1.0
 
 [node name="FillLight" type="DirectionalLight" parent="ToonSpecularDataView/Viewport"]
@@ -391,7 +393,7 @@ mesh = SubResource( 26 )
 material/0 = SubResource( 27 )
 
 [node name="KeyLight" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.597119, 2.53676, 2.60426 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.597119, 2.2464, 2.05377 )
 shadow_enabled = true
 
 [node name="LightRemote" type="RemoteTransform" parent="KeyLight"]
