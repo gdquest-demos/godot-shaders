@@ -2,7 +2,6 @@ tool
 class_name ToonCamera
 extends Camera
 
-
 var original_transform: Transform
 
 

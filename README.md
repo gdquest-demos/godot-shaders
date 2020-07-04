@@ -25,6 +25,7 @@ Here's a list of available shaders:
 - Dissolve 3D
 - Blur
 - Water 2D
+- Advanced Toon
 
 ![2D water shader with light support](./img/water2d.png)
 

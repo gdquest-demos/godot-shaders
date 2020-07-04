@@ -4,7 +4,7 @@ extends Node
 
 enum LightRole { KEY, FILL, KICK }
 
-export(LightRole) var light_role := 0 setget _set_light_role
+export (LightRole) var light_role := 0 setget _set_light_role
 export var emits_shadows := false setget _set_emits_shadows
 
 var builder: ToonSceneBuilder
@@ -19,36 +19,36 @@ onready var scene_root: Node = get_tree().edited_scene_root
 func _ready():
 	if not Engine.editor_hint:
 		return
-	
+
 	builder = scene_root.find_node("ToonSceneBuilder", true, false)
-	
+
 	if not builder:
 		return
-	
+
 	var parent := get_parent()
 	light_proxy = builder.light_data.find_node(parent.name, true, false)
 	specular_proxy = builder.specular_data.find_node(parent.name, true, false)
 	var light_missing: bool = light_proxy == null
 	var specular_missing: bool = specular_proxy == null
-	
+
 	if light_missing or specular_missing:
 		parent.remove_child(self)
-	
+
 	if light_missing:
 		light_proxy = parent.duplicate()
-		
+
 		_set_materials(light_proxy, ToonSceneBuilder.DataType.LIGHT)
 		light_remote = RemoteTransform.new()
-		
+
 		parent.add_child(light_remote)
 		light_remote.owner = scene_root
-		
+
 		builder.light_data.add_child(light_proxy)
 		light_proxy.owner = scene_root
-		
+
 		light_remote.remote_path = "../%s" % parent.get_path_to(light_proxy)
 		light_remote.name = "LightRemote"
-		
+
 		if parent is Light:
 			light_proxy.light_specular = 0
 			light_proxy.shadow_enabled = emits_shadows
@@ -61,21 +61,24 @@ func _ready():
 					light_proxy.light_color = Color.blue
 	else:
 		light_remote = parent.find_node("LightRemote", true, false)
-	
+
 	if specular_missing:
 		specular_proxy = parent.duplicate()
-		
+
 		specular_remote = RemoteTransform.new()
-		
+
 		parent.add_child(specular_remote)
 		specular_remote.owner = scene_root
-		
+
 		builder.specular_data.add_child(specular_proxy)
 		specular_proxy.owner = scene_root
-		
-		specular_remote.remote_path = "../%s" % parent.get_path_to(specular_proxy)
+
+		specular_remote.remote_path = (
+			"../%s"
+			% parent.get_path_to(specular_proxy)
+		)
 		specular_remote.name = "SpecularRemote"
-		
+
 		if parent is Light:
 			specular_proxy.light_specular = 1.0
 			specular_proxy.shadow_enabled = false
@@ -92,10 +95,10 @@ func _ready():
 	else:
 		specular_remote = parent.find_node("SpecularRemote", true, false)
 	_set_materials(specular_proxy, ToonSceneBuilder.DataType.SPECULAR)
-	
+
 	parent.connect("renamed", self, "_on_parent_renamed")
 	parent.connect("tree_exiting", self, "_on_parent_tree_exiting")
-	
+
 	if light_missing or specular_missing:
 		parent.add_child(self)
 		if parent is ToonCamera:
@@ -113,7 +116,7 @@ func _set_materials(parent: Node, type: int) -> void:
 					parent.set_surface_material(mat, null)
 				ToonSceneBuilder.DataType.SPECULAR:
 					parent.set_surface_material(mat, builder.specular_material)
-	
+
 	for child in parent.get_children():
 		_set_materials(child, type)
 
@@ -148,10 +151,16 @@ func _set_light_role(value: int) -> void:
 func _on_parent_renamed() -> void:
 	if light_proxy:
 		light_proxy.name = get_parent().name
-		light_remote.remote_path = "../%s" % get_parent().get_path_to(light_proxy)
+		light_remote.remote_path = (
+			"../%s"
+			% get_parent().get_path_to(light_proxy)
+		)
 	if specular_proxy:
 		specular_proxy.name = get_parent().name
-		specular_remote.remote_path = "../%s" % get_parent().get_path_to(specular_proxy)
+		specular_remote.remote_path = (
+			"../%s"
+			% get_parent().get_path_to(specular_proxy)
+		)
 
 
 func _on_parent_tree_exiting() -> void:

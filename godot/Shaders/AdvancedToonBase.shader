@@ -72,14 +72,10 @@ uniform float anisotropy_specular_brightness : hint_range(0, 2) = 0.85;
 uniform float anisotropy_specular_softness : hint_range(0, 1) = 0.5;
 uniform float anisotropy_in_shadow_strength : hint_range(0, 1) = 0.1;
 
-varying vec3 world_position;
-varying vec3 world_normal;
 varying vec3 down_camera_angle;
 
 void vertex()
 {
-	world_position = VERTEX;
-	world_normal = NORMAL;
 	down_camera_angle = (vec4(0, -1, 0, 1) * CAMERA_MATRIX).xyz;
 }
 

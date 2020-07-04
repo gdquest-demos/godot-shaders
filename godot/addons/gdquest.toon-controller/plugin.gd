@@ -11,9 +11,12 @@ var specular_viewport: Viewport
 var editor_viewport: Control
 var preview_checkbox: CheckBox
 
+var plugin: EditorInspectorPlugin
+
 
 func _enter_tree() -> void:
-	pass
+	plugin = preload("ToonInspector.gd").new()
+	add_inspector_plugin(plugin)
 
 
 func _exit_tree() -> void:
@@ -23,7 +26,10 @@ func _exit_tree() -> void:
 
 func handles(object: Object) -> bool:
 	var interface := get_editor_interface()
-	if object == get_tree().edited_scene_root and object.get_child(0) is ToonSceneBuilder:
+	if (
+		object == get_tree().edited_scene_root
+		and _find_toon_scene_builder(object)
+	):
 		return _initialize_camera_control(object, interface)
 	else:
 		return false
@@ -49,7 +55,7 @@ func _set_camera_and_viewports(transform: Transform) -> void:
 
 
 func _initialize_camera_control(object: Object, interface: EditorInterface) -> bool:
-	var toon_builder: ToonSceneBuilder = object.get_child(0)
+	var toon_builder: ToonSceneBuilder = _find_toon_scene_builder(object)
 	main_camera = object.get_parent().get_camera()
 
 	light_viewport = toon_builder.light_data
@@ -62,9 +68,12 @@ func _initialize_camera_control(object: Object, interface: EditorInterface) -> b
 	if light_camera or specular_camera:
 		set_input_event_forwarding_always_enabled()
 		var editor_root := interface.get_editor_viewport()
-		editor_viewport = _get_child_in_sequence(editor_root, [1, 1, 0, 0, 0])
 
-		preview_checkbox = _get_child_in_sequence(editor_viewport, [1, 0, 1])
+		editor_viewport = _find_by_type_name(
+			editor_root, "SpatialEditorViewport"
+		)
+
+		preview_checkbox = _find_by_type_name(editor_viewport, "CheckBox")
 
 		if not preview_checkbox.is_connected(
 			"pressed", self, "_on_Preview_pressed"
@@ -79,7 +88,24 @@ func _initialize_camera_control(object: Object, interface: EditorInterface) -> b
 	else:
 		return false
 
-func _get_child_in_sequence(parent: Node, sequence: Array) -> Node:
-	for i in sequence:
-		parent = parent.get_child(i)
-	return parent
+
+func _find_toon_scene_builder(parent: Node) -> ToonSceneBuilder:
+	for child in parent.get_children():
+		if child is ToonSceneBuilder:
+			return child
+		else:
+			var result := _find_toon_scene_builder(child)
+			if result:
+				return result
+	return null
+
+
+func _find_by_type_name(parent: Node, type_name: String) -> Node:
+	for child in parent.get_children():
+		if child.get_class() == type_name:
+			return child
+		else:
+			var result: Node = _find_by_type_name(child, type_name)
+			if result:
+				return result
+	return null

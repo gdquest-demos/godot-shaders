@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://Demos/AdvancedToon/ToonSceneBuilder.gd" type="Script" id=1]
 [ext_resource path="res://assets/ratModel/rat.tscn" type="PackedScene" id=2]
@@ -112,7 +112,13 @@ shader_param/ambient_occlusion = ExtResource( 18 )
 flags_unshaded = true
 albedo_color = Color( 1.73, 1.74, 0, 1 )
 
-[sub_resource type="ShaderMaterial" id=17]
+[sub_resource type="ViewportTexture" id=17]
+viewport_path = NodePath("ToonLightDataView/Viewport")
+
+[sub_resource type="ViewportTexture" id=18]
+viewport_path = NodePath("ToonSpecularDataView/Viewport")
+
+[sub_resource type="ShaderMaterial" id=19]
 resource_local_to_scene = true
 next_pass = SubResource( 6 )
 shader = ExtResource( 7 )
@@ -144,8 +150,8 @@ shader_param/anisotropy_specular_contrast = 5.0
 shader_param/anisotropy_specular_brightness = 0.85
 shader_param/anisotropy_specular_softness = 0.5
 shader_param/anisotropy_in_shadow_strength = 0.1
-shader_param/light_data = SubResource( 13 )
-shader_param/specular_data = SubResource( 14 )
+shader_param/light_data = SubResource( 17 )
+shader_param/specular_data = SubResource( 18 )
 shader_param/metalness_texture = ExtResource( 12 )
 shader_param/paint_mask1 = ExtResource( 13 )
 shader_param/paint_mask2 = ExtResource( 15 )
@@ -155,32 +161,32 @@ shader_param/kick_light_ramp = SubResource( 12 )
 shader_param/shadow_paint = ExtResource( 20 )
 shader_param/ambient_occlusion = ExtResource( 19 )
 
-[sub_resource type="ShaderMaterial" id=18]
+[sub_resource type="ShaderMaterial" id=20]
 shader = ExtResource( 6 )
 shader_param/thickness = 0.02
 shader_param/outline_color = Color( 0.0470588, 0.14902, 0.345098, 1 )
 
-[sub_resource type="Gradient" id=19]
-offsets = PoolRealArray( 0.291667, 0.690476 )
-
-[sub_resource type="GradientTexture" id=20]
-gradient = SubResource( 19 )
-
 [sub_resource type="Gradient" id=21]
-offsets = PoolRealArray( 0.214286, 0.291667 )
+offsets = PoolRealArray( 0.291667, 0.690476 )
 
 [sub_resource type="GradientTexture" id=22]
 gradient = SubResource( 21 )
 
-[sub_resource type="ViewportTexture" id=23]
+[sub_resource type="Gradient" id=23]
+offsets = PoolRealArray( 0.214286, 0.291667 )
+
+[sub_resource type="GradientTexture" id=24]
+gradient = SubResource( 23 )
+
+[sub_resource type="ViewportTexture" id=25]
 viewport_path = NodePath("ToonLightDataView/Viewport")
 
-[sub_resource type="ViewportTexture" id=24]
+[sub_resource type="ViewportTexture" id=26]
 viewport_path = NodePath("ToonSpecularDataView/Viewport")
 
-[sub_resource type="ShaderMaterial" id=25]
+[sub_resource type="ShaderMaterial" id=27]
 resource_local_to_scene = true
-next_pass = SubResource( 18 )
+next_pass = SubResource( 20 )
 shader = ExtResource( 7 )
 shader_param/base_color = Color( 0.454902, 0.627451, 0.823529, 1 )
 shader_param/paint_color1 = Color( 1, 0.960784, 0, 1 )
@@ -210,21 +216,21 @@ shader_param/anisotropy_specular_contrast = 5.0
 shader_param/anisotropy_specular_brightness = 0.85
 shader_param/anisotropy_specular_softness = 0.5
 shader_param/anisotropy_in_shadow_strength = 0.1
-shader_param/light_data = SubResource( 23 )
-shader_param/specular_data = SubResource( 24 )
+shader_param/light_data = SubResource( 25 )
+shader_param/specular_data = SubResource( 26 )
 shader_param/metalness_texture = ExtResource( 12 )
 shader_param/paint_mask1 = ExtResource( 11 )
 shader_param/key_light_ramp = ExtResource( 17 )
-shader_param/fill_light_ramp = SubResource( 20 )
-shader_param/kick_light_ramp = SubResource( 22 )
+shader_param/fill_light_ramp = SubResource( 22 )
+shader_param/kick_light_ramp = SubResource( 24 )
 shader_param/high_frequency_anisotropy_noise = ExtResource( 9 )
 shader_param/low_frequency_anisotropy_noise = ExtResource( 10 )
 shader_param/spottiness_anisotropy_noise = ExtResource( 8 )
 
-[sub_resource type="PlaneMesh" id=26]
+[sub_resource type="PlaneMesh" id=28]
 size = Vector2( 100, 100 )
 
-[sub_resource type="SpatialMaterial" id=27]
+[sub_resource type="SpatialMaterial" id=29]
 albedo_color = Color( 0.490196, 0.490196, 0.490196, 1 )
 
 [node name="AdvancedToonDemo" type="Spatial"]
@@ -244,7 +250,7 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="ToonLightDataView"]
-size = Vector2( 2889, 915 )
+size = Vector2( 2889, 1219 )
 world = SubResource( 2 )
 transparent_bg = true
 handle_input_locally = false
@@ -261,7 +267,7 @@ mesh = SubResource( 3 )
 material/0 = null
 
 [node name="ToonCamera" type="Camera" parent="ToonLightDataView/Viewport"]
-transform = Transform( 0.689123, -0.00448482, 0.724631, 0, 0.999981, 0.00618899, -0.724645, -0.00426497, 0.68911, 1.68123, 0.956143, 2.10181 )
+transform = Transform( 0.907419, -0.126747, 0.400657, 0, 0.95343, 0.301616, -0.420227, -0.273692, 0.86516, 3.73892, 4.95938, 10.5297 )
 current = true
 script = ExtResource( 4 )
 
@@ -290,7 +296,7 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="ToonSpecularDataView"]
-size = Vector2( 2889, 915 )
+size = Vector2( 2889, 1219 )
 world = SubResource( 4 )
 transparent_bg = true
 handle_input_locally = false
@@ -306,7 +312,7 @@ mesh = SubResource( 3 )
 material/0 = SubResource( 1 )
 
 [node name="ToonCamera" type="Camera" parent="ToonSpecularDataView/Viewport"]
-transform = Transform( 0.689123, -0.00448482, 0.724631, 0, 0.999981, 0.00618899, -0.724645, -0.00426497, 0.68911, 1.68123, 0.956143, 2.10181 )
+transform = Transform( 0.907419, -0.126747, 0.400657, 0, 0.95343, 0.301616, -0.420227, -0.273692, 0.86516, 3.73892, 4.95938, 10.5297 )
 current = true
 script = ExtResource( 4 )
 
@@ -339,10 +345,10 @@ material/0 = SubResource( 15 )
 material/0 = SubResource( 16 )
 
 [node name="head1" parent="Rat" index="2"]
-material/0 = SubResource( 17 )
+material/0 = SubResource( 19 )
 
 [node name="teeth1" parent="Rat" index="3"]
-material/0 = SubResource( 17 )
+material/0 = SubResource( 19 )
 
 [node name="LightRemote" type="RemoteTransform" parent="Rat"]
 remote_path = NodePath("../../ToonLightDataView/Viewport/Rat")
@@ -352,11 +358,13 @@ remote_path = NodePath("../../ToonSpecularDataView/Viewport/Rat")
 
 [node name="ToonProxyBuilder" type="Node" parent="Rat"]
 script = ExtResource( 5 )
+light_role = 0
+emits_shadows = false
 
 [node name="Sphere" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44328, 3.11, 1.45094 )
 mesh = SubResource( 3 )
-material/0 = SubResource( 25 )
+material/0 = SubResource( 27 )
 
 [node name="LightRemote" type="RemoteTransform" parent="Sphere"]
 remote_path = NodePath("../../ToonLightDataView/Viewport/Sphere")
@@ -366,6 +374,8 @@ remote_path = NodePath("../../ToonSpecularDataView/Viewport/Sphere")
 
 [node name="ToonProxyBuilder" type="Node" parent="Sphere"]
 script = ExtResource( 5 )
+light_role = 0
+emits_shadows = false
 
 [node name="ToonCamera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.908916, 0.416978, 0, -0.416978, 0.908916, 0, 3.34385, 7.32658 )
@@ -386,11 +396,12 @@ update_scale = false
 
 [node name="ToonProxyBuilder" type="Node" parent="ToonCamera"]
 script = ExtResource( 5 )
+light_role = 0
+emits_shadows = false
 
 [node name="Floor" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0020504, -0.0073359, 0.00449657 )
-mesh = SubResource( 26 )
-material/0 = SubResource( 27 )
+mesh = SubResource( 28 )
+material/0 = SubResource( 29 )
 
 [node name="KeyLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.597119, 2.2464, 2.05377 )
@@ -404,6 +415,8 @@ remote_path = NodePath("../../ToonSpecularDataView/Viewport/KeyLight")
 
 [node name="ToonProxyBuilder" type="Node" parent="KeyLight"]
 script = ExtResource( 5 )
+light_role = 0
+emits_shadows = false
 
 [node name="FillLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.485713, -0.483788, 0.728033, 0.430129, 0.857344, 0.282754, -0.760968, 0.175811, 0.624515, -3.13309, 1.7265, 2.60975 )
@@ -417,9 +430,10 @@ remote_path = NodePath("../../ToonSpecularDataView/Viewport/FillLight")
 [node name="ToonProxyBuilder" type="Node" parent="FillLight"]
 script = ExtResource( 5 )
 light_role = 1
+emits_shadows = false
 
 [node name="KickLight" type="DirectionalLight" parent="."]
-transform = Transform( -0.983674, 0.0122698, 0.179544, 0.0241272, 0.997658, 0.0640084, -0.178338, 0.0672952, -0.981665, 0, 0.190201, -3.54709 )
+transform = Transform( -0.983674, 0.0122697, 0.179544, 0.0241272, 0.997658, 0.0640083, -0.178338, 0.0672952, -0.981665, 0, 0.190201, -3.54709 )
 
 [node name="LightRemote" type="RemoteTransform" parent="KickLight"]
 remote_path = NodePath("../../ToonLightDataView/Viewport/KickLight")
@@ -430,5 +444,6 @@ remote_path = NodePath("../../ToonSpecularDataView/Viewport/KickLight")
 [node name="ToonProxyBuilder" type="Node" parent="KickLight"]
 script = ExtResource( 5 )
 light_role = 2
+emits_shadows = false
 
 [editable path="Rat"]
