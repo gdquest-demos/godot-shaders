@@ -24,6 +24,7 @@ Here's a list of available shaders:
 - Dissolve 2D
 - Dissolve 3D
 - Blur
+- Reflection 2D
 - Water 2D
 - Advanced Toon
 
