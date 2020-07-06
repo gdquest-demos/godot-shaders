@@ -37,7 +37,6 @@ func _ready():
 	if light_missing:
 		light_proxy = parent.duplicate()
 
-		_set_materials(light_proxy, ToonSceneBuilder.DataType.LIGHT)
 		light_remote = RemoteTransform.new()
 
 		parent.add_child(light_remote)
@@ -94,6 +93,8 @@ func _ready():
 					specular_proxy.hide()
 	else:
 		specular_remote = parent.find_node("SpecularRemote", true, false)
+	
+	_set_materials(light_proxy, ToonSceneBuilder.DataType.LIGHT)
 	_set_materials(specular_proxy, ToonSceneBuilder.DataType.SPECULAR)
 
 	parent.connect("renamed", self, "_on_parent_renamed")

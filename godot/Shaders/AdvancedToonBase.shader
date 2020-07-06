@@ -16,6 +16,8 @@ const float SPECULAR_SOFT_MIN = 0.0;
 const float SPECULAR_SOFT_MAX = 0.637;
 const float SPECULAR_HARD_MIN = 0.167;
 const float SPECULAR_HARD_MAX = 0.179;
+const float AO_SHARP_MIN = 0.48;
+const float AO_SHARP_MAX = 0.52;
 
 uniform sampler2D light_data : hint_black;
 uniform sampler2D specular_data : hint_black;
@@ -87,8 +89,6 @@ void fragment()
 	// Light data extracted from color channels (red for key light, green for
 	// fill, blue for kick)
 	float key_light_value = texture(key_light_ramp, vec2(diffuse.r, 0)).r;
-	float fill_light_value = texture(fill_light_ramp, vec2(diffuse.g, 0)).r;
-	float kick_light_value = texture(kick_light_ramp, vec2(diffuse.b, 0)).r;
 	
 	key_light_value = mix(key_light_value, 0, texture(shadow_paint, UV).r);
 
@@ -105,6 +105,7 @@ void fragment()
 	out_color = flat_color * out_color;
 
 	// Additive mix fill light
+	float fill_light_value = texture(fill_light_ramp, vec2(diffuse.g, 0)).r;
 	out_color += fill_light_value * fill_light_color.rgb;
 
 	// Metalness
@@ -138,15 +139,15 @@ void fragment()
 		float anisotropy_angle = down_camera_angle.z * 0.33;
 
 		float high_anisotropy_noise_value
-			= (texture(high_frequency_anisotropy_noise, vec2(UV.x)).r - 0.5) * 0.2;
+			= (texture(high_frequency_anisotropy_noise, vec2(UV.x, 0)).r - 0.5) * 0.2;
 		float low_anisotropy_noise_value
-			= (texture(low_frequency_anisotropy_noise, vec2(UV.x)).r - 0.5) * 0.2;
+			= (texture(low_frequency_anisotropy_noise, vec2(UV.x, 0)).r - 0.5) * 0.2;
 
 		float anisotropy_specular_hotspot = smoothstep(
 			ANISOTROPY_HOTSPOT_MIN, ANISOTROPY_HOTSPOT_MAX, specular * anisotropy_specular_width);
 
 		float spottiness_anisotropy_noise_value
-			= (texture(spottiness_anisotropy_noise, vec2(UV.x)).r - 0.5)
+			= (texture(spottiness_anisotropy_noise, vec2(UV.x, 0)).r - 0.5)
 				* anisotropy_specular_contrast
 			+ anisotropy_specular_brightness;
 
@@ -171,6 +172,7 @@ void fragment()
 	}
 
 	// Additive mix kick light
+	float kick_light_value = texture(kick_light_ramp, vec2(diffuse.b, 0)).r;
 	out_color += kick_light_value * kick_light_color.rgb;
 
 	// Outline
@@ -186,7 +188,7 @@ void fragment()
 	// AO
 	if(ambient_occlusion_opacity > 0.0) {
 		float ambient = texture(ambient_occlusion, UV).r;
-		float sharp_ambient = smoothstep(0.48, 0.52, ambient);
+		float sharp_ambient = smoothstep(AO_SHARP_MIN, AO_SHARP_MAX, ambient);
 		float soft_ambient = ambient;
 		float ambient_out = mix(sharp_ambient, soft_ambient, ambient_occlusion_softness);
 		

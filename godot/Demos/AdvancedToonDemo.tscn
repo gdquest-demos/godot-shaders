@@ -250,7 +250,7 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="ToonLightDataView"]
-size = Vector2( 2889, 1219 )
+size = Vector2( 2908, 915 )
 world = SubResource( 2 )
 transparent_bg = true
 handle_input_locally = false
@@ -267,7 +267,7 @@ mesh = SubResource( 3 )
 material/0 = null
 
 [node name="ToonCamera" type="Camera" parent="ToonLightDataView/Viewport"]
-transform = Transform( 0.907419, -0.126747, 0.400657, 0, 0.95343, 0.301616, -0.420227, -0.273692, 0.86516, 3.73892, 4.95938, 10.5297 )
+transform = Transform( 0.982147, -0.0811462, 0.169712, 0, 0.902177, 0.431366, -0.188114, -0.423665, 0.88607, -0.0821347, 4.90552, 8.98939 )
 current = true
 script = ExtResource( 4 )
 
@@ -296,7 +296,7 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="ToonSpecularDataView"]
-size = Vector2( 2889, 1219 )
+size = Vector2( 2908, 915 )
 world = SubResource( 4 )
 transparent_bg = true
 handle_input_locally = false
@@ -312,7 +312,7 @@ mesh = SubResource( 3 )
 material/0 = SubResource( 1 )
 
 [node name="ToonCamera" type="Camera" parent="ToonSpecularDataView/Viewport"]
-transform = Transform( 0.907419, -0.126747, 0.400657, 0, 0.95343, 0.301616, -0.420227, -0.273692, 0.86516, 3.73892, 4.95938, 10.5297 )
+transform = Transform( 0.982147, -0.0811462, 0.169712, 0, 0.902177, 0.431366, -0.188114, -0.423665, 0.88607, -0.0821347, 4.90552, 8.98939 )
 current = true
 script = ExtResource( 4 )
 
@@ -358,8 +358,6 @@ remote_path = NodePath("../../ToonSpecularDataView/Viewport/Rat")
 
 [node name="ToonProxyBuilder" type="Node" parent="Rat"]
 script = ExtResource( 5 )
-light_role = 0
-emits_shadows = false
 
 [node name="Sphere" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44328, 3.11, 1.45094 )
@@ -374,8 +372,6 @@ remote_path = NodePath("../../ToonSpecularDataView/Viewport/Sphere")
 
 [node name="ToonProxyBuilder" type="Node" parent="Sphere"]
 script = ExtResource( 5 )
-light_role = 0
-emits_shadows = false
 
 [node name="ToonCamera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.908916, 0.416978, 0, -0.416978, 0.908916, 0, 3.34385, 7.32658 )
@@ -396,8 +392,6 @@ update_scale = false
 
 [node name="ToonProxyBuilder" type="Node" parent="ToonCamera"]
 script = ExtResource( 5 )
-light_role = 0
-emits_shadows = false
 
 [node name="Floor" type="MeshInstance" parent="."]
 mesh = SubResource( 28 )
@@ -415,8 +409,6 @@ remote_path = NodePath("../../ToonSpecularDataView/Viewport/KeyLight")
 
 [node name="ToonProxyBuilder" type="Node" parent="KeyLight"]
 script = ExtResource( 5 )
-light_role = 0
-emits_shadows = false
 
 [node name="FillLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.485713, -0.483788, 0.728033, 0.430129, 0.857344, 0.282754, -0.760968, 0.175811, 0.624515, -3.13309, 1.7265, 2.60975 )
@@ -430,7 +422,6 @@ remote_path = NodePath("../../ToonSpecularDataView/Viewport/FillLight")
 [node name="ToonProxyBuilder" type="Node" parent="FillLight"]
 script = ExtResource( 5 )
 light_role = 1
-emits_shadows = false
 
 [node name="KickLight" type="DirectionalLight" parent="."]
 transform = Transform( -0.983674, 0.0122697, 0.179544, 0.0241272, 0.997658, 0.0640083, -0.178338, 0.0672952, -0.981665, 0, 0.190201, -3.54709 )
@@ -444,6 +435,5 @@ remote_path = NodePath("../../ToonSpecularDataView/Viewport/KickLight")
 [node name="ToonProxyBuilder" type="Node" parent="KickLight"]
 script = ExtResource( 5 )
 light_role = 2
-emits_shadows = false
 
 [editable path="Rat"]

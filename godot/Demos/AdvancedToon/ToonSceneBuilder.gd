@@ -40,7 +40,7 @@ func _ready() -> void:
 
 func _find_viewport(type: int) -> Viewport:
 	var viewport_name: String = VIEW_NAMES[type]
-	var container: ViewportContainer = get_tree().edited_scene_root.find_node(
+	var container: ToonViewportContainer = get_tree().edited_scene_root.find_node(
 		viewport_name, true, false
 	)
 
