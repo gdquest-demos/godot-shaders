@@ -36,7 +36,7 @@ gradient = SubResource( 2 )
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = SubResource( 1 )
-shader_param/color = Color( 0, 0.101961, 0.282353, 1 )
+shader_param/color = Color( 0.207843, 0.203922, 0.615686, 1 )
 shader_param/reflection_intensity = 0.542
 shader_param/scale_y = 3.00126
 shader_param/zoom_y = 0.420448
@@ -58,13 +58,20 @@ This demo shows how to create a pure vertical mirror using the screen texture.
 You can control the way the reflection fade using a gradient texture."
 
 [node name="Robi" type="Sprite" parent="."]
-position = Vector2( 306.77, 454.204 )
-scale = Vector2( 0.641881, 0.641881 )
+position = Vector2( 458.896, 473.633 )
+rotation = -0.147885
+scale = Vector2( 0.563456, 0.563456 )
 texture = ExtResource( 2 )
 
 [node name="Robi2" type="Sprite" parent="."]
-position = Vector2( 1265.35, 454.204 )
-scale = Vector2( 0.641881, 0.641881 )
+position = Vector2( 1343.84, 510.352 )
+rotation = 0.103686
+scale = Vector2( 0.471994, 0.471994 )
+texture = ExtResource( 2 )
+
+[node name="Robi3" type="Sprite" parent="."]
+position = Vector2( 918.102, 356.151 )
+scale = Vector2( 0.630556, 0.630556 )
 texture = ExtResource( 2 )
 
 [node name="MirrorYPlane" type="Sprite" parent="."]
