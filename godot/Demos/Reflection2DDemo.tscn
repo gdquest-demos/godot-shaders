@@ -19,8 +19,8 @@ uniform float zoom_y = 1.0f;
 
 
 void fragment() {
-	float px_size_ratio = SCREEN_PIXEL_SIZE.y / TEXTURE_PIXEL_SIZE.y;
-	vec2 uv_reflected = vec2(SCREEN_UV.x, SCREEN_UV.y + px_size_ratio * UV.y * 2.0 * scale_y * zoom_y);
+	float uv_size_ratio_v = SCREEN_PIXEL_SIZE.y / TEXTURE_PIXEL_SIZE.y;
+	vec2 uv_reflected = vec2(SCREEN_UV.x, SCREEN_UV.y + uv_size_ratio_v * UV.y * 2.0 * scale_y * zoom_y);
 	
 	vec4 reflection_color = texture(SCREEN_TEXTURE, uv_reflected);
 	COLOR = mix(color, reflection_color, texture(transition_gradient, vec2(1.0 - UV.y, 1.0)).r * reflection_intensity);
@@ -38,8 +38,8 @@ gradient = SubResource( 2 )
 shader = SubResource( 1 )
 shader_param/color = Color( 0.207843, 0.203922, 0.615686, 1 )
 shader_param/reflection_intensity = 0.542
-shader_param/scale_y = 3.00126
-shader_param/zoom_y = 0.420448
+shader_param/scale_y = 3.47455
+shader_param/zoom_y = 0.529732
 shader_param/transition_gradient = SubResource( 3 )
 
 [node name="Reflection2DDemo" type="Control"]
@@ -76,7 +76,7 @@ texture = ExtResource( 2 )
 
 [node name="MirrorYPlane" type="Sprite" parent="."]
 material = SubResource( 4 )
-position = Vector2( 963.299, 903.901 )
-scale = Vector2( 23.8484, 3.00126 )
+position = Vector2( 956.827, 937.755 )
+scale = Vector2( 23.8484, 3.47455 )
 texture = ExtResource( 5 )
 script = ExtResource( 3 )
