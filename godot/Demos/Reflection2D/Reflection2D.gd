@@ -1,11 +1,10 @@
+# Forwards the Y zoom and Y scale values to the mirror shader
 tool
 extends Sprite
 
 
 func _ready() -> void:
 	connect("item_rect_changed", self, "_on_item_rect_changed")
-	if not Engine.editor_hint:
-		set_process(false)
 
 
 func _process(delta: float) -> void:
