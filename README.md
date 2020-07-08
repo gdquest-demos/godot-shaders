@@ -25,7 +25,8 @@ Here's a list of available shaders:
 - Dissolve 3D
 - Blur
 - Reflection 2D
-- Water 2D
+- Water 2D in top-down view
+- Water 2D for side-scrolling games
 - Advanced Toon
 
 ![2D water shader with light support](./img/water2d.png)
