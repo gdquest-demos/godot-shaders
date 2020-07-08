@@ -1,9 +1,10 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://assets/background/gradient.svg" type="Texture" id=3]
-[ext_resource path="res://assets/background/graph.svg" type="Texture" id=4]
-[ext_resource path="res://assets/background/gaussian_blur_lod_15_samples.shader" type="Shader" id=5]
-[ext_resource path="res://assets/background/sparkle.png" type="Texture" id=6]
+[ext_resource path="res://Common/Background2D/gradient.svg" type="Texture" id=3]
+[ext_resource path="res://Common/Background2D/graph.svg" type="Texture" id=4]
+[ext_resource path="res://Common/Background2D/gaussian_blur_lod_15_samples.shader" type="Shader" id=5]
+[ext_resource path="res://Common/Background2D/sparkle.png" type="Texture" id=6]
+
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 5 )

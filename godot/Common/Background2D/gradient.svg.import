@@ -2,26 +2,26 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/graph.svg-47727ce308750a074069e0a7ddec1408.stex"
+path="res://.import/gradient.svg-9b339487cb5c614e34cfbc28ad67fb50.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background/graph.svg"
-dest_files=[ "res://.import/graph.svg-47727ce308750a074069e0a7ddec1408.stex" ]
+source_file="res://Common/Background2D/gradient.svg"
+dest_files=[ "res://.import/gradient.svg-9b339487cb5c614e34cfbc28ad67fb50.stex" ]
 
 [params]
 
 compress/mode=0
-compress/lossy_quality=0.86
+compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
-flags/mipmaps=true
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true

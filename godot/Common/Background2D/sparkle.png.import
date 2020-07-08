@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gradient.svg-d759ea43df7956dbf9e16e0231560dcd.stex"
+path="res://.import/sparkle.png-ab89edf74d61918bc7aed0a60a18759f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background/gradient.svg"
-dest_files=[ "res://.import/gradient.svg-d759ea43df7956dbf9e16e0231560dcd.stex" ]
+source_file="res://Common/Background2D/sparkle.png"
+dest_files=[ "res://.import/sparkle.png-ab89edf74d61918bc7aed0a60a18759f.stex" ]
 
 [params]
 

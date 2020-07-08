@@ -6,8 +6,10 @@
 [ext_resource path="res://Demos/Xray2d/Cone.gd" type="Script" id=4]
 [ext_resource path="res://Shaders/xray_mask.shader" type="Shader" id=5]
 [ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=6]
-[ext_resource path="res://Common/Demo2DBackground.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Common/Background2D/Demo2DBackground.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Common/DemoInterface.tscn" type="PackedScene" id=8]
+
+
 
 [sub_resource type="ViewportTexture" id=1]
 viewport_path = NodePath("XRayView/Viewport")
