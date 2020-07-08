@@ -22,7 +22,7 @@ func update_scale() -> void:
 
 # Sets the canvas zoom level
 func update_zoom() -> void:
-	material.set_shader_param("zoom_y", get_viewport().global_canvas_transform.y.y)
+	material.set_shader_param("zoom_y", get_viewport_transform().y.y)
 
 
 # Sets the aspect ratio of the texture

@@ -8,7 +8,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	update_zoom(get_viewport().global_canvas_transform.y.y)
+	update_zoom(get_viewport_transform().y.y)
 
 
 func update_zoom(value: float) -> void:
