@@ -37,7 +37,7 @@ _global_script_classes=[ {
 "base": "Camera",
 "class": "ToonCamera",
 "language": "GDScript",
-"path": "res://Demos/AdvancedToon/ToonCamera.gd"
+"path": "res://addons/gdquest.toon-controller/Tools/ToonCamera.gd"
 }, {
 "base": "EditorInspectorPlugin",
 "class": "ToonInspector",
@@ -47,17 +47,17 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "ToonProxyBuilder",
 "language": "GDScript",
-"path": "res://Demos/AdvancedToon/ToonProxyBuilder.gd"
+"path": "res://addons/gdquest.toon-controller/Tools/ToonProxyBuilder.gd"
 }, {
 "base": "Node",
 "class": "ToonSceneBuilder",
 "language": "GDScript",
-"path": "res://Demos/AdvancedToon/ToonSceneBuilder.gd"
+"path": "res://addons/gdquest.toon-controller/Tools/ToonSceneBuilder.gd"
 }, {
 "base": "ViewportContainer",
 "class": "ToonViewportContainer",
 "language": "GDScript",
-"path": "res://Demos/AdvancedToon/ToonViewportContainer.gd"
+"path": "res://addons/gdquest.toon-controller/Tools/ToonViewportContainer.gd"
 } ]
 _global_script_class_icons={
 "AnimatedOutline": "",

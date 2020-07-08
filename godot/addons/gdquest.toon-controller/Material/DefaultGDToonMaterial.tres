@@ -1,0 +1,71 @@
+[gd_resource type="ShaderMaterial" load_steps=14 format=2]
+
+[ext_resource path="res://addons/gdquest.toon-controller/Material/Defaults/AnisotropicNoise/low_frequency_anisotropic_noise.tres" type="Texture" id=1]
+[ext_resource path="res://addons/gdquest.toon-controller/Material/Defaults/AnisotropicNoise/high_frequency_anisotropic_noise.tres" type="Texture" id=2]
+[ext_resource path="res://addons/gdquest.toon-controller/Material/Defaults/AnisotropicNoise/spottiness_anisotropic_noise.tres" type="Texture" id=3]
+[ext_resource path="res://addons/gdquest.toon-controller/Material/outline3D.shader" type="Shader" id=4]
+[ext_resource path="res://addons/gdquest.toon-controller/Material/GDToonBase.shader" type="Shader" id=5]
+[ext_resource path="res://addons/gdquest.toon-controller/Material/Defaults/Copper_Matcap.png" type="Texture" id=6]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 4 )
+shader_param/thickness = 0.02
+shader_param/outline_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0.291667, 0.690476 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0.2, 0.283333 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0.214286, 0.291667 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+
+[resource]
+resource_local_to_scene = true
+next_pass = SubResource( 1 )
+shader = ExtResource( 5 )
+shader_param/base_color = Color( 1, 1, 1, 1 )
+shader_param/paint_color1 = Color( 1, 1, 1, 1 )
+shader_param/paint_color2 = Color( 1, 1, 1, 1 )
+shader_param/paint_color3 = Color( 1, 1, 1, 1 )
+shader_param/specular_softness = 0.5
+shader_param/specular_size = 0.5
+shader_param/specular_color = Color( 1, 1, 1, 1 )
+shader_param/outline_color = Color( 0, 0, 0, 1 )
+shader_param/outline_size = 0.175
+shader_param/key_light_color = Color( 1, 1, 1, 1 )
+shader_param/fill_light_color = Color( 1, 1, 1, 1 )
+shader_param/kick_light_color = Color( 1, 1, 1, 1 )
+shader_param/shadow_color = Color( 0, 0, 0, 1 )
+shader_param/ambient_occlusion_softness = 0.5
+shader_param/ambient_occlusion_opacity = 0.0
+shader_param/ambient_occlusion_shadow_limit = 1.0
+shader_param/ambient_occlusion_color = Color( 0, 0, 0, 1 )
+shader_param/dark_metalness_color = Color( 0, 0, 0, 1 )
+shader_param/light_metalness_color = Color( 1, 1, 1, 1 )
+shader_param/metalness_contrast_factor = 1.0
+shader_param/metalness = 0.0
+shader_param/anisotropy_specular_color = Color( 1, 1, 1, 1 )
+shader_param/anisotropy_specular_width = 10.0
+shader_param/anisotropy_specular_strength = 0.0
+shader_param/anisotropy_specular_contrast = 5.0
+shader_param/anisotropy_specular_brightness = 0.85
+shader_param/anisotropy_specular_softness = 0.5
+shader_param/anisotropy_in_shadow_strength = 0.1
+shader_param/metalness_texture = ExtResource( 6 )
+shader_param/key_light_ramp = SubResource( 5 )
+shader_param/fill_light_ramp = SubResource( 3 )
+shader_param/kick_light_ramp = SubResource( 7 )
+shader_param/high_frequency_anisotropy_noise = ExtResource( 2 )
+shader_param/low_frequency_anisotropy_noise = ExtResource( 1 )
+shader_param/spottiness_anisotropy_noise = ExtResource( 3 )

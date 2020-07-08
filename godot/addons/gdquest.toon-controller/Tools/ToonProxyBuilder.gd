@@ -7,21 +7,16 @@ enum LightRole { KEY, FILL, KICK }
 export (LightRole) var light_role := 0 setget _set_light_role
 export var emits_shadows := false setget _set_emits_shadows
 
-var builder: ToonSceneBuilder
 var light_proxy: Node
 var specular_proxy: Node
 var light_remote: RemoteTransform
 var specular_remote: RemoteTransform
 
-onready var scene_root: Node = get_tree().edited_scene_root
+onready var scene_root: Node = get_tree().edited_scene_root if Engine.editor_hint else get_tree().root
+onready var builder: ToonSceneBuilder = scene_root.find_node("ToonSceneBuilder", true, false)
 
 
 func _ready():
-	if not Engine.editor_hint:
-		return
-
-	builder = scene_root.find_node("ToonSceneBuilder", true, false)
-
 	if not builder:
 		return
 
@@ -30,6 +25,11 @@ func _ready():
 	specular_proxy = builder.specular_data.find_node(parent.name, true, false)
 	var light_missing: bool = light_proxy == null
 	var specular_missing: bool = specular_proxy == null
+	
+	if not Engine.editor_hint:
+		_set_materials(light_proxy, ToonSceneBuilder.DataType.LIGHT)
+		_set_materials(specular_proxy, ToonSceneBuilder.DataType.SPECULAR)
+		return
 
 	if light_missing or specular_missing:
 		parent.remove_child(self)
@@ -80,7 +80,7 @@ func _ready():
 
 		if parent is Light:
 			specular_proxy.light_specular = 1.0
-			specular_proxy.shadow_enabled = false
+			specular_proxy.shadow_enabled = emits_shadows
 			match light_role:
 				LightRole.KEY:
 					specular_proxy.light_energy = 1
@@ -179,3 +179,4 @@ func _set_emits_shadows(value: bool) -> void:
 		yield(self, "ready")
 	if light_proxy is Light:
 		light_proxy.shadow_enabled = emits_shadows
+		specular_proxy.shadow_enabled = emits_shadows and not builder.specular_ignores_shadows

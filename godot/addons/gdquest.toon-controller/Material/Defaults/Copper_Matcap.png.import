@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Copper_Matcap.png-829574ea58056d67dfbf131e143f38b7.s3tc.stex"
-path.etc2="res://.import/Copper_Matcap.png-829574ea58056d67dfbf131e143f38b7.etc2.stex"
+path.s3tc="res://.import/Copper_Matcap.png-e3f863957b8d58032240c599eb184499.s3tc.stex"
+path.etc2="res://.import/Copper_Matcap.png-e3f863957b8d58032240c599eb184499.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Demos/AdvancedToon/Defaults/Copper_Matcap.png"
-dest_files=[ "res://.import/Copper_Matcap.png-829574ea58056d67dfbf131e143f38b7.s3tc.stex", "res://.import/Copper_Matcap.png-829574ea58056d67dfbf131e143f38b7.etc2.stex" ]
+source_file="res://addons/gdquest.toon-controller/Material/Defaults/Copper_Matcap.png"
+dest_files=[ "res://.import/Copper_Matcap.png-e3f863957b8d58032240c599eb184499.s3tc.stex", "res://.import/Copper_Matcap.png-e3f863957b8d58032240c599eb184499.etc2.stex" ]
 
 [params]
 
