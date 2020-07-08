@@ -1,35 +1,36 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://assets/mouse_cursor.png" type="Texture" id=1]
-[ext_resource path="res://Demos/Reflection2D/Reflection2D.gd" type="Script" id=2]
-[ext_resource path="res://Demos/WaterSidescroll2D/water_sidescroll_2D.shader" type="Shader" id=3]
+[ext_resource path="res://Demos/WaterSidescroll2D/WaterSidescroll2D.gd" type="Script" id=2]
+[ext_resource path="res://Demos/WaterSidescroll2D/water_sidescroll_2D_simple.shader" type="Shader" id=3]
 [ext_resource path="res://Demos/Water2D/water_diffuse.png" type="Texture" id=4]
 [ext_resource path="res://Demos/Water2D/water_uv_offset.png" type="Texture" id=5]
 [ext_resource path="res://Common/DemoInterface.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/robi_shaded.png" type="Texture" id=7]
-[ext_resource path="res://Common/Demo2DBackground.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Common/Background2D/Demo2DBackground.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0.0838323, 0.227545, 0.640719, 1 )
-colors = PoolColorArray( 0, 0, 0, 1, 0.0843125, 0.0843125, 0.0843125, 1, 0.456693, 0.456693, 0.456693, 1, 1, 1, 1, 1 )
+offsets = PoolRealArray( 0.193548, 0.428571, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.0839161, 0.0839161, 0.0839161, 1, 1, 1, 1, 1 )
 
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 3 )
-shader_param/reflection_intensity = 0.656
 shader_param/water_tint = Color( 0.203922, 0.431373, 0.647059, 1 )
-shader_param/scale_y = 2.91774
-shader_param/zoom_y = 0.445449
-shader_param/tile_factor = 3.059
-shader_param/aspect_ratio = 0.182
-shader_param/texture_offset_scale = Vector2( 0.938, 0.32 )
-shader_param/texture_offset_height = 0.019
-shader_param/texture_offset_time_scale = 0.01
+shader_param/distortion_scale = Vector2( 0.5, 0.5 )
+shader_param/distortion_amplitude = 0.075
+shader_param/distortion_time_scale = 0.015
+shader_param/water_time_scale = 0.1
+shader_param/scale_y_factor = 1.824
+shader_param/reflection_intensity = 0.977
+shader_param/scale = Vector2( 7.50949, 1.51649 )
+shader_param/zoom_y = 0.529732
+shader_param/aspect_ratio = 1.0
+shader_param/tile_factor = 1.245
 shader_param/diffuse_texture = ExtResource( 4 )
 shader_param/transition_gradient = SubResource( 2 )
-shader_param/texture_offset_uv = ExtResource( 5 )
+shader_param/distortion_map = ExtResource( 5 )
 
 [node name="WaterSidescroll2DDemo" type="Control"]
 anchor_right = 1.0
@@ -42,6 +43,7 @@ __meta__ = {
 [node name="ParallaxBackground" parent="." instance=ExtResource( 8 )]
 
 [node name="DemoInterface" parent="." instance=ExtResource( 6 )]
+visible = false
 text_bbcode = "Water for a side-scrolling game. Builds upon Reflection2DDemo.tscn"
 
 [node name="Robi" type="Sprite" parent="."]
@@ -63,7 +65,7 @@ texture = ExtResource( 7 )
 
 [node name="Water2DSide" type="Sprite" parent="."]
 material = SubResource( 3 )
-position = Vector2( 969.303, 893.21 )
-scale = Vector2( 23.8484, 2.91774 )
-texture = ExtResource( 1 )
+position = Vector2( 963.682, 892.898 )
+scale = Vector2( 7.50949, 1.51649 )
+texture = ExtResource( 4 )
 script = ExtResource( 2 )
