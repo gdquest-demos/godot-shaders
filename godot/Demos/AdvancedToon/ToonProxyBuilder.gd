@@ -114,7 +114,7 @@ func _set_materials(parent: Node, type: int) -> void:
 		for mat in range(mat_count):
 			match type:
 				ToonSceneBuilder.DataType.LIGHT:
-					parent.set_surface_material(mat, null)
+					parent.set_surface_material(mat, builder.white_diffuse_material)
 				ToonSceneBuilder.DataType.SPECULAR:
 					parent.set_surface_material(mat, builder.specular_material)
 

@@ -8,6 +8,7 @@ const VIEW_NAMES := ["ToonLightDataView", "ToonSpecularDataView"]
 
 export var shadow_resolution: int = 2048 setget _set_shadow_resolution
 export var specular_material: SpatialMaterial
+export var white_diffuse_material: SpatialMaterial
 
 var light_data: Viewport
 var specular_data: Viewport
@@ -22,6 +23,8 @@ func _ready() -> void:
 		specular_material = SpatialMaterial.new()
 		specular_material.albedo_color = Color.black
 		specular_material.roughness = 0.4
+	if not white_diffuse_material:
+		white_diffuse_material = SpatialMaterial.new()
 
 	if not Engine.editor_hint:
 		return

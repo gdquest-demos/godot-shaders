@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode unshaded, world_vertex_coords;
+render_mode unshaded;
 
 const float ANISOTROPY_HOTSPOT_MIN = 0.083;
 const float ANISOTROPY_HOTSPOT_MAX = 0.637;
