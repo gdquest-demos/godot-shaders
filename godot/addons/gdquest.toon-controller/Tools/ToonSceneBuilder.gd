@@ -26,6 +26,7 @@ func _ready() -> void:
 		specular_material = SpatialMaterial.new()
 		specular_material.albedo_color = Color.black
 		specular_material.roughness = 0.4
+		specular_material.flags_disable_ambient_light = true
 
 	if not white_diffuse_material:
 		white_diffuse_material = SpatialMaterial.new()
@@ -91,9 +92,11 @@ func _set_shadow_resolution(value: int) -> void:
 	if not is_inside_tree():
 		yield(self, "ready")
 
-	light_data.shadow_atlas_size = shadow_resolution
-	specular_data.shadow_atlas_size = (
-		0
-		if specular_ignores_shadows
-		else shadow_resolution
-	)
+	if light_data:
+		light_data.shadow_atlas_size = shadow_resolution
+	if specular_data:
+		specular_data.shadow_atlas_size = (
+			0
+			if specular_ignores_shadows
+			else shadow_resolution
+		)

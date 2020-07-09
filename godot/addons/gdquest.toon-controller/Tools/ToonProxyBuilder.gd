@@ -6,6 +6,7 @@ enum LightRole { KEY, FILL, KICK }
 
 export (LightRole) var light_role := 0 setget _set_light_role
 export var emits_shadows := false setget _set_emits_shadows
+export var specular_material: ShaderMaterial setget _set_specular_material
 
 var light_proxy: Node
 var specular_proxy: Node
@@ -119,7 +120,7 @@ func _set_materials(parent: Node, type: int) -> void:
 						mat, builder.white_diffuse_material
 					)
 				ToonSceneBuilder.DataType.SPECULAR:
-					parent.set_surface_material(mat, builder.specular_material)
+					parent.set_surface_material(mat, specular_material if specular_material else builder.specular_material)
 
 	for child in parent.get_children():
 		_set_materials(child, type)
@@ -205,3 +206,11 @@ func _on_SceneTree_idle_frame() -> void:
 
 func _on_root_tree_exiting() -> void:
 	abort_deletion = true
+
+
+func _set_specular_material(value: ShaderMaterial) -> void:
+	specular_material = value
+	if not is_inside_tree():
+		yield(self, "ready")
+	
+	_set_materials(specular_proxy, ToonSceneBuilder.DataType.SPECULAR)
