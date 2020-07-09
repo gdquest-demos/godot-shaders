@@ -13,6 +13,8 @@ var specular_proxy: Node
 var light_remote: RemoteTransform
 var specular_remote: RemoteTransform
 
+var abort_deletion := false
+
 onready var scene_root: Node = (
 	get_tree().edited_scene_root
 	if Engine.editor_hint
@@ -36,6 +38,7 @@ func _ready():
 
 		parent.connect("renamed", self, "_on_parent_renamed")
 		parent.connect("tree_exiting", self, "_on_parent_tree_exiting")
+		scene_root.connect("tree_exiting", self, "_on_root_tree_exiting")
 
 	_set_materials(light_proxy, ToonSceneBuilder.DataType.LIGHT)
 	_set_materials(specular_proxy, ToonSceneBuilder.DataType.SPECULAR)
@@ -185,8 +188,20 @@ func _on_parent_renamed() -> void:
 
 
 func _on_parent_tree_exiting() -> void:
+	abort_deletion = false
+	Engine.get_main_loop().connect("idle_frame", self, "_on_SceneTree_idle_frame", [], CONNECT_ONESHOT)
+
+
+func _on_SceneTree_idle_frame() -> void:
+	if abort_deletion:
+		return
+
 	if light_proxy:
 		light_proxy.queue_free()
 
 	if specular_proxy:
 		specular_proxy.queue_free()
+
+
+func _on_root_tree_exiting() -> void:
+	abort_deletion = true

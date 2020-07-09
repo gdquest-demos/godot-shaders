@@ -72,6 +72,7 @@ func _build_data(type: int) -> Viewport:
 	viewport.world = World.new()
 	viewport.usage = Viewport.USAGE_3D_NO_EFFECTS
 	viewport.render_target_update_mode = Viewport.UPDATE_ALWAYS
+	viewport.msaa = ProjectSettings.get_setting("rendering/quality/filters/msaa")
 	view.add_child(viewport)
 
 	scene_root.add_child(view)
