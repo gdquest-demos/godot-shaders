@@ -29,6 +29,8 @@ func _ready() -> void:
 	specular_data = _find_viewport(DataType.SPECULAR)
 	
 	if Engine.editor_hint:
+		if not get_index() == 0:
+			scene_root.call_deferred("move_child", self, 0)
 		if not light_data:
 			light_data = yield(_build_data(DataType.LIGHT), "completed")
 		if not specular_data:
