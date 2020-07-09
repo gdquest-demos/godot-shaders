@@ -61,30 +61,13 @@ func _initialize_camera_control(object: Object, interface: EditorInterface) -> b
 	light_viewport = toon_builder.light_data
 	if light_viewport:
 		light_camera = light_viewport.get_camera()
+
 	specular_viewport = toon_builder.specular_data
 	if specular_viewport:
 		specular_camera = specular_viewport.get_camera()
 
 	if light_camera or specular_camera:
-		set_input_event_forwarding_always_enabled()
-		var editor_root := interface.get_editor_viewport()
-
-		editor_viewport = _find_by_type_name(
-			editor_root, "SpatialEditorViewport"
-		)
-
-		preview_checkbox = _find_by_type_name(editor_viewport, "CheckBox")
-
-		if not preview_checkbox.is_connected(
-			"pressed", self, "_on_Preview_pressed"
-		):
-			preview_checkbox.connect("pressed", self, "_on_Preview_pressed")
-
-		if light_viewport:
-			light_viewport.size = editor_viewport.rect_size
-		if specular_viewport:
-			specular_viewport.size = editor_viewport.rect_size
-		return true
+		return _set_and_connect_cameras(interface)
 	else:
 		return false
 
@@ -98,6 +81,27 @@ func _find_toon_scene_builder(parent: Node) -> ToonSceneBuilder:
 			if result:
 				return result
 	return null
+
+
+func _set_and_connect_cameras(interface: EditorInterface) -> bool:
+	set_input_event_forwarding_always_enabled()
+	var editor_root := interface.get_editor_viewport()
+
+	editor_viewport = _find_by_type_name(editor_root, "SpatialEditorViewport")
+
+	preview_checkbox = _find_by_type_name(editor_viewport, "CheckBox")
+
+	if not preview_checkbox.is_connected(
+		"pressed", self, "_on_Preview_pressed"
+	):
+		preview_checkbox.connect("pressed", self, "_on_Preview_pressed")
+
+	if light_viewport:
+		light_viewport.size = editor_viewport.rect_size
+	if specular_viewport:
+		specular_viewport.size = editor_viewport.rect_size
+
+	return true
 
 
 func _find_by_type_name(parent: Node, type_name: String) -> Node:

@@ -14,7 +14,11 @@ export var specular_ignores_shadows := false
 var light_data: Viewport
 var specular_data: Viewport
 
-onready var scene_root := get_tree().edited_scene_root if Engine.editor_hint else get_tree().root
+onready var scene_root := (
+	get_tree().edited_scene_root
+	if Engine.editor_hint
+	else get_tree().root
+)
 
 
 func _ready() -> void:
@@ -22,23 +26,29 @@ func _ready() -> void:
 		specular_material = SpatialMaterial.new()
 		specular_material.albedo_color = Color.black
 		specular_material.roughness = 0.4
+
 	if not white_diffuse_material:
 		white_diffuse_material = SpatialMaterial.new()
 
 	light_data = _find_viewport(DataType.LIGHT)
 	specular_data = _find_viewport(DataType.SPECULAR)
-	
+
 	if Engine.editor_hint:
 		if not get_index() == 0:
 			scene_root.call_deferred("move_child", self, 0)
+
 		if not light_data:
 			light_data = yield(_build_data(DataType.LIGHT), "completed")
+
 		if not specular_data:
 			specular_data = yield(_build_data(DataType.SPECULAR), "completed")
+
+		self.shadow_resolution = shadow_resolution
 
 
 func _find_viewport(type: int) -> Viewport:
 	var viewport_name: String = VIEW_NAMES[type]
+
 	var container: ToonViewportContainer = scene_root.find_node(
 		viewport_name, true, false
 	)
@@ -62,11 +72,8 @@ func _build_data(type: int) -> Viewport:
 	viewport.world = World.new()
 	viewport.usage = Viewport.USAGE_3D_NO_EFFECTS
 	viewport.render_target_update_mode = Viewport.UPDATE_ALWAYS
-	if type == DataType.LIGHT:
-		viewport.shadow_atlas_size = 1024
 	view.add_child(viewport)
 
-	yield(get_tree(), "idle_frame")
 	scene_root.add_child(view)
 	scene_root.call_deferred("move_child", view, type + 1)
 	view.owner = scene_root
@@ -77,9 +84,15 @@ func _build_data(type: int) -> Viewport:
 
 func _set_shadow_resolution(value: int) -> void:
 	shadow_resolution = value
+
 	if not Engine.editor_hint:
 		return
 	if not is_inside_tree():
 		yield(self, "ready")
+
 	light_data.shadow_atlas_size = shadow_resolution
-	specular_data.shadow_atlas_size = 0 if specular_ignores_shadows else shadow_resolution
+	specular_data.shadow_atlas_size = (
+		0
+		if specular_ignores_shadows
+		else shadow_resolution
+	)

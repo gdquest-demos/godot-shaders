@@ -2,13 +2,12 @@ tool
 class_name ToonCamera
 extends Camera
 
-var original_transform: Transform
-
 
 func _ready() -> void:
 	toggle_remotes()
 
 
+# Sets the remote transform's activation on or off depending on if project is in Editor
 func toggle_remotes() -> void:
 	var is_game := not Engine.editor_hint
 
