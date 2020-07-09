@@ -48,12 +48,12 @@ void fragment() {
 	vec2 uv = projection_coords.xy / projection_coords.z;
 
 	vec2 distortion = calculate_distortion(uv, TIME);
-	
+		
 	vec2 adjusted_uv = uv * tile_factor * scale;
 	adjusted_uv.y *= aspect_ratio;
 	vec2 waves_uvs = adjusted_uv + distortion * distortion_amplitude + vec2(water_time_scale, 0.0) * TIME;
 	
-    float height =  texture(distortion_map, waves_uvs * 0.03).r * 0.7;
+    float height =  texture(distortion_map, waves_uvs * 0.03 + TIME * 0.006).r * 0.6;
     vec2 parallax = VIEW_DIRECTION.xy / VIEW_DIRECTION.z * (height * 1.0);
     waves_uvs -= parallax;
 
@@ -65,7 +65,7 @@ void fragment() {
 	vec4 reflection_color = texture(SCREEN_TEXTURE, reflection_uvs);
 	vec4 water_color = texture(diffuse_texture, waves_uvs) * water_tint;
 	float transition = texture(transition_gradient, vec2(1.0 - uv.y, 1.0)).r;
-	water_color.rgb = mix(water_color.rgb, water_color.rgb * shadow_color.rgb, 1.0 - height - 0.3);
+	water_color.rgb = mix(water_color.rgb, water_color.rgb * shadow_color.rgb, 1.0 - height - 0.4);
 	COLOR = mix(water_color, reflection_color, transition * reflection_intensity);
 //	COLOR = water_color;
 //	COLOR.rgb = vec3(height);
