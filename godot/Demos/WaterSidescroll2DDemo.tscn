@@ -17,20 +17,20 @@ gradient = SubResource( 1 )
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 1 )
-shader_param/water_tint = Color( 0.411765, 0.74902, 0.933333, 1 )
-shader_param/shadow_color = Color( 0.164706, 0.227451, 0.443137, 1 )
+shader_param/water_tint = Color( 0.223529, 0.458824, 0.733333, 1 )
+shader_param/shadow_color = Color( 0.0862745, 0.109804, 0.462745, 1 )
 shader_param/distortion_scale = Vector2( 0.251, 0.168 )
 shader_param/distortion_amplitude = 0.005
 shader_param/distortion_time_scale = 0.015
-shader_param/water_time_scale = 0.05
+shader_param/water_time_scale = 0.051
 shader_param/reflection_intensity = 0.832
 shader_param/scale = Vector2( 7.49668, 1.51649 )
-shader_param/zoom_y = 0.39685
+shader_param/zoom_y = 0.5
 shader_param/aspect_ratio = 1.0
-shader_param/tile_factor = 0.422
+shader_param/tile_factor = 0.632
 shader_param/transform = Basis( 1, 0, 0, 0.291, 1.822, 0.555, 0, 0, 1 )
 shader_param/shore_color = Color( 0.137255, 0.411765, 0.670588, 1 )
-shader_param/shore_size = 0.024
+shader_param/shore_size = 0.038
 shader_param/shore_smoothness = 0.019
 shader_param/shore_height_factor = 0.116
 shader_param/transition_gradient = SubResource( 2 )
