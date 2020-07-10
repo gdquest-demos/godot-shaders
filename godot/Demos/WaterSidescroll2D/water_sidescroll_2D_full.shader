@@ -53,7 +53,7 @@ void fragment() {
     vec2 parallax = VIEW_DIRECTION.xy / VIEW_DIRECTION.z * height * 0.5 + 0.2;
     waves_uvs -= parallax;
 
-	float wave_area = UV.y - (height * shore_height_factor);
+	float wave_area = UV.y - ((1.0 - height) * shore_height_factor);
 	float shoreline = smoothstep(0.0, wave_area, shore_size); 
 	
 	float upper_part = 1.0 - step(0.0, wave_area); 
