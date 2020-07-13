@@ -7,12 +7,12 @@ uniform vec4 water_tint :hint_color;
 uniform vec4 shadow_color :hint_color;
 
 uniform vec2 distortion_scale = vec2(0.5, 0.5);
-uniform float distortion_amplitude :hint_range(0.01, 1.0) = 0.1;
-uniform float distortion_time_scale :hint_range(0.05, 2.0) = 0.05;
+uniform float distortion_amplitude :hint_range(0.001, 0.05) = 0.1;
+uniform float distortion_time_scale :hint_range(0.01, 0.2) = 0.05;
 
 uniform float water_time_scale :hint_range(0.05, 2.0) = 0.1;
 
-uniform float reflection_intensity = 0.5;
+uniform float reflection_intensity :hint_range(0.0, 1.0) = 0.5;
 
 // Updated from GDScript
 uniform vec2 scale;
@@ -21,8 +21,10 @@ uniform float aspect_ratio;
 
 uniform float tile_factor :hint_range(0.1, 10.0) = 1.4;
 
-
 uniform mat3 transform = mat3(vec3(1,0,0), vec3(0,1,0), vec3(0,0,1));
+
+uniform float parallax_factor :hint_range(0.0, 1.0) = 0.2;
+
 
 const vec3 VIEW_DIRECTION = vec3(0.0, -0.707, 0.707);
 
@@ -50,7 +52,7 @@ void fragment() {
 	vec2 waves_uvs = adjusted_uv + distortion * distortion_amplitude + vec2(water_time_scale, 0.0) * TIME;
 	
     float height =  texture(distortion_map, waves_uvs * 0.05 + TIME * 0.004).r;
-    vec2 parallax = VIEW_DIRECTION.xy / VIEW_DIRECTION.z * height * 0.5 + 0.2;
+    vec2 parallax = VIEW_DIRECTION.xy / VIEW_DIRECTION.z * height * parallax_factor + 0.2;
     waves_uvs -= parallax;
 
 	float wave_area = UV.y - ((1.0 - height) * shore_height_factor);
@@ -67,7 +69,7 @@ void fragment() {
 	vec4 reflection_color = texture(SCREEN_TEXTURE, reflection_uvs - parallax * vec2(0.0, uv_size_ratio_v));
 	vec4 water_color = texture(TEXTURE, waves_uvs) * water_tint;
 	float transition = texture(transition_gradient, vec2(1.0 - uv.y + shore_height_factor, 1.0)).r;
-	water_color.rgb = mix(water_color.rgb, water_color.rgb * shadow_color.rgb, 1.0 - height - 0.5);
+	water_color.rgb = mix(water_color.rgb, water_color.rgb * shadow_color.rgb, parallax_factor - height);
 	COLOR = mix(water_color, reflection_color, transition * reflection_intensity);
 	COLOR.rgb += shoreline * shore_color.rgb;
 	COLOR.a *= wave_area;

@@ -7,20 +7,20 @@ uniform sampler2D distortion_map : hint_black;
 uniform vec4 water_tint :hint_color;
 
 uniform vec2 distortion_scale = vec2(0.5, 0.5);
-uniform float distortion_amplitude = 0.1;
-uniform float distortion_time_scale = 0.05;
+uniform float distortion_amplitude :hint_range(0.005, 0.4) = 0.1;
+uniform float distortion_time_scale :hint_range(0.01, 0.15) = 0.05;
 
-uniform float water_time_scale = 0.1;
-uniform float scale_y_factor = 2.0;
+uniform float water_time_scale :hint_range(0.01, 2.0) = 0.1;
+uniform float scale_y_factor :hint_range(0.1, 4.0) = 2.0;
+uniform float tile_factor :hint_range(0.1, 3.0) = 1.4;
 
-uniform float reflection_intensity = 0.5;
+uniform float reflection_intensity :hint_range(0.01, 1.0) = 0.5;
 
 // Updated from GDScript
 uniform vec2 scale;
 uniform float zoom_y;
 uniform float aspect_ratio;
 
-uniform float tile_factor = 1.4;
 
 vec2 calculate_distortion(vec2 uv, float time) {
 	vec2 base_uv_offset = uv * distortion_scale + time * distortion_time_scale;
