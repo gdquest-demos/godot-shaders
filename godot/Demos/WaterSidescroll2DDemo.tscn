@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Demos/WaterSidescroll2D/water_sidescroll_2D_full.shader" type="Shader" id=1]
 [ext_resource path="res://Demos/WaterSidescroll2D/WaterSidescroll2D.gd" type="Script" id=2]
+[ext_resource path="res://Demos/WaterSidescroll2D/water_sidescroll_2D_simple.shader" type="Shader" id=3]
 [ext_resource path="res://Demos/Water2D/water_diffuse.png" type="Texture" id=4]
 [ext_resource path="res://Demos/Water2D/water_uv_offset.png" type="Texture" id=5]
 [ext_resource path="res://Common/DemoInterface.tscn" type="PackedScene" id=6]
@@ -25,7 +26,7 @@ shader_param/distortion_time_scale = 0.015
 shader_param/water_time_scale = 0.049
 shader_param/reflection_intensity = 0.908
 shader_param/scale = Vector2( 7.49668, 1.51649 )
-shader_param/zoom_y = 0.529732
+shader_param/zoom_y = 0.33371
 shader_param/aspect_ratio = 1.0
 shader_param/tile_factor = 0.382
 shader_param/transform = Basis( 1, 0, 0, 0.291, 1.822, 0.555, 0, 0, 1 )
@@ -34,6 +35,22 @@ shader_param/shore_color = Color( 0.137255, 0.411765, 0.670588, 1 )
 shader_param/shore_size = 0.038
 shader_param/shore_smoothness = 0.017
 shader_param/shore_height_factor = 0.127
+shader_param/transition_gradient = SubResource( 2 )
+shader_param/distortion_map = ExtResource( 5 )
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 3 )
+shader_param/water_tint = Color( 0.223529, 0.458824, 0.733333, 1 )
+shader_param/distortion_scale = Vector2( 0.385, 0.312 )
+shader_param/distortion_amplitude = 0.018
+shader_param/distortion_time_scale = 0.017
+shader_param/water_time_scale = 0.05
+shader_param/scale_y_factor = 2.0
+shader_param/tile_factor = 0.321
+shader_param/reflection_intensity = 0.908
+shader_param/scale = Vector2( 7.49668, 1.51649 )
+shader_param/zoom_y = 0.33371
+shader_param/aspect_ratio = 1.0
 shader_param/transition_gradient = SubResource( 2 )
 shader_param/distortion_map = ExtResource( 5 )
 
@@ -69,6 +86,7 @@ scale = Vector2( 0.630556, 0.630556 )
 texture = ExtResource( 7 )
 
 [node name="Water2DSide" type="Sprite" parent="."]
+visible = false
 material = SubResource( 3 )
 position = Vector2( 961.506, 901.105 )
 scale = Vector2( 7.49668, 1.51649 )
@@ -76,8 +94,7 @@ texture = ExtResource( 4 )
 script = ExtResource( 2 )
 
 [node name="Water2DSideSimple" type="Sprite" parent="."]
-visible = false
-material = SubResource( 3 )
+material = SubResource( 4 )
 position = Vector2( 961.506, 901.105 )
 scale = Vector2( 7.49668, 1.51649 )
 texture = ExtResource( 4 )

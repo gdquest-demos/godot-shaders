@@ -1,6 +1,5 @@
 shader_type canvas_item;
 
-uniform sampler2D diffuse_texture :hint_black;
 uniform sampler2D transition_gradient :hint_black;
 uniform sampler2D distortion_map : hint_black;
 
@@ -39,7 +38,7 @@ void fragment() {
 	vec2 reflection_uvs = uv_reflected + uv_size_ratio * distortion * distortion_amplitude;
 	
 	vec4 reflection_color = texture(SCREEN_TEXTURE, reflection_uvs);
-	vec4 water_color = texture(diffuse_texture, waves_uvs) * water_tint;
+	vec4 water_color = texture(TEXTURE, waves_uvs) * water_tint;
 	float transition = texture(transition_gradient, vec2(1.0 - UV.y, 1.0)).r;
 	COLOR = mix(water_color, reflection_color, transition * reflection_intensity);
 }
