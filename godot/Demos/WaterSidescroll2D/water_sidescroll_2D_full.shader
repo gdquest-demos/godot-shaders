@@ -38,18 +38,18 @@ vec2 calculate_distortion(vec2 uv, float time) {
 
 void fragment() {
 	// Perspective projection
-	vec3 projection_coords = vec3(UV, 1.0) * transform;
-	vec2 uv = projection_coords.xy / projection_coords.z;
+	vec3 projection = vec3(UV, 1.0) * transform;
+	vec2 uv = projection.xy / projection.z;
 
 	vec2 distortion = calculate_distortion(uv, TIME) * distortion_amplitude;
 
-	vec2 waves_uvs = uv * tile_factor * scale;
-	waves_uvs.y *= aspect_ratio;
-	waves_uvs += distortion + vec2(water_time_scale, 0.0) * TIME;
+	vec2 uv_waves = uv * tile_factor * scale;
+	uv_waves.y *= aspect_ratio;
+	uv_waves += distortion + vec2(water_time_scale, 0.0) * TIME;
 	
-    float height =  texture(distortion_map, waves_uvs * 0.05 + TIME * 0.004).r;
-    vec2 parallax = VIEW_DIRECTION.xy / VIEW_DIRECTION.z * height * parallax_factor + 0.2;
-    waves_uvs -= parallax;
+    float height =  texture(distortion_map, uv_waves * 0.05 + TIME * 0.004).r;
+    vec2 parallax_offset = VIEW_DIRECTION.xy / VIEW_DIRECTION.z * height * parallax_factor + 0.2;
+    uv_waves -= parallax_offset;
 
 	// Calculating the top area
 	float wave_area = UV.y - ((1.0 - height) * shore_height_factor);
@@ -59,20 +59,20 @@ void fragment() {
 	wave_area -= upper_part;
 
 	float uv_size_ratio_v = SCREEN_PIXEL_SIZE.y / TEXTURE_PIXEL_SIZE.y;
-	vec2 reflection_uvs = vec2(SCREEN_UV.x, SCREEN_UV.y + (uv.y - shore_height_factor) * uv_size_ratio_v * 2.0 * scale.y * zoom_y);
-	reflection_uvs += distortion / tile_factor - parallax * vec2(0.0, uv_size_ratio_v);
+	vec2 uv_reflected = vec2(SCREEN_UV.x, SCREEN_UV.y + (uv.y - shore_height_factor) * uv_size_ratio_v * 2.0 * scale.y * zoom_y);
+	uv_reflected += distortion / tile_factor - parallax_offset * vec2(0.0, uv_size_ratio_v);
 	
 	// Sample colors 
-	vec4 reflection_color = texture(SCREEN_TEXTURE, reflection_uvs);
-	vec4 water_color = texture(TEXTURE, waves_uvs) * water_tint;
+	vec4 color_reflection = texture(SCREEN_TEXTURE, uv_reflected);
+	vec4 color_water = texture(TEXTURE, uv_waves) * water_tint;
 	float transition = texture(transition_gradient, vec2(1.0 - uv.y + shore_height_factor, 1.0)).r;
 
 	// Add shadow color
-	water_color.rgb = mix(water_color.rgb, water_color.rgb * shadow_color.rgb, parallax_factor - height);
+	color_water.rgb = mix(color_water.rgb, color_water.rgb * shadow_color.rgb, parallax_factor - height);
 	
-	COLOR = mix(water_color, reflection_color, transition * reflection_intensity);
+	COLOR = mix(color_water, color_reflection, transition * reflection_intensity);
 	COLOR.rgb += shoreline * shore_color.rgb;
 	COLOR.a *= wave_area;
 
-	NORMAL = texture(NORMAL_TEXTURE, waves_uvs).rgb * normalize(vec3(height));
+	NORMAL = texture(NORMAL_TEXTURE, uv_waves).rgb * normalize(vec3(height));
 }
