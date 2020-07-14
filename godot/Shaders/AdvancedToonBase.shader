@@ -21,6 +21,7 @@ const float AO_SHARP_MAX = 0.52;
 
 uniform sampler2D light_data : hint_black;
 uniform sampler2D specular_data : hint_black;
+uniform sampler2D rim_data : hint_black;
 uniform sampler2D metalness_texture : hint_black_albedo;
 
 uniform vec4 base_color : hint_color = vec4(1.0);
@@ -73,6 +74,9 @@ uniform float anisotropy_specular_contrast : hint_range(0, 12) = 5.0;
 uniform float anisotropy_specular_brightness : hint_range(0, 2) = 0.85;
 uniform float anisotropy_specular_softness : hint_range(0, 1) = 0.5;
 uniform float anisotropy_in_shadow_strength : hint_range(0, 1) = 0.1;
+
+uniform float rim_light_softness : hint_range(0, 1) = 0.5;
+uniform vec4 rim_light_color : hint_color = vec4(0, 0, 0, 1);
 
 varying vec3 down_camera_angle;
 
@@ -173,6 +177,14 @@ void fragment()
 
 	// Additive mix kick light
 	float kick_light_value = texture(kick_light_ramp, vec2(diffuse.b, 0)).r;
+	
+	float rim_value = texture(rim_data, SCREEN_UV).r;
+	float hard_rim = smoothstep(0.4, 0.4005, rim_value);
+	float soft_rim = smoothstep(0.2, 0.7, rim_value);
+	
+	vec3 out_rim_light = vec3(mix(hard_rim, soft_rim, rim_light_softness)) * rim_light_color.rgb;
+	
+	out_color += out_rim_light * kick_light_value;
 	out_color += kick_light_value * kick_light_color.rgb;
 
 	// Outline
