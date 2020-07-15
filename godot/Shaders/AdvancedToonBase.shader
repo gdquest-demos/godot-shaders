@@ -6,8 +6,7 @@ const float ANISOTROPY_HOTSPOT_MAX = 0.637;
 const float ANISOTROPY_BAND_MIN = 0.42;
 const float ANISOTROPY_BAND_MIDDLE = 0.5;
 const float ANISOTROPY_BAND_MAX = 0.58;
-const float ANISOTROPY_SHARPNESS_MIN = 0.350;
-const float ANISOTROPY_SHARPNESS_MAX = 0.351;
+const float ANISOTROPY_SHARPNESS= 0.350;
 const float ANISOTROPY_SOFTNESS_MIN = 0.06;
 const float ANISOTROPY_SOFTNESS_MAX = 0.364;
 const float OUTLINE_MIN = 0.47;
@@ -18,6 +17,9 @@ const float SPECULAR_HARD_MIN = 0.167;
 const float SPECULAR_HARD_MAX = 0.179;
 const float AO_SHARP_MIN = 0.48;
 const float AO_SHARP_MAX = 0.52;
+const float RIM_SHARPNESS = 0.4;
+const float RIM_SOFTNESS_MIN = 0.2;
+const float RIM_SOFTNESS_MAX = 0.7;
 
 uniform sampler2D light_data : hint_black;
 uniform sampler2D specular_data : hint_black;
@@ -165,7 +167,7 @@ void fragment()
 			* max(anisotropy_specular_hotspot, anisotropy_in_shadow_strength);
 
 		float sharp_anisotropy_value
-			= smoothstep(ANISOTROPY_SHARPNESS_MIN, ANISOTROPY_SHARPNESS_MAX, anisotropy_sample);
+			= step(ANISOTROPY_SHARPNESS, anisotropy_sample);
 		float soft_anisotropy_value
 			= smoothstep(ANISOTROPY_SOFTNESS_MIN, ANISOTROPY_SOFTNESS_MAX, anisotropy_sample);
 
@@ -178,13 +180,16 @@ void fragment()
 	// Additive mix kick light
 	float kick_light_value = texture(kick_light_ramp, vec2(diffuse.b, 0)).r;
 	
-	float rim_value = texture(rim_data, SCREEN_UV).r;
-	float hard_rim = smoothstep(0.4, 0.4005, rim_value);
-	float soft_rim = smoothstep(0.2, 0.7, rim_value);
+	if(length(rim_light_color.rgb) > 0.0) {
+		float rim_value = texture(rim_data, SCREEN_UV).r;
+		float hard_rim = step(RIM_SHARPNESS, rim_value);
+		float soft_rim = smoothstep(RIM_SOFTNESS_MIN, RIM_SOFTNESS_MAX, rim_value);
+		
+		vec3 out_rim_light = vec3(mix(hard_rim, soft_rim, rim_light_softness)) * rim_light_color.rgb;
+		
+		out_color += out_rim_light * kick_light_value;
+	}
 	
-	vec3 out_rim_light = vec3(mix(hard_rim, soft_rim, rim_light_softness)) * rim_light_color.rgb;
-	
-	out_color += out_rim_light * kick_light_value;
 	out_color += kick_light_value * kick_light_color.rgb;
 
 	// Outline
