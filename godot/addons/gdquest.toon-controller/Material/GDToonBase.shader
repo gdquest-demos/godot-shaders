@@ -120,8 +120,7 @@ void fragment()
 		vec3 metalness_value = texture(metalness_texture, metalness_uv).rgb;
 
 		metalness_value = clamp(pow(metalness_value, vec3(metalness_contrast_factor)), 0, 1);
-		metalness_value = max(metalness_value, dark_metalness_color.rgb);
-		metalness_value = min(metalness_value, light_metalness_color.rgb);
+		metalness_value = clamp(metalness_value, dark_metalness_color.rgb, light_metalness_color.rgb);
 
 		out_color = mix(out_color, metalness_value, metalness);
 	}

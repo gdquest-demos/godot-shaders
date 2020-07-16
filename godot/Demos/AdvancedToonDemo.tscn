@@ -48,8 +48,8 @@ rim_tint = 0.9
 
 [sub_resource type="ShaderMaterial" id=7]
 shader = ExtResource( 21 )
-shader_param/normal_offset_x = -0.136
-shader_param/normal_offset_y = 0.39
+shader_param/normal_offset_x = -0.149
+shader_param/normal_offset_y = 0.34
 
 [sub_resource type="World" id=8]
 
@@ -257,7 +257,7 @@ shader_param/ambient_occlusion_color = Color( 0, 0, 0, 1 )
 shader_param/dark_metalness_color = Color( 0.027451, 0.188235, 0.027451, 1 )
 shader_param/light_metalness_color = Color( 0.541176, 0.894118, 0.741176, 1 )
 shader_param/metalness_contrast_factor = 1.34
-shader_param/metalness = 0.263
+shader_param/metalness = 0.388
 shader_param/anisotropy_specular_color = Color( 0, 1, 0.929412, 1 )
 shader_param/anisotropy_specular_width = 10.0
 shader_param/anisotropy_specular_strength = 0.0
@@ -305,7 +305,7 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="ToonLightDataView"]
-size = Vector2( 2815, 1219 )
+size = Vector2( 2815, 915 )
 world = SubResource( 4 )
 transparent_bg = true
 handle_input_locally = false
@@ -322,7 +322,7 @@ mesh = SubResource( 5 )
 material/0 = SubResource( 2 )
 
 [node name="ToonCamera" type="Camera" parent="ToonLightDataView/Viewport"]
-transform = Transform( 0.961794, -0.0770887, 0.262697, 0, 0.959538, 0.281578, -0.273774, -0.27082, 0.922878, 2.58163, 3.33637, 9.45853 )
+transform = Transform( 0.972405, -0.0887322, 0.215768, 0, 0.924849, 0.380335, -0.2333, -0.369839, 0.899328, 1.80863, 3.77902, 7.94809 )
 current = true
 script = ExtResource( 4 )
 
@@ -332,7 +332,7 @@ light_color = Color( 0, 1, 0, 1 )
 light_specular = 0.0
 
 [node name="KickLight" type="DirectionalLight" parent="ToonLightDataView/Viewport"]
-transform = Transform( -0.720825, -0.0821129, 0.688236, -0.137289, 0.990199, -0.0256502, -0.679384, -0.112977, -0.725033, 0, 0.190201, -3.54709 )
+transform = Transform( -0.720825, -0.0821126, 0.688236, -0.137289, 0.990199, -0.0256505, -0.679384, -0.112977, -0.725033, 0, 0.190201, -3.54709 )
 light_color = Color( 0, 0, 1, 1 )
 light_specular = 0.0
 
@@ -351,7 +351,7 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="ToonSpecularDataView"]
-size = Vector2( 2815, 1219 )
+size = Vector2( 2815, 915 )
 world = SubResource( 6 )
 transparent_bg = true
 handle_input_locally = false
@@ -368,7 +368,7 @@ mesh = SubResource( 5 )
 material/0 = SubResource( 7 )
 
 [node name="ToonCamera" type="Camera" parent="ToonSpecularDataView/Viewport"]
-transform = Transform( 0.961794, -0.0770887, 0.262697, 0, 0.959538, 0.281578, -0.273774, -0.27082, 0.922878, 2.58163, 3.33637, 9.45853 )
+transform = Transform( 0.972405, -0.0887322, 0.215768, 0, 0.924849, 0.380335, -0.2333, -0.369839, 0.899328, 1.80863, 3.77902, 7.94809 )
 current = true
 script = ExtResource( 4 )
 
@@ -379,7 +379,7 @@ light_energy = 0.0
 light_specular = 1.0
 
 [node name="KickLight" type="DirectionalLight" parent="ToonSpecularDataView/Viewport"]
-transform = Transform( -0.720825, -0.0821129, 0.688236, -0.137289, 0.990199, -0.0256502, -0.679384, -0.112977, -0.725033, 0, 0.190201, -3.54709 )
+transform = Transform( -0.720825, -0.0821126, 0.688236, -0.137289, 0.990199, -0.0256505, -0.679384, -0.112977, -0.725033, 0, 0.190201, -3.54709 )
 visible = false
 light_energy = 0.0
 light_specular = 1.0
@@ -395,7 +395,7 @@ anchor_bottom = 1.0
 script = ExtResource( 3 )
 
 [node name="Viewport" type="Viewport" parent="ToonRimData"]
-size = Vector2( 2815, 1219 )
+size = Vector2( 2815, 915 )
 world = SubResource( 8 )
 transparent_bg = true
 handle_input_locally = false
@@ -412,7 +412,7 @@ mesh = SubResource( 5 )
 material/0 = SubResource( 9 )
 
 [node name="ToonCamera" type="Camera" parent="ToonRimData/Viewport"]
-transform = Transform( 0.961794, -0.0770887, 0.262697, 0, 0.959538, 0.281578, -0.273774, -0.27082, 0.922878, 2.58163, 3.33637, 9.45853 )
+transform = Transform( 0.972405, -0.0887322, 0.215768, 0, 0.924849, 0.380335, -0.2333, -0.369839, 0.899328, 1.80863, 3.77902, 7.94809 )
 current = true
 script = ExtResource( 4 )
 
@@ -428,7 +428,7 @@ visible = false
 light_energy = 0.0
 
 [node name="KickLight" type="DirectionalLight" parent="ToonRimData/Viewport"]
-transform = Transform( -0.720825, -0.0821129, 0.688236, -0.137289, 0.990199, -0.0256502, -0.679384, -0.112977, -0.725033, 0, 0.190201, -3.54709 )
+transform = Transform( -0.720825, -0.0821126, 0.688236, -0.137289, 0.990199, -0.0256505, -0.679384, -0.112977, -0.725033, 0, 0.190201, -3.54709 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 10 )

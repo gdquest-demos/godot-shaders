@@ -13,5 +13,4 @@ void fragment() {
 	ALBEDO = vec3(0);
 	ROUGHNESS = 0.4;
 	SPECULAR = 0.5;
-	//RIM = 1.0;
 }
