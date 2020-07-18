@@ -1,4 +1,5 @@
 shader_type spatial;
+render_mode unshaded;
 
 uniform sampler2D matcap_texture : hint_black_albedo;
 uniform vec4 dark_tint : hint_color = vec4(0, 0, 0, 1);

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/ratModel/rat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Shaders/matcap.shader" type="Shader" id=2]
@@ -8,7 +8,10 @@
 [ext_resource path="res://assets/Matcaps/flat_sketch_matcap.png" type="Texture" id=6]
 [ext_resource path="res://assets/Matcaps/Chrome_matcap.png" type="Texture" id=7]
 [ext_resource path="res://assets/Matcaps/redjade_matcap.png" type="Texture" id=8]
-[ext_resource path="res://assets/Matcaps/thuglee-03.jpg" type="Texture" id=9]
+[ext_resource path="res://assets/Matcaps/glowy_matcap.jpeg" type="Texture" id=9]
+[ext_resource path="res://Common/Demo3DEnvironment.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/Matcaps/black_glass_matcap.jpeg" type="Texture" id=11]
+[ext_resource path="res://assets/Matcaps/plastic_matcap.jpg" type="Texture" id=12]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
@@ -38,6 +41,13 @@ shader_param/light_tint = Color( 1, 1, 1, 1 )
 shader_param/contrast_factor = 1.0
 shader_param/matcap_texture = ExtResource( 8 )
 
+[sub_resource type="ShaderMaterial" id=9]
+shader = ExtResource( 2 )
+shader_param/dark_tint = Color( 0, 0, 0, 1 )
+shader_param/light_tint = Color( 1, 1, 1, 1 )
+shader_param/contrast_factor = 1.0
+shader_param/matcap_texture = ExtResource( 12 )
+
 [sub_resource type="ShaderMaterial" id=5]
 shader = ExtResource( 2 )
 shader_param/dark_tint = Color( 0, 0, 0, 1 )
@@ -59,122 +69,165 @@ shader_param/light_tint = Color( 1, 1, 1, 1 )
 shader_param/contrast_factor = 1.0
 shader_param/matcap_texture = ExtResource( 9 )
 
+[sub_resource type="ShaderMaterial" id=8]
+shader = ExtResource( 2 )
+shader_param/dark_tint = Color( 0, 0, 0, 1 )
+shader_param/light_tint = Color( 1, 1, 1, 1 )
+shader_param/contrast_factor = 1.0
+shader_param/matcap_texture = ExtResource( 11 )
+
 [node name="Spatial" type="Spatial"]
 
-[node name="rat" parent="." instance=ExtResource( 1 )]
+[node name="SkinRat" parent="." instance=ExtResource( 1 )]
 
-[node name="body1" parent="rat" index="0"]
+[node name="body1" parent="SkinRat" index="0"]
 material/0 = SubResource( 1 )
 
-[node name="eyes1" parent="rat" index="1"]
+[node name="eyes1" parent="SkinRat" index="1"]
 material/0 = SubResource( 1 )
 
-[node name="head1" parent="rat" index="2"]
+[node name="head1" parent="SkinRat" index="2"]
 material/0 = SubResource( 1 )
 
-[node name="teeth1" parent="rat" index="3"]
+[node name="teeth1" parent="SkinRat" index="3"]
 material/0 = SubResource( 1 )
 
-[node name="rat5" parent="." instance=ExtResource( 1 )]
+[node name="RubberRat" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, -2, 0, -0.5 )
 
-[node name="body1" parent="rat5" index="0"]
+[node name="body1" parent="RubberRat" index="0"]
 material/0 = SubResource( 2 )
 
-[node name="eyes1" parent="rat5" index="1"]
+[node name="eyes1" parent="RubberRat" index="1"]
 material/0 = SubResource( 2 )
 
-[node name="head1" parent="rat5" index="2"]
+[node name="head1" parent="RubberRat" index="2"]
 material/0 = SubResource( 2 )
 
-[node name="teeth1" parent="rat5" index="3"]
+[node name="teeth1" parent="RubberRat" index="3"]
 material/0 = SubResource( 2 )
 
-[node name="rat2" parent="." instance=ExtResource( 1 )]
+[node name="CopperRat" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -4, 0, -1 )
 
-[node name="body1" parent="rat2" index="0"]
+[node name="body1" parent="CopperRat" index="0"]
 material/0 = SubResource( 3 )
 
-[node name="eyes1" parent="rat2" index="1"]
+[node name="eyes1" parent="CopperRat" index="1"]
 material/0 = SubResource( 3 )
 
-[node name="head1" parent="rat2" index="2"]
+[node name="head1" parent="CopperRat" index="2"]
 material/0 = SubResource( 3 )
 
-[node name="teeth1" parent="rat2" index="3"]
+[node name="teeth1" parent="CopperRat" index="3"]
 material/0 = SubResource( 3 )
 
-[node name="rat7" parent="." instance=ExtResource( 1 )]
+[node name="RedJadeRat" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -6, 0, -1.5 )
 
-[node name="body1" parent="rat7" index="0"]
+[node name="body1" parent="RedJadeRat" index="0"]
 material/0 = SubResource( 4 )
 
-[node name="eyes1" parent="rat7" index="1"]
+[node name="eyes1" parent="RedJadeRat" index="1"]
 material/0 = SubResource( 4 )
 
-[node name="head1" parent="rat7" index="2"]
+[node name="head1" parent="RedJadeRat" index="2"]
 material/0 = SubResource( 4 )
 
-[node name="teeth1" parent="rat7" index="3"]
+[node name="teeth1" parent="RedJadeRat" index="3"]
 material/0 = SubResource( 4 )
 
-[node name="rat3" parent="." instance=ExtResource( 1 )]
+[node name="PlasticRat" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.766044, 0, -0.642787, 0, 1, 0, 0.642787, 0, 0.766044, -8, 0, -2 )
+
+[node name="body1" parent="PlasticRat" index="0"]
+material/0 = SubResource( 9 )
+
+[node name="eyes1" parent="PlasticRat" index="1"]
+material/0 = SubResource( 9 )
+
+[node name="head1" parent="PlasticRat" index="2"]
+material/0 = SubResource( 9 )
+
+[node name="teeth1" parent="PlasticRat" index="3"]
+material/0 = SubResource( 9 )
+
+[node name="SketchRat" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, 2, 0, -0.5 )
 
-[node name="body1" parent="rat3" index="0"]
+[node name="body1" parent="SketchRat" index="0"]
 material/0 = SubResource( 5 )
 
-[node name="eyes1" parent="rat3" index="1"]
+[node name="eyes1" parent="SketchRat" index="1"]
 material/0 = SubResource( 5 )
 
-[node name="head1" parent="rat3" index="2"]
+[node name="head1" parent="SketchRat" index="2"]
 material/0 = SubResource( 5 )
 
-[node name="teeth1" parent="rat3" index="3"]
+[node name="teeth1" parent="SketchRat" index="3"]
 material/0 = SubResource( 5 )
 
-[node name="rat4" parent="." instance=ExtResource( 1 )]
+[node name="ChromeRat" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, 4, 0, -1 )
 
-[node name="body1" parent="rat4" index="0"]
+[node name="body1" parent="ChromeRat" index="0"]
 material/0 = SubResource( 6 )
 
-[node name="eyes1" parent="rat4" index="1"]
+[node name="eyes1" parent="ChromeRat" index="1"]
 material/0 = SubResource( 6 )
 
-[node name="head1" parent="rat4" index="2"]
+[node name="head1" parent="ChromeRat" index="2"]
 material/0 = SubResource( 6 )
 
-[node name="teeth1" parent="rat4" index="3"]
+[node name="teeth1" parent="ChromeRat" index="3"]
 material/0 = SubResource( 6 )
 
-[node name="rat6" parent="." instance=ExtResource( 1 )]
+[node name="NeonRat" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 6, 0, -1.5 )
 
-[node name="body1" parent="rat6" index="0"]
+[node name="body1" parent="NeonRat" index="0"]
 material/0 = SubResource( 7 )
 
-[node name="eyes1" parent="rat6" index="1"]
+[node name="eyes1" parent="NeonRat" index="1"]
 material/0 = SubResource( 7 )
 
-[node name="head1" parent="rat6" index="2"]
+[node name="head1" parent="NeonRat" index="2"]
 material/0 = SubResource( 7 )
 
-[node name="teeth1" parent="rat6" index="3"]
+[node name="teeth1" parent="NeonRat" index="3"]
 material/0 = SubResource( 7 )
 
-[editable path="rat"]
+[node name="BlackGlassRat" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.766044, 0, 0.642787, 0, 1, 0, -0.642787, 0, 0.766044, 8, 0, -2 )
 
-[editable path="rat5"]
+[node name="body1" parent="BlackGlassRat" index="0"]
+material/0 = SubResource( 8 )
 
-[editable path="rat2"]
+[node name="eyes1" parent="BlackGlassRat" index="1"]
+material/0 = SubResource( 8 )
 
-[editable path="rat7"]
+[node name="head1" parent="BlackGlassRat" index="2"]
+material/0 = SubResource( 8 )
 
-[editable path="rat3"]
+[node name="teeth1" parent="BlackGlassRat" index="3"]
+material/0 = SubResource( 8 )
 
-[editable path="rat4"]
+[node name="Demo3DEnvironment" parent="." instance=ExtResource( 10 )]
 
-[editable path="rat6"]
+[editable path="SkinRat"]
+
+[editable path="RubberRat"]
+
+[editable path="CopperRat"]
+
+[editable path="RedJadeRat"]
+
+[editable path="PlasticRat"]
+
+[editable path="SketchRat"]
+
+[editable path="ChromeRat"]
+
+[editable path="NeonRat"]
+
+[editable path="BlackGlassRat"]
