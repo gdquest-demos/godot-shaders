@@ -1,7 +1,10 @@
 extends RigidBody
 
 
+var thrown := false
+
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action("ui_accept"):
+	if not thrown and event.is_action_pressed("ui_accept"):
 		gravity_scale = 1
-		apply_central_impulse(Vector3(0, 2, -3))
+		apply_central_impulse(Vector3(0, 4, -6))
+		thrown = true
