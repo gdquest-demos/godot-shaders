@@ -39,6 +39,7 @@ void fragment() {
 	
 	COLOR = vec4(vec3(1.0), mask);
 }"
+custom_defines = ""
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = SubResource( 2 )
@@ -69,7 +70,7 @@ __meta__ = {
 shockwave_duration = 0.75
 
 [node name="Viewport" type="Viewport" parent="DemoView"]
-size = Vector2( 1280, 720 )
+size = Vector2( 1920, 1080 )
 handle_input_locally = false
 msaa = 2
 render_target_update_mode = 3

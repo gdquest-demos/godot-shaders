@@ -49,6 +49,7 @@ void fragment() {
 	float scanline = smoothstep(0.5 - scanline_width, 0.5, UV.y + uv) * (1.0 - smoothstep(0.5, 0.5 + scanline_width, UV.y + uv)) * pattern.r;
 	
 	//Apply final color
+	ALBEDO = vec3(0);
 	EMISSION = color.rgb + vec3((fresnel + depth + scanline) * 0.25);
 	ALPHA = smoothstep(0.0, 1.0, fresnel + (fill_amount / 2.0) + scanline * 0.35);
 }

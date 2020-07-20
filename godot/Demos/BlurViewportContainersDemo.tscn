@@ -23,6 +23,7 @@ void fragment() {
 	
 	COLOR = vec4(out_color.rgb, min(1.0, out_color.r + out_color.g + out_color.b));
 }"
+custom_defines = ""
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = SubResource( 3 )
@@ -52,7 +53,7 @@ direction_provider_path = NodePath("../../../BlurViewportContainersDemo/Presenta
 blur_scale = Vector2( 1, -1 )
 
 [node name="Viewport" type="Viewport" parent="Presentation/BlurView2"]
-size = Vector2( 1280, 720 )
+size = Vector2( 1920, 1080 )
 handle_input_locally = false
 usage = 0
 render_target_update_mode = 3
@@ -67,7 +68,7 @@ direction_provider_path = NodePath("../../../../../BlurViewportContainersDemo/Pr
 blur_scale = Vector2( 4, -4 )
 
 [node name="Viewport" type="Viewport" parent="Presentation/BlurView2/Viewport/BlurView"]
-size = Vector2( 1280, 720 )
+size = Vector2( 1920, 1080 )
 handle_input_locally = false
 usage = 0
 render_target_update_mode = 3
@@ -82,7 +83,7 @@ anchor_bottom = 1.0
 stretch = true
 
 [node name="Viewport" type="Viewport" parent="Presentation/ShipView"]
-size = Vector2( 1280, 720 )
+size = Vector2( 1920, 1080 )
 transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 3

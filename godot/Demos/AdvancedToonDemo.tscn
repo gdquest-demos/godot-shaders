@@ -31,7 +31,7 @@ roughness = 0.4
 
 [sub_resource type="SpatialMaterial" id=2]
 flags_disable_ambient_light = true
-roughness = 0.2
+params_specular_mode = 4
 
 [sub_resource type="World" id=3]
 
@@ -184,32 +184,32 @@ shader_param/kick_light_ramp = SubResource( 14 )
 shader_param/shadow_paint = ExtResource( 20 )
 shader_param/ambient_occlusion = ExtResource( 19 )
 
-[sub_resource type="ShaderMaterial" id=23]
+[sub_resource type="ShaderMaterial" id=22]
 shader = ExtResource( 6 )
 shader_param/thickness = 0.02
 shader_param/outline_color = Color( 0.0470588, 0.14902, 0.345098, 1 )
 
-[sub_resource type="Gradient" id=24]
+[sub_resource type="Gradient" id=23]
 offsets = PoolRealArray( 0.291667, 0.690476 )
 
-[sub_resource type="GradientTexture" id=25]
-gradient = SubResource( 24 )
+[sub_resource type="GradientTexture" id=24]
+gradient = SubResource( 23 )
 
-[sub_resource type="Gradient" id=26]
+[sub_resource type="Gradient" id=25]
 offsets = PoolRealArray( 0.214286, 0.291667 )
 
-[sub_resource type="GradientTexture" id=27]
-gradient = SubResource( 26 )
+[sub_resource type="GradientTexture" id=26]
+gradient = SubResource( 25 )
 
-[sub_resource type="ViewportTexture" id=28]
+[sub_resource type="ViewportTexture" id=27]
 viewport_path = NodePath("ToonLightDataView/Viewport")
 
-[sub_resource type="ViewportTexture" id=29]
+[sub_resource type="ViewportTexture" id=28]
 viewport_path = NodePath("ToonSpecularDataView/Viewport")
 
-[sub_resource type="ShaderMaterial" id=30]
+[sub_resource type="ShaderMaterial" id=29]
 resource_local_to_scene = true
-next_pass = SubResource( 23 )
+next_pass = SubResource( 22 )
 shader = ExtResource( 7 )
 shader_param/base_color = Color( 0.454902, 0.627451, 0.823529, 1 )
 shader_param/paint_color1 = Color( 1, 0.960784, 0, 1 )
@@ -244,21 +244,21 @@ shader_param/rim_light_color = Color( 0.815686, 0.952941, 0.937255, 1 )
 shader_param/rim_fresnel_power = 3.0
 shader_param/rim_normal_offset_x = 0.0
 shader_param/rim_normal_offset_y = 0.0
-shader_param/light_data = SubResource( 28 )
-shader_param/specular_data = SubResource( 29 )
+shader_param/light_data = SubResource( 27 )
+shader_param/specular_data = SubResource( 28 )
 shader_param/metalness_texture = ExtResource( 12 )
 shader_param/paint_mask1 = ExtResource( 11 )
 shader_param/key_light_ramp = ExtResource( 17 )
-shader_param/fill_light_ramp = SubResource( 25 )
-shader_param/kick_light_ramp = SubResource( 27 )
+shader_param/fill_light_ramp = SubResource( 24 )
+shader_param/kick_light_ramp = SubResource( 26 )
 shader_param/high_frequency_anisotropy_noise = ExtResource( 9 )
 shader_param/low_frequency_anisotropy_noise = ExtResource( 10 )
 shader_param/spottiness_anisotropy_noise = ExtResource( 8 )
 
-[sub_resource type="PlaneMesh" id=32]
+[sub_resource type="PlaneMesh" id=30]
 size = Vector2( 100, 100 )
 
-[sub_resource type="SpatialMaterial" id=33]
+[sub_resource type="SpatialMaterial" id=31]
 albedo_color = Color( 0.490196, 0.490196, 0.490196, 1 )
 
 [node name="AdvancedToonDemo" type="Spatial"]
@@ -279,7 +279,7 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="ToonLightDataView"]
-size = Vector2( 2815, 1005 )
+size = Vector2( 2815, 1219 )
 world = SubResource( 3 )
 transparent_bg = true
 handle_input_locally = false
@@ -296,7 +296,7 @@ mesh = SubResource( 4 )
 material/0 = SubResource( 2 )
 
 [node name="ToonCamera" type="Camera" parent="ToonLightDataView/Viewport"]
-transform = Transform( 0.969069, -0.0460511, 0.242456, 0, 0.982436, 0.1866, -0.246791, -0.180828, 0.952048, 0.624444, 4.70136, 9.57022 )
+transform = Transform( 0.949491, -0.123387, 0.288516, 0, 0.919448, 0.393211, -0.313793, -0.37335, 0.873008, 0.666231, 5.98499, 7.83401 )
 current = true
 script = ExtResource( 4 )
 
@@ -306,7 +306,7 @@ light_color = Color( 0, 1, 0, 1 )
 light_specular = 0.0
 
 [node name="KickLight" type="DirectionalLight" parent="ToonLightDataView/Viewport"]
-transform = Transform( -0.864127, -0.107071, 0.491753, -0.137289, 0.990199, -0.0256505, -0.484187, -0.0896776, -0.870357, 0, 0.190201, -3.54709 )
+transform = Transform( -0.864127, -0.107071, 0.491753, -0.137289, 0.990199, -0.0256504, -0.484187, -0.0896775, -0.870357, 0, 0.190201, -3.54709 )
 light_color = Color( 0, 0, 1, 1 )
 light_specular = 0.0
 
@@ -325,7 +325,7 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="ToonSpecularDataView"]
-size = Vector2( 2815, 1005 )
+size = Vector2( 2815, 1219 )
 world = SubResource( 5 )
 transparent_bg = true
 handle_input_locally = false
@@ -342,7 +342,7 @@ mesh = SubResource( 4 )
 material/0 = SubResource( 6 )
 
 [node name="ToonCamera" type="Camera" parent="ToonSpecularDataView/Viewport"]
-transform = Transform( 0.969069, -0.0460511, 0.242456, 0, 0.982436, 0.1866, -0.246791, -0.180828, 0.952048, 0.624444, 4.70136, 9.57022 )
+transform = Transform( 0.949491, -0.123387, 0.288516, 0, 0.919448, 0.393211, -0.313793, -0.37335, 0.873008, 0.666231, 5.98499, 7.83401 )
 current = true
 script = ExtResource( 4 )
 
@@ -353,7 +353,7 @@ light_energy = 0.0
 light_specular = 1.0
 
 [node name="KickLight" type="DirectionalLight" parent="ToonSpecularDataView/Viewport"]
-transform = Transform( -0.864127, -0.107071, 0.491753, -0.137289, 0.990199, -0.0256505, -0.484187, -0.0896776, -0.870357, 0, 0.190201, -3.54709 )
+transform = Transform( -0.864127, -0.107071, 0.491753, -0.137289, 0.990199, -0.0256504, -0.484187, -0.0896775, -0.870357, 0, 0.190201, -3.54709 )
 visible = false
 light_energy = 0.0
 light_specular = 1.0
@@ -392,7 +392,7 @@ script = ExtResource( 5 )
 [node name="Sphere" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44328, 3.11, 1.45094 )
 mesh = SubResource( 4 )
-material/0 = SubResource( 30 )
+material/0 = SubResource( 29 )
 
 [node name="LightRemote" type="RemoteTransform" parent="Sphere"]
 remote_path = NodePath("../../ToonLightDataView/Viewport/Sphere")
@@ -425,8 +425,8 @@ update_scale = false
 script = ExtResource( 5 )
 
 [node name="Floor" type="MeshInstance" parent="."]
-mesh = SubResource( 32 )
-material/0 = SubResource( 33 )
+mesh = SubResource( 30 )
+material/0 = SubResource( 31 )
 
 [node name="KeyLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.085924, 4.28274, 2.05377 )

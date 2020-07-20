@@ -7,8 +7,6 @@
 [ext_resource path="res://Common/Background2D/Demo2DBackground.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Common/DemoInterface.tscn" type="PackedScene" id=6]
 
-
-
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 4 )
 shader_param/alpha_falloff_front = 0.5

@@ -1,0 +1,116 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Demos/ForceField/ForceFieldEmitter.gd" type="Script" id=1]
+[ext_resource path="res://Demos/ForceField/ForceField.gd" type="Script" id=3]
+[ext_resource path="res://assets/HexagonGrid.png" type="Texture" id=4]
+[ext_resource path="res://Shaders/force_field.shader" type="Shader" id=5]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 3, 0.125, 1.5 )
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 6, 0.25, 3 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.623529, 0.643137, 0.670588, 1 )
+
+[sub_resource type="CylinderMesh" id=4]
+top_radius = 0.25
+bottom_radius = 0.25
+height = 0.5
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.32549, 0.27451, 0.239216, 1 )
+metallic = 0.48
+roughness = 0.23
+
+[sub_resource type="PhysicsMaterial" id=6]
+friction = 120.0
+rough = true
+bounce = 0.25
+
+[sub_resource type="SphereShape" id=7]
+radius = 0.05
+
+[sub_resource type="SphereMesh" id=8]
+
+[sub_resource type="SpatialMaterial" id=9]
+albedo_color = Color( 0.270588, 0.278431, 0.337255, 1 )
+
+[sub_resource type="SphereMesh" id=10]
+
+[sub_resource type="ShaderMaterial" id=11]
+shader = ExtResource( 5 )
+shader_param/color = Color( 0.607843, 0.219608, 1.1451, 1 )
+shader_param/fresnel_power = 10.65
+shader_param/fill_amount = 0.05
+shader_param/pulsing_strength = 0.1
+shader_param/pulsing_speed = 1.0
+shader_param/scanline_period = 0.5
+shader_param/scanline_width = 0.124
+shader_param/pattern_scroll_speed = 0.025
+shader_param/pattern_uv_offset = Vector2( 6, 3 )
+shader_param/pattern_texture = ExtResource( 4 )
+
+[sub_resource type="BoxShape" id=12]
+extents = Vector3( 100, 0.1, 100 )
+
+[node name="ForceFieldScene" type="Spatial"]
+
+[node name="WallBody" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 1.5, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="WallBody"]
+shape = SubResource( 1 )
+
+[node name="Wall" type="MeshInstance" parent="WallBody"]
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.918571, -0.125535, 0.374792, 0, 0.948224, 0.317603, -0.395257, -0.29174, 0.871011, 1.63275, 1.38087, 3.55278 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94743, 0.25, 1.83367 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="RigidBody" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.539, 1.064, 3.841 )
+physics_material_override = SubResource( 6 )
+gravity_scale = 0.0
+contacts_reported = 1
+contact_monitor = true
+sleeping = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
+shape = SubResource( 7 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody"]
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0 )
+mesh = SubResource( 8 )
+material/0 = SubResource( 9 )
+
+[node name="ForceField" type="MeshInstance" parent="RigidBody"]
+transform = Transform( 0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0 )
+visible = false
+mesh = SubResource( 10 )
+material/0 = SubResource( 11 )
+script = ExtResource( 3 )
+
+[node name="OmniLight" type="OmniLight" parent="RigidBody/ForceField"]
+light_color = Color( 0.839216, 0.521569, 1, 1 )
+omni_range = 2.2
+
+[node name="Tween" type="Tween" parent="RigidBody/ForceField"]
+
+[node name="FloorBody" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="FloorBody"]
+shape = SubResource( 12 )
+[connection signal="body_entered" from="RigidBody" to="RigidBody/ForceField" method="_on_RigidBody_body_entered"]

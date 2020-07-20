@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Common/Demo2DBackground.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Common/Background2D/Demo2DBackground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/robi_shaded.png" type="Texture" id=2]
 [ext_resource path="res://Demos/Reflection2D/Reflection2D.gd" type="Script" id=3]
 [ext_resource path="res://Common/DemoInterface.tscn" type="PackedScene" id=4]
@@ -39,7 +39,7 @@ shader = SubResource( 1 )
 shader_param/color = Color( 0.207843, 0.203922, 0.615686, 1 )
 shader_param/reflection_intensity = 0.542
 shader_param/scale_y = 2.91774
-shader_param/zoom_y = 0.707107
+shader_param/zoom_y = 1.0
 shader_param/transition_gradient = SubResource( 3 )
 
 [node name="Reflection2DDemo" type="Control"]

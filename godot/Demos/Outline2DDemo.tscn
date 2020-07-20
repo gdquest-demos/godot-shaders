@@ -6,8 +6,6 @@
 [ext_resource path="res://Common/Background2D/Demo2DBackground.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Common/DemoInterface.tscn" type="PackedScene" id=10]
 
-
-
 [node name="Outline2DDemo" type="Node"]
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 9 )]
