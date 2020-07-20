@@ -10,8 +10,6 @@
 [ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=8]
 [ext_resource path="res://Common/DemoInterface.tscn" type="PackedScene" id=9]
 
-
-
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )
 shader_param/blur_scale = Vector2( 0, 4 )
@@ -57,7 +55,7 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="MaskView"]
-size = Vector2( 1280, 720 )
+size = Vector2( 1920, 1080 )
 transparent_bg = true
 handle_input_locally = false
 usage = 0

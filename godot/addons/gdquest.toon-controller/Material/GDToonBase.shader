@@ -23,7 +23,6 @@ const float RIM_SOFTNESS_MAX = 0.7;
 
 uniform sampler2D light_data : hint_black;
 uniform sampler2D specular_data : hint_black;
-uniform sampler2D rim_data : hint_black;
 uniform sampler2D metalness_texture : hint_black_albedo;
 
 uniform vec4 base_color : hint_color = vec4(1.0);
@@ -79,6 +78,9 @@ uniform float anisotropy_in_shadow_strength : hint_range(0, 1) = 0.1;
 
 uniform float rim_light_softness : hint_range(0, 1) = 0.5;
 uniform vec4 rim_light_color : hint_color = vec4(0, 0, 0, 1);
+uniform float rim_fresnel_power = 3.0;
+uniform float rim_normal_offset_x = 0.0;
+uniform float rim_normal_offset_y = 0.0;
 
 varying vec3 down_camera_angle;
 
@@ -180,7 +182,7 @@ void fragment()
 	float kick_light_value = texture(kick_light_ramp, vec2(diffuse.b, 0)).r;
 	
 	if(length(rim_light_color.rgb) > 0.0) {
-		float rim_value = texture(rim_data, SCREEN_UV).r;
+		float rim_value = pow(clamp(1.0 - dot(NORMAL + vec3(rim_normal_offset_x, rim_normal_offset_y, 0.0), VIEW), 0, 1), rim_fresnel_power);
 		float hard_rim = step(RIM_SHARPNESS, rim_value);
 		float soft_rim = smoothstep(RIM_SOFTNESS_MIN, RIM_SOFTNESS_MAX, rim_value);
 		

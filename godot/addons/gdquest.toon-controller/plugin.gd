@@ -4,11 +4,9 @@ extends EditorPlugin
 var light_camera: Camera
 var specular_camera: Camera
 var main_camera: Camera
-var rim_camera: Camera
 
 var light_viewport: Viewport
 var specular_viewport: Viewport
-var rim_viewport: Viewport
 
 var editor_viewport: Control
 var preview_checkbox: CheckBox
@@ -54,9 +52,6 @@ func _set_camera_and_viewports(transform: Transform) -> void:
 	if specular_camera:
 		specular_camera.global_transform = transform
 		specular_viewport.size = editor_viewport.rect_size
-	if rim_camera:
-		rim_camera.global_transform = transform
-		rim_viewport.size = editor_viewport.rect_size
 
 
 func _initialize_camera_control(object: Object, interface: EditorInterface) -> bool:
@@ -70,12 +65,8 @@ func _initialize_camera_control(object: Object, interface: EditorInterface) -> b
 	specular_viewport = toon_builder.specular_data
 	if specular_viewport:
 		specular_camera = specular_viewport.get_camera()
-	
-	rim_viewport = toon_builder.rim_data
-	if rim_viewport:
-		rim_camera = rim_viewport.get_camera()
 
-	if light_camera or specular_camera or rim_camera:
+	if light_camera or specular_camera:
 		return _set_and_connect_cameras(interface)
 	else:
 		return false
@@ -109,8 +100,6 @@ func _set_and_connect_cameras(interface: EditorInterface) -> bool:
 		light_viewport.size = editor_viewport.rect_size
 	if specular_viewport:
 		specular_viewport.size = editor_viewport.rect_size
-	if rim_viewport:
-		rim_viewport.size = editor_viewport.rect_size
 
 	return true
 
