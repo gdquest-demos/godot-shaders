@@ -15,65 +15,47 @@
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
-shader_param/dark_tint = Color( 0, 0, 0, 1 )
-shader_param/light_tint = Color( 1, 1, 1, 1 )
-shader_param/contrast_factor = 1.0
+shader_param/use_world_normals = false
 shader_param/matcap_texture = ExtResource( 3 )
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 2 )
-shader_param/dark_tint = Color( 0, 0, 0, 1 )
-shader_param/light_tint = Color( 1, 1, 1, 1 )
-shader_param/contrast_factor = 1.0
+shader_param/use_world_normals = false
 shader_param/matcap_texture = ExtResource( 5 )
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 2 )
-shader_param/dark_tint = Color( 0, 0, 0, 1 )
-shader_param/light_tint = Color( 1, 1, 1, 1 )
-shader_param/contrast_factor = 1.0
+shader_param/use_world_normals = false
 shader_param/matcap_texture = ExtResource( 4 )
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 2 )
-shader_param/dark_tint = Color( 0, 0, 0, 1 )
-shader_param/light_tint = Color( 1, 1, 1, 1 )
-shader_param/contrast_factor = 1.0
+shader_param/use_world_normals = false
 shader_param/matcap_texture = ExtResource( 8 )
-
-[sub_resource type="ShaderMaterial" id=9]
-shader = ExtResource( 2 )
-shader_param/dark_tint = Color( 0, 0, 0, 1 )
-shader_param/light_tint = Color( 1, 1, 1, 1 )
-shader_param/contrast_factor = 1.0
-shader_param/matcap_texture = ExtResource( 12 )
 
 [sub_resource type="ShaderMaterial" id=5]
 shader = ExtResource( 2 )
-shader_param/dark_tint = Color( 0, 0, 0, 1 )
-shader_param/light_tint = Color( 1, 1, 1, 1 )
-shader_param/contrast_factor = 1.0
-shader_param/matcap_texture = ExtResource( 6 )
+shader_param/use_world_normals = false
+shader_param/matcap_texture = ExtResource( 12 )
 
 [sub_resource type="ShaderMaterial" id=6]
 shader = ExtResource( 2 )
-shader_param/dark_tint = Color( 0, 0, 0, 1 )
-shader_param/light_tint = Color( 1, 1, 1, 1 )
-shader_param/contrast_factor = 1.0
-shader_param/matcap_texture = ExtResource( 7 )
+shader_param/use_world_normals = false
+shader_param/matcap_texture = ExtResource( 6 )
 
 [sub_resource type="ShaderMaterial" id=7]
 shader = ExtResource( 2 )
-shader_param/dark_tint = Color( 0, 0, 0, 1 )
-shader_param/light_tint = Color( 1, 1, 1, 1 )
-shader_param/contrast_factor = 1.0
-shader_param/matcap_texture = ExtResource( 9 )
+shader_param/use_world_normals = false
+shader_param/matcap_texture = ExtResource( 7 )
 
 [sub_resource type="ShaderMaterial" id=8]
 shader = ExtResource( 2 )
-shader_param/dark_tint = Color( 0, 0, 0, 1 )
-shader_param/light_tint = Color( 1, 1, 1, 1 )
-shader_param/contrast_factor = 1.0
+shader_param/use_world_normals = false
+shader_param/matcap_texture = ExtResource( 9 )
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = ExtResource( 2 )
+shader_param/use_world_normals = false
 shader_param/matcap_texture = ExtResource( 11 )
 
 [node name="Spatial" type="Spatial"]
@@ -141,76 +123,76 @@ material/0 = SubResource( 4 )
 transform = Transform( 0.766044, 0, -0.642787, 0, 1, 0, 0.642787, 0, 0.766044, -8, 0, -2 )
 
 [node name="body1" parent="PlasticRat" index="0"]
-material/0 = SubResource( 9 )
+material/0 = SubResource( 5 )
 
 [node name="eyes1" parent="PlasticRat" index="1"]
-material/0 = SubResource( 9 )
+material/0 = SubResource( 5 )
 
 [node name="head1" parent="PlasticRat" index="2"]
-material/0 = SubResource( 9 )
+material/0 = SubResource( 5 )
 
 [node name="teeth1" parent="PlasticRat" index="3"]
-material/0 = SubResource( 9 )
+material/0 = SubResource( 5 )
 
 [node name="SketchRat" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, 2, 0, -0.5 )
 
 [node name="body1" parent="SketchRat" index="0"]
-material/0 = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="eyes1" parent="SketchRat" index="1"]
-material/0 = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="head1" parent="SketchRat" index="2"]
-material/0 = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="teeth1" parent="SketchRat" index="3"]
-material/0 = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="ChromeRat" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, 4, 0, -1 )
 
 [node name="body1" parent="ChromeRat" index="0"]
-material/0 = SubResource( 6 )
+material/0 = SubResource( 7 )
 
 [node name="eyes1" parent="ChromeRat" index="1"]
-material/0 = SubResource( 6 )
+material/0 = SubResource( 7 )
 
 [node name="head1" parent="ChromeRat" index="2"]
-material/0 = SubResource( 6 )
+material/0 = SubResource( 7 )
 
 [node name="teeth1" parent="ChromeRat" index="3"]
-material/0 = SubResource( 6 )
+material/0 = SubResource( 7 )
 
 [node name="NeonRat" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 6, 0, -1.5 )
 
 [node name="body1" parent="NeonRat" index="0"]
-material/0 = SubResource( 7 )
+material/0 = SubResource( 8 )
 
 [node name="eyes1" parent="NeonRat" index="1"]
-material/0 = SubResource( 7 )
+material/0 = SubResource( 8 )
 
 [node name="head1" parent="NeonRat" index="2"]
-material/0 = SubResource( 7 )
+material/0 = SubResource( 8 )
 
 [node name="teeth1" parent="NeonRat" index="3"]
-material/0 = SubResource( 7 )
+material/0 = SubResource( 8 )
 
 [node name="BlackGlassRat" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.766044, 0, 0.642787, 0, 1, 0, -0.642787, 0, 0.766044, 8, 0, -2 )
 
 [node name="body1" parent="BlackGlassRat" index="0"]
-material/0 = SubResource( 8 )
+material/0 = SubResource( 9 )
 
 [node name="eyes1" parent="BlackGlassRat" index="1"]
-material/0 = SubResource( 8 )
+material/0 = SubResource( 9 )
 
 [node name="head1" parent="BlackGlassRat" index="2"]
-material/0 = SubResource( 8 )
+material/0 = SubResource( 9 )
 
 [node name="teeth1" parent="BlackGlassRat" index="3"]
-material/0 = SubResource( 8 )
+material/0 = SubResource( 9 )
 
 [node name="Demo3DEnvironment" parent="." instance=ExtResource( 10 )]
 
