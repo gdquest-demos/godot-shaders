@@ -30,4 +30,5 @@ render_target_update_mode = 3
 [node name="Demo3DEnvironment" parent="ViewportContainer/Viewport" instance=ExtResource( 3 )]
 
 [node name="DemoInterface" parent="." instance=ExtResource( 2 )]
+visible = false
 text_bbcode = "Press Enter to launch a force field emitter. It uses a fresnel effect to form a smooth glow, and the depth buffer to calculate intersection with existing world geometry."

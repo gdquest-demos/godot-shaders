@@ -6,7 +6,7 @@ uniform float normal_offset_y = 0.0;
 
 
 void vertex() {
-	NORMAL += vec3(normal_offset_x, normal_offset_y, 0);
+	NORMAL = normalize(NORMAL + vec3(0, normal_offset_y, normal_offset_x));
 }
 
 void fragment() {
