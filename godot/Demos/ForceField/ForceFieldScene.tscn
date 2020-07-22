@@ -42,18 +42,20 @@ albedo_color = Color( 0.270588, 0.278431, 0.337255, 1 )
 [sub_resource type="ShaderMaterial" id=11]
 shader = ExtResource( 5 )
 shader_param/color = Color( 0.607843, 0.219608, 1.1451, 1 )
-shader_param/fresnel_power = 10.65
-shader_param/fill_amount = 0.05
+shader_param/fresnel_power = 8.0
+shader_param/edge_intensity = 2.0
+shader_param/fill_amount = 0.1
 shader_param/pulsing_strength = 0.1
 shader_param/pulsing_speed = 1.0
 shader_param/scanline_period = 0.5
-shader_param/scanline_width = 0.124
+shader_param/scanline_width = 0.1
+shader_param/scanline_intensity = 0.35
 shader_param/pattern_scroll_speed = 0.025
 shader_param/pattern_uv_offset = Vector2( 6, 3 )
 shader_param/pattern_texture = ExtResource( 4 )
 
 [sub_resource type="BoxShape" id=12]
-extents = Vector3( 100, 0.1, 100 )
+extents = Vector3( 10, 0.1, 10 )
 
 [node name="ForceFieldScene" type="Spatial"]
 

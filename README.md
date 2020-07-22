@@ -14,8 +14,8 @@ Here's a list of available shaders:
 
 - 2D baked-in-texture glow control
 - 2D glow
-- 7 color stencil mask simulation (impossible cube)
-- Advanced toon
+- Stencil mask (impossible cube)
+- Advanced toon shader
 - Gaussian blur
 - 2D clouds: noise-based cloud shadows cast over the game world
 - 2D dissolve
@@ -29,6 +29,7 @@ Here's a list of available shaders:
 - 2D water for side-scrolling games
 - 2D water in top-down view
 - 2D x-ray (masking)
+- Force field
 
 ![2D water shader with light support](./img/water2d.png)
 

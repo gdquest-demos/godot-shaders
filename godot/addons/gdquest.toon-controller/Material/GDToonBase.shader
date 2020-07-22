@@ -3,14 +3,15 @@ render_mode unshaded;
 
 //Specular constants
 const float SPECULAR_SOFT_MIN = 0.0;
-const float SPECULAR_SOFT_MAX = 0.637;
-const float SPECULAR_HARD_MIN = 0.167;
-const float SPECULAR_HARD_MAX = 0.179;
+const float SPECULAR_SOFT_MAX = 0.64;
+const float SPECULAR_HARD_MIN = 0.17;
+const float SPECULAR_HARD_MAX = 0.18;
 //Outline constants
 const float OUTLINE_MIN = 0.47;
 const float OUTLINE_MAX = 0.53;
 //Anisotropic constants
-const float ANISOTROPY_SHARPNESS = 0.350;
+const float ANISOTROPY_SHARPNESS_MIN = 0.34;
+const float ANISOTROPY_SHARPNESS_MAX = 0.35;
 const float ANISOTROPY_SOFTNESS_MIN = 0.06;
 const float ANISOTROPY_SOFTNESS_MAX = 0.364;
 const float ANISOTROPY_HOTSPOT_MIN = 0.083;
@@ -185,7 +186,7 @@ void fragment() {
 			* max(anisotropy_specular_hotspot, anisotropy_in_shadow_strength);
 	
 		float sharp_anisotropy_value
-			= step(ANISOTROPY_SHARPNESS, anisotropy_sample);
+			= smoothstep(ANISOTROPY_SHARPNESS_MIN, ANISOTROPY_SHARPNESS_MAX, anisotropy_sample);
 		float soft_anisotropy_value
 			= smoothstep(ANISOTROPY_SOFTNESS_MIN, ANISOTROPY_SOFTNESS_MAX, anisotropy_sample);
 	
