@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Demos/Clouds2D/clouds_noise1.tres" type="Texture" id=1]
+[ext_resource path="res://Shaders/clouds2D.shader" type="Shader" id=2]
+[ext_resource path="res://Demos/Clouds2D/clouds_noise2.tres" type="Texture" id=3]
+[ext_resource path="res://Demos/Clouds2D/topdown-adventure.svg" type="Texture" id=4]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0.518987, 0.544304 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 2 )
+shader_param/tint = Color( 0.6, 0.337255, 0.784314, 0.541176 )
+shader_param/scroll_direction1 = Vector2( 0.7, -0.7 )
+shader_param/time_scale1 = 0.003
+shader_param/tile_factor1 = 0.371
+shader_param/scroll_direction2 = Vector2( 0.338, -0.869 )
+shader_param/time_scale2 = 0.004
+shader_param/tile_factor2 = 0.489
+shader_param/noise_texture2 = ExtResource( 3 )
+shader_param/gradient_texture = SubResource( 2 )
+
+[node name="Clouds2DDemo" type="Node2D"]
+position = Vector2( 960.474, 543.928 )
+
+[node name="topdown-adventure" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+
+[node name="Clouds" type="Sprite" parent="."]
+material = SubResource( 3 )
+scale = Vector2( 1.8781, 2.12213 )
+texture = ExtResource( 1 )

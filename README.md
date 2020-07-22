@@ -12,22 +12,23 @@ Godot Shaders is a repository of Free shaders, part of which we made for our cou
 
 Here's a list of available shaders:
 
-- X-Ray 2D
+- 2D baked-in-texture glow control
+- 2D glow
+- 7 color stencil mask simulation (impossible cube)
+- Advanced toon
+- Gaussian blur
+- 2D clouds: noise-based cloud shadows cast over the game world
+- 2D dissolve
+- 3D dissolve
 - Distortion (shockwave)
 - Inverted colors
+- 2D outline
+- 3D outline
 - Pointilism
-- Outline2D
-- Outline3D
-- 7 color stencil mask simulation (impossible cube)
-- 2D glow
-- 2D baked-in-texture glow control
-- Dissolve 2D
-- Dissolve 3D
-- Blur
-- Reflection 2D
-- Water 2D in top-down view
-- Water 2D for side-scrolling games
-- Advanced Toon
+- 2D reflection
+- 2D water for side-scrolling games
+- 2D water in top-down view
+- 2D x-ray (masking)
 
 ![2D water shader with light support](./img/water2d.png)
 
