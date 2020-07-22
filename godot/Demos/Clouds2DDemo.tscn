@@ -13,9 +13,9 @@ gradient = SubResource( 1 )
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 2 )
-shader_param/tint = Color( 0.6, 0.337255, 0.784314, 0.541176 )
+shader_param/tint = Color( 0.0761719, 0.244629, 0.75, 0.541176 )
 shader_param/scroll_direction1 = Vector2( 0.7, -0.7 )
-shader_param/time_scale1 = 0.003
+shader_param/time_scale1 = 0.004
 shader_param/tile_factor1 = 0.371
 shader_param/scroll_direction2 = Vector2( 0.338, -0.869 )
 shader_param/time_scale2 = 0.004
@@ -26,7 +26,7 @@ shader_param/gradient_texture = SubResource( 2 )
 [node name="Clouds2DDemo" type="Node2D"]
 position = Vector2( 960.474, 543.928 )
 
-[node name="topdown-adventure" type="Sprite" parent="."]
+[node name="Background" type="Sprite" parent="."]
 texture = ExtResource( 4 )
 
 [node name="Clouds" type="Sprite" parent="."]

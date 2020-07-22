@@ -2,8 +2,9 @@
 // Expects the first noise to be assigned to the node's Texture property,
 // and the second noise texture is the noise_texture2 uniform.
 shader_type canvas_item;
+render_mode blend_mul;
 
-uniform vec4 tint :hint_color = vec4(1.0);
+uniform vec4 tint :hint_color = vec4(0.0);
 uniform sampler2D noise_texture2 :hint_black;
 uniform sampler2D gradient_texture :hint_black;
 
@@ -22,7 +23,6 @@ void fragment() {
 	vec2 noise1_uv = UV * tile_factor1 + scroll_direction1 * TIME * time_scale1;
 	float noise1 = texture(TEXTURE, noise1_uv + noise2 * 0.02).r;
 	
-	vec4 clouds = texture(gradient_texture, vec2(noise1, 0.0)).r * tint;
-	vec3 screen_color = texture(SCREEN_TEXTURE, SCREEN_UV).rgb;
-	COLOR.rgb = mix(screen_color, screen_color * clouds.rgb, clouds.a);
+	float clouds = texture(gradient_texture, vec2(noise1, 0.0)).r;
+	COLOR.rgb = mix(vec3(1.0), tint.rgb, clouds * tint.a);
 }
