@@ -1,10 +1,11 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Common/Background2D/Demo2DBackground.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/robi_shaded.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/robi_shaded.png" type="Texture" id=2]
 [ext_resource path="res://Demos/Reflection2D/Reflection2D.gd" type="Script" id=3]
 [ext_resource path="res://Common/DemoInterface.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/mouse_cursor.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/mouse_cursor.png" type="Texture" id=5]
+
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;

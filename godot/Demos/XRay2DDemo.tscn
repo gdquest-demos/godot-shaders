@@ -9,8 +9,6 @@
 [ext_resource path="res://Common/Background2D/Demo2DBackground.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Common/DemoInterface.tscn" type="PackedScene" id=8]
 
-
-
 [sub_resource type="ViewportTexture" id=1]
 viewport_path = NodePath("XRayView/Viewport")
 
@@ -47,7 +45,7 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="MainView"]
-size = Vector2( 1280, 720 )
+size = Vector2( 1920, 1080 )
 transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 3
@@ -70,7 +68,7 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="XRayView"]
-size = Vector2( 1280, 720 )
+size = Vector2( 1920, 1080 )
 transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 3
@@ -88,7 +86,7 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="MaskView"]
-size = Vector2( 1280, 720 )
+size = Vector2( 1920, 1080 )
 transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 3

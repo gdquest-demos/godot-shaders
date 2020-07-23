@@ -6,9 +6,10 @@
 [ext_resource path="res://Demos/Water2D/water_diffuse.png" type="Texture" id=4]
 [ext_resource path="res://Demos/Water2D/water_uv_offset.png" type="Texture" id=5]
 [ext_resource path="res://Common/DemoInterface.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/robi_shaded.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/robi_shaded.png" type="Texture" id=7]
 [ext_resource path="res://Common/Background2D/Demo2DBackground.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Demos/Water2D/water_normal.png" type="Texture" id=9]
+
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0.37037, 0.548148, 1 )

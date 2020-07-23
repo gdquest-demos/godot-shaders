@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/black_glass_matcap.jpeg-87aa838af3b2eacf106633fee4d22511.s3tc.stex"
-path.etc2="res://.import/black_glass_matcap.jpeg-87aa838af3b2eacf106633fee4d22511.etc2.stex"
+path.s3tc="res://.import/black_glass_matcap.jpeg-83ca4b7d3c3d659bbf5c68fbe843704e.s3tc.stex"
+path.etc2="res://.import/black_glass_matcap.jpeg-83ca4b7d3c3d659bbf5c68fbe843704e.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Matcaps/black_glass_matcap.jpeg"
-dest_files=[ "res://.import/black_glass_matcap.jpeg-87aa838af3b2eacf106633fee4d22511.s3tc.stex", "res://.import/black_glass_matcap.jpeg-87aa838af3b2eacf106633fee4d22511.etc2.stex" ]
+source_file="res://assets/matcaps/black_glass_matcap.jpeg"
+dest_files=[ "res://.import/black_glass_matcap.jpeg-83ca4b7d3c3d659bbf5c68fbe843704e.s3tc.stex", "res://.import/black_glass_matcap.jpeg-83ca4b7d3c3d659bbf5c68fbe843704e.etc2.stex" ]
 
 [params]
 

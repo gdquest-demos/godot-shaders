@@ -1,11 +1,12 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/theme/gdquest.theme" type="Theme" id=1]
-[ext_resource path="res://assets/glowy_arrow.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/glowy_arrow.png" type="Texture" id=2]
 [ext_resource path="res://Demos/Glow2D/GlowFader.gd" type="Script" id=3]
 [ext_resource path="res://Shaders/baked_sprite_glow.shader" type="Shader" id=4]
 [ext_resource path="res://Common/Background2D/Demo2DBackground.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Common/DemoInterface.tscn" type="PackedScene" id=6]
+
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 4 )

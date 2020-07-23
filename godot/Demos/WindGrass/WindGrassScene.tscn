@@ -1,8 +1,11 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Demos/WindGrass/GrassMesh.gd" type="Script" id=1]
-[ext_resource path="res://assets/grass_triangle.obj" type="ArrayMesh" id=2]
-[ext_resource path="res://Demos/WindGrass/WindGrassMat.tres" type="Material" id=3]
+[ext_resource path="res://assets/models/grass_triangle.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://assets/materials/wind_grass.tres" type="Material" id=3]
+
+
+
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 12, 2, 12 )

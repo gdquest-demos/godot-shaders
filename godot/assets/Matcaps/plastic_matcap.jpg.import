@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/plastic_matcap.jpg-62c632f3e715e2dfd4ad9b7dbc389564.s3tc.stex"
-path.etc2="res://.import/plastic_matcap.jpg-62c632f3e715e2dfd4ad9b7dbc389564.etc2.stex"
+path.s3tc="res://.import/plastic_matcap.jpg-0216bc1020ec2ea7e47f1a79209dd881.s3tc.stex"
+path.etc2="res://.import/plastic_matcap.jpg-0216bc1020ec2ea7e47f1a79209dd881.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Matcaps/plastic_matcap.jpg"
-dest_files=[ "res://.import/plastic_matcap.jpg-62c632f3e715e2dfd4ad9b7dbc389564.s3tc.stex", "res://.import/plastic_matcap.jpg-62c632f3e715e2dfd4ad9b7dbc389564.etc2.stex" ]
+source_file="res://assets/matcaps/plastic_matcap.jpg"
+dest_files=[ "res://.import/plastic_matcap.jpg-0216bc1020ec2ea7e47f1a79209dd881.s3tc.stex", "res://.import/plastic_matcap.jpg-0216bc1020ec2ea7e47f1a79209dd881.etc2.stex" ]
 
 [params]
 

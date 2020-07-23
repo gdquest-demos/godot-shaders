@@ -3,10 +3,8 @@
 [ext_resource path="res://assets/theme/gdquest.theme" type="Theme" id=1]
 [ext_resource path="res://Common/Background2D/Demo2DBackground.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Shaders/outline2D_outer.shader" type="Shader" id=3]
-[ext_resource path="res://assets/robi_shaded.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/robi_shaded.png" type="Texture" id=4]
 [ext_resource path="res://Common/DemoInterface.tscn" type="PackedScene" id=5]
-
-
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )
@@ -32,7 +30,7 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 1 )
-position = Vector2( 640, 360 )
+position = Vector2( 642.67, 536.199 )
 scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 4 )
 __meta__ = {

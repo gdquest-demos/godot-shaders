@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/redjade_matcap.png-9c6454f39a7f0d43fc2cb0740ff93348.s3tc.stex"
-path.etc2="res://.import/redjade_matcap.png-9c6454f39a7f0d43fc2cb0740ff93348.etc2.stex"
+path.s3tc="res://.import/redjade_matcap.png-451e37b6ca6b567f128e110b9e7e54f8.s3tc.stex"
+path.etc2="res://.import/redjade_matcap.png-451e37b6ca6b567f128e110b9e7e54f8.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Matcaps/redjade_matcap.png"
-dest_files=[ "res://.import/redjade_matcap.png-9c6454f39a7f0d43fc2cb0740ff93348.s3tc.stex", "res://.import/redjade_matcap.png-9c6454f39a7f0d43fc2cb0740ff93348.etc2.stex" ]
+source_file="res://assets/matcaps/redjade_matcap.png"
+dest_files=[ "res://.import/redjade_matcap.png-451e37b6ca6b567f128e110b9e7e54f8.s3tc.stex", "res://.import/redjade_matcap.png-451e37b6ca6b567f128e110b9e7e54f8.etc2.stex" ]
 
 [params]
 

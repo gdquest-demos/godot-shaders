@@ -1,17 +1,19 @@
 [gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://assets/Matcaps/black_glass_matcap.jpeg" type="Texture" id=1]
-[ext_resource path="res://assets/Matcaps/Chrome_matcap.png" type="Texture" id=2]
-[ext_resource path="res://assets/Matcaps/copper_matcap.png" type="Texture" id=3]
-[ext_resource path="res://assets/Matcaps/redjade_matcap.png" type="Texture" id=4]
+[ext_resource path="res://assets/matcaps/black_glass_matcap.jpeg" type="Texture" id=1]
+[ext_resource path="res://assets/matcaps/Chrome_matcap.png" type="Texture" id=2]
+[ext_resource path="res://assets/matcaps/flat_sketch_matcap.png" type="Texture" id=3]
+[ext_resource path="res://assets/matcaps/glowy_matcap.jpeg" type="Texture" id=4]
 [ext_resource path="res://assets/Matcaps/skin_matcap.png" type="Texture" id=5]
-[ext_resource path="res://assets/Matcaps/red_matcap.png" type="Texture" id=6]
-[ext_resource path="res://assets/Matcaps/plastic_matcap.jpg" type="Texture" id=7]
-[ext_resource path="res://assets/Matcaps/flat_sketch_matcap.png" type="Texture" id=8]
-[ext_resource path="res://assets/Matcaps/glowy_matcap.jpeg" type="Texture" id=9]
-[ext_resource path="res://assets/ratModel/rat.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/matcaps/redjade_matcap.png" type="Texture" id=6]
+[ext_resource path="res://assets/matcaps/copper_matcap.png" type="Texture" id=7]
+[ext_resource path="res://assets/matcaps/plastic_matcap.jpg" type="Texture" id=8]
+[ext_resource path="res://assets/matcaps/red_matcap.png" type="Texture" id=9]
+[ext_resource path="res://assets/models/rat_model/rat.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Common/Demo3DEnvironment.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Shaders/matcap.shader" type="Shader" id=12]
+
+
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 12 )
@@ -21,27 +23,27 @@ shader_param/matcap_texture = ExtResource( 5 )
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 12 )
 shader_param/use_world_normals = false
-shader_param/matcap_texture = ExtResource( 6 )
+shader_param/matcap_texture = ExtResource( 9 )
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 12 )
 shader_param/use_world_normals = false
-shader_param/matcap_texture = ExtResource( 3 )
+shader_param/matcap_texture = ExtResource( 7 )
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 12 )
 shader_param/use_world_normals = false
-shader_param/matcap_texture = ExtResource( 4 )
+shader_param/matcap_texture = ExtResource( 6 )
 
 [sub_resource type="ShaderMaterial" id=5]
 shader = ExtResource( 12 )
 shader_param/use_world_normals = false
-shader_param/matcap_texture = ExtResource( 7 )
+shader_param/matcap_texture = ExtResource( 8 )
 
 [sub_resource type="ShaderMaterial" id=6]
 shader = ExtResource( 12 )
 shader_param/use_world_normals = false
-shader_param/matcap_texture = ExtResource( 8 )
+shader_param/matcap_texture = ExtResource( 3 )
 
 [sub_resource type="ShaderMaterial" id=7]
 shader = ExtResource( 12 )
@@ -51,7 +53,7 @@ shader_param/matcap_texture = ExtResource( 2 )
 [sub_resource type="ShaderMaterial" id=8]
 shader = ExtResource( 12 )
 shader_param/use_world_normals = false
-shader_param/matcap_texture = ExtResource( 9 )
+shader_param/matcap_texture = ExtResource( 4 )
 
 [sub_resource type="ShaderMaterial" id=9]
 shader = ExtResource( 12 )

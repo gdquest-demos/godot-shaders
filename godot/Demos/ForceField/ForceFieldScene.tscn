@@ -2,8 +2,11 @@
 
 [ext_resource path="res://Demos/ForceField/ForceFieldEmitter.gd" type="Script" id=1]
 [ext_resource path="res://Demos/ForceField/ForceField.gd" type="Script" id=3]
-[ext_resource path="res://assets/HexagonGrid.png" type="Texture" id=4]
+[ext_resource path="res://assets/masks/hexagon_grid.png" type="Texture" id=4]
 [ext_resource path="res://Shaders/force_field.shader" type="Shader" id=5]
+
+
+
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 3, 0.125, 1.5 )
