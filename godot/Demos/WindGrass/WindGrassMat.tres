@@ -1,0 +1,28 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=2]
+
+[ext_resource path="res://Shaders/wind_grass.shader" type="Shader" id=1]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.486339, 0.966102 )
+colors = PoolColorArray( 0.054902, 0.556863, 0.439216, 1, 0.321569, 0.890196, 0.341176, 1, 0.4991, 0.92, 0.3588, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="OpenSimplexNoise" id=3]
+seed = 107
+period = 151.0
+lacunarity = 0.8
+
+[sub_resource type="NoiseTexture" id=4]
+seamless = true
+bump_strength = 3.2
+noise = SubResource( 3 )
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/wind_speed = 0.2
+shader_param/wind_strength = 2.0
+shader_param/wind_randomness = 0.5
+shader_param/color_ramp = SubResource( 2 )
+shader_param/wind_noise = SubResource( 4 )

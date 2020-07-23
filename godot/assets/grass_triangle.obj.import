@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/grass_triangle.obj-ad0439314d4bef878399931e182db693.mesh"
+
+[deps]
+
+files=[ "res://.import/grass_triangle.obj-ad0439314d4bef878399931e182db693.mesh" ]
+
+source_file="res://assets/grass_triangle.obj"
+dest_files=[ "res://.import/grass_triangle.obj-ad0439314d4bef878399931e182db693.mesh", "res://.import/grass_triangle.obj-ad0439314d4bef878399931e182db693.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
