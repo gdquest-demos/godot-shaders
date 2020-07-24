@@ -4,14 +4,17 @@
 [ext_resource path="res://assets/matcaps/Chrome_matcap.png" type="Texture" id=2]
 [ext_resource path="res://assets/matcaps/flat_sketch_matcap.png" type="Texture" id=3]
 [ext_resource path="res://assets/matcaps/glowy_matcap.jpeg" type="Texture" id=4]
-[ext_resource path="res://assets/Matcaps/skin_matcap.png" type="Texture" id=5]
+[ext_resource path="res://Demos/MatCap/skin_matcap.png" type="Texture" id=5]
 [ext_resource path="res://assets/matcaps/redjade_matcap.png" type="Texture" id=6]
 [ext_resource path="res://assets/matcaps/copper_matcap.png" type="Texture" id=7]
 [ext_resource path="res://assets/matcaps/plastic_matcap.jpg" type="Texture" id=8]
 [ext_resource path="res://assets/matcaps/red_matcap.png" type="Texture" id=9]
-[ext_resource path="res://assets/models/rat_model/rat.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Common/Demo3DEnvironment.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Shared/models/rat_model/rat.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Shared/Demo3DEnvironment.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Shaders/matcap.shader" type="Shader" id=12]
+
+
+
 
 
 

@@ -1,20 +1,29 @@
 [gd_scene load_steps=28 format=2]
 
-[ext_resource path="res://assets/theme/gdquest.theme" type="Theme" id=1]
-[ext_resource path="res://assets/masks/color_ramp.tres" type="Gradient" id=2]
-[ext_resource path="res://assets/sprites/cloud1.png" type="Texture" id=3]
+[ext_resource path="res://Shared/theme/gdquest.theme" type="Theme" id=1]
+[ext_resource path="res://Demos/Dissolve/Dissolve2D/color_ramp.tres" type="Gradient" id=2]
+[ext_resource path="res://Shared/sprites/cloud1.png" type="Texture" id=3]
 [ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=4]
 [ext_resource path="res://Shaders/dissolve2D.shader" type="Shader" id=6]
-[ext_resource path="res://Demos/Dissolve2D/DissolveMaskController.gd" type="Script" id=7]
-[ext_resource path="res://Demos/Dissolve2D/DissolveController.gd" type="Script" id=8]
-[ext_resource path="res://assets/textures/black.png" type="Texture" id=9]
-[ext_resource path="res://assets/sprites/robi_shaded.png" type="Texture" id=10]
-[ext_resource path="res://Common/Background2D/Demo2DBackground.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Demos/Dissolve/Dissolve2D/DissolveMaskController.gd" type="Script" id=7]
+[ext_resource path="res://Demos/Dissolve/Dissolve2D/DissolveController.gd" type="Script" id=8]
+[ext_resource path="res://Demos/Dissolve/Dissolve2D/black.png" type="Texture" id=9]
+[ext_resource path="res://Shared/sprites/robi_shaded.png" type="Texture" id=10]
+[ext_resource path="res://Shared/Background2D/Demo2DBackground.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Shaders/dissolve2D_mask.shader" type="Shader" id=12]
-[ext_resource path="res://assets/masks/noise_tex.tres" type="Texture" id=13]
-[ext_resource path="res://Demos/Dissolve2D/Dissolve2DControls.gd" type="Script" id=14]
-[ext_resource path="res://Common/DemoInterface.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Demos/Dissolve2D/Particles2D.gd" type="Script" id=16]
+[ext_resource path="res://Demos/Dissolve/noise_tex.tres" type="Texture" id=13]
+[ext_resource path="res://Demos/Dissolve/Dissolve2D/Dissolve2DControls.gd" type="Script" id=14]
+[ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Demos/Dissolve/Dissolve2D/Particles2D.gd" type="Script" id=16]
+
+
+
+
+
+
+
+
+
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 12 )

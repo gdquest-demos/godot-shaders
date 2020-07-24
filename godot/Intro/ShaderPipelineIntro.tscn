@@ -3,16 +3,20 @@
 [ext_resource path="res://Intro/Elements/CubeScene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Intro/Elements/RawVertexData.gd" type="Script" id=2]
 [ext_resource path="res://Intro/Elements/VertexRaw.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/theme/gdquest.theme" type="Theme" id=4]
+[ext_resource path="res://Shared/theme/gdquest.theme" type="Theme" id=4]
 [ext_resource path="res://Intro/Elements/ShaderPipelineIntro.gd" type="Script" id=5]
 [ext_resource path="res://Intro/Elements/VertexCodeAnim.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Intro/Elements/LineDrawers.gd" type="Script" id=7]
 [ext_resource path="res://Intro/Elements/Title.gd" type="Script" id=8]
 [ext_resource path="res://Intro/Elements/Pixel.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Intro/Elements/Pixels.gd" type="Script" id=10]
-[ext_resource path="res://assets/2d_level_environment.tres" type="Environment" id=11]
-[ext_resource path="res://assets/theme/fonts/font_title.tres" type="DynamicFont" id=12]
+[ext_resource path="res://Shared/environments/2d_level_environment.tres" type="Environment" id=11]
+[ext_resource path="res://Shared/theme/fonts/font_title.tres" type="DynamicFont" id=12]
 [ext_resource path="res://Intro/Elements/LineDrawer.tscn" type="PackedScene" id=13]
+
+
+
+
 
 [sub_resource type="World" id=1]
 

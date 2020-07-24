@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Shared/Camera/MouseCamera2D.gd" type="Script" id=1]
+
+
+
+
+[node name="MouseCamera2D" type="Camera2D"]
+current = true
+script = ExtResource( 1 )

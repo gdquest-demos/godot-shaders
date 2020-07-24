@@ -1,9 +1,11 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/theme/gdquest.theme" type="Theme" id=1]
+[ext_resource path="res://Shared/theme/gdquest.theme" type="Theme" id=1]
 [ext_resource path="res://Demos/Outline/Outline3D/Outline3DScene.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Common/DemoInterface.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Common/Demo3DEnvironment.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Shared/Demo3DEnvironment.tscn" type="PackedScene" id=4]
+
+
 
 [node name="Outline3DDemo" type="Control"]
 anchor_right = 1.0

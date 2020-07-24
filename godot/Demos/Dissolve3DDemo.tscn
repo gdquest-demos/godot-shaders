@@ -1,10 +1,13 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/theme/gdquest.theme" type="Theme" id=1]
-[ext_resource path="res://Demos/Dissolve3D/DissolvingSphere.gd" type="Script" id=2]
-[ext_resource path="res://Demos/Dissolve3D/DissolveMaterial.tres" type="Material" id=3]
-[ext_resource path="res://Common/DemoInterface.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Common/Demo3DEnvironment.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Shared/theme/gdquest.theme" type="Theme" id=1]
+[ext_resource path="res://Demos/Dissolve/Dissolve3D/DissolvingSphere.gd" type="Script" id=2]
+[ext_resource path="res://Demos/Dissolve/Dissolve3D/DissolveMaterial.tres" type="Material" id=3]
+[ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Shared/Demo3DEnvironment.tscn" type="PackedScene" id=5]
+
+
+
 
 [sub_resource type="SphereMesh" id=1]
 

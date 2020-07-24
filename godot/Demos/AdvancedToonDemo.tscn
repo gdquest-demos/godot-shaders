@@ -1,7 +1,7 @@
 [gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://addons/gdquest.toon-controller/Tools/ToonSceneBuilder.gd" type="Script" id=1]
-[ext_resource path="res://assets/models/rat_model/rat.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Shared/models/rat_model/rat.tscn" type="PackedScene" id=2]
 [ext_resource path="res://addons/gdquest.toon-controller/Tools/ToonViewportContainer.gd" type="Script" id=3]
 [ext_resource path="res://addons/gdquest.toon-controller/Tools/ToonCamera.gd" type="Script" id=4]
 [ext_resource path="res://addons/gdquest.toon-controller/Tools/ToonProxyBuilder.gd" type="Script" id=5]
@@ -10,19 +10,23 @@
 [ext_resource path="res://addons/gdquest.toon-controller/Material/Defaults/AnisotropicNoise/spottiness_anisotropic_noise.tres" type="Texture" id=8]
 [ext_resource path="res://addons/gdquest.toon-controller/Material/Defaults/AnisotropicNoise/high_frequency_anisotropic_noise.tres" type="Texture" id=9]
 [ext_resource path="res://addons/gdquest.toon-controller/Material/Defaults/AnisotropicNoise/low_frequency_anisotropic_noise.tres" type="Texture" id=10]
-[ext_resource path="res://assets/masks/random_tech_lines.png" type="Texture" id=11]
+[ext_resource path="res://Demos/AdvancedToon/random_tech_lines.png" type="Texture" id=11]
 [ext_resource path="res://addons/gdquest.toon-controller/Material/Defaults/Copper_Matcap.png" type="Texture" id=12]
-[ext_resource path="res://assets/models/rat_model/rat_head_flesh_mask.png" type="Texture" id=13]
-[ext_resource path="res://assets/models/rat_model/rat_body_flesh_mask.png" type="Texture" id=14]
-[ext_resource path="res://assets/models/rat_model/rat_head_teeth_mask.png" type="Texture" id=15]
-[ext_resource path="res://assets/models/rat_model/rat_body_claws_mask.png" type="Texture" id=16]
+[ext_resource path="res://Shared/models/rat_model/rat_head_flesh_mask.png" type="Texture" id=13]
+[ext_resource path="res://Shared/models/rat_model/rat_body_flesh_mask.png" type="Texture" id=14]
+[ext_resource path="res://Shared/models/rat_model/rat_head_teeth_mask.png" type="Texture" id=15]
+[ext_resource path="res://Shared/models/rat_model/rat_body_claws_mask.png" type="Texture" id=16]
 [ext_resource path="res://addons/gdquest.toon-controller/Material/Defaults/Ramps/key_light_ramp.tres" type="Texture" id=17]
-[ext_resource path="res://assets/models/rat_model/rat_body_ao.png" type="Texture" id=18]
-[ext_resource path="res://assets/models/rat_model/rat_head_ao.png" type="Texture" id=19]
-[ext_resource path="res://assets/models/rat_model/rat_shadow_paint.png" type="Texture" id=20]
+[ext_resource path="res://Shared/models/rat_model/rat_body_ao.png" type="Texture" id=18]
+[ext_resource path="res://Shared/models/rat_model/rat_head_ao.png" type="Texture" id=19]
+[ext_resource path="res://Shared/models/rat_model/rat_shadow_paint.png" type="Texture" id=20]
 [ext_resource path="res://Shaders/SpecularControl.shader" type="Shader" id=21]
-[ext_resource path="res://Common/DemoInterface.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=24]
+
+
+
+
 
 
 

@@ -1,10 +1,12 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/theme/gdquest.theme" type="Theme" id=1]
+[ext_resource path="res://Shared/theme/gdquest.theme" type="Theme" id=1]
 [ext_resource path="res://Demos/ImpossibleCube/ImpossibleCubeBase.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=3]
-[ext_resource path="res://Common/Demo3DEnvironment.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Common/DemoInterface.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Shared/Demo3DEnvironment.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=5]
+
+
 
 [node name="ImpossibleCubeDemo" type="Control"]
 anchor_right = 1.0

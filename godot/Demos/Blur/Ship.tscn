@@ -1,9 +1,14 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Demos/Blur/Ship.gd" type="Script" id=1]
-[ext_resource path="res://assets/sprites/cloud1.png" type="Texture" id=2]
-[ext_resource path="res://assets/sprites/topdown-player.svg" type="Texture" id=3]
-[ext_resource path="res://assets/2d_level_environment.tres" type="Environment" id=4]
+[ext_resource path="res://Shared/sprites/cloud1.png" type="Texture" id=2]
+[ext_resource path="res://Demos/Blur/topdown-player.svg" type="Texture" id=3]
+[ext_resource path="res://Shared/environments/2d_level_environment.tres" type="Environment" id=4]
+
+
+
+
+
 
 
 

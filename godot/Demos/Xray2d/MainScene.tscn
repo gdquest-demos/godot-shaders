@@ -1,7 +1,10 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Demos/Xray2d/Watcher.gd" type="Script" id=2]
-[ext_resource path="res://assets/sprites/robi_shaded.png" type="Texture" id=3]
+[ext_resource path="res://Shared/sprites/robi_shaded.png" type="Texture" id=3]
+
+
+
 
 
 [sub_resource type="Animation" id=1]
