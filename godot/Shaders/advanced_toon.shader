@@ -7,8 +7,8 @@ const float SPECULAR_SOFT_MAX = 0.64;
 const float SPECULAR_HARD_MIN = 0.17;
 const float SPECULAR_HARD_MAX = 0.18;
 //Outline constants
-const float OUTLINE_MIN = 0.47;
-const float OUTLINE_MAX = 0.53;
+const float OUTLINE_MIN = 0.45;
+const float OUTLINE_MAX = 0.47;
 //Anisotropic constants
 const float ANISOTROPY_SHARPNESS_MIN = 0.34;
 const float ANISOTROPY_SHARPNESS_MAX = 0.35;
@@ -60,7 +60,7 @@ uniform sampler2D low_frequency_anisotropy_noise : hint_black;
 uniform sampler2D spottiness_anisotropy_noise : hint_black;
 
 //Outline
-uniform float outline_size : hint_range(0, 1) = 0.175;
+uniform float outline_size = 5.0;
 uniform vec4 outline_color : hint_color = vec4(0, 0, 0, 1.0);
 
 //Metalness
@@ -110,14 +110,16 @@ void fragment() {
 	float key_light_value = texture(key_light_ramp, vec2(diffuse.r, 0)).r;
 	key_light_value = mix(key_light_value, 0, texture(shadow_paint, UV).r);
 	
+	vec3 out_color = key_light_value * key_light_color.rgb;
+	out_color = max(out_color, shadow_color.rgb);
+	
 	vec3 flat_color = base_color.rgb * texture(base_texture, UV).rgb;
 	
 	flat_color = mix(flat_color.rgb, paint_color1.rgb, texture(paint_mask1, UV).r);
 	flat_color = mix(flat_color.rgb, paint_color2.rgb, texture(paint_mask2, UV).r);
 	flat_color = mix(flat_color.rgb, paint_color3.rgb, texture(paint_mask3, UV).r);
 	
-	vec3 out_color = flat_color.rgb * key_light_value * key_light_color.rgb;
-	out_color = max(out_color, shadow_color.rgb);
+	out_color *= flat_color;
 	
 	//Fill light
 	float fill_light_value = texture(fill_light_ramp, vec2(diffuse.g, 0)).r;
@@ -198,9 +200,10 @@ void fragment() {
 
 	//Outline
 	if(outline_size > 0.0) {
-		float fresnel_factor = outline_size - dot(normalize(VIEW), NORMAL);
-		float outline_factor = pow(fresnel_factor, diffuse.r * pow(2.0, 8.0));
-		float outline_amount = 1.0 - smoothstep(OUTLINE_MIN, OUTLINE_MAX, outline_factor);
+		float outline_factor = outline_size * (1.0 - diffuse.r);
+		float rim_value = pow(dot(NORMAL, VIEW), outline_factor);
+		
+		float outline_amount = smoothstep(OUTLINE_MIN, OUTLINE_MAX, rim_value);
 		
 		out_color = mix(outline_color.rgb, out_color, outline_amount);
 	}

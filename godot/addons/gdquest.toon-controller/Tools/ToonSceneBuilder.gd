@@ -6,12 +6,10 @@ enum DataType { LIGHT, SPECULAR }
 
 const VIEW_NAMES := ["ToonLightDataView", "ToonSpecularDataView"]
 
-signal rim_toggled(value)
-
 export var shadow_resolution: int = 2048 setget _set_shadow_resolution
 export var specular_material: SpatialMaterial
 export var white_diffuse_material: SpatialMaterial
-export var specular_ignores_shadows := false
+export var specular_ignores_shadows := false setget _set_specular_ignores_shadows
 
 var light_data: Viewport
 var specular_data: Viewport
@@ -47,8 +45,6 @@ func _ready() -> void:
 		if not specular_data:
 			specular_data = _build_data(DataType.SPECULAR)
 
-		self.shadow_resolution = shadow_resolution
-
 
 func _find_viewport(type: int) -> Viewport:
 	var viewport_name: String = VIEW_NAMES[type]
@@ -77,6 +73,7 @@ func _build_data(type: int) -> Viewport:
 	viewport.usage = Viewport.USAGE_3D_NO_EFFECTS
 	viewport.render_target_update_mode = Viewport.UPDATE_ALWAYS
 	viewport.msaa = ProjectSettings.get_setting("rendering/quality/filters/msaa")
+	viewport.shadow_atlas_size = shadow_resolution
 	view.add_child(viewport)
 
 	scene_root.add_child(view)
@@ -90,8 +87,6 @@ func _build_data(type: int) -> Viewport:
 func _set_shadow_resolution(value: int) -> void:
 	shadow_resolution = value
 
-	if not Engine.editor_hint:
-		return
 	if not is_inside_tree():
 		yield(self, "ready")
 
@@ -103,3 +98,12 @@ func _set_shadow_resolution(value: int) -> void:
 			if specular_ignores_shadows
 			else shadow_resolution
 		)
+
+
+func _set_specular_ignores_shadows(value: bool) -> void:
+	specular_ignores_shadows = value
+
+	if not is_inside_tree():
+		yield(self, "ready")
+
+	self.shadow_resolution = shadow_resolution

@@ -25,12 +25,11 @@ func _exit_tree() -> void:
 
 
 func handles(object: Object) -> bool:
-	var interface := get_editor_interface()
 	if (
 		object == get_tree().edited_scene_root
 		and _find_toon_scene_builder(object)
 	):
-		return _initialize_camera_control(object, interface)
+		return _initialize_camera_control(object, get_editor_interface())
 	else:
 		return false
 

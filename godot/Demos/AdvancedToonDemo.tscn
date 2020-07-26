@@ -24,21 +24,14 @@
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=24]
 
-
-
-
-
-
-
-
 [sub_resource type="SpatialMaterial" id=1]
 flags_disable_ambient_light = true
 albedo_color = Color( 0, 0, 0, 1 )
 roughness = 0.4
 
 [sub_resource type="SpatialMaterial" id=2]
-flags_disable_ambient_light = true
 params_specular_mode = 4
+albedo_color = Color( 0.9, 0.9, 0.9, 1 )
 
 [sub_resource type="World" id=3]
 
@@ -112,7 +105,7 @@ shader_param/anisotropy_specular_width = 10.0
 shader_param/anisotropy_specular_contrast = 5.0
 shader_param/anisotropy_specular_brightness = 0.85
 shader_param/anisotropy_in_shadow_strength = 0.1
-shader_param/ambient_occlusion_color = Color( 0.180392, 0.0235294, 0.164706, 1 )
+shader_param/ambient_occlusion_color = Color( 0.180392, 0.0745098, 0.0235294, 1 )
 shader_param/ambient_occlusion_opacity = 0.833
 shader_param/ambient_occlusion_softness = 0.822
 shader_param/ambient_occlusion_shadow_limit = 0.445
@@ -171,7 +164,7 @@ shader_param/anisotropy_specular_width = 10.0
 shader_param/anisotropy_specular_contrast = 5.0
 shader_param/anisotropy_specular_brightness = 0.85
 shader_param/anisotropy_in_shadow_strength = 0.1
-shader_param/ambient_occlusion_color = Color( 0.180392, 0.0235294, 0.164706, 1 )
+shader_param/ambient_occlusion_color = Color( 0.180392, 0.0862745, 0.0235294, 1 )
 shader_param/ambient_occlusion_opacity = 0.833
 shader_param/ambient_occlusion_softness = 0.728
 shader_param/ambient_occlusion_shadow_limit = 0.442
@@ -226,7 +219,7 @@ shader_param/key_light_color = Color( 1, 1, 1, 1 )
 shader_param/fill_light_color = Color( 0.231373, 0.0666667, 0.309804, 1 )
 shader_param/kick_light_color = Color( 0, 0, 0, 1 )
 shader_param/shadow_color = Color( 0.356863, 0.392157, 0.552941, 1 )
-shader_param/outline_size = 0.126
+shader_param/outline_size = 0.451
 shader_param/outline_color = Color( 0.0470588, 0.14902, 0.345098, 1 )
 shader_param/metalness = 0.388
 shader_param/dark_metalness_color = Color( 0.027451, 0.188235, 0.027451, 1 )
@@ -234,7 +227,7 @@ shader_param/light_metalness_color = Color( 0.541176, 0.894118, 0.741176, 1 )
 shader_param/metalness_contrast_factor = 1.34
 shader_param/specular_size = 0.745
 shader_param/specular_color = Color( 0.458824, 1.02745, 1.01961, 1 )
-shader_param/specular_softness = 0.0
+shader_param/specular_softness = 0.663
 shader_param/anisotropy_specular_strength = 0.0
 shader_param/anisotropy_specular_width = 10.0
 shader_param/anisotropy_specular_contrast = 5.0
@@ -244,9 +237,9 @@ shader_param/ambient_occlusion_color = Color( 0, 0, 0, 1 )
 shader_param/ambient_occlusion_opacity = 0.0
 shader_param/ambient_occlusion_softness = 0.5
 shader_param/ambient_occlusion_shadow_limit = 1.0
-shader_param/rim_light_softness = 0.475
-shader_param/rim_light_color = Color( 0.815686, 0.952941, 0.937255, 1 )
-shader_param/rim_fresnel_power = 3.0
+shader_param/rim_light_softness = 0.562
+shader_param/rim_light_color = Color( 0.46, 1.03, 1.02, 1 )
+shader_param/rim_fresnel_power = 2.078
 shader_param/rim_normal_offset_x = 0.0
 shader_param/rim_normal_offset_y = 0.0
 shader_param/paint_mask1 = ExtResource( 11 )
@@ -273,6 +266,7 @@ script = ExtResource( 1 )
 shadow_resolution = 8192
 specular_material = SubResource( 1 )
 white_diffuse_material = SubResource( 2 )
+specular_ignores_shadows = false
 
 [node name="ToonLightDataView" type="ViewportContainer" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -284,7 +278,7 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="ToonLightDataView"]
-size = Vector2( 2695, 1219 )
+size = Vector2( 2644, 1005 )
 world = SubResource( 3 )
 transparent_bg = true
 handle_input_locally = false
@@ -302,23 +296,24 @@ mesh = SubResource( 4 )
 material/0 = SubResource( 2 )
 
 [node name="ToonCamera" type="Camera" parent="ToonLightDataView/Viewport"]
-transform = Transform( 0.999819, -0.0089116, 0.0167925, 0, 0.883321, 0.468769, -0.0190107, -0.468684, 0.883161, 0.143153, 3.98734, 7.54146 )
+transform = Transform( 0.947274, -0.085923, 0.30869, 0, 0.963376, 0.268153, -0.320425, -0.254014, 0.912581, 0.172763, 4.23469, 8.84114 )
 current = true
 script = ExtResource( 4 )
 
 [node name="FillLight" type="DirectionalLight" parent="ToonLightDataView/Viewport"]
-transform = Transform( 0.485713, -0.483788, 0.728033, 0.430129, 0.857344, 0.282754, -0.760968, 0.175811, 0.624515, -3.13309, 1.7265, 2.60975 )
+transform = Transform( 0.01621, -0.67221, -0.740183, 0.160344, 0.732447, -0.661673, 0.986928, -0.107958, 0.119658, -3.13309, 1.7265, 2.60975 )
 light_color = Color( 0, 1, 0, 1 )
 light_specular = 0.0
 
 [node name="KickLight" type="DirectionalLight" parent="ToonLightDataView/Viewport"]
-transform = Transform( -0.864127, -0.107071, 0.491753, -0.137289, 0.990199, -0.0256504, -0.484187, -0.0896775, -0.870357, 0, 0.190201, -3.54709 )
+transform = Transform( -0.816521, -0.150714, 0.557296, 0.157136, 0.870858, 0.46574, -0.55552, 0.467858, -0.687391, 0, 2.96178, -3.54709 )
 light_color = Color( 0, 0, 1, 1 )
 light_specular = 0.0
 
-[node name="KeyLight" type="OmniLight" parent="ToonLightDataView/Viewport"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.085924, 4.28274, 2.05377 )
+[node name="KeyLight" type="DirectionalLight" parent="ToonLightDataView/Viewport"]
+transform = Transform( 0.633273, -0.407792, 0.657778, 0, 0.84992, 0.526911, -0.773929, -0.333679, 0.538231, 0, 2.28599, 0 )
 light_color = Color( 1, 0, 0, 1 )
+light_specular = 0.0
 shadow_enabled = true
 
 [node name="ToonSpecularDataView" type="ViewportContainer" parent="."]
@@ -331,7 +326,7 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="ToonSpecularDataView"]
-size = Vector2( 2695, 1219 )
+size = Vector2( 2644, 1005 )
 world = SubResource( 5 )
 transparent_bg = true
 handle_input_locally = false
@@ -348,24 +343,24 @@ mesh = SubResource( 4 )
 material/0 = SubResource( 6 )
 
 [node name="ToonCamera" type="Camera" parent="ToonSpecularDataView/Viewport"]
-transform = Transform( 0.999819, -0.0089116, 0.0167925, 0, 0.883321, 0.468769, -0.0190107, -0.468684, 0.883161, 0.143153, 3.98734, 7.54146 )
+transform = Transform( 0.947274, -0.085923, 0.30869, 0, 0.963376, 0.268153, -0.320425, -0.254014, 0.912581, 0.172763, 4.23469, 8.84114 )
 current = true
 script = ExtResource( 4 )
 
 [node name="FillLight" type="DirectionalLight" parent="ToonSpecularDataView/Viewport"]
-transform = Transform( 0.485713, -0.483788, 0.728033, 0.430129, 0.857344, 0.282754, -0.760968, 0.175811, 0.624515, -3.13309, 1.7265, 2.60975 )
+transform = Transform( 0.01621, -0.67221, -0.740183, 0.160344, 0.732447, -0.661673, 0.986928, -0.107958, 0.119658, -3.13309, 1.7265, 2.60975 )
 visible = false
 light_energy = 0.0
 light_specular = 1.0
 
 [node name="KickLight" type="DirectionalLight" parent="ToonSpecularDataView/Viewport"]
-transform = Transform( -0.864127, -0.107071, 0.491753, -0.137289, 0.990199, -0.0256504, -0.484187, -0.0896775, -0.870357, 0, 0.190201, -3.54709 )
+transform = Transform( -0.816521, -0.150714, 0.557296, 0.157136, 0.870858, 0.46574, -0.55552, 0.467858, -0.687391, 0, 2.96178, -3.54709 )
 visible = false
 light_energy = 0.0
 light_specular = 1.0
 
-[node name="KeyLight" type="OmniLight" parent="ToonSpecularDataView/Viewport"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.085924, 4.28274, 2.05377 )
+[node name="KeyLight" type="DirectionalLight" parent="ToonSpecularDataView/Viewport"]
+transform = Transform( 0.633273, -0.407792, 0.657778, 0, 0.84992, 0.526911, -0.773929, -0.333679, 0.538231, 0, 2.28599, 0 )
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -431,11 +426,12 @@ update_scale = false
 script = ExtResource( 5 )
 
 [node name="Floor" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0319006, 4.76837e-07, -0.00956392 )
 mesh = SubResource( 30 )
 material/0 = SubResource( 31 )
 
-[node name="KeyLight" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.085924, 4.28274, 2.05377 )
+[node name="KeyLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.633273, -0.407792, 0.657778, 0, 0.84992, 0.526911, -0.773929, -0.333679, 0.538231, 0, 2.28599, 0 )
 shadow_enabled = true
 
 [node name="LightRemote" type="RemoteTransform" parent="KeyLight"]
@@ -449,7 +445,7 @@ script = ExtResource( 5 )
 emits_shadows = true
 
 [node name="FillLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.485713, -0.483788, 0.728033, 0.430129, 0.857344, 0.282754, -0.760968, 0.175811, 0.624515, -3.13309, 1.7265, 2.60975 )
+transform = Transform( 0.01621, -0.67221, -0.740183, 0.160344, 0.732447, -0.661673, 0.986928, -0.107958, 0.119658, -3.13309, 1.7265, 2.60975 )
 
 [node name="LightRemote" type="RemoteTransform" parent="FillLight"]
 remote_path = NodePath("../../ToonLightDataView/Viewport/FillLight")
@@ -462,7 +458,7 @@ script = ExtResource( 5 )
 light_role = 1
 
 [node name="KickLight" type="DirectionalLight" parent="."]
-transform = Transform( -0.864127, -0.107071, 0.491753, -0.137289, 0.990199, -0.0256505, -0.484187, -0.0896776, -0.870357, 0, 0.190201, -3.54709 )
+transform = Transform( -0.816521, -0.150714, 0.557296, 0.157136, 0.870858, 0.46574, -0.55552, 0.467858, -0.687391, 0, 2.96178, -3.54709 )
 
 [node name="LightRemote" type="RemoteTransform" parent="KickLight"]
 remote_path = NodePath("../../ToonLightDataView/Viewport/KickLight")
