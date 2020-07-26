@@ -6,8 +6,6 @@ uniform sampler2D stencil;
 uniform vec4 stencil_color : hint_color;
 
 void fragment() {
-	vec2 base_uv = UV;
-	
 	vec4 stencil_test = texture(stencil, SCREEN_UV);
 	vec4 color_test = stencil_color;
 	

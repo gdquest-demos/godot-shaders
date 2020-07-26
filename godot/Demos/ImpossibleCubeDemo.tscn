@@ -6,8 +6,6 @@
 [ext_resource path="res://Shared/Demo3DEnvironment.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=5]
 
-
-
 [node name="ImpossibleCubeDemo" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0

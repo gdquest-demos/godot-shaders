@@ -5,7 +5,7 @@ uniform float thickness = 0.1;
 uniform vec4 outline_color : hint_color = vec4(1.0);
 
 void vertex() {
-	VERTEX += (NORMAL * thickness);
+	VERTEX += NORMAL * thickness;
 }
 
 void fragment() {

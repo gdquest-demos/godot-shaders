@@ -52,8 +52,8 @@ glow_bicubic_upscale = true
 
 [sub_resource type="ShaderMaterial" id=8]
 shader = ExtResource( 6 )
-shader_param/thickness = 0.02
-shader_param/outline_color = Color( 0, 0, 0, 1 )
+shader_param/thickness = 0.007
+shader_param/outline_color = Color( 0.129412, 0.129412, 0.129412, 1 )
 
 [sub_resource type="Gradient" id=9]
 offsets = PoolRealArray( 0.291667, 0.690476 )
@@ -91,8 +91,8 @@ shader_param/key_light_color = Color( 1, 1, 1, 1 )
 shader_param/fill_light_color = Color( 0.113725, 0.0235294, 0.152941, 1 )
 shader_param/kick_light_color = Color( 0, 0, 0, 1 )
 shader_param/shadow_color = Color( 0.32549, 0.329412, 0.352941, 1 )
-shader_param/outline_size = 0.175
-shader_param/outline_color = Color( 0, 0, 0, 1 )
+shader_param/outline_size = 0.419
+shader_param/outline_color = Color( 0.137255, 0.137255, 0.137255, 1 )
 shader_param/metalness = 0.0
 shader_param/dark_metalness_color = Color( 0, 0, 0, 1 )
 shader_param/light_metalness_color = Color( 1, 1, 1, 1 )
@@ -186,7 +186,7 @@ shader_param/ambient_occlusion = ExtResource( 19 )
 
 [sub_resource type="ShaderMaterial" id=22]
 shader = ExtResource( 6 )
-shader_param/thickness = 0.02
+shader_param/thickness = 0.033
 shader_param/outline_color = Color( 0.0470588, 0.14902, 0.345098, 1 )
 
 [sub_resource type="Gradient" id=23]
@@ -219,7 +219,7 @@ shader_param/key_light_color = Color( 1, 1, 1, 1 )
 shader_param/fill_light_color = Color( 0.231373, 0.0666667, 0.309804, 1 )
 shader_param/kick_light_color = Color( 0, 0, 0, 1 )
 shader_param/shadow_color = Color( 0.356863, 0.392157, 0.552941, 1 )
-shader_param/outline_size = 0.451
+shader_param/outline_size = 0.646
 shader_param/outline_color = Color( 0.0470588, 0.14902, 0.345098, 1 )
 shader_param/metalness = 0.388
 shader_param/dark_metalness_color = Color( 0.027451, 0.188235, 0.027451, 1 )
@@ -278,7 +278,7 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="ToonLightDataView"]
-size = Vector2( 2644, 1005 )
+size = Vector2( 2644, 915 )
 world = SubResource( 3 )
 transparent_bg = true
 handle_input_locally = false
@@ -296,22 +296,22 @@ mesh = SubResource( 4 )
 material/0 = SubResource( 2 )
 
 [node name="ToonCamera" type="Camera" parent="ToonLightDataView/Viewport"]
-transform = Transform( 0.947274, -0.085923, 0.30869, 0, 0.963376, 0.268153, -0.320425, -0.254014, 0.912581, 0.172763, 4.23469, 8.84114 )
+transform = Transform( 0.987445, -0.0486945, 0.150273, 0, 0.951302, 0.30826, -0.157966, -0.304389, 0.939358, 0.297302, 4.64716, 6.59856 )
 current = true
 script = ExtResource( 4 )
 
 [node name="FillLight" type="DirectionalLight" parent="ToonLightDataView/Viewport"]
-transform = Transform( 0.01621, -0.67221, -0.740183, 0.160344, 0.732447, -0.661673, 0.986928, -0.107958, 0.119658, -3.13309, 1.7265, 2.60975 )
+transform = Transform( 0.01621, -0.67221, -0.740183, 0.160344, 0.732447, -0.661673, 0.986928, -0.107958, 0.119658, -5.0003, 1.7265, 2.60975 )
 light_color = Color( 0, 1, 0, 1 )
 light_specular = 0.0
 
 [node name="KickLight" type="DirectionalLight" parent="ToonLightDataView/Viewport"]
-transform = Transform( -0.816521, -0.150714, 0.557296, 0.157136, 0.870858, 0.46574, -0.55552, 0.467858, -0.687391, 0, 2.96178, -3.54709 )
+transform = Transform( -0.816521, -0.150714, 0.557296, 0.157136, 0.870858, 0.465741, -0.55552, 0.467858, -0.687391, 0, 2.96178, -3.54709 )
 light_color = Color( 0, 0, 1, 1 )
 light_specular = 0.0
 
 [node name="KeyLight" type="DirectionalLight" parent="ToonLightDataView/Viewport"]
-transform = Transform( 0.633273, -0.407792, 0.657778, 0, 0.84992, 0.526911, -0.773929, -0.333679, 0.538231, 0, 2.28599, 0 )
+transform = Transform( 0.633273, -0.407792, 0.657777, 0, 0.84992, 0.526912, -0.773929, -0.333679, 0.538231, 0, 2.28599, 0 )
 light_color = Color( 1, 0, 0, 1 )
 light_specular = 0.0
 shadow_enabled = true
@@ -326,7 +326,7 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="ToonSpecularDataView"]
-size = Vector2( 2644, 1005 )
+size = Vector2( 2644, 915 )
 world = SubResource( 5 )
 transparent_bg = true
 handle_input_locally = false
@@ -343,24 +343,24 @@ mesh = SubResource( 4 )
 material/0 = SubResource( 6 )
 
 [node name="ToonCamera" type="Camera" parent="ToonSpecularDataView/Viewport"]
-transform = Transform( 0.947274, -0.085923, 0.30869, 0, 0.963376, 0.268153, -0.320425, -0.254014, 0.912581, 0.172763, 4.23469, 8.84114 )
+transform = Transform( 0.987445, -0.0486945, 0.150273, 0, 0.951302, 0.30826, -0.157966, -0.304389, 0.939358, 0.297302, 4.64716, 6.59856 )
 current = true
 script = ExtResource( 4 )
 
 [node name="FillLight" type="DirectionalLight" parent="ToonSpecularDataView/Viewport"]
-transform = Transform( 0.01621, -0.67221, -0.740183, 0.160344, 0.732447, -0.661673, 0.986928, -0.107958, 0.119658, -3.13309, 1.7265, 2.60975 )
+transform = Transform( 0.01621, -0.67221, -0.740183, 0.160344, 0.732447, -0.661673, 0.986928, -0.107958, 0.119658, -5.0003, 1.7265, 2.60975 )
 visible = false
 light_energy = 0.0
 light_specular = 1.0
 
 [node name="KickLight" type="DirectionalLight" parent="ToonSpecularDataView/Viewport"]
-transform = Transform( -0.816521, -0.150714, 0.557296, 0.157136, 0.870858, 0.46574, -0.55552, 0.467858, -0.687391, 0, 2.96178, -3.54709 )
+transform = Transform( -0.816521, -0.150714, 0.557296, 0.157136, 0.870858, 0.465741, -0.55552, 0.467858, -0.687391, 0, 2.96178, -3.54709 )
 visible = false
 light_energy = 0.0
 light_specular = 1.0
 
 [node name="KeyLight" type="DirectionalLight" parent="ToonSpecularDataView/Viewport"]
-transform = Transform( 0.633273, -0.407792, 0.657778, 0, 0.84992, 0.526911, -0.773929, -0.333679, 0.538231, 0, 2.28599, 0 )
+transform = Transform( 0.633273, -0.407792, 0.657777, 0, 0.84992, 0.526912, -0.773929, -0.333679, 0.538231, 0, 2.28599, 0 )
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -445,7 +445,7 @@ script = ExtResource( 5 )
 emits_shadows = true
 
 [node name="FillLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.01621, -0.67221, -0.740183, 0.160344, 0.732447, -0.661673, 0.986928, -0.107958, 0.119658, -3.13309, 1.7265, 2.60975 )
+transform = Transform( 0.01621, -0.67221, -0.740183, 0.160344, 0.732447, -0.661673, 0.986928, -0.107958, 0.119658, -5.0003, 1.7265, 2.60975 )
 
 [node name="LightRemote" type="RemoteTransform" parent="FillLight"]
 remote_path = NodePath("../../ToonLightDataView/Viewport/FillLight")
