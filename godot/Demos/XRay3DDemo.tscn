@@ -1,7 +1,7 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Shared/Demo3DEnvironment.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Shaders/XRay3D.shader" type="Shader" id=2]
+[ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Shared/models/rat_model/rat.dae" type="PackedScene" id=3]
 [ext_resource path="res://Shared/models/rat_model/rat_head_albedo.png" type="Texture" id=4]
 [ext_resource path="res://Shared/models/rat_model/rat_albedo.png" type="Texture" id=5]
@@ -9,26 +9,49 @@
 [ext_resource path="res://Shared/models/rat_model/rat_body_ao.png" type="Texture" id=7]
 [ext_resource path="res://Shared/models/rat_model/rat_head_ao.png" type="Texture" id=8]
 
-[sub_resource type="Environment" id=10]
+[sub_resource type="Environment" id=16]
 background_mode = 1
 
-[sub_resource type="World" id=11]
-environment = SubResource( 10 )
+[sub_resource type="World" id=17]
+environment = SubResource( 16 )
 
-[sub_resource type="SpatialMaterial" id=12]
+[sub_resource type="SpatialMaterial" id=18]
 flags_unshaded = true
-params_grow = true
-params_grow_amount = 0.1
-albedo_color = Color( 1, 0, 0, 1 )
 
-[sub_resource type="CubeMesh" id=13]
+[sub_resource type="CubeMesh" id=19]
 size = Vector3( 10, 5, 2 )
 
-[sub_resource type="SpatialMaterial" id=14]
+[sub_resource type="SpatialMaterial" id=20]
 flags_unshaded = true
 albedo_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="SpatialMaterial" id=20]
+[sub_resource type="Environment" id=29]
+background_mode = 1
+
+[sub_resource type="World" id=30]
+environment = SubResource( 29 )
+
+[sub_resource type="Shader" id=21]
+code = "shader_type spatial;
+render_mode ambient_light_disabled;
+
+uniform float xray_color_intensity = 1.0;
+uniform float outline_sharpness = 2.0;
+uniform vec4 outline_color : hint_color = vec4(1.0);
+
+void fragment() {
+	float fresnel_dot = 1.0 - dot(NORMAL, VIEW) * outline_sharpness;
+	ALBEDO = vec3(0.0);
+	EMISSION = smoothstep(0, 1, fresnel_dot) * outline_color.rgb * xray_color_intensity;
+}"
+
+[sub_resource type="ShaderMaterial" id=22]
+shader = SubResource( 21 )
+shader_param/xray_color_intensity = 3.0
+shader_param/outline_sharpness = 1.0
+shader_param/outline_color = Color( 0.87451, 0.254902, 0.0901961, 1 )
+
+[sub_resource type="SpatialMaterial" id=23]
 albedo_texture = ExtResource( 5 )
 ao_enabled = true
 ao_light_affect = 0.0
@@ -36,20 +59,7 @@ ao_texture = ExtResource( 7 )
 ao_on_uv2 = false
 ao_texture_channel = 0
 
-[sub_resource type="ViewportTexture" id=19]
-viewport_path = NodePath("StencilView/Viewport")
-
-[sub_resource type="ShaderMaterial" id=3]
-resource_local_to_scene = true
-next_pass = SubResource( 20 )
-shader = ExtResource( 2 )
-shader_param/outline_color = Color( 0.0901961, 0.552941, 1, 1 )
-shader_param/color_intensity = 4.0
-shader_param/outline_sharpness = 2.0
-shader_param/stencil_color = Color( 1, 0, 0, 1 )
-shader_param/stencil = SubResource( 19 )
-
-[sub_resource type="SpatialMaterial" id=21]
+[sub_resource type="SpatialMaterial" id=24]
 flags_disable_ambient_light = true
 albedo_color = Color( 0, 0, 0, 1 )
 emission_enabled = true
@@ -58,17 +68,7 @@ emission_energy = 3.0
 emission_operator = 0
 emission_on_uv2 = false
 
-[sub_resource type="ShaderMaterial" id=22]
-resource_local_to_scene = true
-next_pass = SubResource( 21 )
-shader = ExtResource( 2 )
-shader_param/outline_color = Color( 0.0901961, 0.552941, 1, 1 )
-shader_param/color_intensity = 4.0
-shader_param/outline_sharpness = 2.0
-shader_param/stencil_color = Color( 1, 0, 0, 1 )
-shader_param/stencil = SubResource( 19 )
-
-[sub_resource type="SpatialMaterial" id=23]
+[sub_resource type="SpatialMaterial" id=25]
 albedo_texture = ExtResource( 4 )
 ao_enabled = true
 ao_light_affect = 0.0
@@ -76,23 +76,47 @@ ao_texture = ExtResource( 8 )
 ao_on_uv2 = false
 ao_texture_channel = 0
 
-[sub_resource type="ShaderMaterial" id=24]
-resource_local_to_scene = true
-next_pass = SubResource( 23 )
-shader = ExtResource( 2 )
-shader_param/outline_color = Color( 0.0901961, 0.552941, 1, 1 )
-shader_param/color_intensity = 4.0
-shader_param/outline_sharpness = 2.0
-shader_param/stencil_color = Color( 1, 0, 0, 1 )
-shader_param/stencil = SubResource( 19 )
-
-[sub_resource type="GDScript" id=18]
+[sub_resource type="GDScript" id=26]
 script/source = "extends Spatial
 
 
 func _process(delta: float) -> void:
 	rotate_y(PI/8.0 * delta)
 "
+
+[sub_resource type="QuadMesh" id=27]
+size = Vector2( 2, 2 )
+
+[sub_resource type="Shader" id=15]
+code = "shader_type spatial;
+render_mode blend_add, unshaded;
+
+uniform sampler2D stencil_view : hint_white;
+uniform sampler2D xray_view : hint_black_albedo;
+
+void vertex() {
+	POSITION = vec4(VERTEX, 1.0);
+}
+
+void fragment() {
+	float mask = texture(stencil_view, SCREEN_UV).r;
+	vec4 xray = texture(xray_view, SCREEN_UV);
+	
+	ALBEDO = xray.rgb;
+	ALPHA = max(0.0, 1.0 - mask);
+}"
+
+[sub_resource type="ViewportTexture" id=31]
+viewport_path = NodePath("StencilView/Viewport")
+
+[sub_resource type="ViewportTexture" id=32]
+viewport_path = NodePath("XRayView/Viewport")
+
+[sub_resource type="ShaderMaterial" id=28]
+resource_local_to_scene = true
+shader = SubResource( 15 )
+shader_param/stencil_view = SubResource( 31 )
+shader_param/xray_view = SubResource( 32 )
 
 [node name="XRay3DDemo" type="Spatial"]
 
@@ -108,7 +132,7 @@ __meta__ = {
 [node name="Viewport" type="Viewport" parent="StencilView"]
 size = Vector2( 1920, 1080 )
 own_world = true
-world = SubResource( 11 )
+world = SubResource( 17 )
 handle_input_locally = false
 keep_3d_linear = true
 usage = 3
@@ -118,73 +142,126 @@ render_target_update_mode = 3
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.26067 )
 
 [node name="body1" parent="StencilView/Viewport/rat" index="0"]
-material/0 = SubResource( 12 )
+material/0 = SubResource( 18 )
 
 [node name="eyes1" parent="StencilView/Viewport/rat" index="1"]
-material/0 = SubResource( 12 )
+material/0 = SubResource( 18 )
 
 [node name="head1" parent="StencilView/Viewport/rat" index="2"]
-material/0 = SubResource( 12 )
+material/0 = SubResource( 18 )
 
 [node name="teeth1" parent="StencilView/Viewport/rat" index="3"]
-material/0 = SubResource( 12 )
+material/0 = SubResource( 18 )
 
 [node name="Wall" type="MeshInstance" parent="StencilView/Viewport"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00390244, 2.51279, 4.1794 )
-mesh = SubResource( 13 )
-material/0 = SubResource( 14 )
+mesh = SubResource( 19 )
+material/0 = SubResource( 20 )
 
 [node name="Camera" type="Camera" parent="StencilView/Viewport"]
-transform = Transform( 1, 0, 0, 0, 0.939235, 0.343276, 0, -0.343276, 0.939234, 0, 4.51102, 20.2731 )
+transform = Transform( 0.490402, -0.299164, 0.81854, 0, 0.939234, 0.343276, -0.871496, -0.168343, 0.460602, 7.81698, 3.55442, 13.0849 )
+current = true
+
+[node name="XRayView" type="ViewportContainer" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="XRayView"]
+size = Vector2( 1920, 1080 )
+own_world = true
+world = SubResource( 30 )
+handle_input_locally = false
+keep_3d_linear = true
+usage = 3
+render_target_update_mode = 3
+
+[node name="rat" parent="XRayView/Viewport" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.26067 )
+
+[node name="body1" parent="XRayView/Viewport/rat" index="0"]
+material/0 = SubResource( 22 )
+
+[node name="eyes1" parent="XRayView/Viewport/rat" index="1"]
+material/0 = SubResource( 22 )
+
+[node name="head1" parent="XRayView/Viewport/rat" index="2"]
+material/0 = SubResource( 22 )
+
+[node name="teeth1" parent="XRayView/Viewport/rat" index="3"]
+material/0 = SubResource( 22 )
+
+[node name="Camera" type="Camera" parent="XRayView/Viewport"]
+transform = Transform( 0.490402, -0.299164, 0.81854, 0, 0.939234, 0.343276, -0.871496, -0.168343, 0.460602, 7.81698, 3.55442, 13.0849 )
 current = true
 
 [node name="Demo3DEnvironment" parent="." instance=ExtResource( 1 )]
 
 [node name="Wall" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00390244, 2.51279, 4.1794 )
-mesh = SubResource( 13 )
+mesh = SubResource( 19 )
 material/0 = null
 
-[node name="RemoteTransform" type="RemoteTransform" parent="Wall"]
+[node name="StencilTransform" type="RemoteTransform" parent="Wall"]
 remote_path = NodePath("../../StencilView/Viewport/Wall")
 
 [node name="rat" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.26067 )
 
 [node name="body1" parent="rat" index="0"]
-material/0 = SubResource( 3 )
+material/0 = SubResource( 23 )
 
 [node name="eyes1" parent="rat" index="1"]
-material/0 = SubResource( 22 )
+material/0 = SubResource( 24 )
 
 [node name="head1" parent="rat" index="2"]
-material/0 = SubResource( 24 )
+material/0 = SubResource( 25 )
 
 [node name="teeth1" parent="rat" index="3"]
-material/0 = SubResource( 24 )
+material/0 = SubResource( 25 )
 
-[node name="RemoteTransform" type="RemoteTransform" parent="rat"]
+[node name="StencilTransform" type="RemoteTransform" parent="rat"]
 remote_path = NodePath("../../StencilView/Viewport/rat")
 
+[node name="XRayTransform" type="RemoteTransform" parent="rat"]
+remote_path = NodePath("../../XRayView/Viewport/rat")
+
 [node name="Spatial" type="Spatial" parent="."]
-transform = Transform( 0.999977, 0, 0, 0, 1, 0, 0, 0, 0.999977, 0, 0, 8.68621 )
-script = SubResource( 18 )
+transform = Transform( 0.49039, 0, 0.871476, 0, 1, 0, -0.871476, 0, 0.49039, 0, 0, 8.68621 )
+script = SubResource( 26 )
 
 [node name="Camera" type="Camera" parent="Spatial"]
-transform = Transform( 1, 0, 0, 0, 0.939232, 0.343283, 0, -0.343283, 0.939232, 0, 4.51102, 11.5872 )
+transform = Transform( 1.00002, 1.49012e-08, 2.98023e-08, 0, 0.939234, 0.343276, -2.98023e-08, -0.343284, 0.939256, 1.90735e-06, 3.55442, 8.96981 )
 current = true
 
-[node name="RemoteTransform" type="RemoteTransform" parent="Spatial/Camera"]
+[node name="StencilTransform" type="RemoteTransform" parent="Spatial/Camera"]
 remote_path = NodePath("../../../StencilView/Viewport/Camera")
 
+[node name="XRayTransform" type="RemoteTransform" parent="Spatial/Camera"]
+remote_path = NodePath("../../../XRayView/Viewport/Camera")
+
+[node name="ViewQuad" type="MeshInstance" parent="Spatial"]
+mesh = SubResource( 27 )
+material/0 = SubResource( 28 )
+
 [node name="DebugViewer" type="Control" parent="."]
+margin_top = 120.0
 margin_right = 40.0
-margin_bottom = 40.0
+margin_bottom = 160.0
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="DemoInterface" parent="." instance=ExtResource( 2 )]
+text_bbcode = "Generates a black and white mask that determines where color information from the XRay view should override color information from the Main view. The XRay view is a glowing fresnel effect."
+
 [editable path="StencilView/Viewport/rat"]
+
+[editable path="XRayView/Viewport/rat"]
 
 [editable path="rat"]
