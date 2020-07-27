@@ -75,9 +75,6 @@ func _build_missing_proxies(parent: Node) -> void:
 	else:
 		specular_remote = parent.find_node("SpecularRemote", true, false)
 
-	self.light_role = light_role
-	self.emits_shadows = emits_shadows
-
 	if light_missing or specular_missing:
 		parent.add_child(self)
 		owner = scene_root
@@ -95,6 +92,8 @@ func _build_remote_duplicates(parent: Node, type: int) -> Dictionary:
 	match type:
 		ToonSceneBuilder.DataType.LIGHT:
 			builder.light_data.add_child(proxy)
+			if proxy is Light:
+				proxy.light_color = Color.red
 			proxy_remote.name = "LightRemote"
 		ToonSceneBuilder.DataType.SPECULAR:
 			builder.specular_data.add_child(proxy)

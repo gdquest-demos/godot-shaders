@@ -22,9 +22,3 @@ func toggle_remotes() -> void:
 		specular_remote.update_position = is_game
 		specular_remote.update_rotation = is_game
 		specular_remote.update_scale = is_game
-	
-	var rim_remote: RemoteTransform = find_node("RimRemote")
-	if rim_remote:
-		rim_remote.update_position = is_game
-		rim_remote.update_rotation = is_game
-		rim_remote.update_scale = is_game

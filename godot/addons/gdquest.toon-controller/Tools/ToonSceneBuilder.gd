@@ -46,6 +46,10 @@ func _ready() -> void:
 			specular_data = _build_data(DataType.SPECULAR)
 
 
+func get_class() -> String:
+	return "ToonSceneBuilder"
+
+
 func _find_viewport(type: int) -> Viewport:
 	var viewport_name: String = VIEW_NAMES[type]
 
