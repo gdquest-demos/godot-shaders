@@ -25,10 +25,10 @@ const EXCLUSIONS := [
 ]
 
 export var Pixel: PackedScene
-export var top_left := Vector2(504.338, 212.235)
+export var top_left := Vector2(758.377, 320.169)
 export var width := 0
 export var height := 0
-export var pixel_size := 12.9
+export var pixel_size := 19.18
 
 
 func _ready() -> void:

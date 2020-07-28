@@ -14,10 +14,6 @@
 [ext_resource path="res://Shared/theme/fonts/font_title.tres" type="DynamicFont" id=12]
 [ext_resource path="res://Intro/Elements/LineDrawer.tscn" type="PackedScene" id=13]
 
-
-
-
-
 [sub_resource type="World" id=1]
 
 [sub_resource type="ViewportTexture" id=2]
@@ -38,7 +34,7 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="."]
-size = Vector2( 1280, 720 )
+size = Vector2( 1920, 1080 )
 own_world = true
 world = SubResource( 1 )
 handle_input_locally = false

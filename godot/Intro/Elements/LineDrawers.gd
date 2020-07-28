@@ -34,6 +34,6 @@ func do_draw() -> void:
 
 func do_cull() -> void:
 	for c in get_children():
-		if c.will_cull:
+		if not c is Tween and c.will_cull:
 			c.do_cull()
 	yield(tween, "tween_all_completed")
