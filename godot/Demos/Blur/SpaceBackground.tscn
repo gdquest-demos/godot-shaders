@@ -5,10 +5,6 @@
 [ext_resource path="res://Demos/Blur/AsteroidTrail.gd" type="Script" id=3]
 [ext_resource path="res://Demos/Blur/asteroid-round.svg" type="Texture" id=4]
 
-
-
-
-
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0.0561224 )
 colors = PoolColorArray( 0.117647, 0.105882, 0.25098, 1 )
@@ -22,7 +18,7 @@ trail_length = 10000.0
 direction_degrees = 50.0
 
 [node name="ShakingCamera" parent="." instance=ExtResource( 2 )]
-position = Vector2( 640, 360 )
+position = Vector2( 960, 540 )
 zoom = Vector2( 2, 2 )
 smoothing_speed = 15.0
 amplitude = 6.0
@@ -30,7 +26,7 @@ DAMP_EASING = 1.0
 is_shaking = false
 
 [node name="AsteroidTrail" type="Node2D" parent="."]
-position = Vector2( 640, 360 )
+position = Vector2( 960, 540 )
 script = ExtResource( 3 )
 asteroid = ExtResource( 4 )
 spawn_radius = 640.0

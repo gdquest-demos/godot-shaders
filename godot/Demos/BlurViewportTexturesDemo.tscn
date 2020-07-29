@@ -7,7 +7,6 @@
 [ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=5]
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=6]
 
-
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 4 )
 shader_param/blur_scale = Vector2( 0, 0 )
@@ -37,6 +36,7 @@ void fragment() {
 	COLOR.rgb = out_color.rgb;
 	COLOR.a = min(1.0, out_color.r + out_color.g + out_color.b);
 }"
+custom_defines = ""
 
 [sub_resource type="ShaderMaterial" id=7]
 shader = SubResource( 6 )
@@ -61,7 +61,7 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="SceneView"]
-size = Vector2( 1280, 720 )
+size = Vector2( 1920, 1080 )
 handle_input_locally = false
 usage = 0
 render_target_update_mode = 3
@@ -70,10 +70,14 @@ render_target_update_mode = 3
 trail_length = 24000.0
 
 [node name="ShakingCamera" parent="SceneView/Viewport/MotionBlurScene" index="0"]
+position = Vector2( 960, 540 )
 smoothing_speed = 25.0
 amplitude = 100.0
 duration = 5.0
 DAMP_EASING = 6.0
+
+[node name="AsteroidTrail" parent="SceneView/Viewport/MotionBlurScene" index="1"]
+spawn_radius = 960.0
 
 [node name="ShipView" type="ViewportContainer" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -85,13 +89,13 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="ShipView"]
-size = Vector2( 1280, 720 )
+size = Vector2( 1920, 1080 )
 transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 3
 
 [node name="Ship" parent="ShipView/Viewport" instance=ExtResource( 2 )]
-position = Vector2( 640, 360 )
+position = Vector2( 960, 540 )
 travel_speed = 10000.0
 blur_provider_path = NodePath("../../../../BlurViewportTexturesDemo/SceneView/Viewport/MotionBlurScene")
 shaking_camera_background_path = NodePath("../../../../BlurViewportTexturesDemo/SceneView/Viewport/MotionBlurScene/ShakingCamera")
@@ -100,7 +104,7 @@ shaking_camera_background_path = NodePath("../../../../BlurViewportTexturesDemo/
 remote_path = NodePath("../../../../SceneView/Viewport/MotionBlurScene/ShakingCamera")
 
 [node name="Camera2D" type="Camera2D" parent="ShipView/Viewport"]
-position = Vector2( 640, 360 )
+position = Vector2( 960, 540 )
 current = true
 zoom = Vector2( 2, 2 )
 smoothing_enabled = true
@@ -116,7 +120,7 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="BlurView1"]
-size = Vector2( 1280, 720 )
+size = Vector2( 1920, 1080 )
 handle_input_locally = false
 usage = 0
 render_target_update_mode = 3
@@ -142,7 +146,7 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="BlurView2"]
-size = Vector2( 1280, 720 )
+size = Vector2( 1920, 1080 )
 handle_input_locally = false
 usage = 0
 render_target_update_mode = 3

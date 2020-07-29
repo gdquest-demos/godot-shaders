@@ -6,10 +6,6 @@
 [ext_resource path="res://Shared/sprites/robi_shaded.png" type="Texture" id=4]
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=5]
 
-
-
-
-
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )
 shader_param/line_color = Color( 1.74, 1, 2.31, 1 )
@@ -34,8 +30,7 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 1 )
-position = Vector2( 642.67, 536.199 )
-scale = Vector2( 0.75, 0.75 )
+position = Vector2( 960, 540 )
 texture = ExtResource( 4 )
 __meta__ = {
 "_editor_description_": "Any HDR levels of color will glow, whether from an outline shader, or from a mask"

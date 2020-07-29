@@ -9,8 +9,6 @@
 [ext_resource path="res://Shared/Background2D/Demo2DBackground.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=8]
 
-
-
 [sub_resource type="ViewportTexture" id=1]
 viewport_path = NodePath("XRayView/Viewport")
 
@@ -54,8 +52,15 @@ render_target_update_mode = 3
 
 [node name="MainScene" parent="MainView/Viewport" instance=ExtResource( 2 )]
 
+[node name="Robi" parent="MainView/Viewport/MainScene" index="0"]
+position = Vector2( 1440, 540 )
+scale = Vector2( 1, 1 )
+
 [node name="RemoteTransform2D" parent="MainView/Viewport/MainScene/Robi" index="0"]
 remote_path = NodePath("../../../../../XRayView/Viewport/GearTrain")
+
+[node name="Watcher" parent="MainView/Viewport/MainScene" index="1"]
+position = Vector2( 480, 540 )
 
 [node name="RemoteTransform2D" parent="MainView/Viewport/MainScene/Watcher" index="0"]
 remote_path = NodePath("../../../../../MaskView/Viewport/Cone")
@@ -76,7 +81,8 @@ handle_input_locally = false
 render_target_update_mode = 3
 
 [node name="GearTrain" parent="XRayView/Viewport" instance=ExtResource( 3 )]
-position = Vector2( 1020, 365 )
+position = Vector2( 1440, 540 )
+scale = Vector2( 2, 2 )
 
 [node name="MaskView" type="ViewportContainer" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -94,7 +100,7 @@ handle_input_locally = false
 render_target_update_mode = 3
 
 [node name="Cone" type="Node2D" parent="MaskView/Viewport"]
-position = Vector2( 324, 346 )
+position = Vector2( 480, 540 )
 rotation = -1.0472
 script = ExtResource( 4 )
 

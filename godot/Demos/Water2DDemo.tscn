@@ -7,9 +7,6 @@
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Demos/Water2D/disk_mask.png" type="Texture" id=6]
 
-
-
-
 [node name="Water2DDemo" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -20,8 +17,8 @@ __meta__ = {
 [node name="Water2D" type="Sprite" parent="."]
 modulate = Color( 0.27451, 0.32549, 0.517647, 1 )
 material = ExtResource( 4 )
-position = Vector2( 640, 360 )
-scale = Vector2( 5, 2.8125 )
+position = Vector2( 960, 540 )
+scale = Vector2( 7.5, 4.218 )
 texture = ExtResource( 3 )
 normal_map = ExtResource( 2 )
 script = ExtResource( 1 )

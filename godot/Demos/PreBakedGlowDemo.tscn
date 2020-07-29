@@ -7,10 +7,6 @@
 [ext_resource path="res://Shared/Background2D/Demo2DBackground.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=6]
 
-
-
-
-
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 4 )
 shader_param/alpha_falloff_front = 0.5
@@ -32,7 +28,7 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 1 )
-position = Vector2( 674, 348 )
+position = Vector2( 960, 540 )
 rotation = 1.5708
 texture = ExtResource( 2 )
 script = ExtResource( 3 )

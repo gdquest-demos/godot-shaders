@@ -16,15 +16,6 @@
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Demos/Dissolve/Dissolve2D/Particles2D.gd" type="Script" id=16]
 
-
-
-
-
-
-
-
-
-
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 12 )
 shader_param/burn_size = 0.15
@@ -132,16 +123,15 @@ usage = 0
 render_target_update_mode = 3
 
 [node name="TextureRect" type="TextureRect" parent="MaskView/Viewport"]
-margin_right = 1280.0
-margin_bottom = 720.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 texture = ExtResource( 9 )
 expand = true
 stretch_mode = 1
 
 [node name="RobiMask" type="Sprite" parent="MaskView/Viewport"]
 material = SubResource( 1 )
-position = Vector2( 641.587, 510.803 )
-scale = Vector2( 0.75, 0.75 )
+position = Vector2( 960, 540 )
 texture = ExtResource( 10 )
 script = ExtResource( 7 )
 
@@ -171,8 +161,7 @@ expand = true
 
 [node name="Robi" type="Sprite" parent="."]
 material = SubResource( 3 )
-position = Vector2( 641.587, 510.803 )
-scale = Vector2( 0.75, 0.75 )
+position = Vector2( 960, 540 )
 texture = ExtResource( 10 )
 script = ExtResource( 8 )
 emission_color = ExtResource( 2 )
@@ -184,17 +173,16 @@ remote_path = NodePath("../../MaskView/Viewport/RobiMask")
 
 [node name="Particles2D" type="Particles2D" parent="."]
 modulate = Color( 2, 1.5, 1.5, 1 )
-position = Vector2( 650.587, 479.803 )
+position = Vector2( 960, 540 )
 emitting = false
 amount = 512
 lifetime = 1.5
-visibility_rect = Rect2( -206.234, -300, 400, 600 )
+visibility_rect = Rect2( -250, -350, 500, 700 )
 local_coords = false
 process_material = SubResource( 10 )
 texture = ExtResource( 3 )
 script = ExtResource( 16 )
 emission_mask = SubResource( 11 )
-is_force_stopped = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 12 )

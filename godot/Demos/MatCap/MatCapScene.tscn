@@ -1,22 +1,16 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://assets/matcaps/black_glass_matcap.jpeg" type="Texture" id=1]
-[ext_resource path="res://assets/matcaps/Chrome_matcap.png" type="Texture" id=2]
-[ext_resource path="res://assets/matcaps/flat_sketch_matcap.png" type="Texture" id=3]
-[ext_resource path="res://assets/matcaps/glowy_matcap.jpeg" type="Texture" id=4]
+[ext_resource path="res://Demos/MatCap/black_glass_matcap.jpeg" type="Texture" id=1]
+[ext_resource path="res://Demos/MatCap/Chrome_matcap.png" type="Texture" id=2]
+[ext_resource path="res://Demos/MatCap/flat_sketch_matcap.png" type="Texture" id=3]
+[ext_resource path="res://Demos/MatCap/glowy_matcap.jpeg" type="Texture" id=4]
 [ext_resource path="res://Demos/MatCap/skin_matcap.png" type="Texture" id=5]
-[ext_resource path="res://assets/matcaps/redjade_matcap.png" type="Texture" id=6]
-[ext_resource path="res://assets/matcaps/copper_matcap.png" type="Texture" id=7]
-[ext_resource path="res://assets/matcaps/plastic_matcap.jpg" type="Texture" id=8]
-[ext_resource path="res://assets/matcaps/red_matcap.png" type="Texture" id=9]
+[ext_resource path="res://Demos/MatCap/redjade_matcap.png" type="Texture" id=6]
+[ext_resource path="res://Demos/MatCap/copper_matcap.png" type="Texture" id=7]
+[ext_resource path="res://Demos/MatCap/plastic_matcap.jpg" type="Texture" id=8]
+[ext_resource path="res://Demos/MatCap/red_matcap.png" type="Texture" id=9]
 [ext_resource path="res://Shared/models/rat_model/rat.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Shared/Demo3DEnvironment.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Shaders/matcap.shader" type="Shader" id=12]
-
-
-
-
-
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 12 )
@@ -198,8 +192,6 @@ material/0 = SubResource( 9 )
 
 [node name="teeth1" parent="BlackGlassRat" index="3"]
 material/0 = SubResource( 9 )
-
-[node name="Demo3DEnvironment" parent="." instance=ExtResource( 11 )]
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 0.978213, -0.0649006, 0.197199, 0, 0.949879, 0.312617, -0.207604, -0.305806, 0.929184, 4.322, 6.868, 14.885 )

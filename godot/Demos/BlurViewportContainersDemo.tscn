@@ -7,7 +7,6 @@
 [ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=5]
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=6]
 
-
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 4 )
 shader_param/blur_scale = Vector2( 0, 0 )
@@ -77,6 +76,12 @@ render_target_update_mode = 3
 [node name="MotionBlurSceneBackground" parent="Presentation/BlurView2/Viewport/BlurView/Viewport" instance=ExtResource( 2 )]
 trail_length = 24000.0
 
+[node name="ShakingCamera" parent="Presentation/BlurView2/Viewport/BlurView/Viewport/MotionBlurSceneBackground" index="0"]
+position = Vector2( 960, 540 )
+
+[node name="AsteroidTrail" parent="Presentation/BlurView2/Viewport/BlurView/Viewport/MotionBlurSceneBackground" index="1"]
+spawn_radius = 960.0
+
 [node name="ShipView" type="ViewportContainer" parent="Presentation"]
 material = SubResource( 4 )
 anchor_right = 1.0
@@ -90,7 +95,7 @@ handle_input_locally = false
 render_target_update_mode = 3
 
 [node name="Ship" parent="Presentation/ShipView/Viewport" instance=ExtResource( 1 )]
-position = Vector2( 640, 360 )
+position = Vector2( 960, 540 )
 travel_speed = 10000.0
 blur_provider_path = NodePath("../../../../../BlurViewportContainersDemo/Presentation/BlurView2/Viewport/BlurView/Viewport/MotionBlurSceneBackground")
 shaking_camera_background_path = NodePath("../../../../../BlurViewportContainersDemo/Presentation/BlurView2/Viewport/BlurView/Viewport/MotionBlurSceneBackground/ShakingCamera")
@@ -99,7 +104,7 @@ shaking_camera_background_path = NodePath("../../../../../BlurViewportContainers
 remote_path = NodePath("../../../../BlurView2/Viewport/BlurView/Viewport/MotionBlurSceneBackground/ShakingCamera")
 
 [node name="Camera2D" type="Camera2D" parent="Presentation/ShipView/Viewport"]
-position = Vector2( 640, 360 )
+position = Vector2( 960, 540 )
 current = true
 zoom = Vector2( 2, 2 )
 smoothing_enabled = true

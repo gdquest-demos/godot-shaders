@@ -10,11 +10,6 @@
 [ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=8]
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=9]
 
-
-
-
-
-
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )
 shader_param/blur_scale = Vector2( 0, 4 )
@@ -100,8 +95,7 @@ render_target_update_mode = 3
 
 [node name="Sprite" type="Sprite" parent="MaskView/Viewport/Blur2/Viewport/Blur1/Viewport"]
 material = SubResource( 3 )
-position = Vector2( 640, 360 )
-scale = Vector2( 0.75, 0.75 )
+position = Vector2( 960, 540 )
 texture = ExtResource( 6 )
 
 [node name="MainView" type="ViewportContainer" parent="."]
@@ -114,13 +108,17 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="MainView"]
-size = Vector2( 1280, 720 )
+size = Vector2( 1920, 1080 )
 transparent_bg = true
 handle_input_locally = false
 usage = 0
 render_target_update_mode = 3
 
 [node name="Scene" parent="MainView/Viewport" instance=ExtResource( 2 )]
+
+[node name="Sprite" parent="MainView/Viewport/Scene" index="0"]
+position = Vector2( 960, 540 )
+scale = Vector2( 1, 1 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="MainView/Viewport/Scene/Sprite" index="0"]
 remote_path = NodePath("../../../../../MaskView/Viewport/Blur2/Viewport/Blur1/Viewport/Sprite")
