@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Shared/Demo3DEnvironment.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=6]
 [ext_resource path="res://Shared/models/rat_model/rat_body_ao.png" type="Texture" id=7]
 [ext_resource path="res://Shared/models/rat_model/rat_head_ao.png" type="Texture" id=8]
+[ext_resource path="res://Shaders/xray_3d_mask.shader" type="Shader" id=9]
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
@@ -84,39 +85,16 @@ func _process(delta: float) -> void:
 	rotate_y(PI/8.0 * delta)
 "
 
-[sub_resource type="QuadMesh" id=14]
-size = Vector2( 2, 2 )
-
-[sub_resource type="Shader" id=15]
-code = "shader_type spatial;
-render_mode blend_add, unshaded;
-
-uniform sampler2D stencil_view : hint_white;
-uniform sampler2D xray_view : hint_black_albedo;
-
-void vertex() {
-	POSITION = vec4(VERTEX, 1.0);
-}
-
-void fragment() {
-	float mask = texture(stencil_view, SCREEN_UV).r;
-	vec4 xray = texture(xray_view, SCREEN_UV);
-	
-	ALBEDO = xray.rgb;
-	ALPHA = max(0.0, 1.0 - mask);
-}"
-
-[sub_resource type="ViewportTexture" id=16]
+[sub_resource type="ViewportTexture" id=20]
 viewport_path = NodePath("StencilView/Viewport")
 
-[sub_resource type="ViewportTexture" id=17]
-viewport_path = NodePath("XRayView/Viewport")
-
-[sub_resource type="ShaderMaterial" id=18]
+[sub_resource type="ShaderMaterial" id=21]
 resource_local_to_scene = true
-shader = SubResource( 15 )
-shader_param/stencil_view = SubResource( 16 )
-shader_param/xray_view = SubResource( 17 )
+shader = ExtResource( 9 )
+shader_param/stencil_view = SubResource( 20 )
+
+[sub_resource type="ViewportTexture" id=22]
+viewport_path = NodePath("XRayView/Viewport")
 
 [node name="XRay3DDemo" type="Spatial"]
 
@@ -159,7 +137,7 @@ mesh = SubResource( 4 )
 material/0 = SubResource( 5 )
 
 [node name="Camera" type="Camera" parent="StencilView/Viewport"]
-transform = Transform( 0.490402, -0.299164, 0.81854, 0, 0.939234, 0.343276, -0.871497, -0.168343, 0.460602, 7.81697, 3.55442, 13.0849 )
+transform = Transform( -0.56478, -0.283286, 0.775095, 0, 0.939235, 0.343276, -0.825241, 0.193876, -0.530461, 7.40208, 3.55442, 3.62036 )
 current = true
 
 [node name="XRayView" type="ViewportContainer" parent="."]
@@ -196,7 +174,7 @@ material/0 = SubResource( 9 )
 material/0 = SubResource( 9 )
 
 [node name="Camera" type="Camera" parent="XRayView/Viewport"]
-transform = Transform( 0.490402, -0.299164, 0.81854, 0, 0.939234, 0.343276, -0.871497, -0.168343, 0.460602, 7.81697, 3.55442, 13.0849 )
+transform = Transform( -0.56478, -0.283286, 0.775095, 0, 0.939235, 0.343276, -0.825241, 0.193876, -0.530461, 7.40208, 3.55442, 3.62036 )
 current = true
 
 [node name="Demo3DEnvironment" parent="." instance=ExtResource( 1 )]
@@ -231,7 +209,7 @@ remote_path = NodePath("../../StencilView/Viewport/rat")
 remote_path = NodePath("../../XRayView/Viewport/rat")
 
 [node name="Spatial" type="Spatial" parent="."]
-transform = Transform( 0.49039, 0, 0.871476, 0, 1, 0, -0.871476, 0, 0.49039, 0, 0, 8.68621 )
+transform = Transform( -0.564767, 0, 0.825222, 0, 1, 0, -0.825222, 0, -0.564767, 0, 0, 8.68621 )
 script = SubResource( 13 )
 
 [node name="Camera" type="Camera" parent="Spatial"]
@@ -244,9 +222,16 @@ remote_path = NodePath("../../../StencilView/Viewport/Camera")
 [node name="XRayTransform" type="RemoteTransform" parent="Spatial/Camera"]
 remote_path = NodePath("../../../XRayView/Viewport/Camera")
 
-[node name="ViewQuad" type="MeshInstance" parent="Spatial"]
-mesh = SubResource( 14 )
-material/0 = SubResource( 18 )
+[node name="XRayPresentation" type="TextureRect" parent="."]
+material = SubResource( 21 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 22 )
+expand = true
+flip_v = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="DebugViewer" type="Control" parent="."]
 margin_top = 120.0

@@ -10,5 +10,7 @@ void vertex() {
 
 void fragment() {
 	ALBEDO = outline_color.rgb;
-	ALPHA = outline_color.a;
+	if(outline_color.a < 1.0) {
+		ALPHA = outline_color.a;
+	}
 }
