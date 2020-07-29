@@ -6,7 +6,6 @@
 [ext_resource path="res://Shared/Background2D/Demo2DBackground.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=10]
 
-
 [node name="Outline2DDemo" type="Node"]
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 9 )]
@@ -15,10 +14,13 @@
 text_bbcode = "Uses shaders to outline 2D sprites - outlining only outside the pixels, inside, or both."
 
 [node name="OutlineBothDirections" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1012.35, 400.699 )
+position = Vector2( 480, 540 )
+scale = Vector2( 1, 1 )
 
 [node name="OutlineInner" parent="." instance=ExtResource( 3 )]
-position = Vector2( 655.479, 400.699 )
+position = Vector2( 960, 540 )
+scale = Vector2( 1, 1 )
 
 [node name="OutlineOuter" parent="." instance=ExtResource( 1 )]
-position = Vector2( 279.739, 400.699 )
+position = Vector2( 1440, 540 )
+scale = Vector2( 1, 1 )

@@ -4,7 +4,7 @@ extends Camera
 var last_target: Spatial
 
 onready var ray := $RayCast
-onready var view := get_viewport()
+onready var view := get_tree().root
 
 
 func _physics_process(delta: float) -> void:
