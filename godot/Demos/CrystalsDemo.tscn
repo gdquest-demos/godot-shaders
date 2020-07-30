@@ -1,0 +1,96 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Demos/Crystals/Crystal_Albedo.png" type="Texture" id=1]
+[ext_resource path="res://Demos/Crystals/Crystal_Emission.png" type="Texture" id=2]
+[ext_resource path="res://Demos/Crystals/Crystal_Normal.png" type="Texture" id=3]
+[ext_resource path="res://Demos/Crystals/crystals.glb" type="PackedScene" id=4]
+[ext_resource path="res://Shared/Demo3DEnvironment.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type spatial;
+
+uniform sampler2D texture_albedo : hint_albedo;
+
+uniform float metallic;
+uniform float roughness : hint_range(0,1);
+
+uniform sampler2D texture_emission : hint_black_albedo;
+uniform vec4 emission : hint_color;
+uniform float emission_energy;
+
+uniform sampler2D texture_normal : hint_normal;
+
+uniform float fresnel_power = 3.0;
+uniform float fresnel_color_intensity = 1.0;
+uniform vec4 fresnel_color : hint_color;
+
+uniform float fresnel_pulse_speed = 1.0;
+uniform float emission_pulse_speed = 1.0;
+
+
+void fragment() {
+	ALBEDO = texture(texture_albedo, UV).rgb;
+	
+	METALLIC = metallic;
+	ROUGHNESS = roughness;
+	
+	NORMALMAP = texture(texture_normal, UV).rgb;
+	
+	vec3 emission_tex = texture(texture_emission, UV).rgb;
+	float fresnel = pow(1.0 - dot(NORMAL, VIEW), fresnel_power);
+	
+	float fresnel_time_factor = clamp(sin(TIME * fresnel_pulse_speed), 0.15, 1);
+	float emission_time_factor = clamp(sin(TIME * emission_pulse_speed) + 0.33, 0.33, 1);
+	
+	EMISSION = ((emission.rgb*emission_tex)*emission_energy * emission_time_factor) + (fresnel * fresnel_color.rgb * fresnel_color_intensity * fresnel_time_factor);
+}
+"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/metallic = 1.0
+shader_param/roughness = 0.1
+shader_param/emission = Color( 0.996078, 0.596078, 0.0313726, 1 )
+shader_param/emission_energy = 6.0
+shader_param/fresnel_power = 6.0
+shader_param/fresnel_color_intensity = 1.5
+shader_param/fresnel_color = Color( 0.0666667, 0.952941, 0.952941, 1 )
+shader_param/fresnel_pulse_speed = 0.75
+shader_param/emission_pulse_speed = 1.0
+shader_param/texture_albedo = ExtResource( 1 )
+shader_param/texture_emission = ExtResource( 2 )
+shader_param/texture_normal = ExtResource( 3 )
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Spatial
+
+
+func _process(delta: float) -> void:
+	rotate_y(PI/8 * delta)
+"
+
+[node name="CrystalDemo" type="Spatial"]
+
+[node name="crystals" parent="." instance=ExtResource( 4 )]
+
+[node name="Crystal" parent="crystals" index="0"]
+material/0 = SubResource( 2 )
+
+[node name="Demo3DEnvironment" parent="." instance=ExtResource( 5 )]
+
+[node name="Sun" parent="Demo3DEnvironment" index="1"]
+shadow_color = Color( 0.0823529, 0.690196, 0.901961, 1 )
+
+[node name="DemoInterface" parent="." instance=ExtResource( 6 )]
+text_bbcode = "An otherwise standard material that has been converted to a shader to add a TIME based pulse effect to its emission and fresnel."
+
+[node name="Spatial" type="Spatial" parent="."]
+script = SubResource( 3 )
+
+[node name="Camera" type="Camera" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 0.92398, 0.382442, 0, -0.382442, 0.92398, 0, 1.55576, 1.65872 )
+
+[editable path="crystals"]
+
+[editable path="Demo3DEnvironment"]

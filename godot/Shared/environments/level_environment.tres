@@ -28,4 +28,3 @@ glow_levels/4 = true
 glow_strength = 0.78
 glow_blend_mode = 0
 glow_bicubic_upscale = true
-adjustment_contrast = 1.1
