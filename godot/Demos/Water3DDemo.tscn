@@ -1,83 +1,14 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Demos/Water3D/specular.png" type="Texture" id=1]
 [ext_resource path="res://Demos/Water3D/diffuse.png" type="Texture" id=2]
 [ext_resource path="res://Demos/Water3D/normal.png" type="Texture" id=3]
-[ext_resource path="res://Demos/Water3D/water_normal_map.png" type="Texture" id=4]
-[ext_resource path="res://Demos/Water3D/water_height_map.png" type="Texture" id=5]
-
-[sub_resource type="PlaneMesh" id=2]
-size = Vector2( 20, 20 )
-subdivide_width = 100
-subdivide_depth = 100
-
-[sub_resource type="Shader" id=4]
-code = "shader_type spatial;
-
-uniform float depth_distance = 1.0;
-uniform float depth_strength = 1.0;
-
-uniform float refraction_strength;
-
-uniform float pan_speed = 1.0;
-
-uniform float normal_strength : hint_range(0, 1);
-
-uniform float displacement_strength = 1.0;
-
-uniform sampler2D displacement_map : hint_black;
-uniform sampler2D normal_map : hint_normal;
-
-uniform vec4 low_color : hint_color;
-uniform vec4 high_color : hint_color;
-
-varying vec2 uv1;
-varying vec2 uv2;
-varying vec4 out_color;
-
-void vertex() {
-	uv1 = (TIME * vec2(0.1, 1) * pan_speed + UV) * 3.8;
-	uv2 = (TIME * vec2(0.3, -1) * pan_speed + UV) * 2.0;
-	
-	float displacement_1 = textureLod(displacement_map, uv1, 0.0).r;
-	float displacement_2 = textureLod(displacement_map, uv2, 0.0).r;
-	
-	float displacement = clamp(displacement_1 + displacement_2, 0, 1);
-	out_color = mix(low_color, high_color, displacement);
-	
-	VERTEX.y = displacement * displacement_strength;
-}
-
-void fragment() {
-	float depth = texture(DEPTH_TEXTURE, SCREEN_UV).r * 2.0 - 1.0;
-	depth = clamp((1.0 - (PROJECTION_MATRIX[3][2] / (depth + PROJECTION_MATRIX[2][2]) + (VERTEX.z * depth_distance))) * depth_strength, 0, 1);
-	
-	vec3 normal1 = texture(normal_map, uv1).rgb;
-	vec3 normal2 = texture(normal_map, uv2).rgb;
-	
-	vec3 normal = normalize(vec3(normal1.rg + normal2.rg, normal1.b * normal2.b));
-	
-	vec2 refract_normal = (normal.xy * 2.0 - 1.0) * refraction_strength;
-	vec4 screen_sample = texture(SCREEN_TEXTURE, SCREEN_UV + refract_normal);
-	
-	ALBEDO = mix(out_color.rgb, screen_sample.rgb, depth);
-	NORMALMAP = normal;
-	NORMALMAP_DEPTH = normal_strength;
-	ROUGHNESS = 0.2;
-}"
-
-[sub_resource type="ShaderMaterial" id=5]
-shader = SubResource( 4 )
-shader_param/depth_distance = 0.984
-shader_param/depth_strength = 1.0
-shader_param/refraction_strength = 0.015
-shader_param/pan_speed = 0.105
-shader_param/normal_strength = 1.0
-shader_param/displacement_strength = 0.198
-shader_param/low_color = Color( 0.211765, 0.0588235, 0.282353, 1 )
-shader_param/high_color = Color( 0.137255, 0.270588, 0.478431, 1 )
-shader_param/displacement_map = ExtResource( 5 )
-shader_param/normal_map = ExtResource( 4 )
+[ext_resource path="res://Shared/models/rat_model/rat.dae" type="PackedScene" id=4]
+[ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Shared/models/rat_model/rat_albedo.png" type="Texture" id=6]
+[ext_resource path="res://Shared/models/rat_model/rat_head_albedo.png" type="Texture" id=7]
+[ext_resource path="res://Shared/Demo3DEnvironment.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Shaders/water_3d.shader" type="Shader" id=9]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Rocks"
@@ -93,30 +24,172 @@ surfaces/0 = {
 "vertex_count": 580
 }
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=2]
 albedo_texture = ExtResource( 2 )
 roughness_texture = ExtResource( 1 )
 normal_enabled = true
 normal_scale = 1.0
 normal_texture = ExtResource( 3 )
 
+[sub_resource type="SpatialMaterial" id=3]
+albedo_texture = ExtResource( 6 )
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_do_not_receive_shadows = true
+flags_disable_ambient_light = true
+albedo_color = Color( 0, 0, 0, 1 )
+emission_enabled = true
+emission = Color( 0.854902, 0.898039, 0.109804, 1 )
+emission_energy = 3.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_texture = ExtResource( 7 )
+
+[sub_resource type="PlaneMesh" id=6]
+subdivide_width = 100
+subdivide_depth = 100
+
+[sub_resource type="OpenSimplexNoise" id=7]
+seed = 197
+period = 93.6
+lacunarity = 0.75
+
+[sub_resource type="NoiseTexture" id=8]
+seamless = true
+noise = SubResource( 7 )
+
+[sub_resource type="OpenSimplexNoise" id=9]
+seed = 197
+period = 30.4
+lacunarity = 0.89
+
+[sub_resource type="NoiseTexture" id=10]
+seamless = true
+noise = SubResource( 9 )
+
+[sub_resource type="OpenSimplexNoise" id=11]
+seed = 115
+period = 42.7
+lacunarity = 1.05
+
+[sub_resource type="NoiseTexture" id=12]
+seamless = true
+as_normalmap = true
+bump_strength = 3.0
+noise = SubResource( 11 )
+
+[sub_resource type="ShaderMaterial" id=13]
+shader = ExtResource( 9 )
+shader_param/deep_color = Color( 0.101961, 0.027451, 0.152941, 0.866667 )
+shader_param/shallow_color = Color( 0.270588, 0.47451, 0.764706, 0.109804 )
+shader_param/refraction_speed = 0.094
+shader_param/refraction_strength = 0.159
+shader_param/foam_amount = 0.146
+shader_param/foam_cutoff = 0.431
+shader_param/foam_color = Color( 0.654902, 0.835294, 0.956863, 1 )
+shader_param/displacement_strength = 0.1
+shader_param/depth_distance = 1.0
+shader_param/movement_direction = Vector2( 1, 0 )
+shader_param/refraction_noise = SubResource( 12 )
+shader_param/foam_noise = SubResource( 10 )
+shader_param/displacement_noise = SubResource( 8 )
+
 [node name="Water3DDemo" type="Spatial"]
 
-[node name="Ocean" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.318887, 0 )
-mesh = SubResource( 2 )
+[node name="Wall" type="Spatial" parent="."]
+
+[node name="Rocks" type="MeshInstance" parent="Wall"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="Rocks2" type="MeshInstance" parent="Wall"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 1, -0.5, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="Wall2" type="Spatial" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
+
+[node name="Rocks" type="MeshInstance" parent="Wall2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="Rocks2" type="MeshInstance" parent="Wall2"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 1, -0.5, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="Wall3" type="Spatial" parent="."]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
+
+[node name="Rocks" type="MeshInstance" parent="Wall3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="Rocks2" type="MeshInstance" parent="Wall3"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 1, -0.5, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="Wall4" type="Spatial" parent="."]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, 0, 0 )
+
+[node name="Rocks" type="MeshInstance" parent="Wall4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="Rocks2" type="MeshInstance" parent="Wall4"]
+transform = Transform( 1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 1, -0.5, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="Floor" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.421065, 0 )
+
+[node name="Rocks" type="MeshInstance" parent="Floor"]
+transform = Transform( -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0, 1, 0.4, -1, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="Rocks2" type="MeshInstance" parent="Floor"]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -0.4, -1, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="rat" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.119103, 0, 0.0911833, 0, 0.15, 0, -0.0911833, 0, 0.119103, -0.137245, -0.29888, -0.179269 )
+
+[node name="body1" parent="rat" index="0"]
+material/0 = SubResource( 3 )
+
+[node name="eyes1" parent="rat" index="1"]
+material/0 = SubResource( 4 )
+
+[node name="head1" parent="rat" index="2"]
 material/0 = SubResource( 5 )
 
-[node name="Rocks" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 3 )
+[node name="teeth1" parent="rat" index="3"]
+material/0 = SubResource( 5 )
 
-[node name="Rocks2" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.886562, -0.499007, -0.0657218 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 3 )
+[node name="Water" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.006, 0.704042, 0 )
+mesh = SubResource( 6 )
+material/0 = SubResource( 13 )
 
-[node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.865669, -0.123172, 0.485228, -0.131509, 0.879268, 0.457814, -0.483035, -0.460127, 0.744957, 0, 2.59944, 0 )
-shadow_enabled = true
+[node name="DemoInterface" parent="." instance=ExtResource( 5 )]
+text_bbcode = "A water shader that uses the depth buffer and the color buffer to cause a stylized refraction effect. Intersections are highlighted with foam using the depth buffer."
+
+[node name="Demo3DEnvironment" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.12067, 0 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.650198, 0.53864, -0.535826, -0.0367183, 0.726706, 0.685966, 0.758877, -0.426339, 0.492281, -1.06504, 1.76133, 0.925944 )
+fov = 44.638
+
+[editable path="rat"]
