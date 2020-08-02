@@ -1,0 +1,87 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Demos/Reflection2D/Reflection2DTextureRect.gd" type="Script" id=1]
+[ext_resource path="res://Shared/sprites/robi_shaded.png" type="Texture" id=3]
+[ext_resource path="res://Shared/Background2D/Demo2DBackground.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Demos/Outline/Outline2D/mouse_cursor.png" type="Texture" id=6]
+[ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec4 color :hint_color;
+uniform float reflection_intensity = 0.5;
+uniform sampler2D transition_gradient :hint_black;
+
+// Updated from GDScript
+uniform float scale_y = 1.0f;
+uniform float zoom_y = 1.0f;
+
+void fragment() {
+	float uv_size_ratio_v = SCREEN_PIXEL_SIZE.y / TEXTURE_PIXEL_SIZE.y;
+	vec2 uv_reflected = vec2(SCREEN_UV.x, SCREEN_UV.y + uv_size_ratio_v * UV.y * 2.0 * scale_y * zoom_y);
+
+	vec4 reflection_color = texture(SCREEN_TEXTURE, uv_reflected);
+	float transition = texture(transition_gradient, vec2(1.0 - UV.y, 1.0)).r;
+	COLOR = mix(color, reflection_color, transition * reflection_intensity);
+}"
+custom_defines = ""
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0.257485, 0.371257, 0.646707, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.0843125, 0.0843125, 0.0843125, 1, 0.456693, 0.456693, 0.456693, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 1 )
+shader_param/color = Color( 0.207843, 0.203922, 0.615686, 1 )
+shader_param/reflection_intensity = 0.542
+shader_param/scale_y = 2.9375
+shader_param/zoom_y = 0.471937
+shader_param/transition_gradient = SubResource( 3 )
+
+[node name="Reflection2DTextureRectDemo" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 4 )]
+
+[node name="DemoInterface" parent="." instance=ExtResource( 7 )]
+text_bbcode = "Vertical mirror shader with a fade to a background color.
+This demo shows how to create a pure vertical mirror using the screen texture.
+You can control the way the reflection fade using a gradient texture."
+
+[node name="Robi" type="Sprite" parent="."]
+position = Vector2( 504.151, 466.506 )
+rotation = -0.147885
+scale = Vector2( 0.563456, 0.563456 )
+texture = ExtResource( 3 )
+
+[node name="Robi2" type="Sprite" parent="."]
+position = Vector2( 1389.09, 490.752 )
+rotation = 0.103686
+scale = Vector2( 0.471994, 0.471994 )
+texture = ExtResource( 3 )
+
+[node name="Robi3" type="Sprite" parent="."]
+position = Vector2( 963.357, 402.478 )
+scale = Vector2( 0.630556, 0.630556 )
+texture = ExtResource( 3 )
+
+[node name="MirrorYPlane" type="TextureRect" parent="."]
+material = SubResource( 4 )
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -376.0
+texture = ExtResource( 6 )
+expand = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
