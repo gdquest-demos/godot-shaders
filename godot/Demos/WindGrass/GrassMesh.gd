@@ -5,6 +5,9 @@ export(Vector2) var extents := Vector2.ONE
 export(bool) var spawn_outside_circle := false
 export(float) var radius := 12.0
 
+func _enter_tree():
+	connect("visibility_changed",self,"_on_WindGrass_visibility_changed")
+
 func _ready() -> void:
 	var rng := RandomNumberGenerator.new()
 	rng.randomize()
@@ -28,4 +31,7 @@ func _ready() -> void:
 
 		multimesh.set_instance_transform(i, transform)
 		multimesh.set_instance_custom_data(i, Color(rng.randf(), 0, rng.randf(), 0))
-		
+
+func _on_WindGrass_visibility_changed():
+	if visible:
+		_ready()
