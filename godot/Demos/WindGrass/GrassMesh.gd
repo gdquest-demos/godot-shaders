@@ -23,7 +23,9 @@ func _ready() -> void:
 		else:
 			x := center.x + (radius + rng.randf_range(0,extents.x) ) * cos(theta)
 			z := center.z + (radius + rng.randf_range(0,extents.y) ) * sin(theta)
+			theta += increase
 		transform.origin := Vector3(x, 0, z)
 
 		multimesh.set_instance_transform(i, transform)
 		multimesh.set_instance_custom_data(i, Color(rng.randf(), 0, rng.randf(), 0))
+		
