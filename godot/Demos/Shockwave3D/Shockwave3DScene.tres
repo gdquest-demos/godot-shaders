@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://Shaders/shockwave_3d.shader" type="Shader" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/shockwave_origin = Vector3( 0, 0.5, 0 )
+shader_param/shockwave_radius = 16.0
+shader_param/shockwave_percentage = 0.0
+shader_param/shockwave_width = 1.0
+shader_param/shockwave_strength = 0.5
