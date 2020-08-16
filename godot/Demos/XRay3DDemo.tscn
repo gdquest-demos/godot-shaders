@@ -10,14 +10,14 @@
 [ext_resource path="res://Shared/models/rat_model/rat_head_ao.png" type="Texture" id=8]
 [ext_resource path="res://Shaders/xray_3d_mask.shader" type="Shader" id=9]
 
-[sub_resource type="CubeMesh" id=5]
+[sub_resource type="CubeMesh" id=1]
 size = Vector3( 10, 5, 2 )
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=2]
 flags_unshaded = true
 albedo_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="SpatialMaterial" id=7]
+[sub_resource type="SpatialMaterial" id=3]
 albedo_texture = ExtResource( 5 )
 ao_enabled = true
 ao_light_affect = 0.0
@@ -25,7 +25,7 @@ ao_texture = ExtResource( 7 )
 ao_on_uv2 = false
 ao_texture_channel = 0
 
-[sub_resource type="SpatialMaterial" id=8]
+[sub_resource type="SpatialMaterial" id=4]
 flags_disable_ambient_light = true
 albedo_color = Color( 0, 0, 0, 1 )
 emission_enabled = true
@@ -34,7 +34,7 @@ emission_energy = 3.0
 emission_operator = 0
 emission_on_uv2 = false
 
-[sub_resource type="SpatialMaterial" id=9]
+[sub_resource type="SpatialMaterial" id=5]
 albedo_texture = ExtResource( 4 )
 ao_enabled = true
 ao_light_affect = 0.0
@@ -42,10 +42,10 @@ ao_texture = ExtResource( 8 )
 ao_on_uv2 = false
 ao_texture_channel = 0
 
-[sub_resource type="SpatialMaterial" id=10]
+[sub_resource type="SpatialMaterial" id=6]
 flags_unshaded = true
 
-[sub_resource type="Shader" id=11]
+[sub_resource type="Shader" id=7]
 code = "shader_type spatial;
 render_mode ambient_light_disabled;
 
@@ -59,13 +59,13 @@ void fragment() {
 	EMISSION = smoothstep(0, 1, fresnel_dot) * outline_color.rgb * xray_color_intensity;
 }"
 
-[sub_resource type="ShaderMaterial" id=12]
-shader = SubResource( 11 )
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 7 )
 shader_param/xray_color_intensity = 3.0
 shader_param/outline_sharpness = 1.0
 shader_param/outline_color = Color( 0.87451, 0.254902, 0.0901961, 1 )
 
-[sub_resource type="GDScript" id=13]
+[sub_resource type="GDScript" id=9]
 script/source = "extends Spatial
 
 
@@ -73,15 +73,15 @@ func _process(delta: float) -> void:
 	rotate_y(PI/8.0 * delta)
 "
 
-[sub_resource type="ViewportTexture" id=17]
+[sub_resource type="ViewportTexture" id=10]
 viewport_path = NodePath("StencilView/Viewport")
 
-[sub_resource type="ShaderMaterial" id=15]
+[sub_resource type="ShaderMaterial" id=11]
 resource_local_to_scene = true
 shader = ExtResource( 9 )
-shader_param/stencil_view = SubResource( 17 )
+shader_param/stencil_view = SubResource( 10 )
 
-[sub_resource type="ViewportTexture" id=18]
+[sub_resource type="ViewportTexture" id=12]
 viewport_path = NodePath("XRayView/Viewport")
 
 [node name="XRay3DDemo" type="Spatial"]
@@ -134,68 +134,68 @@ current = true
 
 [node name="Wall" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00390244, 2.51279, 4.1794 )
-mesh = SubResource( 5 )
+mesh = SubResource( 1 )
 material/0 = null
 
 [node name="StencilView" type="MeshInstance" parent="Wall"]
 layers = 2
-mesh = SubResource( 5 )
-material/0 = SubResource( 6 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
 
 [node name="rat" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.26067 )
 
 [node name="body1" parent="rat" index="0"]
-material/0 = SubResource( 7 )
+material/0 = SubResource( 3 )
 
 [node name="eyes1" parent="rat" index="1"]
-material/0 = SubResource( 8 )
+material/0 = SubResource( 4 )
 
 [node name="head1" parent="rat" index="2"]
-material/0 = SubResource( 9 )
+material/0 = SubResource( 5 )
 
 [node name="teeth1" parent="rat" index="3"]
-material/0 = SubResource( 9 )
+material/0 = SubResource( 5 )
 
 [node name="StencilView" parent="rat" instance=ExtResource( 3 )]
 
 [node name="body1" parent="rat/StencilView" index="0"]
 layers = 2
-material/0 = SubResource( 10 )
+material/0 = SubResource( 6 )
 
 [node name="eyes1" parent="rat/StencilView" index="1"]
 layers = 2
-material/0 = SubResource( 10 )
+material/0 = SubResource( 6 )
 
 [node name="head1" parent="rat/StencilView" index="2"]
 layers = 2
-material/0 = SubResource( 10 )
+material/0 = SubResource( 6 )
 
 [node name="teeth1" parent="rat/StencilView" index="3"]
 layers = 2
-material/0 = SubResource( 10 )
+material/0 = SubResource( 6 )
 
 [node name="XrayView" parent="rat" instance=ExtResource( 3 )]
 
 [node name="body1" parent="rat/XrayView" index="0"]
 layers = 4
-material/0 = SubResource( 12 )
+material/0 = SubResource( 8 )
 
 [node name="eyes1" parent="rat/XrayView" index="1"]
 layers = 4
-material/0 = SubResource( 12 )
+material/0 = SubResource( 8 )
 
 [node name="head1" parent="rat/XrayView" index="2"]
 layers = 4
-material/0 = SubResource( 12 )
+material/0 = SubResource( 8 )
 
 [node name="teeth1" parent="rat/XrayView" index="3"]
 layers = 4
-material/0 = SubResource( 12 )
+material/0 = SubResource( 8 )
 
 [node name="Spatial" type="Spatial" parent="."]
 transform = Transform( -0.564767, 0, 0.825222, 0, 1, 0, -0.825222, 0, -0.564767, 0, 0, 8.68621 )
-script = SubResource( 13 )
+script = SubResource( 9 )
 
 [node name="Camera" type="Camera" parent="Spatial"]
 transform = Transform( 1.00002, 1.49012e-08, 2.98023e-08, 0, 0.939234, 0.343276, -2.98023e-08, -0.343284, 0.939256, 1.90735e-06, 3.55442, 8.96981 )
@@ -209,10 +209,10 @@ remote_path = NodePath("../../../StencilView/Viewport/Camera")
 remote_path = NodePath("../../../XRayView/Viewport/Camera")
 
 [node name="XRayPresentation" type="TextureRect" parent="."]
-material = SubResource( 15 )
+material = SubResource( 11 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = SubResource( 18 )
+texture = SubResource( 12 )
 expand = true
 flip_v = true
 __meta__ = {
