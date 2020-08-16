@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/com.gdquest.editor_camera/RenderLayerDialog.gd" type="Script" id=1]
+[ext_resource path="res://addons/com.gdquest.editor_camera/LayerGrid.gd" type="Script" id=2]
+
+[node name="RenderLayerDialog" type="WindowDialog"]
+visible = true
+rect_min_size = Vector2( 320, 120 )
+window_title = "Set Render Layer"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 49.0
+margin_top = 18.0
+margin_right = 271.0
+margin_bottom = 101.0
+custom_constants/separation = 13
+
+[node name="LayerGrid" type="Control" parent="CenterContainer/VBoxContainer"]
+margin_right = 222.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 200, 50 )
+script = ExtResource( 2 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 63.0
+margin_right = 222.0
+margin_bottom = 83.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+custom_constants/separation = 137
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OKButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+margin_right = 31.0
+margin_bottom = 20.0
+text = "OK"
+
+[node name="CancelButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 168.0
+margin_right = 222.0
+margin_bottom = 20.0
+text = "Cancel"
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/OKButton" to="." method="_on_OKButton_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_CancelButton_pressed"]

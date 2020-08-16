@@ -89,7 +89,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "gdquest.toon-controller" )
+enabled=PoolStringArray( "com.gdquest.editor_camera", "gdquest.toon-controller" )
 
 [input]
 

@@ -157,9 +157,6 @@ material/0 = SubResource( 9 )
 [node name="teeth1" parent="rat" index="3"]
 material/0 = SubResource( 9 )
 
-[node name="XRayTransform" type="RemoteTransform" parent="rat"]
-remote_path = NodePath("../../XRayView/Viewport/rat")
-
 [node name="StencilView" parent="rat" instance=ExtResource( 3 )]
 
 [node name="body1" parent="rat/StencilView" index="0"]
