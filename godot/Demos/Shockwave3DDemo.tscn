@@ -19,6 +19,6 @@ __meta__ = {
 visible = false
 
 [node name="DemoInterface" parent="." instance=ExtResource( 3 )]
-text_bbcode = "Uses a vertex shader to propagate a spherical shockwave through the geometry, instead of as a post-process effect."
+text_bbcode = "Press Enter to launch a shockwave. Uses a vertex shader to propagate a spherical shockwave through the geometry, instead of as a post-process effect."
 
 [editable path="Demo3DEnvironment"]
