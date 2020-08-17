@@ -29,10 +29,15 @@ void vertex() {
 void fragment() {
 	vec2 uv = SCREEN_UV + (texture(refraction_noise, UV + (TIME * movement_direction) * refraction_speed).rg * 2.0 - 1.0) * refraction_strength;
 	
+	float real_depth = texture(DEPTH_TEXTURE, SCREEN_UV).r * 2.0 - 1.0;
+	real_depth = PROJECTION_MATRIX[3][2] / (real_depth + PROJECTION_MATRIX[2][2]) + VERTEX.z;
+	
 	//Get the raw linear depth from the depth texture into a  [-1, 1] range
 	float depth = texture(DEPTH_TEXTURE, uv).r * 2.0 - 1.0;
 	//Recreate linear depth of the intersecting geometry using projection matrix, and subtract the vertex of the sphere
 	depth = PROJECTION_MATRIX[3][2] / (depth + PROJECTION_MATRIX[2][2]) + VERTEX.z;
+	
+	depth = max(depth, real_depth);
 	
 	float intersection = clamp(depth / foam_amount, 0, 1) * foam_cutoff;
 	
