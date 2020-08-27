@@ -34,5 +34,5 @@ func _process(delta: float) -> void:
 			blur_provider.emit_signal("speeding_up", speed / desired_speed)
 	if speed == travel_speed:
 		$CameraBackgroundTransform.remote_path = ""
-	
+
 	position += trail_direction * speed * delta

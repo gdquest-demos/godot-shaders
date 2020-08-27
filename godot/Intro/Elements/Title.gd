@@ -1,6 +1,5 @@
 extends Label
 
-
 var color := Color.white
 
 onready var tween := $Tween

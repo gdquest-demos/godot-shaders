@@ -1,6 +1,5 @@
 extends Spatial
 
-
 export var shockwave_material: ShaderMaterial
 onready var tween := $Tween
 

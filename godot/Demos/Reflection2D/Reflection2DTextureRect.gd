@@ -18,5 +18,5 @@ func update_zoom(value: float) -> void:
 func _on_item_rect_changed() -> void:
 	var scale_y = rect_size.y / texture.get_size().y
 	scale_y *= rect_scale.y
-	
+
 	material.set_shader_param("scale_y", scale_y)

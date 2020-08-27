@@ -16,12 +16,8 @@ func _ready() -> void:
 
 
 func dissolve() -> void:
-	tween.interpolate_method(
-		self, "dissolve_amount", 0, 1, 3.0, Tween.TRANS_LINEAR, Tween.EASE_OUT
-	)
-	tween.interpolate_method(
-		self, "dissolve_color", 0, 1, 3.0, Tween.TRANS_LINEAR, Tween.EASE_OUT
-	)
+	tween.interpolate_method(self, "dissolve_amount", 0, 1, 3.0, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	tween.interpolate_method(self, "dissolve_color", 0, 1, 3.0, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	tween.start()
 
 
@@ -43,14 +39,10 @@ func _set_debug_control(value: float) -> void:
 func _set_gradient(value: Gradient) -> void:
 	emission_color = value
 	if Engine.editor_hint:
-		material.set_shader_param(
-			"burn_color", emission_color.interpolate(debug_dissolve_control)
-		)
+		material.set_shader_param("burn_color", emission_color.interpolate(debug_dissolve_control))
 
 
 func _gradient_changed() -> void:
 	if Engine.editor_hint:
 		print(debug_dissolve_control)
-		material.set_shader_param(
-			"burn_color", emission_color.interpolate(debug_dissolve_control)
-		)
+		material.set_shader_param("burn_color", emission_color.interpolate(debug_dissolve_control))

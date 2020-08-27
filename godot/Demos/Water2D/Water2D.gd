@@ -12,4 +12,4 @@ func _on_item_rect_changed():
 
 
 func update_shader_aspect_ratio():
-	material.set_shader_param("aspect_ratio", scale.y/scale.x)
+	material.set_shader_param("aspect_ratio", scale.y / scale.x)

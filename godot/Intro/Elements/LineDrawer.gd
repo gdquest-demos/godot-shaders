@@ -13,7 +13,7 @@ var will_cull: bool
 func setup(_tween: Tween, _vertex_positions: Array, _will_cull: bool) -> void:
 	vertex_positions = _vertex_positions
 	will_cull = _will_cull
-	
+
 	tween = _tween
 
 
@@ -58,24 +58,24 @@ func _draw() -> void:
 	var v1: Vector2 = vertex_positions[0]
 	var v2: Vector2 = vertex_positions[1]
 	var v3: Vector2 = vertex_positions[2]
-	
+
 	var color_mod_actual := 1.0
 	var color := Color.skyblue
-	
+
 	if cull and will_cull:
 		color = culled_color
 		color_mod_actual = color_mod
-		
+
 	color *= color_mod_actual
-		
+
 	var lerped_v1_to_v2 = (v1).linear_interpolate(v2, length)
 	var lerped_v2_to_v3 = (v2).linear_interpolate(v3, length)
 	var lerped_v3_to_v1 = (v3).linear_interpolate(v1, length)
-		
+
 	draw_line(v1, lerped_v1_to_v2, color, 1.25, true)
 	draw_line(v2, lerped_v2_to_v3, color, 1.25, true)
 	draw_line(v3, lerped_v3_to_v1, color, 1.25, true)
-		
+
 	if length != 0 and length < 1.0:
 		draw_circle(lerped_v1_to_v2, 5, color * 1.2)
 		draw_circle(lerped_v2_to_v3, 5, color * 1.2)

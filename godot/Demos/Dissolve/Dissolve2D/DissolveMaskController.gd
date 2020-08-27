@@ -9,9 +9,7 @@ onready var tween := $Tween
 
 
 func dissolve() -> void:
-	tween.interpolate_method(
-		self, "dissolve_amount", 0, 1, 3.0, Tween.TRANS_LINEAR, Tween.EASE_OUT
-	)
+	tween.interpolate_method(self, "dissolve_amount", 0, 1, 3.0, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	tween.start()
 
 

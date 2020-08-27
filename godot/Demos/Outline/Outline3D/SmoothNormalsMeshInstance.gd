@@ -23,30 +23,30 @@ func _ready() -> void:
 	var surface_count := mesh.get_surface_count()
 	var new_mesh := ArrayMesh.new()
 	var materials := []
-	
+
 	var st := SurfaceTool.new()
-	
+
 	for i in range(surface_count):
 		st.begin(Mesh.PRIMITIVE_TRIANGLES)
 		st.create_from(mesh, i)
 		st.deindex()
-		
+
 		var data := st.commit_to_arrays()
-		
+
 		st.begin(Mesh.PRIMITIVE_TRIANGLES)
-		
+
 		st.add_smooth_group(true)
-		
+
 		for v in data[ArrayMesh.ARRAY_VERTEX]:
 			st.add_vertex(v)
-		
+
 		st.generate_normals()
-		
+
 		data[ArrayMesh.ARRAY_COLOR] = _convert_normals_to_color(st.commit_to_arrays())
-		
+
 		new_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, data)
 		materials.append(get_surface_material(i))
-	
+
 	mesh = new_mesh
 	for i in materials.size():
 		set_surface_material(i, materials[i])
@@ -54,16 +54,11 @@ func _ready() -> void:
 
 func _convert_normals_to_color(data: Array) -> PoolColorArray:
 	var normals: PoolVector3Array = data[ArrayMesh.ARRAY_NORMAL]
-	
+
 	var out_color := PoolColorArray()
 	for normal in normals:
 		out_color.append(
-			Color(
-				normal.x * 0.5 + 0.5,
-				normal.y * 0.5 + 0.5,
-				normal.z * 0.5 + 0.5,
-				1.0
-			)
+			Color(normal.x * 0.5 + 0.5, normal.y * 0.5 + 0.5, normal.z * 0.5 + 0.5, 1.0)
 		)
-	
+
 	return out_color

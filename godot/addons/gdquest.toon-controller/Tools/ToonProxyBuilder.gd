@@ -21,9 +21,7 @@ onready var scene_root: Node = (
 	if Engine.editor_hint
 	else get_tree().root
 )
-onready var builder: ToonSceneBuilder = scene_root.find_node(
-	"ToonSceneBuilder", true, false
-)
+onready var builder: ToonSceneBuilder = scene_root.find_node("ToonSceneBuilder", true, false)
 
 
 func _ready():
@@ -31,7 +29,7 @@ func _ready():
 		return
 
 	var parent := get_parent()
-	
+
 	light_proxy = builder.light_data.find_node(parent.name, true, false)
 	specular_proxy = builder.specular_data.find_node(parent.name, true, false)
 
@@ -49,16 +47,14 @@ func _ready():
 func _build_missing_proxies(parent: Node) -> void:
 	var light_missing: bool = light_proxy == null
 	var specular_missing: bool = specular_proxy == null
-	
+
 	yield(get_tree(), "idle_frame")
 
 	if light_missing or specular_missing:
 		parent.remove_child(self)
 
 	if light_missing:
-		var result := _build_remote_duplicates(
-			parent, ToonSceneBuilder.DataType.LIGHT
-		)
+		var result := _build_remote_duplicates(parent, ToonSceneBuilder.DataType.LIGHT)
 
 		light_proxy = result.proxy
 		light_remote = result.proxy_remote
@@ -66,9 +62,7 @@ func _build_missing_proxies(parent: Node) -> void:
 		light_remote = parent.find_node("LightRemote", true, false)
 
 	if specular_missing:
-		var result := _build_remote_duplicates(
-			parent, ToonSceneBuilder.DataType.SPECULAR
-		)
+		var result := _build_remote_duplicates(parent, ToonSceneBuilder.DataType.SPECULAR)
 
 		specular_proxy = result.proxy
 		specular_remote = result.proxy_remote
@@ -111,13 +105,15 @@ func _set_materials(parent: Node, type: int) -> void:
 		return
 	if parent is MeshInstance:
 		var mat_count: int = parent.get_surface_material_count()
-		
+
 		for mat in range(mat_count):
 			match type:
 				ToonSceneBuilder.DataType.LIGHT:
 					parent.set_surface_material(mat, builder.white_diffuse_material)
 				ToonSceneBuilder.DataType.SPECULAR:
-					parent.set_surface_material(mat, specular_material if specular_material else builder.specular_material)
+					parent.set_surface_material(
+						mat, specular_material if specular_material else builder.specular_material
+					)
 
 	for child in parent.get_children():
 		_set_materials(child, type)
@@ -170,29 +166,25 @@ func _set_specular_material(value: ShaderMaterial) -> void:
 	specular_material = value
 	if not is_inside_tree():
 		yield(self, "ready")
-	
+
 	_set_materials(specular_proxy, ToonSceneBuilder.DataType.SPECULAR)
 
 
 func _on_parent_renamed() -> void:
 	if light_proxy:
 		light_proxy.name = get_parent().name
-		light_remote.remote_path = (
-			"../%s"
-			% get_parent().get_path_to(light_proxy)
-		)
+		light_remote.remote_path = ("../%s" % get_parent().get_path_to(light_proxy))
 
 	if specular_proxy:
 		specular_proxy.name = get_parent().name
-		specular_remote.remote_path = (
-			"../%s"
-			% get_parent().get_path_to(specular_proxy)
-		)
+		specular_remote.remote_path = ("../%s" % get_parent().get_path_to(specular_proxy))
 
 
 func _on_parent_tree_exiting() -> void:
 	abort_deletion = false
-	Engine.get_main_loop().connect("idle_frame", self, "_on_SceneTree_idle_frame", [], CONNECT_ONESHOT)
+	Engine.get_main_loop().connect(
+		"idle_frame", self, "_on_SceneTree_idle_frame", [], CONNECT_ONESHOT
+	)
 
 
 func _on_SceneTree_idle_frame() -> void:

@@ -1,6 +1,5 @@
 extends TextureRect
 
-
 export var direction_provider_path := NodePath()
 
 onready var direction_provider: Node = get_node(direction_provider_path)

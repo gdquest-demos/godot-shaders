@@ -14,11 +14,7 @@ export var specular_ignores_shadows := false setget _set_specular_ignores_shadow
 var light_data: Viewport
 var specular_data: Viewport
 
-onready var scene_root := (
-	get_tree().edited_scene_root
-	if Engine.editor_hint
-	else get_tree().root
-)
+onready var scene_root := get_tree().edited_scene_root if Engine.editor_hint else get_tree().root
 
 
 func _ready() -> void:
@@ -53,9 +49,7 @@ func get_class() -> String:
 func _find_viewport(type: int) -> Viewport:
 	var viewport_name: String = VIEW_NAMES[type]
 
-	var container: ToonViewportContainer = scene_root.find_node(
-		viewport_name, true, false
-	)
+	var container: ToonViewportContainer = scene_root.find_node(viewport_name, true, false)
 
 	if container:
 		return container.get_child(0) as Viewport
@@ -97,11 +91,7 @@ func _set_shadow_resolution(value: int) -> void:
 	if light_data:
 		light_data.shadow_atlas_size = shadow_resolution
 	if specular_data:
-		specular_data.shadow_atlas_size = (
-			0
-			if specular_ignores_shadows
-			else shadow_resolution
-		)
+		specular_data.shadow_atlas_size = (0 if specular_ignores_shadows else shadow_resolution)
 
 
 func _set_specular_ignores_shadows(value: bool) -> void:

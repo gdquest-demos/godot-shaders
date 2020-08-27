@@ -1,6 +1,5 @@
 extends Control
 
-
 export var direction_provider_path := NodePath()
 export var blur_scale := Vector2.ONE
 

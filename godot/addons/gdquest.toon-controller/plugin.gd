@@ -51,10 +51,12 @@ func _set_camera_and_viewports(transform: Transform) -> void:
 		specular_viewport.size = editor_viewport.rect_size
 
 
-func _initialize_camera_control(object: Object, toon_builder: ToonSceneBuilder, interface: EditorInterface) -> bool:
+func _initialize_camera_control(
+	object: Object, toon_builder: ToonSceneBuilder, interface: EditorInterface
+) -> bool:
 	var editor_root := interface.get_editor_viewport()
 	editor_viewport = _find_by_type_name(editor_root, "SpatialEditorViewport")
-	
+
 	light_viewport = toon_builder.light_data
 	if light_viewport:
 		light_viewport.size = editor_viewport.rect_size
@@ -67,9 +69,9 @@ func _initialize_camera_control(object: Object, toon_builder: ToonSceneBuilder, 
 
 	if light_camera or specular_camera:
 		set_input_event_forwarding_always_enabled()
-		
+
 		_connect_preview_checkbox(interface)
-		
+
 		return true
 	else:
 		return false
@@ -78,9 +80,7 @@ func _initialize_camera_control(object: Object, toon_builder: ToonSceneBuilder, 
 func _connect_preview_checkbox(interface: EditorInterface) -> void:
 	preview_checkbox = _find_by_type_name(editor_viewport, "CheckBox")
 
-	if not preview_checkbox.is_connected(
-		"pressed", self, "_on_Preview_pressed"
-	):
+	if not preview_checkbox.is_connected("pressed", self, "_on_Preview_pressed"):
 		preview_checkbox.connect("pressed", self, "_on_Preview_pressed")
 
 

@@ -28,6 +28,7 @@ func _set_torus_radius(value: float) -> void:
 
 	synchronize_materials("torus_radius", torus_radius)
 
+
 func synchronize_materials(parameter_name: String, parameter_value) -> void:
 	material.set_shader_param(parameter_name, parameter_value)
 	preview_mask.material.set_shader_param(parameter_name, parameter_value)

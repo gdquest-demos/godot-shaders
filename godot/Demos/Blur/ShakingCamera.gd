@@ -11,7 +11,7 @@ export var duration = 0.3 setget set_duration
 export var DAMP_EASING = 1.0
 export var is_shaking = false setget set_is_shaking
 
-enum States {IDLE, SHAKING}
+enum States { IDLE, SHAKING }
 var state = States.IDLE
 
 
@@ -26,8 +26,8 @@ func _ready() -> void:
 func _process(_delta) -> void:
 	var damping = ease(timer.time_left / timer.wait_time, DAMP_EASING)
 	offset = Vector2(
-		rand_range(amplitude, -amplitude) * damping,
-		rand_range(amplitude, -amplitude) * damping)
+		rand_range(amplitude, -amplitude) * damping, rand_range(amplitude, -amplitude) * damping
+	)
 
 
 func _get_configuration_warning() -> String:
