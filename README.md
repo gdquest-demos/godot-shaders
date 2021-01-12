@@ -2,7 +2,7 @@
 
 ![project banner](./img/banner-shader-secrets.png)
 
-Godot Shaders is a repository of Free shaders, part of which we made for our course [Godot Shader Secrets](https://gdquest.mavenseed.com/courses/shader-secrets-learn-to-code-2d-and-3d-shaders-in-godot).
+Godot Shaders is a repository of Free shaders, part of which we made for our course [Godot Shader Secrets](https://gdquest.mavenseed.com/courses/godot-shader-secrets).
 
 ➡ Follow us on [Twitter](https://twitter.com/NathanGDQuest) and [YouTube](https://www.youtube.com/c/gdquest/) for free game creation tutorials, tips, and news! Get one of our [Godot game creation courses](https://gdquest.mavenseed.com/) to support our work on Free Software.
 
