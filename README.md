@@ -31,6 +31,7 @@ Here's a list of available shaders:
 - 2D x-ray (masking)
 - Force field
 - 2D palette swap
+- 3D stylized fire
 
 ![2D water shader with light support](./img/water2d.png)
 
