@@ -2,11 +2,12 @@
 
 [sub_resource type="ProceduralSky" id=1]
 radiance_size = 1
-sky_top_color = Color( 0, 0.0784314, 0.909804, 1 )
-sky_horizon_color = Color( 0.462745, 0.392157, 0.705882, 1 )
-sky_curve = 0.359998
+sky_top_color = Color( 0.631373, 0.631373, 0.631373, 1 )
+sky_horizon_color = Color( 0.286275, 0.286275, 0.286275, 1 )
+sky_curve = 0.347735
 ground_bottom_color = Color( 0, 0, 0, 1 )
-ground_horizon_color = Color( 0.462745, 0.392157, 0.705882, 1 )
+ground_horizon_color = Color( 0.176471, 0.176471, 0.176471, 1 )
+ground_curve = 0.0527803
 sun_color = Color( 0.737255, 0.929412, 0.952941, 1 )
 sun_longitude = -147.57
 sun_curve = 0.0170755

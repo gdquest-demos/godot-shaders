@@ -4,7 +4,7 @@
 [ext_resource path="res://Shared/Demo3DEnvironment.tscn" type="PackedScene" id=2]
 
 [sub_resource type="SpatialMaterial" id=1]
-albedo_color = Color( 0.227451, 0.0313726, 0.34902, 1 )
+albedo_color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
 [node name="Demo3DEnvironmentDark" instance=ExtResource( 2 )]
 
