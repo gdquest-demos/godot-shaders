@@ -52,6 +52,10 @@ If you want to contribute to the project, for instance by fixing a bug or adding
 1. [Contributor guidelines](https://www.gdquest.com/docs/guidelines/contributing-to/gdquest-projects/).
 1. [GDScript style guide](https://www.gdquest.com/docs/guidelines/best-practices/godot-gdscript/)
 
+## Credits
+
+Stylized fire adapted from a Unity tutorial by [@minionsart](https://twitter.com/minionsart/).
+
 ## Licenses
 
 This project is dual-licensed:
