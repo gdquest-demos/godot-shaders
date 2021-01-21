@@ -10,30 +10,42 @@ Godot Shaders is a repository of Free shaders, part of which we made for our cou
 
 ## The shaders
 
-Here's a list of available shaders:
+Here's a list of available shaders and demos.
+
+### 3D Shaders
+
+![Stylized fire shader](img/stylized-fire.png)
+
+- 3D dissolve
+- 3D outline
+- 3D shockwave
+- 3D stylized fire
+- Advanced toon shader
+- Force field
+- Stencil mask (impossible cube)
+- Stylized fire
+
+### 2D Shaders
+
+![2D water shader with light support](./img/water2d.png)
 
 - 2D baked-in-texture glow control
-- 2D glow
-- Stencil mask (impossible cube)
-- Advanced toon shader
-- Gaussian blur
 - 2D clouds: noise-based cloud shadows cast over the game world
 - 2D dissolve
-- 3D dissolve
-- Distortion (shockwave)
-- Inverted colors
+- 2D glow
 - 2D outline
-- 3D outline
-- Pointilism
+- 2D palette swap
 - 2D reflection
 - 2D water for side-scrolling games
 - 2D water in top-down view
 - 2D x-ray (masking)
-- Force field
-- 2D palette swap
-- 3D stylized fire
 
-![2D water shader with light support](./img/water2d.png)
+### Screen shaders
+
+- Gaussian blur
+- Inverted colors
+- Pointilism
+- Screen distortion (2D shockwave)
 
 ## How to use
 
