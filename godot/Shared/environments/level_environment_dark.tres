@@ -1,0 +1,32 @@
+[gd_resource type="Environment" load_steps=2 format=2]
+
+[sub_resource type="ProceduralSky" id=1]
+radiance_size = 1
+sky_top_color = Color( 0.631373, 0.631373, 0.631373, 1 )
+sky_horizon_color = Color( 0.286275, 0.286275, 0.286275, 1 )
+sky_curve = 0.347735
+ground_bottom_color = Color( 0, 0, 0, 1 )
+ground_horizon_color = Color( 0.176471, 0.176471, 0.176471, 1 )
+ground_curve = 0.0527803
+sun_color = Color( 0.737255, 0.929412, 0.952941, 1 )
+sun_longitude = -147.57
+sun_curve = 0.0170755
+sun_energy = 0.99
+texture_size = 1
+
+[resource]
+background_mode = 2
+background_sky = SubResource( 1 )
+ambient_light_color = Color( 1, 1, 1, 1 )
+tonemap_mode = 3
+tonemap_white = 2.0
+ss_reflections_enabled = true
+ss_reflections_max_steps = 32
+ssao_enabled = true
+ssao_light_affect = 0.31
+glow_enabled = true
+glow_levels/2 = true
+glow_levels/4 = true
+glow_strength = 0.78
+glow_blend_mode = 0
+glow_bicubic_upscale = true
