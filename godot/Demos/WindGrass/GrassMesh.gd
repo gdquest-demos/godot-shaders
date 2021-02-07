@@ -4,7 +4,7 @@ extends MultiMeshInstance
 export var extents := Vector2.ONE
 export var spawn_outside_circle := false
 export var radius := 12.0
-
+export var character_path : NodePath = "."
 
 func _enter_tree():
 	connect("visibility_changed", self, "_on_WindGrass_visibility_changed")
@@ -33,9 +33,12 @@ func _ready() -> void:
 		transform.origin = Vector3(x, 0, z)
 
 		multimesh.set_instance_transform(i, transform)
-		multimesh.set_instance_custom_data(i, Color(rng.randf(), 0, rng.randf(), 0))
 
 
 func _on_WindGrass_visibility_changed():
 	if visible:
 		_ready()
+
+
+func _process(delta):
+	material_override.set_shader_param("character_position", get_node(character_path).global_transform.origin)
