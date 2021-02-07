@@ -1,6 +1,7 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
 
 [ext_resource path="res://Shaders/shockwave_3d.shader" type="Shader" id=1]
+[ext_resource path="res://Demos/Shockwave3D/SceneColorAtlas.tres" type="Texture" id=2]
 
 [resource]
 shader = ExtResource( 1 )
@@ -9,3 +10,4 @@ shader_param/shockwave_radius = 16.0
 shader_param/shockwave_percentage = 0.0
 shader_param/shockwave_width = 1.0
 shader_param/shockwave_strength = 0.5
+shader_param/color_texture = ExtResource( 2 )

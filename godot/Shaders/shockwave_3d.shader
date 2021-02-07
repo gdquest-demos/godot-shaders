@@ -6,6 +6,7 @@ uniform float shockwave_radius = 1.0;
 uniform float shockwave_percentage : hint_range(0, 1);
 uniform float shockwave_width = 1.0;
 uniform float shockwave_strength = 0.25;
+uniform sampler2D color_texture: hint_albedo;
 
 void vertex() {
 	vec3 to_origin = (VERTEX.xyz - shockwave_origin);
@@ -20,5 +21,5 @@ void vertex() {
 }
 
 void fragment() {
-	ALBEDO = vec3(0.5, 0.5, 0.75);
+	ALBEDO = texture(color_texture, UV).rgb;
 }

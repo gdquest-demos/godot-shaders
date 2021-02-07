@@ -1,45 +1,39 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Demos/Shockwave3D/Shockwave.gd" type="Script" id=1]
-[ext_resource path="res://Shaders/shockwave_3d.shader" type="Shader" id=2]
-
-[sub_resource type="ShaderMaterial" id=6]
-shader = ExtResource( 2 )
-shader_param/shockwave_origin = Vector3( 0, 0.5, 0 )
-shader_param/shockwave_radius = 16.0
-shader_param/shockwave_percentage = 0.0
-shader_param/shockwave_width = 0.802
-shader_param/shockwave_strength = 0.5
-
-[sub_resource type="PlaneMesh" id=7]
-size = Vector2( 10, 2 )
-subdivide_width = 100
-subdivide_depth = 100
-
-[sub_resource type="PlaneMesh" id=5]
-size = Vector2( 20, 20 )
-subdivide_width = 100
-subdivide_depth = 100
+[ext_resource path="res://Demos/Shockwave3D/Shockwave3DScene.tres" type="Material" id=3]
+[ext_resource path="res://Demos/Shockwave3D/ShockwaveScene.glb" type="PackedScene" id=4]
 
 [node name="Shockwave3D" type="Spatial"]
 script = ExtResource( 1 )
-shockwave_material = SubResource( 6 )
-
-[node name="Wall1" type="MeshInstance" parent="."]
-transform = Transform( 0.838671, 0.544639, -8.8733e-08, 0, -1.62921e-07, -1, -0.544639, 0.838671, -1.36637e-07, 0, 1, -2.725 )
-mesh = SubResource( 7 )
-material/0 = SubResource( 6 )
-
-[node name="Wall2" type="MeshInstance" parent="."]
-transform = Transform( 0.838671, -0.544639, 8.8733e-08, 0, -1.62921e-07, -1, 0.544639, 0.838671, -1.36637e-07, 0, 1, 2.725 )
-mesh = SubResource( 7 )
-material/0 = SubResource( 6 )
-
-[node name="Floor" type="MeshInstance" parent="."]
-mesh = SubResource( 5 )
-material/0 = SubResource( 6 )
+shockwave_material = ExtResource( 3 )
 
 [node name="Tween" type="Tween" parent="."]
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( -0.414487, -0.373473, 0.829891, 0, 0.911913, 0.410385, -0.910055, 0.170099, -0.377976, 4.22553, 3.49086, -2.55424 )
+transform = Transform( 0.783064, -0.255235, 0.567156, 0, 0.911913, 0.410385, -0.621941, -0.321358, 0.714086, 4.22553, 5.06675, 4.81413 )
+
+[node name="ShockwaveScene" parent="." instance=ExtResource( 4 )]
+
+[node name="detail_forest" parent="ShockwaveScene" index="0"]
+material_override = ExtResource( 3 )
+
+[node name="rocksB_desert" parent="ShockwaveScene" index="1"]
+material_override = ExtResource( 3 )
+
+[node name="tileLarge_forest" parent="ShockwaveScene" index="2"]
+material_override = ExtResource( 3 )
+
+[node name="tree_forest" parent="ShockwaveScene" index="3"]
+material_override = ExtResource( 3 )
+
+[node name="detail_forest001" parent="ShockwaveScene" index="4"]
+material_override = ExtResource( 3 )
+
+[node name="tree_forest001" parent="ShockwaveScene" index="5"]
+material_override = ExtResource( 3 )
+
+[node name="tree_forest002" parent="ShockwaveScene" index="6"]
+material_override = ExtResource( 3 )
+
+[editable path="ShockwaveScene"]
