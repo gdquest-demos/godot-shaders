@@ -24,6 +24,7 @@ Here's a list of available shaders and demos.
 - Force field
 - Stencil mask (impossible cube)
 - Stylized fire
+- Stylized bottled liquid
 
 ### 2D Shaders
 
