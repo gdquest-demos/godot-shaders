@@ -16,4 +16,5 @@ __meta__ = {
 [node name="Demo3DEnvironment" parent="." instance=ExtResource( 3 )]
 
 [node name="DemoInterface" parent="." instance=ExtResource( 2 )]
-text_bbcode = "A wind shader that uses MultiMesh to pass randomness data coupled with a noise texture scrolling over time in the shader."
+text_bbcode = "A wind shader that uses MultiMesh to create the blades of grass and a noise texture for the wind.
+This shader also supports one character interacting with the grass."
