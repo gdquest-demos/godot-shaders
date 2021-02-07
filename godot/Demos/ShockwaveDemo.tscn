@@ -7,8 +7,6 @@
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Shared/Demo3DEnvironment.tscn" type="PackedScene" id=6]
 
-
-
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
 shader_param/torus_thickness = 0.286
@@ -41,7 +39,6 @@ void fragment() {
 	
 	COLOR = vec4(vec3(1.0), mask);
 }"
-custom_defines = ""
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = SubResource( 2 )
