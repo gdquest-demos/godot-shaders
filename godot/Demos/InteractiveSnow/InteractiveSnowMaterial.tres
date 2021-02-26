@@ -1,0 +1,28 @@
+[gd_resource type="ShaderMaterial" load_steps=10 format=2]
+
+[ext_resource path="res://Demos/InteractiveSnow/Textures/Ground039_1K_Color.png" type="Texture" id=1]
+[ext_resource path="res://Shaders/interactive_snow.shader" type="Shader" id=2]
+[ext_resource path="res://Demos/InteractiveSnow/Textures/Snow004_1K_Color.png" type="Texture" id=3]
+[ext_resource path="res://Demos/InteractiveSnow/Textures/Ground039_1K_Normal.png" type="Texture" id=4]
+[ext_resource path="res://Demos/InteractiveSnow/Textures/Snow004_1K_Normal.png" type="Texture" id=5]
+[ext_resource path="res://Demos/InteractiveSnow/Textures/Ground039_1K_Roughness.png" type="Texture" id=6]
+[ext_resource path="res://Demos/InteractiveSnow/Textures/Snow004_1K_Roughness.png" type="Texture" id=7]
+[ext_resource path="res://Demos/InteractiveSnow/Textures/BlendTexture.png" type="Texture" id=8]
+[ext_resource path="res://Demos/InteractiveSnow/Textures/testmask.png" type="Texture" id=9]
+
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/mask_texture_world_size = Vector2( 32, 32 )
+shader_param/snow_height = 0.8
+shader_param/snow_sharpness = 3.0
+shader_param/textures_tiling = Vector2( 5, 5 )
+shader_param/mask_texture = ExtResource( 9 )
+shader_param/snow_texture = ExtResource( 3 )
+shader_param/snow_texture_normal = ExtResource( 5 )
+shader_param/snow_texture_roughness = ExtResource( 7 )
+shader_param/dirt_texture = ExtResource( 1 )
+shader_param/dirt_texture_normal = ExtResource( 4 )
+shader_param/dirt_texture_roughness = ExtResource( 6 )
+shader_param/blend_texture = ExtResource( 8 )

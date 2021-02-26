@@ -25,6 +25,7 @@ Here's a list of available shaders and demos.
 - Stencil mask (impossible cube)
 - Stylized fire
 - Stylized bottled liquid
+- Interactive snow
 
 ### 2D Shaders
 

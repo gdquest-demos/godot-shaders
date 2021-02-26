@@ -1,0 +1,108 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Demos/InteractiveSnow/InteractiveSnowball.gd" type="Script" id=1]
+[ext_resource path="res://Demos/InteractiveSnow/InteractiveSnowPlane.glb" type="PackedScene" id=2]
+[ext_resource path="res://Shared/Demo3DEnvironment.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Demos/InteractiveSnow/Textures/BlendTexture.png" type="Texture" id=4]
+[ext_resource path="res://Demos/InteractiveSnow/TrailTip.png" type="Texture" id=5]
+[ext_resource path="res://Demos/InteractiveSnow/InteractiveSnowViewport.gd" type="Script" id=6]
+[ext_resource path="res://Demos/InteractiveSnow/Textures/Snow004_1K_Roughness.png" type="Texture" id=7]
+[ext_resource path="res://Demos/InteractiveSnow/Textures/Ground039_1K_Normal.png" type="Texture" id=8]
+[ext_resource path="res://Demos/InteractiveSnow/Textures/Ground039_1K_Roughness.png" type="Texture" id=9]
+[ext_resource path="res://Shaders/interactive_snow.shader" type="Shader" id=10]
+[ext_resource path="res://Demos/InteractiveSnow/Textures/Snow004_1K_Normal.png" type="Texture" id=11]
+[ext_resource path="res://Demos/InteractiveSnow/Textures/Snow004_1K_Color.png" type="Texture" id=12]
+[ext_resource path="res://Demos/InteractiveSnow/Textures/Ground039_1K_Color.png" type="Texture" id=13]
+[ext_resource path="res://Demos/InteractiveSnow/TrailTexture.png" type="Texture" id=14]
+[ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=15]
+
+[sub_resource type="ViewportTexture" id=5]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = ExtResource( 10 )
+shader_param/mask_texture_world_size = Vector2( 16, 16 )
+shader_param/snow_height = 0.3
+shader_param/snow_sharpness = 3.0
+shader_param/textures_tiling = Vector2( 4, 4 )
+shader_param/mask_texture = SubResource( 5 )
+shader_param/snow_texture = ExtResource( 12 )
+shader_param/snow_texture_normal = ExtResource( 11 )
+shader_param/snow_texture_roughness = ExtResource( 7 )
+shader_param/dirt_texture = ExtResource( 13 )
+shader_param/dirt_texture_normal = ExtResource( 8 )
+shader_param/dirt_texture_roughness = ExtResource( 9 )
+shader_param/blend_texture = ExtResource( 4 )
+
+[sub_resource type="SphereMesh" id=3]
+radius = 0.5
+height = 1.0
+
+[sub_resource type="ViewportTexture" id=4]
+viewport_path = NodePath("Viewport")
+
+[node name="InteractiveSnowDemo" type="Spatial"]
+
+[node name="Demo3DEnvironment" parent="." instance=ExtResource( 3 )]
+
+[node name="Sun" parent="Demo3DEnvironment" index="1"]
+transform = Transform( 0.919232, 0.13994, -0.368008, 0, 0.934702, 0.355433, 0.393717, -0.326725, 0.859208, 0, 3.77878, 6.87228 )
+shadow_enabled = false
+
+[node name="Ground" parent="Demo3DEnvironment" index="2"]
+visible = false
+
+[node name="InteractiveSnowPlane" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0 )
+
+[node name="Plane" parent="InteractiveSnowPlane" index="0"]
+material_override = SubResource( 2 )
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 128, 128 )
+own_world = true
+transparent_bg = true
+handle_input_locally = false
+hdr = false
+render_target_v_flip = true
+render_target_update_mode = 3
+script = ExtResource( 6 )
+interactive_actor_path = NodePath("../InteractiveSnowball")
+interactive_actor_footprint = NodePath("Sprite")
+interactive_snow_size = Vector2( 16, 16 )
+
+[node name="Line2D" type="Line2D" parent="Viewport"]
+default_color = Color( 0, 0, 0, 1 )
+texture = ExtResource( 14 )
+texture_mode = 1
+joint_mode = 1
+
+[node name="Sprite" type="Sprite" parent="Viewport"]
+modulate = Color( 1, 1, 1, 0.415686 )
+texture = ExtResource( 5 )
+
+[node name="InteractiveSnowball" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+mesh = SubResource( 3 )
+material/0 = null
+script = ExtResource( 1 )
+trail_sprite_path = NodePath("../Viewport/Sprite")
+
+[node name="Camera" type="Camera" parent="InteractiveSnowball"]
+transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 2.06231, 5.46691 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_top = 123.678
+margin_right = 128.0
+margin_bottom = 251.678
+texture = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DemoInterface" parent="." instance=ExtResource( 15 )]
+text_bbcode = "A trail is painted in a secondary viewport, that is then read by a shader to do displacement and texture blending"
+
+[editable path="Demo3DEnvironment"]
+[editable path="InteractiveSnowPlane"]
