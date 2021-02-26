@@ -6,11 +6,6 @@
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Demos/Outline/Outline2D/mouse_cursor.png" type="Texture" id=5]
 
-
-
-
-
-
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
@@ -30,7 +25,6 @@ void fragment() {
 	float transition = texture(transition_gradient, vec2(1.0 - UV.y, 1.0)).r;
 	COLOR = mix(color, reflection_color, transition * reflection_intensity);
 }"
-custom_defines = ""
 
 [sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0.257485, 0.371257, 0.646707, 1 )
@@ -44,7 +38,7 @@ shader = SubResource( 1 )
 shader_param/color = Color( 0.207843, 0.203922, 0.615686, 1 )
 shader_param/reflection_intensity = 0.542
 shader_param/scale_y = 2.91774
-shader_param/zoom_y = 1.0
+shader_param/zoom_y = 0.529732
 shader_param/transition_gradient = SubResource( 3 )
 
 [node name="Reflection2DDemo" type="Control"]
