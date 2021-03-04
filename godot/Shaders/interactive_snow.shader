@@ -19,7 +19,6 @@ varying vec2 world_uv;
 varying float height;
 
 void vertex(){
-	
 	// Here we take the world coordinates, and transform them to UV space.
 	world_uv = (WORLD_MATRIX * vec4(VERTEX, 1.0)).xz;
 	world_uv -= WORLD_MATRIX[3].xz;
@@ -32,7 +31,7 @@ void vertex(){
 	// an axis, we need to first establish how small of an increment we want to consider.
 	// Here we take the size of the world texture, and divide it by the texture size.
 
-	vec2 texture_increment = vec2(mask_texture_world_size)/ vec2(textureSize(mask_texture, 0));
+	vec2 texture_increment = vec2(mask_texture_world_size) / vec2(textureSize(mask_texture, 0));
 	height = 1.0 - texture(mask_texture, world_uv).a;
 
 	// Approximate derivative along the z axis
