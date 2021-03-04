@@ -281,7 +281,5 @@ autoplay = "show_potions"
 anims/show_potions = SubResource( 13 )
 
 [editable path="PostionGreenAnchor/PotionGreen"]
-
 [editable path="PinkPotionAnchor/PotionPink"]
-
 [editable path="PotionBlue"]
