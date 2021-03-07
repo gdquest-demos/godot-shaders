@@ -26,6 +26,7 @@ Here's a list of available shaders and demos.
 - Stylized fire
 - Stylized bottled liquid
 - Interactive snow
+- Unlit directional tint
 
 ### 2D Shaders
 

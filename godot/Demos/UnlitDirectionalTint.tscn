@@ -1,0 +1,112 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Shared/models/3D-environment/ShockwaveScene.glb" type="PackedScene" id=1]
+[ext_resource path="res://Demos/UnlitDirectionalTint/UnlitDirectionalTint.tres" type="Material" id=2]
+[ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Shared/Demo3DEnvironment.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "show"
+length = 5.0
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("ShockwaveScene2:rotation_degrees:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("ShockwaveScene2:rotation_degrees:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 90, -0.0599999, -53, 0.25, 0, 90, -0.25, 0, 0.13, -59, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.5, 2.5, 4.2 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("ShockwaveScene2:rotation_degrees:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 5 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("ShockwaveScene:rotation_degrees:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 5 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("ShockwaveScene:rotation_degrees:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 90, -0.0599999, -53, 0.25, 0, 90, -0.25, 0, 0.13, -59, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.5, 2.5, 4.2, 5 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("ShockwaveScene:rotation_degrees:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 5 )
+}
+
+[node name="Spatial" type="Spatial"]
+
+[node name="ShockwaveScene2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.93858, 0, 0 )
+
+[node name="ShockwaveScene" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4862, 0, 0 )
+
+[node name="detail_forest" parent="ShockwaveScene" index="0"]
+material_override = ExtResource( 2 )
+
+[node name="tileLarge_forest" parent="ShockwaveScene" index="1"]
+material_override = ExtResource( 2 )
+
+[node name="tree_forest" parent="ShockwaveScene" index="2"]
+material_override = ExtResource( 2 )
+
+[node name="detail_forest001" parent="ShockwaveScene" index="3"]
+material_override = ExtResource( 2 )
+
+[node name="tree_forest001" parent="ShockwaveScene" index="4"]
+material_override = ExtResource( 2 )
+
+[node name="tree_forest002" parent="ShockwaveScene" index="5"]
+material_override = ExtResource( 2 )
+
+[node name="Demo3DEnvironment" parent="." instance=ExtResource( 4 )]
+
+[node name="DemoInterface" parent="." instance=ExtResource( 3 )]
+text_bbcode = "An unlit shader that tints the model depending on the world normal.
+Unlit tint shader on the left, regular shader with albedo on the right"
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.970321, 0.24182, 0, -0.24182, 0.970321, 0, 5.79023, 12.0303 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "show"
+anims/show = SubResource( 1 )
+
+[editable path="ShockwaveScene"]
