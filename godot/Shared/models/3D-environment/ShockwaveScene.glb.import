@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/ShockwaveScene.glb-bd2837c2bb7a7d6ddf17482e2c8e3751.scn"
+path="res://.import/ShockwaveScene.glb-3256b0fbc783c81c9c4bd97a9984e441.scn"
 
 [deps]
 
-source_file="res://Demos/Shockwave3D/ShockwaveScene.glb"
-dest_files=[ "res://.import/ShockwaveScene.glb-bd2837c2bb7a7d6ddf17482e2c8e3751.scn" ]
+source_file="res://Shared/models/3D-environment/ShockwaveScene.glb"
+dest_files=[ "res://.import/ShockwaveScene.glb-3256b0fbc783c81c9c4bd97a9984e441.scn" ]
 
 [params]
 
