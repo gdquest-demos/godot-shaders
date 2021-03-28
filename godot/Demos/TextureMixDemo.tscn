@@ -1,0 +1,292 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Demos/TextureMix/MixMaterial.tres" type="Material" id=1]
+[ext_resource path="res://Demos/TextureMix/textures/lambert2_ao.jpg" type="Texture" id=2]
+[ext_resource path="res://Demos/TextureMix/textures/lambert2_normal.jpg" type="Texture" id=3]
+[ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Shared/Demo3DEnvironment.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Demos/TextureMix/textures/Moss003_1K_Color.jpg" type="Texture" id=6]
+[ext_resource path="res://Shared/theme/fonts/font_title.tres" type="DynamicFont" id=7]
+[ext_resource path="res://Demos/TextureMix/scene.glb" type="PackedScene" id=8]
+[ext_resource path="res://Shaders/texture_mix.shader" type="Shader" id=9]
+[ext_resource path="res://Demos/TextureMix/textures/lambert2_baseColor.jpeg" type="Texture" id=10]
+[ext_resource path="res://Demos/TextureMix/textures/Moss003_1K_Normal.jpg" type="Texture" id=11]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 9 )
+shader_param/blend_smoothness = 0.2
+shader_param/threshold = 0.0
+shader_param/additive_mix = false
+shader_param/use_red_vertex_color = true
+shader_param/use_ao_occlusion = false
+shader_param/use_world_direction = false
+shader_param/world_direction = Vector3( 1, 0.00359209, 0 )
+shader_param/tex_1_albedo = ExtResource( 10 )
+shader_param/tex_1_ao = ExtResource( 2 )
+shader_param/tex_1_normal = ExtResource( 3 )
+shader_param/tex_2_albedo = ExtResource( 6 )
+shader_param/tex_2_normal = ExtResource( 11 )
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 9 )
+shader_param/blend_smoothness = 0.2
+shader_param/threshold = 0.0
+shader_param/additive_mix = false
+shader_param/use_red_vertex_color = false
+shader_param/use_ao_occlusion = true
+shader_param/use_world_direction = false
+shader_param/world_direction = Vector3( 1, 0.00359209, 0 )
+shader_param/tex_1_albedo = ExtResource( 10 )
+shader_param/tex_1_ao = ExtResource( 2 )
+shader_param/tex_1_normal = ExtResource( 3 )
+shader_param/tex_2_albedo = ExtResource( 6 )
+shader_param/tex_2_normal = ExtResource( 11 )
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 9 )
+shader_param/blend_smoothness = 0.2
+shader_param/threshold = 0.0
+shader_param/additive_mix = false
+shader_param/use_red_vertex_color = false
+shader_param/use_ao_occlusion = false
+shader_param/use_world_direction = true
+shader_param/world_direction = Vector3( 0, 1, 0 )
+shader_param/tex_1_albedo = ExtResource( 10 )
+shader_param/tex_1_ao = ExtResource( 2 )
+shader_param/tex_1_normal = ExtResource( 3 )
+shader_param/tex_2_albedo = ExtResource( 6 )
+shader_param/tex_2_normal = ExtResource( 11 )
+
+[sub_resource type="Animation" id=4]
+length = 11.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -0.00142109, -0.25, 0, 0.25, 0, 1, -0.322248, 0.64271, 0.25, 0, 1, -0.167695, -0.00171745, 0.190925, 1.10033, -0.00142109, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4, 10, 10.4 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0.00150442, -0.25, 0, 0.25, 0, 1, -0.326913, 0.645635, 0.25, 0, 1, -0.30014, -0.00171745, 0.205188, 1.09022, 0.00150442, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4, 10, 10.4 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0:scale:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( -0.00142103, -0.25, 0, 0.25, 0, 1, -0.359569, 0.636859, 0.25, 0, 1, -0.188071, -0.00171739, 0.229639, 1.11044, -0.00142103, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4, 10, 10.4 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0:material_override:shader_param/blend_smoothness")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0.2, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.4 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0:material_override:shader_param/threshold")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.429, -0.25, 0, 0.25, 0, 0.463, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.4, 7.4, 8.7, 9.9 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0:material_override:shader_param/world_direction:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0, 0.288709 ),
+"times": PoolRealArray( 3.4, 5 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0:material_override:shader_param/world_direction:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 0.00359209, 0, 0.321515, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 3.4, 5 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0:material_override:shader_param/world_direction:z")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 5 )
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0:material_override:shader_param/use_ao_occlusion")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.4, 1.9, 5.4, 6.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0:material_override:shader_param/use_red_vertex_color")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.4, 1.9, 3.4, 5.4, 6.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, false, true, true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0:material_override:shader_param/use_world_direction")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0.4, 1.9, 3.4, 5.4, 6.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true, true, true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0:material_override:shader_param/additive_mix")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0.4, 3.4, 5.4, 6.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, false, true ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Label:text")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.4, 1.9, 3.4, 5.4, 6.4, 7.4, 9.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "", "Red channel", "Ambient occlusion", "World direction", "All together (average)", "All together (additive)", "Tuning threshold", "" ]
+}
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends Button
+
+
+func _on_Button_pressed():
+	get_node(\"../AnimationPlayer\").play(\"show-mix\")
+"
+
+[node name="TextureBlendingDemo" type="Spatial"]
+
+[node name="Demo3DEnvironment" parent="." instance=ExtResource( 5 )]
+
+[node name="Sun" parent="Demo3DEnvironment" index="1"]
+transform = Transform( 0.866365, 0.424523, 0.263041, 0, -0.526703, 0.850049, 0.49941, -0.736453, -0.456318, 0, 2.76507, 0.0411971 )
+
+[node name="MixVertexColor" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0 )
+
+[node name="rockFInal_LOD0_lambert2_0" parent="MixVertexColor/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0" index="0"]
+material_override = SubResource( 1 )
+
+[node name="MixAmbientOcclusion" parent="." instance=ExtResource( 8 )]
+
+[node name="rockFInal_LOD0_lambert2_0" parent="MixAmbientOcclusion/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0" index="0"]
+material_override = SubResource( 2 )
+
+[node name="MixWorldNormal" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0 )
+
+[node name="rockFInal_LOD0_lambert2_0" parent="MixWorldNormal/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0" index="0"]
+material_override = SubResource( 3 )
+
+[node name="Demo" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6 )
+
+[node name="rockFInal_LOD0_lambert2_0" parent="Demo/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0" index="0"]
+transform = Transform( -0.00142109, 0, 0, 0, 0.00150442, 0, 0, 0, -0.00142103, 0, 0, 0 )
+material_override = ExtResource( 1 )
+
+[node name="DemoInterface" parent="." instance=ExtResource( 4 )]
+text_bbcode = "A shader that mixes albedo and normal textures based on different parameters. From left to right: mix based on red channel for vertex color, mix based on ambient occlusion map, and mix based on world space normal.
+model by https://sketchfab.com/3d-models/western-stylised-rock-24c821bbe0a1469ba66b9d5894546d9a"
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = -14.0
+margin_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+custom_fonts/font = ExtResource( 7 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/show-mix = SubResource( 4 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, -4.37114e-08, 0.866025, 0.5, 7.57103e-08, 0.5, -0.866025, 0, 6.0383, -11.4515 )
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -196.0
+margin_top = -46.0
+custom_fonts/font = ExtResource( 7 )
+text = "Play demo"
+script = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]
+
+[editable path="Demo3DEnvironment"]
+
+[editable path="MixVertexColor"]
+
+[editable path="MixAmbientOcclusion"]
+
+[editable path="MixWorldNormal"]
+
+[editable path="Demo"]
