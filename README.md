@@ -27,6 +27,7 @@ Here's a list of available shaders and demos.
 - Stylized bottled liquid
 - Interactive snow
 - Unlit directional tint
+- Texture mixing methods
 
 ### 2D Shaders
 
