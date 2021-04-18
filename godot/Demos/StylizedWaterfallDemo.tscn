@@ -161,9 +161,8 @@ material/0 = null
 
 [node name="DemoInterface" parent="." instance=ExtResource( 5 )]
 text_bbcode = "This demo shows how to create a stylized waterfall.
-In particular, this waterfall is created by leveraging UVs and vertex colors created in the modeling software (blender)
-Because we useng carefully crafted UVs, we don't need to use flowmaps."
+In particular, this waterfall is created by leveraging UVs and vertex colors created in the modeling software (blender).
+Because we are using carefully crafted UVs, we don't need to use flowmaps."
 
 [editable path="WaterfallMesh"]
-
 [editable path="Demo3DEnvironment"]

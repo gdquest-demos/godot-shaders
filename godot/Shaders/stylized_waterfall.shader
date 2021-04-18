@@ -8,7 +8,7 @@ uniform float water_speed = 0.3;
 uniform float displacement = 0.1;
 uniform vec4 foam_color: hint_color = vec4(1.0);
 uniform float foam_threshold = 0.3;
-uniform float foam_detail_treshold = 0.7;
+uniform float foam_detail_threshold = 0.7;
 uniform float foam_detail_speed = 0.1;
 uniform float foam_smoothness = 0.0;
 uniform float max_depth = 0.3;
@@ -85,7 +85,7 @@ void fragment(){
 		float total_noise = (main_noise_value + detail_noise_value) * 0.5;
 		float foam_factor = smoothstep(0.0, foam_smoothness * (1.0 - foam_threshold), ((total_noise - foam_threshold) + main_foam_intensity * 0.1) * main_foam_intensity) ;
 		foam_factor = screen_mix(foam_factor, main_foam_intensity);
-		foam_factor += smoothstep(0.0, foam_smoothness * (1.0 - foam_threshold), ((detail_noise_value - foam_detail_treshold) + main_foam_intensity * 0.1)) ;
+		foam_factor += smoothstep(0.0, foam_smoothness * (1.0 - foam_threshold), ((detail_noise_value - foam_detail_threshold) + main_foam_intensity * 0.1)) ;
 		foam_factor = clamp(foam_factor, 0.0, 1.0);
 
 		vec4 water_color = texture(depth_color_curve, vec2(depth_normalized));
