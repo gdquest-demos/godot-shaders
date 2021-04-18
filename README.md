@@ -28,6 +28,7 @@ Here's a list of available shaders and demos.
 - Interactive snow
 - Unlit directional tint
 - Texture mixing methods
+- Stylized waterfall shader
 
 ### 2D Shaders
 
