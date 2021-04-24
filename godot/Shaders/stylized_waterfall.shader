@@ -52,10 +52,13 @@ void fragment(){
 	}
 	else{
 		// we calculate the depth in the scene so that we can change opacity and color based on it
+		// taken from official godot doc: https://docs.godotengine.org/en/stable/tutorials/shading/advanced_postprocessing.html
 		float depth_value = texture(DEPTH_TEXTURE, SCREEN_UV).r;
-		depth_value = depth_value * 2.0 - 1.0;
-		depth_value = -PROJECTION_MATRIX[3][2] / (depth_value + PROJECTION_MATRIX[2][2]);
-		float depth_delta = - (depth_value - VERTEX.z);
+		vec3 ndc = vec3(SCREEN_UV, depth_value) * 2.0 - vec3(1.0);
+		vec4 view_depth = INV_PROJECTION_MATRIX * vec4(ndc, 1.0);
+		view_depth.xyz /= view_depth.w;
+		float linear_depth = -view_depth.z;
+		float depth_delta = (linear_depth + VERTEX.z);
 		float depth_normalized = smoothstep(depth_delta, 0.0, max_depth);
 		
 		// COLOR in the fragment shader indicates the vertex color that is
