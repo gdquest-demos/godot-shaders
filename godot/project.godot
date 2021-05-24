@@ -101,8 +101,9 @@ jump={
 
 [rendering]
 
-quality/2d/use_pixel_snap=true
+2d/snapping/use_gpu_pixel_snap=true
 quality/shadows/filter_mode=2
 quality/reflections/irradiance_max_size=2048
 quality/filters/msaa=2
 environment/default_environment="res://default_env.tres"
+quality/2d/use_pixel_snap=true

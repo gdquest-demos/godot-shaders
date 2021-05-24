@@ -190,7 +190,7 @@ damping = 0.2
 scale = 0.2
 scale_random = 1.0
 
-[node name="SphereMask" type="Spatial"]
+[node name="SphereMaskDemo" type="Spatial"]
 
 [node name="DemoInterface" parent="." instance=ExtResource( 1 )]
 text_bbcode = "A spherical mask is applied to the bridge to make it disappear when too far from a given point (the lantern).
