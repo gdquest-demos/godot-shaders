@@ -29,6 +29,7 @@ Here's a list of available shaders and demos.
 - Unlit directional tint
 - Texture mixing methods
 - Stylized waterfall shader
+- Spherical mask shader
 
 ### 2D Shaders
 

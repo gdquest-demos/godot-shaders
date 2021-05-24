@@ -1,0 +1,253 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Demos/SphereMask/bridge-lantern.glb" type="PackedScene" id=2]
+[ext_resource path="res://Shared/Demo3DEnvironmentDark.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Demos/SphereMask/BridgeMaterial.tres" type="Material" id=4]
+[ext_resource path="res://Demos/SphereMask/LanternPositionToMaterial.gd" type="Script" id=5]
+[ext_resource path="res://Demos/SphereMask/Lantern.mesh" type="ArrayMesh" id=6]
+[ext_resource path="res://Demos/SphereMask/LanternMaterialEmissive.material" type="Material" id=7]
+
+[sub_resource type="ProceduralSky" id=1]
+radiance_size = 1
+sky_top_color = Color( 0.176471, 0.00392157, 0.388235, 1 )
+sky_horizon_color = Color( 0.286275, 0.286275, 0.286275, 1 )
+sky_curve = 0.214056
+ground_bottom_color = Color( 0, 0, 0, 1 )
+ground_horizon_color = Color( 0.176471, 0.176471, 0.176471, 1 )
+ground_curve = 0.0527803
+sun_color = Color( 0.737255, 0.886275, 0.952941, 1 )
+sun_longitude = -147.57
+sun_curve = 0.0170755
+sun_energy = 0.99
+texture_size = 1
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+ambient_light_color = Color( 1, 1, 1, 1 )
+fog_color = Color( 0.109804, 0.027451, 0.176471, 1 )
+fog_sun_color = Color( 0.792157, 0.709804, 0.823529, 1 )
+fog_depth_curve = 1.68179
+tonemap_mode = 3
+tonemap_white = 2.0
+ss_reflections_enabled = true
+ss_reflections_max_steps = 32
+ssao_enabled = true
+ssao_light_affect = 0.31
+dof_blur_far_enabled = true
+dof_blur_far_distance = 4.0
+dof_blur_far_amount = 0.07
+dof_blur_far_quality = 2
+glow_enabled = true
+glow_levels/2 = true
+glow_levels/4 = true
+glow_strength = 0.78
+glow_blend_mode = 0
+glow_bicubic_upscale = true
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.164706, 0.0196078, 0.282353, 1 )
+metallic = 1.0
+roughness = 0.0
+
+[sub_resource type="SpatialMaterial" id=4]
+
+[sub_resource type="CubeMesh" id=5]
+
+[sub_resource type="Animation" id=6]
+length = 9.0
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("bridge-lantern/Lantern:translation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -3.42114, -0.25, 0, 0.342974, -0.00484252, -3.42114, -0.25, 0, 0.307794, -0.006284, -3.42114, -0.25, 0, 1.08, 0.112083, 3.86105, -1.29, -0.138678, 0.25, 0, 3.86105, -0.426668, 0.00293636, 0.25, 0, 3.86105, -0.197848, 1.07288e-05, 0.25, 0, -3.42114, -0.25, 0, 1.08, 0.112083 ),
+"times": PoolRealArray( 0.6, 1.6, 2.4, 6, 7, 7.5, 8.7 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("bridge-lantern/Lantern:translation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 2.83444, -0.25, 0, 0.342974, -0.00019455, 2.83444, -0.25, 0, 0.307794, -0.00627708, 2.83444, -0.25, 0, 0.27, -0.68062, 1.78603, -0.25, 0, 0.3, -0.0108269, 2.7211, -0.28, -0.513191, 0.25, 0, 2.7211, -0.448104, -3.8147e-06, 0.25, 0, 2.7211, -0.176412, -3.8147e-06, 0.25, 0, 2.83444, -0.25, 0, 0.27, -0.68062 ),
+"times": PoolRealArray( 0.6, 1.6, 2.4, 4, 6, 7, 7.5, 8.7 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("bridge-lantern/Lantern:translation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( -4.76837e-07, -0.25, 0, 0.25, 0, -4.76837e-07, -0.25, 0, 0.25, 0, -4.76837e-07, -0.25, 0, 0.25, 0, -4.76837e-07, -0.25, 0, 0.25, 0, -4.76837e-07, -0.25, 0, 0.25, 0, -4.76837e-07, -0.25, 0, 0.25, 0, -4.76837e-07, -0.25, 0, 0.25, 0, -4.76837e-07, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.6, 1.6, 2.4, 4, 6, 7, 7.5, 8.7 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("bridge-lantern/Lantern:rotation_degrees:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.6, 1.6, 2.4 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("bridge-lantern/Lantern:rotation_degrees:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.6, 1.6, 2.4 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("bridge-lantern/Lantern:rotation_degrees:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.6, 1.6, 2.4 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("bridge-lantern/Lantern:scale:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.6, 1.6, 2.4, 6, 7, 7.5, 8.7, 9 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("bridge-lantern/Lantern:scale:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.6, 1.6, 2.4, 6, 7, 7.5, 8.7, 9 )
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("bridge-lantern/Lantern:scale:z")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.6, 1.6, 2.4, 6, 7, 7.5, 8.7, 9 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("bridge-lantern/Lantern/OmniLight:light_energy")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1.00866, -0.02, -0.770422, 0.25, 0, 1.00866, -0.33, 0.00865853, 0.25, 0, 1, -0.25, 0, 0.65, -0.0216731, 0, -0.0300002, 0.256435, 0.25, 0 ),
+"times": PoolRealArray( 0.6, 1.4, 2.2, 6, 7 )
+}
+tracks/10/type = "bezier"
+tracks/10/path = NodePath("bridge-lantern/BridgeBody:material/0:shader_param/mask_radius")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.021641, 0.539793, 3, -0.806872, -0.00346565, 0.25, 0, 3, -0.25, 0, 0.25, 0, 3, -0.406462, -0.0185606, 0.25, 0, 3, -0.25, 0, 1.01791, 0.0180454, 0, -0.0855107, 0.839505, 0.25, 0 ),
+"times": PoolRealArray( 0.6, 1.6, 2.3, 2.4, 6, 7 )
+}
+tracks/11/type = "bezier"
+tracks/11/path = NodePath("bridge-lantern/BridgeBody:material/0:shader_param/mask_border_radius")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"points": PoolRealArray( 4, -0.25, 0, 0.0717946, -1.32398, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.737195, -0.047812, 4, -0.0333352, -1.91895, 0.25, 0 ),
+"times": PoolRealArray( 0.6, 1.6, 2.4, 6, 7 )
+}
+
+[sub_resource type="ParticlesMaterial" id=7]
+emission_shape = 2
+emission_box_extents = Vector3( 10, 1, 5 )
+direction = Vector3( 0, 1, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 2.0
+damping = 0.2
+scale = 0.2
+scale_random = 1.0
+
+[node name="SphereMask" type="Spatial"]
+
+[node name="DemoInterface" parent="." instance=ExtResource( 1 )]
+text_bbcode = "A spherical mask is applied to the bridge to make it disappear when too far from a given point (the lantern).
+
+Bridge model from: https://blendswap.com/blend/23063"
+
+[node name="bridge-lantern" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41845, 0 )
+script = ExtResource( 5 )
+
+[node name="BridgeBody" parent="bridge-lantern" index="0"]
+material/0 = ExtResource( 4 )
+
+[node name="Lantern" parent="bridge-lantern" index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.42114, 2.83444, -4.76837e-07 )
+
+[node name="OmniLight" type="OmniLight" parent="bridge-lantern/Lantern" index="0"]
+light_color = Color( 0.945098, 0.807843, 0.521569, 1 )
+light_energy = 0.0
+
+[node name="Demo3DEnvironmentDark" parent="." instance=ExtResource( 3 )]
+
+[node name="BaseWorldEnvironment" parent="Demo3DEnvironmentDark" index="0"]
+environment = SubResource( 2 )
+
+[node name="Sun" parent="Demo3DEnvironmentDark" index="1"]
+transform = Transform( 0.919232, 0.337965, -0.201972, -0.111169, 0.714912, 0.69032, 0.377696, -0.612111, 0.694741, 0, 3.77878, 6.87228 )
+visible = false
+
+[node name="Ground" parent="Demo3DEnvironmentDark" index="2"]
+material_override = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 0.931444, -0.363885, 0, 0.363885, 0.931444, 0, 0, 0, 1, -3.93345, 0.222268, 0 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( 0.931444, 0.363885, 0, -0.363885, 0.931444, 0, 0, 0, 1, 4.39032, 0.230296, 0 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.746708, 0.665152, 0, -0.665152, 0.746708, -1.19209e-07, 5.96281, 3.27542 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "show"
+anims/show = SubResource( 6 )
+
+[node name="Particles" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.963944, -11.7297 )
+material_override = ExtResource( 7 )
+amount = 10
+lifetime = 5.0
+process_material = SubResource( 7 )
+draw_pass_1 = ExtResource( 6 )
+
+[editable path="bridge-lantern"]
+[editable path="Demo3DEnvironmentDark"]
