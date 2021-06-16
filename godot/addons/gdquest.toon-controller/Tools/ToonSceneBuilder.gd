@@ -36,10 +36,10 @@ func _ready() -> void:
 			scene_root.call_deferred("move_child", self, 0)
 
 		if not light_data:
-			light_data = _build_data(DataType.LIGHT)
+			light_data = yield(_build_data(DataType.LIGHT), "completed")
 
 		if not specular_data:
-			specular_data = _build_data(DataType.SPECULAR)
+			specular_data = yield(_build_data(DataType.SPECULAR), "completed")
 
 
 func get_class() -> String:
@@ -72,6 +72,7 @@ func _build_data(type: int) -> Viewport:
 	viewport.render_target_update_mode = Viewport.UPDATE_ALWAYS
 	viewport.msaa = ProjectSettings.get_setting("rendering/quality/filters/msaa")
 	viewport.shadow_atlas_size = shadow_resolution
+	yield(get_tree(), "idle_frame")
 	view.add_child(viewport)
 
 	scene_root.add_child(view)
