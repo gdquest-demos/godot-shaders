@@ -11,7 +11,7 @@ uniform sampler2D ghost_noise;
 uniform vec4 object_color: hint_color = vec4(1.0);
 uniform vec4 mask_color: hint_color = vec4(1.0);
 
-float mix_screen(float a, float b){
+float mix_overlay(float a, float b){
 	return mix(
 		a * b * 2.0,
 		1.0 - 2.0 * (1.0 - a) * (1.0 - b),
@@ -35,7 +35,7 @@ void fragment(){
 	// magical glow
 	float noise_value = texture(ghost_noise, world_space_vert.xz + vec2(TIME, 0.0)).g;
 	float border_value = smoothstep(0.0, mask_border_radius,length(camera_mask_center - VERTEX) - mask_radius + mask_border_radius);
-	noise_value = mix_screen(border_value, noise_value);
+	noise_value = mix_overlay(border_value, noise_value);
 	noise_value = step(0.7, noise_value);
 	
 	// Magic part two! In order to make things look "solid" we color the backfaces with the same emissive
