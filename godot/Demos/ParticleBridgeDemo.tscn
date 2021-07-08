@@ -1,0 +1,300 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://Shaders/particle_bridge_spatial.shader" type="Shader" id=1]
+[ext_resource path="res://Shaders/particle_bridge_particle.shader" type="Shader" id=2]
+[ext_resource path="res://Shared/Demo3DEnvironmentDark.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/character_position = Vector3( 1.478, 0.706214, 16.8233 )
+shader_param/radius = 5.0
+shader_param/bridge_width_particles = 12
+shader_param/bridge_speed = 10.0
+shader_param/spacing = 0.3
+shader_param/minimum_speed = 0.311
+
+[sub_resource type="Curve" id=2]
+max_value = 1.3
+_data = [ Vector2( 0.412587, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.765734, 1.3 ), 3.51, -1.17265, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=3]
+curve = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0.681818, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 6.41333, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="Curve" id=6]
+min_value = -3.0
+_data = [ Vector2( 0, -3 ), 0.0, 1.38667, 0, 0, Vector2( 0.513986, 1 ), 22.5333, -3.93514, 0, 0, Vector2( 1, 0 ), -0.102631, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
+
+[sub_resource type="Curve" id=8]
+min_value = -3.0
+max_value = 0.4
+_data = [ Vector2( 0, -3 ), 0.0, 0.17333, 0, 0, Vector2( 1, 0.307273 ), 10.983, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=9]
+curve = SubResource( 8 )
+
+[sub_resource type="ShaderMaterial" id=10]
+shader = ExtResource( 1 )
+shader_param/emission_color = Color( 0, 1, 0.976471, 1 )
+shader_param/albedo_color = Color( 0.227451, 0.207843, 0.266667, 1 )
+shader_param/oscillation_size = 2.0
+shader_param/y_curve_ascend = SubResource( 7 )
+shader_param/y_curve_descend = SubResource( 9 )
+shader_param/xz_curve_ascend = SubResource( 3 )
+shader_param/xz_curve_descend = SubResource( 5 )
+
+[sub_resource type="CubeMesh" id=11]
+material = SubResource( 10 )
+custom_aabb = AABB( 0, 0, 0, 3, 0, 15 )
+size = Vector3( 0.3, 0.3, 0.3 )
+
+[sub_resource type="GDScript" id=12]
+script/source = "extends Particles
+tool
+
+export var character_node : NodePath = \".\"
+
+func _process(delta):
+	process_material.set_shader_param(\"character_position\", get_node(character_node).global_transform.origin)
+"
+
+[sub_resource type="SphereMesh" id=13]
+radius = 0.5
+height = 1.0
+
+[sub_resource type="SpatialMaterial" id=14]
+albedo_color = Color( 0.227451, 0.207843, 0.266667, 1 )
+
+[sub_resource type="CubeMesh" id=15]
+
+[sub_resource type="Animation" id=16]
+length = 8.0
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Character:translation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1.478, -0.25, 0, 0.25, 0, 1.478, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 1.5, 6.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Character:translation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0.706214, -0.25, 0, 0.25, 0, 0.706214, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 1.5, 6.5 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Character:translation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0.751298, -0.25, 0, 0.25, 0, 9.49028, -0.25, 0, 0.25, 0, 9.49028, -0.25, 0, 0.25, 0, 25.1255, -0.373349, -0.130716, 0.25, 0 ),
+"times": PoolRealArray( 1.5, 3.4, 4.6, 6.5 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("BridgeParticles:process_material:shader_param/radius")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.125483, 4.20723, 5, -0.25, 0, 0.25, 0, 5, -0.25, 0, 0.0564256, -2.13245, 0, -0.492223, 0.238276, 0.25, 0 ),
+"times": PoolRealArray( 0.5, 1.5, 6.5, 7.4 )
+}
+
+[sub_resource type="SpatialMaterial" id=17]
+albedo_color = Color( 0, 1, 1, 1 )
+emission_enabled = true
+emission = Color( 0, 1, 1, 1 )
+emission_energy = 6.67
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="Curve" id=18]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.151163, 0.990909 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -2.52587, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=19]
+curve = SubResource( 18 )
+
+[sub_resource type="ParticlesMaterial" id=20]
+emission_shape = 2
+emission_box_extents = Vector3( 10.713, 1, 18.921 )
+flag_rotate_y = true
+gravity = Vector3( 0, 1, 0 )
+tangential_accel = 1.44
+tangential_accel_random = 1.0
+damping = 0.81
+angle = 720.0
+angle_random = 0.4
+scale = 0.5
+scale_random = 1.0
+scale_curve = SubResource( 19 )
+
+[sub_resource type="CubeMesh" id=21]
+size = Vector3( 0.1, 0.1, 0.1 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="BridgeParticles" type="Particles" parent="."]
+amount = 996
+lifetime = 2.0
+explosiveness = 1.0
+visibility_aabb = AABB( -4, -4, -4, 12, 12, 12 )
+local_coords = false
+process_material = SubResource( 1 )
+draw_pass_1 = SubResource( 11 )
+script = SubResource( 12 )
+character_node = NodePath("../Character")
+
+[node name="Character" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.478, 0.706214, 16.8233 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="Demo3DEnvironmentDark" parent="." instance=ExtResource( 3 )]
+
+[node name="Ground" parent="Demo3DEnvironmentDark" index="2"]
+visible = false
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -2.58409e-08, 0.622842, -0.782347, 2.24469e-08, 0.782347, 0.622842, 1, -1.46648e-09, -3.41975e-08, -12.7742, 8.04268, 10.2337 )
+
+[node name="Environment" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Environment"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.67604, -1.27915, -3.52664 )
+material_override = SubResource( 14 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance5" type="MeshInstance" parent="Environment"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95629, -0.40156, -3.32464 )
+material_override = SubResource( 14 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance6" type="MeshInstance" parent="Environment"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95629, -0.666597, -2.60536 )
+material_override = SubResource( 14 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="Environment"]
+transform = Transform( 1.14319, 0, 0, 0, 1.14319, 0, 0, 0, 1.14319, -0.498635, 0.0929141, -2.66452 )
+material_override = SubResource( 14 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance4" type="MeshInstance" parent="Environment"]
+transform = Transform( 0.473173, 0, 0, 0, 0.473173, 0, 0, 0, 0.473173, -1.21155, 1.15132, -1.32348 )
+material_override = SubResource( 14 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="Environment"]
+transform = Transform( 1.50835, 0, 0, 0, 1.50835, 0, 0, 0, 1.50835, 1.26811, -1.58778, -1.56634 )
+material_override = SubResource( 14 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance7" type="MeshInstance" parent="Environment"]
+transform = Transform( 1.50835, 0, 0, 0, 1.50835, 0, 0, 0, 1.50835, 1.26811, -1.51598, 25.9804 )
+material_override = SubResource( 14 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance8" type="MeshInstance" parent="Environment"]
+transform = Transform( 1.50835, 0, 0, 0, 1.50835, 0, 0, 0, 1.50835, -1.01346, -0.570083, 28.2913 )
+material_override = SubResource( 14 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance9" type="MeshInstance" parent="Environment"]
+transform = Transform( 2.98732, 0, 0, 0, 2.98732, 0, 0, 0, 2.98732, 4.87479, -2.71731, 29.3602 )
+material_override = SubResource( 14 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance15" type="MeshInstance" parent="Environment"]
+transform = Transform( 2.98732, 0, 0, 0, 2.98732, 0, 0, 0, 2.98732, 4.87479, -4.78104, -8.29915 )
+material_override = SubResource( 14 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance16" type="MeshInstance" parent="Environment"]
+transform = Transform( 2.98732, 0, 0, 0, 2.98732, 0, 0, 0, 2.98732, 0.462523, -3.30955, -11.2663 )
+material_override = SubResource( 14 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance17" type="MeshInstance" parent="Environment"]
+transform = Transform( 2.98732, 0, 0, 0, 2.98732, 0, 0, 0, 2.98732, 4.86438, -1.46258, 35.1737 )
+material_override = SubResource( 14 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance10" type="MeshInstance" parent="Environment"]
+transform = Transform( 2.98732, 0, 0, 0, 2.98732, 0, 0, 0, 2.98732, 4.87479, -2.71731, 29.3602 )
+material_override = SubResource( 14 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance11" type="MeshInstance" parent="Environment"]
+transform = Transform( 0.645052, 0, 0, 0, 2.71792, 0, 0, 0, 0.645052, 4.49499, -0.655079, 26.5435 )
+material_override = SubResource( 14 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance12" type="MeshInstance" parent="Environment"]
+transform = Transform( 0.645052, 0, 0, 0, 1.54839, 0, 0, 0, 0.645052, -2.8115, 0.499449, 30.0278 )
+material_override = SubResource( 14 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance14" type="MeshInstance" parent="Environment"]
+transform = Transform( 0.645052, 0, 0, 0, 1.54839, 0, 0, 0, 0.645052, 5.15443, -2.67499, 23.9164 )
+material_override = SubResource( 14 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="MeshInstance13" type="MeshInstance" parent="Environment"]
+transform = Transform( 0.645052, 0, 0, 0, 1.54839, 0, 0, 0, 0.645052, 2.8465, 0.764487, -4.29656 )
+material_override = SubResource( 14 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "show"
+anims/show = SubResource( 16 )
+
+[node name="GroundParticles" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.159886, -7.01857, 11.1831 )
+material_override = SubResource( 17 )
+amount = 25
+lifetime = 2.5
+process_material = SubResource( 20 )
+draw_pass_1 = SubResource( 21 )
+
+[node name="DemoInterface" parent="." instance=ExtResource( 4 )]
+text_bbcode = "Particle bridge!
+This demo shows how to communicate between a particle shader and a canvas_item/spatial shader."
+
+[editable path="Demo3DEnvironmentDark"]

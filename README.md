@@ -30,6 +30,7 @@ Here's a list of available shaders and demos.
 - Texture mixing methods
 - Stylized waterfall shader
 - Spherical mask shader
+- Particle bridge: process to canvas_item/spatial communication
 
 ### 2D Shaders
 

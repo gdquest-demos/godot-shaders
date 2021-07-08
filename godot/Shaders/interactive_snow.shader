@@ -57,7 +57,7 @@ void fragment(){
 	float snow_rougness = texture(snow_texture_roughness, world_uv_tiled).r;
 	float dirt_roughness = texture(dirt_texture_roughness, world_uv_tiled).r;
 	float noise_interp = texture(blend_texture, world_uv_tiled * 0.7).r;
-	// screen blend
+	// overlay blend
 	float snow_interp = mix(
 		mask * noise_interp * 2.0,
 		1.0 - 2.0 * (1.0 - mask) * (1.0 - noise_interp),
