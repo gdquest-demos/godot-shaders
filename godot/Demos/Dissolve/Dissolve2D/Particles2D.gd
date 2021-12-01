@@ -18,9 +18,9 @@ func _process_texture() -> void:
 
 	var positions := PoolVector2Array()
 
-	for x in range(width):
-		for y in range(height):
-			var idx := (y * width + x) * 4
+	for x in width:
+		for y in height:
+			var idx: int = (y * width + x) * 4
 			var byte: int = raw[idx]
 			if byte > 128:
 				positions.append(Vector2(x, y) * 8 - position)

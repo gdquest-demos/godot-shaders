@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Demos/Crystals/Crystal_Albedo.png" type="Texture" id=1]
 [ext_resource path="res://Demos/Crystals/Crystal_Emission.png" type="Texture" id=2]
@@ -62,13 +62,37 @@ shader_param/texture_albedo = ExtResource( 1 )
 shader_param/texture_emission = ExtResource( 2 )
 shader_param/texture_normal = ExtResource( 3 )
 
-[sub_resource type="GDScript" id=3]
-script/source = "extends Spatial
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
 
-
-func _process(delta: float) -> void:
-	rotate_y(PI/8 * delta)
-"
+[sub_resource type="Animation" id=4]
+resource_name = "Rotate"
+length = 16.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 16 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ) ]
+}
 
 [node name="CrystalDemo" type="Spatial"]
 
@@ -85,12 +109,15 @@ shadow_color = Color( 0.0823529, 0.690196, 0.901961, 1 )
 [node name="DemoInterface" parent="." instance=ExtResource( 6 )]
 text_bbcode = "An otherwise standard material that has been converted to a shader to add a TIME based pulse effect to its emission and fresnel."
 
-[node name="Spatial" type="Spatial" parent="."]
-script = SubResource( 3 )
+[node name="CameraPivot" type="Spatial" parent="."]
 
-[node name="Camera" type="Camera" parent="Spatial"]
+[node name="Camera" type="Camera" parent="CameraPivot"]
 transform = Transform( 1, 0, 0, 0, 0.92398, 0.382442, 0, -0.382442, 0.92398, 0, 1.55576, 1.65872 )
 
-[editable path="crystals"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CameraPivot"]
+autoplay = "Rotate"
+anims/RESET = SubResource( 3 )
+anims/Rotate = SubResource( 4 )
 
+[editable path="crystals"]
 [editable path="Demo3DEnvironment"]

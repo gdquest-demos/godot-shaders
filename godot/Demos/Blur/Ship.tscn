@@ -1,17 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Demos/Blur/Ship.gd" type="Script" id=1]
 [ext_resource path="res://Shared/sprites/cloud1.png" type="Texture" id=2]
 [ext_resource path="res://Demos/Blur/topdown-player.svg" type="Texture" id=3]
 [ext_resource path="res://Shared/environments/2d_level_environment.tres" type="Environment" id=4]
-
-
-
-
-
-
-
-
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.152439, 0.768293, 1 )
@@ -37,6 +29,61 @@ scale = 0.25
 scale_random = 0.11
 color_ramp = SubResource( 3 )
 
+[sub_resource type="Animation" id=5]
+resource_name = "Boost"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("ParticlesCharge:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ParticlesBoost:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ParticlesCharge:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ParticlesBoost:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
 [node name="Ship" type="Sprite"]
 texture = ExtResource( 3 )
 script = ExtResource( 1 )
@@ -50,7 +97,6 @@ remote_path = NodePath("../../Camera2D")
 [node name="ParticlesCharge" type="CPUParticles2D" parent="."]
 modulate = Color( 1.65, 1.65, 1.65, 1 )
 position = Vector2( 0, 35 )
-emitting = false
 amount = 60
 lifetime = 1.4
 one_shot = true
@@ -80,3 +126,7 @@ texture = ExtResource( 2 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Boost = SubResource( 5 )
+anims/RESET = SubResource( 6 )

@@ -21,15 +21,15 @@ func refresh_viewports() -> void:
 	vbox.anchor_bottom = 1
 	var viewports := _get_viewports()
 	for viewport in viewports:
-		var tex := TextureRect.new()
+		var _texture_rect := TextureRect.new()
 
-		tex.stretch_mode = TextureRect.STRETCH_SCALE
-		tex.expand = true
+		_texture_rect.stretch_mode = TextureRect.STRETCH_SCALE
+		_texture_rect.expand = true
 
-		tex.rect_min_size = Vector2(width, height)
-		tex.texture = viewport.get_texture()
+		_texture_rect.rect_min_size = Vector2(width, height)
+		_texture_rect.texture = viewport.get_texture()
 
-		vbox.add_child(tex)
+		vbox.add_child(_texture_rect)
 	add_child(vbox)
 
 
