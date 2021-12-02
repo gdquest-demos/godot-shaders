@@ -2,11 +2,12 @@ tool
 extends ViewportContainer
 
 export var shockwave_duration := 1.0
+export var mask_path := NodePath()
 
 var torus_radius := -0.25 setget _set_torus_radius
 
-onready var tween := $Tween
-onready var preview_mask := get_parent().get_node("MaskPreview/Mask")
+onready var _tween: Tween = $Tween
+onready var _preview_mask: ColorRect = get_node(mask_path)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -15,10 +16,10 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func blast() -> void:
-	tween.interpolate_property(
+	_tween.interpolate_property(
 		self, "torus_radius", -0.25, 2.0, shockwave_duration, Tween.TRANS_LINEAR, Tween.EASE_OUT
 	)
-	tween.start()
+	_tween.start()
 
 
 func _set_torus_radius(value: float) -> void:
@@ -29,6 +30,6 @@ func _set_torus_radius(value: float) -> void:
 	synchronize_materials("torus_radius", torus_radius)
 
 
-func synchronize_materials(parameter_name: String, parameter_value) -> void:
+func synchronize_materials(parameter_name: String, parameter_value: float) -> void:
 	material.set_shader_param(parameter_name, parameter_value)
-	preview_mask.material.set_shader_param(parameter_name, parameter_value)
+	_preview_mask.material.set_shader_param(parameter_name, parameter_value)

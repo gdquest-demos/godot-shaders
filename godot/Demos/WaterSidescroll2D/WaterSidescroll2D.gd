@@ -12,7 +12,7 @@ func _ready() -> void:
 	update_scale()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	update_zoom()
 
 
@@ -27,5 +27,4 @@ func update_zoom() -> void:
 
 # Sets the aspect ratio of the texture
 func update_aspect_ratio() -> void:
-	var size: Vector2 = texture.get_size()
-	material.set_shader_param("aspect_ratio", size.x / size.y)
+	material.set_shader_param("aspect_ratio", texture.get_size().aspect())

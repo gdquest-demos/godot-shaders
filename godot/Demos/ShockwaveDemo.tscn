@@ -67,6 +67,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 shockwave_duration = 0.75
+mask_path = NodePath("../MaskPreview/Mask")
 
 [node name="Viewport" type="Viewport" parent="DemoView"]
 size = Vector2( 1920, 1080 )

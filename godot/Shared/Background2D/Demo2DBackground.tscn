@@ -5,8 +5,6 @@
 [ext_resource path="res://Shared/Background2D/gaussian_blur_lod_15_samples.shader" type="Shader" id=5]
 [ext_resource path="res://Shared/Background2D/sparkle.png" type="Texture" id=6]
 
-
-
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 5 )
 shader_param/blur_size = 1.339

@@ -44,4 +44,3 @@ range_height = 66.4
 [node name="DemoInterface" parent="." instance=ExtResource( 5 )]
 text_bbcode = "Example of a 2D water. The diffuse color texture has no light information. The shadows are calculated in the shader.
 You can use the [code]modulate[/code] property to tint the water."
-[connection signal="item_rect_changed" from="Water2D" to="Water2D" method="_on_item_rect_changed"]
