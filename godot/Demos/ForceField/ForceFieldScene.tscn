@@ -1,7 +1,6 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Demos/ForceField/ForceFieldEmitter.gd" type="Script" id=1]
-[ext_resource path="res://Demos/ForceField/ForceField.gd" type="Script" id=3]
 [ext_resource path="res://Demos/ForceField/hexagon_grid.png" type="Texture" id=4]
 [ext_resource path="res://Shaders/force_field.shader" type="Shader" id=5]
 
@@ -54,6 +53,61 @@ shader_param/pattern_scroll_speed = 0.025
 shader_param/pattern_uv_offset = Vector2( 6, 3 )
 shader_param/pattern_texture = ExtResource( 4 )
 
+[sub_resource type="Animation" id=13]
+resource_name = "Expand"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.01, 0.01, 0.01 ), Vector3( 1.5, 1.5, 1.5 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0.01, 0.01, 0.01 ) ]
+}
+
 [sub_resource type="BoxShape" id=12]
 extents = Vector3( 10, 0.1, 10 )
 
@@ -102,17 +156,18 @@ transform = Transform( 0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0 )
 visible = false
 mesh = SubResource( 10 )
 material/0 = SubResource( 11 )
-script = ExtResource( 3 )
 
 [node name="OmniLight" type="OmniLight" parent="RigidBody/ForceField"]
 light_color = Color( 0.839216, 0.521569, 1, 1 )
 omni_range = 2.2
 
-[node name="Tween" type="Tween" parent="RigidBody/ForceField"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RigidBody/ForceField"]
+autoplay = "RESET"
+anims/Expand = SubResource( 13 )
+anims/RESET = SubResource( 14 )
 
 [node name="FloorBody" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="FloorBody"]
 shape = SubResource( 12 )
-[connection signal="body_entered" from="RigidBody" to="RigidBody/ForceField" method="_on_RigidBody_body_entered"]

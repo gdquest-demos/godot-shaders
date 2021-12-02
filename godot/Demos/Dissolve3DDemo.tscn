@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Shared/theme/gdquest.theme" type="Theme" id=1]
 [ext_resource path="res://Demos/Dissolve/Dissolve3D/DissolvingSphere.gd" type="Script" id=2]
@@ -6,10 +6,62 @@
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Shared/Demo3DEnvironment.tscn" type="PackedScene" id=5]
 
-
-
-
 [sub_resource type="SphereMesh" id=1]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Dissolve"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material/0:shader_param/dissolve_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.5 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material/0:shader_param/dissolve_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
 
 [node name="Dissolve3DDemo" type="Control"]
 anchor_right = 1.0
@@ -28,7 +80,7 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="DemoView"]
-size = Vector2( 1280, 720 )
+size = Vector2( 1920, 1080 )
 handle_input_locally = false
 msaa = 2
 render_target_update_mode = 3
@@ -44,10 +96,12 @@ mesh = SubResource( 1 )
 material/0 = ExtResource( 3 )
 script = ExtResource( 2 )
 
-[node name="Tween" type="Tween" parent="DemoView/Viewport/DissolvingSphere"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DemoView/Viewport/DissolvingSphere"]
+autoplay = "RESET"
+anims/Dissolve = SubResource( 2 )
+anims/RESET = SubResource( 3 )
 
 [node name="Demo3DEnvironment" parent="DemoView/Viewport" instance=ExtResource( 5 )]
 
 [node name="DemoInterface" parent="." instance=ExtResource( 4 )]
 text_bbcode = "Uses a noise mask to make a 3D object dissolve."
-[connection signal="tween_all_completed" from="DemoView/Viewport/DissolvingSphere/Tween" to="DemoView/Viewport/DissolvingSphere" method="_on_Tween_tween_all_completed"]

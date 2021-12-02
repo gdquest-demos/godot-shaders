@@ -53,12 +53,6 @@ shadow_enabled = false
 [node name="Ground" parent="Demo3DEnvironment" index="2"]
 visible = false
 
-[node name="InteractiveSnowPlane" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0 )
-
-[node name="Plane" parent="InteractiveSnowPlane" index="0"]
-material_override = SubResource( 2 )
-
 [node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 128, 128 )
 own_world = true
@@ -70,7 +64,6 @@ render_target_update_mode = 3
 script = ExtResource( 6 )
 interactive_actor_path = NodePath("../InteractiveSnowball")
 interactive_actor_footprint = NodePath("Sprite")
-interactive_snow_size = Vector2( 16, 16 )
 
 [node name="Line2D" type="Line2D" parent="Viewport"]
 default_color = Color( 0, 0, 0, 1 )
@@ -82,12 +75,17 @@ joint_mode = 1
 modulate = Color( 1, 1, 1, 0.415686 )
 texture = ExtResource( 5 )
 
+[node name="InteractiveSnowPlane" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0 )
+
+[node name="Plane" parent="InteractiveSnowPlane" index="0"]
+material_override = SubResource( 2 )
+
 [node name="InteractiveSnowball" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
 mesh = SubResource( 3 )
 material/0 = null
 script = ExtResource( 1 )
-trail_sprite_path = NodePath("../Viewport/Sprite")
 
 [node name="Camera" type="Camera" parent="InteractiveSnowball"]
 transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 2.06231, 5.46691 )

@@ -1,6 +1,11 @@
 extends RigidBody
 
 var thrown := false
+onready var _animation_player: AnimationPlayer = $ForceField/AnimationPlayer
+
+
+func _ready() -> void:
+	connect("body_entered", self, "_on_RigidBody_body_entered", [], CONNECT_ONESHOT)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -8,3 +13,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		gravity_scale = 1
 		apply_central_impulse(Vector3(0, 4, -6))
 		thrown = true
+
+func _on_RigidBody_body_entered(body: Node) -> void:
+	_animation_player.play("Expand")
