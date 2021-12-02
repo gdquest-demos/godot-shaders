@@ -198,19 +198,11 @@ transform = Transform( 0.978213, -0.0649006, 0.197199, 0, 0.949879, 0.312617, -0
 fov = 35.4
 
 [editable path="SkinRat"]
-
 [editable path="RubberRat"]
-
 [editable path="CopperRat"]
-
 [editable path="RedJadeRat"]
-
 [editable path="PlasticRat"]
-
 [editable path="SketchRat"]
-
 [editable path="ChromeRat"]
-
 [editable path="NeonRat"]
-
 [editable path="BlackGlassRat"]
