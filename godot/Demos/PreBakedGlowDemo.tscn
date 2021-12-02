@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Shared/theme/gdquest.theme" type="Theme" id=1]
 [ext_resource path="res://Demos/Glow2D/glowy_arrow.png" type="Texture" id=2]
-[ext_resource path="res://Demos/Glow2D/GlowFader.gd" type="Script" id=3]
 [ext_resource path="res://Shaders/baked_sprite_glow.shader" type="Shader" id=4]
 [ext_resource path="res://Shared/Background2D/Demo2DBackground.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=6]
@@ -15,6 +14,38 @@ shader_param/alpha_falloff_back = 3.0
 shader_param/tint_back = Color( 0.09, 0.89, 3.5, 1 )
 shader_param/blend_amount = 1.0
 shader_param/falloff_max_alpha = 0.5
+
+[sub_resource type="Animation" id=2]
+resource_name = "Fade"
+length = 7.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/alpha_falloff_back")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 7 ),
+"transitions": PoolRealArray( 2, 0.5, 1 ),
+"update": 0,
+"values": [ 3.0, 0.0, 3.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/alpha_falloff_back")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 3.0 ]
+}
 
 [node name="PreBakedGlowDemo" type="Control"]
 anchor_right = 1.0
@@ -31,11 +62,11 @@ material = SubResource( 1 )
 position = Vector2( 960, 540 )
 rotation = 1.5708
 texture = ExtResource( 2 )
-script = ExtResource( 3 )
 
-[node name="Tween" type="Tween" parent="Sprite"]
-repeat = true
-playback/repeat = true
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+autoplay = "Fade"
+anims/Fade = SubResource( 2 )
+anims/RESET = SubResource( 3 )
 
 [node name="DemoText" parent="." instance=ExtResource( 6 )]
 text_bbcode = "Uses a shader on a sprite to control a glow. The glow effect is part of the sprite's texture, and the shader manipulates the amount of alpha and color intensity."

@@ -4,10 +4,6 @@
 [ext_resource path="res://Shaders/outline2D_inner_outer.shader" type="Shader" id=2]
 [ext_resource path="res://Shared/sprites/robi_shaded.png" type="Texture" id=3]
 
-
-
-
-
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
 shader_param/line_color = Color( 0.0823529, 0.690196, 0.92549, 0 )

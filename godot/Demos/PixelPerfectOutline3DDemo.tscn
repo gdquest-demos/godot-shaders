@@ -1,16 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Shared/models/rat_model/rat.dae" type="PackedScene" id=2]
 [ext_resource path="res://Shaders/pixel_perfect_outline3D.shader" type="Shader" id=3]
-
-[sub_resource type="GDScript" id=1]
-script/source = "extends Spatial
-
-
-func _process(delta: float) -> void:
-	rotate_y(PI/8 * delta)
-"
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 3 )
@@ -32,6 +24,38 @@ next_pass = SubResource( 2 )
 shader = SubResource( 3 )
 shader_param/color = Color( 0.176471, 0.176471, 0.176471, 1 )
 
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Rotate"
+length = 16.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 16 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ) ]
+}
+
 [sub_resource type="Environment" id=5]
 background_mode = 1
 background_color = Color( 0.176471, 0.176471, 0.176471, 1 )
@@ -45,7 +69,6 @@ fov = 35.5719
 size = 2.73443
 
 [node name="rat" parent="." instance=ExtResource( 2 )]
-script = SubResource( 1 )
 
 [node name="body1" parent="rat" index="0"]
 material/0 = SubResource( 4 )
@@ -59,11 +82,15 @@ material/0 = SubResource( 4 )
 [node name="teeth1" parent="rat" index="3"]
 material/0 = SubResource( 4 )
 
+[node name="AnimationPlayer" parent="rat" index="4"]
+autoplay = "Rotate"
+anims/RESET = SubResource( 6 )
+anims/Rotate = SubResource( 7 )
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 5 )
 
 [node name="DemoInterface" parent="." instance=ExtResource( 1 )]
-visible = false
 text_bbcode = "An outline drawn in clip space instead of vertex space. Its width is specified in pixels and remains at a constant size regardless of the distance from the camera or the scale of the object. Good for user interfaces, object highlights, and technical drawings."
 
 [editable path="rat"]
