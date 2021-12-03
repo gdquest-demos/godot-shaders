@@ -1,0 +1,11 @@
+[gd_scene format=2]
+
+[node name="TextButton" type="Button"]
+margin_right = 318.0
+margin_bottom = 152.0
+shortcut_in_tooltip = false
+action_mode = 0
+text = "Button"
+__meta__ = {
+"_edit_use_anchors_": false
+}

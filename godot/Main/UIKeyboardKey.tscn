@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Main/UI/fonts/KeyboardKeyFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Main/keyboard_key_panel.tres" type="StyleBox" id=2]
+
+[node name="UIKeyboardKey" type="Label"]
+margin_right = 27.0
+margin_bottom = 31.0
+size_flags_vertical = 1
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
