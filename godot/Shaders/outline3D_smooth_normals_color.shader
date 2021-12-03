@@ -5,7 +5,7 @@ uniform float thickness = 0.1;
 uniform vec4 outline_color : hint_color = vec4(1.0);
 
 void vertex() {
-	vec3 normal = (COLOR.xyz-vec3(0.5))*2.0;
+	vec3 normal = (COLOR.xyz - vec3(0.5)) * 2.0;
 	VERTEX += (normal * thickness);
 }
 

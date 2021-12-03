@@ -11,6 +11,7 @@ const vec2 OFFSETS[8] = {
 void fragment() {
 	vec2 size = TEXTURE_PIXEL_SIZE * line_thickness;
 	float outline = 0.0;
+	
 	for (int i = 0; i < OFFSETS.length(); i++) {
 		outline += texture(TEXTURE, UV + size * OFFSETS[i]).a;
 	}
