@@ -21,7 +21,6 @@ uniform float character_push_strength = 1.0;
 varying float debug_wind;
 
 void vertex() {
-	
 	vec3 world_vert = (WORLD_MATRIX * vec4(VERTEX, 1.0)).xyz;
 
 	vec2 normalized_wind_direction = normalize(wind_horizontal_direction);
@@ -34,20 +33,23 @@ void vertex() {
 
 	// We convert the direction of the wind into vertex space from world space
 	// if we used it directly in vertex space, rotated blades of grass wouldn't behave properly
-	vec2 vert_space_horizontal_dir = (inverse(WORLD_MATRIX) * vec4(wind_horizontal_direction, 0.0,0.0)).xy;
+	vec2 vert_space_horizontal_dir = 
+			(inverse(WORLD_MATRIX) * vec4(wind_horizontal_direction, 0.0,0.0)).xy;
+	
 	vert_space_horizontal_dir = normalize(vert_space_horizontal_dir);
 	
 	vec3 bump_wind = vec3(
 		wind_noise_intensity * vert_space_horizontal_dir.x,
 		1.0 - wind_noise_intensity,
-		wind_noise_intensity * vert_space_horizontal_dir.y 
-	);
+		wind_noise_intensity * vert_space_horizontal_dir.y);
+	
 	normalize(bump_wind);
+	
 	bump_wind *= vec3(
 		wind_strength,
 		wind_vertical_strength,
-		wind_strength
-	);
+		wind_strength);
+	
 	VERTEX += bump_wind * displacement_affect;
 	
 	// At the moment the blades are pushed away in a perfectly circular manner.

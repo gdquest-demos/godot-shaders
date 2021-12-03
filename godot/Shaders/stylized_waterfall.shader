@@ -24,33 +24,39 @@ uniform bool debug_uv = false;
 uniform sampler2D debug_uv_color_grid: hint_albedo;
 
 // Screen mix makes everything better.
-float screen_mix(float a, float b){
+float screen_mix(float a, float b) {
 	return mix(
-		a * b * 2.0,
-		1.0 - 2.0 * (1.0 - a) * (1.0 - b),
-		step(0.5, a)
-	);
+			a * b * 2.0,
+			1.0 - 2.0 * (1.0 - a) * (1.0 - b),
+			step(0.5, a));
 }
 
-void vertex(){
-	if (!(debug_vertex_color || debug_uv)){
-		float main_noise_value = textureLod(main_noise, vec2(UV.x, UV.y + TIME * water_speed) * main_noise_scale, 3.0).r;
-		float foam_factor = smoothstep(0.0, (1.0 - foam_threshold), main_noise_value - foam_threshold + COLOR.r * 0.2);
+void vertex() {
+	if (!(debug_vertex_color || debug_uv)) {
+		float main_noise_value = textureLod(
+				main_noise, 
+				vec2(UV.x, UV.y + TIME * water_speed) * main_noise_scale, 
+				3.0).r;
+		
+		float foam_factor = smoothstep(
+				0.0, 
+				(1.0 - foam_threshold), 
+				main_noise_value - foam_threshold + COLOR.r * 0.2);
+		
 		foam_factor = screen_mix(foam_factor, COLOR.r);
 		VERTEX += NORMAL * foam_factor * displacement;
 	}
 }
 
-
-void fragment(){
-	if(debug_vertex_color || debug_uv){
-		if (debug_vertex_color){
+void fragment() {
+	if (debug_vertex_color || debug_uv) {
+		if (debug_vertex_color) {
 			ALBEDO = COLOR.rgb;
 		} else {
 			ALBEDO = texture(debug_uv_color_grid, UV).rgb;
 		}
 	}
-	else{
+	else {
 		// we calculate the depth in the scene so that we can change opacity and color based on it
 		// taken from official godot doc: https://docs.godotengine.org/en/stable/tutorials/shading/advanced_postprocessing.html
 		float depth_value = texture(DEPTH_TEXTURE, SCREEN_UV).r;
@@ -77,18 +83,27 @@ void fragment(){
 		// in the vertical part.
 		// turn on debug uv to see how a grid texture stretches along the mesh.
 		vec2 main_noise_uv = vec2(UV.x, UV.y + TIME * water_speed) * main_noise_scale;
-		vec2 detail_noise_uv = vec2(vec2(UV.x, UV.y + TIME * foam_detail_speed) * detail_noise_scale);
+		vec2 detail_noise_uv = vec2(vec2(UV.x, UV.y + TIME * foam_detail_speed) 
+				* detail_noise_scale);
 		
 		// We overlay two different noises here
 		float main_noise_value = texture(main_noise, main_noise_uv).r;
 		
 		// we sample the detail noise, and offset it by the reverse depth factor. This means that
 		// the secondary noise will appear also when the water is more shallow
-		float detail_noise_value = texture(detail_noise, detail_noise_uv).r + (1.0 - depth_normalized) * depth_foam_offset;
+		float detail_noise_value = texture(detail_noise, detail_noise_uv).r 
+				+ (1.0 - depth_normalized) * depth_foam_offset;
+		
 		float total_noise = (main_noise_value + detail_noise_value) * 0.5;
-		float foam_factor = smoothstep(0.0, foam_smoothness * (1.0 - foam_threshold), ((total_noise - foam_threshold) + main_foam_intensity * 0.1) * main_foam_intensity) ;
+		float foam_factor = smoothstep(0.0, 
+				foam_smoothness * (1.0 - foam_threshold), 
+				((total_noise - foam_threshold) + main_foam_intensity * 0.1) * main_foam_intensity);
+		
 		foam_factor = screen_mix(foam_factor, main_foam_intensity);
-		foam_factor += smoothstep(0.0, foam_smoothness * (1.0 - foam_threshold), ((detail_noise_value - foam_detail_threshold) + main_foam_intensity * 0.1)) ;
+		foam_factor += smoothstep(0.0, 
+				foam_smoothness * (1.0 - foam_threshold), 
+				((detail_noise_value - foam_detail_threshold) + main_foam_intensity * 0.1));
+		
 		foam_factor = clamp(foam_factor, 0.0, 1.0);
 
 		vec4 water_color = texture(depth_color_curve, vec2(depth_normalized));

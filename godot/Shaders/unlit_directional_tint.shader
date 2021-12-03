@@ -11,8 +11,7 @@ uniform vec4 colorC : hint_color = vec4(1.0);
 
 varying vec3 color;
 
-
-void vertex(){
+void vertex() {
 	// In this shader, we use the world normal to mix the tints of the object.
 	vec3 world_normal = (WORLD_MATRIX * vec4(NORMAL, 0.0)).xyz;
 	world_normal = normalize(world_normal);
@@ -21,18 +20,13 @@ void vertex(){
 	// a nice, non linear curve.
 	world_normal = pow(world_normal, vec3(2.0));
 	vec4 mod_x = modulate_color * colorA;
-	COLOR = mix(
-				mix(
-					mix(mod_x, modulate_color * colorB, world_normal.x),
-					mod_x,
-					world_normal.y
-				),
-				modulate_color * colorC,
-				world_normal.z
-			);
+	COLOR = mix(mix(mix(mod_x, modulate_color * colorB, world_normal.x), mod_x, world_normal.y),
+			modulate_color * colorC,
+			world_normal.z);
+	
 	color = world_normal;
 }
 
-void fragment(){
+void fragment() {
 	ALBEDO = COLOR.rgb * texture(color_texture, UV).rgb;
 }
