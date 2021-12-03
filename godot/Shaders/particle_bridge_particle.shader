@@ -19,7 +19,7 @@ uniform float spacing = 0.3;
 uniform float minimum_speed = 0.3;
 
 
-void vertex(){
+void vertex() {
 	// Place the particles of the bridge in a grid
 	TRANSFORM[3] = vec4(float(INDEX % bridge_width_particles) * spacing, 
 			0.0, float(INDEX / bridge_width_particles) * spacing, 1.0);

@@ -7,7 +7,7 @@ uniform vec2 uv_offset_scale = vec2(-0.2, -0.1);
 
 uniform sampler2D uv_offset_texture : hint_black; 
 
-void vertex(){
+void vertex() {
 	// Sample Noise
 	vec2 base_uv_offset = UV * uv_offset_scale;
 	base_uv_offset += TIME * time_scale;
@@ -25,7 +25,7 @@ void vertex(){
 	VERTEX.x += texture_based_offset * -face_distortion;
 }
 
-void fragment(){
+void fragment() {
 	vec2 base_uv_offset = UV * uv_offset_scale;
 	base_uv_offset += TIME * time_scale;
 	float noise = texture(uv_offset_texture, base_uv_offset).r;

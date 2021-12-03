@@ -97,8 +97,7 @@ const float RIM_SOFTNESS_MAX = 0.7;
 
 varying vec3 down_camera_angle;
 
-void vertex()
-{
+void vertex() {
 	down_camera_angle = (vec4(0, -1, 0, 1) * CAMERA_MATRIX).xyz;
 }
 

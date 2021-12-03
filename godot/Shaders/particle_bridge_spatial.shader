@@ -66,7 +66,7 @@ void vertex() {
 	descend_percent = INSTANCE_CUSTOM.x;
 }
 
-void fragment(){
+void fragment() {
 	ALBEDO = albedo_color.rgb;
 	vec3 emission_ascend = emission_color.rgb * clamp(
 			pow(smoothstep(0.0, 0.7,normalized_distance), 4.0), 0.0, 1.0);

@@ -37,8 +37,6 @@ float perlin_noise(vec2 coord) {
 
 void fragment() {
 	vec2 coord = UV * scale;
-	
 	float value = perlin_noise(coord);
-	
 	COLOR = vec4(vec3(value), 1.0);
 }

@@ -18,7 +18,7 @@ uniform vec2 textures_tiling = vec2(4.0);
 varying vec2 world_uv;
 varying float height;
 
-void vertex(){
+void vertex() {
 	// Here we take the world coordinates, and transform them to UV space.
 	world_uv = (WORLD_MATRIX * vec4(VERTEX, 1.0)).xz;
 	world_uv -= WORLD_MATRIX[3].xz;
@@ -47,7 +47,7 @@ void vertex(){
 	VERTEX.y += snow_height * height;
 }
 
-void fragment(){
+void fragment() {
 	vec2 world_uv_tiled = UV * textures_tiling;
 	float mask = 1.0 - texture(mask_texture, UV).a;
 	vec4 snow_color = texture(snow_texture, world_uv_tiled);

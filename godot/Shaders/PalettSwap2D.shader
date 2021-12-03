@@ -7,7 +7,7 @@ uniform float palette_index = 0.0;
 
 const float STEP_UNIT = 0.00392;
 
-void fragment(){
+void fragment() {
     
 	float increment = 1.0 / palette_count;
 	float y = increment * palette_index + increment * 0.5;
