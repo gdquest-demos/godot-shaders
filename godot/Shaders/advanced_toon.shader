@@ -6,13 +6,13 @@ uniform vec4 base_color : hint_color;
 uniform sampler2D base_texture : hint_albedo;
 
 // Color masks
-uniform vec4 paint_color1 : hint_color = vec4(1);
-uniform vec4 paint_color2 : hint_color = vec4(1);
-uniform vec4 paint_color3 : hint_color = vec4(1);
+uniform vec4 paint_color_1 : hint_color = vec4(1);
+uniform vec4 paint_color_2 : hint_color = vec4(1);
+uniform vec4 paint_color_3 : hint_color = vec4(1);
 
-uniform sampler2D paint_mask1 : hint_black;
-uniform sampler2D paint_mask2 : hint_black;
-uniform sampler2D paint_mask3 : hint_black;
+uniform sampler2D paint_mask_1 : hint_black;
+uniform sampler2D paint_mask_2 : hint_black;
+uniform sampler2D paint_mask_3 : hint_black;
 
 uniform sampler2D shadow_paint : hint_black;
 
@@ -115,9 +115,9 @@ void fragment() {
 	
 	vec3 flat_color = base_color.rgb * texture(base_texture, UV).rgb;
 	
-	flat_color = mix(flat_color.rgb, paint_color1.rgb, texture(paint_mask1, UV).r);
-	flat_color = mix(flat_color.rgb, paint_color2.rgb, texture(paint_mask2, UV).r);
-	flat_color = mix(flat_color.rgb, paint_color3.rgb, texture(paint_mask3, UV).r);
+	flat_color = mix(flat_color.rgb, paint_color_1.rgb, texture(paint_mask_1, UV).r);
+	flat_color = mix(flat_color.rgb, paint_color_2.rgb, texture(paint_mask_2, UV).r);
+	flat_color = mix(flat_color.rgb, paint_color_3.rgb, texture(paint_mask_3, UV).r);
 	
 	out_color *= flat_color;
 	
