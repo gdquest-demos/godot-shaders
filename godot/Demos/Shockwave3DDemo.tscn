@@ -4,12 +4,7 @@
 [ext_resource path="res://Shared/Demo3DEnvironment.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=3]
 
-[node name="Shockwave3DDemo" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Shockwave3DDemo" type="Spatial"]
 
 [node name="Shockwave3D" parent="." instance=ExtResource( 1 )]
 
@@ -18,7 +13,9 @@ __meta__ = {
 [node name="Ground" parent="Demo3DEnvironment" index="2"]
 visible = false
 
-[node name="DemoInterface" parent="." instance=ExtResource( 3 )]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DemoInterface" parent="CanvasLayer" instance=ExtResource( 3 )]
 text_bbcode = "Press Enter to launch a shockwave. Uses a vertex shader to propagate a spherical shockwave through the geometry, instead of as a post-process effect."
 
 [editable path="Demo3DEnvironment"]
