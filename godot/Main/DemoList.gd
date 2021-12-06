@@ -104,8 +104,7 @@ func select_first_item() -> void:
 
 
 func _list_demos_in_directory(directory_path: String) -> void:
-	var demo_scene_paths := _find_files(directory_path, ["*.tscn"], true)
-
+	var demo_scene_paths := _find_files(directory_path, ["*.tscn"], false)
 	# Map demo names to file paths and sort them alphabetically
 	var demo_name_and_paths := []
 	for path in demo_scene_paths:
