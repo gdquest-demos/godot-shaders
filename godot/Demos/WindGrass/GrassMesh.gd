@@ -6,7 +6,7 @@ export var spawn_outside_circle := false
 export var radius := 12.0
 export var character_path := NodePath()
 
-onready var _character: MeshInstance = get_node(character_path)
+onready var _character: Spatial = get_node(character_path)
 
 func _enter_tree() -> void:
 	connect("visibility_changed", self, "_on_WindGrass_visibility_changed")
