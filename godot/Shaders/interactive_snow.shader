@@ -62,8 +62,7 @@ void fragment() {
 	float snow_interp = mix(
 		mask * noise_interp * 2.0,
 		1.0 - 2.0 * (1.0 - mask) * (1.0 - noise_interp),
-		step(0.5, mask)
-	);
+		step(0.5, mask));
 	
 	snow_interp = 1.0 - pow(1.0 - snow_interp, snow_sharpness);
 	snow_interp = clamp(snow_interp, 0.0, 1.0);
