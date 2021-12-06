@@ -43,7 +43,8 @@ void fragment() {
 	float fresnel_time_factor = clamp(sin(TIME * fresnel_pulse_speed), 0.15, 1);
 	float emission_time_factor = clamp(sin(TIME * emission_pulse_speed) + 0.33, 0.33, 1);
 	
-	EMISSION = ((emission.rgb*emission_tex)*emission_energy * emission_time_factor) + (fresnel * fresnel_color.rgb * fresnel_color_intensity * fresnel_time_factor);
+	EMISSION = ((emission.rgb * emission_tex) * emission_energy * emission_time_factor) 
+			+ (fresnel * fresnel_color.rgb * fresnel_color_intensity * fresnel_time_factor);
 }
 "
 
