@@ -7,7 +7,7 @@ uniform float wind_strength = 2.0;
 // wind will tile every wind_texture_tile_size
 uniform float wind_texture_tile_size = 20.0;
 uniform float wind_vertical_strength = 0.3;
-uniform vec2 wind_horizontal_direction = vec2(1.0,0.5);
+uniform vec2 wind_horizontal_direction = vec2(1.0, 0.5);
 
 uniform sampler2D color_ramp : hint_black_albedo;
 // we need a tiling noise here!
@@ -29,12 +29,12 @@ void vertex() {
 	// note that this means that the mesh needs to have UV in a way that the bottom of UV space
 	// is at the top of the mesh
 	float displacement_affect = (1.0 - UV.y);
-	float wind_noise_intensity = (textureLod(wind_noise, world_uv , 0.0).r - 0.5);
+	float wind_noise_intensity = (textureLod(wind_noise, world_uv, 0.0).r - 0.5);
 
 	// We convert the direction of the wind into vertex space from world space
 	// if we used it directly in vertex space, rotated blades of grass wouldn't behave properly
 	vec2 vert_space_horizontal_dir = 
-			(inverse(WORLD_MATRIX) * vec4(wind_horizontal_direction, 0.0,0.0)).xy;
+			(inverse(WORLD_MATRIX) * vec4(wind_horizontal_direction, 0.0, 0.0)).xy;
 	
 	vert_space_horizontal_dir = normalize(vert_space_horizontal_dir);
 	
@@ -45,10 +45,7 @@ void vertex() {
 	
 	normalize(bump_wind);
 	
-	bump_wind *= vec3(
-		wind_strength,
-		wind_vertical_strength,
-		wind_strength);
+	bump_wind *= vec3(wind_strength, wind_vertical_strength, wind_strength);
 	
 	VERTEX += bump_wind * displacement_affect;
 	
@@ -59,7 +56,7 @@ void vertex() {
 	
 	vec3 dir_to_character = character_position - WORLD_MATRIX[3].xyz;
 	// uncomment the following line to have a horizontal only character push
-//	dir_to_character.y = 0.0;
+	//dir_to_character.y = 0.0;
 	float distance_to_character = length(dir_to_character);
 	float falloff = 1.0 - smoothstep(0.0, 1.0, distance_to_character/character_radius);
 	// Because we operate in vertex space, we need to convert the direction to the character
