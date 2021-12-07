@@ -63,9 +63,9 @@ void fragment() {
 	} else {
 		vec4 liquid_color = texture(liquid_rim_gradient, vec2(pow_fresnel));
 		float surface_component = smoothstep(
-			liquid_height - liquid_surface_gradient_size,
-			liquid_height,
-			y_coordinate);
+				liquid_height - liquid_surface_gradient_size,
+				liquid_height,
+				y_coordinate);
 		ALBEDO = mix(liquid_color.rgb, liquid_surface_color.rgb, surface_component);
 	}
 	// Magical liquid!
