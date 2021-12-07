@@ -23,8 +23,8 @@ uniform bool debug_vertex_color = false;
 uniform bool debug_uv = false;
 uniform sampler2D debug_uv_color_grid: hint_albedo;
 
-// Screen mix makes everything better.
-float screen_mix(float a, float b) {
+// Overlay blend makes everything better.
+float overlay_blend(float a, float b) {
 	return mix(
 			a * b * 2.0,
 			1.0 - 2.0 * (1.0 - a) * (1.0 - b),
@@ -43,7 +43,7 @@ void vertex() {
 				(1.0 - foam_threshold), 
 				main_noise_value - foam_threshold + COLOR.r * 0.2);
 		
-		foam_factor = screen_mix(foam_factor, COLOR.r);
+		foam_factor = overlay_blend(foam_factor, COLOR.r);
 		VERTEX += NORMAL * foam_factor * displacement;
 	}
 }
@@ -99,7 +99,7 @@ void fragment() {
 				foam_smoothness * (1.0 - foam_threshold), 
 				((total_noise - foam_threshold) + main_foam_intensity * 0.1) * main_foam_intensity);
 		
-		foam_factor = screen_mix(foam_factor, main_foam_intensity);
+		foam_factor = overlay_blend(foam_factor, main_foam_intensity);
 		foam_factor += smoothstep(0.0, 
 				foam_smoothness * (1.0 - foam_threshold), 
 				((detail_noise_value - foam_detail_threshold) + main_foam_intensity * 0.1));
