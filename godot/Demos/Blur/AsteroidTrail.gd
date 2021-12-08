@@ -1,7 +1,7 @@
 extends Node2D
 
 export var asteroid: Texture
-export var spawn_radius: float
+export var spawn_radius := 960.0
 
 onready var rng := RandomNumberGenerator.new()
 
@@ -15,11 +15,9 @@ func _ready() -> void:
 
 	var cells := trail_length / spawn_radius
 
-	for c in range(cells):
-		for i in range(2):
-			var direction_mod := -1.0 + 2 * i
-
-			var spawn_center := global_position + (spawn_direction * spawn_radius * c)
+	for c in cells:
+		for direction_mod in [-1.0, 1.0]:
+			var spawn_center: Vector2 = global_position + (spawn_direction * spawn_radius * c)
 			spawn_center += spawn_direction.rotated(PI / 2 * direction_mod) * spawn_radius
 
 			var cell_min := spawn_center - Vector2.ONE * spawn_radius / 2

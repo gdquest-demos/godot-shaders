@@ -10,10 +10,6 @@
 [ext_resource path="res://Shared/Background2D/Demo2DBackground.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Demos/Water2D/water_normal.png" type="Texture" id=9]
 
-
-
-
-
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0.37037, 0.548148, 1 )
 colors = PoolColorArray( 0, 0, 0, 1, 0.211765, 0.211765, 0.211765, 1, 1, 1, 1, 1 )
@@ -38,7 +34,7 @@ shader_param/shore_size = 0.038
 shader_param/shore_smoothness = 0.017
 shader_param/shore_height_factor = 0.127
 shader_param/scale = Vector2( 7.49668, 1.51649 )
-shader_param/zoom_y = 0.629961
+shader_param/zoom_y = 0.749154
 shader_param/aspect_ratio = 1.0
 shader_param/transition_gradient = SubResource( 2 )
 shader_param/distortion_map = ExtResource( 5 )
@@ -54,7 +50,7 @@ shader_param/scale_y_factor = 2.0
 shader_param/tile_factor = 0.321
 shader_param/reflection_intensity = 0.908
 shader_param/scale = Vector2( 7.49668, 1.51649 )
-shader_param/zoom_y = 0.629961
+shader_param/zoom_y = 0.749154
 shader_param/aspect_ratio = 1.0
 shader_param/transition_gradient = SubResource( 2 )
 shader_param/distortion_map = ExtResource( 5 )

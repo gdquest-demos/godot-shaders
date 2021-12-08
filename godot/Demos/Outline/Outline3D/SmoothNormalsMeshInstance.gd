@@ -24,32 +24,32 @@ func _ready() -> void:
 	var new_mesh := ArrayMesh.new()
 	var materials := []
 
-	var st := SurfaceTool.new()
+	var surface_tool := SurfaceTool.new()
 
-	for i in range(surface_count):
-		st.begin(Mesh.PRIMITIVE_TRIANGLES)
-		st.create_from(mesh, i)
-		st.deindex()
+	for surface_index in surface_count:
+		surface_tool.begin(Mesh.PRIMITIVE_TRIANGLES)
+		surface_tool.create_from(mesh, surface_index)
+		surface_tool.deindex()
 
-		var data := st.commit_to_arrays()
+		var data := surface_tool.commit_to_arrays()
 
-		st.begin(Mesh.PRIMITIVE_TRIANGLES)
+		surface_tool.begin(Mesh.PRIMITIVE_TRIANGLES)
 
-		st.add_smooth_group(true)
+		surface_tool.add_smooth_group(true)
 
-		for v in data[ArrayMesh.ARRAY_VERTEX]:
-			st.add_vertex(v)
+		for vertex in data[ArrayMesh.ARRAY_VERTEX]:
+			surface_tool.add_vertex(vertex)
 
-		st.generate_normals()
+		surface_tool.generate_normals()
 
-		data[ArrayMesh.ARRAY_COLOR] = _convert_normals_to_color(st.commit_to_arrays())
+		data[ArrayMesh.ARRAY_COLOR] = _convert_normals_to_color(surface_tool.commit_to_arrays())
 
 		new_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, data)
-		materials.append(get_surface_material(i))
+		materials.append(get_surface_material(surface_index))
 
 	mesh = new_mesh
-	for i in materials.size():
-		set_surface_material(i, materials[i])
+	for material_index in materials.size():
+		set_surface_material(material_index, materials[material_index])
 
 
 func _convert_normals_to_color(data: Array) -> PoolColorArray:

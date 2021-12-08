@@ -18,7 +18,8 @@ void fragment() {
 	float circle_value = clamp(abs(torus_distance - inner_radius) / torus_thickness, 0.0, 1.0);
 	float circle_alpha = pow(circle_value, pow(torus_hardness, 2.0));
 	
-	float mask = abs(clamp(abs(sign(torus_invert)) - sign(torus_invert), 0.0, 1.0) - circle_alpha) * abs(torus_invert);
+	float mask = abs(clamp(abs(sign(torus_invert)) - sign(torus_invert), 0.0, 1.0) - circle_alpha) 
+			* abs(torus_invert);
 	
 	// Displace
 	vec2 displacement_uv = UV + mask * displacement_amount;

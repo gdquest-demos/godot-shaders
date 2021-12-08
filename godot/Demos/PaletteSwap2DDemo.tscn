@@ -58,8 +58,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite_code_shader" type="Sprite" parent="."]
+[node name="PaletteSwapSprite" type="Sprite" parent="."]
 material = SubResource( 1 )
-position = Vector2( 500.55, 529.625 )
+position = Vector2( 960, 540 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 4 )

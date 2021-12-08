@@ -2,26 +2,27 @@ tool
 extends MeshInstance
 
 # How high is the wobble
-export var max_wobble = 0.1
+export var max_wobble := 0.1
 # How much do we need to move to reach the maximum wobble intensity, in a second
-export var movement_to_max_wobble = 0.3
+export var movement_to_max_wobble := 0.3
 # How much do we need to be rotated to reach maximum wobble intensity, in a second
-export var rotation_to_max_wobble = PI / 2.0
+export var rotation_to_max_wobble := PI / 2.0
 # How long it takes for the liquid to become still again
-export var wobble_decay_time = 1.0
+export var wobble_decay_time := 1.0
 # How fast will the liquid wobble
-export var wobble_speed = 2.0
+export var wobble_speed := 2.0
 
-var _accumulated_time = 0.0
-var _wobble_intensity = 0.0
-onready var _prev_pos = global_transform.origin
-onready var _prev_rot = rotation
+var _accumulated_time := 0.0
+var _wobble_intensity := 0.0
+
+onready var _prev_pos := global_transform.origin
+onready var _prev_rot := rotation
 
 
-func _process(delta):
+func _process(delta: float) -> void:
 	# Calculate how much we moved/rotated
-	var current_movement_len = (global_transform.origin - _prev_pos).length()
-	var current_rotation_len = (rotation - _prev_rot).length()
+	var current_movement_len := (global_transform.origin - _prev_pos).length()
+	var current_rotation_len := (rotation - _prev_rot).length()
 	_prev_pos = global_transform.origin
 	_prev_rot = rotation
 
@@ -40,7 +41,7 @@ func _process(delta):
 	material_override.set_shader_param(
 		"wobble",
 		(
-			Vector2(sin(_accumulated_time * PI * 2.0), cos(_accumulated_time * PI * 2.0))
+			Vector2(sin(_accumulated_time * TAU), cos(_accumulated_time * TAU))
 			* max_wobble
 			* _wobble_intensity
 		)

@@ -1,7 +1,7 @@
 shader_type particles;
 // keep data is very important here, because otherwise the CUSTOM vector
-// will reset when the particle die, and it will be very obvious
-// it is also important to set explosiveness to one for this shader
+// will reset when the particle dies, and it will be very obvious.
+// It is also important to set explosiveness to one for this shader
 // (doesn't seem to work otherwise)
 render_mode keep_data;
 
@@ -19,10 +19,10 @@ uniform float spacing = 0.3;
 uniform float minimum_speed = 0.3;
 
 
-void vertex(){
-
+void vertex() {
 	// Place the particles of the bridge in a grid
-	TRANSFORM[3] = vec4(float(INDEX % bridge_width_particles) * spacing, 0.0, float(INDEX / bridge_width_particles) * spacing, 1.0);
+	TRANSFORM[3] = vec4(float(INDEX % bridge_width_particles) * spacing, 
+			0.0, float(INDEX / bridge_width_particles) * spacing, 1.0);
 
 	// In CUSTOM.x we accumulate the distance from the character, normalized between zero and one.
 	// if the character is within the radius, we will increase

@@ -168,8 +168,8 @@ export var pixel_size := 19.18
 
 
 func _ready() -> void:
-	for y in range(height):
-		for x in range(width):
+	for y in height:
+		for x in width:
 			if (y * width + x) in EXCLUSIONS:
 				continue
 			var pixel := Pixel.instance()
@@ -181,9 +181,7 @@ func _ready() -> void:
 func do_render() -> void:
 	var delay := 0.0
 	for i in range(0, get_child_count(), 8):
-		for j in range(8):
-			if j + i < get_child_count():
-				var child := get_child(j + i)
-				child.do_scale_down(delay)
+		for pixel in get_children().slice(i, i+7):
+			pixel.do_scale_down(delay)
 		delay += 0.15
 	yield(get_tree().create_timer(delay), "timeout")

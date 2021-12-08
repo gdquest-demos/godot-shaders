@@ -2,7 +2,6 @@
 
 [ext_resource path="res://Intro/Elements/Pixel.gd" type="Script" id=1]
 
-
 [node name="Pixel" type="Node2D"]
 script = ExtResource( 1 )
 

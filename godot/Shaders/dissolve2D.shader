@@ -13,5 +13,7 @@ void fragment() {
 	float emission_value = 1.0 - smoothstep(dissolve_amount, dissolve_amount + burn_size, sample);
 	vec3 emission = burn_color.rgb * emission_value * emission_amount;
 	
-	COLOR = vec4(max(out_color.rgb, emission), smoothstep(dissolve_amount - burn_size, dissolve_amount, sample) * out_color.a);
+	COLOR = vec4(
+			max(out_color.rgb, emission), 
+			smoothstep(dissolve_amount - burn_size, dissolve_amount, sample) * out_color.a);
 }

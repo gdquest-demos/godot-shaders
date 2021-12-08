@@ -7,8 +7,8 @@
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
-shader_param/character_position = Vector3( 1.478, 0.706214, 16.8233 )
-shader_param/radius = 5.0
+shader_param/character_position = Vector3( 1.478, 0.706214, 0.751298 )
+shader_param/radius = 0.0
 shader_param/bridge_width_particles = 12
 shader_param/bridge_speed = 10.0
 shader_param/spacing = 0.3
@@ -61,9 +61,9 @@ size = Vector3( 0.3, 0.3, 0.3 )
 script/source = "extends Particles
 tool
 
-export var character_node : NodePath = \".\"
+export var character_node := NodePath()
 
-func _process(delta):
+func _process(_delta: float) -> void:
 	process_material.set_shader_param(\"character_position\", get_node(character_node).global_transform.origin)
 "
 
@@ -151,7 +151,7 @@ scale_curve = SubResource( 19 )
 [sub_resource type="CubeMesh" id=21]
 size = Vector3( 0.1, 0.1, 0.1 )
 
-[node name="Spatial" type="Spatial"]
+[node name="ParticleBridgeDemo" type="Spatial"]
 
 [node name="BridgeParticles" type="Particles" parent="."]
 amount = 996
@@ -165,7 +165,7 @@ script = SubResource( 12 )
 character_node = NodePath("../Character")
 
 [node name="Character" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.478, 0.706214, 16.8233 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.478, 0.706214, 0.751298 )
 mesh = SubResource( 13 )
 material/0 = null
 

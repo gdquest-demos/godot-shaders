@@ -138,6 +138,6 @@ current = true
 script = ExtResource( 4 )
 
 [node name="RayCast" type="RayCast" parent="Camera"]
-cast_to = Vector3( 0, 1.092, -20 )
+cast_to = Vector3( 0, 1, -20 )
 collide_with_areas = true
 collide_with_bodies = false

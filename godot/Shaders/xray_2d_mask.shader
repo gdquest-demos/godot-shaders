@@ -14,5 +14,5 @@ void fragment() {
 	out_color += alternate_color * mask_color;
 	vec4 dim_color = vec4(vec3(dim_main_view), 0.0) * (1.0 - mask_color);
 
-	COLOR = clamp(out_color - dim_color + background_color * (1.0 - main_color.a), 0, 1);
+	COLOR = clamp(out_color - dim_color + background_color * (1.0 - main_color.a), 0.0, 1.0);
 }

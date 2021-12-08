@@ -7,7 +7,7 @@ func _ready() -> void:
 	connect("item_rect_changed", self, "_on_item_rect_changed")
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	update_zoom(get_viewport_transform().y.y)
 
 

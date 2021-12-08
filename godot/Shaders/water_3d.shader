@@ -22,19 +22,25 @@ uniform sampler2D foam_noise : hint_black_albedo;
 uniform sampler2D displacement_noise : hint_black;
 
 void vertex() {
-	float displacement = textureLod(displacement_noise, UV + (TIME * movement_direction) * refraction_speed, 0.0).r * 2.0 - 1.0;
+	float displacement = textureLod(
+			displacement_noise, 
+			UV + (TIME * movement_direction) * refraction_speed, 
+			0.0).r * 2.0 - 1.0;
+	
 	VERTEX.y += displacement * displacement_strength;
 }
 
 void fragment() {
-	vec2 uv = SCREEN_UV + (texture(refraction_noise, UV + (TIME * movement_direction) * refraction_speed).rg * 2.0 - 1.0) * refraction_strength;
+	vec2 uv = SCREEN_UV + refraction_strength 
+			* (texture(refraction_noise, UV + (TIME * movement_direction) * refraction_speed).rg 
+			* 2.0 - 1.0);
 	
 	float real_depth = texture(DEPTH_TEXTURE, SCREEN_UV).r * 2.0 - 1.0;
 	real_depth = PROJECTION_MATRIX[3][2] / (real_depth + PROJECTION_MATRIX[2][2]) + VERTEX.z;
 	
-	//Get the raw linear depth from the depth texture into a  [-1, 1] range
+	// Get the raw linear depth from the depth texture into a  [-1, 1] range
 	float depth = texture(DEPTH_TEXTURE, uv).r * 2.0 - 1.0;
-	//Recreate linear depth of the intersecting geometry using projection matrix, and subtract the vertex of the sphere
+	// Recreate linear depth of the intersecting geometry using projection matrix, and subtract the vertex of the sphere
 	depth = PROJECTION_MATRIX[3][2] / (depth + PROJECTION_MATRIX[2][2]) + VERTEX.z;
 	
 	depth = max(depth, real_depth);
@@ -45,7 +51,9 @@ void fragment() {
 	vec4 scene_color = texture(SCREEN_TEXTURE, uv);
 	out_color = mix(scene_color, out_color, out_color.a);
 	
-	vec3 foam = step(intersection, texture(foam_noise, UV + (TIME * movement_direction) * refraction_speed).rgb) * foam_color.rgb;
+	vec3 foam = step(intersection, 
+			texture(foam_noise, UV + (TIME * movement_direction) * refraction_speed).rgb) 
+			* foam_color.rgb;
 	
 	ALBEDO = out_color.rgb + foam;
 }

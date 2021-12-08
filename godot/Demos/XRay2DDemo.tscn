@@ -9,7 +9,6 @@
 [ext_resource path="res://Shared/Background2D/Demo2DBackground.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=8]
 
-
 [sub_resource type="ViewportTexture" id=1]
 viewport_path = NodePath("XRayView/Viewport")
 
@@ -65,6 +64,9 @@ position = Vector2( 480, 540 )
 
 [node name="RemoteTransform2D" parent="MainView/Viewport/MainScene/Watcher" index="0"]
 remote_path = NodePath("../../../../../MaskView/Viewport/Cone")
+
+[node name="AnimationPlayer" parent="MainView/Viewport/MainScene/Watcher" index="1"]
+autoplay = "sweep"
 
 [node name="XRayView" type="ViewportContainer" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )

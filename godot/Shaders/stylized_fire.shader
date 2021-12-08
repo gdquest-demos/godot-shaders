@@ -17,13 +17,22 @@ uniform float edge_softness = 0.1;
 varying vec3 world_coord;
 varying float world_x_dot;
 
-
 void vertex() {
 	// Billboard code, taken directly from a spatial material
 	// create a spatial material, enable billboard with billboard keep scale, and then convert
 	// to shader material, and it will create a shader with this code.
-	mat4 mat_world = mat4(normalize(CAMERA_MATRIX[0])*length(WORLD_MATRIX[0]),normalize(CAMERA_MATRIX[1])*length(WORLD_MATRIX[0]),normalize(CAMERA_MATRIX[2])*length(WORLD_MATRIX[2]),WORLD_MATRIX[3]);
-	mat_world = mat_world * mat4( vec4(cos(INSTANCE_CUSTOM.x),-sin(INSTANCE_CUSTOM.x), 0.0, 0.0), vec4(sin(INSTANCE_CUSTOM.x), cos(INSTANCE_CUSTOM.x), 0.0, 0.0),vec4(0.0, 0.0, 1.0, 0.0),vec4(0.0, 0.0, 0.0, 1.0));
+	mat4 mat_world = mat4(
+			normalize(CAMERA_MATRIX[0]) * length(WORLD_MATRIX[0]),
+			normalize(CAMERA_MATRIX[1]) * length(WORLD_MATRIX[0]),
+			normalize(CAMERA_MATRIX[2]) * length(WORLD_MATRIX[2]),
+			WORLD_MATRIX[3]);
+	
+	mat_world *= mat4(
+			vec4(cos(INSTANCE_CUSTOM.x), -sin(INSTANCE_CUSTOM.x), 0.0, 0.0), 
+			vec4(sin(INSTANCE_CUSTOM.x), cos(INSTANCE_CUSTOM.x), 0.0, 0.0),
+			vec4(0.0, 0.0, 1.0, 0.0),
+			vec4(0.0, 0.0, 0.0, 1.0));
+	
 	MODELVIEW_MATRIX = INV_CAMERA_MATRIX * mat_world;
 	
 	// We map the coordinates on the vertical planes xy and zy
@@ -31,12 +40,10 @@ void vertex() {
 	// is pointing.
 	world_coord = (mat_world * vec4(VERTEX, 1.0)).rgb;
 	vec4 world_normal = (mat_world * vec4(NORMAL, 0.0));
-	world_x_dot =  abs(dot(normalize(world_normal.rgb), vec3(1.0,0.0,0.0)));
+	world_x_dot =  abs(dot(normalize(world_normal.rgb), vec3(1.0, 0.0, 0.0)));
 }
 
-
 void fragment() {
-	
 	// We sample the mask texture based on regular UV
 	// We don't want the particles to show their square shape
 	// so we use a round, black and white, mask texture
@@ -48,9 +55,10 @@ void fragment() {
 	// To add more variation, we could sample from another noise that has a different scale and panning speed.
 	// The additional offset on the zy noise is to avoid mirroring effects when
 	// the view vector is between same-sign x and z axes
-	vec2 time_based_pan = vec2(0.2, 1.0) * (- TIME * time_scale);
+	vec2 time_based_pan = vec2(0.2, 1.0) * (-TIME * time_scale);
 	float noise_xy = texture(noise_texture, world_coord.xy * texture_scale + time_based_pan).r;
-	float noise_zy = texture(noise_texture, world_coord.zy * texture_scale + time_based_pan + vec2(0.7, 0.3)).r;
+	float noise_zy = texture(noise_texture, 
+			world_coord.zy * texture_scale + time_based_pan + vec2(0.7, 0.3)).r;
 	
 	// We blend the noise based on world_x_dot, which is the dot product between
 	// the normal of the billboard plane, and the global x axis. If we face the global

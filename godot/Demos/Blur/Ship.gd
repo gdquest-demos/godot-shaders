@@ -11,16 +11,16 @@ var speed := 0.0
 onready var blur_provider := get_node(blur_provider_path)
 onready var trail_direction := Vector2.UP
 onready var shaking_camera_background := get_node(shaking_camera_background_path)
+onready var _animation_player: AnimationPlayer = $AnimationPlayer
+onready var _camera_background_transform: RemoteTransform2D = $CameraBackgroundTransform
 
 
 func _ready() -> void:
 	if blur_provider:
 		trail_direction = trail_direction.rotated(deg2rad(blur_provider.direction_degrees))
 		rotation = deg2rad(blur_provider.direction_degrees)
-	yield(get_tree().create_timer(0.5), "timeout")
-	$ParticlesCharge.emitting = true
-	yield(get_tree().create_timer(2.0), "timeout")
-	$ParticlesBoost.emitting = true
+	_animation_player.play("Boost")
+	yield(_animation_player, "animation_finished")
 	desired_speed = travel_speed
 	if shaking_camera_background:
 		shaking_camera_background.is_shaking = true
@@ -33,6 +33,6 @@ func _process(delta: float) -> void:
 		if blur_provider:
 			blur_provider.emit_signal("speeding_up", speed / desired_speed)
 	if speed == travel_speed:
-		$CameraBackgroundTransform.remote_path = ""
+		_camera_background_transform.remote_path = ""
 
 	position += trail_direction * speed * delta

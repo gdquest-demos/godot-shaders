@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Shared/Demo3DEnvironment.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=2]
@@ -65,13 +65,37 @@ shader_param/xray_color_intensity = 3.0
 shader_param/outline_sharpness = 1.0
 shader_param/outline_color = Color( 0.87451, 0.254902, 0.0901961, 1 )
 
-[sub_resource type="GDScript" id=9]
-script/source = "extends Spatial
+[sub_resource type="Animation" id=13]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
 
-
-func _process(delta: float) -> void:
-	rotate_y(PI/8.0 * delta)
-"
+[sub_resource type="Animation" id=14]
+resource_name = "Rotate"
+length = 16.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 16 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ) ]
+}
 
 [sub_resource type="ViewportTexture" id=10]
 viewport_path = NodePath("StencilView/Viewport")
@@ -104,7 +128,7 @@ usage = 3
 render_target_update_mode = 3
 
 [node name="Camera" type="Camera" parent="StencilView/Viewport"]
-transform = Transform( -0.56478, -0.283286, 0.775095, 0, 0.939234, 0.343276, -0.825241, 0.193876, -0.530461, 7.40208, 3.55442, 3.62036 )
+transform = Transform( 1, -7.02505e-08, 1.92212e-07, 0, 0.939234, 0.343276, -2.04647e-07, -0.343276, 0.939234, 3.4756e-06, 3.55442, 17.6558 )
 cull_mask = 1048574
 current = true
 
@@ -126,7 +150,7 @@ usage = 3
 render_target_update_mode = 3
 
 [node name="Camera" type="Camera" parent="XRayView/Viewport"]
-transform = Transform( -0.56478, -0.283286, 0.775095, 0, 0.939234, 0.343276, -0.825241, 0.193876, -0.530461, 7.40208, 3.55442, 3.62036 )
+transform = Transform( 1, -7.02505e-08, 1.92212e-07, 0, 0.939234, 0.343276, -2.04647e-07, -0.343276, 0.939234, 3.4756e-06, 3.55442, 17.6558 )
 cull_mask = 1048572
 current = true
 
@@ -194,8 +218,7 @@ layers = 4
 material/0 = SubResource( 8 )
 
 [node name="Spatial" type="Spatial" parent="."]
-transform = Transform( -0.564767, 0, 0.825222, 0, 1, 0, -0.825222, 0, -0.564767, 0, 0, 8.68621 )
-script = SubResource( 9 )
+transform = Transform( 0.999977, 0, 0, 0, 1, 0, 0, 0, 0.999977, 0, 0, 8.68621 )
 
 [node name="Camera" type="Camera" parent="Spatial"]
 transform = Transform( 1.00002, 1.49012e-08, 2.98023e-08, 0, 0.939234, 0.343276, -2.98023e-08, -0.343284, 0.939256, 1.90735e-06, 3.55442, 8.96981 )
@@ -207,6 +230,11 @@ remote_path = NodePath("../../../StencilView/Viewport/Camera")
 
 [node name="XRayTransform" type="RemoteTransform" parent="Spatial/Camera"]
 remote_path = NodePath("../../../XRayView/Viewport/Camera")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Spatial"]
+autoplay = "Rotate"
+anims/RESET = SubResource( 13 )
+anims/Rotate = SubResource( 14 )
 
 [node name="XRayPresentation" type="TextureRect" parent="."]
 material = SubResource( 11 )
@@ -232,7 +260,5 @@ __meta__ = {
 text_bbcode = "Generates a black and white mask that determines where color information from the XRay view should override color information from the Main view. The XRay view is a glowing fresnel effect."
 
 [editable path="rat"]
-
 [editable path="rat/StencilView"]
-
 [editable path="rat/XrayView"]

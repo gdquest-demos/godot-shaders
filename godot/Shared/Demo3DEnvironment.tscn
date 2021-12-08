@@ -3,11 +3,6 @@
 [ext_resource path="res://Shared/environments/level_environment.tres" type="Environment" id=1]
 [ext_resource path="res://Shared/materials/basic_grey.tres" type="Material" id=2]
 
-
-
-
-
-
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.623529, 0.635294, 0.662745, 1 )
 

@@ -20,6 +20,6 @@ void fragment() {
 
 	float fresnel_dot = 1.0 - dot(NORMAL, VIEW) * outline_sharpness;
 	ALBEDO = vec3(0.0);
-	EMISSION = smoothstep(0, 1, fresnel_dot) * outline_color.rgb * color_intensity;
+	EMISSION = smoothstep(0.0, 1.0, fresnel_dot) * outline_color.rgb * color_intensity;
 	ALPHA = max(1.0 - step(mask_result, 0.0), 0.0);
 }
