@@ -128,7 +128,7 @@ usage = 3
 render_target_update_mode = 3
 
 [node name="Camera" type="Camera" parent="StencilView/Viewport"]
-transform = Transform( 1, -7.02505e-08, 1.92212e-07, 0, 0.939234, 0.343276, -2.04647e-07, -0.343276, 0.939234, 3.4756e-06, 3.55442, 17.6558 )
+transform = Transform( 1, -1.02302e-08, 2.79908e-08, 0, 0.939234, 0.343276, -2.98017e-08, -0.343276, 0.939234, 1.90731e-06, 3.55442, 17.6558 )
 cull_mask = 1048574
 current = true
 
@@ -150,7 +150,7 @@ usage = 3
 render_target_update_mode = 3
 
 [node name="Camera" type="Camera" parent="XRayView/Viewport"]
-transform = Transform( 1, -7.02505e-08, 1.92212e-07, 0, 0.939234, 0.343276, -2.04647e-07, -0.343276, 0.939234, 3.4756e-06, 3.55442, 17.6558 )
+transform = Transform( 1, -1.02302e-08, 2.79908e-08, 0, 0.939234, 0.343276, -2.98017e-08, -0.343276, 0.939234, 1.90731e-06, 3.55442, 17.6558 )
 cull_mask = 1048572
 current = true
 

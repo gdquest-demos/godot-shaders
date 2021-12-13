@@ -1,6 +1,5 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Shared/theme/gdquest.theme" type="Theme" id=1]
 [ext_resource path="res://Demos/Xray2d/MainScene.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Demos/Xray2d/GearTrain.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Demos/Xray2d/Cone.gd" type="Script" id=4]
@@ -25,13 +24,7 @@ shader_param/mask_viewport = SubResource( 2 )
 [sub_resource type="ViewportTexture" id=4]
 viewport_path = NodePath("MainView/Viewport")
 
-[node name="XRay2DDemo" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="XRay2DDemo" type="CanvasLayer"]
 
 [node name="Demo2DBackground" parent="." instance=ExtResource( 7 )]
 
