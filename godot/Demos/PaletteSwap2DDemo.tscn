@@ -13,13 +13,8 @@ shader_param/palette_count = 4.0
 shader_param/palette_index = 0.0
 shader_param/palette = ExtResource( 3 )
 
-[node name="PaletteSwap2DDemo" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="PaletteSwap2DDemo" type="CanvasLayer"]
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 6 )]
 

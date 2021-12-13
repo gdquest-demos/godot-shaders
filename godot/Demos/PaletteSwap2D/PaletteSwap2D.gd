@@ -1,5 +1,5 @@
 tool
-extends Control
+extends CanvasLayer
 
 const PALLETE_COUNT := 4
 

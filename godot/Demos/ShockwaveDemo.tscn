@@ -1,6 +1,5 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Shared/theme/gdquest.theme" type="Theme" id=1]
 [ext_resource path="res://Shaders/shockwave.shader" type="Shader" id=2]
 [ext_resource path="res://Demos/Shockwave/Shockwave.gd" type="Script" id=3]
 [ext_resource path="res://Demos/Shockwave/ShockwaveScene.tscn" type="PackedScene" id=4]
@@ -49,13 +48,7 @@ shader_param/torus_invert = -1.0
 shader_param/torus_center = Vector2( 0.5, 0.5 )
 shader_param/torus_size = Vector2( 4.45, 2.5 )
 
-[node name="ShockwaveDemo" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ShockwaveDemo" type="CanvasLayer"]
 
 [node name="DemoView" type="ViewportContainer" parent="."]
 material = SubResource( 1 )

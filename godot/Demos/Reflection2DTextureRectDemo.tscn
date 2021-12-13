@@ -38,15 +38,10 @@ shader = SubResource( 1 )
 shader_param/color = Color( 0.207843, 0.203922, 0.615686, 1 )
 shader_param/reflection_intensity = 0.542
 shader_param/scale_y = 2.9375
-shader_param/zoom_y = 0.66742
+shader_param/zoom_y = 1.25992
 shader_param/transition_gradient = SubResource( 3 )
 
-[node name="Reflection2DTextureRectDemo" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Reflection2DTextureRectDemo" type="CanvasLayer"]
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 4 )]
 
