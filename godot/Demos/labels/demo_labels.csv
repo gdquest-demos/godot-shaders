@@ -1,0 +1,2 @@
+keys,en
+blurglowdemo,"Takes a sprite with a flat color and blurs it in two passes: Blur1, Blur2. This blurred texture is used as a mask (MaskView), which is fed into the MainView's shader. The MainView applies the glow around the character."

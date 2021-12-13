@@ -3,9 +3,7 @@
 [ext_resource path="res://Shared/theme/gdquest.theme" type="Theme" id=1]
 [ext_resource path="res://Shared/DemoInterface.gd" type="Script" id=2]
 
-
-
-[node name="DemoInterface" type="Panel"]
+[node name="DemoText" type="Panel"]
 anchor_right = 1.0
 margin_bottom = 120.0
 mouse_filter = 2
