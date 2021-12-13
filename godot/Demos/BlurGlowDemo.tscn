@@ -1,6 +1,5 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://Shared/theme/gdquest.theme" type="Theme" id=1]
 [ext_resource path="res://Demos/Glow2D/BlurGlow/Scene.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Shaders/gaussian_blur.shader" type="Shader" id=3]
 [ext_resource path="res://Shaders/compose.shader" type="Shader" id=4]
@@ -35,14 +34,7 @@ shader_param/glow_intensity = 8.0
 shader_param/prepass_texture = SubResource( 5 )
 shader_param/blur_texture = SubResource( 4 )
 
-[node name="BlurGlowDemo" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-theme = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="BlurGlowDemo" type="CanvasLayer"]
 
 [node name="Demo2DBackground" parent="." instance=ExtResource( 7 )]
 
@@ -102,9 +94,7 @@ material = SubResource( 3 )
 position = Vector2( 960, 540 )
 texture = ExtResource( 6 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="MainView" type="ViewportContainer" parent="CanvasLayer"]
+[node name="MainView" type="ViewportContainer" parent="."]
 material = SubResource( 6 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -114,23 +104,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Viewport" type="Viewport" parent="CanvasLayer/MainView"]
+[node name="Viewport" type="Viewport" parent="MainView"]
 size = Vector2( 1920, 1080 )
 transparent_bg = true
 handle_input_locally = false
 usage = 0
 render_target_update_mode = 3
 
-[node name="Scene" parent="CanvasLayer/MainView/Viewport" instance=ExtResource( 2 )]
+[node name="Scene" parent="MainView/Viewport" instance=ExtResource( 2 )]
 
-[node name="Sprite" parent="CanvasLayer/MainView/Viewport/Scene" index="0"]
+[node name="Sprite" parent="MainView/Viewport/Scene" index="0"]
 position = Vector2( 960, 540 )
 scale = Vector2( 1, 1 )
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="CanvasLayer/MainView/Viewport/Scene/Sprite" index="0"]
-remote_path = NodePath("../../../../../../MaskView/Viewport/Blur2/Viewport/Blur1/Viewport/Sprite")
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="MainView/Viewport/Scene/Sprite" index="0"]
+remote_path = NodePath("../../../../../MaskView/Viewport/Blur2/Viewport/Blur1/Viewport/Sprite")
 
-[node name="DebugViewer" type="Control" parent="CanvasLayer"]
+[node name="DebugViewer" type="Control" parent="."]
 margin_top = 120.0
 margin_right = 40.0
 margin_bottom = 160.0
@@ -139,9 +129,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DemoText" parent="CanvasLayer" instance=ExtResource( 9 )]
+[node name="DemoText" parent="." instance=ExtResource( 9 )]
 text_bbcode = "Takes a sprite with a flat color and blurs it in two passes: Blur1, Blur2.
 This blurred texture is used as a mask (MaskView), which is fed into the MainView's shader. 
 The MainView applies the glow around the character."
 
-[editable path="CanvasLayer/MainView/Viewport/Scene"]
+[editable path="MainView/Viewport/Scene"]
