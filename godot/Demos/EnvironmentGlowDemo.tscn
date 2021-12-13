@@ -12,13 +12,13 @@ shader_param/line_thickness = 1.323
 
 [sub_resource type="Environment" id=2]
 background_mode = 4
+background_canvas_max_layer = 1
 glow_enabled = true
 glow_levels/4 = true
 glow_blend_mode = 0
 glow_bicubic_upscale = true
 
 [node name="EnvironmentGlowDemo" type="CanvasLayer"]
-layer = -1
 
 [node name="Demo2DBackground" parent="." instance=ExtResource( 2 )]
 
