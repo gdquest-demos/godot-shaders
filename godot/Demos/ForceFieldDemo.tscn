@@ -4,12 +4,7 @@
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Shared/Demo3DEnvironment.tscn" type="PackedScene" id=3]
 
-[node name="Control" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Control" type="CanvasLayer"]
 
 [node name="ViewportContainer" type="ViewportContainer" parent="."]
 anchor_right = 1.0

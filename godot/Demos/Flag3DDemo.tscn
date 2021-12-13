@@ -4,13 +4,7 @@
 [ext_resource path="res://Shared/Demo3DEnvironment.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=3]
 
-[node name="Flag3DDemo" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_bottom = 6.10352e-05
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Flag3DDemo" type="CanvasLayer"]
 
 [node name="DemoView" type="ViewportContainer" parent="."]
 anchor_right = 1.0

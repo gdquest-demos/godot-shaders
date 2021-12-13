@@ -44,12 +44,7 @@ noise = SubResource( 6 )
 shader = SubResource( 5 )
 shader_param/simplex_noise = SubResource( 7 )
 
-[node name="NoiseDemo" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="NoiseDemo" type="CanvasLayer"]
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 6 )]
 

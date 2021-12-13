@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Shared/theme/gdquest.theme" type="Theme" id=1]
 [ext_resource path="res://Shared/Background2D/Demo2DBackground.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Shaders/outline2D_outer.shader" type="Shader" id=3]
 [ext_resource path="res://Shared/sprites/robi_shaded.png" type="Texture" id=4]
@@ -18,13 +17,8 @@ glow_levels/4 = true
 glow_blend_mode = 0
 glow_bicubic_upscale = true
 
-[node name="EnvironmentGlowDemo" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="EnvironmentGlowDemo" type="CanvasLayer"]
+layer = -1
 
 [node name="Demo2DBackground" parent="." instance=ExtResource( 2 )]
 
