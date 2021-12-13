@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Demos/InteractiveSnow/InteractiveSnowball.gd" type="Script" id=1]
 [ext_resource path="res://Demos/InteractiveSnow/InteractiveSnowPlane.glb" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Demos/InteractiveSnow/Textures/Ground039_1K_Color.jpg" type="Texture" id=13]
 [ext_resource path="res://Demos/InteractiveSnow/TrailTexture.png" type="Texture" id=14]
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=15]
+[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=16]
 
 [sub_resource type="ViewportTexture" id=1]
 viewport_path = NodePath("Viewport")
@@ -42,7 +43,8 @@ height = 1.0
 [sub_resource type="ViewportTexture" id=4]
 viewport_path = NodePath("Viewport")
 
-[node name="InteractiveSnowDemo" type="Spatial"]
+[node name="InteractiveSnowDemo" type="CanvasLayer"]
+script = ExtResource( 16 )
 
 [node name="Demo3DEnvironment" parent="." instance=ExtResource( 3 )]
 
@@ -100,7 +102,6 @@ __meta__ = {
 }
 
 [node name="DemoInterface" parent="." instance=ExtResource( 15 )]
-text_bbcode = "A trail is painted in a secondary viewport, that is then read by a shader to do displacement and texture blending"
 
 [editable path="Demo3DEnvironment"]
 [editable path="InteractiveSnowPlane"]

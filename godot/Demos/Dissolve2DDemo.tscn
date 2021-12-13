@@ -1,5 +1,6 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
+[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=1]
 [ext_resource path="res://Demos/Dissolve/Dissolve2D/color_ramp.tres" type="Gradient" id=2]
 [ext_resource path="res://Shared/sprites/cloud1.png" type="Texture" id=3]
 [ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=4]
@@ -175,6 +176,7 @@ glow_blend_mode = 0
 glow_bicubic_upscale = true
 
 [node name="Dissolve2DDemo" type="CanvasLayer"]
+script = ExtResource( 1 )
 
 [node name="Demo2DBackground" parent="." instance=ExtResource( 11 )]
 
@@ -280,6 +282,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DemoText" parent="." instance=ExtResource( 15 )]
-text_bbcode = "Uses a Noise mask to dissolve a sprite. Also generates a mask that is use to set the emission points array of a CPUParticles2D.
-To generate the particles mask, we scale down the dissolve mask (ScaledView) and loop over that texture's pixels in GDScript (CPUParticles2D)."
+[node name="DemoInterface" parent="." instance=ExtResource( 15 )]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Demos/Crystals/Crystal_Albedo.png" type="Texture" id=1]
 [ext_resource path="res://Demos/Crystals/Crystal_Emission.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Demos/Crystals/crystals.glb" type="PackedScene" id=4]
 [ext_resource path="res://Shared/Demo3DEnvironment.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=7]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type spatial;
@@ -95,7 +96,8 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ) ]
 }
 
-[node name="CrystalDemo" type="Spatial"]
+[node name="CrystalDemo" type="CanvasLayer"]
+script = ExtResource( 7 )
 
 [node name="crystals" parent="." instance=ExtResource( 4 )]
 
@@ -107,9 +109,6 @@ material/0 = SubResource( 2 )
 [node name="Sun" parent="Demo3DEnvironment" index="1"]
 shadow_color = Color( 0.0823529, 0.690196, 0.901961, 1 )
 
-[node name="DemoInterface" parent="." instance=ExtResource( 6 )]
-text_bbcode = "An otherwise standard material that has been converted to a shader to add a TIME based pulse effect to its emission and fresnel."
-
 [node name="CameraPivot" type="Spatial" parent="."]
 
 [node name="Camera" type="Camera" parent="CameraPivot"]
@@ -119,6 +118,8 @@ transform = Transform( 1, 0, 0, 0, 0.92398, 0.382442, 0, -0.382442, 0.92398, 0, 
 autoplay = "Rotate"
 anims/RESET = SubResource( 3 )
 anims/Rotate = SubResource( 4 )
+
+[node name="DemoInterface" parent="." instance=ExtResource( 6 )]
 
 [editable path="crystals"]
 [editable path="Demo3DEnvironment"]

@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
+[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=1]
 [ext_resource path="res://Demos/ImpossibleCube/ImpossibleCubeBase.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=3]
 [ext_resource path="res://Shared/Demo3DEnvironment.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=5]
 
 [node name="ImpossibleCubeDemo" type="CanvasLayer"]
+script = ExtResource( 1 )
 
 [node name="DemoView" type="ViewportContainer" parent="."]
 anchor_right = 1.0
@@ -27,7 +29,6 @@ shadow_atlas_size = 8192
 [node name="Demo3DEnvironment" parent="DemoView/Viewport" instance=ExtResource( 4 )]
 
 [node name="DemoInterface" parent="." instance=ExtResource( 5 )]
-text_bbcode = "Uses viewports to simulate stencil tests, making objects disappear depending on what color is facing the camera on the stencil view. The stencil supports up to 7 colors of masks."
 
 [node name="DebugViewer" type="Control" parent="."]
 margin_top = 120.0
@@ -35,3 +36,6 @@ margin_right = 40.0
 margin_bottom = 160.0
 rect_scale = Vector2( 0.9, 0.9 )
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -4,3 +4,14 @@ advancedtoondemo,"An advanced toon shader that gives fine control over specular,
 blurviewportcontainersdemo,Uses ViewportContainers to compose a scene that uses gaussian blur as motion blur. The ship is in its own viewport so it's not affected by the motion blur. The motion blur happens in BlurView and BlurView2.
 blurviewporttexturesdemo,Uses TextureRects to compose a scene that uses gaussian blur as motion blur. It's an alternative setup to produce a result like BlurViewportContainersDemo.tscn.
 clouds2ddemo,Use noise and texture scrolling to add shadows cast by overhead clouds to your world.
+crystaldemo,An otherwise standard material that has been converted to a shader to add a TIME based pulse effect to its emission and fresnel.
+dissolve2ddemo,"Uses a Noise mask to dissolve a sprite. Also generates a mask that is use to set the emission points array of a CPUParticles2D. To generate the particles mask, we scale down the dissolve mask (ScaledView) and loop over that texture's pixels in GDScript (CPUParticles2D)."
+dissolve3ddemo,Uses a noise mask to make a 3D object dissolve.
+environmentglowdemo,Achieves a glow on 2D objects with a WorldEnvironment node.
+flag3ddemo,The shader samples OpenSimplexNoise to give the impression of a flag blowing in the wind.
+forcefielddemo,"Press Enter to launch a force field emitter. It uses a fresnel effect to form a smooth glow, and the depth buffer to calculate intersection with existing world geometry."
+impossiblecubedemo,"Uses viewports to simulate stencil tests, making objects disappear depending on what color is facing the camera on the stencil view. The stencil supports up to 7 colors of masks."
+interactivesnowdemo,"A trail is painted in a secondary viewport, that is then read by a shader to do displacement and texture blending."
+invertedcolorsdemo,"Takes the colors output by the demo viewport and inverts the colors - white is black, blue is red, etc."
+matcapdemo,A shader that applies a material capture texture; a texture of a sphere that is mapped using the model's normals instead of its UVs. So normals pointing to the right sample from the right of the texture.
+noisedemo,Several types of random noise. Shader code and fantastic explanations provided by Gonkee (https://github.com/Gonkee/)
