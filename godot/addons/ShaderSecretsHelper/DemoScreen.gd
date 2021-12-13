@@ -1,7 +1,7 @@
 extends CanvasLayer
 class_name DemoScreen
 
-onready var _demo_interface: Control = $DemoText
+onready var _demo_interface: Control = $DemoInterface
 
 func _ready() -> void:
 	var translation_key: String = name.to_lower()

@@ -1,2 +1,6 @@
 keys,en
 blurglowdemo,"Takes a sprite with a flat color and blurs it in two passes: Blur1, Blur2. This blurred texture is used as a mask (MaskView), which is fed into the MainView's shader. The MainView applies the glow around the character."
+advancedtoondemo,"An advanced toon shader that gives fine control over specular, anisotropy, color masks, shadow and light colors."
+blurviewportcontainersdemo,Uses ViewportContainers to compose a scene that uses gaussian blur as motion blur. The ship is in its own viewport so it's not affected by the motion blur. The motion blur happens in BlurView and BlurView2.
+blurviewporttexturesdemo,Uses TextureRects to compose a scene that uses gaussian blur as motion blur. It's an alternative setup to produce a result like BlurViewportContainersDemo.tscn.
+clouds2ddemo,Use noise and texture scrolling to add shadows cast by overhead clouds to your world.

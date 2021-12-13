@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Demos/Blur/Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Demos/Blur/SpaceBackground.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Shaders/gaussian_blur.shader" type="Shader" id=4]
 [ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=5]
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=7]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 4 )
@@ -28,6 +29,7 @@ void fragment() {
 shader = SubResource( 3 )
 
 [node name="BlurViewportContainersDemo" type="CanvasLayer"]
+script = ExtResource( 7 )
 
 [node name="Presentation" type="ViewportContainer" parent="."]
 anchor_right = 1.0
@@ -121,9 +123,6 @@ __meta__ = {
 }
 
 [node name="DemoInterface" parent="." instance=ExtResource( 6 )]
-text_bbcode = "Uses ViewportContainers to compose a scene that uses gaussian blur as motion blur.
-The ship is in its own viewport so it's not affected by the motion blur.
-The motion blur happens in BlurView and BlurView2."
 
 [editable path="Presentation/BlurView2/Viewport/BlurView/Viewport/MotionBlurSceneBackground"]
 [editable path="ShipView/Viewport/Ship"]

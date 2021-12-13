@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Demos/Blur/BlurDirection.gd" type="Script" id=1]
 [ext_resource path="res://Demos/Blur/Ship.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Shaders/gaussian_blur.shader" type="Shader" id=4]
 [ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=5]
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=7]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 4 )
@@ -44,6 +45,7 @@ shader = SubResource( 6 )
 viewport_path = NodePath("ShipView/Viewport")
 
 [node name="BlurViewportTexturesDemo" type="CanvasLayer"]
+script = ExtResource( 7 )
 
 [node name="SceneView" type="ViewportContainer" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -199,8 +201,6 @@ __meta__ = {
 }
 
 [node name="DemoInterface" parent="." instance=ExtResource( 6 )]
-text_bbcode = "Uses TextureRects to compose a scene that uses gaussian blur as motion blur.
-It's an alternative setup to produce a result like BlurViewportTexturesDemo.tscn."
 
 [editable path="SceneView/Viewport/MotionBlurScene"]
 [editable path="ShipView/Viewport/Ship"]

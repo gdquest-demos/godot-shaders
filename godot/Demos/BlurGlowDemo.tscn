@@ -131,6 +131,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DemoText" parent="." instance=ExtResource( 9 )]
+[node name="DemoInterface" parent="." instance=ExtResource( 9 )]
 
 [editable path="MainView/Viewport/Scene"]
