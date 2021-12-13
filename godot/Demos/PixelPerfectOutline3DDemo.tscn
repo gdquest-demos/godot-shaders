@@ -90,7 +90,9 @@ anims/Rotate = SubResource( 7 )
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 5 )
 
-[node name="DemoInterface" parent="." instance=ExtResource( 1 )]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DemoInterface" parent="CanvasLayer" instance=ExtResource( 1 )]
 text_bbcode = "An outline drawn in clip space instead of vertex space. Its width is specified in pixels and remains at a constant size regardless of the distance from the camera or the scale of the object. Good for user interfaces, object highlights, and technical drawings."
 
 [editable path="rat"]
