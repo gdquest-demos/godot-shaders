@@ -19,22 +19,22 @@ outline2ddemo,"Shaders are excellent for the not-so-easy task of outlining 2D sp
 outline3ddemo,"Shaders can also outline 3D objects with precise control. We effectively draw the meshes a second time, but bigger, and invert the culling to draw behind the object."
 paletteswap2ddemo,"Shaders are excellent at simple recoloring tasks. Our sprite is made grayscale, and we use the shade of gray to select colors from a palette. We can even support multiple color palettes, selecting them with a palette_index parameter."
 particlebridgedemo,Particles can be shaders too! This demo shows how to communicate between a particle and material shader for complex effects with many moving parts.
-pixelperfectoutlinedemo,"An outline drawn in clip space instead of vertex space. Its width is specified in pixels and remains at a constant size regardless of the distance from the camera or the scale of the object. Good for user interfaces, object highlights, and technical drawings."
-pointilismdemo,"Turns the color data from the demo viewport into a black and white image, and uses the step function in a shader to turn it into a pointilism image."
-prebakedglowdemo,"Uses a shader on a sprite to control a glow. The glow effect is part of the sprite's texture, and the shader manipulates the amount of alpha and color intensity."
-reflection2ddemo,Vertical mirror shader with a fade to a background color. This demo shows how to create a pure vertical mirror using the screen texture. You can control the way the reflection fade using a gradient texture.
-reflection2dtexturerectdemo,Vertical mirror shader with a fade to a background color. This demo shows how to create a pure vertical mirror using the screen texture. You can control the way the reflection fade using a gradient texture.
-shockwave3ddemo,"Press Enter to launch a shockwave. Uses a vertex shader to propagate a spherical shockwave through the geometry, instead of as a post-process effect."
-shockwavedemo,"Uses a shader to generate a torus, black and white mask, the data of which is used to distort the UVs of the demo viewports to make a shockwave heat distortion effect."
-spheremaskdemo,A spherical mask is applied to the bridge to make it disappear when too far from a given point (the lantern). Bridge model from: https://blendswap.com/blend/23063
-stylizedfiredemo,"A particle system with a custom world coordinate, noise based, alpha erosion."
-stylizedliquiddemo,Stylized liquid in a bottle. The liquid uses a custom shader and a custom script that informs the liquid shader when movement happens. Note that the origin of  the liquid mesh should be placed roughly in the center of the liquid.
-stylizedwaterfalldemo,"This demo shows how to create a stylized waterfall. In particular, this waterfall is created by leveraging UVs and vertex colors created in the modeling software (blender). Because we are using carefully crafted UVs, we don't need to use flowmaps."
-texturemixdemo,"A shader that mixes albedo and normal textures based on different parameters. From left to right: mix based on red channel for vertex color, mix based on ambient occlusion map, and mix based on world space normal. model by https://sketchfab.com/3d-models/western-stylised-rock-24c821bbe0a1469ba66b9d5894546d9a"
-unlitdirectionaltintdemo,"An unlit shader that tints the model depending on the world normal. Unlit tint shader on the left, regular shader with albedo on the right"
-water2ddemo,Example of a 2D water. The diffuse color texture has no light information. The shadows are calculated in the shader. You can use the [code]modulate[/code] property to tint the water.
-water3ddemo,A water shader that uses the depth buffer and the color buffer to cause a stylized refraction effect. Intersections are highlighted with foam using the depth buffer.
-watersidescroll2ddemo,Water for a side-scrolling game. Builds upon Reflection2DDemo.tscn. The Water2DSideSimple node uses a simpler shader than Water2DSide to help you understand the basics:  moving and offsetting the water's surface using a texture and the TIME variable.
-windgrassdemo,A wind shader that uses MultiMesh to create the blades of grass and a noise texture for the wind. This shader also supports one character interacting with the grass.
-xray2ddemo,Generates a black and white mask that determines where color information from the XRay view should override color information from the Main view.
-xray3ddemo,Generates a black and white mask that determines where color information from the XRay view should override color information from the Main view. The XRay view is a glowing fresnel effect.
+pixelperfectoutlinedemo,"By drawing our outline in clip space instead of vertex space, we can make it remain at a constant size regardless of the distance from the camera or the scale. Excellent for user interfaces, object highlights, and technical drawings."
+pointilismdemo,You can achieve a pointillism or dithering effect by turning the color from your viewport into grayscale and using the step function.
+prebakedglowdemo,We can use a shader on a premade sprite to create a glow effect. The sprite's texture needs some glow built-in for us to manipulate the alpha and color intensity.
+reflection2ddemo,Our Vertical mirror shader fades a reflection of the screen texture into a background color. A gradient texture controls the rate the reflection disappears.
+reflection2dtexturerectdemo,This shader achieves the same results as the Reflection2DDemo but uses a TextureRect instead of a sprite.
+shockwave3ddemo,This shader uses vertex manipulation to propagate a spherical shockwave through the geometry.
+shockwavedemo,"This shader generates a torus-shaped black and white mask, the data of which is used to distort the UVs of the demo viewports to make a shockwave distortion effect."
+spheremaskdemo,A sphere-shaped mask is applied to the bridge to make it disappear when too far from the lantern.
+stylizedfiredemo,We made this stylized fire shader using a particle system with custom world coordinates and noise-based alpha erosion.
+stylizedliquiddemo,We made this stylized liquid in a bottle using a custom wobble shader and script that informs the liquid shader when movement happens. Note: you should place the origin of the liquid mesh roughly in the center.
+stylizedwaterfalldemo,"This demo shows how to create a stylized waterfall. We created the flowing water without flowmaps by leveraging UVs and vertex colors created in Blender."
+texturemixdemo,"This shader mixes albedo and normal map textures based on different parameters. Such as vertex color, ambient occlusion, and world space normal. "
+unlitdirectionaltintdemo,"An unlit shader that tints the model depending on the world normal. The unlit tint shader is on the left, and the regular shader with albedo on the right."
+water2ddemo,"The top-down 2D water shader. The diffuse color texture has no light information. The shader calculates the shadows, and you can use the modulate property to tint it."
+water3ddemo,The water shader uses the depth and color buffer to cause a stylized refraction effect. The shader highlights intersections with foam using the depth buffer.
+watersidescroll2ddemo,"This side-scrolling water shader builds on the Reflection2DDemo. There is a hidden, simplified Water2DSideSimple node to help you understand the basics."
+windgrassdemo,A wind shader that uses a MultiMesh to create blades of grass and a noise texture for the wind. This shader also supports one character interacting with the grass.
+xray2ddemo,This shader uses a black and white mask to determine where color information from the XRay view should override color information from the Main view.
+xray3ddemo,This shader generates a black and white mask that determines where color information from the XRay view should override color information from the Main view. The XRay view is a glowing fresnel effect.
