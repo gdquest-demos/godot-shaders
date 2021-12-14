@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Demos/Water3D/specular.png" type="Texture" id=1]
 [ext_resource path="res://Demos/Water3D/diffuse.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Shared/models/rat_model/rat_head_albedo.png" type="Texture" id=7]
 [ext_resource path="res://Shared/Demo3DEnvironment.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Shaders/water_3d.shader" type="Shader" id=9]
+[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=10]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Rocks"
@@ -96,7 +97,8 @@ shader_param/refraction_noise = SubResource( 12 )
 shader_param/foam_noise = SubResource( 10 )
 shader_param/displacement_noise = SubResource( 8 )
 
-[node name="Water3DDemo" type="Spatial"]
+[node name="Water3DDemo" type="CanvasLayer"]
+script = ExtResource( 10 )
 
 [node name="Wall" type="Spatial" parent="."]
 
@@ -182,14 +184,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.006, 0.704042, 0 )
 mesh = SubResource( 6 )
 material/0 = SubResource( 13 )
 
-[node name="DemoInterface" parent="." instance=ExtResource( 5 )]
-text_bbcode = "A water shader that uses the depth buffer and the color buffer to cause a stylized refraction effect. Intersections are highlighted with foam using the depth buffer."
-
 [node name="Demo3DEnvironment" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.12067, 0 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 0.650198, 0.53864, -0.535826, -0.0367183, 0.726706, 0.685966, 0.758877, -0.426339, 0.492281, -1.06504, 1.76133, 0.925944 )
 fov = 44.638
+
+[node name="DemoInterface" parent="." instance=ExtResource( 5 )]
 
 [editable path="rat"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Demos/StylizedFire/FireMask.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Shaders/stylized_fire.shader" type="Shader" id=5]
 [ext_resource path="res://Shared/Demo3DEnvironmentDark.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Demos/StylizedFire/BlueFireGradient.tres" type="Texture" id=7]
+[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=8]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 5 )
@@ -70,7 +71,8 @@ scale_random = 1.0
 scale_curve = SubResource( 5 )
 color_ramp = ExtResource( 4 )
 
-[node name="RootNode" type="Spatial"]
+[node name="StylizedFireDemo" type="CanvasLayer"]
+script = ExtResource( 8 )
 
 [node name="Fire" type="Particles" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26708, 0 )
@@ -117,11 +119,10 @@ draw_pass_1 = SubResource( 7 )
 light_color = Color( 0.560784, 0.752941, 1, 1 )
 light_energy = 2.0
 
-[node name="DemoInterface" parent="." instance=ExtResource( 1 )]
-text_bbcode = "A particle system with a custom world coordinate, noise based, alpha erosion."
-
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.950814, 0.309764, 0, -0.309764, 0.950814, 0, 2.58946, 2.17295 )
 
 [node name="Demo3DEnvironmentDark" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0586119, 0.168849, 0.13654 )
+
+[node name="DemoInterface" parent="." instance=ExtResource( 1 )]

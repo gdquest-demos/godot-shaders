@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
+[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=1]
 [ext_resource path="res://Shaders/shockwave.shader" type="Shader" id=2]
 [ext_resource path="res://Demos/Shockwave/Shockwave.gd" type="Script" id=3]
 [ext_resource path="res://Demos/Shockwave/ShockwaveScene.tscn" type="PackedScene" id=4]
@@ -49,6 +50,7 @@ shader_param/torus_center = Vector2( 0.5, 0.5 )
 shader_param/torus_size = Vector2( 4.45, 2.5 )
 
 [node name="ShockwaveDemo" type="CanvasLayer"]
+script = ExtResource( 1 )
 
 [node name="DemoView" type="ViewportContainer" parent="."]
 material = SubResource( 1 )
@@ -100,4 +102,3 @@ __meta__ = {
 }
 
 [node name="DemoInterface" parent="." instance=ExtResource( 5 )]
-text_bbcode = "Uses a shader to generate a torus, black and white mask, the data of which is used to distort the UVs of the demo viewports to make a shockwave heat distortion effect."

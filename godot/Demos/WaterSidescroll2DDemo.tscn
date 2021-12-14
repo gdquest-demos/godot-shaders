@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Demos/WaterSidescroll2D/water_sidescroll_2D_full.shader" type="Shader" id=1]
 [ext_resource path="res://Demos/WaterSidescroll2D/WaterSidescroll2D.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Shared/sprites/robi_shaded.png" type="Texture" id=7]
 [ext_resource path="res://Shared/Background2D/Demo2DBackground.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Demos/Water2D/water_normal.png" type="Texture" id=9]
+[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=10]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0.37037, 0.548148, 1 )
@@ -56,12 +57,9 @@ shader_param/transition_gradient = SubResource( 2 )
 shader_param/distortion_map = ExtResource( 5 )
 
 [node name="WaterSidescroll2DDemo" type="CanvasLayer"]
+script = ExtResource( 10 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 8 )]
-
-[node name="DemoInterface" parent="." instance=ExtResource( 6 )]
-text_bbcode = "Water for a side-scrolling game. Builds upon Reflection2DDemo.tscn
-The Water2DSideSimple node uses a simpler shader than Water2DSide to help you understand the basics:  moving and offsetting the water's surface using a texture and the TIME variable."
 
 [node name="Robi" type="Sprite" parent="."]
 position = Vector2( 504.151, 466.506 )
@@ -95,3 +93,5 @@ position = Vector2( 961.506, 901.105 )
 scale = Vector2( 7.49668, 1.51649 )
 texture = ExtResource( 4 )
 script = ExtResource( 2 )
+
+[node name="DemoInterface" parent="." instance=ExtResource( 6 )]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=2]
 [ext_resource path="res://Shared/Demo3DEnvironmentDark.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Demos/SphereMask/BridgeMaterial.tres" type="Material" id=4]
 [ext_resource path="res://Demos/SphereMask/LanternPositionToMaterial.gd" type="Script" id=5]
@@ -191,12 +192,8 @@ damping = 0.2
 scale = 0.2
 scale_random = 1.0
 
-[node name="SphereMaskDemo" type="Spatial"]
-
-[node name="DemoInterface" parent="." instance=ExtResource( 1 )]
-text_bbcode = "A spherical mask is applied to the bridge to make it disappear when too far from a given point (the lantern).
-
-Bridge model from: https://blendswap.com/blend/23063"
+[node name="SphereMaskDemo" type="CanvasLayer"]
+script = ExtResource( 2 )
 
 [node name="bridge-lantern" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41845, 0 )
@@ -258,5 +255,10 @@ amount = 10
 lifetime = 5.0
 process_material = SubResource( 7 )
 draw_pass_1 = ExtResource( 6 )
+
+[node name="DemoInterface" parent="." instance=ExtResource( 1 )]
+text_bbcode = "A spherical mask is applied to the bridge to make it disappear when too far from a given point (the lantern).
+
+Bridge model from: https://blendswap.com/blend/23063"
 
 [editable path="Demo3DEnvironmentDark"]
