@@ -257,7 +257,7 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="ToonLightDataView"]
-size = Vector2( 2404, 1324 )
+size = Vector2( 2203, 1747 )
 world = SubResource( 3 )
 transparent_bg = true
 handle_input_locally = false
@@ -287,7 +287,7 @@ mesh = SubResource( 31 )
 material/0 = SubResource( 2 )
 
 [node name="ToonCamera" type="Camera" parent="ToonLightDataView/Viewport"]
-transform = Transform( 1, 0, 0, 0, 0.908916, 0.416978, 0, -0.416978, 0.908916, 0, 3.34385, 7.32658 )
+transform = Transform( 0.226688, -0.229812, 0.946466, 0, 0.971764, 0.235955, -0.973967, -0.0534882, 0.220288, 6.0077, 1.49772, 1.39828 )
 current = true
 script = ExtResource( 4 )
 
@@ -314,7 +314,7 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="ToonSpecularDataView"]
-size = Vector2( 2404, 1324 )
+size = Vector2( 2203, 1747 )
 world = SubResource( 5 )
 transparent_bg = true
 handle_input_locally = false
@@ -343,7 +343,7 @@ mesh = SubResource( 31 )
 material/0 = SubResource( 6 )
 
 [node name="ToonCamera" type="Camera" parent="ToonSpecularDataView/Viewport"]
-transform = Transform( 1, 0, 0, 0, 0.908916, 0.416978, 0, -0.416978, 0.908916, 0, 3.34385, 7.32658 )
+transform = Transform( 0.226688, -0.229812, 0.946466, 0, 0.971764, 0.235955, -0.973967, -0.0534882, 0.220288, 6.0077, 1.49772, 1.39828 )
 current = true
 script = ExtResource( 4 )
 

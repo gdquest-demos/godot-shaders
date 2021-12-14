@@ -8,22 +8,8 @@
 [node name="ForceFieldDemo" type="CanvasLayer"]
 script = ExtResource( 4 )
 
-[node name="ViewportContainer" type="ViewportContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-stretch = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ForceFieldScene" parent="." instance=ExtResource( 1 )]
 
-[node name="Viewport" type="Viewport" parent="ViewportContainer"]
-size = Vector2( 1920, 1080 )
-handle_input_locally = false
-msaa = 2
-render_target_update_mode = 3
-
-[node name="ForceFieldScene" parent="ViewportContainer/Viewport" instance=ExtResource( 1 )]
-
-[node name="Demo3DEnvironment" parent="ViewportContainer/Viewport" instance=ExtResource( 3 )]
+[node name="Demo3DEnvironment" parent="." instance=ExtResource( 3 )]
 
 [node name="DemoInterface" parent="." instance=ExtResource( 2 )]

@@ -1,24 +1,24 @@
 keys,en
-blurglowdemo,"Takes a sprite with a flat color and blurs it in two passes: Blur1, Blur2. This blurred texture is used as a mask (MaskView), which is fed into the MainView's shader. The MainView applies the glow around the character."
-advancedtoondemo,"An advanced toon shader that gives fine control over specular, anisotropy, color masks, shadow and light colors."
-blurviewportcontainersdemo,Uses ViewportContainers to compose a scene that uses gaussian blur as motion blur. The ship is in its own viewport so it's not affected by the motion blur. The motion blur happens in BlurView and BlurView2.
-blurviewporttexturesdemo,Uses TextureRects to compose a scene that uses gaussian blur as motion blur. It's an alternative setup to produce a result like BlurViewportContainersDemo.tscn.
+blurglowdemo,The shader takes a sprite and blurs it in two passes. It uses this blurred texture as a mask that feeds into the MainView's shader. The MainView applies a glow around the character.
+advancedtoondemo,"This advanced toon shader gives fine control over specular, anisotropy, color masks, shadow, and light colors."
+blurviewportcontainersdemo,"Uses ViewportContainers to compose a scene that uses Gaussian blur as motion blur. The ship is in a separate viewport, so it's not affected by the motion blur."
+blurviewporttexturesdemo,Uses TextureRects to compose a scene that uses Gaussian blur as motion blur. It's an alternative setup to produce a result like BlurViewportContainers.
 clouds2ddemo,Use noise and texture scrolling to add shadows cast by overhead clouds to your world.
-crystaldemo,An otherwise standard material that has been converted to a shader to add a TIME based pulse effect to its emission and fresnel.
-dissolve2ddemo,"Uses a Noise mask to dissolve a sprite. Also generates a mask that is use to set the emission points array of a CPUParticles2D. To generate the particles mask, we scale down the dissolve mask (ScaledView) and loop over that texture's pixels in GDScript (CPUParticles2D)."
-dissolve3ddemo,Uses a noise mask to make a 3D object dissolve.
-environmentglowdemo,Achieves a glow on 2D objects with a WorldEnvironment node.
-flag3ddemo,The shader samples OpenSimplexNoise to give the impression of a flag blowing in the wind.
-forcefielddemo,"Press Enter to launch a force field emitter. It uses a fresnel effect to form a smooth glow, and the depth buffer to calculate intersection with existing world geometry."
-impossiblecubedemo,"Uses viewports to simulate stencil tests, making objects disappear depending on what color is facing the camera on the stencil view. The stencil supports up to 7 colors of masks."
-interactivesnowdemo,"A trail is painted in a secondary viewport, that is then read by a shader to do displacement and texture blending."
-invertedcolorsdemo,"Takes the colors output by the demo viewport and inverts the colors - white is black, blue is red, etc."
-matcapdemo,A shader that applies a material capture texture. A texture of a sphere that is mapped using the model's normals instead of its UVs. So normals pointing to the right sample from the right of the texture. 
-noisedemo,Several types of random noise. Shader code and fantastic explanations provided by Gonkee (https://github.com/Gonkee/)
-outline2ddemo,"Uses shaders to outline 2D sprites - outlining only outside the pixels, inside, or both."
-outline3ddemo,"Uses shaders to draw an outline around 3D object highlighted by the mouse, effectively drawing them a second time, but bigger, and inverting the culling so it draws behind the object."
-paletteswap2ddemo,Press ANY button to cycle through color palettes. Sprite itself is converted to even distribution of gray tones from black to white. Color sets are laid on texture vertically with colors spread horizontally. Shader reads color value from one color channel and uses the value as a horizontal position value on the color set. Using palette_index to offset vertical position and achieving different color sets.
-particlebridgedemo,Particle bridge! This demo shows how to communicate between a particle shader and a canvas_item/spatial shader.
+crystaldemo,We converted a SpatialMaterial to a shader to add a TIME-based pulse effect to its emission and fresnel.
+dissolve2ddemo,"We use a Noise mask to dissolve a sprite and generate a mask used to set the emission points array of a CPUParticles2D. To generate the particles mask, we scale down the dissolve mask in ScaledView and loop over that texture's pixels in GDScript."
+dissolve3ddemo,We use a noise mask to make a 3D object dissolve by reducing the alpha channel of the Mesh according to the shape of the noise texture.
+environmentglowdemo,We can create a glow effect on 2D objects with a built-in WorldEnvironment node rather than creating a solution with shaders.
+flag3ddemo,"To give the impression of a flag blowing in the wind, our shader samples, and scrolls OpenSimplexNoise to displace the vertices of our Mesh."
+forcefielddemo,Our force field emitter uses a fresnel effect to form a smooth glow and the depth buffer to calculate intersection with existing world geometry.
+impossiblecubedemo,"We use a viewport to simulate stencil tests, making objects disappear depending on what color is facing the camera on the stencil view. The stencil supports up to 7 colors of masks."
+interactivesnowdemo,We paint a trail in a secondary viewport. A shader then reads that to decide where to displace and blend the textures of the snow into the dirt where it is trodden.
+invertedcolorsdemo,"This shader takes the colors output by the demo viewport and inverts them - white is black, blue isn't blue, not red is red, etc."
+matcapdemo,This shader applies a material capture texture. It maps a sphere texture using the model's normals instead of UVs. So any normals that point to the right sample from the texture's right.
+noisedemo,"Several common types of random noise, selecting the proper noise to shape your shaders is a key step in creating appealing effects. "
+outline2ddemo,"Shaders are excellent for the not-so-easy task of outlining 2D sprites - outlining only outside the pixels, inside, or both."
+outline3ddemo,"Shaders can also outline 3D objects with precise control. We effectively draw the meshes a second time, but bigger, and invert the culling to draw behind the object."
+paletteswap2ddemo,"Shaders are excellent at simple recoloring tasks. Our sprite is made grayscale, and we use the shade of gray to select colors from a palette. We can even support multiple color palettes, selecting them with a palette_index parameter."
+particlebridgedemo,Particles can be shaders too! This demo shows how to communicate between a particle and material shader for complex effects with many moving parts.
 pixelperfectoutlinedemo,"An outline drawn in clip space instead of vertex space. Its width is specified in pixels and remains at a constant size regardless of the distance from the camera or the scale of the object. Good for user interfaces, object highlights, and technical drawings."
 pointilismdemo,"Turns the color data from the demo viewport into a black and white image, and uses the step function in a shader to turn it into a pointilism image."
 prebakedglowdemo,"Uses a shader on a sprite to control a glow. The glow effect is part of the sprite's texture, and the shader manipulates the amount of alpha and color intensity."

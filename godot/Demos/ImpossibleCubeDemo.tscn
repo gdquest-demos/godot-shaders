@@ -9,24 +9,9 @@
 [node name="ImpossibleCubeDemo" type="CanvasLayer"]
 script = ExtResource( 1 )
 
-[node name="DemoView" type="ViewportContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-stretch = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ImpossibleCubeDemo" parent="." instance=ExtResource( 2 )]
 
-[node name="Viewport" type="Viewport" parent="DemoView"]
-size = Vector2( 1920, 1080 )
-handle_input_locally = false
-msaa = 2
-render_target_update_mode = 3
-shadow_atlas_size = 8192
-
-[node name="ImpossibleCubeDemo" parent="DemoView/Viewport" instance=ExtResource( 2 )]
-
-[node name="Demo3DEnvironment" parent="DemoView/Viewport" instance=ExtResource( 4 )]
+[node name="Demo3DEnvironment" parent="." instance=ExtResource( 4 )]
 
 [node name="DemoInterface" parent="." instance=ExtResource( 5 )]
 

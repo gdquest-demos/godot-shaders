@@ -28,6 +28,7 @@ func refresh_viewports() -> void:
 
 		_texture_rect.rect_min_size = Vector2(width, height)
 		_texture_rect.texture = viewport.get_texture()
+		_texture_rect.flip_v = true
 
 		vbox.add_child(_texture_rect)
 	add_child(vbox)
