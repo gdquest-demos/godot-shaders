@@ -7,13 +7,16 @@ onready var _tween: Tween = $Tween
 
 func setup(_vertex_positions: Array, _indices: Array, _culled_indices: Array) -> void:
 	for i in range(0, _indices.size(), 3):
-		var indice_slice = _indices.slice(i, i + 2)
-		var vertex_slice = []
-		for _i in indice_slice:
-			vertex_slice.append(_vertex_positions[_i])
+		var i1: int = _indices[i]
+		var i2: int = _indices[i + 1]
+		var i3: int = _indices[i + 2]
+		
+		var v1: Vector2 = _vertex_positions[i1]
+		var v2: Vector2 = _vertex_positions[i2]
+		var v3: Vector2 = _vertex_positions[i3]
 
 		var line_drawer := LineDrawer.instance()
-		line_drawer.setup(_tween, vertex_slice, _indices[i] in _culled_indices)
+		line_drawer.setup(_tween, [v1, v2, v3], i1 in _culled_indices)
 		add_child(line_drawer)
 
 

@@ -1,5 +1,5 @@
-extends Node
 tool
+extends Node
 
 onready var _bridge_body: MeshInstance = $BridgeBody
 onready var _lantern: MeshInstance = $Lantern

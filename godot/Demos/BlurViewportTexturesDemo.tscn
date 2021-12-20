@@ -70,7 +70,7 @@ trail_length = 24000.0
 smoothing_speed = 25.0
 amplitude = 100.0
 duration = 5.0
-DAMP_EASING = 6.0
+damp_easing = 6.0
 
 [node name="AsteroidTrail" parent="SceneView/Viewport/MotionBlurScene" index="1"]
 spawn_radius = 960.0

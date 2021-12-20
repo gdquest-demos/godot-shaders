@@ -9,7 +9,7 @@ export var movement_to_max_wobble := 0.3
 # How much do we need to be rotated to reach maximum wobble intensity, in a second
 export var rotation_to_max_wobble := PI / 2.0
 # How long it takes for the liquid to become still again
-export var wobble_decay_time := 1.0
+export var wobble_damping := 1.0
 # How fast will the liquid wobble
 export var wobble_speed := 2.0
 
@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 	# ANCHOR: decay
 	# The decay here is multiplied by the wobble intensity so that the more the fluid is
 	# getting still, the longer it will take to be completely still
-	_wobble_intensity -= delta / wobble_decay_time * _wobble_intensity
+	_wobble_intensity -= delta / wobble_damping * _wobble_intensity
 	# END: decay
 	# ANCHOR: add_wobble
 	_wobble_intensity += current_movement_len / movement_to_max_wobble

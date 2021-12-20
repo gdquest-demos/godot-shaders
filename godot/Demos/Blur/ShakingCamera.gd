@@ -8,7 +8,7 @@ onready var timer: Timer = $Timer
 
 export var amplitude := 4.0
 export var duration := 0.3 setget set_duration
-export(float, EASE) var DAMP_EASING
+export(float, EASE) var damp_easing
 export var is_shaking := false setget set_is_shaking
 
 enum States { IDLE, SHAKING }
@@ -24,7 +24,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	var damping = ease(timer.time_left / timer.wait_time, DAMP_EASING)
+	var damping = ease(timer.time_left / timer.wait_time, damp_easing)
 	offset = Vector2(
 		rand_range(amplitude, -amplitude), rand_range(amplitude, -amplitude)
 	) * damping

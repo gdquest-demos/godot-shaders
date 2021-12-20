@@ -75,6 +75,9 @@ render_target_update_mode = 3
 [node name="MotionBlurSceneBackground" parent="Presentation/BlurView2/Viewport/BlurView/Viewport" instance=ExtResource( 2 )]
 trail_length = 24000.0
 
+[node name="ShakingCamera" parent="Presentation/BlurView2/Viewport/BlurView/Viewport/MotionBlurSceneBackground" index="0"]
+damp_easing = 6.0
+
 [node name="AsteroidTrail" parent="Presentation/BlurView2/Viewport/BlurView/Viewport/MotionBlurSceneBackground" index="1"]
 spawn_radius = 960.0
 
