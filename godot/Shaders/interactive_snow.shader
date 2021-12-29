@@ -35,13 +35,13 @@ void vertex() {
 	height = 1.0 - texture(mask_texture, world_uv).a;
 
 	// Approximate derivative along the z axis
-	float height_up = 1.0 - texture(mask_texture, world_uv + vec2(0.0, texture_increment.y)).a;
-	float height_down = 1.0 - texture(mask_texture, world_uv + vec2(0.0, -texture_increment.y)).a;
+	float height_up = texture(mask_texture, world_uv + vec2(0.0, texture_increment.y)).a;
+	float height_down = texture(mask_texture, world_uv + vec2(0.0, -texture_increment.y)).a;
 	// Approximate derivative along the x axis
-	float height_left = 1.0 - texture(mask_texture, world_uv + vec2(-texture_increment.x, 0.0)).a;
-	float height_right = 1.0 - texture(mask_texture, world_uv + vec2(texture_increment.x, 0.0)).a;
-	BINORMAL = normalize(vec3(1.0, (height_right - height_left) * snow_height, 0.0));
-	TANGENT = normalize(vec3(0.0, (height_up - height_down) * snow_height, 1.0));
+	float height_left = texture(mask_texture, world_uv + vec2(-texture_increment.x, 0.0)).a;
+	float height_right = texture(mask_texture, world_uv + vec2(texture_increment.x, 0.0)).a;
+	BINORMAL = normalize(vec3(1.0, (height_right + height_left) * snow_height, 0.0));
+	TANGENT = normalize(vec3(0.0, (height_up + height_down) * snow_height, 1.0));
 	NORMAL = normalize(vec3(cross(TANGENT, BINORMAL)));
 	
 	VERTEX.y += snow_height * height;
