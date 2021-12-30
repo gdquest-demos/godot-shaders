@@ -1,9 +1,10 @@
 extends Viewport
 
-export var interactive_actor_path: NodePath()
-export var snow_size := Vector2(8, 8)
+export var interactive_actor_path := NodePath("../InteractiveSnowball")
+export var snow_plane_path := NodePath("../SnowPlane")
 
-onready var _player = get_node(interactive_actor_path)
+onready var snow_size: Vector2 = get_node(snow_plane_path).mesh.size / 2
+onready var _player: MeshInstance = get_node(interactive_actor_path)
 onready var _footprint: Sprite = $Sprite
 
 

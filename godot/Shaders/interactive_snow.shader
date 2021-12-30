@@ -31,7 +31,7 @@ void vertex() {
 	// Because normal, tangent and binormal are related to the variation of the y along
 	// an axis, we need to first establish how small of an increment we want to consider.
 	// Here we take the size of the world texture, and divide it by the texture size.
-	vec2 texture_increment = vec2(mask_texture_world_size) / vec2(textureSize(mask_texture, 0));
+	vec2 texture_increment = vec2(mask_texture_world_size) / (textures_tiling * vec2(textureSize(mask_texture, 0)));
 	height = 1.0 - texture(mask_texture, world_uv).a;
 
 	// Approximate derivative along the z axis
