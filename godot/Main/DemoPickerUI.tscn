@@ -93,9 +93,9 @@ __meta__ = {
 }
 
 [node name="All" type="Button" parent="FilterButtons"]
-margin_top = 28.0
+margin_top = 132.0
 margin_right = 231.0
-margin_bottom = 64.0
+margin_bottom = 168.0
 custom_colors/font_color = Color( 0.831373, 0.847059, 0.92549, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0.596078, 0.639216, 0.839216, 1 )
@@ -114,6 +114,7 @@ align = 0
 expand_icon = true
 
 [node name="2D" type="Button" parent="FilterButtons"]
+visible = false
 margin_top = 80.0
 margin_right = 231.0
 margin_bottom = 116.0
@@ -134,6 +135,7 @@ align = 0
 expand_icon = true
 
 [node name="3D" type="Button" parent="FilterButtons"]
+visible = false
 margin_top = 132.0
 margin_right = 231.0
 margin_bottom = 168.0
@@ -157,6 +159,7 @@ __meta__ = {
 }
 
 [node name="UI" type="Button" parent="FilterButtons"]
+visible = false
 margin_top = 184.0
 margin_right = 231.0
 margin_bottom = 220.0
@@ -180,6 +183,7 @@ __meta__ = {
 }
 
 [node name="General" type="Button" parent="FilterButtons"]
+visible = false
 margin_top = 236.0
 margin_right = 231.0
 margin_bottom = 272.0
@@ -226,7 +230,7 @@ margin_bottom = 240.0
 rect_min_size = Vector2( 0, 240 )
 texture = ExtResource( 8 )
 expand = true
-stretch_mode = 5
+stretch_mode = 6
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 256.0
@@ -330,6 +334,7 @@ __meta__ = {
 }
 
 [node name="HelpButton" type="Button" parent="HBoxContainer"]
+visible = false
 margin_left = 112.0
 margin_right = 208.0
 margin_bottom = 60.0
