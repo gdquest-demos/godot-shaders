@@ -19,10 +19,9 @@ uniform float snow_sharpness: hint_range(0.3, 20.0, 0.1) = 3.0;
 uniform vec2 textures_tiling = vec2(4.0);
 
 varying vec2 world_uv;
-varying float height;
 
 void vertex() {
-	height = 1.0 - texture(mask_texture, UV).a;
+	float height = 1.0 - texture(mask_texture, UV).a;
 	VERTEX.y += snow_height * height;
 	// ANCHOR: increment
 	vec2 texture_increment = 1.0 / vec2(textureSize(mask_texture, 0));
@@ -45,6 +44,7 @@ void vertex() {
 void fragment() {
 	// ANCHOR: sampling
 	vec2 world_uv_tiled = UV * textures_tiling;
+	float mask = 1.0 - texture(mask_texture, UV).a;
 	vec4 snow_color = texture(snow_texture, world_uv_tiled);
 	vec4 dirt_color = texture(dirt_texture, world_uv_tiled);
 	vec3 snow_normal = texture(snow_texture_normal, world_uv_tiled).rgb;
@@ -56,9 +56,9 @@ void fragment() {
 	// ANCHOR: overlay
 	// overlay overlay_blend_mode
 	float snow_interp = mix(
-		height * noise_interp * 2.0,
-		1.0 - 2.0 * (1.0 - height) * (1.0 - noise_interp),
-		step(0.5, height));
+		mask * noise_interp * 2.0,
+		1.0 - 2.0 * (1.0 - mask) * (1.0 - noise_interp),
+		step(0.5, mask));
 	// END: overlay_blend_mode
 	// ANCHOR: sanitize
 	snow_interp = 1.0 - pow(1.0 - snow_interp, snow_sharpness);
