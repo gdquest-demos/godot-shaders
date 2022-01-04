@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Demos/Reflection2D/Reflection2DTextureRect.gd" type="Script" id=1]
+[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=2]
 [ext_resource path="res://Shared/sprites/robi_shaded.png" type="Texture" id=3]
 [ext_resource path="res://Shared/Background2D/Demo2DBackground.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Demos/Outline/Outline2D/mouse_cursor.png" type="Texture" id=6]
@@ -38,22 +39,13 @@ shader = SubResource( 1 )
 shader_param/color = Color( 0.207843, 0.203922, 0.615686, 1 )
 shader_param/reflection_intensity = 0.542
 shader_param/scale_y = 2.9375
-shader_param/zoom_y = 0.66742
+shader_param/zoom_y = 0.943874
 shader_param/transition_gradient = SubResource( 3 )
 
-[node name="Reflection2DTextureRectDemo" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Reflection2DTextureRectDemo" type="CanvasLayer"]
+script = ExtResource( 2 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 4 )]
-
-[node name="DemoInterface" parent="." instance=ExtResource( 7 )]
-text_bbcode = "Vertical mirror shader with a fade to a background color.
-This demo shows how to create a pure vertical mirror using the screen texture.
-You can control the way the reflection fade using a gradient texture."
 
 [node name="Robi" type="Sprite" parent="."]
 position = Vector2( 504.151, 466.506 )
@@ -84,3 +76,5 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="DemoInterface" parent="." instance=ExtResource( 7 )]

@@ -13,8 +13,8 @@ uniform float time_scale_1 : hint_range(0.001, 0.25) = 0.012;
 uniform float tile_factor_1 : hint_range(0.1, 3.0) = 0.6;
 
 uniform vec2 scroll_direction_2 = vec2(0.75, 0.25);
-uniform float time_scale_2 :hint_range(0.001, 0.25) = 0.005;
-uniform float tile_factor_2 :hint_range(0.1, 3.0) = 0.3;
+uniform float time_scale_2 : hint_range(0.001, 0.25) = 0.005;
+uniform float tile_factor_2 : hint_range(0.1, 3.0) = 0.3;
 
 void fragment() {
 	vec2 noise_2_uv = UV * tile_factor_2 + scroll_direction_2 * TIME * time_scale_2;

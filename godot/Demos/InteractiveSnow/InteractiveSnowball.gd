@@ -1,3 +1,4 @@
+# ANCHOR: all
 extends MeshInstance
 
 export var move_speed := 5.0
@@ -10,3 +11,4 @@ func _process(delta: float) -> void:
 	move_dir.y = Input.get_action_strength("ui_up") - Input.get_action_strength("ui_down")
 	rotate_y(move_dir.x * rotate_speed * delta)
 	global_transform.origin += -global_transform.basis.z * move_speed * delta * move_dir.y
+# END: all

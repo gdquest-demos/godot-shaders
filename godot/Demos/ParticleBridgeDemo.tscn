@@ -1,9 +1,10 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Shaders/particle_bridge_spatial.shader" type="Shader" id=1]
 [ext_resource path="res://Shaders/particle_bridge_particle.shader" type="Shader" id=2]
 [ext_resource path="res://Shared/Demo3DEnvironmentDark.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=4]
+[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=5]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
@@ -151,7 +152,8 @@ scale_curve = SubResource( 19 )
 [sub_resource type="CubeMesh" id=21]
 size = Vector3( 0.1, 0.1, 0.1 )
 
-[node name="ParticleBridgeDemo" type="Spatial"]
+[node name="ParticleBridgeDemo" type="CanvasLayer"]
+script = ExtResource( 5 )
 
 [node name="BridgeParticles" type="Particles" parent="."]
 amount = 996
@@ -294,7 +296,5 @@ process_material = SubResource( 20 )
 draw_pass_1 = SubResource( 21 )
 
 [node name="DemoInterface" parent="." instance=ExtResource( 4 )]
-text_bbcode = "Particle bridge!
-This demo shows how to communicate between a particle shader and a canvas_item/spatial shader."
 
 [editable path="Demo3DEnvironmentDark"]

@@ -1,0 +1,385 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://Main/background.png" type="Texture" id=1]
+[ext_resource path="res://Main/DemoList.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Main/DemoPickerUI.gd" type="Script" id=3]
+[ext_resource path="res://Main/UI/ui_theme.tres" type="Theme" id=4]
+[ext_resource path="res://Main/UI/9patch_searchbar.png" type="Texture" id=5]
+[ext_resource path="res://Main/UI/9patch_mainmenu.png" type="Texture" id=6]
+[ext_resource path="res://Main/planet.png" type="Texture" id=7]
+[ext_resource path="res://Main/title.svg" type="Texture" id=8]
+[ext_resource path="res://Main/GDQuestLogo.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Main/planet_large.png" type="Texture" id=10]
+[ext_resource path="res://Main/filter_button_group.tres" type="ButtonGroup" id=11]
+[ext_resource path="res://Main/UI/node-icons/Node3D.svg" type="Texture" id=12]
+[ext_resource path="res://Main/UI/node-icons/Node2D.svg" type="Texture" id=13]
+[ext_resource path="res://Main/UI/node-icons/Node.svg" type="Texture" id=14]
+[ext_resource path="res://Main/UI/node-icons/Control.svg" type="Texture" id=15]
+[ext_resource path="res://Main/UI/node-icons/GuiVisibilityVisible.svg" type="Texture" id=16]
+[ext_resource path="res://Main/UIControlsList.tscn" type="PackedScene" id=17]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxFlat" id=2]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxTexture" id=4]
+content_margin_top = 24.0
+content_margin_bottom = 24.0
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 128, 128 )
+margin_left = 48.0
+margin_right = 48.0
+margin_top = 48.0
+margin_bottom = 48.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="InputEventAction" id=7]
+action = "toggle_help"
+
+[sub_resource type="ShortCut" id=8]
+shortcut = SubResource( 7 )
+
+[node name="DemoPickerUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 4 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 1024, 600 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="planet" type="Sprite" parent="TextureRect"]
+position = Vector2( 1719.03, 225.17 )
+texture = ExtResource( 7 )
+
+[node name="planet2" type="Sprite" parent="TextureRect"]
+position = Vector2( 39.3873, 1036.48 )
+scale = Vector2( 1.09002, 1.09002 )
+texture = ExtResource( 10 )
+
+[node name="FilterButtons" type="VBoxContainer" parent="."]
+margin_left = 1325.64
+margin_top = 499.122
+margin_right = 1556.64
+margin_bottom = 800.122
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="All" type="Button" parent="FilterButtons"]
+margin_top = 132.0
+margin_right = 231.0
+margin_bottom = 168.0
+custom_colors/font_color = Color( 0.831373, 0.847059, 0.92549, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.596078, 0.639216, 0.839216, 1 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/disabled = SubResource( 1 )
+custom_styles/normal = SubResource( 1 )
+toggle_mode = true
+pressed = true
+group = ExtResource( 11 )
+text = "ALL"
+icon = ExtResource( 16 )
+flat = true
+align = 0
+expand_icon = true
+
+[node name="2D" type="Button" parent="FilterButtons"]
+visible = false
+margin_top = 80.0
+margin_right = 231.0
+margin_bottom = 116.0
+custom_colors/font_color = Color( 0.831373, 0.847059, 0.92549, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.596078, 0.639216, 0.839216, 1 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/disabled = SubResource( 1 )
+custom_styles/normal = SubResource( 1 )
+toggle_mode = true
+group = ExtResource( 11 )
+text = "2D"
+icon = ExtResource( 13 )
+flat = true
+align = 0
+expand_icon = true
+
+[node name="3D" type="Button" parent="FilterButtons"]
+visible = false
+margin_top = 132.0
+margin_right = 231.0
+margin_bottom = 168.0
+custom_colors/font_color = Color( 0.831373, 0.847059, 0.92549, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.596078, 0.639216, 0.839216, 1 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/disabled = SubResource( 1 )
+custom_styles/normal = SubResource( 1 )
+toggle_mode = true
+group = ExtResource( 11 )
+text = "3D"
+icon = ExtResource( 12 )
+flat = true
+align = 0
+expand_icon = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="UI" type="Button" parent="FilterButtons"]
+visible = false
+margin_top = 184.0
+margin_right = 231.0
+margin_bottom = 220.0
+custom_colors/font_color = Color( 0.831373, 0.847059, 0.92549, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.596078, 0.639216, 0.839216, 1 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/disabled = SubResource( 1 )
+custom_styles/normal = SubResource( 1 )
+toggle_mode = true
+group = ExtResource( 11 )
+text = "UI"
+icon = ExtResource( 15 )
+flat = true
+align = 0
+expand_icon = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="General" type="Button" parent="FilterButtons"]
+visible = false
+margin_top = 236.0
+margin_right = 231.0
+margin_bottom = 272.0
+custom_colors/font_color = Color( 0.831373, 0.847059, 0.92549, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.596078, 0.639216, 0.839216, 1 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/disabled = SubResource( 1 )
+custom_styles/normal = SubResource( 1 )
+toggle_mode = true
+group = ExtResource( 11 )
+text = "GENERAL"
+icon = ExtResource( 14 )
+flat = true
+align = 0
+expand_icon = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -341.0
+margin_top = -440.0
+margin_right = 341.0
+margin_bottom = 434.0
+grow_vertical = 2
+rect_min_size = Vector2( 682, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="TextureRect" parent="VBoxContainer"]
+margin_right = 682.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 0, 240 )
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 256.0
+margin_right = 682.0
+margin_bottom = 349.0
+
+[node name="SearchBar" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+margin_right = 682.0
+margin_bottom = 93.0
+focus_neighbour_top = NodePath(".")
+focus_next = NodePath("../../NinePatchRect/MarginContainer/DemoList")
+focus_previous = NodePath("../../../HBoxContainer/HelpButton")
+size_flags_horizontal = 3
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+
+[node name="SearchLabel" type="Label" parent="VBoxContainer/HBoxContainer/SearchBar"]
+modulate = Color( 1, 1, 1, 0.25098 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 48.0
+margin_right = -49.0
+text = "Search"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer"]
+margin_top = 365.0
+margin_right = 682.0
+margin_bottom = 753.0
+size_flags_vertical = 3
+texture = ExtResource( 6 )
+patch_margin_left = 16
+patch_margin_top = 32
+patch_margin_right = 16
+patch_margin_bottom = 32
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 24
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 27
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DemoList" parent="VBoxContainer/NinePatchRect/MarginContainer" instance=ExtResource( 2 )]
+focus_neighbour_top = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+focus_next = NodePath("../../../LoadButton")
+focus_previous = NodePath("../../../HBoxContainer/SearchBar")
+
+[node name="LoadButton" type="Button" parent="VBoxContainer"]
+margin_left = 201.0
+margin_top = 769.0
+margin_right = 481.0
+margin_bottom = 874.0
+rect_min_size = Vector2( 280, 100 )
+focus_neighbour_top = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+size_flags_horizontal = 4
+size_flags_vertical = 13
+text = "LOAD SCENE"
+
+[node name="GDQuestLogo" parent="." instance=ExtResource( 9 )]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 184.0
+margin_bottom = 64.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitButton" type="Button" parent="HBoxContainer"]
+margin_right = 96.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 96, 60 )
+size_flags_horizontal = 4
+size_flags_vertical = 13
+custom_colors/font_color_disabled = Color( 0.439216, 0.482353, 0.662745, 1 )
+custom_colors/font_color = Color( 0.439216, 0.482353, 0.662745, 1 )
+custom_colors/font_color_hover = Color( 0.643137, 0.682353, 0.85098, 1 )
+custom_colors/font_color_pressed = Color( 0.337255, 0.376471, 0.568627, 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+text = "QUIT"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HelpButton" type="Button" parent="HBoxContainer"]
+visible = false
+margin_left = 112.0
+margin_right = 208.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 96, 60 )
+focus_next = NodePath("../../VBoxContainer/HBoxContainer/SearchBar")
+focus_previous = NodePath("../QuitButton")
+size_flags_horizontal = 4
+size_flags_vertical = 13
+custom_colors/font_color_disabled = Color( 0.439216, 0.482353, 0.662745, 1 )
+custom_colors/font_color = Color( 0.439216, 0.482353, 0.662745, 1 )
+custom_colors/font_color_hover = Color( 0.643137, 0.682353, 0.85098, 1 )
+custom_colors/font_color_pressed = Color( 0.337255, 0.376471, 0.568627, 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 8 )
+text = "HELP"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HelpWindow" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0980392, 0.0784314, 0.141176, 0.701961 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="HelpWindow"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="UIControlsList" parent="HelpWindow/CenterContainer" instance=ExtResource( 17 )]
+margin_left = 830.0
+margin_top = 510.0
+margin_right = 1090.0
+margin_bottom = 570.0
+is_foldable = false
+title = "Demo controls"
+
+[connection signal="text_changed" from="VBoxContainer/HBoxContainer/SearchBar" to="." method="_on_LineEdit_text_changed"]

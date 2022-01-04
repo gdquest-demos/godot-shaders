@@ -1,12 +1,14 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Demos/SphereMask/bridge-lantern.glb" type="PackedScene" id=2]
+[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=2]
 [ext_resource path="res://Shared/Demo3DEnvironmentDark.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Demos/SphereMask/BridgeMaterial.tres" type="Material" id=4]
 [ext_resource path="res://Demos/SphereMask/LanternPositionToMaterial.gd" type="Script" id=5]
 [ext_resource path="res://Demos/SphereMask/Lantern.mesh" type="ArrayMesh" id=6]
 [ext_resource path="res://Demos/SphereMask/LanternMaterialEmissive.material" type="Material" id=7]
+[ext_resource path="res://Demos/SphereMask/Poles.mesh" type="ArrayMesh" id=8]
+[ext_resource path="res://Demos/SphereMask/BridgeBody.mesh" type="ArrayMesh" id=9]
 
 [sub_resource type="ProceduralSky" id=1]
 radiance_size = 1
@@ -190,24 +192,29 @@ damping = 0.2
 scale = 0.2
 scale_random = 1.0
 
-[node name="SphereMaskDemo" type="Spatial"]
+[node name="SphereMaskDemo" type="CanvasLayer"]
+script = ExtResource( 2 )
 
-[node name="DemoInterface" parent="." instance=ExtResource( 1 )]
-text_bbcode = "A spherical mask is applied to the bridge to make it disappear when too far from a given point (the lantern).
-
-Bridge model from: https://blendswap.com/blend/23063"
-
-[node name="bridge-lantern" parent="." instance=ExtResource( 2 )]
+[node name="bridge-lantern" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41845, 0 )
 script = ExtResource( 5 )
 
-[node name="BridgeBody" parent="bridge-lantern" index="0"]
+[node name="BridgeBody" type="MeshInstance" parent="bridge-lantern"]
+transform = Transform( 0.438812, 0, 0, 0, 0.438812, 0, 0, 0, 0.438812, 0, 0, 0 )
+mesh = ExtResource( 9 )
 material/0 = ExtResource( 4 )
 
-[node name="Lantern" parent="bridge-lantern" index="2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.42114, 2.83444, -4.76837e-07 )
+[node name="Poles" type="MeshInstance" parent="bridge-lantern"]
+transform = Transform( 0.438812, 0, 0, 0, 0.438812, 0, 0, 0, 0.438812, 0, 0, 0 )
+mesh = ExtResource( 8 )
+material/0 = null
 
-[node name="OmniLight" type="OmniLight" parent="bridge-lantern/Lantern" index="0"]
+[node name="Lantern" type="MeshInstance" parent="bridge-lantern"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.42114, 2.83444, -4.76837e-07 )
+mesh = ExtResource( 6 )
+material/0 = null
+
+[node name="OmniLight" type="OmniLight" parent="bridge-lantern/Lantern"]
 light_color = Color( 0.945098, 0.807843, 0.521569, 1 )
 light_energy = 0.0
 
@@ -249,5 +256,9 @@ lifetime = 5.0
 process_material = SubResource( 7 )
 draw_pass_1 = ExtResource( 6 )
 
-[editable path="bridge-lantern"]
+[node name="DemoInterface" parent="." instance=ExtResource( 1 )]
+text_bbcode = "A spherical mask is applied to the bridge to make it disappear when too far from a given point (the lantern).
+
+Bridge model from: https://blendswap.com/blend/23063"
+
 [editable path="Demo3DEnvironmentDark"]

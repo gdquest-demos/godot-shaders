@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Shaders/PalettSwap2D.shader" type="Shader" id=1]
-[ext_resource path="res://Demos/PaletteSwap2D/PaletteSwap2D.gd" type="Script" id=2]
+[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=2]
 [ext_resource path="res://Demos/PaletteSwap2D/KingsAndPigs_color_sets.png" type="Texture" id=3]
 [ext_resource path="res://Demos/PaletteSwap2D/KingsAndPigs_greyscale_sprite.png" type="Texture" id=4]
-[ext_resource path="res://Shared/theme/gdquest.theme" type="Theme" id=5]
+[ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Shared/Background2D/Demo2DBackground.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Demos/PaletteSwap2D/PaletteSwapSprite.gd" type="Script" id=7]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
@@ -13,53 +14,16 @@ shader_param/palette_count = 4.0
 shader_param/palette_index = 0.0
 shader_param/palette = ExtResource( 3 )
 
-[node name="PaletteSwap2DDemo" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="PaletteSwap2DDemo" type="CanvasLayer"]
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 6 )]
-
-[node name="DemoInterface" type="Panel" parent="."]
-anchor_right = 1.0
-margin_bottom = 120.0
-rect_min_size = Vector2( 0, 150 )
-mouse_filter = 2
-theme = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MarginContainer" type="MarginContainer" parent="DemoInterface"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_constants/margin_right = 10
-custom_constants/margin_top = 10
-custom_constants/margin_left = 10
-custom_constants/margin_bottom = 10
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RichTextLabel" type="RichTextLabel" parent="DemoInterface/MarginContainer"]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 1910.0
-margin_bottom = 140.0
-mouse_filter = 2
-bbcode_enabled = true
-text = "Press ANY button to cycle through color palettes.
-Sprite itself is converted to even distribution of gray tones from black to white.
-Color sets are laid on texture vertically with colors spread horizontally. Shader reads color value from one color channel and uses the value as a horizontal position value on the color set. Using palette_index to offset vertical position and achieving different color sets."
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="PaletteSwapSprite" type="Sprite" parent="."]
 material = SubResource( 1 )
 position = Vector2( 960, 540 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 4 )
+script = ExtResource( 7 )
+
+[node name="DemoInterface" parent="." instance=ExtResource( 5 )]

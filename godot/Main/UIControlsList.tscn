@@ -1,0 +1,89 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Main/UI/ui_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Main/keyboard_key_panel.tres" type="StyleBox" id=2]
+[ext_resource path="res://Main/UI/fonts/SubtitleFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Main/UIControlsList.gd" type="Script" id=4]
+
+[node name="UIControlsList" type="HBoxContainer"]
+margin_left = 32.0
+margin_top = 136.0
+margin_right = 341.0
+margin_bottom = 338.0
+mouse_filter = 2
+theme = ExtResource( 1 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 33.0
+margin_bottom = 202.0
+mouse_filter = 2
+custom_constants/margin_top = 12
+
+[node name="ToggleButton" type="Button" parent="MarginContainer"]
+margin_top = 12.0
+margin_right = 33.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 30, 40 )
+focus_mode = 0
+size_flags_vertical = 0
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 2 )
+custom_styles/focus = ExtResource( 2 )
+custom_styles/normal = ExtResource( 2 )
+toggle_mode = true
+shortcut_in_tooltip = false
+pressed = true
+text = "<"
+
+[node name="ControlsPanel" type="PanelContainer" parent="."]
+margin_left = 49.0
+margin_right = 309.0
+margin_bottom = 202.0
+rect_min_size = Vector2( 260, 60 )
+mouse_filter = 2
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="ControlsPanel"]
+margin_left = 14.0
+margin_top = 18.0
+margin_right = 246.0
+margin_bottom = 184.0
+mouse_filter = 2
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 4
+
+[node name="Column" type="VBoxContainer" parent="ControlsPanel/MarginContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 224.0
+margin_bottom = 162.0
+mouse_filter = 2
+custom_constants/separation = 8
+
+[node name="TitleLabel" type="Label" parent="ControlsPanel/MarginContainer/Column"]
+margin_right = 216.0
+margin_bottom = 45.0
+custom_fonts/font = ExtResource( 3 )
+text = "Controls"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="ControlsPanel/MarginContainer/Column"]
+margin_top = 53.0
+margin_right = 216.0
+margin_bottom = 57.0
+mouse_filter = 2
+
+[node name="ControlsTable" type="VBoxContainer" parent="ControlsPanel/MarginContainer/Column"]
+margin_top = 65.0
+margin_right = 216.0
+margin_bottom = 65.0
+mouse_filter = 2

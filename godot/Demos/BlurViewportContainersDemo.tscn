@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Demos/Blur/Ship.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Demos/Blur/SpaceBackground.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Shaders/gaussian_blur.shader" type="Shader" id=4]
 [ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=5]
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=7]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 4 )
@@ -23,21 +24,17 @@ void fragment() {
 	
 	COLOR = vec4(out_color.rgb, min(1.0, out_color.r + out_color.g + out_color.b));
 }"
-custom_defines = ""
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = SubResource( 3 )
 
-[node name="BlurViewportContainersDemo" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="BlurViewportContainersDemo" type="CanvasLayer"]
+script = ExtResource( 7 )
 
 [node name="Presentation" type="ViewportContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 stretch = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -47,9 +44,10 @@ __meta__ = {
 material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 stretch = true
 script = ExtResource( 3 )
-direction_provider_path = NodePath("../../../BlurViewportContainersDemo/Presentation/BlurView2/Viewport/BlurView/Viewport/MotionBlurSceneBackground")
+direction_provider_path = NodePath("Viewport/BlurView/Viewport/MotionBlurSceneBackground")
 blur_scale = Vector2( 1, -1 )
 
 [node name="Viewport" type="Viewport" parent="Presentation/BlurView2"]
@@ -62,9 +60,10 @@ render_target_update_mode = 3
 material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 stretch = true
 script = ExtResource( 3 )
-direction_provider_path = NodePath("../../../../../BlurViewportContainersDemo/Presentation/BlurView2/Viewport/BlurView/Viewport/MotionBlurSceneBackground")
+direction_provider_path = NodePath("Viewport/MotionBlurSceneBackground")
 blur_scale = Vector2( 4, -4 )
 
 [node name="Viewport" type="Viewport" parent="Presentation/BlurView2/Viewport/BlurView"]
@@ -77,33 +76,40 @@ render_target_update_mode = 3
 trail_length = 24000.0
 
 [node name="ShakingCamera" parent="Presentation/BlurView2/Viewport/BlurView/Viewport/MotionBlurSceneBackground" index="0"]
-position = Vector2( 960, 540 )
+damp_easing = 6.0
 
 [node name="AsteroidTrail" parent="Presentation/BlurView2/Viewport/BlurView/Viewport/MotionBlurSceneBackground" index="1"]
 spawn_radius = 960.0
 
-[node name="ShipView" type="ViewportContainer" parent="Presentation"]
+[node name="TextureRect" parent="Presentation/BlurView2/Viewport/BlurView/Viewport/MotionBlurSceneBackground/CanvasLayer" index="0"]
+mouse_filter = 2
+
+[node name="ShipView" type="ViewportContainer" parent="."]
 material = SubResource( 4 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Viewport" type="Viewport" parent="Presentation/ShipView"]
+[node name="Viewport" type="Viewport" parent="ShipView"]
 size = Vector2( 1920, 1080 )
 transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 3
 
-[node name="Ship" parent="Presentation/ShipView/Viewport" instance=ExtResource( 1 )]
+[node name="Ship" parent="ShipView/Viewport" instance=ExtResource( 1 )]
 position = Vector2( 960, 540 )
 travel_speed = 10000.0
-blur_provider_path = NodePath("../../../../../BlurViewportContainersDemo/Presentation/BlurView2/Viewport/BlurView/Viewport/MotionBlurSceneBackground")
-shaking_camera_background_path = NodePath("../../../../../BlurViewportContainersDemo/Presentation/BlurView2/Viewport/BlurView/Viewport/MotionBlurSceneBackground/ShakingCamera")
+blur_provider_path = NodePath("../../../Presentation/BlurView2/Viewport/BlurView/Viewport/MotionBlurSceneBackground")
+shaking_camera_background_path = NodePath("../../../Presentation/BlurView2/Viewport/BlurView/Viewport/MotionBlurSceneBackground/ShakingCamera")
 
-[node name="BackgroundRemoteTransform" parent="Presentation/ShipView/Viewport/Ship" index="0"]
-remote_path = NodePath("../../../../BlurView2/Viewport/BlurView/Viewport/MotionBlurSceneBackground/ShakingCamera")
+[node name="BackgroundRemoteTransform" parent="ShipView/Viewport/Ship" index="0"]
+remote_path = NodePath("../../../../Presentation/BlurView2/Viewport/BlurView/Viewport/MotionBlurSceneBackground/ShakingCamera")
 
-[node name="Camera2D" type="Camera2D" parent="Presentation/ShipView/Viewport"]
+[node name="Camera2D" type="Camera2D" parent="ShipView/Viewport"]
 position = Vector2( 960, 540 )
 current = true
 zoom = Vector2( 2, 2 )
@@ -120,10 +126,6 @@ __meta__ = {
 }
 
 [node name="DemoInterface" parent="." instance=ExtResource( 6 )]
-text_bbcode = "Uses ViewportContainers to compose a scene that uses gaussian blur as motion blur.
-The ship is in its own viewport so it's not affected by the motion blur.
-The motion blur happens in BlurView and BlurView2."
 
 [editable path="Presentation/BlurView2/Viewport/BlurView/Viewport/MotionBlurSceneBackground"]
-
-[editable path="Presentation/ShipView/Viewport/Ship"]
+[editable path="ShipView/Viewport/Ship"]

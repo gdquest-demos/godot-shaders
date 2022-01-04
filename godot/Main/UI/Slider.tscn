@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Main/UI/ui_theme.tres" type="Theme" id=4]
+
+[node name="Slider" type="HSlider"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -960.0
+margin_top = -540.0
+margin_right = -448.0
+margin_bottom = -444.0
+rect_pivot_offset = Vector2( 480, 50 )
+size_flags_horizontal = 6
+theme = ExtResource( 4 )
+min_value = 0.1
+max_value = 4.1
+step = 0.1
+value = 3.0
+ticks_on_borders = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,0 +1,40 @@
+keys,en
+blurglowdemo,The shader takes a sprite and blurs it in two passes. It uses this blurred texture as a mask that feeds into the MainView's shader. The MainView applies a glow around the character.
+advancedtoondemo,"This advanced toon shader gives fine control over specular, anisotropy, color masks, shadow, and light colors."
+blurviewportcontainersdemo,"Uses ViewportContainers to compose a scene that uses Gaussian blur as motion blur. The ship is in a separate viewport, so it's not affected by the motion blur."
+blurviewporttexturesdemo,Uses TextureRects to compose a scene that uses Gaussian blur as motion blur. It's an alternative setup to produce a result like BlurViewportContainers.
+clouds2ddemo,Use noise and texture scrolling to add shadows cast by overhead clouds to your world.
+crystaldemo,We converted a SpatialMaterial to a shader to add a TIME-based pulse effect to its emission and fresnel.
+dissolve2ddemo,"We use a Noise mask to dissolve a sprite and generate a mask used to set the emission points array of a CPUParticles2D. To generate the particles mask, we scale down the dissolve mask in ScaledView and loop over that texture's pixels in GDScript."
+dissolve3ddemo,We use a noise mask to make a 3D object dissolve by reducing the alpha channel of the Mesh according to the shape of the noise texture.
+environmentglowdemo,We can create a glow effect on 2D objects with a built-in WorldEnvironment node rather than creating a solution with shaders.
+flag3ddemo,"To give the impression of a flag blowing in the wind, our shader samples, and scrolls OpenSimplexNoise to displace the vertices of our Mesh."
+forcefielddemo,Our force field emitter uses a fresnel effect to form a smooth glow and the depth buffer to calculate intersection with existing world geometry.
+impossiblecubedemo,"We use a viewport to simulate stencil tests, making objects disappear depending on what color is facing the camera on the stencil view. The stencil supports up to 7 colors of masks."
+interactivesnowdemo,We paint a trail in a secondary viewport. A shader then reads that to decide where to displace and blend the textures of the snow into the dirt where it is trodden.
+invertedcolorsdemo,"This shader takes the colors output by the demo viewport and inverts them - white is black, blue isn't blue, not red is red, etc."
+matcapdemo,This shader applies a material capture texture. It maps a sphere texture using the model's normals instead of UVs. So any normals that point to the right sample from the texture's right.
+noisedemo,"Several common types of random noise, selecting the proper noise to shape your shaders is a key step in creating appealing effects. "
+outline2ddemo,"Shaders are excellent for the not-so-easy task of outlining 2D sprites - outlining only outside the pixels, inside, or both."
+outline3ddemo,"Shaders can also outline 3D objects with precise control. We effectively draw the meshes a second time, but bigger, and invert the culling to draw behind the object."
+paletteswap2ddemo,"Shaders are excellent at simple recoloring tasks. Our sprite is made grayscale, and we use the shade of gray to select colors from a palette. We can even support multiple color palettes, selecting them with a palette_index parameter."
+particlebridgedemo,Particles can be shaders too! This demo shows how to communicate between a particle and material shader for complex effects with many moving parts.
+pixelperfectoutlinedemo,"By drawing our outline in clip space instead of vertex space, we can make it remain at a constant size regardless of the distance from the camera or the scale. Excellent for user interfaces, object highlights, and technical drawings."
+pointilismdemo,You can achieve a pointillism or dithering effect by turning the color from your viewport into grayscale and using the step function.
+prebakedglowdemo,We can use a shader on a premade sprite to create a glow effect. The sprite's texture needs some glow built-in for us to manipulate the alpha and color intensity.
+reflection2ddemo,Our Vertical mirror shader fades a reflection of the screen texture into a background color. A gradient texture controls the rate the reflection disappears.
+reflection2dtexturerectdemo,This shader achieves the same results as the Reflection2DDemo but uses a TextureRect instead of a sprite.
+shockwave3ddemo,This shader uses vertex manipulation to propagate a spherical shockwave through the geometry.
+shockwavedemo,"This shader generates a torus-shaped black and white mask, the data of which is used to distort the UVs of the demo viewports to make a shockwave distortion effect."
+spheremaskdemo,A sphere-shaped mask is applied to the bridge to make it disappear when too far from the lantern.
+stylizedfiredemo,We made this stylized fire shader using a particle system with custom world coordinates and noise-based alpha erosion.
+stylizedliquiddemo,We made this stylized liquid in a bottle using a custom wobble shader and script that informs the liquid shader when movement happens. Note: you should place the origin of the liquid mesh roughly in the center.
+stylizedwaterfalldemo,"This demo shows how to create a stylized waterfall. We created the flowing water without flowmaps by leveraging UVs and vertex colors created in Blender."
+texturemixdemo,"This shader mixes albedo and normal map textures based on different parameters. Such as vertex color, ambient occlusion, and world space normal. "
+unlitdirectionaltintdemo,"An unlit shader that tints the model depending on the world normal. The unlit tint shader is on the left, and the regular shader with albedo on the right."
+water2ddemo,"The top-down 2D water shader. The diffuse color texture has no light information. The shader calculates the shadows, and you can use the modulate property to tint it."
+water3ddemo,The water shader uses the depth and color buffer to cause a stylized refraction effect. The shader highlights intersections with foam using the depth buffer.
+watersidescroll2ddemo,"This side-scrolling water shader builds on the Reflection2DDemo. There is a hidden, simplified Water2DSideSimple node to help you understand the basics."
+windgrassdemo,A wind shader that uses a MultiMesh to create blades of grass and a noise texture for the wind. This shader also supports one character interacting with the grass.
+xray2ddemo,This shader uses a black and white mask to determine where color information from the XRay view should override color information from the Main view.
+xray3ddemo,This shader generates a black and white mask that determines where color information from the XRay view should override color information from the Main view. The XRay view is a glowing fresnel effect.

@@ -1,0 +1,58 @@
+{
+  "categories": {
+    "2d": [
+      "Area2D",
+      "Camera2D",
+      "KinematicBody2D",
+      "Line2D",
+      "Navigation2D",
+      "Particles2D",
+      "Path2D",
+      "RayCast2D",
+      "RemoteTransform2D",
+      "RigidBody2D",
+      "TileMap",
+      "VisibilityNotifier2D"
+    ],
+    "3d": [
+      "Area",
+      "CSGBox",
+      "Camera",
+      "GridMap",
+      "KinematicBody",
+      "Light",
+      "Navigation",
+      "Path",
+      "RayCast",
+      "RemoteTransform",
+      "RigidBody",
+      "VisibilityNotifier"
+    ],
+    "ui": [
+      "Button",
+      "HBoxContainer",
+      "Label",
+      "LineEdit",
+      "NinePatchRect",
+      "OptionButton",
+      "PanelContainer",
+      "ProgressBar",
+      "RichTextLabel"
+    ],
+    "general": [
+      "AnimationPlayer",
+      "AudioStreamPlayer",
+      "CanvasLayer",
+      "Timer",
+      "Tween",
+      "Viewport"
+    ]
+  },
+  "search_terms": {
+    "Lights": ["DirectionalLight", "BakedLightmap", "OmniLight", "SpotLight", "GIProbe"],
+    "Button": ["CheckBox", "CheckButton", "OptionButton"],
+    "HBoxContainer": ["VBoxContainer"],
+    "ProgressBar": ["TextureProgress"],
+    "AudioStreamPlayer": ["AudioStreamPlayer2D", "AudioStreamPlayer3D"]
+  }
+}

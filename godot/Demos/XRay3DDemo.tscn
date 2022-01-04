@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Shared/Demo3DEnvironment.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Shared/models/rat_model/rat_body_ao.png" type="Texture" id=7]
 [ext_resource path="res://Shared/models/rat_model/rat_head_ao.png" type="Texture" id=8]
 [ext_resource path="res://Shaders/xray_3d_mask.shader" type="Shader" id=9]
+[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=10]
 
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 10, 5, 2 )
@@ -108,7 +109,8 @@ shader_param/stencil_view = SubResource( 10 )
 [sub_resource type="ViewportTexture" id=12]
 viewport_path = NodePath("XRayView/Viewport")
 
-[node name="XRay3DDemo" type="Spatial"]
+[node name="XRay3DDemo" type="CanvasLayer"]
+script = ExtResource( 10 )
 
 [node name="StencilView" type="ViewportContainer" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -128,7 +130,7 @@ usage = 3
 render_target_update_mode = 3
 
 [node name="Camera" type="Camera" parent="StencilView/Viewport"]
-transform = Transform( 1, -7.02505e-08, 1.92212e-07, 0, 0.939234, 0.343276, -2.04647e-07, -0.343276, 0.939234, 3.4756e-06, 3.55442, 17.6558 )
+transform = Transform( 1, -1.02302e-08, 2.79908e-08, 0, 0.939234, 0.343276, -2.98017e-08, -0.343276, 0.939234, 1.90731e-06, 3.55442, 17.6558 )
 cull_mask = 1048574
 current = true
 
@@ -150,7 +152,7 @@ usage = 3
 render_target_update_mode = 3
 
 [node name="Camera" type="Camera" parent="XRayView/Viewport"]
-transform = Transform( 1, -7.02505e-08, 1.92212e-07, 0, 0.939234, 0.343276, -2.04647e-07, -0.343276, 0.939234, 3.4756e-06, 3.55442, 17.6558 )
+transform = Transform( 1, -1.02302e-08, 2.79908e-08, 0, 0.939234, 0.343276, -2.98017e-08, -0.343276, 0.939234, 1.90731e-06, 3.55442, 17.6558 )
 cull_mask = 1048572
 current = true
 
@@ -257,7 +259,6 @@ __meta__ = {
 }
 
 [node name="DemoInterface" parent="." instance=ExtResource( 2 )]
-text_bbcode = "Generates a black and white mask that determines where color information from the XRay view should override color information from the Main view. The XRay view is a glowing fresnel effect."
 
 [editable path="rat"]
 [editable path="rat/StencilView"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Demos/StylizedWaterfall/WaterfallMesh.dae" type="PackedScene" id=1]
 [ext_resource path="res://Shared/Demo3DEnvironment.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Demos/StylizedWaterfall/WaterMaterial.tres" type="Material" id=3]
 [ext_resource path="res://Demos/StylizedWaterfall/RocksMaterial.tres" type="Material" id=4]
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=5]
+[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=6]
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_transparent = true
@@ -12,7 +13,8 @@ albedo_color = Color( 1, 0, 0, 0.592157 )
 
 [sub_resource type="SphereMesh" id=2]
 
-[node name="WaterfallDemo" type="Spatial"]
+[node name="StylizedWaterfallDemo" type="CanvasLayer"]
+script = ExtResource( 6 )
 
 [node name="WaterfallMesh" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.136919, 0 )
@@ -160,9 +162,6 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="DemoInterface" parent="." instance=ExtResource( 5 )]
-text_bbcode = "This demo shows how to create a stylized waterfall.
-In particular, this waterfall is created by leveraging UVs and vertex colors created in the modeling software (blender).
-Because we are using carefully crafted UVs, we don't need to use flowmaps."
 
 [editable path="WaterfallMesh"]
 [editable path="Demo3DEnvironment"]

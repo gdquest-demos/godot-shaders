@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Demos/Blur/BlurDirection.gd" type="Script" id=1]
 [ext_resource path="res://Demos/Blur/Ship.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Shaders/gaussian_blur.shader" type="Shader" id=4]
 [ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=5]
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=6]
+[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=7]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 4 )
@@ -36,7 +37,6 @@ void fragment() {
 	COLOR.rgb = out_color.rgb;
 	COLOR.a = min(1.0, out_color.r + out_color.g + out_color.b);
 }"
-custom_defines = ""
 
 [sub_resource type="ShaderMaterial" id=7]
 shader = SubResource( 6 )
@@ -44,17 +44,14 @@ shader = SubResource( 6 )
 [sub_resource type="ViewportTexture" id=8]
 viewport_path = NodePath("ShipView/Viewport")
 
-[node name="BlurViewportTexturesDemo" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="BlurViewportTexturesDemo" type="CanvasLayer"]
+script = ExtResource( 7 )
 
 [node name="SceneView" type="ViewportContainer" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 stretch = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -70,19 +67,22 @@ render_target_update_mode = 3
 trail_length = 24000.0
 
 [node name="ShakingCamera" parent="SceneView/Viewport/MotionBlurScene" index="0"]
-position = Vector2( 960, 540 )
 smoothing_speed = 25.0
 amplitude = 100.0
 duration = 5.0
-DAMP_EASING = 6.0
+damp_easing = 6.0
 
 [node name="AsteroidTrail" parent="SceneView/Viewport/MotionBlurScene" index="1"]
 spawn_radius = 960.0
+
+[node name="TextureRect" parent="SceneView/Viewport/MotionBlurScene/CanvasLayer" index="0"]
+mouse_filter = 2
 
 [node name="ShipView" type="ViewportContainer" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 stretch = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -114,6 +114,7 @@ smoothing_speed = 25.0
 self_modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 stretch = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -129,6 +130,7 @@ render_target_update_mode = 3
 material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 texture = SubResource( 2 )
 expand = true
 stretch_mode = 1
@@ -140,6 +142,7 @@ blur_scale = Vector2( 4.8, -4 )
 self_modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 stretch = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -155,6 +158,7 @@ render_target_update_mode = 3
 material = SubResource( 3 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 texture = SubResource( 4 )
 expand = true
 stretch_mode = 1
@@ -165,6 +169,7 @@ blur_scale = Vector2( 0.9, 1 )
 [node name="PresentationBackground" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 texture = SubResource( 5 )
 expand = true
 stretch_mode = 1
@@ -177,6 +182,7 @@ __meta__ = {
 material = SubResource( 7 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 texture = SubResource( 8 )
 expand = true
 stretch_mode = 1
@@ -195,9 +201,6 @@ __meta__ = {
 }
 
 [node name="DemoInterface" parent="." instance=ExtResource( 6 )]
-text_bbcode = "Uses TextureRects to compose a scene that uses gaussian blur as motion blur.
-It's an alternative setup to produce a result like BlurViewportTexturesDemo.tscn."
 
 [editable path="SceneView/Viewport/MotionBlurScene"]
-
 [editable path="ShipView/Viewport/Ship"]

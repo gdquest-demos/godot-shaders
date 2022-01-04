@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Shared/models/rat_model/rat.dae" type="PackedScene" id=2]
 [ext_resource path="res://Shaders/pixel_perfect_outline3D.shader" type="Shader" id=3]
+[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=4]
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 3 )
@@ -61,7 +62,8 @@ background_mode = 1
 background_color = Color( 0.176471, 0.176471, 0.176471, 1 )
 ambient_light_energy = 0.0
 
-[node name="PixelPerfectOutlineDemo" type="Spatial"]
+[node name="PixelPerfectOutlineDemo" type="CanvasLayer"]
+script = ExtResource( 4 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 0.994401, -0.0295555, 0.101451, 0.00466721, 0.971435, 0.237258, -0.105566, -0.235457, 0.966135, 0.488008, 1.55336, 5.44768 )
