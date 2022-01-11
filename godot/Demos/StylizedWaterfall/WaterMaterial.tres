@@ -4,7 +4,7 @@
 [ext_resource path="res://Demos/StylizedWaterfall/color-uv.png" type="Texture" id=2]
 
 [sub_resource type="Gradient" id=1]
-colors = PoolColorArray( 0.164706, 0.92549, 0.67451, 0.615686, 0, 0.0859375, 1, 1 )
+colors = PoolColorArray( 0.164706, 0.92549, 0.67451, 0.615686, 0, 0.0862745, 1, 0.956863 )
 
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
@@ -30,17 +30,16 @@ noise = SubResource( 5 )
 
 [resource]
 shader = ExtResource( 1 )
-shader_param/main_noise_scale = Vector2( 5.719, 1 )
-shader_param/detail_noise_scale = Vector2( 2.675, 2.647 )
+shader_param/main_noise_scale = Vector2( 5.7, 1 )
+shader_param/detail_noise_scale = Vector2( 2.5, 2.5 )
 shader_param/water_speed = 0.2
 shader_param/displacement = 0.444
 shader_param/foam_color = Color( 0.756863, 0.890196, 0.878431, 1 )
-shader_param/foam_threshold = 0.513
+shader_param/foam_threshold = 0.5
 shader_param/foam_detail_threshold = 0.7
-shader_param/foam_detail_speed = 0.2
 shader_param/foam_smoothness = 0.063
-shader_param/max_depth = 0.202
-shader_param/depth_foam_offset = 0.278
+shader_param/max_depth = 1.0
+shader_param/depth_foam_offset = 0.25
 shader_param/debug_vertex_color = false
 shader_param/debug_uv = false
 shader_param/main_noise = SubResource( 6 )
