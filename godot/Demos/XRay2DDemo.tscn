@@ -17,7 +17,7 @@ viewport_path = NodePath("MaskView/Viewport")
 [sub_resource type="ShaderMaterial" id=3]
 resource_local_to_scene = true
 shader = ExtResource( 5 )
-shader_param/dim_factor = 0.8
+shader_param/dimness = 0.2
 shader_param/alternate_viewport = SubResource( 1 )
 shader_param/mask_viewport = SubResource( 2 )
 
