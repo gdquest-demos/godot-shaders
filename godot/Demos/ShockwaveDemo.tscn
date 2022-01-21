@@ -37,7 +37,7 @@ void fragment() {
 	
 	float mask = abs(float(torus_invert) - circle_alpha);
 	
-	COLOR = vec4(vec3(1.0), mask);
+	COLOR.a = circle_value;
 }"
 
 [sub_resource type="ShaderMaterial" id=3]

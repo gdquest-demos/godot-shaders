@@ -23,7 +23,5 @@ void fragment() {
 	// Displace by the torus mask
 	vec2 displacement_uv = UV + mask * displacement_amount;
 	
-	vec4 distorted_color = texture(TEXTURE, displacement_uv);
-	
-	COLOR = distorted_color;
+	COLOR = texture(TEXTURE, displacement_uv);
 }
