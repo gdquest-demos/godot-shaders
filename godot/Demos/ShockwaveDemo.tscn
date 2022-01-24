@@ -13,7 +13,7 @@ viewport_path = NodePath("Mask/Viewport")
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 shader = ExtResource( 2 )
-shader_param/displacement_amount = 0.1
+shader_param/displacement_amount = 0.5
 shader_param/mask_texture = SubResource( 5 )
 
 [sub_resource type="Shader" id=2]
@@ -42,8 +42,8 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id=3]
 shader = SubResource( 2 )
 shader_param/torus_thickness = 0.286
-shader_param/torus_hardness = 0.96
-shader_param/torus_radius = 0.5
+shader_param/torus_hardness = 0.19
+shader_param/torus_radius = 0.67
 shader_param/torus_invert = false
 shader_param/torus_center = Vector2( 0.5, 0.25 )
 shader_param/torus_size = Vector2( 1.78, 1 )
@@ -63,6 +63,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+shockwave_duration = 0.75
 mask_path = NodePath("../Mask/Viewport/Mask")
 
 [node name="Viewport" type="Viewport" parent="DemoView"]
