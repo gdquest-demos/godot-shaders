@@ -19,8 +19,8 @@ shader_param/mask_texture = SubResource( 5 )
 [sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
 
-uniform float torus_thickness : hint_range(0.001, 1.0) = 0.5;
-uniform float torus_hardness = 1.0;
+uniform float torus_thickness : hint_range(0.001, 1.0) = 0.25;
+uniform float torus_hardness = 0.2;
 uniform float torus_radius = 1.0;
 uniform bool torus_invert = false;
 uniform vec2 torus_center = vec2(0.5, 0.5);
@@ -41,9 +41,9 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = SubResource( 2 )
-shader_param/torus_thickness = 0.286
-shader_param/torus_hardness = 0.19
-shader_param/torus_radius = 0.67
+shader_param/torus_thickness = 0.25
+shader_param/torus_hardness = 0.2
+shader_param/torus_radius = 1.0
 shader_param/torus_invert = false
 shader_param/torus_center = Vector2( 0.5, 0.25 )
 shader_param/torus_size = Vector2( 1.78, 1 )
@@ -81,8 +81,8 @@ shadow_atlas_size = 8192
 
 [node name="Mask" type="ViewportContainer" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 mouse_filter = 2
 stretch = true
 __meta__ = {
