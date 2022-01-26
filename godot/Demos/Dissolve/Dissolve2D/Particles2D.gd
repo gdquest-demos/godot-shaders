@@ -2,15 +2,8 @@ tool
 extends Particles2D
 
 export var emission_mask: Texture
-export var is_force_stopped := false setget force_stop
-
 
 func _physics_process(_delta: float) -> void:
-	if not is_force_stopped:
-		_process_texture()
-
-
-func _process_texture() -> void:
 	var data := emission_mask.get_data().data
 	var width: int = data.width
 	var height: int = data.height
@@ -18,7 +11,7 @@ func _process_texture() -> void:
 
 	var positions := PoolVector2Array()
 
-	for x in width:
+	for x in width * height:
 		for y in height:
 			var idx: int = (y * width + x) * 4
 			var byte: int = raw[idx]
@@ -51,7 +44,7 @@ func _process_texture() -> void:
 		process_material.emission_point_count = positions.size()
 
 
-func force_stop(value: bool) -> void:
-	is_force_stopped = value
+func force_stop(is_force_stopped: bool) -> void:
+	set_physics_process(not is_force_stopped)
 	if is_force_stopped:
 		emitting = false
