@@ -24,10 +24,10 @@ func _process_texture() -> void:
 			var byte: int = raw[idx]
 			if byte > 128:
 				positions.append(Vector2(x, y) * 8 - position)
-
-	if positions.size() == 0:
-		emitting = false
-	else:
+				
+	emitting = not positions.empty()
+	
+	if emitting:
 		var buffer := StreamPeerBuffer.new()
 
 		for pos in positions:
@@ -49,8 +49,6 @@ func _process_texture() -> void:
 		process_material.emission_shape = ParticlesMaterial.EMISSION_SHAPE_POINTS
 		process_material.emission_point_texture = image_texture
 		process_material.emission_point_count = positions.size()
-
-		emitting = true
 
 
 func force_stop(value: bool) -> void:
