@@ -1,22 +1,18 @@
 shader_type particles;
 // keep data is very important here, because otherwise the CUSTOM vector
 // will reset when the particle dies, and it will be very obvious.
-// It is also important to set explosiveness to one for this shader
-// (doesn't seem to work otherwise)
 render_mode keep_data;
 
 // input character position
 uniform vec3 character_position;
 // radius of the bridge
-uniform float radius = 2.0;
+uniform float radius = 5.0;
 // width of the bridge, in particles
-uniform int bridge_width_particles = 10;
+uniform int bridge_width_particles = 12;
 // bridge appearing speed
-uniform float bridge_speed = 1.0;
+uniform float bridge_speed = 10.0;
 // spacing between the particles
 uniform float spacing = 0.3;
-
-uniform float minimum_speed = 0.3;
 
 
 void vertex() {
@@ -28,9 +24,9 @@ void vertex() {
 	// if the character is within the radius, we will increase
 	float distance_from_character = length(TRANSFORM[3].xz - character_position.xz);
 	float distance_from_character_normalized = smoothstep(0.0, radius, distance_from_character);
-	// we make the bridge appear twice as fast than disappear
-	float bridge_delta = (1.0 - distance_from_character_normalized) * DELTA * bridge_speed * 2.0;
-	bridge_delta -=  distance_from_character_normalized * DELTA * bridge_speed;
+	// we make the bridge appear twice as fast as disappear
+	float bridge_delta = 2.0 - 3.0 * distance_from_character_normalized;
+	bridge_delta *=  DELTA * bridge_speed;
 	
 	// Write all the data to CUSTOM
 	CUSTOM.x += bridge_delta;
