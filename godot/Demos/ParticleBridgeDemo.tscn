@@ -8,10 +8,10 @@
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
-shader_param/character_position = Vector3( 1.478, 0.706214, 7.84518 )
+shader_param/character_position = Vector3( 1.478, 0.706214, 6.56896 )
 shader_param/radius = 5.0
+shader_param/animation_speed = 10.0
 shader_param/bridge_width_particles = 12
-shader_param/bridge_speed = 10.0
 shader_param/spacing = 0.3
 
 [sub_resource type="Curve" id=2]
@@ -27,13 +27,6 @@ _data = [ Vector2( 0.681818, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 6.41333, 0.0,
 [sub_resource type="CurveTexture" id=5]
 curve = SubResource( 33 )
 
-[sub_resource type="Curve" id=6]
-min_value = -1.0
-_data = [ Vector2( 0.922343, -0.567567 ), 0.0, 5.96219, 0, 0, Vector2( 1, 0.018018 ), 35.2673, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=7]
-curve = SubResource( 6 )
-
 [sub_resource type="Curve" id=8]
 min_value = -3.0
 max_value = 0.4
@@ -42,13 +35,20 @@ _data = [ Vector2( 0, -3 ), 0.0, 0.17333, 0, 0, Vector2( 1, 0.307273 ), 10.983, 
 [sub_resource type="CurveTexture" id=9]
 curve = SubResource( 8 )
 
+[sub_resource type="Curve" id=6]
+min_value = -1.0
+_data = [ Vector2( 0.922343, -0.567567 ), 0.0, 5.96219, 0, 0, Vector2( 1, 0.018018 ), 35.2673, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
+
 [sub_resource type="ShaderMaterial" id=10]
 shader = ExtResource( 1 )
 shader_param/emission_color = Color( 0, 1, 0.976471, 1 )
 shader_param/albedo_color = Color( 0.227451, 0.207843, 0.266667, 1 )
 shader_param/oscillation_size = 2.0
-shader_param/y_curve_ascend = SubResource( 7 )
-shader_param/y_curve_descend = SubResource( 9 )
+shader_param/y_curve_ascend = SubResource( 9 )
+shader_param/y_curve_descend = SubResource( 7 )
 shader_param/xz_curve_ascend = SubResource( 3 )
 shader_param/xz_curve_descend = SubResource( 5 )
 
@@ -157,7 +157,8 @@ script = ExtResource( 5 )
 [node name="BridgeParticles" type="Particles" parent="."]
 amount = 996
 lifetime = 2.0
-visibility_aabb = AABB( -4, -4, -4, 12, 12, 12 )
+explosiveness = 1.0
+visibility_aabb = AABB( -8, -8, -4, 16, 16, 33 )
 local_coords = false
 process_material = SubResource( 1 )
 draw_pass_1 = SubResource( 11 )
@@ -165,7 +166,7 @@ script = SubResource( 12 )
 character_node = NodePath("../Character")
 
 [node name="Character" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.478, 0.706214, 7.84518 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.478, 0.706214, 6.56896 )
 mesh = SubResource( 13 )
 material/0 = null
 
@@ -176,6 +177,7 @@ visible = false
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( -2.58409e-08, 0.622842, -0.782347, 2.24469e-08, 0.782347, 0.622842, 1, -1.46648e-09, -3.41975e-08, -12.7742, 8.04268, 10.2337 )
+current = true
 
 [node name="Environment" type="Spatial" parent="."]
 
