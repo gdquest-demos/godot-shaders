@@ -1,4 +1,5 @@
 shader_type spatial;
+
 // Four curves for controlling scale and position animation on ascent and descent
 uniform sampler2D y_curve_ascend;
 uniform sampler2D y_curve_descend;
@@ -11,7 +12,7 @@ uniform float oscillation_size = 0.2;
 
 // Share CUSTOM data between the vertex() and fragment() functions. 
 varying float normalized_distance;
-varying float descend_factor;
+varying float ascend_factor;
 
 // Randomization functions, taken directly from the built-in particle shader
 float rand_from_seed(int seed) {
@@ -36,25 +37,25 @@ void vertex() {
 	float distance_factor = INSTANCE_CUSTOM.x;
 	// y: normalized distance to the character (0 -> 1)
 	normalized_distance = INSTANCE_CUSTOM.y;
-	// z: is the particle ascending or descending (ascending 0 or descending 1)
-	descend_factor = INSTANCE_CUSTOM.z;
-	 
+	// z: is the particle ascending or descending (ascending 1 or descending 0)
+	ascend_factor = INSTANCE_CUSTOM.z;
+
 	// We add a small oscillation to the particles, randomized by the instance ID of the particle
 	// note that because we place particles in a grid, we could observe repeating patterns.
 	// Try to change the 133.0 below with different numbers and observe what happens!
 	// pow is used to create a steeper curve of influence for the oscillation
 	VERTEX.y += sin(TIME + float(rand_from_seed(INSTANCE_ID) * 133.0)) 
 			* pow(normalized_distance, 3.0) * oscillation_size;
-	
+
 	// Sample y-offset curve for when we are ascending and descending
 	float y_ascend = texture(y_curve_ascend, vec2(distance_factor)).r;
 	float y_descend = texture(y_curve_descend, vec2(distance_factor)).r;
 	// Mix based on the descend_factor property. Note it's either 0.0 or 1.0.
-	VERTEX.y += mix(y_ascend, y_descend, descend_factor);
+	VERTEX.y += mix(y_descend, y_ascend, ascend_factor);
 	// We want also to control the scale of the particles in the bridge for ascent and descent
 	float xz_scale_ascend = texture(xz_curve_ascend, vec2(distance_factor)).r;
 	float xz_scale_descend = texture(xz_curve_descend, vec2(distance_factor)).r;
-	VERTEX.xz *= mix(xz_scale_ascend, xz_scale_descend, descend_factor);
+	VERTEX.xz *= mix(xz_scale_descend, xz_scale_ascend, ascend_factor);
 }
 
 
@@ -63,5 +64,5 @@ void fragment() {
 	// Smoothstep and raise to a power to make space around the character without glow
 	float emission_ascend = pow(smoothstep(0.0, 0.7, normalized_distance), 4.0);
 	// The descend_factor removes the glow where particles drop during descent
-	EMISSION = emission_color.rgb * emission_ascend * descend_factor * 3.0;
+	EMISSION = emission_color.rgb * emission_ascend * ascend_factor * 3.0;
 }
