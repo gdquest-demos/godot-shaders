@@ -5,6 +5,8 @@
 [ext_resource path="res://Shared/Demo3DEnvironmentDark.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=5]
+[ext_resource path="res://Demos/ParticleBridge/RigidPlayer.tres.gd" type="Script" id=6]
+[ext_resource path="res://Demos/ParticleBridge/ParticleBridgeDemo.gd" type="Script" id=7]
 
 [sub_resource type="SpatialMaterial" id=14]
 albedo_color = Color( 0.227451, 0.207843, 0.266667, 1 )
@@ -86,9 +88,9 @@ curve = SubResource( 8 )
 
 [sub_resource type="ShaderMaterial" id=10]
 shader = ExtResource( 1 )
+shader_param/oscillation_size = 2.0
 shader_param/emission_color = Color( 0, 1, 0.976471, 1 )
 shader_param/albedo_color = Color( 0.227451, 0.207843, 0.266667, 1 )
-shader_param/oscillation_size = 2.0
 shader_param/y_curve_ascend = SubResource( 7 )
 shader_param/y_curve_descend = SubResource( 9 )
 shader_param/xz_curve_ascend = SubResource( 5 )
@@ -98,27 +100,6 @@ shader_param/xz_curve_descend = SubResource( 3 )
 material = SubResource( 10 )
 custom_aabb = AABB( 0, 0, 0, 3, 0, 15 )
 size = Vector3( 0.3, 0.3, 0.3 )
-
-[sub_resource type="GDScript" id=12]
-script/source = "extends Particles
-tool
-
-export var character_node := NodePath()
-
-onready var _animator: AnimationPlayer = $AnimationPlayer
-onready var _area: Area = $Area
-
-func _ready() -> void:
-	_area.connect(\"body_entered\", self, \"on_area_body_entered\", [true])
-	_area.connect(\"body_exited\", self, \"on_area_body_entered\", [false])
-	
-func on_area_body_entered(body: Node, is_entering: bool) -> void:
-	if body is RigidBody:
-		_animator.play(\"show\") if is_entering else _animator.play_backwards(\"show\")
-
-func _process(_delta: float) -> void:
-	process_material.set_shader_param(\"character_position\", get_node(character_node).global_transform.origin)
-"
 
 [sub_resource type="BoxShape" id=40]
 extents = Vector3( 2, 1, 12.5 )
@@ -153,15 +134,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0.0, 5.0 ]
 }
-
-[sub_resource type="GDScript" id=42]
-script/source = "extends RigidBody
-
-func _integrate_forces(state: PhysicsDirectBodyState) -> void:
-	var y_axis = Input.get_action_strength(\"ui_up\") - Input.get_action_strength(\"ui_down\") 
-	var x_axis = Input.get_action_strength(\"ui_right\") - Input.get_action_strength(\"ui_left\")
-	state.apply_central_impulse(Vector3(y_axis, 0, x_axis))
-"
 
 [sub_resource type="SphereMesh" id=13]
 radius = 0.5
@@ -360,7 +332,7 @@ visibility_aabb = AABB( -8, -8, -4, 16, 16, 33 )
 local_coords = false
 process_material = SubResource( 1 )
 draw_pass_1 = SubResource( 11 )
-script = SubResource( 12 )
+script = ExtResource( 7 )
 character_node = NodePath("../Player/Character")
 
 [node name="StaticBody" type="StaticBody" parent="BridgeParticles"]
@@ -386,7 +358,7 @@ mode = 2
 mass = 2.0
 can_sleep = false
 linear_damp = 5.0
-script = SubResource( 42 )
+script = ExtResource( 6 )
 __meta__ = {
 "_editor_description_": ""
 }
