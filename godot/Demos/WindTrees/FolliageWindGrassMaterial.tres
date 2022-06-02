@@ -1,0 +1,28 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=2]
+
+[ext_resource path="res://Demos/WindTrees/foliage_wind_grass.gdshader" type="Shader" id=1]
+[ext_resource path="res://Demos/WindTrees/Textures/grass_albedo.png" type="Texture" id=2]
+[ext_resource path="res://Demos/WindTrees/Textures/grass_normal.png" type="Texture" id=3]
+
+[sub_resource type="OpenSimplexNoise" id=5]
+octaves = 1
+
+[sub_resource type="NoiseTexture" id=6]
+seamless = true
+noise = SubResource( 5 )
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/albedo = Color( 1, 1, 1, 1 )
+shader_param/alpha_scissor_threshold = 0.5
+shader_param/roughness = 1.0
+shader_param/normal_scale = 1.0
+shader_param/transmission = Color( 0.254902, 0.356863, 0.215686, 1 )
+shader_param/wind_angle = 270.0
+shader_param/wind_strength = 0.5
+shader_param/wind_frequency = 0.75
+shader_param/wind_speed = 0.35
+shader_param/stretch_correction = 0.2
+shader_param/texture_albedo = ExtResource( 2 )
+shader_param/texture_normal = ExtResource( 3 )
+shader_param/texture_wind_noise = SubResource( 6 )

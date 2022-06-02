@@ -36,5 +36,6 @@ water2ddemo,"The top-down 2D water shader. The diffuse color texture has no ligh
 water3ddemo,The water shader uses the depth and color buffer to cause a stylized refraction effect. The shader highlights intersections with foam using the depth buffer.
 watersidescroll2ddemo,"This side-scrolling water shader builds on the Reflection2DDemo. There is a hidden, simplified Water2DSideSimple node to help you understand the basics."
 windgrassdemo,A wind shader that uses a MultiMesh to create blades of grass and a noise texture for the wind. This shader also supports one character interacting with the grass.
+windtreesdemo,This shader uses vertex displacement driven by noise and masked with vertex colors to create realistic foliage reacting to wind.
 xray2ddemo,This shader uses a black and white mask to determine where color information from the XRay view should override color information from the Main view.
 xray3ddemo,This shader generates a black and white mask that determines where color information from the XRay view should override color information from the Main view. The XRay view is a glowing fresnel effect.

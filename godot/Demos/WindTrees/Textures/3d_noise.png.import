@@ -1,0 +1,25 @@
+[remap]
+
+importer="texture_3d"
+type="Texture3D"
+path="res://.import/3d_noise.png-23677fd01461567a3962a4aceaf45b46.tex3d"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Demos/WindTrees/Textures/3d_noise.png"
+dest_files=[ "res://.import/3d_noise.png-23677fd01461567a3962a4aceaf45b46.tex3d" ]
+
+[params]
+
+compress/mode=0
+compress/no_bptc_if_rgb=false
+flags/repeat=1
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+slices/horizontal=4
+slices/vertical=4
