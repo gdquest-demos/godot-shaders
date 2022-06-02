@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/terrain.obj-7a44bc559aa398ea45be1c74f8d87a1a.mesh"
+
+[deps]
+
+files=[ "res://.import/terrain.obj-7a44bc559aa398ea45be1c74f8d87a1a.mesh" ]
+
+source_file="res://Demos/WindTrees/Models/terrain.obj"
+dest_files=[ "res://.import/terrain.obj-7a44bc559aa398ea45be1c74f8d87a1a.mesh", "res://.import/terrain.obj-7a44bc559aa398ea45be1c74f8d87a1a.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

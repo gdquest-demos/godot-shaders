@@ -1,0 +1,27 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=2]
+
+[ext_resource path="res://Demos/WindTrees/foliage_wind_tree_trunk.gdshader" type="Shader" id=1]
+[ext_resource path="res://Demos/WindTrees/Textures/bark_albedo.png" type="Texture" id=2]
+[ext_resource path="res://Demos/WindTrees/Textures/bark_normal.png" type="Texture" id=3]
+
+[sub_resource type="OpenSimplexNoise" id=5]
+octaves = 1
+
+[sub_resource type="NoiseTexture" id=6]
+seamless = true
+noise = SubResource( 5 )
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/albedo = Color( 1, 1, 1, 1 )
+shader_param/roughness = 1.0
+shader_param/normal_scale = 1.0
+shader_param/tree_height = 12.0
+shader_param/wind_angle = 270.0
+shader_param/wind_strength = 0.5
+shader_param/wind_frequency = 0.75
+shader_param/wind_speed = 0.35
+shader_param/stretch_correction = 0.02
+shader_param/texture_albedo = ExtResource( 2 )
+shader_param/texture_normal = ExtResource( 3 )
+shader_param/texture_wind_noise = SubResource( 6 )
