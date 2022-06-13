@@ -52,7 +52,7 @@ extents = Vector3( 2, 2, 1 )
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
-shader_param/character_position = Vector3( 1.5, 1, -1 )
+shader_param/character_position = Vector3( 1.5103, 0.962805, 8.32918 )
 shader_param/radius = 0.0
 shader_param/animation_speed = 10.0
 shader_param/bridge_width_particles = 12
@@ -150,9 +150,9 @@ tracks/0/path = NodePath("Player/Character:translation:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 1.478, -0.25, 0, 0.25, 0, 1.478, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 0.0103035, -0.25, 0, 0.25, 0, 0.0103035, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 1.5, 6.5 )
 }
 tracks/1/type = "bezier"
@@ -160,9 +160,9 @@ tracks/1/path = NodePath("Player/Character:translation:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = false
+tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( 0.706214, -0.25, 0, 0.25, 0, 0.706214, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( -0.0371954, -0.25, 0, 0.25, 0, -0.0371954, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 1.5, 6.5 )
 }
 tracks/2/type = "bezier"
@@ -170,7 +170,7 @@ tracks/2/path = NodePath("Player/Character:translation:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
-tracks/2/enabled = false
+tracks/2/enabled = true
 tracks/2/keys = {
 "points": PoolRealArray( 0.751298, -0.25, 0, 0.25, 0, 9.49028, -0.25, 0, 0.25, 0, 9.49028, -0.25, 0, 0.25, 0, 25.1255, -0.373349, -0.130716, 0.25, 0 ),
 "times": PoolRealArray( 1.5, 3.4, 4.6, 6.5 )
@@ -180,7 +180,7 @@ tracks/3/path = NodePath("BridgeParticles:process_material:shader_param/radius")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
-tracks/3/enabled = false
+tracks/3/enabled = true
 tracks/3/keys = {
 "points": PoolRealArray( 0, -0.25, 0, 0.125483, 4.20723, 5, -0.25, 0, 0.25, 0, 5, -0.25, 0, 0.0564256, -2.13245, 0, -0.492223, 0.238276, 0.25, 0 ),
 "times": PoolRealArray( 0.5, 1.5, 6.5, 7.4 )
@@ -364,6 +364,7 @@ __meta__ = {
 }
 
 [node name="Character" type="MeshInstance" parent="Player"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0103035, -0.0371954, 9.32918 )
 mesh = SubResource( 13 )
 skeleton = NodePath("../..")
 material/0 = null
@@ -376,6 +377,7 @@ transform = Transform( -4.37114e-08, 0.5, -0.866025, 0, 0.866025, 0.5, 1, 2.1855
 current = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "show"
 anims/show = SubResource( 16 )
 
 [node name="DemoInterface" parent="." instance=ExtResource( 4 )]
