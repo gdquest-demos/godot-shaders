@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=1]
 [ext_resource path="res://Shaders/shockwave.shader" type="Shader" id=2]
@@ -7,23 +7,22 @@
 [ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Shared/Demo3DEnvironment.tscn" type="PackedScene" id=6]
 
+[sub_resource type="ViewportTexture" id=5]
+viewport_path = NodePath("Mask/Viewport")
+
 [sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
 shader = ExtResource( 2 )
-shader_param/torus_thickness = 0.286
-shader_param/torus_hardness = 0.19
-shader_param/torus_radius = -0.25
-shader_param/torus_invert = -1.0
-shader_param/torus_center = Vector2( 0.5, 0.25 )
-shader_param/torus_size = Vector2( 1.78, 1 )
 shader_param/displacement_amount = 0.5
+shader_param/mask_texture = SubResource( 5 )
 
 [sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
 
-uniform float torus_thickness : hint_range(0.001, 1.0) = 0.5;
-uniform float torus_hardness = 1.0;
+uniform float torus_thickness : hint_range(0.001, 1.0) = 0.25;
+uniform float torus_hardness = 0.2;
 uniform float torus_radius = 1.0;
-uniform float torus_invert : hint_range(-1.0, 1.0) = 0.0;
+uniform bool torus_invert = false;
 uniform vec2 torus_center = vec2(0.5, 0.5);
 uniform vec2 torus_size = vec2(1.0, 1.0);
 
@@ -35,19 +34,22 @@ void fragment() {
 	float circle_value = clamp(abs(torus_distance - inner_radius) / torus_thickness, 0.0, 1.0);
 	float circle_alpha = pow(circle_value, pow(torus_hardness, 2.0));
 	
-	float mask = abs(clamp(abs(sign(torus_invert)) - sign(torus_invert), 0.0, 1.0) - circle_alpha) * abs(torus_invert);
+	float mask = abs(float(!torus_invert) - circle_alpha);
 	
-	COLOR = vec4(vec3(1.0), mask);
+	COLOR.rgb = vec3(mask);
 }"
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = SubResource( 2 )
-shader_param/torus_thickness = 0.635
-shader_param/torus_hardness = 1.176
-shader_param/torus_radius = -0.25
-shader_param/torus_invert = -1.0
-shader_param/torus_center = Vector2( 0.5, 0.5 )
-shader_param/torus_size = Vector2( 4.45, 2.5 )
+shader_param/torus_thickness = 0.25
+shader_param/torus_hardness = 0.2
+shader_param/torus_radius = 1.0
+shader_param/torus_invert = false
+shader_param/torus_center = Vector2( 0.5, 0.25 )
+shader_param/torus_size = Vector2( 1.78, 1 )
+
+[sub_resource type="ViewportTexture" id=4]
+viewport_path = NodePath("Mask/Viewport")
 
 [node name="ShockwaveDemo" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -62,7 +64,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 shockwave_duration = 0.75
-mask_path = NodePath("../MaskPreview/Mask")
+mask_path = NodePath("../Mask/Viewport/Mask")
 
 [node name="Viewport" type="Viewport" parent="DemoView"]
 size = Vector2( 1920, 1080 )
@@ -77,6 +79,36 @@ shadow_atlas_size = 8192
 
 [node name="Tween" type="Tween" parent="DemoView"]
 
+[node name="Mask" type="ViewportContainer" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="Mask"]
+size = Vector2( 1920, 1080 )
+handle_input_locally = false
+msaa = 2
+render_target_v_flip = true
+render_target_update_mode = 3
+shadow_atlas_size = 8192
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Mask" type="ColorRect" parent="Mask/Viewport"]
+material = SubResource( 3 )
+margin_right = 1920.0
+margin_bottom = 1080.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MaskPreview" type="Control" parent="."]
 margin_top = 120.0
 margin_right = 128.0
@@ -85,18 +117,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="MaskPreview"]
-margin_right = 128.0
-margin_bottom = 72.0
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Mask" type="ColorRect" parent="MaskPreview"]
+[node name="Mask" type="TextureRect" parent="MaskPreview"]
 material = SubResource( 3 )
 margin_right = 128.0
 margin_bottom = 72.0
+texture = SubResource( 4 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

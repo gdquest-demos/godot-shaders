@@ -2,12 +2,12 @@
 tool
 extends EditorScript
 
-const SAMPLES := 15
+const SAMPLES := 71
 
 
 func gaussian(x: float) -> float:
 	var x_squared := x * x
-	var width := 1.0 / sqrt(PI * 2 * SAMPLES)
+	var width := 1.0 / sqrt(TAU * SAMPLES)
 
 	return width * exp((x_squared / (2.0 * SAMPLES)) * -1.0)
 

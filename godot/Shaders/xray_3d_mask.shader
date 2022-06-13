@@ -7,5 +7,5 @@ void fragment() {
 	float mask = texture(stencil_view, SCREEN_UV).r;
 	
 	COLOR.rgb = texture(TEXTURE, UV).rgb;
-	COLOR.a = max(0.0, 1.0 - mask);
+	COLOR.a = 1.0 - mask;
 }
