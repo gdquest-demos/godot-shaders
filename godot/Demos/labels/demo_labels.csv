@@ -16,7 +16,7 @@ invertedcolorsdemo,"This shader takes the colors output by the demo viewport and
 matcapdemo,This shader applies a material capture texture. It maps a sphere texture using the model's normals instead of UVs. So any normals that point to the right sample from the texture's right.
 noisedemo,"Several common types of random noise, selecting the proper noise to shape your shaders is a key step in creating appealing effects. "
 outline2ddemo,"Shaders are excellent for the not-so-easy task of outlining 2D sprites - outlining only outside the pixels, inside, or both."
-outline3ddemo,"Shaders can also outline 3D objects with precise control. We effectively draw the meshes a second time, but bigger, and invert the culling to draw behind the object."
+outline3ddemo,"Shaders can also outline 3D objects with precise control. We draw the meshes a second time, but bigger, and invert the culling to draw behind the object. We use two methods here, notice how each has different limitations."
 paletteswap2ddemo,"Shaders are excellent at simple recoloring tasks. Our sprite is made grayscale, and we use the shade of gray to select colors from a palette. We can even support multiple color palettes, selecting them with a palette_index parameter."
 particlebridgedemo,Particles can be shaders too! This demo shows how to communicate between a particle and material shader for complex effects with many moving parts.
 pixelperfectoutlinedemo,"By drawing our outline in clip space instead of vertex space, we can make it remain at a constant size regardless of the distance from the camera or the scale. Excellent for user interfaces, object highlights, and technical drawings."
