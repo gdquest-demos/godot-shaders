@@ -100,7 +100,7 @@ void fragment() {
 		// ANCHOR: linear_depth
 		float depth_delta = VERTEX.z - view_depth.z;
 		// END: linear_depth
-		// ANCHOR: depth_noramlized
+		// ANCHOR: depth_normalized
 		float depth_normalized = smoothstep(0.0, max_depth, depth_delta);
 		// END: depth_normalized
 		// ANCHOR: water_color

@@ -13,7 +13,7 @@ uniform sampler2D dirt_texture: hint_albedo;
 uniform sampler2D dirt_texture_normal: hint_normal;
 uniform sampler2D dirt_texture_roughness;
 uniform sampler2D blend_texture;
-// ANCHOR: textures
+// END: textures
 uniform float snow_height = 0.3;
 uniform float snow_sharpness: hint_range(0.3, 20.0, 0.1) = 3.0;
 uniform vec2 textures_tiling = vec2(4.0);
@@ -53,8 +53,7 @@ void fragment() {
 	float dirt_roughness = texture(dirt_texture_roughness, world_uv_tiled).r;
 	float noise_interp = texture(blend_texture, world_uv_tiled * 0.7).r;
 	// END: sampling 
-	// ANCHOR: overlay
-	// overlay overlay_blend_mode
+	// ANCHOR: overlay_blend_mode
 	float snow_interp = mix(
 		mask * noise_interp * 2.0,
 		1.0 - 2.0 * (1.0 - mask) * (1.0 - noise_interp),
