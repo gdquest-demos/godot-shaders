@@ -11,7 +11,7 @@ func _physics_process(_delta: float) -> void:
 
 	var positions := PoolVector2Array()
 
-	for x in width * height:
+	for x in width:
 		for y in height:
 			var idx: int = (y * width + x) * 4
 			var byte: int = raw[idx]
