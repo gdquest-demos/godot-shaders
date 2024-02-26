@@ -1,264 +1,256 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=43 format=3 uid="uid://clvydxpsju81i"]
 
-[ext_resource path="res://addons/gdquest.toon-controller/Tools/ToonSceneBuilder.gd" type="Script" id=1]
-[ext_resource path="res://Shared/models/rat_model/rat.tscn" type="PackedScene" id=2]
-[ext_resource path="res://addons/gdquest.toon-controller/Tools/ToonViewportContainer.gd" type="Script" id=3]
-[ext_resource path="res://addons/gdquest.toon-controller/Tools/ToonCamera.gd" type="Script" id=4]
-[ext_resource path="res://addons/gdquest.toon-controller/Tools/ToonProxyBuilder.gd" type="Script" id=5]
-[ext_resource path="res://Shaders/outline3D.shader" type="Shader" id=6]
-[ext_resource path="res://Shaders/advanced_toon.shader" type="Shader" id=7]
-[ext_resource path="res://addons/gdquest.toon-controller/Material/Defaults/AnisotropicNoise/spottiness_anisotropic_noise.tres" type="Texture" id=8]
-[ext_resource path="res://addons/gdquest.toon-controller/Material/Defaults/AnisotropicNoise/high_frequency_anisotropic_noise.tres" type="Texture" id=9]
-[ext_resource path="res://addons/gdquest.toon-controller/Material/Defaults/AnisotropicNoise/low_frequency_anisotropic_noise.tres" type="Texture" id=10]
-[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=11]
-[ext_resource path="res://addons/gdquest.toon-controller/Material/Defaults/Copper_Matcap.png" type="Texture" id=12]
-[ext_resource path="res://addons/gdquest.toon-controller/Material/Defaults/Ramps/key_light_ramp.tres" type="Texture" id=17]
-[ext_resource path="res://Shared/models/rat_model/rat_body_ao.png" type="Texture" id=18]
-[ext_resource path="res://Shared/models/rat_model/rat_head_ao.png" type="Texture" id=19]
-[ext_resource path="res://Shared/models/rat_model/rat_shadow_paint.png" type="Texture" id=20]
-[ext_resource path="res://Shaders/SpecularControl.shader" type="Shader" id=21]
-[ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=23]
-[ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=24]
+[ext_resource type="Script" path="res://addons/gdquest.toon-controller/Tools/ToonSceneBuilder.gd" id="1"]
+[ext_resource type="PackedScene" path="res://Shared/models/rat_model/rat.tscn" id="2"]
+[ext_resource type="Script" path="res://addons/gdquest.toon-controller/Tools/ToonViewportContainer.gd" id="3"]
+[ext_resource type="Script" path="res://addons/gdquest.toon-controller/Tools/ToonCamera.gd" id="4"]
+[ext_resource type="Script" path="res://addons/gdquest.toon-controller/Tools/ToonProxyBuilder.gd" id="5"]
+[ext_resource type="Shader" path="res://Shaders/outline3D.gdshader" id="6"]
+[ext_resource type="Shader" path="res://Shaders/advanced_toon.gdshader" id="7"]
+[ext_resource type="Texture2D" path="res://addons/gdquest.toon-controller/Material/Defaults/AnisotropicNoise/spottiness_anisotropic_noise.tres" id="8"]
+[ext_resource type="Texture2D" path="res://addons/gdquest.toon-controller/Material/Defaults/AnisotropicNoise/high_frequency_anisotropic_noise.tres" id="9"]
+[ext_resource type="Texture2D" path="res://addons/gdquest.toon-controller/Material/Defaults/AnisotropicNoise/low_frequency_anisotropic_noise.tres" id="10"]
+[ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="11"]
+[ext_resource type="Texture2D" path="res://addons/gdquest.toon-controller/Material/Defaults/Ramps/key_light_ramp.tres" id="17"]
+[ext_resource type="Shader" path="res://Shaders/SpecularControl.gdshader" id="21"]
+[ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="23"]
+[ext_resource type="Script" path="res://Utils/DebugViewer.gd" id="24"]
 
-[sub_resource type="SpatialMaterial" id=1]
-flags_disable_ambient_light = true
-albedo_color = Color( 0, 0, 0, 1 )
+[sub_resource type="StandardMaterial3D" id="1"]
+disable_ambient_light = true
+albedo_color = Color(0, 0, 0, 1)
 roughness = 0.4
 
-[sub_resource type="SpatialMaterial" id=2]
-params_specular_mode = 4
-albedo_color = Color( 0.9, 0.9, 0.9, 1 )
+[sub_resource type="StandardMaterial3D" id="2"]
+specular_mode = 4
+albedo_color = Color(0.9, 0.9, 0.9, 1)
 
-[sub_resource type="World" id=3]
+[sub_resource type="World3D" id="3"]
 
-[sub_resource type="SphereMesh" id=31]
+[sub_resource type="SphereMesh" id="31"]
 
-[sub_resource type="World" id=5]
+[sub_resource type="World3D" id="5"]
 
-[sub_resource type="ShaderMaterial" id=6]
-shader = ExtResource( 21 )
-shader_param/normal_offset_x = -0.149
-shader_param/normal_offset_y = 0.34
+[sub_resource type="ShaderMaterial" id="6"]
+render_priority = 0
+shader = ExtResource("21")
+shader_parameter/normal_offset_x = -0.149
+shader_parameter/normal_offset_y = 0.34
 
-[sub_resource type="Environment" id=7]
-glow_levels/2 = true
-glow_levels/4 = true
+[sub_resource type="Environment" id="7"]
+glow_levels/2 = 1.0
+glow_levels/4 = 1.0
 glow_blend_mode = 0
-glow_bicubic_upscale = true
 
-[sub_resource type="ShaderMaterial" id=8]
-shader = ExtResource( 6 )
-shader_param/thickness = 0.007
-shader_param/outline_color = Color( 0.129412, 0.129412, 0.129412, 1 )
+[sub_resource type="ShaderMaterial" id="8"]
+render_priority = 0
+shader = ExtResource("6")
+shader_parameter/thickness = 0.007
+shader_parameter/outline_color = Color(0.129412, 0.129412, 0.129412, 1)
 
-[sub_resource type="Gradient" id=9]
-offsets = PoolRealArray( 0.291667, 0.690476 )
+[sub_resource type="Gradient" id="9"]
+offsets = PackedFloat32Array(0.291667, 0.690476)
 
-[sub_resource type="GradientTexture" id=10]
-gradient = SubResource( 9 )
+[sub_resource type="GradientTexture2D" id="10"]
+gradient = SubResource("9")
 
-[sub_resource type="Gradient" id=11]
-offsets = PoolRealArray( 0.2, 0.23494 )
+[sub_resource type="Gradient" id="11"]
+offsets = PackedFloat32Array(0.2, 0.23494)
 
-[sub_resource type="GradientTexture" id=12]
-gradient = SubResource( 11 )
+[sub_resource type="GradientTexture2D" id="12"]
+gradient = SubResource("11")
 
-[sub_resource type="Gradient" id=13]
-offsets = PoolRealArray( 0.214286, 0.291667 )
+[sub_resource type="Gradient" id="13"]
+offsets = PackedFloat32Array(0.214286, 0.291667)
 
-[sub_resource type="GradientTexture" id=14]
-gradient = SubResource( 13 )
+[sub_resource type="GradientTexture2D" id="14"]
+gradient = SubResource("13")
 
-[sub_resource type="ViewportTexture" id=15]
-viewport_path = NodePath("ToonLightDataView/Viewport")
+[sub_resource type="ViewportTexture" id="15"]
+viewport_path = NodePath("ToonLightDataView/SubViewport")
 
-[sub_resource type="ViewportTexture" id=16]
-viewport_path = NodePath("ToonSpecularDataView/Viewport")
+[sub_resource type="ViewportTexture" id="16"]
+viewport_path = NodePath("ToonSpecularDataView/SubViewport")
 
-[sub_resource type="ShaderMaterial" id=17]
+[sub_resource type="ShaderMaterial" id="17"]
 resource_local_to_scene = true
-next_pass = SubResource( 8 )
-shader = ExtResource( 7 )
-shader_param/base_color = Color( 0.701961, 0.713726, 0.733333, 1 )
-shader_param/paint_color_1 = Color( 1, 1, 1, 1 )
-shader_param/paint_color_2 = Color( 1, 1, 1, 1 )
-shader_param/paint_color_3 = Color( 1, 1, 1, 1 )
-shader_param/key_light_color = Color( 1, 1, 1, 1 )
-shader_param/fill_light_color = Color( 0.113725, 0.0235294, 0.152941, 1 )
-shader_param/kick_light_color = Color( 0, 0, 0, 1 )
-shader_param/shadow_color = Color( 0.32549, 0.329412, 0.352941, 1 )
-shader_param/outline_size = 0.419
-shader_param/outline_color = Color( 0.137255, 0.137255, 0.137255, 1 )
-shader_param/metalness = 0.0
-shader_param/dark_metalness_color = Color( 0, 0, 0, 1 )
-shader_param/light_metalness_color = Color( 1, 1, 1, 1 )
-shader_param/metalness_contrast_factor = 1.0
-shader_param/specular_size = 0.0
-shader_param/specular_color = Color( 1, 1, 1, 1 )
-shader_param/specular_softness = 0.5
-shader_param/anisotropy_specular_strength = 0.0
-shader_param/anisotropy_specular_width = 10.0
-shader_param/anisotropy_specular_contrast = 5.0
-shader_param/anisotropy_specular_brightness = 0.85
-shader_param/anisotropy_in_shadow_strength = 0.1
-shader_param/ambient_occlusion_color = Color( 0.180392, 0.0745098, 0.0235294, 1 )
-shader_param/ambient_occlusion_opacity = 0.833
-shader_param/ambient_occlusion_softness = 0.822
-shader_param/ambient_occlusion_shadow_limit = 0.445
-shader_param/rim_light_softness = 0.525
-shader_param/rim_light_color = Color( 0.654902, 0.729412, 0.835294, 1 )
-shader_param/rim_fresnel_power = 3.0
-shader_param/rim_normal_offset_x = 0.0
-shader_param/rim_normal_offset_y = 0.0
-shader_param/light_data = SubResource( 15 )
-shader_param/specular_data = SubResource( 16 )
-shader_param/key_light_ramp = SubResource( 12 )
-shader_param/fill_light_ramp = SubResource( 10 )
-shader_param/kick_light_ramp = SubResource( 14 )
-shader_param/metalness_texture = ExtResource( 12 )
-shader_param/ambient_occlusion = ExtResource( 18 )
+render_priority = 0
+next_pass = SubResource("8")
+shader = ExtResource("7")
+shader_parameter/base_color = Color(0.701961, 0.713726, 0.733333, 1)
+shader_parameter/paint_color_1 = Color(1, 1, 1, 1)
+shader_parameter/paint_color_2 = Color(1, 1, 1, 1)
+shader_parameter/paint_color_3 = Color(1, 1, 1, 1)
+shader_parameter/key_light_color = Color(1, 1, 1, 1)
+shader_parameter/fill_light_color = Color(0.113725, 0.0235294, 0.152941, 1)
+shader_parameter/kick_light_color = Color(0, 0, 0, 1)
+shader_parameter/shadow_color = Color(0.32549, 0.329412, 0.352941, 1)
+shader_parameter/outline_size = 0.419
+shader_parameter/outline_color = Color(0.137255, 0.137255, 0.137255, 1)
+shader_parameter/metalness = 0.0
+shader_parameter/dark_metalness_color = Color(0, 0, 0, 1)
+shader_parameter/light_metalness_color = Color(1, 1, 1, 1)
+shader_parameter/metalness_contrast_factor = 1.0
+shader_parameter/specular_size = 0.0
+shader_parameter/specular_color = Color(1, 1, 1, 1)
+shader_parameter/specular_softness = 0.5
+shader_parameter/anisotropy_specular_strength = 0.0
+shader_parameter/anisotropy_specular_width = 10.0
+shader_parameter/anisotropy_specular_contrast = 5.0
+shader_parameter/anisotropy_specular_brightness = 0.85
+shader_parameter/anisotropy_in_shadow_strength = 0.1
+shader_parameter/ambient_occlusion_color = Color(0.180392, 0.0745098, 0.0235294, 1)
+shader_parameter/ambient_occlusion_opacity = 0.833
+shader_parameter/ambient_occlusion_softness = 0.822
+shader_parameter/ambient_occlusion_shadow_limit = 0.445
+shader_parameter/rim_light_softness = 0.525
+shader_parameter/rim_light_color = Color(0.654902, 0.729412, 0.835294, 1)
+shader_parameter/rim_fresnel_power = 3.0
+shader_parameter/rim_normal_offset_x = 0.0
+shader_parameter/rim_normal_offset_y = 0.0
+shader_parameter/light_data = SubResource("15")
+shader_parameter/specular_data = SubResource("16")
+shader_parameter/key_light_ramp = SubResource("12")
+shader_parameter/fill_light_ramp = SubResource("10")
+shader_parameter/kick_light_ramp = SubResource("14")
 
-[sub_resource type="SpatialMaterial" id=18]
-albedo_color = Color( 0, 0, 0, 1 )
+[sub_resource type="StandardMaterial3D" id="18"]
+albedo_color = Color(0, 0, 0, 1)
 emission_enabled = true
-emission = Color( 1.36863, 1.42353, 0, 1 )
-emission_energy = 1.0
-emission_operator = 0
-emission_on_uv2 = false
+emission = Color(1.36863, 1.42353, 0, 1)
 
-[sub_resource type="ShaderMaterial" id=19]
+[sub_resource type="ShaderMaterial" id="19"]
 resource_local_to_scene = true
-next_pass = SubResource( 8 )
-shader = ExtResource( 7 )
-shader_param/base_color = Color( 0.701961, 0.713726, 0.733333, 1 )
-shader_param/paint_color_1 = Color( 1, 1, 1, 1 )
-shader_param/paint_color_2 = Color( 1, 1, 1, 1 )
-shader_param/paint_color_3 = Color( 1, 1, 1, 1 )
-shader_param/key_light_color = Color( 1, 1, 1, 1 )
-shader_param/fill_light_color = Color( 0.113725, 0.0235294, 0.152941, 1 )
-shader_param/kick_light_color = Color( 0, 0, 0, 1 )
-shader_param/shadow_color = Color( 0.32549, 0.329412, 0.352941, 1 )
-shader_param/outline_size = 0.175
-shader_param/outline_color = Color( 0, 0, 0, 1 )
-shader_param/metalness = 0.0
-shader_param/dark_metalness_color = Color( 0, 0, 0, 1 )
-shader_param/light_metalness_color = Color( 1, 1, 1, 1 )
-shader_param/metalness_contrast_factor = 1.0
-shader_param/specular_size = 0.0
-shader_param/specular_color = Color( 1, 1, 1, 1 )
-shader_param/specular_softness = 0.5
-shader_param/anisotropy_specular_strength = 0.0
-shader_param/anisotropy_specular_width = 10.0
-shader_param/anisotropy_specular_contrast = 5.0
-shader_param/anisotropy_specular_brightness = 0.85
-shader_param/anisotropy_in_shadow_strength = 0.1
-shader_param/ambient_occlusion_color = Color( 0.180392, 0.0862745, 0.0235294, 1 )
-shader_param/ambient_occlusion_opacity = 0.833
-shader_param/ambient_occlusion_softness = 0.728
-shader_param/ambient_occlusion_shadow_limit = 0.442
-shader_param/rim_light_softness = 0.5
-shader_param/rim_light_color = Color( 1, 1, 1, 1 )
-shader_param/rim_fresnel_power = 3.0
-shader_param/rim_normal_offset_x = 0.0
-shader_param/rim_normal_offset_y = 0.0
-shader_param/shadow_paint = ExtResource( 20 )
-shader_param/light_data = SubResource( 15 )
-shader_param/specular_data = SubResource( 16 )
-shader_param/key_light_ramp = SubResource( 12 )
-shader_param/fill_light_ramp = SubResource( 10 )
-shader_param/kick_light_ramp = SubResource( 14 )
-shader_param/metalness_texture = ExtResource( 12 )
-shader_param/ambient_occlusion = ExtResource( 19 )
+render_priority = 0
+next_pass = SubResource("8")
+shader = ExtResource("7")
+shader_parameter/base_color = Color(0.701961, 0.713726, 0.733333, 1)
+shader_parameter/paint_color_1 = Color(1, 1, 1, 1)
+shader_parameter/paint_color_2 = Color(1, 1, 1, 1)
+shader_parameter/paint_color_3 = Color(1, 1, 1, 1)
+shader_parameter/key_light_color = Color(1, 1, 1, 1)
+shader_parameter/fill_light_color = Color(0.113725, 0.0235294, 0.152941, 1)
+shader_parameter/kick_light_color = Color(0, 0, 0, 1)
+shader_parameter/shadow_color = Color(0.32549, 0.329412, 0.352941, 1)
+shader_parameter/outline_size = 0.175
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/metalness = 0.0
+shader_parameter/dark_metalness_color = Color(0, 0, 0, 1)
+shader_parameter/light_metalness_color = Color(1, 1, 1, 1)
+shader_parameter/metalness_contrast_factor = 1.0
+shader_parameter/specular_size = 0.0
+shader_parameter/specular_color = Color(1, 1, 1, 1)
+shader_parameter/specular_softness = 0.5
+shader_parameter/anisotropy_specular_strength = 0.0
+shader_parameter/anisotropy_specular_width = 10.0
+shader_parameter/anisotropy_specular_contrast = 5.0
+shader_parameter/anisotropy_specular_brightness = 0.85
+shader_parameter/anisotropy_in_shadow_strength = 0.1
+shader_parameter/ambient_occlusion_color = Color(0.180392, 0.0862745, 0.0235294, 1)
+shader_parameter/ambient_occlusion_opacity = 0.833
+shader_parameter/ambient_occlusion_softness = 0.728
+shader_parameter/ambient_occlusion_shadow_limit = 0.442
+shader_parameter/rim_light_softness = 0.5
+shader_parameter/rim_light_color = Color(1, 1, 1, 1)
+shader_parameter/rim_fresnel_power = 3.0
+shader_parameter/rim_normal_offset_x = 0.0
+shader_parameter/rim_normal_offset_y = 0.0
+shader_parameter/light_data = SubResource("15")
+shader_parameter/specular_data = SubResource("16")
+shader_parameter/key_light_ramp = SubResource("12")
+shader_parameter/fill_light_ramp = SubResource("10")
+shader_parameter/kick_light_ramp = SubResource("14")
 
-[sub_resource type="ShaderMaterial" id=20]
-shader = ExtResource( 6 )
-shader_param/thickness = 0.033
-shader_param/outline_color = Color( 0.0470588, 0.14902, 0.345098, 1 )
+[sub_resource type="ShaderMaterial" id="20"]
+render_priority = 0
+shader = ExtResource("6")
+shader_parameter/thickness = 0.033
+shader_parameter/outline_color = Color(0.0470588, 0.14902, 0.345098, 1)
 
-[sub_resource type="Gradient" id=21]
-offsets = PoolRealArray( 0.291667, 0.690476 )
+[sub_resource type="Gradient" id="21"]
+offsets = PackedFloat32Array(0.291667, 0.690476)
 
-[sub_resource type="GradientTexture" id=22]
-gradient = SubResource( 21 )
+[sub_resource type="GradientTexture2D" id="22"]
+gradient = SubResource("21")
 
-[sub_resource type="Gradient" id=23]
-offsets = PoolRealArray( 0.214286, 0.291667 )
+[sub_resource type="Gradient" id="23"]
+offsets = PackedFloat32Array(0.214286, 0.291667)
 
-[sub_resource type="GradientTexture" id=24]
-gradient = SubResource( 23 )
+[sub_resource type="GradientTexture2D" id="24"]
+gradient = SubResource("23")
 
-[sub_resource type="ShaderMaterial" id=25]
+[sub_resource type="ShaderMaterial" id="25"]
 resource_local_to_scene = true
-next_pass = SubResource( 20 )
-shader = ExtResource( 7 )
-shader_param/base_color = Color( 0.454902, 0.627451, 0.823529, 1 )
-shader_param/paint_color_1 = Color( 1, 1, 1, 1 )
-shader_param/paint_color_2 = Color( 1, 1, 1, 1 )
-shader_param/paint_color_3 = Color( 1, 1, 1, 1 )
-shader_param/key_light_color = Color( 1, 1, 1, 1 )
-shader_param/fill_light_color = Color( 0.231373, 0.0666667, 0.309804, 1 )
-shader_param/kick_light_color = Color( 0, 0, 0, 1 )
-shader_param/shadow_color = Color( 0.356863, 0.392157, 0.552941, 1 )
-shader_param/outline_size = 0.646
-shader_param/outline_color = Color( 0.0470588, 0.14902, 0.345098, 1 )
-shader_param/metalness = 0.388
-shader_param/dark_metalness_color = Color( 0.027451, 0.188235, 0.027451, 1 )
-shader_param/light_metalness_color = Color( 0.541176, 0.894118, 0.741176, 1 )
-shader_param/metalness_contrast_factor = 1.34
-shader_param/specular_size = 0.745
-shader_param/specular_color = Color( 0.458824, 1.02745, 1.01961, 1 )
-shader_param/specular_softness = 0.663
-shader_param/anisotropy_specular_strength = 0.0
-shader_param/anisotropy_specular_width = 10.0
-shader_param/anisotropy_specular_contrast = 5.0
-shader_param/anisotropy_specular_brightness = 0.85
-shader_param/anisotropy_in_shadow_strength = 0.1
-shader_param/ambient_occlusion_color = Color( 0, 0, 0, 1 )
-shader_param/ambient_occlusion_opacity = 0.0
-shader_param/ambient_occlusion_softness = 0.5
-shader_param/ambient_occlusion_shadow_limit = 1.0
-shader_param/rim_light_softness = 0.562
-shader_param/rim_light_color = Color( 0.46, 1.03, 1.02, 1 )
-shader_param/rim_fresnel_power = 2.078
-shader_param/rim_normal_offset_x = 0.0
-shader_param/rim_normal_offset_y = 0.0
-shader_param/light_data = SubResource( 15 )
-shader_param/specular_data = SubResource( 16 )
-shader_param/key_light_ramp = ExtResource( 17 )
-shader_param/fill_light_ramp = SubResource( 22 )
-shader_param/kick_light_ramp = SubResource( 24 )
-shader_param/metalness_texture = ExtResource( 12 )
-shader_param/high_frequency_anisotropy_noise = ExtResource( 9 )
-shader_param/low_frequency_anisotropy_noise = ExtResource( 10 )
-shader_param/spottiness_anisotropy_noise = ExtResource( 8 )
+render_priority = 0
+next_pass = SubResource("20")
+shader = ExtResource("7")
+shader_parameter/base_color = Color(0.454902, 0.627451, 0.823529, 1)
+shader_parameter/paint_color_1 = Color(1, 1, 1, 1)
+shader_parameter/paint_color_2 = Color(1, 1, 1, 1)
+shader_parameter/paint_color_3 = Color(1, 1, 1, 1)
+shader_parameter/key_light_color = Color(1, 1, 1, 1)
+shader_parameter/fill_light_color = Color(0.231373, 0.0666667, 0.309804, 1)
+shader_parameter/kick_light_color = Color(0, 0, 0, 1)
+shader_parameter/shadow_color = Color(0.356863, 0.392157, 0.552941, 1)
+shader_parameter/outline_size = 0.646
+shader_parameter/outline_color = Color(0.0470588, 0.14902, 0.345098, 1)
+shader_parameter/metalness = 0.388
+shader_parameter/dark_metalness_color = Color(0.027451, 0.188235, 0.027451, 1)
+shader_parameter/light_metalness_color = Color(0.541176, 0.894118, 0.741176, 1)
+shader_parameter/metalness_contrast_factor = 1.34
+shader_parameter/specular_size = 0.745
+shader_parameter/specular_color = Color(0.458824, 1.02745, 1.01961, 1)
+shader_parameter/specular_softness = 0.663
+shader_parameter/anisotropy_specular_strength = 0.0
+shader_parameter/anisotropy_specular_width = 10.0
+shader_parameter/anisotropy_specular_contrast = 5.0
+shader_parameter/anisotropy_specular_brightness = 0.85
+shader_parameter/anisotropy_in_shadow_strength = 0.1
+shader_parameter/ambient_occlusion_color = Color(0, 0, 0, 1)
+shader_parameter/ambient_occlusion_opacity = 0.0
+shader_parameter/ambient_occlusion_softness = 0.5
+shader_parameter/ambient_occlusion_shadow_limit = 1.0
+shader_parameter/rim_light_softness = 0.562
+shader_parameter/rim_light_color = Color(0.46, 1.03, 1.02, 1)
+shader_parameter/rim_fresnel_power = 2.078
+shader_parameter/rim_normal_offset_x = 0.0
+shader_parameter/rim_normal_offset_y = 0.0
+shader_parameter/light_data = SubResource("15")
+shader_parameter/specular_data = SubResource("16")
+shader_parameter/key_light_ramp = ExtResource("17")
+shader_parameter/fill_light_ramp = SubResource("22")
+shader_parameter/kick_light_ramp = SubResource("24")
+shader_parameter/high_frequency_anisotropy_noise = ExtResource("9")
+shader_parameter/low_frequency_anisotropy_noise = ExtResource("10")
+shader_parameter/spottiness_anisotropy_noise = ExtResource("8")
 
-[sub_resource type="PlaneMesh" id=26]
-size = Vector2( 100, 100 )
+[sub_resource type="PlaneMesh" id="26"]
+size = Vector2(100, 100)
 
-[sub_resource type="SpatialMaterial" id=27]
-albedo_color = Color( 0.490196, 0.490196, 0.490196, 1 )
+[sub_resource type="StandardMaterial3D" id="27"]
+albedo_color = Color(0.490196, 0.490196, 0.490196, 1)
 
 [node name="AdvancedToonDemo" type="CanvasLayer"]
-script = ExtResource( 11 )
+script = ExtResource("11")
 
 [node name="ToonSceneBuilder" type="Node" parent="."]
-script = ExtResource( 1 )
+script = ExtResource("1")
 shadow_resolution = 8192
-specular_material = SubResource( 1 )
-white_diffuse_material = SubResource( 2 )
+specular_material = SubResource("1")
+white_diffuse_material = SubResource("2")
 
-[node name="ToonLightDataView" type="ViewportContainer" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
+[node name="ToonLightDataView" type="SubViewportContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0)
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 3 )
+script = ExtResource("3")
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Viewport" type="Viewport" parent="ToonLightDataView"]
-size = Vector2( 2203, 1747 )
-world = SubResource( 3 )
+[node name="SubViewport" type="SubViewport" parent="ToonLightDataView"]
+size = Vector2(2203, 1747)
+world = SubResource("3")
 transparent_bg = true
 handle_input_locally = false
 msaa = 2
@@ -266,255 +258,255 @@ usage = 3
 render_target_update_mode = 3
 shadow_atlas_size = 8192
 
-[node name="Rat" parent="ToonLightDataView/Viewport" instance=ExtResource( 2 )]
-transform = Transform( 0.537255, 0, 0.84342, 0, 1, 0, -0.84342, 0, 0.537255, -5.78165e-05, -0.0104361, 0.00964785 )
+[node name="Rat" parent="ToonLightDataView/SubViewport" instance=ExtResource("2")]
+transform = Transform3D(0.537255, 0, 0.84342, 0, 1, 0, -0.84342, 0, 0.537255, -5.78165e-05, -0.0104361, 0.00964785)
 
-[node name="body1" parent="ToonLightDataView/Viewport/Rat" index="0"]
-material/0 = SubResource( 2 )
+[node name="body1" parent="ToonLightDataView/SubViewport/Rat" index="0"]
+material/0 = SubResource("2")
 
-[node name="eyes1" parent="ToonLightDataView/Viewport/Rat" index="1"]
-material/0 = SubResource( 2 )
+[node name="eyes1" parent="ToonLightDataView/SubViewport/Rat" index="1"]
+material/0 = SubResource("2")
 
-[node name="head1" parent="ToonLightDataView/Viewport/Rat" index="2"]
-material/0 = SubResource( 2 )
+[node name="head1" parent="ToonLightDataView/SubViewport/Rat" index="2"]
+material/0 = SubResource("2")
 
-[node name="teeth1" parent="ToonLightDataView/Viewport/Rat" index="3"]
-material/0 = SubResource( 2 )
+[node name="teeth1" parent="ToonLightDataView/SubViewport/Rat" index="3"]
+material/0 = SubResource("2")
 
-[node name="Sphere" type="MeshInstance" parent="ToonLightDataView/Viewport"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44328, 3.11, 1.45094 )
-mesh = SubResource( 31 )
-material/0 = SubResource( 2 )
+[node name="Sphere" type="MeshInstance3D" parent="ToonLightDataView/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44328, 3.11, 1.45094)
+mesh = SubResource("31")
+material/0 = SubResource("2")
 
-[node name="ToonCamera" type="Camera" parent="ToonLightDataView/Viewport"]
-transform = Transform( 0.226688, -0.229812, 0.946466, 0, 0.971764, 0.235955, -0.973967, -0.0534882, 0.220288, 6.0077, 1.49772, 1.39828 )
+[node name="ToonCamera" type="Camera3D" parent="ToonLightDataView/SubViewport"]
+transform = Transform3D(0.226688, -0.229812, 0.946466, 0, 0.971764, 0.235955, -0.973967, -0.0534882, 0.220288, 6.0077, 1.49772, 1.39828)
 current = true
-script = ExtResource( 4 )
+script = ExtResource("4")
 
-[node name="KeyLight" type="DirectionalLight" parent="ToonLightDataView/Viewport"]
-transform = Transform( 0.633273, -0.407792, 0.657777, 0, 0.84992, 0.526912, -0.773929, -0.333679, 0.538231, 0, 2.28599, 0 )
-light_color = Color( 1, 0, 0, 1 )
+[node name="KeyLight" type="DirectionalLight3D" parent="ToonLightDataView/SubViewport"]
+transform = Transform3D(0.633273, -0.407792, 0.657777, 0, 0.84992, 0.526912, -0.773929, -0.333679, 0.538231, 0, 2.28599, 0)
+light_color = Color(1, 0, 0, 1)
 shadow_enabled = true
 
-[node name="FillLight" type="DirectionalLight" parent="ToonLightDataView/Viewport"]
-transform = Transform( 0.01621, -0.67221, -0.740183, 0.160344, 0.732447, -0.661673, 0.986928, -0.107958, 0.119658, -5.0003, 1.7265, 2.60975 )
-light_color = Color( 0, 1, 0, 1 )
+[node name="FillLight" type="DirectionalLight3D" parent="ToonLightDataView/SubViewport"]
+transform = Transform3D(0.01621, -0.67221, -0.740183, 0.160344, 0.732447, -0.661673, 0.986928, -0.107958, 0.119658, -5.0003, 1.7265, 2.60975)
+light_color = Color(0, 1, 0, 1)
 
-[node name="KickLight" type="DirectionalLight" parent="ToonLightDataView/Viewport"]
-transform = Transform( -0.816521, -0.150714, 0.557296, 0.157136, 0.870858, 0.465741, -0.55552, 0.467858, -0.687391, 0, 2.96178, -3.54709 )
-light_color = Color( 0, 0, 1, 1 )
+[node name="KickLight" type="DirectionalLight3D" parent="ToonLightDataView/SubViewport"]
+transform = Transform3D(-0.816521, -0.150714, 0.557296, 0.157136, 0.870858, 0.465741, -0.55552, 0.467858, -0.687391, 0, 2.96178, -3.54709)
+light_color = Color(0, 0, 1, 1)
 
-[node name="ToonSpecularDataView" type="ViewportContainer" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
+[node name="ToonSpecularDataView" type="SubViewportContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0)
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 3 )
+script = ExtResource("3")
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Viewport" type="Viewport" parent="ToonSpecularDataView"]
-size = Vector2( 2203, 1747 )
-world = SubResource( 5 )
+[node name="SubViewport" type="SubViewport" parent="ToonSpecularDataView"]
+size = Vector2(2203, 1747)
+world = SubResource("5")
 transparent_bg = true
 handle_input_locally = false
 usage = 3
 render_target_update_mode = 3
 shadow_atlas_size = 8192
 
-[node name="Rat" parent="ToonSpecularDataView/Viewport" instance=ExtResource( 2 )]
-transform = Transform( 0.537255, 0, 0.84342, 0, 1, 0, -0.84342, 0, 0.537255, -5.78165e-05, -0.0104361, 0.00964785 )
+[node name="Rat" parent="ToonSpecularDataView/SubViewport" instance=ExtResource("2")]
+transform = Transform3D(0.537255, 0, 0.84342, 0, 1, 0, -0.84342, 0, 0.537255, -5.78165e-05, -0.0104361, 0.00964785)
 
-[node name="body1" parent="ToonSpecularDataView/Viewport/Rat" index="0"]
-material/0 = SubResource( 1 )
+[node name="body1" parent="ToonSpecularDataView/SubViewport/Rat" index="0"]
+material/0 = SubResource("1")
 
-[node name="eyes1" parent="ToonSpecularDataView/Viewport/Rat" index="1"]
-material/0 = SubResource( 1 )
+[node name="eyes1" parent="ToonSpecularDataView/SubViewport/Rat" index="1"]
+material/0 = SubResource("1")
 
-[node name="head1" parent="ToonSpecularDataView/Viewport/Rat" index="2"]
-material/0 = SubResource( 1 )
+[node name="head1" parent="ToonSpecularDataView/SubViewport/Rat" index="2"]
+material/0 = SubResource("1")
 
-[node name="teeth1" parent="ToonSpecularDataView/Viewport/Rat" index="3"]
-material/0 = SubResource( 1 )
+[node name="teeth1" parent="ToonSpecularDataView/SubViewport/Rat" index="3"]
+material/0 = SubResource("1")
 
-[node name="Sphere" type="MeshInstance" parent="ToonSpecularDataView/Viewport"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44328, 3.11, 1.45094 )
-mesh = SubResource( 31 )
-material/0 = SubResource( 6 )
+[node name="Sphere" type="MeshInstance3D" parent="ToonSpecularDataView/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44328, 3.11, 1.45094)
+mesh = SubResource("31")
+material/0 = SubResource("6")
 
-[node name="ToonCamera" type="Camera" parent="ToonSpecularDataView/Viewport"]
-transform = Transform( 0.226688, -0.229812, 0.946466, 0, 0.971764, 0.235955, -0.973967, -0.0534882, 0.220288, 6.0077, 1.49772, 1.39828 )
+[node name="ToonCamera" type="Camera3D" parent="ToonSpecularDataView/SubViewport"]
+transform = Transform3D(0.226688, -0.229812, 0.946466, 0, 0.971764, 0.235955, -0.973967, -0.0534882, 0.220288, 6.0077, 1.49772, 1.39828)
 current = true
-script = ExtResource( 4 )
+script = ExtResource("4")
 
-[node name="KeyLight" type="DirectionalLight" parent="ToonSpecularDataView/Viewport"]
-transform = Transform( 0.633273, -0.407792, 0.657777, 0, 0.84992, 0.526912, -0.773929, -0.333679, 0.538231, 0, 2.28599, 0 )
+[node name="KeyLight" type="DirectionalLight3D" parent="ToonSpecularDataView/SubViewport"]
+transform = Transform3D(0.633273, -0.407792, 0.657777, 0, 0.84992, 0.526912, -0.773929, -0.333679, 0.538231, 0, 2.28599, 0)
 shadow_enabled = true
 
-[node name="FillLight" type="DirectionalLight" parent="ToonSpecularDataView/Viewport"]
-transform = Transform( 0.01621, -0.67221, -0.740183, 0.160344, 0.732447, -0.661673, 0.986928, -0.107958, 0.119658, -5.0003, 1.7265, 2.60975 )
+[node name="FillLight" type="DirectionalLight3D" parent="ToonSpecularDataView/SubViewport"]
+transform = Transform3D(0.01621, -0.67221, -0.740183, 0.160344, 0.732447, -0.661673, 0.986928, -0.107958, 0.119658, -5.0003, 1.7265, 2.60975)
 visible = false
 light_energy = 0.0
 
-[node name="KickLight" type="DirectionalLight" parent="ToonSpecularDataView/Viewport"]
-transform = Transform( -0.816521, -0.150714, 0.557296, 0.157136, 0.870858, 0.465741, -0.55552, 0.467858, -0.687391, 0, 2.96178, -3.54709 )
+[node name="KickLight" type="DirectionalLight3D" parent="ToonSpecularDataView/SubViewport"]
+transform = Transform3D(-0.816521, -0.150714, 0.557296, 0.157136, 0.870858, 0.465741, -0.55552, 0.467858, -0.687391, 0, 2.96178, -3.54709)
 visible = false
 light_energy = 0.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 7 )
+environment = SubResource("7")
 
-[node name="Rat" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.537255, 0, 0.84342, 0, 1, 0, -0.84342, 0, 0.537255, -5.78165e-05, -0.0104361, 0.00964785 )
+[node name="Rat" parent="." instance=ExtResource("2")]
+transform = Transform3D(0.537255, 0, 0.84342, 0, 1, 0, -0.84342, 0, 0.537255, -5.78165e-05, -0.0104361, 0.00964785)
 
 [node name="body1" parent="Rat" index="0"]
-material/0 = SubResource( 17 )
+material/0 = SubResource("17")
 
 [node name="eyes1" parent="Rat" index="1"]
-material/0 = SubResource( 18 )
+material/0 = SubResource("18")
 
 [node name="head1" parent="Rat" index="2"]
-material/0 = SubResource( 19 )
+material/0 = SubResource("19")
 
 [node name="teeth1" parent="Rat" index="3"]
-material/0 = SubResource( 19 )
+material/0 = SubResource("19")
 
-[node name="LightRemote" type="RemoteTransform" parent="Rat"]
-remote_path = NodePath("../../ToonLightDataView/Viewport/Rat")
+[node name="LightRemote" type="RemoteTransform3D" parent="Rat"]
+remote_path = NodePath("../../ToonLightDataView/SubViewport/Rat")
 
-[node name="SpecularRemote" type="RemoteTransform" parent="Rat"]
-remote_path = NodePath("../../ToonSpecularDataView/Viewport/Rat")
+[node name="SpecularRemote" type="RemoteTransform3D" parent="Rat"]
+remote_path = NodePath("../../ToonSpecularDataView/SubViewport/Rat")
 
-[node name="LightRemote2" type="RemoteTransform" parent="Rat"]
-remote_path = NodePath("../../ToonLightDataView/Viewport/Rat")
+[node name="LightRemote2" type="RemoteTransform3D" parent="Rat"]
+remote_path = NodePath("../../ToonLightDataView/SubViewport/Rat")
 
-[node name="SpecularRemote2" type="RemoteTransform" parent="Rat"]
-remote_path = NodePath("../../ToonSpecularDataView/Viewport/Rat")
+[node name="SpecularRemote2" type="RemoteTransform3D" parent="Rat"]
+remote_path = NodePath("../../ToonSpecularDataView/SubViewport/Rat")
 
 [node name="ToonProxyBuilder" type="Node" parent="Rat"]
-script = ExtResource( 5 )
+script = ExtResource("5")
 
-[node name="Sphere" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44328, 3.11, 1.45094 )
-mesh = SubResource( 31 )
-material/0 = SubResource( 25 )
+[node name="Sphere" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44328, 3.11, 1.45094)
+mesh = SubResource("31")
+material/0 = SubResource("25")
 
-[node name="LightRemote" type="RemoteTransform" parent="Sphere"]
-remote_path = NodePath("../../ToonLightDataView/Viewport/Sphere")
+[node name="LightRemote" type="RemoteTransform3D" parent="Sphere"]
+remote_path = NodePath("../../ToonLightDataView/SubViewport/Sphere")
 
-[node name="SpecularRemote" type="RemoteTransform" parent="Sphere"]
-remote_path = NodePath("../../ToonSpecularDataView/Viewport/Sphere")
+[node name="SpecularRemote" type="RemoteTransform3D" parent="Sphere"]
+remote_path = NodePath("../../ToonSpecularDataView/SubViewport/Sphere")
 
-[node name="LightRemote2" type="RemoteTransform" parent="Sphere"]
-remote_path = NodePath("../../ToonLightDataView/Viewport/Sphere")
+[node name="LightRemote2" type="RemoteTransform3D" parent="Sphere"]
+remote_path = NodePath("../../ToonLightDataView/SubViewport/Sphere")
 
-[node name="SpecularRemote2" type="RemoteTransform" parent="Sphere"]
-remote_path = NodePath("../../ToonSpecularDataView/Viewport/Sphere")
+[node name="SpecularRemote2" type="RemoteTransform3D" parent="Sphere"]
+remote_path = NodePath("../../ToonSpecularDataView/SubViewport/Sphere")
 
 [node name="ToonProxyBuilder" type="Node" parent="Sphere"]
-script = ExtResource( 5 )
-specular_material = SubResource( 6 )
+script = ExtResource("5")
+specular_material = SubResource("6")
 
-[node name="ToonCamera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.908916, 0.416978, 0, -0.416978, 0.908916, 0, 3.34385, 7.32658 )
+[node name="ToonCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.908916, 0.416978, 0, -0.416978, 0.908916, 0, 3.34385, 7.32658)
 current = true
-script = ExtResource( 4 )
+script = ExtResource("4")
 
-[node name="LightRemote" type="RemoteTransform" parent="ToonCamera"]
-remote_path = NodePath("../../ToonLightDataView/Viewport/ToonCamera")
+[node name="LightRemote" type="RemoteTransform3D" parent="ToonCamera"]
+remote_path = NodePath("../../ToonLightDataView/SubViewport/ToonCamera")
 update_position = false
 update_rotation = false
 update_scale = false
 
-[node name="SpecularRemote" type="RemoteTransform" parent="ToonCamera"]
-remote_path = NodePath("../../ToonSpecularDataView/Viewport/ToonCamera")
+[node name="SpecularRemote" type="RemoteTransform3D" parent="ToonCamera"]
+remote_path = NodePath("../../ToonSpecularDataView/SubViewport/ToonCamera")
 update_position = false
 update_rotation = false
 update_scale = false
 
-[node name="LightRemote2" type="RemoteTransform" parent="ToonCamera"]
-remote_path = NodePath("../../ToonLightDataView/Viewport/ToonCamera")
+[node name="LightRemote2" type="RemoteTransform3D" parent="ToonCamera"]
+remote_path = NodePath("../../ToonLightDataView/SubViewport/ToonCamera")
 
-[node name="SpecularRemote2" type="RemoteTransform" parent="ToonCamera"]
-remote_path = NodePath("../../ToonSpecularDataView/Viewport/ToonCamera")
+[node name="SpecularRemote2" type="RemoteTransform3D" parent="ToonCamera"]
+remote_path = NodePath("../../ToonSpecularDataView/SubViewport/ToonCamera")
 
 [node name="ToonProxyBuilder" type="Node" parent="ToonCamera"]
-script = ExtResource( 5 )
+script = ExtResource("5")
 
-[node name="Floor" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0319006, 4.76837e-07, -0.00956392 )
-mesh = SubResource( 26 )
-material/0 = SubResource( 27 )
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0319006, 4.76837e-07, -0.00956392)
+mesh = SubResource("26")
+material/0 = SubResource("27")
 
-[node name="KeyLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.633273, -0.407792, 0.657778, 0, 0.84992, 0.526911, -0.773929, -0.333679, 0.538231, 0, 2.28599, 0 )
+[node name="KeyLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.633273, -0.407792, 0.657778, 0, 0.84992, 0.526911, -0.773929, -0.333679, 0.538231, 0, 2.28599, 0)
 shadow_enabled = true
 
-[node name="LightRemote" type="RemoteTransform" parent="KeyLight"]
-remote_path = NodePath("../../ToonLightDataView/Viewport/KeyLight")
+[node name="LightRemote" type="RemoteTransform3D" parent="KeyLight"]
+remote_path = NodePath("../../ToonLightDataView/SubViewport/KeyLight")
 
-[node name="SpecularRemote" type="RemoteTransform" parent="KeyLight"]
-remote_path = NodePath("../../ToonSpecularDataView/Viewport/KeyLight")
+[node name="SpecularRemote" type="RemoteTransform3D" parent="KeyLight"]
+remote_path = NodePath("../../ToonSpecularDataView/SubViewport/KeyLight")
 
-[node name="LightRemote2" type="RemoteTransform" parent="KeyLight"]
-remote_path = NodePath("../../ToonLightDataView/Viewport/KeyLight")
+[node name="LightRemote2" type="RemoteTransform3D" parent="KeyLight"]
+remote_path = NodePath("../../ToonLightDataView/SubViewport/KeyLight")
 
-[node name="SpecularRemote2" type="RemoteTransform" parent="KeyLight"]
-remote_path = NodePath("../../ToonSpecularDataView/Viewport/KeyLight")
+[node name="SpecularRemote2" type="RemoteTransform3D" parent="KeyLight"]
+remote_path = NodePath("../../ToonSpecularDataView/SubViewport/KeyLight")
 
 [node name="ToonProxyBuilder" type="Node" parent="KeyLight"]
-script = ExtResource( 5 )
+script = ExtResource("5")
 emits_shadows = true
 
-[node name="FillLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.01621, -0.67221, -0.740183, 0.160344, 0.732447, -0.661673, 0.986928, -0.107958, 0.119658, -5.0003, 1.7265, 2.60975 )
+[node name="FillLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.01621, -0.67221, -0.740183, 0.160344, 0.732447, -0.661673, 0.986928, -0.107958, 0.119658, -5.0003, 1.7265, 2.60975)
 
-[node name="LightRemote" type="RemoteTransform" parent="FillLight"]
-remote_path = NodePath("../../ToonLightDataView/Viewport/FillLight")
+[node name="LightRemote" type="RemoteTransform3D" parent="FillLight"]
+remote_path = NodePath("../../ToonLightDataView/SubViewport/FillLight")
 
-[node name="SpecularRemote" type="RemoteTransform" parent="FillLight"]
-remote_path = NodePath("../../ToonSpecularDataView/Viewport/FillLight")
+[node name="SpecularRemote" type="RemoteTransform3D" parent="FillLight"]
+remote_path = NodePath("../../ToonSpecularDataView/SubViewport/FillLight")
 
-[node name="LightRemote2" type="RemoteTransform" parent="FillLight"]
-remote_path = NodePath("../../ToonLightDataView/Viewport/FillLight")
+[node name="LightRemote2" type="RemoteTransform3D" parent="FillLight"]
+remote_path = NodePath("../../ToonLightDataView/SubViewport/FillLight")
 
-[node name="SpecularRemote2" type="RemoteTransform" parent="FillLight"]
-remote_path = NodePath("../../ToonSpecularDataView/Viewport/FillLight")
+[node name="SpecularRemote2" type="RemoteTransform3D" parent="FillLight"]
+remote_path = NodePath("../../ToonSpecularDataView/SubViewport/FillLight")
 
 [node name="ToonProxyBuilder" type="Node" parent="FillLight"]
-script = ExtResource( 5 )
+script = ExtResource("5")
 light_role = 1
 
-[node name="KickLight" type="DirectionalLight" parent="."]
-transform = Transform( -0.816521, -0.150714, 0.557296, 0.157136, 0.870858, 0.46574, -0.55552, 0.467858, -0.687391, 0, 2.96178, -3.54709 )
+[node name="KickLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.816521, -0.150714, 0.557296, 0.157136, 0.870858, 0.46574, -0.55552, 0.467858, -0.687391, 0, 2.96178, -3.54709)
 
-[node name="LightRemote" type="RemoteTransform" parent="KickLight"]
-remote_path = NodePath("../../ToonLightDataView/Viewport/KickLight")
+[node name="LightRemote" type="RemoteTransform3D" parent="KickLight"]
+remote_path = NodePath("../../ToonLightDataView/SubViewport/KickLight")
 
-[node name="SpecularRemote" type="RemoteTransform" parent="KickLight"]
-remote_path = NodePath("../../ToonSpecularDataView/Viewport/KickLight")
+[node name="SpecularRemote" type="RemoteTransform3D" parent="KickLight"]
+remote_path = NodePath("../../ToonSpecularDataView/SubViewport/KickLight")
 
-[node name="LightRemote2" type="RemoteTransform" parent="KickLight"]
-remote_path = NodePath("../../ToonLightDataView/Viewport/KickLight")
+[node name="LightRemote2" type="RemoteTransform3D" parent="KickLight"]
+remote_path = NodePath("../../ToonLightDataView/SubViewport/KickLight")
 
-[node name="SpecularRemote2" type="RemoteTransform" parent="KickLight"]
-remote_path = NodePath("../../ToonSpecularDataView/Viewport/KickLight")
+[node name="SpecularRemote2" type="RemoteTransform3D" parent="KickLight"]
+remote_path = NodePath("../../ToonSpecularDataView/SubViewport/KickLight")
 
 [node name="ToonProxyBuilder" type="Node" parent="KickLight"]
-script = ExtResource( 5 )
+script = ExtResource("5")
 light_role = 2
 
 [node name="DebugViewer" type="Control" parent="."]
-margin_top = 120.0
-margin_right = 40.0
-margin_bottom = 160.0
-script = ExtResource( 24 )
+offset_top = 120.0
+offset_right = 40.0
+offset_bottom = 160.0
+script = ExtResource("24")
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DemoInterface" parent="." instance=ExtResource( 23 )]
+[node name="DemoInterface" parent="." instance=ExtResource("23")]
 
-[editable path="ToonLightDataView/Viewport/Rat"]
-[editable path="ToonSpecularDataView/Viewport/Rat"]
+[editable path="ToonLightDataView/SubViewport/Rat"]
+[editable path="ToonSpecularDataView/SubViewport/Rat"]
 [editable path="Rat"]

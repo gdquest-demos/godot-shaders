@@ -1,23 +1,23 @@
-tool
+@tool
 extends Control
 
 const UIKeyMapping := preload("UIKeyMapping.tscn")
 
-export var is_foldable := true setget set_is_foldable
-export var title := "" setget set_title
-export (Array, String) var controls := []
+@export var is_foldable := true: set = set_is_foldable
+@export var title := "": set = set_title
+@export var controls: Array[String] = []
 
-onready var _controls_table := find_node("ControlsTable")
-onready var _toggle_button := find_node("ToggleButton")
-onready var _toggle_button_container := $MarginContainer
-onready var _controls_panel := find_node("ControlsPanel")
-onready var _title_label := find_node("TitleLabel")
+@onready var _controls_table := find_child("ControlsTable")
+@onready var _toggle_button := find_child("ToggleButton")
+@onready var _toggle_button_container := $MarginContainer
+@onready var _controls_panel := find_child("ControlsPanel")
+@onready var _title_label := find_child("TitleLabel")
 
 
 func _ready() -> void:
-	_toggle_button.connect("toggled", self, "toggle_panel")
+	_toggle_button.connect("toggled", Callable(self, "toggle_panel"))
 	_toggle_button.focus_mode = Control.FOCUS_NONE
-	if controls and not Engine.editor_hint:
+	if controls and not Engine.is_editor_hint():
 		setup(controls)
 
 
@@ -45,28 +45,28 @@ func add_controls_from_scheme(scheme: int) -> void:
 
 func add_control_from_input_action(action: String) -> void:
 	assert(InputMap.has_action(action), "Action '%s' does not exist. Can't add it to the controls panel" % action)
-	var key_mapping := UIKeyMapping.instance()
+	var key_mapping := UIKeyMapping.instantiate()
 	key_mapping.setup(action)
 	_controls_table.add_child(key_mapping)
 
 
 func toggle_panel(is_visible: bool) -> void:
 	_toggle_button.text = "<" if is_visible else ">"
-	_toggle_button.pressed = is_visible
+	_toggle_button.button_pressed = is_visible
 	_controls_panel.visible = is_visible
 
 
 func set_is_foldable(value: bool) -> void:
 	is_foldable = value
 	if not is_inside_tree():
-		yield(self, "ready")
+		await self.ready
 	_toggle_button_container.visible = is_foldable
 
 
 func set_title(value: String) -> void:
 	title = value
 	if not is_inside_tree():
-		yield(self, "ready")
+		await self.ready
 
 	if value != "":
 		_title_label.text = value

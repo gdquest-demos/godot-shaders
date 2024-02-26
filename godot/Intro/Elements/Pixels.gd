@@ -160,11 +160,11 @@ const EXCLUSIONS := [
 	482
 ]
 
-export var Pixel: PackedScene
-export var top_left := Vector2(758.377, 320.169)
-export var width := 0
-export var height := 0
-export var pixel_size := 19.18
+@export var Pixel: PackedScene
+@export var top_left := Vector2(758.377, 320.169)
+@export var width := 0
+@export var height := 0
+@export var pixel_size := 19.18
 
 
 func _ready() -> void:
@@ -172,7 +172,7 @@ func _ready() -> void:
 		for x in width:
 			if (y * width + x) in EXCLUSIONS:
 				continue
-			var pixel := Pixel.instance()
+			var pixel := Pixel.instantiate()
 			pixel.position = top_left + Vector2(x * pixel_size, y * pixel_size)
 			pixel.size = Vector2(pixel_size, pixel_size)
 			add_child(pixel)
@@ -184,4 +184,4 @@ func do_render() -> void:
 		for pixel in get_children().slice(i, i+7):
 			pixel.do_scale_down(delay)
 		delay += 0.15
-	yield(get_tree().create_timer(delay), "timeout")
+	await get_tree().create_timer(delay).timeout

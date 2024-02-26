@@ -15,17 +15,17 @@ input_name = "projection"
 
 [sub_resource type="VisualShaderNodeVectorDecompose" id=22]
 
-[sub_resource type="VisualShaderNodeScalarOp" id=23]
+[sub_resource type="VisualShaderNodeFloatOp" id=23]
 
-[sub_resource type="VisualShaderNodeScalarOp" id=24]
+[sub_resource type="VisualShaderNodeFloatOp" id=24]
 default_input_values = [ 0, 0.0, 1, 2.0 ]
 operator = 2
 
-[sub_resource type="VisualShaderNodeScalarOp" id=25]
+[sub_resource type="VisualShaderNodeFloatOp" id=25]
 default_input_values = [ 0, 0.0, 1, 1.0 ]
 operator = 1
 
-[sub_resource type="VisualShaderNodeScalarOp" id=26]
+[sub_resource type="VisualShaderNodeFloatOp" id=26]
 operator = 3
 
 [sub_resource type="VisualShaderNodeInput" id=1]
@@ -42,7 +42,7 @@ input_name = "fragcoord"
 [sub_resource type="VisualShaderNodeCompare" id=17]
 function = 4
 
-[sub_resource type="VisualShaderNodeScalarSwitch" id=18]
+[sub_resource type="VisualShaderNodeSwitch" id=18]
 
 [resource]
 code = "shader_type spatial;
@@ -185,4 +185,4 @@ nodes/fragment/18/node = SubResource( 25 )
 nodes/fragment/18/position = Vector2( 480, 480 )
 nodes/fragment/19/node = SubResource( 26 )
 nodes/fragment/19/position = Vector2( 780, 580 )
-nodes/fragment/connections = PoolIntArray( 3, 0, 4, 0, 5, 0, 6, 0, 6, 2, 7, 1, 7, 0, 8, 0, 10, 0, 0, 5, 11, 0, 0, 0, 8, 0, 0, 1, 12, 0, 13, 0, 13, 3, 14, 0, 13, 2, 15, 0, 4, 0, 17, 0, 17, 0, 18, 0, 18, 0, 16, 0, 15, 2, 16, 1, 14, 2, 19, 0, 16, 0, 19, 1, 19, 0, 7, 0 )
+nodes/fragment/connections = PackedInt32Array( 3, 0, 4, 0, 5, 0, 6, 0, 6, 2, 7, 1, 7, 0, 8, 0, 10, 0, 0, 5, 11, 0, 0, 0, 8, 0, 0, 1, 12, 0, 13, 0, 13, 3, 14, 0, 13, 2, 15, 0, 4, 0, 17, 0, 17, 0, 18, 0, 18, 0, 16, 0, 15, 2, 16, 1, 14, 2, 19, 0, 16, 0, 19, 1, 19, 0, 7, 0 )

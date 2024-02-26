@@ -1,8 +1,8 @@
 class_name DebugViewer
 extends Control
 
-export (float, 0.1, 1, 0.025) var size_multiplier = 0.125
-export var enabled := true setget _set_enabled
+@export (float, 0.1, 1, 0.025) var size_multiplier = 0.125
+@export var enabled := true: set = _set_enabled
 
 
 func _ready() -> void:
@@ -14,8 +14,8 @@ func _ready() -> void:
 
 
 func refresh_viewports() -> void:
-	var width: int = ProjectSettings.get_setting("display/window/size/width") * size_multiplier
-	var height: int = ProjectSettings.get_setting("display/window/size/height") * size_multiplier
+	var width: int = ProjectSettings.get_setting("display/window/size/viewport_width") * size_multiplier
+	var height: int = ProjectSettings.get_setting("display/window/size/viewport_height") * size_multiplier
 
 	var vbox := VBoxContainer.new()
 	vbox.anchor_bottom = 1
@@ -26,7 +26,7 @@ func refresh_viewports() -> void:
 		_texture_rect.stretch_mode = TextureRect.STRETCH_SCALE
 		_texture_rect.expand = true
 
-		_texture_rect.rect_min_size = Vector2(width, height)
+		_texture_rect.custom_minimum_size = Vector2(width, height)
 		_texture_rect.texture = viewport.get_texture()
 		_texture_rect.flip_v = true
 
@@ -40,7 +40,7 @@ func _get_viewports() -> Array:
 
 	while children.size() > 0:
 		var child: Node = children.pop_back()
-		if child is Viewport:
+		if child is SubViewport:
 			viewports.append(child)
 		children += child.get_children()
 

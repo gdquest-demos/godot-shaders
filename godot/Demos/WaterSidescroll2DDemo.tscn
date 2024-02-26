@@ -1,97 +1,54 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=9 format=3 uid="uid://b2jsb4wqmuk1t"]
 
-[ext_resource path="res://Demos/WaterSidescroll2D/water_sidescroll_2D_full.shader" type="Shader" id=1]
-[ext_resource path="res://Demos/WaterSidescroll2D/WaterSidescroll2D.gd" type="Script" id=2]
-[ext_resource path="res://Demos/WaterSidescroll2D/water_sidescroll_2D_simple.shader" type="Shader" id=3]
-[ext_resource path="res://Demos/Water2D/water_diffuse.png" type="Texture" id=4]
-[ext_resource path="res://Demos/Water2D/water_uv_offset.png" type="Texture" id=5]
-[ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Shared/sprites/robi_shaded.png" type="Texture" id=7]
-[ext_resource path="res://Shared/Background2D/Demo2DBackground.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Demos/Water2D/water_normal.png" type="Texture" id=9]
-[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=10]
+[ext_resource type="Shader" path="res://Demos/WaterSidescroll2D/water_sidescroll_2D_full.gdshader" id="1"]
+[ext_resource type="Script" path="res://Demos/WaterSidescroll2D/WaterSidescroll2D.gd" id="2"]
+[ext_resource type="Shader" path="res://Demos/WaterSidescroll2D/water_sidescroll_2D_simple.gdshader" id="3"]
+[ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://Shared/Background2D/Demo2DBackground.tscn" id="8"]
+[ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="10"]
 
-[sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0.37037, 0.548148, 1 )
-colors = PoolColorArray( 0, 0, 0, 1, 0.211765, 0.211765, 0.211765, 1, 1, 1, 1, 1 )
+[sub_resource type="ShaderMaterial" id="3"]
+shader = ExtResource("1")
 
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
-
-[sub_resource type="ShaderMaterial" id=3]
-shader = ExtResource( 1 )
-shader_param/water_tint = Color( 0.223529, 0.458824, 0.733333, 1 )
-shader_param/shadow_color = Color( 0.0862745, 0.109804, 0.462745, 1 )
-shader_param/distortion_scale = Vector2( 0.385, 0.312 )
-shader_param/distortion_time_scale = 0.015
-shader_param/distortion_amplitude = 0.004
-shader_param/tile_factor = 0.382
-shader_param/water_time_scale = 0.049
-shader_param/reflection_intensity = 0.908
-shader_param/transform = Basis( 1, 0, 0, 0.291, 1.822, 0.555, 0, 0, 1 )
-shader_param/parallax_factor = 0.462
-shader_param/shore_color = Color( 0.137255, 0.411765, 0.670588, 1 )
-shader_param/shore_size = 0.038
-shader_param/shore_smoothness = 0.017
-shader_param/shore_height_factor = 0.127
-shader_param/scale = Vector2( 7.49668, 1.51649 )
-shader_param/zoom_y = 0.749154
-shader_param/aspect_ratio = 1.0
-shader_param/transition_gradient = SubResource( 2 )
-shader_param/distortion_map = ExtResource( 5 )
-
-[sub_resource type="ShaderMaterial" id=4]
-shader = ExtResource( 3 )
-shader_param/water_tint = Color( 0.223529, 0.458824, 0.733333, 1 )
-shader_param/distortion_scale = Vector2( 0.385, 0.312 )
-shader_param/distortion_amplitude = 0.018
-shader_param/distortion_time_scale = 0.017
-shader_param/water_time_scale = 0.05
-shader_param/scale_y_factor = 2.0
-shader_param/tile_factor = 0.321
-shader_param/reflection_intensity = 0.908
-shader_param/scale = Vector2( 7.49668, 1.51649 )
-shader_param/zoom_y = 0.749154
-shader_param/aspect_ratio = 1.0
-shader_param/transition_gradient = SubResource( 2 )
-shader_param/distortion_map = ExtResource( 5 )
+[sub_resource type="ShaderMaterial" id="4"]
+shader = ExtResource("3")
 
 [node name="WaterSidescroll2DDemo" type="CanvasLayer"]
-script = ExtResource( 10 )
+script = ExtResource("10")
 
-[node name="ParallaxBackground" parent="." instance=ExtResource( 8 )]
+[node name="ParallaxBackground" parent="." instance=ExtResource("8")]
 
-[node name="Robi" type="Sprite" parent="."]
-position = Vector2( 504.151, 466.506 )
+[node name="Robi" type="Sprite2D" parent="."]
+position = Vector2(504.151, 466.506)
 rotation = -0.147885
-scale = Vector2( 0.563456, 0.563456 )
-texture = ExtResource( 7 )
+scale = Vector2(0.563456, 0.563456)
+texture = null
 
-[node name="Robi2" type="Sprite" parent="."]
-position = Vector2( 1381.09, 496.752 )
+[node name="Robi2" type="Sprite2D" parent="."]
+position = Vector2(1381.09, 496.752)
 rotation = 0.103686
-scale = Vector2( 0.471994, 0.471994 )
-texture = ExtResource( 7 )
+scale = Vector2(0.471994, 0.471994)
+texture = null
 
-[node name="Robi3" type="Sprite" parent="."]
-position = Vector2( 963.357, 402.478 )
-scale = Vector2( 0.630556, 0.630556 )
-texture = ExtResource( 7 )
+[node name="Robi3" type="Sprite2D" parent="."]
+position = Vector2(963.357, 402.478)
+scale = Vector2(0.630556, 0.630556)
+texture = null
 
-[node name="Water2DSide" type="Sprite" parent="."]
-material = SubResource( 3 )
-position = Vector2( 961.506, 901.105 )
-scale = Vector2( 7.49668, 1.51649 )
-texture = ExtResource( 4 )
-normal_map = ExtResource( 9 )
-script = ExtResource( 2 )
+[node name="Water2DSide" type="Sprite2D" parent="."]
+material = SubResource("3")
+position = Vector2(961.506, 901.105)
+scale = Vector2(7.49668, 1.51649)
+texture = null
+normal_map = null
+script = ExtResource("2")
 
-[node name="Water2DSideSimple" type="Sprite" parent="."]
+[node name="Water2DSideSimple" type="Sprite2D" parent="."]
 visible = false
-material = SubResource( 4 )
-position = Vector2( 961.506, 901.105 )
-scale = Vector2( 7.49668, 1.51649 )
-texture = ExtResource( 4 )
-script = ExtResource( 2 )
+material = SubResource("4")
+position = Vector2(961.506, 901.105)
+scale = Vector2(7.49668, 1.51649)
+texture = null
+script = ExtResource("2")
 
-[node name="DemoInterface" parent="." instance=ExtResource( 6 )]
+[node name="DemoInterface" parent="." instance=ExtResource("6")]

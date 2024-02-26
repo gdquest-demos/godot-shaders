@@ -1,18 +1,16 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=7 format=3 uid="uid://bly1goqj5isle"]
 
-[ext_resource path="res://Demos/Reflection2D/Reflection2DTextureRect.gd" type="Script" id=1]
-[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=2]
-[ext_resource path="res://Shared/sprites/robi_shaded.png" type="Texture" id=3]
-[ext_resource path="res://Shared/Background2D/Demo2DBackground.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Demos/Outline/Outline2D/mouse_cursor.png" type="Texture" id=6]
-[ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=7]
+[ext_resource type="Script" path="res://Demos/Reflection2D/Reflection2DTextureRect.gd" id="1"]
+[ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="2"]
+[ext_resource type="PackedScene" path="res://Shared/Background2D/Demo2DBackground.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="7"]
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id="1"]
 code = "shader_type canvas_item;
 
-uniform vec4 color :hint_color;
+uniform vec4 color :source_color;
 uniform float reflection_intensity = 0.5;
-uniform sampler2D transition_gradient :hint_black;
+uniform sampler2D transition_gradient :hint_default_black;
 
 // Updated from GDScript
 uniform float scale_y = 1.0f;
@@ -27,54 +25,42 @@ void fragment() {
 	COLOR = mix(color, reflection_color, transition * reflection_intensity);
 }"
 
-[sub_resource type="Gradient" id=2]
-offsets = PoolRealArray( 0.257485, 0.371257, 0.646707, 1 )
-colors = PoolColorArray( 0, 0, 0, 1, 0.0843125, 0.0843125, 0.0843125, 1, 0.456693, 0.456693, 0.456693, 1, 1, 1, 1, 1 )
-
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
-
-[sub_resource type="ShaderMaterial" id=4]
-shader = SubResource( 1 )
-shader_param/color = Color( 0.207843, 0.203922, 0.615686, 1 )
-shader_param/reflection_intensity = 0.542
-shader_param/scale_y = 2.9375
-shader_param/zoom_y = 0.943874
-shader_param/transition_gradient = SubResource( 3 )
+[sub_resource type="ShaderMaterial" id="4"]
+shader = SubResource("1")
 
 [node name="Reflection2DTextureRectDemo" type="CanvasLayer"]
-script = ExtResource( 2 )
+script = ExtResource("2")
 
-[node name="ParallaxBackground" parent="." instance=ExtResource( 4 )]
+[node name="ParallaxBackground" parent="." instance=ExtResource("4")]
 
-[node name="Robi" type="Sprite" parent="."]
-position = Vector2( 504.151, 466.506 )
+[node name="Robi" type="Sprite2D" parent="."]
+position = Vector2(504.151, 466.506)
 rotation = -0.147885
-scale = Vector2( 0.563456, 0.563456 )
-texture = ExtResource( 3 )
+scale = Vector2(0.563456, 0.563456)
+texture = null
 
-[node name="Robi2" type="Sprite" parent="."]
-position = Vector2( 1389.09, 490.752 )
+[node name="Robi2" type="Sprite2D" parent="."]
+position = Vector2(1389.09, 490.752)
 rotation = 0.103686
-scale = Vector2( 0.471994, 0.471994 )
-texture = ExtResource( 3 )
+scale = Vector2(0.471994, 0.471994)
+texture = null
 
-[node name="Robi3" type="Sprite" parent="."]
-position = Vector2( 963.357, 402.478 )
-scale = Vector2( 0.630556, 0.630556 )
-texture = ExtResource( 3 )
+[node name="Robi3" type="Sprite2D" parent="."]
+position = Vector2(963.357, 402.478)
+scale = Vector2(0.630556, 0.630556)
+texture = null
 
 [node name="MirrorYPlane" type="TextureRect" parent="."]
-material = SubResource( 4 )
+material = SubResource("4")
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -376.0
-texture = ExtResource( 6 )
+offset_top = -376.0
+texture = null
 expand = true
-script = ExtResource( 1 )
+script = ExtResource("1")
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DemoInterface" parent="." instance=ExtResource( 7 )]
+[node name="DemoInterface" parent="." instance=ExtResource("7")]

@@ -1,8 +1,5 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://bvkjw7s6ugwb"]
 
-[ext_resource path="res://Shared/models/rat_model/rat.dae" type="PackedScene" id=3]
+[ext_resource type="PackedScene" uid="uid://dpp7narpdag6n" path="res://Shared/models/rat_model/rat.dae" id="3"]
 
-
-
-
-[node name="rat" instance=ExtResource( 3 )]
+[node name="rat" instance=ExtResource("3")]

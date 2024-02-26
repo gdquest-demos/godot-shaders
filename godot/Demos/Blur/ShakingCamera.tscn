@@ -1,13 +1,10 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://dkvt3w3hayp4j"]
 
-[ext_resource path="res://Demos/Blur/ShakingCamera.gd" type="Script" id=1]
-
-
+[ext_resource type="Script" path="res://Demos/Blur/ShakingCamera.gd" id="1"]
 
 [node name="ShakingCamera" type="Camera2D"]
-current = true
-smoothing_enabled = true
-script = ExtResource( 1 )
+position_smoothing_enabled = true
+script = ExtResource("1")
 amplitude = 8.0
 duration = 0.8
 

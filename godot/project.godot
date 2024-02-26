@@ -6,169 +6,88 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
-
-_global_script_classes=[ {
-"base": "Reference",
-"class": "AnimatedOutline",
-"language": "GDScript",
-"path": "res://Demos/Outline/Outline3D/AnimatedOutline.gd"
-}, {
-"base": "Reference",
-"class": "Constants",
-"language": "GDScript",
-"path": "res://Main/Constants.gd"
-}, {
-"base": "Control",
-"class": "DebugViewer",
-"language": "GDScript",
-"path": "res://Utils/DebugViewer.gd"
-}, {
-"base": "Control",
-"class": "DemoPickerUI",
-"language": "GDScript",
-"path": "res://Main/DemoPickerUI.gd"
-}, {
-"base": "CanvasLayer",
-"class": "DemoScreen",
-"language": "GDScript",
-"path": "res://addons/ShaderSecretsHelper/DemoScreen.gd"
-}, {
-"base": "Control",
-"class": "PostProcessBuilder",
-"language": "GDScript",
-"path": "res://Utils/PostProcessBuilder.gd"
-}, {
-"base": "Resource",
-"class": "PostProcessStep",
-"language": "GDScript",
-"path": "res://Utils/PostProcessStep.gd"
-}, {
-"base": "MeshInstance",
-"class": "SmoothNormalsMeshInstance",
-"language": "GDScript",
-"path": "res://Demos/Outline/Outline3D/SmoothNormalsMeshInstance.gd"
-}, {
-"base": "Camera",
-"class": "ToonCamera",
-"language": "GDScript",
-"path": "res://addons/gdquest.toon-controller/Tools/ToonCamera.gd"
-}, {
-"base": "EditorInspectorPlugin",
-"class": "ToonInspector",
-"language": "GDScript",
-"path": "res://addons/gdquest.toon-controller/ToonInspector.gd"
-}, {
-"base": "Node",
-"class": "ToonProxyBuilder",
-"language": "GDScript",
-"path": "res://addons/gdquest.toon-controller/Tools/ToonProxyBuilder.gd"
-}, {
-"base": "Node",
-"class": "ToonSceneBuilder",
-"language": "GDScript",
-"path": "res://addons/gdquest.toon-controller/Tools/ToonSceneBuilder.gd"
-}, {
-"base": "ViewportContainer",
-"class": "ToonViewportContainer",
-"language": "GDScript",
-"path": "res://addons/gdquest.toon-controller/Tools/ToonViewportContainer.gd"
-} ]
-_global_script_class_icons={
-"AnimatedOutline": "",
-"Constants": "",
-"DebugViewer": "",
-"DemoPickerUI": "",
-"DemoScreen": "",
-"PostProcessBuilder": "",
-"PostProcessStep": "",
-"SmoothNormalsMeshInstance": "",
-"ToonCamera": "",
-"ToonInspector": "",
-"ToonProxyBuilder": "",
-"ToonSceneBuilder": "",
-"ToonViewportContainer": ""
-}
+config_version=5
 
 [application]
 
 config/name="Godot Shader Secrets"
 run/main_scene="res://Main/DemoSelector.tscn"
+config/features=PackedStringArray("4.2")
 config/icon="res://icon.png"
 
 [display]
 
-window/size/width=1920
-window/size/height=1080
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/size/always_on_top=true
-window/size/test_width=1280
-window/size/test_height=720
+window/size/window_width_override=1280
+window/size/window_height_override=720
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "gdquest.toon-controller" )
+enabled=PackedStringArray("gdquest.toon-controller")
 
 [input]
 
 jump={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":87,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
 }
 interact={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":69,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":3,"pressure":0.0,"pressed":false,"script":null)
- ]
+]
 }
 click={
 "deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
- ]
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
 }
 toggle_fullscreen={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777254,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194342,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
 }
 search={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":true,"meta":false,"command":true,"pressed":false,"scancode":70,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":true,"meta_pressed":false,"pressed":false,"keycode":70,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
 }
 toggle_interface={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777255,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194343,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
 }
 toggle_help={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777244,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":true,"control":false,"meta":false,"command":false,"pressed":false,"scancode":47,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194332,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":true,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":47,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
 }
 toggle_controls_visible={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777218,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194306,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
 }
 go_back_to_menu={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":true,"meta":false,"command":true,"pressed":false,"scancode":66,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":true,"meta_pressed":false,"pressed":false,"keycode":66,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
 }
 
 [locale]
 
-translations=PoolStringArray( "res://Demos/labels/demo_labels.en.translation" )
+translations=PackedStringArray("res://Demos/labels/demo_labels.en.translation")
 
 [rendering]
 
+environment/defaults/default_environment="res://default_env.tres"
 2d/snapping/use_gpu_pixel_snap=true
 quality/shadows/filter_mode=2
 quality/reflections/irradiance_max_size=2048
 quality/filters/use_fxaa=true
-environment/default_environment="res://default_env.tres"
 quality/2d/use_pixel_snap=true

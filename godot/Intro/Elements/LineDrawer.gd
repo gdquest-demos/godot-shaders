@@ -22,21 +22,21 @@ func do_draw(anim_time: float) -> void:
 	tween.interpolate_method(self, "_do_draw_update", 0, 1, anim_time, 0, 2, anim_time)
 	#warning-ignore: return_value_discarded
 	tween.start()
-	yield(tween, "tween_all_completed")
+	await tween.tween_all_completed
 
 
 func do_cull() -> void:
 	cull = true
 	#warning-ignore: return_value_discarded
-	tween.interpolate_method(self, "_do_cull_color_update", Color.skyblue, Color.red, 1)
+	tween.interpolate_method(self, "_do_cull_color_update", Color.SKY_BLUE, Color.RED, 1)
 	#warning-ignore: return_value_discarded
 	tween.start()
-	yield(tween, "tween_all_completed")
+	await tween.tween_all_completed
 	#warning-ignore: return_value_discarded
 	tween.interpolate_method(self, "_do_cull_update", 1, 0, 1)
 	#warning-ignore: return_value_discarded
 	tween.start()
-	yield(tween, "tween_all_completed")
+	await tween.tween_all_completed
 
 
 func _do_draw_update(value: float) -> void:
@@ -60,7 +60,7 @@ func _draw() -> void:
 	var v3: Vector2 = vertex_positions[2]
 
 	var color_mod_actual := 1.0
-	var color := Color.skyblue
+	var color := Color.SKY_BLUE
 
 	if cull and will_cull:
 		color = culled_color
@@ -68,13 +68,13 @@ func _draw() -> void:
 
 	color *= color_mod_actual
 
-	var lerped_v1_to_v2 = (v1).linear_interpolate(v2, length)
-	var lerped_v2_to_v3 = (v2).linear_interpolate(v3, length)
-	var lerped_v3_to_v1 = (v3).linear_interpolate(v1, length)
+	var lerped_v1_to_v2 = (v1).lerp(v2, length)
+	var lerped_v2_to_v3 = (v2).lerp(v3, length)
+	var lerped_v3_to_v1 = (v3).lerp(v1, length)
 
-	draw_line(v1, lerped_v1_to_v2, color, 1.25, true)
-	draw_line(v2, lerped_v2_to_v3, color, 1.25, true)
-	draw_line(v3, lerped_v3_to_v1, color, 1.25, true)
+	draw_line(v1, lerped_v1_to_v2, color, 1.25)
+	draw_line(v2, lerped_v2_to_v3, color, 1.25)
+	draw_line(v3, lerped_v3_to_v1, color, 1.25)
 
 	if length != 0 and length < 1.0:
 		draw_circle(lerped_v1_to_v2, 5, color * 1.2)

@@ -1,5 +1,5 @@
 class_name AnimatedOutline
-extends Reference
+extends RefCounted
 
 var tween: Tween
 var material: ShaderMaterial
@@ -54,5 +54,5 @@ func pop_out() -> void:
 
 
 func _animate_outline(value: float) -> void:
-	material.set_shader_param("thickness", value)
+	material.set_shader_parameter("thickness", value)
 	thickness = value

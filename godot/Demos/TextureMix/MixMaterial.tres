@@ -1,11 +1,11 @@
 [gd_resource type="ShaderMaterial" load_steps=7 format=2]
 
-[ext_resource path="res://Demos/TextureMix/textures/lambert2_baseColor.jpeg" type="Texture" id=1]
-[ext_resource path="res://Demos/TextureMix/textures/Moss003_1K_Normal.jpg" type="Texture" id=2]
-[ext_resource path="res://Shaders/texture_mix.shader" type="Shader" id=3]
-[ext_resource path="res://Demos/TextureMix/textures/Moss003_1K_Color.jpg" type="Texture" id=4]
-[ext_resource path="res://Demos/TextureMix/textures/lambert2_ao.jpg" type="Texture" id=5]
-[ext_resource path="res://Demos/TextureMix/textures/lambert2_normal.jpg" type="Texture" id=6]
+[ext_resource path="res://Demos/TextureMix/textures/lambert2_baseColor.jpeg" type="Texture2D" id=1]
+[ext_resource path="res://Demos/TextureMix/textures/Moss003_1K_Normal.jpg" type="Texture2D" id=2]
+[ext_resource path="res://Shaders/texture_mix.gdshader" type="Shader" id=3]
+[ext_resource path="res://Demos/TextureMix/textures/Moss003_1K_Color.jpg" type="Texture2D" id=4]
+[ext_resource path="res://Demos/TextureMix/textures/lambert2_ao.jpg" type="Texture2D" id=5]
+[ext_resource path="res://Demos/TextureMix/textures/lambert2_normal.jpg" type="Texture2D" id=6]
 
 [resource]
 shader = ExtResource( 3 )

@@ -1,14 +1,14 @@
 shader_type spatial;
 render_mode cull_disabled;
 
-uniform vec4 albedo : hint_color;
-uniform sampler2D texture_albedo : hint_albedo;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color;
 uniform float alpha_scissor_threshold;
 uniform float roughness : hint_range(0,1);
 uniform sampler2D texture_normal : hint_normal;
 uniform float normal_scale : hint_range(-16,16);
-uniform vec4 transmission : hint_color;
-uniform sampler2D texture_transmission : hint_black;
+uniform vec4 transmission : source_color;
+uniform sampler2D texture_transmission : hint_default_black;
 
 uniform float tree_height = 10.0;
 uniform float wind_angle : hint_range(0, 360);
@@ -18,8 +18,8 @@ uniform float wind_frequency : hint_range(0.0, 4.0) = 1.0;
 uniform float wind_speed : hint_range(0.0, 4.0) = .25;
 uniform float stretch_correction : hint_range(0.0, 0.1) = 0.01;
 
-uniform sampler2D texture_wind_noise : hint_black;
-uniform sampler3D texture_wind_noise3d : hint_black;
+uniform sampler2D texture_wind_noise : hint_default_black;
+uniform sampler3D texture_wind_noise3d : hint_default_black;
 
 float rand(vec3 p) {
 	return fract(sin(dot(p,vec3(127.1,311.7, 74.7)))*43758.5453123);
@@ -30,7 +30,7 @@ vec3 rotate (vec3 v, vec3 n, float a) {
 }
 
 void vertex() {
-	vec3 obj_pos = (WORLD_MATRIX * vec4(0, 0, 0, 1)).xyz;
+	vec3 obj_pos = (MODEL_MATRIX * vec4(0, 0, 0, 1)).xyz;
 	float seed = rand(obj_pos);
 	
 	vec3 wind_vector_world = vec3(1.0, 0.0, 0.0);
@@ -41,12 +41,12 @@ void vertex() {
 	
 	float lean_noise = texture(texture_wind_noise, 0.2 / wind_frequency * normalize(vec2(1.0, 0.1)) * TIME * wind_speed + seed).r;
 	float cluster_noise = texture(texture_wind_noise, 0.4 / wind_frequency * normalize(vec2(1.0, 0.1)) * TIME * wind_speed * 2.0 + seed + COLOR.g).r;
-	float leaf_noise = texture(texture_wind_noise3d, 0.1 / wind_frequency * (WORLD_MATRIX * vec4(VERTEX, 1.0)).xyz + vec3(0.0, 1.0, 0.0) * TIME * wind_speed * 4.0).r * 6.0;
+	float leaf_noise = texture(texture_wind_noise3d, 0.1 / wind_frequency * (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz + vec3(0.0, 1.0, 0.0) * TIME * wind_speed * 4.0).r * 6.0;
 	
 	float combined_lean = wind_strength * height_mask * 2.0 + lean_noise * 12.0 * height_mask * wind_strength;
 	float combined_noise = cluster_noise * COLOR.b * wind_strength * 6.0;
 	
-	vec3 wind_vector = (vec4(wind_vector_world, 0.0) * WORLD_MATRIX).xyz;
+	vec3 wind_vector = (vec4(wind_vector_world, 0.0) * MODEL_MATRIX).xyz;
 	
 	VERTEX += wind_vector * combined_lean;
 	VERTEX += wind_vector * combined_noise;
@@ -59,10 +59,10 @@ void fragment() {
 	vec4 albedo_tex = texture(texture_albedo, UV);
 	ALBEDO = albedo.rgb * albedo_tex.rgb;
 	ROUGHNESS = roughness;
-	NORMALMAP = texture(texture_normal, UV).rgb;
-	NORMALMAP_DEPTH = normal_scale;
+	NORMAL_MAP = texture(texture_normal, UV).rgb;
+	NORMAL_MAP_DEPTH = normal_scale;
 	ALPHA = albedo.a * albedo_tex.a;
 	vec3 transmission_tex = texture(texture_transmission, UV).rgb;
-	TRANSMISSION = (transmission.rgb + transmission_tex);
-	ALPHA_SCISSOR = alpha_scissor_threshold;
+	BACKLIGHT = (transmission.rgb + transmission_tex);
+	ALPHA_SCISSOR_THRESHOLD = alpha_scissor_threshold;
 }

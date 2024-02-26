@@ -1,26 +1,26 @@
-extends Sprite
+extends Sprite2D
 
-export var travel_speed := 2500.0
-export var blur_provider_path := NodePath()
-export var shaking_camera_background_path := NodePath()
+@export var travel_speed := 2500.0
+@export var blur_provider_path := NodePath()
+@export var shaking_camera_background_path := NodePath()
 
 var desired_speed := 0.0
 var accel := 2500.0
 var speed := 0.0
 var _trail_direction := Vector2.UP
 
-onready var _blur_provider := get_node(blur_provider_path)
-onready var _shaking_camera_background := get_node(shaking_camera_background_path)
-onready var _animation_player: AnimationPlayer = $AnimationPlayer
-onready var _camera_background_transform: RemoteTransform2D = $CameraBackgroundTransform
+@onready var _blur_provider := get_node(blur_provider_path)
+@onready var _shaking_camera_background := get_node(shaking_camera_background_path)
+@onready var _animation_player: AnimationPlayer = $AnimationPlayer
+@onready var _camera_background_transform: RemoteTransform2D = $CameraBackgroundTransform
 
 
 func _ready() -> void:
 	if _blur_provider:
-		_trail_direction = _trail_direction.rotated(deg2rad(_blur_provider.direction_degrees))
-		rotation = deg2rad(_blur_provider.direction_degrees)
+		_trail_direction = _trail_direction.rotated(deg_to_rad(_blur_provider.direction_degrees))
+		rotation = deg_to_rad(_blur_provider.direction_degrees)
 	_animation_player.play("Boost")
-	yield(_animation_player, "animation_finished")
+	await _animation_player.animation_finished
 	desired_speed = travel_speed
 	if _shaking_camera_background:
 		_shaking_camera_background.is_shaking = true

@@ -1,19 +1,22 @@
 [remap]
 
 importer="wavefront_obj"
+importer_version=1
 type="Mesh"
-path="res://.import/cube_hollow.obj-4de84183df9c67d0b0a6399a2b01b7f1.mesh"
+uid="uid://c135huw5eyy5e"
+path="res://.godot/imported/cube_hollow.obj-4de84183df9c67d0b0a6399a2b01b7f1.mesh"
 
 [deps]
 
-files=[ "res://.import/cube_hollow.obj-4de84183df9c67d0b0a6399a2b01b7f1.mesh" ]
+files=["res://.godot/imported/cube_hollow.obj-4de84183df9c67d0b0a6399a2b01b7f1.mesh"]
 
 source_file="res://Demos/ImpossibleCube/cube_hollow.obj"
-dest_files=[ "res://.import/cube_hollow.obj-4de84183df9c67d0b0a6399a2b01b7f1.mesh", "res://.import/cube_hollow.obj-4de84183df9c67d0b0a6399a2b01b7f1.mesh" ]
+dest_files=["res://.godot/imported/cube_hollow.obj-4de84183df9c67d0b0a6399a2b01b7f1.mesh", "res://.godot/imported/cube_hollow.obj-4de84183df9c67d0b0a6399a2b01b7f1.mesh"]
 
 [params]
 
 generate_tangents=true
-scale_mesh=Vector3( 1, 1, 1 )
-offset_mesh=Vector3( 0, 0, 0 )
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
 optimize_mesh=true
+force_disable_mesh_compression=false

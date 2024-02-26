@@ -1,13 +1,13 @@
-tool
-extends ViewportContainer
+@tool
+extends SubViewportContainer
 
-export var shockwave_duration := 2.0
-export var mask_path := NodePath()
+@export var shockwave_duration := 2.0
+@export var mask_path := NodePath()
 
-var torus_radius := -0.25 setget _set_torus_radius
+var torus_radius := -0.25: set = _set_torus_radius
 
-onready var _tween: Tween = $Tween
-onready var _mask: ColorRect = get_node(mask_path)
+@onready var _tween: Tween = $Tween
+@onready var _mask: ColorRect = get_node(mask_path)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -25,5 +25,5 @@ func blast() -> void:
 func _set_torus_radius(value: float) -> void:
 	torus_radius = value
 	if not is_inside_tree():
-		yield(self, "ready")
-	_mask.get_material().set_shader_param("torus_radius", torus_radius)
+		await self.ready
+	_mask.get_material().set_shader_parameter("torus_radius", torus_radius)

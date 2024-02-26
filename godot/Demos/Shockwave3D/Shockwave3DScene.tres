@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=2]
 
-[ext_resource path="res://Shaders/shockwave_3d.shader" type="Shader" id=1]
-[ext_resource path="res://Shared/models/3D-environment/SceneColorAtlas.tres" type="Texture" id=2]
+[ext_resource path="res://Shaders/shockwave_3d.gdshader" type="Shader" id=1]
+[ext_resource path="res://Shared/models/3D-environment/SceneColorAtlas.tres" type="Texture2D" id=2]
 
 [resource]
 shader = ExtResource( 1 )

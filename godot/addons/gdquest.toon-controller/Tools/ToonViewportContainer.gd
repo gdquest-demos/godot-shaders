@@ -1,7 +1,7 @@
-tool
+@tool
 class_name ToonViewportContainer
-extends ViewportContainer
+extends SubViewportContainer
 
 
 func _enter_tree() -> void:
-	stretch = not Engine.editor_hint
+	stretch = not Engine.is_editor_hint()

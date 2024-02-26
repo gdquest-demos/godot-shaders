@@ -1,12 +1,12 @@
 class_name PostProcessBuilder
 extends Control
 
-export (Array, Resource) var processing_steps := []
-export var scene: PackedScene
+@export (Array, Resource) var processing_steps := []
+@export var scene: PackedScene
 
 
 func _ready() -> void:
-	var presentation := ViewportContainer.new()
+	var presentation := SubViewportContainer.new()
 	presentation.anchor_right = 1
 	presentation.anchor_bottom = 1
 	presentation.stretch = true
@@ -19,13 +19,13 @@ func _ready() -> void:
 		if not step is PostProcessStep:
 			continue
 
-		var container := ViewportContainer.new()
+		var container := SubViewportContainer.new()
 		container.stretch = true
 		container.anchor_right = 1
 		container.anchor_bottom = 1
 
-		var viewport := Viewport.new()
-		viewport.render_target_update_mode = Viewport.UPDATE_ALWAYS
+		var viewport := SubViewport.new()
+		viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 		container.add_child(viewport)
 
 		var mat := step.post_proces_shader.duplicate()
@@ -34,5 +34,5 @@ func _ready() -> void:
 		top_parent.add_child(container)
 		top_parent = viewport
 
-	var instanced_scene := scene.instance()
+	var instanced_scene := scene.instantiate()
 	top_parent.add_child(instanced_scene)

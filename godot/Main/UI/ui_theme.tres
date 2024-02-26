@@ -1,9 +1,9 @@
 [gd_resource type="Theme" load_steps=11 format=2]
 
-[ext_resource path="res://Main/UI/fonts/SubtitleFont.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Main/UI/fonts/Montserrat-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Main/UI/fonts/SubtitleFont.tres" type="FontFile" id=1]
+[ext_resource path="res://Main/UI/fonts/Montserrat-Bold.ttf" type="FontFile" id=2]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 size = 28
 font_data = ExtResource( 2 )
 
@@ -107,11 +107,11 @@ LineEdit/styles/read_only = null
 Panel/styles/panel = null
 PanelContainer/styles/panel = SubResource( 7 )
 VBoxContainer/constants/separation = 16
-WindowDialog/colors/title_color = Color( 0.760784, 0.760784, 0.819608, 1 )
-WindowDialog/constants/close_h_ofs = 0
-WindowDialog/constants/close_v_ofs = 35
-WindowDialog/constants/title_height = 40
-WindowDialog/fonts/title_font = SubResource( 1 )
-WindowDialog/icons/close = null
-WindowDialog/icons/close_highlight = null
-WindowDialog/styles/panel = SubResource( 8 )
+Window/colors/title_color = Color( 0.760784, 0.760784, 0.819608, 1 )
+Window/constants/close_h_ofs = 0
+Window/constants/close_v_ofs = 35
+Window/constants/title_height = 40
+Window/fonts/title_font = SubResource( 1 )
+Window/icons/close = null
+Window/icons/close_highlight = null
+Window/styles/panel = SubResource( 8 )

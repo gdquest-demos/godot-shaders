@@ -1,167 +1,167 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=9 format=3 uid="uid://cnjbtscbncs56"]
 
-[ext_resource path="res://Demos/StylizedWaterfall/WaterfallMesh.dae" type="PackedScene" id=1]
-[ext_resource path="res://Shared/Demo3DEnvironment.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Demos/StylizedWaterfall/WaterMaterial.tres" type="Material" id=3]
-[ext_resource path="res://Demos/StylizedWaterfall/RocksMaterial.tres" type="Material" id=4]
-[ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=5]
-[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=6]
+[ext_resource type="PackedScene" uid="uid://cyhrg3a1coixh" path="res://Demos/StylizedWaterfall/WaterfallMesh.dae" id="1"]
+[ext_resource type="PackedScene" path="res://Shared/Demo3DEnvironment.tscn" id="2"]
+[ext_resource type="Material" path="res://Demos/StylizedWaterfall/WaterMaterial.tres" id="3"]
+[ext_resource type="Material" path="res://Demos/StylizedWaterfall/RocksMaterial.tres" id="4"]
+[ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="5"]
+[ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="6"]
 
-[sub_resource type="SpatialMaterial" id=1]
-flags_transparent = true
-albedo_color = Color( 1, 0, 0, 0.592157 )
+[sub_resource type="StandardMaterial3D" id="1"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0.592157)
 
-[sub_resource type="SphereMesh" id=2]
+[sub_resource type="SphereMesh" id="2"]
 
 [node name="StylizedWaterfallDemo" type="CanvasLayer"]
-script = ExtResource( 6 )
+script = ExtResource("6")
 
-[node name="WaterfallMesh" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.136919, 0 )
+[node name="WaterfallMesh" parent="." instance=ExtResource("1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.136919, 0)
 
 [node name="Cube" parent="WaterfallMesh/Rocks" index="0"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube001" parent="WaterfallMesh/Rocks" index="1"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube002" parent="WaterfallMesh/Rocks" index="2"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube003" parent="WaterfallMesh/Rocks" index="3"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube004" parent="WaterfallMesh/Rocks" index="4"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube005" parent="WaterfallMesh/Rocks" index="5"]
-transform = Transform( 0.499146, 0, 0, 0, 0.80407, 0, 0, 0, 0.499146, -1.54428, 2.4379, 0.497225 )
-material_override = ExtResource( 4 )
+transform = Transform3D(0.499146, 0, 0, 0, 0.80407, 0, 0, 0, 0.499146, -1.54428, 2.4379, 0.497225)
+material_override = ExtResource("4")
 
 [node name="Cube006" parent="WaterfallMesh/Rocks" index="6"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube007" parent="WaterfallMesh/Rocks" index="7"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube008" parent="WaterfallMesh/Rocks" index="8"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube009" parent="WaterfallMesh/Rocks" index="9"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube010" parent="WaterfallMesh/Rocks" index="10"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube011" parent="WaterfallMesh/Rocks" index="11"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube012" parent="WaterfallMesh/Rocks" index="12"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube013" parent="WaterfallMesh/Rocks" index="13"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube014" parent="WaterfallMesh/Rocks" index="14"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube015" parent="WaterfallMesh/Rocks" index="15"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube016" parent="WaterfallMesh/Rocks" index="16"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube017" parent="WaterfallMesh/Rocks" index="17"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube018" parent="WaterfallMesh/Rocks" index="18"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube019" parent="WaterfallMesh/Rocks" index="19"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube020" parent="WaterfallMesh/Rocks" index="20"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube021" parent="WaterfallMesh/Rocks" index="21"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube022" parent="WaterfallMesh/Rocks" index="22"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube023" parent="WaterfallMesh/Rocks" index="23"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube024" parent="WaterfallMesh/Rocks" index="24"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube025" parent="WaterfallMesh/Rocks" index="25"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube026" parent="WaterfallMesh/Rocks" index="26"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube027" parent="WaterfallMesh/Rocks" index="27"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube028" parent="WaterfallMesh/Rocks" index="28"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube029" parent="WaterfallMesh/Rocks" index="29"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube030" parent="WaterfallMesh/Rocks" index="30"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube031" parent="WaterfallMesh/Rocks" index="31"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube032" parent="WaterfallMesh/Rocks" index="32"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube033" parent="WaterfallMesh/Rocks" index="33"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube034" parent="WaterfallMesh/Rocks" index="34"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube035" parent="WaterfallMesh/Rocks" index="35"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube036" parent="WaterfallMesh/Rocks" index="36"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Cube037" parent="WaterfallMesh/Rocks" index="37"]
-material_override = ExtResource( 4 )
+material_override = ExtResource("4")
 
 [node name="Water" parent="WaterfallMesh" index="1"]
-material/0 = ExtResource( 3 )
+material/0 = ExtResource("3")
 
 [node name="BottomWaterfall" parent="WaterfallMesh" index="2"]
-material/0 = ExtResource( 4 )
+material/0 = ExtResource("4")
 
 [node name="Water001" parent="WaterfallMesh" index="3"]
-material/0 = ExtResource( 3 )
+material/0 = ExtResource("3")
 
-[node name="Demo3DEnvironment" parent="." instance=ExtResource( 2 )]
+[node name="Demo3DEnvironment" parent="." instance=ExtResource("2")]
 
 [node name="Ground" parent="Demo3DEnvironment" index="2"]
 visible = false
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.944399, -0.106727, 0.310997, 0, 0.945853, 0.324594, -0.328801, -0.306546, 0.893263, 2.25991, 4.54563, 6.43317 )
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.944399, -0.106727, 0.310997, 0, 0.945853, 0.324594, -0.328801, -0.306546, 0.893263, 2.25991, 4.54563, 6.43317)
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="."]
-extents = Vector3( 8.42558, 7.44144, 7.8806 )
+extents = Vector3(8.42558, 7.44144, 7.8806)
 
-[node name="TransparecyTester" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45645, 2.5146, -0.306275 )
+[node name="TransparecyTester" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45645, 2.5146, -0.306275)
 visible = false
-material_override = SubResource( 1 )
-mesh = SubResource( 2 )
+material_override = SubResource("1")
+mesh = SubResource("2")
 material/0 = null
 
-[node name="DemoInterface" parent="." instance=ExtResource( 5 )]
+[node name="DemoInterface" parent="." instance=ExtResource("5")]
 
 [editable path="WaterfallMesh"]
 [editable path="Demo3DEnvironment"]

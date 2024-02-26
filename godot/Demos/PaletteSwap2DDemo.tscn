@@ -1,29 +1,26 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=3 uid="uid://qhkjtcc72olb"]
 
-[ext_resource path="res://Shaders/PalettSwap2D.shader" type="Shader" id=1]
-[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=2]
-[ext_resource path="res://Demos/PaletteSwap2D/KingsAndPigs_color_sets.png" type="Texture" id=3]
-[ext_resource path="res://Demos/PaletteSwap2D/KingsAndPigs_greyscale_sprite.png" type="Texture" id=4]
-[ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Shared/Background2D/Demo2DBackground.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Demos/PaletteSwap2D/PaletteSwapSprite.gd" type="Script" id=7]
+[ext_resource type="Shader" path="res://Shaders/PalettSwap2D.gdshader" id="1"]
+[ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="2"]
+[ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://Shared/Background2D/Demo2DBackground.tscn" id="6"]
+[ext_resource type="Script" path="res://Demos/PaletteSwap2D/PaletteSwapSprite.gd" id="7"]
 
-[sub_resource type="ShaderMaterial" id=1]
-shader = ExtResource( 1 )
-shader_param/palette_count = 4.0
-shader_param/palette_index = 0.0
-shader_param/palette = ExtResource( 3 )
+[sub_resource type="ShaderMaterial" id="1"]
+shader = ExtResource("1")
+shader_parameter/palette_count = 4.0
+shader_parameter/palette_index = 0.0
 
 [node name="PaletteSwap2DDemo" type="CanvasLayer"]
-script = ExtResource( 2 )
+script = ExtResource("2")
 
-[node name="ParallaxBackground" parent="." instance=ExtResource( 6 )]
+[node name="ParallaxBackground" parent="." instance=ExtResource("6")]
 
-[node name="PaletteSwapSprite" type="Sprite" parent="."]
-material = SubResource( 1 )
-position = Vector2( 960, 540 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 4 )
-script = ExtResource( 7 )
+[node name="PaletteSwapSprite" type="Sprite2D" parent="."]
+material = SubResource("1")
+position = Vector2(960, 540)
+scale = Vector2(3, 3)
+texture = null
+script = ExtResource("7")
 
-[node name="DemoInterface" parent="." instance=ExtResource( 5 )]
+[node name="DemoInterface" parent="." instance=ExtResource("5")]

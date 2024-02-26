@@ -1,34 +1,29 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=16 format=3 uid="uid://ciu2ktomrlh54"]
 
-[ext_resource path="res://Demos/Blur/BlurDirection.gd" type="Script" id=1]
-[ext_resource path="res://Demos/Blur/Ship.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Demos/Blur/SpaceBackground.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Shaders/gaussian_blur.shader" type="Shader" id=4]
-[ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=5]
-[ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=6]
-[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=7]
+[ext_resource type="Script" path="res://Demos/Blur/BlurDirection.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://g8f67e4t4v2u" path="res://Demos/Blur/Ship.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://xhacbxqwq2bs" path="res://Demos/Blur/SpaceBackground.tscn" id="3"]
+[ext_resource type="Shader" path="res://Shaders/gaussian_blur.gdshader" id="4"]
+[ext_resource type="Script" path="res://Utils/DebugViewer.gd" id="5"]
+[ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="6"]
+[ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="7"]
 
-[sub_resource type="ShaderMaterial" id=1]
-shader = ExtResource( 4 )
-shader_param/blur_scale = Vector2( 0, 0 )
+[sub_resource type="ShaderMaterial" id="1"]
+shader = ExtResource("4")
 
-[sub_resource type="ViewportTexture" id=2]
-flags = 4
-viewport_path = NodePath("SceneView/Viewport")
+[sub_resource type="ViewportTexture" id="2"]
+viewport_path = NodePath("SceneView/SubViewport")
 
-[sub_resource type="ShaderMaterial" id=3]
-shader = ExtResource( 4 )
-shader_param/blur_scale = Vector2( 0, 0 )
+[sub_resource type="ShaderMaterial" id="3"]
+shader = ExtResource("4")
 
-[sub_resource type="ViewportTexture" id=4]
-flags = 4
-viewport_path = NodePath("BlurView1/Viewport")
+[sub_resource type="ViewportTexture" id="4"]
+viewport_path = NodePath("BlurView1/SubViewport")
 
-[sub_resource type="ViewportTexture" id=5]
-flags = 4
-viewport_path = NodePath("BlurView2/Viewport")
+[sub_resource type="ViewportTexture" id="5"]
+viewport_path = NodePath("BlurView2/SubViewport")
 
-[sub_resource type="Shader" id=6]
+[sub_resource type="Shader" id="6"]
 code = "shader_type canvas_item;
 
 void fragment() {
@@ -38,17 +33,17 @@ void fragment() {
 	COLOR.a = min(1.0, out_color.r + out_color.g + out_color.b);
 }"
 
-[sub_resource type="ShaderMaterial" id=7]
-shader = SubResource( 6 )
+[sub_resource type="ShaderMaterial" id="7"]
+shader = SubResource("6")
 
-[sub_resource type="ViewportTexture" id=8]
-viewport_path = NodePath("ShipView/Viewport")
+[sub_resource type="ViewportTexture" id="8"]
+viewport_path = NodePath("ShipView/SubViewport")
 
 [node name="BlurViewportTexturesDemo" type="CanvasLayer"]
-script = ExtResource( 7 )
+script = ExtResource("7")
 
-[node name="SceneView" type="ViewportContainer" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
+[node name="SceneView" type="SubViewportContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0)
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -57,29 +52,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Viewport" type="Viewport" parent="SceneView"]
-size = Vector2( 1920, 1080 )
+[node name="SubViewport" type="SubViewport" parent="SceneView"]
+size = Vector2(1920, 1080)
 handle_input_locally = false
 usage = 0
 render_target_update_mode = 3
 
-[node name="MotionBlurScene" parent="SceneView/Viewport" instance=ExtResource( 3 )]
+[node name="MotionBlurScene" parent="SceneView/SubViewport" instance=ExtResource("3")]
 trail_length = 24000.0
 
-[node name="ShakingCamera" parent="SceneView/Viewport/MotionBlurScene" index="0"]
-smoothing_speed = 25.0
+[node name="ShakingCamera" parent="SceneView/SubViewport/MotionBlurScene" index="0"]
+position_smoothing_speed = 25.0
 amplitude = 100.0
 duration = 5.0
 damp_easing = 6.0
 
-[node name="AsteroidTrail" parent="SceneView/Viewport/MotionBlurScene" index="1"]
+[node name="AsteroidTrail" parent="SceneView/SubViewport/MotionBlurScene" index="1"]
 spawn_radius = 960.0
 
-[node name="TextureRect" parent="SceneView/Viewport/MotionBlurScene/CanvasLayer" index="0"]
+[node name="TextureRect" parent="SceneView/SubViewport/MotionBlurScene/CanvasLayer" index="0"]
 mouse_filter = 2
 
-[node name="ShipView" type="ViewportContainer" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
+[node name="ShipView" type="SubViewportContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0)
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -88,30 +83,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Viewport" type="Viewport" parent="ShipView"]
-size = Vector2( 1920, 1080 )
+[node name="SubViewport" type="SubViewport" parent="ShipView"]
+size = Vector2(1920, 1080)
 transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 3
 
-[node name="Ship" parent="ShipView/Viewport" instance=ExtResource( 2 )]
-position = Vector2( 960, 540 )
+[node name="Ship" parent="ShipView/SubViewport" instance=ExtResource("2")]
+position = Vector2(960, 540)
 travel_speed = 10000.0
-blur_provider_path = NodePath("../../../../BlurViewportTexturesDemo/SceneView/Viewport/MotionBlurScene")
-shaking_camera_background_path = NodePath("../../../../BlurViewportTexturesDemo/SceneView/Viewport/MotionBlurScene/ShakingCamera")
+blur_provider_path = NodePath("../../../../BlurViewportTexturesDemo/SceneView/SubViewport/MotionBlurScene")
+shaking_camera_background_path = NodePath("../../../../BlurViewportTexturesDemo/SceneView/SubViewport/MotionBlurScene/ShakingCamera")
 
-[node name="BackgroundRemoteTransform" parent="ShipView/Viewport/Ship" index="0"]
-remote_path = NodePath("../../../../SceneView/Viewport/MotionBlurScene/ShakingCamera")
+[node name="BackgroundRemoteTransform" parent="ShipView/SubViewport/Ship" index="0"]
+remote_path = NodePath("../../../../SceneView/SubViewport/MotionBlurScene/ShakingCamera")
 
-[node name="Camera2D" type="Camera2D" parent="ShipView/Viewport"]
-position = Vector2( 960, 540 )
+[node name="Camera2D" type="Camera2D" parent="ShipView/SubViewport"]
+position = Vector2(960, 540)
 current = true
-zoom = Vector2( 2, 2 )
-smoothing_enabled = true
-smoothing_speed = 25.0
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+position_smoothing_speed = 25.0
 
-[node name="BlurView1" type="ViewportContainer" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
+[node name="BlurView1" type="SubViewportContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0)
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -120,26 +115,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Viewport" type="Viewport" parent="BlurView1"]
-size = Vector2( 1920, 1080 )
+[node name="SubViewport" type="SubViewport" parent="BlurView1"]
+size = Vector2(1920, 1080)
 handle_input_locally = false
 usage = 0
 render_target_update_mode = 3
 
-[node name="TextureRect" type="TextureRect" parent="BlurView1/Viewport"]
-material = SubResource( 1 )
+[node name="TextureRect" type="TextureRect" parent="BlurView1/SubViewport"]
+material = SubResource("1")
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-texture = SubResource( 2 )
+texture = SubResource("2")
 expand = true
 stretch_mode = 1
-script = ExtResource( 1 )
-direction_provider_path = NodePath("../../../../BlurViewportTexturesDemo/SceneView/Viewport/MotionBlurScene")
-blur_scale = Vector2( 4.8, -4 )
+script = ExtResource("1")
+direction_provider_path = NodePath("../../../../BlurViewportTexturesDemo/SceneView/SubViewport/MotionBlurScene")
+blur_scale = Vector2(4.8, -4)
 
-[node name="BlurView2" type="ViewportContainer" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
+[node name="BlurView2" type="SubViewportContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0)
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -148,29 +143,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Viewport" type="Viewport" parent="BlurView2"]
-size = Vector2( 1920, 1080 )
+[node name="SubViewport" type="SubViewport" parent="BlurView2"]
+size = Vector2(1920, 1080)
 handle_input_locally = false
 usage = 0
 render_target_update_mode = 3
 
-[node name="TextureRect" type="TextureRect" parent="BlurView2/Viewport"]
-material = SubResource( 3 )
+[node name="TextureRect" type="TextureRect" parent="BlurView2/SubViewport"]
+material = SubResource("3")
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-texture = SubResource( 4 )
+texture = SubResource("4")
 expand = true
 stretch_mode = 1
-script = ExtResource( 1 )
-direction_provider_path = NodePath("../../../../BlurViewportTexturesDemo/SceneView/Viewport/MotionBlurScene")
-blur_scale = Vector2( 0.9, 1 )
+script = ExtResource("1")
+direction_provider_path = NodePath("../../../../BlurViewportTexturesDemo/SceneView/SubViewport/MotionBlurScene")
+blur_scale = Vector2(0.9, 1)
 
 [node name="PresentationBackground" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-texture = SubResource( 5 )
+texture = SubResource("5")
 expand = true
 stretch_mode = 1
 flip_v = true
@@ -179,11 +174,11 @@ __meta__ = {
 }
 
 [node name="PresentationShip" type="TextureRect" parent="."]
-material = SubResource( 7 )
+material = SubResource("7")
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-texture = SubResource( 8 )
+texture = SubResource("8")
 expand = true
 stretch_mode = 1
 flip_v = true
@@ -192,15 +187,15 @@ __meta__ = {
 }
 
 [node name="DebugViewer" type="Control" parent="."]
-margin_top = 120.0
-margin_right = 40.0
-margin_bottom = 160.0
-script = ExtResource( 5 )
+offset_top = 120.0
+offset_right = 40.0
+offset_bottom = 160.0
+script = ExtResource("5")
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DemoInterface" parent="." instance=ExtResource( 6 )]
+[node name="DemoInterface" parent="." instance=ExtResource("6")]
 
-[editable path="SceneView/Viewport/MotionBlurScene"]
-[editable path="ShipView/Viewport/Ship"]
+[editable path="SceneView/SubViewport/MotionBlurScene"]
+[editable path="ShipView/SubViewport/Ship"]

@@ -1,15 +1,15 @@
-tool
-extends MultiMeshInstance
+@tool
+extends MultiMeshInstance3D
 
-export var extents := Vector2.ONE
-export var spawn_outside_circle := false
-export var radius := 12.0
-export var character_path := NodePath()
+@export var extents := Vector2.ONE
+@export var spawn_outside_circle := false
+@export var radius := 12.0
+@export var character_path := NodePath()
 
-onready var _character: Spatial = get_node(character_path)
+@onready var _character: Node3D = get_node(character_path)
 
 func _enter_tree() -> void:
-	connect("visibility_changed", self, "_on_WindGrass_visibility_changed")
+	connect("visibility_changed", Callable(self, "_on_WindGrass_visibility_changed"))
 
 
 func _ready() -> void:
@@ -21,7 +21,7 @@ func _ready() -> void:
 	var center: Vector3 = get_parent().global_transform.origin
 
 	for instance_index in multimesh.instance_count:
-		var transform := Transform().rotated(Vector3.UP, rng.randf_range(-PI / 2, PI / 2))
+		var transform := Transform3D().rotated(Vector3.UP, rng.randf_range(-PI / 2, PI / 2))
 		var x: float
 		var z: float
 		if spawn_outside_circle:
@@ -43,6 +43,6 @@ func _on_WindGrass_visibility_changed() -> void:
 
 
 func _process(_delta: float) -> void:
-	material_override.set_shader_param(
+	material_override.set_shader_parameter(
 		"character_position", _character.global_transform.origin
 	)

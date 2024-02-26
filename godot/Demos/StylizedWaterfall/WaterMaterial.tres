@@ -1,15 +1,15 @@
 [gd_resource type="ShaderMaterial" load_steps=9 format=2]
 
-[ext_resource path="res://Shaders/stylized_waterfall.shader" type="Shader" id=1]
-[ext_resource path="res://Demos/StylizedWaterfall/color-uv.png" type="Texture" id=2]
+[ext_resource path="res://Shaders/stylized_waterfall.gdshader" type="Shader" id=1]
+[ext_resource path="res://Demos/StylizedWaterfall/color-uv.png" type="Texture2D" id=2]
 
 [sub_resource type="Gradient" id=1]
-colors = PoolColorArray( 0.164706, 0.92549, 0.67451, 0.615686, 0, 0.0862745, 1, 0.956863 )
+colors = PackedColorArray( 0.164706, 0.92549, 0.67451, 0.615686, 0, 0.0862745, 1, 0.956863 )
 
-[sub_resource type="GradientTexture" id=2]
+[sub_resource type="GradientTexture2D" id=2]
 gradient = SubResource( 1 )
 
-[sub_resource type="OpenSimplexNoise" id=3]
+[sub_resource type="FastNoiseLite" id=3]
 octaves = 5
 period = 84.1
 persistence = 0.764
@@ -19,7 +19,7 @@ lacunarity = 1.74
 seamless = true
 noise = SubResource( 3 )
 
-[sub_resource type="OpenSimplexNoise" id=5]
+[sub_resource type="FastNoiseLite" id=5]
 period = 145.1
 persistence = 0.215
 lacunarity = 1.86

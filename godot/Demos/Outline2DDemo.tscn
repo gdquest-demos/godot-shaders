@@ -1,28 +1,28 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=7 format=3 uid="uid://ddcy8qo8m86ul"]
 
-[ext_resource path="res://Demos/Outline/Outline2D/OutlineOuter.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Demos/Outline/Outline2D/OutlineBothDirections.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Demos/Outline/Outline2D/OutlineInner.tscn" type="PackedScene" id=3]
-[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=4]
-[ext_resource path="res://Shared/Background2D/Demo2DBackground.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=10]
+[ext_resource type="PackedScene" uid="uid://cyoqn2l7tvp62" path="res://Demos/Outline/Outline2D/OutlineOuter.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://dbmtm1ybyxbvk" path="res://Demos/Outline/Outline2D/OutlineBothDirections.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://c6cldif6wl6m5" path="res://Demos/Outline/Outline2D/OutlineInner.tscn" id="3"]
+[ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="4"]
+[ext_resource type="PackedScene" path="res://Shared/Background2D/Demo2DBackground.tscn" id="9"]
+[ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="10"]
 
 [node name="Outline2DDemo" type="CanvasLayer"]
-script = ExtResource( 4 )
+script = ExtResource("4")
 
-[node name="ParallaxBackground" parent="." instance=ExtResource( 9 )]
+[node name="ParallaxBackground" parent="." instance=ExtResource("9")]
 
-[node name="DemoInterface" parent="." instance=ExtResource( 10 )]
+[node name="DemoInterface" parent="." instance=ExtResource("10")]
 text_bbcode = "Uses shaders to outline 2D sprites - outlining only outside the pixels, inside, or both."
 
-[node name="OutlineBothDirections" parent="." instance=ExtResource( 2 )]
-position = Vector2( 480, 540 )
-scale = Vector2( 1, 1 )
+[node name="OutlineBothDirections" parent="." instance=ExtResource("2")]
+position = Vector2(480, 540)
+scale = Vector2(1, 1)
 
-[node name="OutlineInner" parent="." instance=ExtResource( 3 )]
-position = Vector2( 960, 540 )
-scale = Vector2( 1, 1 )
+[node name="OutlineInner" parent="." instance=ExtResource("3")]
+position = Vector2(960, 540)
+scale = Vector2(1, 1)
 
-[node name="OutlineOuter" parent="." instance=ExtResource( 1 )]
-position = Vector2( 1440, 540 )
-scale = Vector2( 1, 1 )
+[node name="OutlineOuter" parent="." instance=ExtResource("1")]
+position = Vector2(1440, 540)
+scale = Vector2(1, 1)

@@ -1,85 +1,80 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=9 format=3 uid="uid://dhup7p8c62ixt"]
 
-[ext_resource path="res://Demos/Crystals/Crystal_Albedo.png" type="Texture" id=1]
-[ext_resource path="res://Demos/Crystals/Crystal_Emission.png" type="Texture" id=2]
-[ext_resource path="res://Demos/Crystals/Crystal_Normal.png" type="Texture" id=3]
-[ext_resource path="res://Demos/Crystals/crystals.glb" type="PackedScene" id=4]
-[ext_resource path="res://Shared/Demo3DEnvironment.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=6]
-[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=7]
-[ext_resource path="res://Shaders/fresnel_crystal.shader" type="Shader" id=8]
+[ext_resource type="PackedScene" uid="uid://clatbtj1agsbm" path="res://Demos/Crystals/crystals.glb" id="4"]
+[ext_resource type="PackedScene" path="res://Shared/Demo3DEnvironment.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="6"]
+[ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="7"]
+[ext_resource type="Shader" path="res://Shaders/fresnel_crystal.gdshader" id="8"]
 
-[sub_resource type="ShaderMaterial" id=2]
-shader = ExtResource( 8 )
-shader_param/metallic = 1.0
-shader_param/roughness = 0.1
-shader_param/emission = Color( 0.996078, 0.596078, 0.0313726, 1 )
-shader_param/emission_energy = 6.0
-shader_param/fresnel_power = 6.0
-shader_param/fresnel_color_intensity = 1.5
-shader_param/fresnel_color = Color( 0.0666667, 0.952941, 0.952941, 1 )
-shader_param/fresnel_pulse_speed = 0.75
-shader_param/emission_pulse_speed = 1.0
-shader_param/texture_albedo = ExtResource( 1 )
-shader_param/texture_normal = ExtResource( 3 )
-shader_param/texture_emission = ExtResource( 2 )
+[sub_resource type="ShaderMaterial" id="2"]
+render_priority = 0
+shader = ExtResource("8")
+shader_parameter/metallic = 1.0
+shader_parameter/roughness = 0.1
+shader_parameter/emission = Color(0.996078, 0.596078, 0.0313726, 1)
+shader_parameter/emission_energy = 6.0
+shader_parameter/fresnel_power = 6.0
+shader_parameter/fresnel_color_intensity = 1.5
+shader_parameter/fresnel_color = Color(0.0666667, 0.952941, 0.952941, 1)
+shader_parameter/fresnel_pulse_speed = 0.75
+shader_parameter/emission_pulse_speed = 1.0
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id="3"]
 length = 0.001
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ) ]
+"values": [Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id="4"]
 resource_name = "Rotate"
 length = 16.0
-loop = true
+loop_mode = 1
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 16 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0, 16),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ) ]
+"values": [Vector3(0, 0, 0), Vector3(0, 360, 0)]
 }
 
 [node name="CrystalDemo" type="CanvasLayer"]
-script = ExtResource( 7 )
+script = ExtResource("7")
 
-[node name="crystals" parent="." instance=ExtResource( 4 )]
+[node name="crystals" parent="." instance=ExtResource("4")]
 
 [node name="Crystal" parent="crystals" index="0"]
-material/0 = SubResource( 2 )
+material/0 = SubResource("2")
 
-[node name="Demo3DEnvironment" parent="." instance=ExtResource( 5 )]
+[node name="Demo3DEnvironment" parent="." instance=ExtResource("5")]
 
 [node name="Sun" parent="Demo3DEnvironment" index="1"]
-shadow_color = Color( 0.0823529, 0.690196, 0.901961, 1 )
+shadow_color = Color(0.0823529, 0.690196, 0.901961, 1)
 
-[node name="CameraPivot" type="Spatial" parent="."]
+[node name="CameraPivot" type="Node3D" parent="."]
 
-[node name="Camera" type="Camera" parent="CameraPivot"]
-transform = Transform( 1, 0, 0, 0, 0.92398, 0.382442, 0, -0.382442, 0.92398, 0, 1.55576, 1.65872 )
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.92398, 0.382442, 0, -0.382442, 0.92398, 0, 1.55576, 1.65872)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CameraPivot"]
 autoplay = "Rotate"
-anims/RESET = SubResource( 3 )
-anims/Rotate = SubResource( 4 )
+anims/RESET = SubResource("3")
+anims/Rotate = SubResource("4")
 
-[node name="DemoInterface" parent="." instance=ExtResource( 6 )]
+[node name="DemoInterface" parent="." instance=ExtResource("6")]
 
 [editable path="crystals"]
 [editable path="Demo3DEnvironment"]

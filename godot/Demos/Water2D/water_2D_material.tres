@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=2]
 
-[ext_resource path="res://Shaders/water_2D.shader" type="Shader" id=1]
-[ext_resource path="res://Demos/Water2D/water_uv_offset.png" type="Texture" id=2]
+[ext_resource path="res://Shaders/water_2D.gdshader" type="Shader" id=1]
+[ext_resource path="res://Demos/Water2D/water_uv_offset.png" type="Texture2D" id=2]
 
 [resource]
 shader = ExtResource( 1 )

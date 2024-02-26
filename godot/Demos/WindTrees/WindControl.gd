@@ -1,19 +1,19 @@
-tool
+@tool
 extends Node
 
-export(NodePath) var intensity_slider_path
-export(NodePath) var intensity_value_label_path
-export(NodePath) var angle_slider_path
-export(NodePath) var angle_value_label_path
+@export var intensity_slider_path: NodePath
+@export var intensity_value_label_path: NodePath
+@export var angle_slider_path: NodePath
+@export var angle_value_label_path: NodePath
 
-export var _wind_materials := []
-export(float, 0.0, 4.0, 1.0) var _wind_intensity := 0.0 setget set_wind_intensity
-export(float, 0.0, 360.0, 1.0) var _wind_angle := 0.0 setget set_wind_angle
+@export var _wind_materials := []
+@export var _wind_intensity := 0.0: set = set_wind_intensity
+@export var _wind_angle := 0.0: set = set_wind_angle
 
-onready var _intensity_slider := get_node(intensity_slider_path)
-onready var _intensity_value_label := get_node(intensity_value_label_path)
-onready var _angle_slider := get_node(angle_slider_path)
-onready var _angle_value_label := get_node(angle_value_label_path)
+@onready var _intensity_slider := get_node(intensity_slider_path)
+@onready var _intensity_value_label := get_node(intensity_value_label_path)
+@onready var _angle_slider := get_node(angle_slider_path)
+@onready var _angle_value_label := get_node(angle_value_label_path)
 
 var presets = [
 	["Still",   {"wind_strength" : 0.0}],
@@ -28,18 +28,18 @@ func set_wind_intensity(value: float) -> void:
 	var preset = presets[int(value)]
 	for material in _wind_materials:
 		for setting in preset[1]:
-			material.set_shader_param(setting, preset[1][setting])
+			material.set_shader_parameter(setting, preset[1][setting])
 
 
 func set_wind_angle(value: float) -> void:
 	_wind_angle = value
 	for material in _wind_materials:
-		material.set_shader_param("wind_angle", value)
+		material.set_shader_parameter("wind_angle", value)
 
 
 func _ready() -> void:
-	_intensity_slider.connect("value_changed", self, "_on_intensity_value_changed")
-	_angle_slider.connect("value_changed", self, "_on_angle_value_changed")
+	_intensity_slider.connect("value_changed", Callable(self, "_on_intensity_value_changed"))
+	_angle_slider.connect("value_changed", Callable(self, "_on_angle_value_changed"))
 
 
 func _on_intensity_value_changed(value: float) -> void:

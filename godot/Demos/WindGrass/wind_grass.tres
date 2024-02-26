@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=8 format=2]
 
-[ext_resource path="res://Shaders/wind_grass.shader" type="Shader" id=1]
+[ext_resource path="res://Shaders/wind_grass.gdshader" type="Shader" id=1]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 0 ), 0.0, 2.71765, 0, 0, Vector2( 1, 1 ), -0.129412, 0.0, 0, 0 ]
@@ -10,13 +10,13 @@ width = 128
 curve = SubResource( 1 )
 
 [sub_resource type="Gradient" id=3]
-offsets = PoolRealArray( 0, 0.486339, 0.966102 )
-colors = PoolColorArray( 0.054902, 0.556863, 0.439216, 1, 0.321569, 0.890196, 0.341176, 1, 0.4991, 0.92, 0.3588, 1 )
+offsets = PackedFloat32Array( 0, 0.486339, 0.966102 )
+colors = PackedColorArray( 0.054902, 0.556863, 0.439216, 1, 0.321569, 0.890196, 0.341176, 1, 0.4991, 0.92, 0.3588, 1 )
 
-[sub_resource type="GradientTexture" id=4]
+[sub_resource type="GradientTexture2D" id=4]
 gradient = SubResource( 3 )
 
-[sub_resource type="OpenSimplexNoise" id=5]
+[sub_resource type="FastNoiseLite" id=5]
 period = 109.1
 persistence = 0.138
 lacunarity = 0.44
