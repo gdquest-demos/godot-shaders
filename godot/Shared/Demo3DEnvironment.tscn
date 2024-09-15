@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dquhei2qv5csj"]
+[gd_scene load_steps=5 format=3 uid="uid://dquhei2qv5csj"]
 
-[ext_resource type="Environment" uid="uid://fn1pja2kkulh" path="res://Shared/environments/level_environment.tres" id="1"]
+[ext_resource type="Environment" path="res://Shared/environments/level_environment.tres" id="1"]
+[ext_resource type="Material" path="res://Shared/materials/basic_grey.tres" id="2"]
 
 [sub_resource type="StandardMaterial3D" id="1"]
 albedo_color = Color(0.623529, 0.635294, 0.662745, 1)
@@ -22,3 +23,4 @@ shadow_enabled = true
 [node name="Ground" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0)
 mesh = SubResource("2")
+material/0 = ExtResource("2")

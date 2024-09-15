@@ -34,8 +34,6 @@ script = ExtResource("5")
 [node name="DemoPickerUI" parent="." instance=ExtResource("1")]
 layout_mode = 3
 anchors_preset = 15
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 100
