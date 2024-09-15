@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://ca3nxv23e3o27" path="res://Demos/ImpossibleCube/ImpossibleCubeBase.tscn" id="2"]
 [ext_resource type="Shader" path="res://Shaders/invert.gdshader" id="3"]
-[ext_resource type="PackedScene" path="res://Shared/Demo3DEnvironment.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://dquhei2qv5csj" path="res://Shared/Demo3DEnvironment.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://diofpwcvq5elu" path="res://Shared/DemoInterface.tscn" id="5"]
 
 [sub_resource type="ShaderMaterial" id="1"]
 shader = ExtResource("3")
@@ -14,22 +14,19 @@ script = ExtResource("1")
 
 [node name="DemoView" type="SubViewportContainer" parent="."]
 material = SubResource("1")
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 stretch = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="SubViewport" type="SubViewport" parent="DemoView"]
-size = Vector2(1920, 1080)
 handle_input_locally = false
-msaa = 2
-render_target_update_mode = 3
-shadow_atlas_size = 8192
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
 
 [node name="ImpossibleCubeDemo" parent="DemoView/SubViewport" instance=ExtResource("2")]
 
 [node name="Demo3DEnvironment" parent="DemoView/SubViewport" instance=ExtResource("4")]
 
 [node name="DemoInterface" parent="." instance=ExtResource("5")]
+anchors_preset = 10
