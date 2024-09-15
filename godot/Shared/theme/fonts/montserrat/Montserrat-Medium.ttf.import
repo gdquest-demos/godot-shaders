@@ -15,6 +15,7 @@ dest_files=["res://.godot/imported/Montserrat-Medium.ttf-6b9b71ae1c9079819f64709
 Rendering=null
 antialiasing=1
 generate_mipmaps=false
+disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48

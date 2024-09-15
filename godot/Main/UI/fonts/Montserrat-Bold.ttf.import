@@ -15,6 +15,7 @@ dest_files=["res://.godot/imported/Montserrat-Bold.ttf-b38d3a0a405807cfa15b591ce
 Rendering=null
 antialiasing=1
 generate_mipmaps=false
+disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48

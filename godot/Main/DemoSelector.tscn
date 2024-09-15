@@ -1,18 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://dktc3xg863d01"]
 
 [ext_resource type="PackedScene" uid="uid://bjmid3jo8m8n1" path="res://Main/DemoPickerUI.tscn" id="1"]
-[ext_resource type="Theme" path="res://Main/UI/ui_theme.tres" id="2"]
+[ext_resource type="Theme" uid="uid://b2rktjpfj58fv" path="res://Main/UI/ui_theme.tres" id="2"]
 [ext_resource type="Script" path="res://Main/DemoPlayer.gd" id="5"]
 [ext_resource type="Script" path="res://Main/DemoSelector.gd" id="6"]
-
-[sub_resource type="StyleBoxFlat" id="4"]
-bg_color = Color(0, 0, 0, 0)
-corner_radius_top_left = 47
-corner_radius_top_right = 47
-corner_radius_bottom_right = 47
-corner_radius_bottom_left = 47
-shadow_color = Color(0, 0, 0, 0.215686)
-shadow_size = 4
 
 [sub_resource type="StyleBoxFlat" id="3"]
 bg_color = Color(0, 0, 0, 0)
@@ -23,6 +14,15 @@ corner_radius_bottom_left = 47
 shadow_color = Color(0, 0, 0, 0.215686)
 shadow_size = 2
 
+[sub_resource type="StyleBoxFlat" id="4"]
+bg_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 47
+corner_radius_top_right = 47
+corner_radius_bottom_right = 47
+corner_radius_bottom_left = 47
+shadow_color = Color(0, 0, 0, 0.215686)
+shadow_size = 4
+
 [sub_resource type="Shortcut" id="2"]
 
 [node name="DemoSelector" type="Node"]
@@ -32,28 +32,28 @@ script = ExtResource("6")
 script = ExtResource("5")
 
 [node name="DemoPickerUI" parent="." instance=ExtResource("1")]
+layout_mode = 3
+anchors_preset = 15
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 100
 
 [node name="ButtonGoBack" type="Button" parent="CanvasLayer"]
+anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 48.0
 offset_top = -156.0
 offset_right = 271.0
 offset_bottom = -62.0
-focus_mode = 0
 size_flags_horizontal = 4
 size_flags_vertical = 13
+focus_mode = 0
 theme = ExtResource("2")
-theme_override_styles/hover = SubResource("4")
-theme_override_styles/pressed = SubResource("3")
 theme_override_styles/focus = SubResource("3")
 theme_override_styles/disabled = SubResource("3")
+theme_override_styles/hover = SubResource("4")
+theme_override_styles/pressed = SubResource("3")
 theme_override_styles/normal = SubResource("3")
 shortcut = SubResource("2")
 text = "GO BACK"
-__meta__ = {
-"_edit_use_anchors_": false
-}

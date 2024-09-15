@@ -1,8 +1,9 @@
 [remap]
 
 importer="texture"
-type="StreamTexture"
-path="res://.import/topdown-adventure.svg-9cd8586f5f4e6b0c22ded3b61035876f.stex"
+type="CompressedTexture2D"
+uid="uid://68d1kelgq6t5"
+path="res://.godot/imported/topdown-adventure.svg-9cd8586f5f4e6b0c22ded3b61035876f.ctex"
 metadata={
 "vram_texture": false
 }
@@ -10,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Demos/Clouds2D/topdown-adventure.svg"
-dest_files=["res://.import/topdown-adventure.svg-9cd8586f5f4e6b0c22ded3b61035876f.stex"]
+dest_files=["res://.godot/imported/topdown-adventure.svg-9cd8586f5f4e6b0c22ded3b61035876f.ctex"]
 
 [params]
 
