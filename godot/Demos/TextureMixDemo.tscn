@@ -1,15 +1,20 @@
-[gd_scene load_steps=13 format=3 uid="uid://deigjt04b1hfo"]
+[gd_scene load_steps=19 format=3 uid="uid://deigjt04b1hfo"]
 
-[ext_resource type="Material" path="res://Demos/TextureMix/MixMaterial.tres" id="1"]
-[ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://Shared/Demo3DEnvironment.tscn" id="5"]
+[ext_resource type="Material" uid="uid://bhh1xjf8gsnti" path="res://Demos/TextureMix/MixMaterial.tres" id="1"]
+[ext_resource type="PackedScene" uid="uid://diofpwcvq5elu" path="res://Shared/DemoInterface.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://dquhei2qv5csj" path="res://Shared/Demo3DEnvironment.tscn" id="5"]
+[ext_resource type="Texture2D" uid="uid://ct8ae831xs10n" path="res://Demos/TextureMix/textures/lambert2_baseColor.jpeg" id="5_aldb3"]
+[ext_resource type="Texture2D" uid="uid://euw4gltajib2" path="res://Demos/TextureMix/textures/lambert2_ao.jpg" id="6_i1xyj"]
 [ext_resource type="FontFile" path="res://Shared/theme/fonts/font_title.tres" id="7"]
+[ext_resource type="Texture2D" uid="uid://m1m8w0a5l2li" path="res://Demos/TextureMix/textures/lambert2_normal.jpg" id="7_32ogr"]
 [ext_resource type="PackedScene" uid="uid://dn7g2sa1f3j3n" path="res://Demos/TextureMix/scene.glb" id="8"]
+[ext_resource type="Texture2D" uid="uid://dpjngtoswnty5" path="res://Demos/TextureMix/textures/Moss003_1K_Color.jpg" id="8_tgyyl"]
 [ext_resource type="Shader" path="res://Shaders/texture_mix.gdshader" id="9"]
+[ext_resource type="Texture2D" uid="uid://dpqhhrxbnxiga" path="res://Demos/TextureMix/textures/Moss003_1K_Normal.jpg" id="9_s0g36"]
 [ext_resource type="Script" path="res://Demos/TextureMix/TextureMixDemo.gd" id="12"]
 [ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="13"]
 
-[sub_resource type="ShaderMaterial" id="1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7e6og"]
 render_priority = 0
 shader = ExtResource("9")
 shader_parameter/blend_smoothness = 0.2
@@ -18,9 +23,14 @@ shader_parameter/additive_mix = false
 shader_parameter/use_red_vertex_color = true
 shader_parameter/use_ao_occlusion = false
 shader_parameter/use_world_direction = false
-shader_parameter/world_direction = Vector3(1, 0.00359209, 0)
+shader_parameter/world_direction = Vector3(0, 1, 0)
+shader_parameter/tex_1_albedo = ExtResource("5_aldb3")
+shader_parameter/tex_1_ao = ExtResource("6_i1xyj")
+shader_parameter/tex_1_normal = ExtResource("7_32ogr")
+shader_parameter/tex_2_albedo = ExtResource("8_tgyyl")
+shader_parameter/tex_2_normal = ExtResource("9_s0g36")
 
-[sub_resource type="ShaderMaterial" id="2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_awrai"]
 render_priority = 0
 shader = ExtResource("9")
 shader_parameter/blend_smoothness = 0.2
@@ -29,9 +39,14 @@ shader_parameter/additive_mix = false
 shader_parameter/use_red_vertex_color = false
 shader_parameter/use_ao_occlusion = true
 shader_parameter/use_world_direction = false
-shader_parameter/world_direction = Vector3(1, 0.00359209, 0)
+shader_parameter/world_direction = Vector3(0, 1, 0)
+shader_parameter/tex_1_albedo = ExtResource("5_aldb3")
+shader_parameter/tex_1_ao = ExtResource("6_i1xyj")
+shader_parameter/tex_1_normal = ExtResource("7_32ogr")
+shader_parameter/tex_2_albedo = ExtResource("8_tgyyl")
+shader_parameter/tex_2_normal = ExtResource("9_s0g36")
 
-[sub_resource type="ShaderMaterial" id="3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5a6av"]
 render_priority = 0
 shader = ExtResource("9")
 shader_parameter/blend_smoothness = 0.2
@@ -41,156 +56,109 @@ shader_parameter/use_red_vertex_color = false
 shader_parameter/use_ao_occlusion = false
 shader_parameter/use_world_direction = true
 shader_parameter/world_direction = Vector3(0, 1, 0)
+shader_parameter/tex_1_albedo = ExtResource("5_aldb3")
+shader_parameter/tex_1_ao = ExtResource("6_i1xyj")
+shader_parameter/tex_1_normal = ExtResource("7_32ogr")
+shader_parameter/tex_2_albedo = ExtResource("8_tgyyl")
+shader_parameter/tex_2_normal = ExtResource("9_s0g36")
 
 [sub_resource type="Animation" id="4"]
 length = 11.0
-tracks/0/type = "bezier"
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0:scale:x")
+tracks/0/path = NodePath("Label:text")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"times": PackedFloat32Array(0, 0.4, 1.9, 3.4, 5.4, 6.4, 7.4, 9.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["", "Red channel", "Ambient occlusion", "World direction", "All together (average)", "All together (additive)", "Tuning threshold", ""]
 }
-tracks/1/type = "bezier"
+tracks/1/type = "scale_3d"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0:scale:y")
+tracks/1/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode_001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
-}
-tracks/2/type = "bezier"
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.3, 1, 1.2, 1.2, 1.2, 0.4, 1, 1, 1, 1, 9.96667, 1, 1, 1, 1, 10.1333, 1, 1.2, 1.2, 1.2, 10.4333, 1, 0, 0, 0)
+tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0:scale:z")
-tracks/2/interp = 1
+tracks/2/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode_001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0:material_override:shader_parameter/threshold")
+tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"times": PackedFloat32Array(7.4, 8.83333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.43]
 }
-tracks/3/type = "bezier"
+tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0:material_override:shader_param/blend_smoothness")
+tracks/3/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode_001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0:material_override:shader_parameter/use_world_direction")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"times": PackedFloat32Array(0.4, 1.9, 3.4, 5.4, 6.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, true, true]
 }
-tracks/4/type = "bezier"
+tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0:material_override:shader_param/threshold")
+tracks/4/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode_001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0:material_override:shader_parameter/use_red_vertex_color")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0:material_override:shader_param/world_direction:x")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
-}
-tracks/6/type = "bezier"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0:material_override:shader_param/world_direction:y")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
-}
-tracks/7/type = "bezier"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0:material_override:shader_param/world_direction:z")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0:material_override:shader_param/use_ao_occlusion")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0.4, 1.9, 5.4, 6.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [false, true, true, true]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0:material_override:shader_param/use_red_vertex_color")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
 "times": PackedFloat32Array(0.4, 1.9, 3.4, 5.4, 6.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [true, false, false, true, true]
 }
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0:material_override:shader_param/use_world_direction")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode_001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0:material_override:shader_parameter/use_ao_occlusion")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0.4, 1.9, 3.4, 5.4, 6.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [false, false, true, true, true]
 }
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0:material_override:shader_param/additive_mix")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0.4, 3.4, 5.4, 6.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode_001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0:material_override:shader_parameter/additive_mix")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.4, 1.9, 3.4, 5.4, 6.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [false, false, false, true]
+"values": [false, false, false, false, true]
 }
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("Label:text")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0, 0.4, 1.9, 3.4, 5.4, 6.4, 7.4, 9.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": ["", "Red channel", "Ambient occlusion", "World direction", "All together (average)", "All together (additive)", "Tuning threshold", ""]
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Demo/RootNode/RootNode2/RootNode3/RootNode_001/rockFInal_LOD0/rockFInal_LOD0_lambert2_0:material_override:shader_parameter/world_direction")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(3.4, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 0.00359209, 0), Vector3(0, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vd51s"]
+_data = {
+"show-mix": SubResource("4")
 }
 
 [node name="TextureMixDemo" type="CanvasLayer"]
@@ -204,28 +172,29 @@ transform = Transform3D(0.866365, 0.424523, 0.263041, 0, -0.526703, 0.850049, 0.
 [node name="MixVertexColor" parent="." instance=ExtResource("8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 
-[node name="rockFInal_LOD0_lambert2_0" parent="MixVertexColor/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0" index="0"]
-material_override = SubResource("1")
+[node name="rockFInal_LOD0_lambert2_0" parent="MixVertexColor/RootNode/RootNode2/RootNode3/RootNode_001/rockFInal_LOD0" index="0"]
+material_override = SubResource("ShaderMaterial_7e6og")
 
 [node name="MixAmbientOcclusion" parent="." instance=ExtResource("8")]
 
-[node name="rockFInal_LOD0_lambert2_0" parent="MixAmbientOcclusion/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0" index="0"]
-material_override = SubResource("2")
+[node name="rockFInal_LOD0_lambert2_0" parent="MixAmbientOcclusion/RootNode/RootNode2/RootNode3/RootNode_001/rockFInal_LOD0" index="0"]
+material_override = SubResource("ShaderMaterial_awrai")
 
 [node name="MixWorldNormal" parent="." instance=ExtResource("8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
 
-[node name="rockFInal_LOD0_lambert2_0" parent="MixWorldNormal/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0" index="0"]
-material_override = SubResource("3")
+[node name="rockFInal_LOD0_lambert2_0" parent="MixWorldNormal/RootNode/RootNode2/RootNode3/RootNode_001/rockFInal_LOD0" index="0"]
+material_override = SubResource("ShaderMaterial_5a6av")
 
 [node name="Demo" parent="." instance=ExtResource("8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
 
-[node name="rockFInal_LOD0_lambert2_0" parent="Demo/RootNode/RootNode2/RootNode3/RootNode001/rockFInal_LOD0" index="0"]
-transform = Transform3D(-0.00142109, 0, -1.24231e-10, 0, 0.00150442, 0, 1.24236e-10, 0, -0.00142103, 0, 0, 0)
+[node name="rockFInal_LOD0_lambert2_0" parent="Demo/RootNode/RootNode2/RootNode3/RootNode_001/rockFInal_LOD0" index="0"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 material_override = ExtResource("1")
 
 [node name="Label" type="Label" parent="."]
+anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -236,20 +205,22 @@ offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("7")
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+text = "World direction"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/show-mix = SubResource("4")
+libraries = {
+"": SubResource("AnimationLibrary_vd51s")
+}
+autoplay = "show-mix"
 script = ExtResource("12")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, -4.37114e-08, 0.866025, 0.5, 7.57103e-08, 0.5, -0.866025, 0, 6.0383, -11.4515)
 
 [node name="DemoInterface" parent="." instance=ExtResource("4")]
+anchors_preset = 10
 text_bbcode = "A shader that mixes albedo and normal textures based on different parameters. From left to right: mix based on red channel for vertex color, mix based on ambient occlusion map, and mix based on world space normal.
 model by https://sketchfab.com/3d-models/western-stylised-rock-24c821bbe0a1469ba66b9d5894546d9a"
 
