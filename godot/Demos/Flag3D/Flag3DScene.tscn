@@ -13,10 +13,13 @@ noise = SubResource("1")
 [sub_resource type="ShaderMaterial" id="3"]
 render_priority = 0
 shader = ExtResource("1")
-shader_parameter/wave_size = 0.5
-shader_parameter/face_distortion = 0.5
-shader_parameter/time_scale = 0.3
-shader_parameter/uv_offset_scale = Vector2(-0.2, -0.1)
+shader_parameter/display_dampening = false
+shader_parameter/display_deformation = false
+shader_parameter/flag_color = Color(1, 1, 1, 1)
+shader_parameter/wave_size = 0.485
+shader_parameter/face_distortion = 0.135
+shader_parameter/time_scale = 0.085
+shader_parameter/uv_offset_scale = Vector2(-0.275, 0.015)
 shader_parameter/uv_offset_texture = SubResource("2")
 
 [sub_resource type="PlaneMesh" id="4"]
