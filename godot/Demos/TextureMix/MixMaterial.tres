@@ -1,23 +1,24 @@
-[gd_resource type="ShaderMaterial" load_steps=7 format=2]
+[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://bhh1xjf8gsnti"]
 
-[ext_resource path="res://Demos/TextureMix/textures/lambert2_baseColor.jpeg" type="Texture2D" id=1]
-[ext_resource path="res://Demos/TextureMix/textures/Moss003_1K_Normal.jpg" type="Texture2D" id=2]
-[ext_resource path="res://Shaders/texture_mix.gdshader" type="Shader" id=3]
-[ext_resource path="res://Demos/TextureMix/textures/Moss003_1K_Color.jpg" type="Texture2D" id=4]
-[ext_resource path="res://Demos/TextureMix/textures/lambert2_ao.jpg" type="Texture2D" id=5]
-[ext_resource path="res://Demos/TextureMix/textures/lambert2_normal.jpg" type="Texture2D" id=6]
+[ext_resource type="Texture2D" uid="uid://ct8ae831xs10n" path="res://Demos/TextureMix/textures/lambert2_baseColor.jpeg" id="1"]
+[ext_resource type="Texture2D" uid="uid://dpqhhrxbnxiga" path="res://Demos/TextureMix/textures/Moss003_1K_Normal.jpg" id="2"]
+[ext_resource type="Shader" path="res://Shaders/texture_mix.gdshader" id="3"]
+[ext_resource type="Texture2D" uid="uid://dpjngtoswnty5" path="res://Demos/TextureMix/textures/Moss003_1K_Color.jpg" id="4"]
+[ext_resource type="Texture2D" uid="uid://euw4gltajib2" path="res://Demos/TextureMix/textures/lambert2_ao.jpg" id="5"]
+[ext_resource type="Texture2D" uid="uid://m1m8w0a5l2li" path="res://Demos/TextureMix/textures/lambert2_normal.jpg" id="6"]
 
 [resource]
-shader = ExtResource( 3 )
-shader_param/blend_smoothness = 0.2
-shader_param/threshold = 0.0
-shader_param/additive_mix = false
-shader_param/use_red_vertex_color = true
-shader_param/use_ao_occlusion = false
-shader_param/use_world_direction = false
-shader_param/world_direction = Vector3( 1, 0.00359209, 0 )
-shader_param/tex_1_albedo = ExtResource( 1 )
-shader_param/tex_1_ao = ExtResource( 5 )
-shader_param/tex_1_normal = ExtResource( 6 )
-shader_param/tex_2_albedo = ExtResource( 4 )
-shader_param/tex_2_normal = ExtResource( 2 )
+render_priority = 0
+shader = ExtResource("3")
+shader_parameter/blend_smoothness = 0.2
+shader_parameter/threshold = 0.0
+shader_parameter/additive_mix = false
+shader_parameter/use_red_vertex_color = false
+shader_parameter/use_ao_occlusion = true
+shader_parameter/use_world_direction = true
+shader_parameter/world_direction = Vector3(1, 0.00359209, 0)
+shader_parameter/tex_1_albedo = ExtResource("1")
+shader_parameter/tex_1_ao = ExtResource("5")
+shader_parameter/tex_1_normal = ExtResource("6")
+shader_parameter/tex_2_albedo = ExtResource("4")
+shader_parameter/tex_2_normal = ExtResource("2")
