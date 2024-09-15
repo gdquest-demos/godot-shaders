@@ -1,3 +1,5 @@
+**/!\ WARNING:** This project is in the process of being ported to Godot 4. If you want get a copy of the working project for Godot 3, [head to the last Godot 3 release](https://github.com/gdquest-demos/godot-shaders/releases/tag/1.0.0). If you want to help, see [Tracker and guide: Update to Godot 4.3](https://github.com/gdquest-demos/godot-shaders/issues/53).
+
 # Godot Shaders
 
 ![project banner](./img/banner-shader-secrets.png)
