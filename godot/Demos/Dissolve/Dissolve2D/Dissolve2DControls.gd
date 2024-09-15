@@ -1,10 +1,10 @@
-tool
+@tool
 extends Node
 
-export (float, 0, 1) var debug_dissolve_control := 0.0 setget _set_debug_control
+@export (float, 0, 1) var debug_dissolve_control := 0.0: set = _set_debug_control
 
-onready var mask := owner.get_node("MaskView/Viewport/RobiMask")
-onready var robi := owner.get_node("Robi")
+@onready var mask := owner.get_node("MaskView/SubViewport/RobiMask")
+@onready var robi := owner.get_node("Robi")
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -16,8 +16,8 @@ func _unhandled_input(event: InputEvent) -> void:
 func _set_debug_control(value: float) -> void:
 	debug_dissolve_control = value
 	if not is_inside_tree():
-		yield(self, "ready")
+		await self.ready
 
-	if Engine.editor_hint:
+	if Engine.is_editor_hint():
 		mask.debug_dissolve_control = value
 		robi.debug_dissolve_control = value

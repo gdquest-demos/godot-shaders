@@ -1,20 +1,20 @@
 extends Node
 
-onready var _demo_picker := $DemoPickerUI
-onready var _demo_player := $DemoPlayer
-onready var _button_go_back := $CanvasLayer/ButtonGoBack
+@onready var _demo_picker := $DemoPickerUI
+@onready var _demo_player := $DemoPlayer
+@onready var _button_go_back := $CanvasLayer/ButtonGoBack
 
 
 func _ready() -> void:
-	_demo_picker.connect("demo_requested", self, "load_and_show_demo")
-	_button_go_back.connect("pressed", self, "go_back_to_menu")
+	_demo_picker.connect("demo_requested", Callable(self, "load_and_show_demo"))
+	_button_go_back.connect("pressed", Callable(self, "go_back_to_menu"))
 	_button_go_back.hide()
 
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_fullscreen"):
-		OS.window_fullscreen = not OS.window_fullscreen
-		get_tree().set_input_as_handled()
+		get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (not ((get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN))) else Window.MODE_WINDOWED
+		get_viewport().set_input_as_handled()
 	elif event.is_action_pressed("toggle_interface"):
 		_button_go_back.visible = not _button_go_back.visible
 	elif event.is_action_pressed("go_back_to_menu") and _demo_player.is_loaded():

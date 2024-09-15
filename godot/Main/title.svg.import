@@ -1,8 +1,9 @@
 [remap]
 
 importer="texture"
-type="StreamTexture"
-path="res://.import/title.svg-98b5c75af5b501cde34606d37216fd13.stex"
+type="CompressedTexture2D"
+uid="uid://bq0oa0hlk08r0"
+path="res://.godot/imported/title.svg-98b5c75af5b501cde34606d37216fd13.ctex"
 metadata={
 "vram_texture": false
 }
@@ -10,26 +11,27 @@ metadata={
 [deps]
 
 source_file="res://Main/title.svg"
-dest_files=[ "res://.import/title.svg-98b5c75af5b501cde34606d37216fd13.stex" ]
+dest_files=["res://.godot/imported/title.svg-98b5c75af5b501cde34606d37216fd13.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
-compress/hdr_mode=0
-compress/bptc_ldr=0
+compress/hdr_compression=1
 compress/normal_map=0
-flags/repeat=0
-flags/filter=true
-flags/mipmaps=false
-flags/anisotropic=false
-flags/srgb=2
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
-process/HDR_as_SRGB=false
-process/invert_color=false
 process/normal_map_invert_y=false
-stream=false
-size_limit=0
-detect_3d=true
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1
 svg/scale=1.4
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

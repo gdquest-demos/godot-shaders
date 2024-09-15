@@ -1,11 +1,11 @@
 [gd_resource type="ShaderMaterial" load_steps=14 format=2]
 
-[ext_resource path="res://addons/gdquest.toon-controller/Material/Defaults/AnisotropicNoise/low_frequency_anisotropic_noise.tres" type="Texture" id=1]
-[ext_resource path="res://addons/gdquest.toon-controller/Material/Defaults/AnisotropicNoise/high_frequency_anisotropic_noise.tres" type="Texture" id=2]
-[ext_resource path="res://addons/gdquest.toon-controller/Material/Defaults/AnisotropicNoise/spottiness_anisotropic_noise.tres" type="Texture" id=3]
-[ext_resource path="res://addons/gdquest.toon-controller/Material/outline3D.shader" type="Shader" id=4]
-[ext_resource path="res://addons/gdquest.toon-controller/Material/GDToonBase.shader" type="Shader" id=5]
-[ext_resource path="res://addons/gdquest.toon-controller/Material/Defaults/Copper_Matcap.png" type="Texture" id=6]
+[ext_resource path="res://addons/gdquest.toon-controller/Material/Defaults/AnisotropicNoise/low_frequency_anisotropic_noise.tres" type="Texture2D" id=1]
+[ext_resource path="res://addons/gdquest.toon-controller/Material/Defaults/AnisotropicNoise/high_frequency_anisotropic_noise.tres" type="Texture2D" id=2]
+[ext_resource path="res://addons/gdquest.toon-controller/Material/Defaults/AnisotropicNoise/spottiness_anisotropic_noise.tres" type="Texture2D" id=3]
+[ext_resource path="res://addons/gdquest.toon-controller/Material/outline3D.gdshader" type="Shader" id=4]
+[ext_resource path="res://addons/gdquest.toon-controller/Material/GDToonBase.gdshader" type="Shader" id=5]
+[ext_resource path="res://addons/gdquest.toon-controller/Material/Defaults/Copper_Matcap.png" type="Texture2D" id=6]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 4 )
@@ -13,21 +13,21 @@ shader_param/thickness = 0.02
 shader_param/outline_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="Gradient" id=2]
-offsets = PoolRealArray( 0.291667, 0.690476 )
+offsets = PackedFloat32Array( 0.291667, 0.690476 )
 
-[sub_resource type="GradientTexture" id=3]
+[sub_resource type="GradientTexture2D" id=3]
 gradient = SubResource( 2 )
 
 [sub_resource type="Gradient" id=4]
-offsets = PoolRealArray( 0.2, 0.283333 )
+offsets = PackedFloat32Array( 0.2, 0.283333 )
 
-[sub_resource type="GradientTexture" id=5]
+[sub_resource type="GradientTexture2D" id=5]
 gradient = SubResource( 4 )
 
 [sub_resource type="Gradient" id=6]
-offsets = PoolRealArray( 0.214286, 0.291667 )
+offsets = PackedFloat32Array( 0.214286, 0.291667 )
 
-[sub_resource type="GradientTexture" id=7]
+[sub_resource type="GradientTexture2D" id=7]
 gradient = SubResource( 6 )
 
 [resource]

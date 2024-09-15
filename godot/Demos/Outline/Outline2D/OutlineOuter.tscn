@@ -1,30 +1,25 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://cyoqn2l7tvp62"]
 
-[ext_resource path="res://Demos/Outline/Outline2D/Outline.gd" type="Script" id=1]
-[ext_resource path="res://Shaders/outline2D_outer.shader" type="Shader" id=2]
-[ext_resource path="res://Shared/sprites/robi_shaded.png" type="Texture" id=3]
+[ext_resource type="Script" path="res://Demos/Outline/Outline2D/Outline.gd" id="1"]
+[ext_resource type="Shader" path="res://Shaders/outline2D_outer.gdshader" id="2"]
 
+[sub_resource type="ShaderMaterial" id="1"]
+shader = ExtResource("2")
+shader_parameter/line_color = Color(0.921569, 0.505882, 0.0666667, 0)
+shader_parameter/line_thickness = 5.0
 
-
-
-
-[sub_resource type="ShaderMaterial" id=1]
-shader = ExtResource( 2 )
-shader_param/line_color = Color( 0.921569, 0.505882, 0.0666667, 0 )
-shader_param/line_thickness = 5.0
-
-[node name="OutlineOuter" type="Sprite"]
-material = SubResource( 1 )
-scale = Vector2( 0.644905, 0.644905 )
-texture = ExtResource( 3 )
+[node name="OutlineOuter" type="Sprite2D"]
+material = SubResource("1")
+scale = Vector2(0.644905, 0.644905)
+texture = null
 region_enabled = true
-region_rect = Rect2( -19.6232, -16.3372, 464.135, 778.833 )
-script = ExtResource( 1 )
-line_color = Color( 0.937255, 0.470588, 0.0941176, 1 )
+region_rect = Rect2(-19.6232, -16.3372, 464.135, 778.833)
+script = ExtResource("1")
+line_color = Color(0.937255, 0.470588, 0.0941176, 1)
 
 [node name="Tween" type="Tween" parent="."]
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PoolVector2Array( -144.602, -325.29, -73.6878, -320.857, -41.1855, -374.043, 50.4119, -326.767, 159.738, -300.174, 201.104, -229.26, 196.672, -130.276, 156.783, -75.6128, 56.3214, -65.2712, 149.396, -25.382, 207.014, 55.8738, 208.491, 140.084, 156.783, 194.747, 96.2106, 125.311, 97.688, 187.36, 125.758, 258.275, 82.9142, 268.616, 94.7332, 383.852, 62.231, 380.897, 25.2965, 276.003, -5.72842, 277.48, -44.1403, 383.852, -64.8236, 377.942, -66.3009, 267.139, -138.692, 234.637, -150.511, 193.27, -190.401, 187.36, -206.652, 131.22, -203.697, 82.4666, -147.557, -34.2462, -54.4819, -56.4069, -138.692, -69.7033, -200.742, -124.366, -221.426, -251.421 )
+polygon = PackedVector2Array(-144.602, -325.29, -73.6878, -320.857, -41.1855, -374.043, 50.4119, -326.767, 159.738, -300.174, 201.104, -229.26, 196.672, -130.276, 156.783, -75.6128, 56.3214, -65.2712, 149.396, -25.382, 207.014, 55.8738, 208.491, 140.084, 156.783, 194.747, 96.2106, 125.311, 97.688, 187.36, 125.758, 258.275, 82.9142, 268.616, 94.7332, 383.852, 62.231, 380.897, 25.2965, 276.003, -5.72842, 277.48, -44.1403, 383.852, -64.8236, 377.942, -66.3009, 267.139, -138.692, 234.637, -150.511, 193.27, -190.401, 187.36, -206.652, 131.22, -203.697, 82.4666, -147.557, -34.2462, -54.4819, -56.4069, -138.692, -69.7033, -200.742, -124.366, -221.426, -251.421)

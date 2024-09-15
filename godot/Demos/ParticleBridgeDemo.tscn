@@ -1,385 +1,378 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=34 format=3 uid="uid://rpoxm6j5rsnv"]
 
-[ext_resource path="res://Shaders/particle_bridge_spatial.shader" type="Shader" id=1]
-[ext_resource path="res://Shaders/particle_bridge_particle.shader" type="Shader" id=2]
-[ext_resource path="res://Shared/Demo3DEnvironmentDark.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=4]
-[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=5]
-[ext_resource path="res://Demos/ParticleBridge/RigidPlayer.gd" type="Script" id=6]
-[ext_resource path="res://Demos/ParticleBridge/ParticleBridgeDemo.gd" type="Script" id=7]
+[ext_resource type="Shader" path="res://Shaders/particle_bridge_spatial.gdshader" id="1"]
+[ext_resource type="Shader" path="res://Shaders/particle_bridge_particle.gdshader" id="2"]
+[ext_resource type="PackedScene" path="res://Shared/Demo3DEnvironmentDark.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="4"]
+[ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="5"]
+[ext_resource type="Script" path="res://Demos/ParticleBridge/RigidPlayer.gd" id="6"]
+[ext_resource type="Script" path="res://Demos/ParticleBridge/ParticleBridgeDemo.gd" id="7"]
 
-[sub_resource type="SpatialMaterial" id=14]
-albedo_color = Color( 0.227451, 0.207843, 0.266667, 1 )
+[sub_resource type="StandardMaterial3D" id="14"]
+albedo_color = Color(0.227451, 0.207843, 0.266667, 1)
 
-[sub_resource type="CubeMesh" id=15]
+[sub_resource type="BoxMesh" id="15"]
 
-[sub_resource type="SpatialMaterial" id=17]
-albedo_color = Color( 0, 1, 1, 1 )
+[sub_resource type="StandardMaterial3D" id="17"]
+albedo_color = Color(0, 1, 1, 1)
 emission_enabled = true
-emission = Color( 0, 1, 1, 1 )
-emission_energy = 6.67
-emission_operator = 0
-emission_on_uv2 = false
+emission = Color(0, 1, 1, 1)
+emission_energy_multiplier = 6.67
 
-[sub_resource type="Curve" id=18]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.151163, 0.990909 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -2.52587, 0.0, 0, 0 ]
+[sub_resource type="Curve" id="18"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.151163, 0.990909), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.52587, 0.0, 0, 0]
+point_count = 3
 
-[sub_resource type="CurveTexture" id=19]
-curve = SubResource( 18 )
+[sub_resource type="CurveTexture" id="19"]
+curve = SubResource("18")
 
-[sub_resource type="ParticlesMaterial" id=20]
+[sub_resource type="ParticleProcessMaterial" id="20"]
 emission_shape = 2
-emission_box_extents = Vector3( 10.713, 1, 18.921 )
-flag_rotate_y = true
-gravity = Vector3( 0, 1, 0 )
-tangential_accel = 1.44
-tangential_accel_random = 1.0
-damping = 0.81
-angle = 720.0
-angle_random = 0.4
-scale = 0.5
-scale_random = 1.0
-scale_curve = SubResource( 19 )
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 1, 0)
+scale_curve = SubResource("19")
 
-[sub_resource type="CubeMesh" id=21]
-size = Vector3( 0.1, 0.1, 0.1 )
+[sub_resource type="BoxMesh" id="21"]
+size = Vector3(0.1, 0.1, 0.1)
 
-[sub_resource type="BoxShape" id=34]
-extents = Vector3( 2, 1, 20 )
+[sub_resource type="BoxShape3D" id="34"]
+size = Vector3(4, 2, 40)
 
-[sub_resource type="BoxShape" id=41]
-extents = Vector3( 2, 2, 1 )
+[sub_resource type="BoxShape3D" id="41"]
+size = Vector3(4, 4, 2)
 
-[sub_resource type="ShaderMaterial" id=1]
-shader = ExtResource( 2 )
-shader_param/character_position = Vector3( 1.5103, 0.962805, 8.32918 )
-shader_param/radius = 0.0
-shader_param/animation_speed = 10.0
-shader_param/bridge_width_particles = 12
-shader_param/spacing = 0.3
+[sub_resource type="ShaderMaterial" id="1"]
+shader = ExtResource("2")
 
-[sub_resource type="Curve" id=33]
-_data = [ Vector2( 0.681818, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 6.41333, 0.0, 0, 0 ]
+[sub_resource type="Curve" id="33"]
+_data = [Vector2(0.681818, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 6.41333, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="CurveTexture" id=5]
-curve = SubResource( 33 )
+[sub_resource type="CurveTexture" id="5"]
+curve = SubResource("33")
 
-[sub_resource type="Curve" id=2]
+[sub_resource type="Curve" id="2"]
 max_value = 1.3
-_data = [ Vector2( 0.412587, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.765734, 1.3 ), 3.51, -1.17265, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+_data = [Vector2(0.412587, 0), 0.0, 0.0, 0, 0, Vector2(0.765734, 1.3), 3.51, -1.17265, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
 
-[sub_resource type="CurveTexture" id=3]
-curve = SubResource( 2 )
+[sub_resource type="CurveTexture" id="3"]
+curve = SubResource("2")
 
-[sub_resource type="Curve" id=6]
+[sub_resource type="Curve" id="6"]
 min_value = -1.0
-_data = [ Vector2( 0.922343, -0.567567 ), 0.0, 5.96219, 0, 0, Vector2( 1, 0.018018 ), 35.2673, 0.0, 0, 0 ]
+_data = [Vector2(0.922343, -0.567567), 0.0, 5.96219, 0, 0, Vector2(1, 0.018018), 35.2673, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="CurveTexture" id=7]
-curve = SubResource( 6 )
+[sub_resource type="CurveTexture" id="7"]
+curve = SubResource("6")
 
-[sub_resource type="Curve" id=8]
+[sub_resource type="Curve" id="8"]
 min_value = -3.0
 max_value = 0.4
-_data = [ Vector2( 0, -3 ), 0.0, 0.17333, 0, 0, Vector2( 1, 0.307273 ), 10.983, 0.0, 0, 0 ]
+_data = [Vector2(0, -3), 0.0, 0.17333, 0, 0, Vector2(1, 0.307273), 10.983, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="CurveTexture" id=9]
-curve = SubResource( 8 )
+[sub_resource type="CurveTexture" id="9"]
+curve = SubResource("8")
 
-[sub_resource type="ShaderMaterial" id=10]
-shader = ExtResource( 1 )
-shader_param/oscillation_size = 2.0
-shader_param/emission_color = Color( 0, 1, 0.976471, 1 )
-shader_param/albedo_color = Color( 0.227451, 0.207843, 0.266667, 1 )
-shader_param/y_curve_ascend = SubResource( 7 )
-shader_param/y_curve_descend = SubResource( 9 )
-shader_param/xz_curve_ascend = SubResource( 5 )
-shader_param/xz_curve_descend = SubResource( 3 )
+[sub_resource type="ShaderMaterial" id="10"]
+render_priority = 0
+shader = ExtResource("1")
+shader_parameter/oscillation_size = 2.0
+shader_parameter/emission_color = Color(0, 1, 0.976471, 1)
+shader_parameter/albedo_color = Color(0.227451, 0.207843, 0.266667, 1)
+shader_parameter/y_curve_ascend = SubResource("7")
+shader_parameter/y_curve_descend = SubResource("9")
+shader_parameter/xz_curve_ascend = SubResource("5")
+shader_parameter/xz_curve_descend = SubResource("3")
 
-[sub_resource type="CubeMesh" id=11]
-material = SubResource( 10 )
-custom_aabb = AABB( 0, 0, 0, 3, 0, 15 )
-size = Vector3( 0.3, 0.3, 0.3 )
+[sub_resource type="BoxMesh" id="11"]
+material = SubResource("10")
+custom_aabb = AABB(0, 0, 0, 3, 0, 15)
+size = Vector3(0.3, 0.3, 0.3)
 
-[sub_resource type="BoxShape" id=40]
-extents = Vector3( 2, 1, 12.5 )
+[sub_resource type="BoxShape3D" id="40"]
+size = Vector3(4, 2, 25)
 
-[sub_resource type="Animation" id=38]
+[sub_resource type="Animation" id="38"]
 length = 0.001
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:process_material:shader_param/radius")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ 0.0 ]
+"values": [0.0]
 }
 
-[sub_resource type="Animation" id=39]
+[sub_resource type="Animation" id="39"]
 resource_name = "show"
 length = 0.5
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:process_material:shader_param/radius")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 0.5, 2 ),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 2),
 "update": 0,
-"values": [ 0.0, 5.0 ]
+"values": [0.0, 5.0]
 }
 
-[sub_resource type="SphereMesh" id=13]
-radius = 0.5
-height = 1.0
+[sub_resource type="SphereMesh" id="13"]
 
-[sub_resource type="ConvexPolygonShape" id=35]
-points = PoolVector3Array( 0.457871, 0.198079, 0.0157824, -0.48874, -0.0916874, -0.0451868, -0.471509, -0.137027, -0.0907015, 0.0763591, -0.333275, 0.364179, 0.136569, -0.332425, -0.346906, -0.151617, 0.471982, -0.0602459, -0.105347, 0.211936, 0.43966, -0.0450169, 0.198098, -0.456416, 0.409077, -0.151168, 0.242516, -0.271376, -0.377761, 0.181871, 0.41148, -0.075981, -0.27324, 0.198197, -0.456161, -0.044931, -0.240641, -0.331674, -0.285768, 0.227137, 0.25672, 0.363041, 0.227522, 0.423604, -0.135488, -0.37899, 0.0607022, 0.319462, -0.406747, 0.181049, -0.225691, -0.0146313, -0.0917695, 0.490229, -0.377855, 0.302793, 0.121712, 0.0462323, 0.456011, 0.198185, -0.227464, -0.0607863, -0.440348, 0.228455, 0.0607228, -0.439887, -0.0911376, -0.489246, -0.045174, 0.441865, -0.228216, -0.0449581, 0.317179, 0.241214, -0.300812, -0.0448487, 0.394737, -0.302955, -0.316348, -0.196222, 0.332551, 0.198442, -0.0304293, 0.457237, 0.0614714, -0.152246, -0.471307, 0.363089, 0.256708, 0.227079, 0.152134, -0.439489, 0.182379, -0.210725, 0.362276, 0.27223, -0.393801, -0.303385, 0.0460228, -0.488476, 0.0457711, 0.0922199, -0.255972, 0.271634, -0.331291, 0.302117, -0.241253, -0.315971, 0.441442, 0.0455233, 0.228553, 0.490895, 0.0458824, -0.0758877, -0.105461, -0.394128, 0.288494, -0.408704, -0.0909121, -0.272273, 0.288399, 0.393922, 0.106606, 0.301715, -0.316211, 0.241485, -0.316526, 0.362481, -0.135245, -0.197366, -0.121848, 0.442202, 0.0923184, 0.488986, -0.0451498, -0.0448486, -0.394736, -0.302954, 0.121749, 0.302805, -0.377832, -0.439456, -0.151737, 0.18263, -0.316526, -0.362481, -0.135244, 0.046265, 0.228169, 0.441697, -0.471509, 0.137027, -0.0907015, -0.105399, -0.242411, -0.423489, -0.287567, 0.106173, -0.393789, 0.39448, 0.287775, -0.105397, 0.257972, -0.16649, 0.394217, 0.349397, 0.0758223, 0.349333, -0.181757, 0.456003, 0.0917256, 0.490722, -0.0458662, 0.0770606, 0.319208, -0.379253, -0.0600307, 0.136676, -0.438625, -0.19598, -0.0606397, 0.0766205, -0.489656, -0.0451439, -0.489013, 0.0922002, -0.301127, 0.165911, 0.362696, 0.410382, 0.121321, -0.257394 )
+[sub_resource type="ConvexPolygonShape3D" id="35"]
+points = PackedVector3Array(0.457871, 0.198079, 0.0157824, -0.48874, -0.0916874, -0.0451868, -0.471509, -0.137027, -0.0907015, 0.0763591, -0.333275, 0.364179, 0.136569, -0.332425, -0.346906, -0.151617, 0.471982, -0.0602459, -0.105347, 0.211936, 0.43966, -0.0450169, 0.198098, -0.456416, 0.409077, -0.151168, 0.242516, -0.271376, -0.377761, 0.181871, 0.41148, -0.075981, -0.27324, 0.198197, -0.456161, -0.044931, -0.240641, -0.331674, -0.285768, 0.227137, 0.25672, 0.363041, 0.227522, 0.423604, -0.135488, -0.37899, 0.0607022, 0.319462, -0.406747, 0.181049, -0.225691, -0.0146313, -0.0917695, 0.490229, -0.377855, 0.302793, 0.121712, 0.0462323, 0.456011, 0.198185, -0.227464, -0.0607863, -0.440348, 0.228455, 0.0607228, -0.439887, -0.0911376, -0.489246, -0.045174, 0.441865, -0.228216, -0.0449581, 0.317179, 0.241214, -0.300812, -0.0448487, 0.394737, -0.302955, -0.316348, -0.196222, 0.332551, 0.198442, -0.0304293, 0.457237, 0.0614714, -0.152246, -0.471307, 0.363089, 0.256708, 0.227079, 0.152134, -0.439489, 0.182379, -0.210725, 0.362276, 0.27223, -0.393801, -0.303385, 0.0460228, -0.488476, 0.0457711, 0.0922199, -0.255972, 0.271634, -0.331291, 0.302117, -0.241253, -0.315971, 0.441442, 0.0455233, 0.228553, 0.490895, 0.0458824, -0.0758877, -0.105461, -0.394128, 0.288494, -0.408704, -0.0909121, -0.272273, 0.288399, 0.393922, 0.106606, 0.301715, -0.316211, 0.241485, -0.316526, 0.362481, -0.135245, -0.197366, -0.121848, 0.442202, 0.0923184, 0.488986, -0.0451498, -0.0448486, -0.394736, -0.302954, 0.121749, 0.302805, -0.377832, -0.439456, -0.151737, 0.18263, -0.316526, -0.362481, -0.135244, 0.046265, 0.228169, 0.441697, -0.471509, 0.137027, -0.0907015, -0.105399, -0.242411, -0.423489, -0.287567, 0.106173, -0.393789, 0.39448, 0.287775, -0.105397, 0.257972, -0.16649, 0.394217, 0.349397, 0.0758223, 0.349333, -0.181757, 0.456003, 0.0917256, 0.490722, -0.0458662, 0.0770606, 0.319208, -0.379253, -0.0600307, 0.136676, -0.438625, -0.19598, -0.0606397, 0.0766205, -0.489656, -0.0451439, -0.489013, 0.0922002, -0.301127, 0.165911, 0.362696, 0.410382, 0.121321, -0.257394)
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id="16"]
 length = 8.0
-loop = true
+loop_mode = 1
 tracks/0/type = "bezier"
-tracks/0/path = NodePath("Player/Character:translation:x")
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player/Character:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 0.0103035, -0.25, 0, 0.25, 0, 0.0103035, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 1.5, 6.5 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/1/type = "bezier"
-tracks/1/path = NodePath("Player/Character:translation:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
+tracks/1/path = NodePath("Player/Character:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
 tracks/1/keys = {
-"points": PoolRealArray( -0.0371954, -0.25, 0, 0.25, 0, -0.0371954, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 1.5, 6.5 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/2/type = "bezier"
-tracks/2/path = NodePath("Player/Character:translation:z")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
+tracks/2/path = NodePath("Player/Character:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
 tracks/2/keys = {
-"points": PoolRealArray( 0.751298, -0.25, 0, 0.25, 0, 9.49028, -0.25, 0, 0.25, 0, 9.49028, -0.25, 0, 0.25, 0, 25.1255, -0.373349, -0.130716, 0.25, 0 ),
-"times": PoolRealArray( 1.5, 3.4, 4.6, 6.5 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("BridgeParticles:process_material:shader_param/radius")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
 tracks/3/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.125483, 4.20723, 5, -0.25, 0, 0.25, 0, 5, -0.25, 0, 0.0564256, -2.13245, 0, -0.492223, 0.238276, 0.25, 0 ),
-"times": PoolRealArray( 0.5, 1.5, 6.5, 7.4 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 
 [node name="ParticleBridgeDemo" type="CanvasLayer"]
-script = ExtResource( 5 )
+script = ExtResource("5")
 
-[node name="Demo3DEnvironmentDark" parent="." instance=ExtResource( 3 )]
+[node name="Demo3DEnvironmentDark" parent="." instance=ExtResource("3")]
 
 [node name="Ground" parent="Demo3DEnvironmentDark" index="2"]
 visible = false
 
-[node name="Environment" type="Spatial" parent="."]
+[node name="Environment" type="Node3D" parent="."]
 
-[node name="MeshInstance" type="MeshInstance" parent="Environment"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.67604, -1.27915, -3.52664 )
-material_override = SubResource( 14 )
-mesh = SubResource( 15 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.67604, -1.27915, -3.52664)
+material_override = SubResource("14")
+mesh = SubResource("15")
 material/0 = null
 
-[node name="MeshInstance5" type="MeshInstance" parent="Environment"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95629, -0.40156, -3.32464 )
-material_override = SubResource( 14 )
-mesh = SubResource( 15 )
+[node name="MeshInstance5" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95629, -0.40156, -3.32464)
+material_override = SubResource("14")
+mesh = SubResource("15")
 material/0 = null
 
-[node name="MeshInstance6" type="MeshInstance" parent="Environment"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95629, -0.666597, -2.60536 )
-material_override = SubResource( 14 )
-mesh = SubResource( 15 )
+[node name="MeshInstance6" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95629, -0.666597, -2.60536)
+material_override = SubResource("14")
+mesh = SubResource("15")
 material/0 = null
 
-[node name="MeshInstance3" type="MeshInstance" parent="Environment"]
-transform = Transform( 1.14319, 0, 0, 0, 1.14319, 0, 0, 0, 1.14319, -0.498635, 0.0929141, -2.66452 )
-material_override = SubResource( 14 )
-mesh = SubResource( 15 )
+[node name="MeshInstance3" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(1.14319, 0, 0, 0, 1.14319, 0, 0, 0, 1.14319, -0.498635, 0.0929141, -2.66452)
+material_override = SubResource("14")
+mesh = SubResource("15")
 material/0 = null
 
-[node name="MeshInstance4" type="MeshInstance" parent="Environment"]
-transform = Transform( 0.473173, 0, 0, 0, 0.473173, 0, 0, 0, 0.473173, -1.21155, 1.15132, -1.32348 )
-material_override = SubResource( 14 )
-mesh = SubResource( 15 )
+[node name="MeshInstance4" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(0.473173, 0, 0, 0, 0.473173, 0, 0, 0, 0.473173, -1.21155, 1.15132, -1.32348)
+material_override = SubResource("14")
+mesh = SubResource("15")
 material/0 = null
 
-[node name="MeshInstance2" type="MeshInstance" parent="Environment"]
-transform = Transform( 1.50835, 0, 0, 0, 1.50835, 0, 0, 0, 1.50835, 1.26811, -1.33713, -1.67108 )
-material_override = SubResource( 14 )
-mesh = SubResource( 15 )
+[node name="MeshInstance2" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(1.50835, 0, 0, 0, 1.50835, 0, 0, 0, 1.50835, 1.26811, -1.33713, -1.67108)
+material_override = SubResource("14")
+mesh = SubResource("15")
 material/0 = null
 
-[node name="MeshInstance7" type="MeshInstance" parent="Environment"]
-transform = Transform( 1.50835, 0, 0, 0, 1.50835, 0, 0, 0, 1.50835, 1.26811, -1.33818, 26.2441 )
-material_override = SubResource( 14 )
-mesh = SubResource( 15 )
+[node name="MeshInstance7" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(1.50835, 0, 0, 0, 1.50835, 0, 0, 0, 1.50835, 1.26811, -1.33818, 26.2441)
+material_override = SubResource("14")
+mesh = SubResource("15")
 material/0 = null
 
-[node name="MeshInstance8" type="MeshInstance" parent="Environment"]
-transform = Transform( 1.50835, 0, 0, 0, 1.50835, 0, 0, 0, 1.50835, -1.01346, -0.570083, 28.2913 )
-material_override = SubResource( 14 )
-mesh = SubResource( 15 )
+[node name="MeshInstance8" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(1.50835, 0, 0, 0, 1.50835, 0, 0, 0, 1.50835, -1.01346, -0.570083, 28.2913)
+material_override = SubResource("14")
+mesh = SubResource("15")
 material/0 = null
 
-[node name="MeshInstance9" type="MeshInstance" parent="Environment"]
-transform = Transform( 2.98732, 0, 0, 0, 2.98732, 0, 0, 0, 2.98732, 4.87479, -2.71731, 29.3602 )
-material_override = SubResource( 14 )
-mesh = SubResource( 15 )
+[node name="MeshInstance9" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(2.98732, 0, 0, 0, 2.98732, 0, 0, 0, 2.98732, 4.87479, -2.71731, 29.3602)
+material_override = SubResource("14")
+mesh = SubResource("15")
 material/0 = null
 
-[node name="MeshInstance15" type="MeshInstance" parent="Environment"]
-transform = Transform( 2.98732, 0, 0, 0, 2.98732, 0, 0, 0, 2.98732, 4.87479, -4.78104, -8.29915 )
-material_override = SubResource( 14 )
-mesh = SubResource( 15 )
+[node name="MeshInstance15" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(2.98732, 0, 0, 0, 2.98732, 0, 0, 0, 2.98732, 4.87479, -4.78104, -8.29915)
+material_override = SubResource("14")
+mesh = SubResource("15")
 material/0 = null
 
-[node name="MeshInstance16" type="MeshInstance" parent="Environment"]
-transform = Transform( 2.98732, 0, 0, 0, 2.98732, 0, 0, 0, 2.98732, 0.462523, -3.30955, -11.2663 )
-material_override = SubResource( 14 )
-mesh = SubResource( 15 )
+[node name="MeshInstance16" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(2.98732, 0, 0, 0, 2.98732, 0, 0, 0, 2.98732, 0.462523, -3.30955, -11.2663)
+material_override = SubResource("14")
+mesh = SubResource("15")
 material/0 = null
 
-[node name="MeshInstance17" type="MeshInstance" parent="Environment"]
-transform = Transform( 2.98732, 0, 0, 0, 2.98732, 0, 0, 0, 2.98732, 4.86438, -1.46258, 35.1737 )
-material_override = SubResource( 14 )
-mesh = SubResource( 15 )
+[node name="MeshInstance17" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(2.98732, 0, 0, 0, 2.98732, 0, 0, 0, 2.98732, 4.86438, -1.46258, 35.1737)
+material_override = SubResource("14")
+mesh = SubResource("15")
 material/0 = null
 
-[node name="MeshInstance10" type="MeshInstance" parent="Environment"]
-transform = Transform( 2.98732, 0, 0, 0, 2.98732, 0, 0, 0, 2.98732, 4.87479, -2.71731, 29.3602 )
-material_override = SubResource( 14 )
-mesh = SubResource( 15 )
+[node name="MeshInstance10" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(2.98732, 0, 0, 0, 2.98732, 0, 0, 0, 2.98732, 4.87479, -2.71731, 29.3602)
+material_override = SubResource("14")
+mesh = SubResource("15")
 material/0 = null
 
-[node name="MeshInstance11" type="MeshInstance" parent="Environment"]
-transform = Transform( 0.645052, 0, 0, 0, 2.71792, 0, 0, 0, 0.645052, 4.49499, -0.655079, 26.5435 )
-material_override = SubResource( 14 )
-mesh = SubResource( 15 )
+[node name="MeshInstance11" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(0.645052, 0, 0, 0, 2.71792, 0, 0, 0, 0.645052, 4.49499, -0.655079, 26.5435)
+material_override = SubResource("14")
+mesh = SubResource("15")
 material/0 = null
 
-[node name="MeshInstance12" type="MeshInstance" parent="Environment"]
-transform = Transform( 0.645052, 0, 0, 0, 1.54839, 0, 0, 0, 0.645052, -2.8115, 0.499449, 30.0278 )
-material_override = SubResource( 14 )
-mesh = SubResource( 15 )
+[node name="MeshInstance12" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(0.645052, 0, 0, 0, 1.54839, 0, 0, 0, 0.645052, -2.8115, 0.499449, 30.0278)
+material_override = SubResource("14")
+mesh = SubResource("15")
 material/0 = null
 
-[node name="MeshInstance14" type="MeshInstance" parent="Environment"]
-transform = Transform( 0.645052, 0, 0, 0, 1.54839, 0, 0, 0, 0.645052, 5.15443, -2.67499, 23.9164 )
-material_override = SubResource( 14 )
-mesh = SubResource( 15 )
+[node name="MeshInstance14" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(0.645052, 0, 0, 0, 1.54839, 0, 0, 0, 0.645052, 5.15443, -2.67499, 23.9164)
+material_override = SubResource("14")
+mesh = SubResource("15")
 material/0 = null
 
-[node name="MeshInstance13" type="MeshInstance" parent="Environment"]
-transform = Transform( 0.645052, 0, 0, 0, 1.54839, 0, 0, 0, 0.645052, 2.8465, 0.764487, -4.29656 )
-material_override = SubResource( 14 )
-mesh = SubResource( 15 )
+[node name="MeshInstance13" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(0.645052, 0, 0, 0, 1.54839, 0, 0, 0, 0.645052, 2.8465, 0.764487, -4.29656)
+material_override = SubResource("14")
+mesh = SubResource("15")
 material/0 = null
 
 [node name="GroundParticles" type="Particles" parent="Environment"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.159886, -7.01857, 11.1831 )
-material_override = SubResource( 17 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.159886, -7.01857, 11.1831)
+material_override = SubResource("17")
 amount = 25
 lifetime = 2.5
-process_material = SubResource( 20 )
-draw_pass_1 = SubResource( 21 )
+process_material = SubResource("20")
+draw_pass_1 = SubResource("21")
 
-[node name="Barrier" type="StaticBody" parent="Environment"]
+[node name="Barrier" type="StaticBody3D" parent="Environment"]
 
-[node name="SideWall" type="CollisionShape" parent="Environment/Barrier"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, 10 )
-shape = SubResource( 34 )
+[node name="SideWall" type="CollisionShape3D" parent="Environment/Barrier"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, 10)
+shape = SubResource("34")
 
-[node name="SideWall2" type="CollisionShape" parent="Environment/Barrier"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 10 )
-shape = SubResource( 34 )
+[node name="SideWall2" type="CollisionShape3D" parent="Environment/Barrier"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 10)
+shape = SubResource("34")
 
-[node name="EndWall" type="CollisionShape" parent="Environment/Barrier"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, -2.5 )
-shape = SubResource( 41 )
+[node name="EndWall" type="CollisionShape3D" parent="Environment/Barrier"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, -2.5)
+shape = SubResource("41")
 
-[node name="EndWall2" type="CollisionShape" parent="Environment/Barrier"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, 28 )
-shape = SubResource( 41 )
+[node name="EndWall2" type="CollisionShape3D" parent="Environment/Barrier"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, 28)
+shape = SubResource("41")
 
 [node name="BridgeParticles" type="Particles" parent="."]
 amount = 996
 lifetime = 2.0
 explosiveness = 1.0
-visibility_aabb = AABB( -8, -8, -4, 16, 16, 33 )
+visibility_aabb = AABB(-8, -8, -4, 16, 16, 33)
 local_coords = false
-process_material = SubResource( 1 )
-draw_pass_1 = SubResource( 11 )
-script = ExtResource( 7 )
+process_material = SubResource("1")
+draw_pass_1 = SubResource("11")
+script = ExtResource("7")
 character_node = NodePath("../Player/Character")
 
-[node name="StaticBody" type="StaticBody" parent="BridgeParticles"]
+[node name="StaticBody3D" type="StaticBody3D" parent="BridgeParticles"]
 
-[node name="Floor" type="CollisionShape" parent="BridgeParticles/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.83, 10 )
-shape = SubResource( 34 )
+[node name="Floor" type="CollisionShape3D" parent="BridgeParticles/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.83, 10)
+shape = SubResource("34")
 
-[node name="Area" type="Area" parent="BridgeParticles"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23669, 0 )
+[node name="Area3D" type="Area3D" parent="BridgeParticles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23669, 0)
 
-[node name="CollisionShape" type="CollisionShape" parent="BridgeParticles/Area"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 12.5 )
-shape = SubResource( 40 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BridgeParticles/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 12.5)
+shape = SubResource("40")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BridgeParticles"]
-anims/RESET = SubResource( 38 )
-anims/show = SubResource( 39 )
+anims/RESET = SubResource("38")
+anims/show = SubResource("39")
 
-[node name="Player" type="RigidBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, -1 )
+[node name="Player" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, -1)
 mode = 2
 mass = 2.0
 can_sleep = false
 linear_damp = 5.0
-script = ExtResource( 6 )
+script = ExtResource("6")
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Character" type="MeshInstance" parent="Player"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0103035, -0.0371954, 9.32918 )
-mesh = SubResource( 13 )
+[node name="Character" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0103035, -0.0371954, 9.32918)
+mesh = SubResource("13")
 skeleton = NodePath("../..")
 material/0 = null
 
-[node name="CollisionShape" type="CollisionShape" parent="Player"]
-shape = SubResource( 35 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("35")
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( -4.37114e-08, 0.5, -0.866025, 0, 0.866025, 0.5, 1, 2.18557e-08, -3.78552e-08, -10, 6, 12 )
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0.5, -0.866025, 0, 0.866025, 0.5, 1, 2.18557e-08, -3.78552e-08, -10, 6, 12)
 current = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "show"
-anims/show = SubResource( 16 )
+anims/show = SubResource("16")
 
-[node name="DemoInterface" parent="." instance=ExtResource( 4 )]
+[node name="DemoInterface" parent="." instance=ExtResource("4")]
 
 [editable path="Demo3DEnvironmentDark"]

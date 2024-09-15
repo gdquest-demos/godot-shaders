@@ -1,6 +1,6 @@
-extends Sprite
+extends Sprite2D
 
-onready var anim_player: AnimationPlayer = $AnimationPlayer
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 
 func _unhandled_input(event: InputEvent) -> void:

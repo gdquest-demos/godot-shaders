@@ -1,15 +1,15 @@
-tool
-extends Particles2D
+@tool
+extends GPUParticles2D
 
-export var emission_mask: Texture
+@export var emission_mask: Texture2D
 
 func _physics_process(_delta: float) -> void:
 	var data := emission_mask.get_data().data
 	var width: int = data.width
 	var height: int = data.height
-	var raw: PoolByteArray = data.data
+	var raw: PackedByteArray = data.data
 
-	var positions := PoolVector2Array()
+	var positions := PackedVector2Array()
 
 	for x in width * height:
 		for y in height:
@@ -18,7 +18,7 @@ func _physics_process(_delta: float) -> void:
 			if byte > 128:
 				positions.append(Vector2(x, y) * 8 - position)
 				
-	emitting = not positions.empty()
+	emitting = not positions.is_empty()
 	
 	if emitting:
 		var buffer := StreamPeerBuffer.new()
@@ -39,7 +39,7 @@ func _physics_process(_delta: float) -> void:
 		var image_texture := ImageTexture.new()
 		image_texture.create_from_image(image)
 
-		process_material.emission_shape = ParticlesMaterial.EMISSION_SHAPE_POINTS
+		process_material.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_POINTS
 		process_material.emission_point_texture = image_texture
 		process_material.emission_point_count = positions.size()
 

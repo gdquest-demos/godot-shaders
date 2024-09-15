@@ -1,12 +1,12 @@
 [gd_resource type="ShaderMaterial" load_steps=8 format=2]
 
 [ext_resource path="res://Demos/WindTrees/foliage_wind_tree_leaves.gdshader" type="Shader" id=1]
-[ext_resource path="res://Demos/WindTrees/Textures/elm leaf.png" type="Texture" id=2]
-[ext_resource path="res://Demos/WindTrees/Textures/elm_leaf_transmission.png" type="Texture" id=3]
-[ext_resource path="res://Demos/WindTrees/Textures/elm_leaf_normal.png" type="Texture" id=4]
+[ext_resource path="res://Demos/WindTrees/Textures/elm leaf.png" type="Texture2D" id=2]
+[ext_resource path="res://Demos/WindTrees/Textures/elm_leaf_transmission.png" type="Texture2D" id=3]
+[ext_resource path="res://Demos/WindTrees/Textures/elm_leaf_normal.png" type="Texture2D" id=4]
 [ext_resource path="res://Demos/WindTrees/Textures/3d_noise.png" type="Texture3D" id=5]
 
-[sub_resource type="OpenSimplexNoise" id=5]
+[sub_resource type="FastNoiseLite" id=5]
 octaves = 1
 
 [sub_resource type="NoiseTexture" id=6]

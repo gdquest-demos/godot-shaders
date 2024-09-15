@@ -1,9 +1,9 @@
-tool
-extends Sprite
+@tool
+extends Sprite2D
 
-var debug_dissolve_control := 0.0 setget _set_debug_control
+var debug_dissolve_control := 0.0: set = _set_debug_control
 
-onready var _animation_player: AnimationPlayer = $AnimationPlayer
+@onready var _animation_player: AnimationPlayer = $AnimationPlayer
 
 
 func dissolve() -> void:
@@ -12,5 +12,5 @@ func dissolve() -> void:
 
 func _set_debug_control(value: float) -> void:
 	debug_dissolve_control = value
-	if Engine.editor_hint:
-		material.set_shader_param("dissolve_amount", value)
+	if Engine.is_editor_hint():
+		material.set_shader_parameter("dissolve_amount", value)

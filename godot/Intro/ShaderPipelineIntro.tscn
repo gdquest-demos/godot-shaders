@@ -1,277 +1,277 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=20 format=3 uid="uid://bmy7gp4xnkbxw"]
 
-[ext_resource path="res://Intro/Elements/CubeScene.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Intro/Elements/RawVertexData.gd" type="Script" id=2]
-[ext_resource path="res://Intro/Elements/VertexRaw.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Shared/theme/gdquest.theme" type="Theme" id=4]
-[ext_resource path="res://Intro/Elements/ShaderPipelineIntro.gd" type="Script" id=5]
-[ext_resource path="res://Intro/Elements/VertexCodeAnim.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Intro/Elements/LineDrawers.gd" type="Script" id=7]
-[ext_resource path="res://Intro/Elements/Title.gd" type="Script" id=8]
-[ext_resource path="res://Intro/Elements/Pixel.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Intro/Elements/Pixels.gd" type="Script" id=10]
-[ext_resource path="res://Shared/environments/2d_level_environment.tres" type="Environment" id=11]
-[ext_resource path="res://Shared/theme/fonts/font_title.tres" type="DynamicFont" id=12]
-[ext_resource path="res://Intro/Elements/LineDrawer.tscn" type="PackedScene" id=13]
+[ext_resource type="PackedScene" uid="uid://bp7ajmh64iah3" path="res://Intro/Elements/CubeScene.tscn" id="1"]
+[ext_resource type="Script" path="res://Intro/Elements/RawVertexData.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://cqvt7s5neg40c" path="res://Intro/Elements/VertexRaw.tscn" id="3"]
+[ext_resource type="Theme" path="res://Shared/theme/gdquest.theme" id="4"]
+[ext_resource type="Script" path="res://Intro/Elements/ShaderPipelineIntro.gd" id="5"]
+[ext_resource type="PackedScene" uid="uid://ii1vk5vmfepk" path="res://Intro/Elements/VertexCodeAnim.tscn" id="6"]
+[ext_resource type="Script" path="res://Intro/Elements/LineDrawers.gd" id="7"]
+[ext_resource type="Script" path="res://Intro/Elements/Title.gd" id="8"]
+[ext_resource type="PackedScene" uid="uid://cjviglpqq1vre" path="res://Intro/Elements/Pixel.tscn" id="9"]
+[ext_resource type="Script" path="res://Intro/Elements/Pixels.gd" id="10"]
+[ext_resource type="Environment" path="res://Shared/environments/2d_level_environment.tres" id="11"]
+[ext_resource type="FontFile" path="res://Shared/theme/fonts/font_title.tres" id="12"]
+[ext_resource type="PackedScene" uid="uid://cepenetstu8pb" path="res://Intro/Elements/LineDrawer.tscn" id="13"]
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id="5"]
 resource_name = "Animate"
 length = 33.0
 tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Title")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 2, 10, 15, 18, 26, 29, 32 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"values": [ {
-"args": [ "Vertex shader and shape recognition" ],
-"method": "change_title"
+"times": PackedFloat32Array(2, 10, 15, 18, 26, 29, 32),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": ["Vertex shader and shape recognition"],
+"method": &"change_title"
 }, {
-"args": [ "Culling" ],
-"method": "change_title"
+"args": ["Culling"],
+"method": &"change_title"
 }, {
-"args": [ "Rasterization" ],
-"method": "change_title"
+"args": ["Rasterization"],
+"method": &"change_title"
 }, {
-"args": [ "Fragment Shader" ],
-"method": "change_title"
+"args": ["Fragment Shader"],
+"method": &"change_title"
 }, {
-"args": [ "Clipping" ],
-"method": "change_title"
+"args": ["Clipping"],
+"method": &"change_title"
 }, {
-"args": [ "Blending" ],
-"method": "change_title"
+"args": ["Blending"],
+"method": &"change_title"
 }, {
-"args": [ "Done" ],
-"method": "change_title"
-} ]
+"args": ["Done"],
+"method": &"change_title"
+}]
 }
 tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("RawVertexData")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 2, 10 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "animate"
+"times": PackedFloat32Array(2, 10),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"animate"
 }, {
-"args": [  ],
-"method": "do_cull"
-} ]
+"args": [],
+"method": &"do_cull"
+}]
 }
 tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("LineDrawers")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 2, 10 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "do_draw"
+"times": PackedFloat32Array(2, 10),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"do_draw"
 }, {
-"args": [  ],
-"method": "do_cull"
-} ]
+"args": [],
+"method": &"do_cull"
+}]
 }
 tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("RawVertexData:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 12, 13 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(12, 13),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
 tracks/4/path = NodePath("LineDrawers:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 15, 16 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(15, 16),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
 tracks/5/path = NodePath("Pixels:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 15, 16 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(15, 16),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/6/type = "method"
-tracks/6/path = NodePath("Viewport/Spatial")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
+tracks/6/path = NodePath("SubViewport/Node3D")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PoolRealArray( 15, 26, 29 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "show_main_cube"
+"times": PackedFloat32Array(15, 26, 29),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"show_main_cube"
 }, {
-"args": [  ],
-"method": "show_clipped_cube"
+"args": [],
+"method": &"show_clipped_cube"
 }, {
-"args": [  ],
-"method": "show_blended_cube"
-} ]
+"args": [],
+"method": &"show_blended_cube"
+}]
 }
 tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
 tracks/7/path = NodePath("Pixels")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 18 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "do_render"
-} ]
+"times": PackedFloat32Array(18),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"do_render"
+}]
 }
 tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
 tracks/8/path = NodePath("FullRes:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 32, 33 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array(0, 32, 33),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id="6"]
 length = 0.001
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("RawVertexData:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("LineDrawers:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("Pixels:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("FullRes:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
 tracks/4/path = NodePath("Title:text")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ "Raw Vertex Data" ]
+"values": ["Raw Vertex Data"]
 }
 
-[sub_resource type="World" id=1]
+[sub_resource type="World3D" id="1"]
 
-[sub_resource type="ViewportTexture" id=2]
-viewport_path = NodePath("Viewport")
+[sub_resource type="ViewportTexture" id="2"]
+viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id=3]
+[sub_resource type="ViewportTexture" id="3"]
 viewport_path = NodePath("ScaledView")
 
-[sub_resource type="ViewportTexture" id=4]
-viewport_path = NodePath("Viewport")
+[sub_resource type="ViewportTexture" id="4"]
+viewport_path = NodePath("SubViewport")
 
 [node name="ShaderPipelineIntro" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 5 )
+script = ExtResource("5")
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Animate"
-anims/Animate = SubResource( 5 )
-anims/RESET = SubResource( 6 )
+anims/Animate = SubResource("5")
+anims/RESET = SubResource("6")
 
-[node name="Viewport" type="Viewport" parent="."]
-size = Vector2( 1920, 1080 )
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2(1920, 1080)
 own_world = true
-world = SubResource( 1 )
+world = SubResource("1")
 handle_input_locally = false
 msaa = 4
 render_target_update_mode = 3
 
-[node name="Spatial" parent="Viewport" instance=ExtResource( 1 )]
+[node name="Node3D" parent="SubViewport" instance=ExtResource("1")]
 
-[node name="ScaledView" type="Viewport" parent="."]
-size = Vector2( 100, 56 )
+[node name="ScaledView" type="SubViewport" parent="."]
+size = Vector2(100, 56)
 
 [node name="TextureRect" type="TextureRect" parent="ScaledView"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 7.62939e-06
-margin_bottom = 3.8147e-06
-texture = SubResource( 2 )
+offset_right = 7.62939e-06
+offset_bottom = 3.8147e-06
+texture = SubResource("2")
 expand = true
 stretch_mode = 1
 flip_v = true
@@ -279,7 +279,7 @@ flip_v = true
 [node name="Scaled" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = SubResource( 3 )
+texture = SubResource("3")
 expand = true
 stretch_mode = 1
 flip_v = true
@@ -288,10 +288,10 @@ __meta__ = {
 }
 
 [node name="FullRes" type="TextureRect" parent="."]
-modulate = Color( 1, 1, 1, 0 )
+modulate = Color(1, 1, 1, 0)
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = SubResource( 4 )
+texture = SubResource("4")
 expand = true
 stretch_mode = 1
 flip_v = true
@@ -301,13 +301,13 @@ __meta__ = {
 
 [node name="Title" type="Label" parent="."]
 anchor_right = 1.0
-margin_top = 30.0
-margin_bottom = 63.0
-theme = ExtResource( 4 )
-custom_fonts/font = ExtResource( 12 )
+offset_top = 30.0
+offset_bottom = 63.0
+theme = ExtResource("4")
+theme_override_fonts/font = ExtResource("12")
 text = "Raw Vertex Data"
 align = 1
-script = ExtResource( 8 )
+script = ExtResource("8")
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -315,25 +315,25 @@ __meta__ = {
 [node name="Tween" type="Tween" parent="Title"]
 
 [node name="Pixels" type="Node2D" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-script = ExtResource( 10 )
-Pixel = ExtResource( 9 )
+modulate = Color(1, 1, 1, 0)
+script = ExtResource("10")
+Pixel = ExtResource("9")
 width = 23
 height = 21
 
 [node name="RawVertexData" type="Node2D" parent="."]
-script = ExtResource( 2 )
-Vertex = ExtResource( 3 )
-theme = ExtResource( 4 )
-v_code = ExtResource( 6 )
+script = ExtResource("2")
+Vertex = ExtResource("3")
+theme = ExtResource("4")
+v_code = ExtResource("6")
 
 [node name="Tween" type="Tween" parent="RawVertexData"]
 
 [node name="LineDrawers" type="Node2D" parent="."]
-script = ExtResource( 7 )
-LineDrawer = ExtResource( 13 )
+script = ExtResource("7")
+LineDrawer = ExtResource("13")
 
 [node name="Tween" type="Tween" parent="LineDrawers"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource( 11 )
+environment = ExtResource("11")

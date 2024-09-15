@@ -1,25 +1,25 @@
+@tool
 # ANCHOR: all
-tool
-extends MeshInstance
+extends MeshInstance3D
 
 # How high is the wobble
-export var max_wobble := 0.1
+@export var max_wobble := 0.1
 # How much do we need to move to reach the maximum wobble intensity, in a second
-export var movement_to_max_wobble := 0.3
+@export var movement_to_max_wobble := 0.3
 # How much do we need to be rotated to reach maximum wobble intensity, in a second
-export var rotation_to_max_wobble := PI / 2.0
+@export var rotation_to_max_wobble := PI / 2.0
 # How long it takes for the liquid to become still again
-export var wobble_damping := 1.0
+@export var wobble_damping := 1.0
 # How fast will the liquid wobble
-export var wobble_speed := 2.0
+@export var wobble_speed := 2.0
 
 var _accumulated_time := 0.0
 # ANCHOR: intensity
 var _wobble_intensity := 0.0
 # END: intensity
 # ANCHOR: movement
-onready var _prev_pos := global_transform.origin
-onready var _prev_rot := rotation
+@onready var _prev_pos := global_transform.origin
+@onready var _prev_rot := rotation
 
 
 func _process(delta: float) -> void:
@@ -47,7 +47,7 @@ func _process(delta: float) -> void:
 	_accumulated_time += delta * _wobble_intensity * wobble_speed
 	# END: time
 	# ANCHOR: shader_param
-	material_override.set_shader_param(
+	material_override.set_shader_parameter(
 		"wobble",
 		(
 			Vector2.RIGHT.rotated(_accumulated_time * TAU)

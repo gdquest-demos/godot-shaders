@@ -1,19 +1,22 @@
 [remap]
 
 importer="wavefront_obj"
+importer_version=1
 type="Mesh"
-path="res://.import/grass_triangle.obj-69ff51371c7a175889742fbd794836f2.mesh"
+uid="uid://dkmbbutsksngn"
+path="res://.godot/imported/grass_triangle.obj-69ff51371c7a175889742fbd794836f2.mesh"
 
 [deps]
 
-files=[ "res://.import/grass_triangle.obj-69ff51371c7a175889742fbd794836f2.mesh" ]
+files=["res://.godot/imported/grass_triangle.obj-69ff51371c7a175889742fbd794836f2.mesh"]
 
 source_file="res://Demos/WindGrass/grass_triangle.obj"
-dest_files=[ "res://.import/grass_triangle.obj-69ff51371c7a175889742fbd794836f2.mesh", "res://.import/grass_triangle.obj-69ff51371c7a175889742fbd794836f2.mesh" ]
+dest_files=["res://.godot/imported/grass_triangle.obj-69ff51371c7a175889742fbd794836f2.mesh", "res://.godot/imported/grass_triangle.obj-69ff51371c7a175889742fbd794836f2.mesh"]
 
 [params]
 
 generate_tangents=true
-scale_mesh=Vector3( 1, 1, 1 )
-offset_mesh=Vector3( 0, 0, 0 )
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
 optimize_mesh=true
+force_disable_mesh_compression=false

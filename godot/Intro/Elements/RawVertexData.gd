@@ -2,9 +2,9 @@ extends Node2D
 
 const Y_OFFSET = 27
 
-export var Vertex: PackedScene
-export var theme: Theme
-export var v_code: PackedScene
+@export var Vertex: PackedScene
+@export var theme: Theme
+@export var v_code: PackedScene
 
 var data := [
 	"-1   1   1",
@@ -40,17 +40,17 @@ var vertex_end_positions := []
 var culled_indices := []
 var indices := []
 
-onready var _tween: Tween = $Tween
+@onready var _tween: Tween = $Tween
 
 
-func setup(cube: MeshInstance, camera: Camera) -> void:
+func setup(cube: MeshInstance3D, camera: Camera3D) -> void:
 	var x := 50.0
 	var y := 60.0
 
 	_extract_end_positions(cube, camera)
 	
 	for label_text in data:
-		var vertex := Vertex.instance()
+		var vertex := Vertex.instantiate()
 		add_child(vertex)
 
 		vertex.position = Vector2(x, y)
@@ -60,24 +60,24 @@ func setup(cube: MeshInstance, camera: Camera) -> void:
 		var label := Label.new()
 		label.text = label_text
 		add_child(label)
-		label.rect_position = Vector2(x + 30, y - 18)
+		label.position = Vector2(x + 30, y - 18)
 		label.theme = theme
-		label.modulate = Color.white
+		label.modulate = Color.WHITE
 		labels.append(label)
 
 		y += Y_OFFSET
 
 
 func animate() -> void:
-	yield(animate_vertices(), "completed")
+	await animate_vertices().completed
 	remove_labels()
 
 
 func remove_labels() -> void:
 	for l in labels:
-		_tween.interpolate_property(l, "modulate", Color.white, Color.transparent, 1)
+		_tween.interpolate_property(l, "modulate", Color.WHITE, Color.TRANSPARENT, 1)
 	_tween.start()
-	yield(_tween, "tween_all_completed")
+	await _tween.tween_all_completed
 	for l in labels:
 		l.queue_free()
 
@@ -96,8 +96,8 @@ func animate_vertices() -> void:
 				2
 			)
 		_tween.start()
-		yield(_tween, "tween_all_completed")
-		yield(get_tree().create_timer(anim_time), "timeout")
+		await _tween.tween_all_completed
+		await get_tree().create_timer(anim_time).timeout
 		if i == 6:
 			anim_time = 0.3
 		if i == 21:
@@ -107,16 +107,16 @@ func animate_vertices() -> void:
 func do_cull() -> void:
 	for indice in culled_indices:
 		_tween.interpolate_property(
-			vertices[indice], "modulate", Color.white, Color.red, 1
+			vertices[indice], "modulate", Color.WHITE, Color.RED, 1
 		)
 		_tween.interpolate_property(
-			vertices[indice], "modulate", Color.red, Color.transparent, 1, Tween.TRANS_LINEAR, 2, 1
+			vertices[indice], "modulate", Color.RED, Color.TRANSPARENT, 1, Tween.TRANS_LINEAR, 2, 1
 		)
 	_tween.start()
-	yield(_tween, "tween_all_completed")
+	await _tween.tween_all_completed
 
 
-func _extract_end_positions(mesh_instance: MeshInstance, camera: Camera) -> void:
+func _extract_end_positions(mesh_instance: MeshInstance3D, camera: Camera3D) -> void:
 	var mesh := mesh_instance.mesh
 
 	var pixel_data: Array = mesh.surface_get_arrays(0)
@@ -132,8 +132,8 @@ func _extract_end_positions(mesh_instance: MeshInstance, camera: Camera) -> void
 	for indice in _indices:
 		var v: Vector3 = mesh_vertices[indice]
 
-		var vertex: Vector3 = xform.xform(v)
-		var normal: Vector3 = xform.basis.xform(normals[indice])
+		var vertex: Vector3 = xform * (v)
+		var normal: Vector3 = xform.basis * (normals[indice])
 
 		if normal.dot(camera_normal) > 0:
 			culled_indices.append(indice)

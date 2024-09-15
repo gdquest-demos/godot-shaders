@@ -1,27 +1,27 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://f21qa7uxrxu1"]
 
-[ext_resource path="res://Main/UI/fonts/SmallFont.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Main/UIKeyMapping.gd" type="Script" id=2]
+[ext_resource type="FontFile" path="res://Main/UI/fonts/SmallFont.tres" id="1"]
+[ext_resource type="Script" path="res://Main/UIKeyMapping.gd" id="2"]
 
 [node name="UIKeyMapping" type="HBoxContainer"]
-margin_right = 162.0
-margin_bottom = 31.0
+offset_right = 162.0
+offset_bottom = 31.0
 size_flags_horizontal = 3
-script = ExtResource( 2 )
+script = ExtResource("2")
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="."]
-margin_top = 4.0
-margin_right = 87.0
-margin_bottom = 27.0
+offset_top = 4.0
+offset_right = 87.0
+offset_bottom = 27.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 1 )
+theme_override_fonts/font = ExtResource("1")
 text = "Move left"
 
 [node name="Keys" type="HBoxContainer" parent="."]
-margin_left = 162.0
-margin_right = 162.0
-margin_bottom = 31.0
+offset_left = 162.0
+offset_right = 162.0
+offset_bottom = 31.0
 size_flags_horizontal = 10

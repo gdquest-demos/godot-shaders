@@ -1,19 +1,19 @@
-[gd_scene format=2]
+[gd_scene format=3 uid="uid://ii1vk5vmfepk"]
 
 [node name="VertexCodeAnim" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -1030.0
-margin_bottom = -620.0
-rect_clip_content = true
+offset_right = -1030.0
+offset_bottom = -620.0
+clip_contents = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="."]
-modulate = Color( 0, 0, 0, 1 )
-margin_right = 40.0
-margin_bottom = 14.0
+modulate = Color(0, 0, 0, 1)
+offset_right = 40.0
+offset_bottom = 14.0
 text = "
 void main() {
 
@@ -32,7 +32,7 @@ void main() {
 	vec3 normal = normal_attrib;
 
 #if defined(ENABLE_TANGENT_INTERP) || defined(ENABLE_NORMALMAP) || defined(LIGHT_USE_ANISOTROPY)
-	vec3 tangent = tangent_attrib.xyz;
+	vec3 orthogonal = tangent_attrib.xyz;
 	float binormalf = tangent_attrib.a;
 #endif
 
@@ -46,7 +46,7 @@ void main() {
 
 #if defined(ENABLE_TANGENT_INTERP) || defined(ENABLE_NORMALMAP) || defined(LIGHT_USE_ANISOTROPY)
 
-	vec3 binormal = normalize(cross(normal, tangent) * binormalf);
+	vec3 binormal = normalize(cross(normal, orthogonal) * binormalf);
 #endif
 
 #if defined(ENABLE_UV_INTERP)
@@ -83,7 +83,7 @@ void main() {
 
 #if defined(ENABLE_TANGENT_INTERP) || defined(ENABLE_NORMALMAP) || defined(LIGHT_USE_ANISOTROPY)
 
-	tangent = normalize((world_matrix * vec4(tangent, 0.0)).xyz);
+	orthogonal = normalize((world_matrix * vec4(orthogonal, 0.0)).xyz);
 	binormal = normalize((world_matrix * vec4(binormal, 0.0)).xyz);
 #endif
 #endif
@@ -172,7 +172,7 @@ void main() {
 
 #if defined(ENABLE_TANGENT_INTERP) || defined(ENABLE_NORMALMAP) || defined(LIGHT_USE_ANISOTROPY)
 
-	tangent = normalize((modelview * vec4(tangent, 0.0)).xyz);
+	orthogonal = normalize((modelview * vec4(orthogonal, 0.0)).xyz);
 	binormal = normalize((modelview * vec4(binormal, 0.0)).xyz);
 #endif
 #endif
@@ -185,7 +185,7 @@ void main() {
 
 #if defined(ENABLE_TANGENT_INTERP) || defined(ENABLE_NORMALMAP) || defined(LIGHT_USE_ANISOTROPY)
 
-	tangent = normalize((camera_inverse_matrix * vec4(tangent, 0.0)).xyz);
+	orthogonal = normalize((camera_inverse_matrix * vec4(orthogonal, 0.0)).xyz);
 	binormal = normalize((camera_inverse_matrix * vec4(binormal, 0.0)).xyz);
 #endif
 #endif
@@ -194,7 +194,7 @@ void main() {
 	normal_interp = normal;
 
 #if defined(ENABLE_TANGENT_INTERP) || defined(ENABLE_NORMALMAP) || defined(LIGHT_USE_ANISOTROPY)
-	tangent_interp = tangent;
+	tangent_interp = orthogonal;
 	binormal_interp = binormal;
 #endif
 

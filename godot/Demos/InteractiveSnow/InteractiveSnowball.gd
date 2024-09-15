@@ -1,8 +1,8 @@
 # ANCHOR: all
-extends MeshInstance
+extends MeshInstance3D
 
-export var move_speed := 5.0
-export var rotate_speed := PI
+@export var move_speed := 5.0
+@export var rotate_speed := PI
 
 
 func _process(delta: float) -> void:

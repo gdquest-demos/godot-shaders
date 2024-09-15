@@ -9,14 +9,14 @@
 # 	VERTEX += (normal * thickness);
 # ```
 class_name SmoothNormalsMeshInstance
-extends MeshInstance
+extends MeshInstance3D
 
 # When true, smaller triangles will not provide as much influence as larger ones
-export var use_area_weighed_normals := true
+@export var use_area_weighed_normals := true
 
 # When true, will go counter-clockwise instead of clockwise, which will reverse
 # the normals' direction.
-export var use_reverse_winding := false
+@export var use_reverse_winding := false
 
 
 func _ready() -> void:
@@ -45,17 +45,17 @@ func _ready() -> void:
 		data[ArrayMesh.ARRAY_COLOR] = _convert_normals_to_color(surface_tool.commit_to_arrays())
 
 		new_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, data)
-		materials.append(get_surface_material(surface_index))
+		materials.append(get_surface_override_material(surface_index))
 
 	mesh = new_mesh
 	for material_index in materials.size():
-		set_surface_material(material_index, materials[material_index])
+		set_surface_override_material(material_index, materials[material_index])
 
 
-func _convert_normals_to_color(data: Array) -> PoolColorArray:
-	var normals: PoolVector3Array = data[ArrayMesh.ARRAY_NORMAL]
+func _convert_normals_to_color(data: Array) -> PackedColorArray:
+	var normals: PackedVector3Array = data[ArrayMesh.ARRAY_NORMAL]
 
-	var out_color := PoolColorArray()
+	var out_color := PackedColorArray()
 	for normal in normals:
 		out_color.append(
 			Color(normal.x * 0.5 + 0.5, normal.y * 0.5 + 0.5, normal.z * 0.5 + 0.5, 1.0)

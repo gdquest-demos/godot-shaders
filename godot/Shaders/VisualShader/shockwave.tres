@@ -9,49 +9,49 @@ operator = 1
 [sub_resource type="VisualShaderNodeVectorOp" id=3]
 operator = 2
 
-[sub_resource type="VisualShaderNodeScalarOp" id=4]
+[sub_resource type="VisualShaderNodeFloatOp" id=4]
 default_input_values = [ 0, 0.0, 1, 2.0 ]
 operator = 3
 
-[sub_resource type="VisualShaderNodeScalarOp" id=5]
+[sub_resource type="VisualShaderNodeFloatOp" id=5]
 operator = 1
 
-[sub_resource type="VisualShaderNodeScalarFunc" id=6]
+[sub_resource type="VisualShaderNodeFloatFunc" id=6]
 function = 12
 
 [sub_resource type="VisualShaderNodeVectorLen" id=7]
 
-[sub_resource type="VisualShaderNodeScalarOp" id=8]
+[sub_resource type="VisualShaderNodeFloatOp" id=8]
 operator = 1
 
-[sub_resource type="VisualShaderNodeScalarOp" id=9]
+[sub_resource type="VisualShaderNodeFloatOp" id=9]
 operator = 3
 
-[sub_resource type="VisualShaderNodeScalarFunc" id=10]
+[sub_resource type="VisualShaderNodeFloatFunc" id=10]
 function = 18
 
-[sub_resource type="VisualShaderNodeScalarUniform" id=11]
+[sub_resource type="VisualShaderNodeFloatParameter" id=11]
 uniform_name = "radius"
 
-[sub_resource type="VisualShaderNodeScalarOp" id=12]
+[sub_resource type="VisualShaderNodeFloatOp" id=12]
 operator = 5
 
-[sub_resource type="VisualShaderNodeScalarOp" id=13]
+[sub_resource type="VisualShaderNodeFloatOp" id=13]
 default_input_values = [ 0, 0.0, 1, 2.0 ]
 operator = 5
 
-[sub_resource type="VisualShaderNodeScalarOp" id=14]
+[sub_resource type="VisualShaderNodeFloatOp" id=14]
 operator = 2
 
 [sub_resource type="VisualShaderNodeCompare" id=15]
 function = 5
 
-[sub_resource type="VisualShaderNodeScalarOp" id=16]
+[sub_resource type="VisualShaderNodeFloatOp" id=16]
 
 [sub_resource type="VisualShaderNodeInput" id=17]
 input_name = "screen_uv"
 
-[sub_resource type="VisualShaderNodeScalarUniform" id=18]
+[sub_resource type="VisualShaderNodeFloatParameter" id=18]
 uniform_name = "hardness"
 
 [sub_resource type="VisualShaderNodeVectorOp" id=19]
@@ -62,23 +62,23 @@ operator = 2
 [sub_resource type="VisualShaderNodeTexture" id=21]
 source = 1
 
-[sub_resource type="VisualShaderNodeScalarOp" id=22]
+[sub_resource type="VisualShaderNodeFloatOp" id=22]
 default_input_values = [ 0, 0.0, 1, 1.0 ]
 operator = 2
 
-[sub_resource type="VisualShaderNodeVec3Uniform" id=23]
+[sub_resource type="VisualShaderNodeVec3Parameter" id=23]
 uniform_name = "center"
 
-[sub_resource type="VisualShaderNodeVec3Uniform" id=24]
+[sub_resource type="VisualShaderNodeVec3Parameter" id=24]
 uniform_name = "size"
 
-[sub_resource type="VisualShaderNodeScalarUniform" id=25]
+[sub_resource type="VisualShaderNodeFloatParameter" id=25]
 uniform_name = "invert"
 
-[sub_resource type="VisualShaderNodeScalarUniform" id=26]
+[sub_resource type="VisualShaderNodeFloatParameter" id=26]
 uniform_name = "thickness"
 
-[sub_resource type="VisualShaderNodeScalarUniform" id=27]
+[sub_resource type="VisualShaderNodeFloatParameter" id=27]
 uniform_name = "displacement_amount"
 
 [resource]
@@ -284,4 +284,4 @@ nodes/fragment/32/node = SubResource( 21 )
 nodes/fragment/32/position = Vector2( 2560, 600 )
 nodes/fragment/33/node = SubResource( 22 )
 nodes/fragment/33/position = Vector2( 1900, 1100 )
-nodes/fragment/connections = PoolIntArray( 10, 0, 11, 0, 4, 0, 11, 1, 11, 0, 12, 0, 5, 0, 12, 1, 7, 0, 13, 0, 13, 0, 14, 1, 2, 0, 14, 0, 12, 0, 16, 0, 16, 0, 17, 0, 14, 0, 17, 1, 17, 0, 15, 0, 15, 0, 18, 0, 7, 0, 18, 1, 18, 0, 19, 0, 19, 0, 20, 0, 3, 0, 21, 0, 21, 0, 20, 1, 20, 0, 24, 0, 6, 0, 24, 1, 6, 0, 25, 0, 24, 0, 26, 0, 27, 0, 31, 0, 30, 0, 31, 1, 31, 0, 32, 0, 25, 0, 33, 0, 33, 0, 26, 1, 26, 0, 30, 1, 8, 0, 30, 0, 26, 0, 0, 1, 32, 0, 0, 0 )
+nodes/fragment/connections = PackedInt32Array( 10, 0, 11, 0, 4, 0, 11, 1, 11, 0, 12, 0, 5, 0, 12, 1, 7, 0, 13, 0, 13, 0, 14, 1, 2, 0, 14, 0, 12, 0, 16, 0, 16, 0, 17, 0, 14, 0, 17, 1, 17, 0, 15, 0, 15, 0, 18, 0, 7, 0, 18, 1, 18, 0, 19, 0, 19, 0, 20, 0, 3, 0, 21, 0, 21, 0, 20, 1, 20, 0, 24, 0, 6, 0, 24, 1, 6, 0, 25, 0, 24, 0, 26, 0, 27, 0, 31, 0, 30, 0, 31, 1, 31, 0, 32, 0, 25, 0, 33, 0, 33, 0, 26, 1, 26, 0, 30, 1, 8, 0, 30, 0, 26, 0, 0, 1, 32, 0, 0, 0 )

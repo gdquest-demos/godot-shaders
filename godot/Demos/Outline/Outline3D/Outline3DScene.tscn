@@ -1,143 +1,148 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=22 format=3 uid="uid://buf5buk4m1noy"]
 
-[ext_resource path="res://Shaders/outline3D_smooth_normals_color.shader" type="Shader" id=1]
-[ext_resource path="res://Demos/Outline/Outline3D/SmoothNormalsMeshInstance.gd" type="Script" id=2]
-[ext_resource path="res://Shaders/outline3D.shader" type="Shader" id=3]
-[ext_resource path="res://Demos/Outline/Outline3D/CameraMouseHover.gd" type="Script" id=4]
-[ext_resource path="res://Demos/Outline/Outline3D/OutlinePopArea.gd" type="Script" id=5]
+[ext_resource type="Shader" path="res://Shaders/outline3D_smooth_normals_color.gdshader" id="1"]
+[ext_resource type="Script" path="res://Demos/Outline/Outline3D/SmoothNormalsMeshInstance.gd" id="2"]
+[ext_resource type="Shader" path="res://Shaders/outline3D.gdshader" id="3"]
+[ext_resource type="Script" path="res://Demos/Outline/Outline3D/CameraMouseHover.gd" id="4"]
+[ext_resource type="Script" path="res://Demos/Outline/Outline3D/OutlinePopArea.gd" id="5"]
 
-[sub_resource type="CubeMesh" id=1]
+[sub_resource type="BoxMesh" id="1"]
 
-[sub_resource type="ShaderMaterial" id=2]
-shader = ExtResource( 1 )
-shader_param/thickness = 0.0
-shader_param/outline_color = Color( 0.933333, 0.329412, 0.141176, 1 )
+[sub_resource type="ShaderMaterial" id="2"]
+render_priority = 0
+shader = ExtResource("1")
+shader_parameter/thickness = 0.0
+shader_parameter/outline_color = Color(0.933333, 0.329412, 0.141176, 1)
 
-[sub_resource type="SpatialMaterial" id=3]
-next_pass = SubResource( 2 )
+[sub_resource type="StandardMaterial3D" id="3"]
+next_pass = SubResource("2")
 
-[sub_resource type="BoxShape" id=4]
-extents = Vector3( 1.1, 1.1, 1.1 )
+[sub_resource type="BoxShape3D" id="4"]
+size = Vector3(2.2, 2.2, 2.2)
 
-[sub_resource type="ShaderMaterial" id=5]
-shader = ExtResource( 3 )
-shader_param/thickness = 0.0
-shader_param/outline_color = Color( 0.933333, 0.329412, 0.141176, 1 )
+[sub_resource type="ShaderMaterial" id="5"]
+render_priority = 0
+shader = ExtResource("3")
+shader_parameter/thickness = 0.0
+shader_parameter/outline_color = Color(0.933333, 0.329412, 0.141176, 1)
 
-[sub_resource type="SpatialMaterial" id=6]
-next_pass = SubResource( 5 )
+[sub_resource type="StandardMaterial3D" id="6"]
+next_pass = SubResource("5")
 
-[sub_resource type="SphereMesh" id=7]
+[sub_resource type="SphereMesh" id="7"]
 
-[sub_resource type="ShaderMaterial" id=8]
-shader = ExtResource( 3 )
-shader_param/thickness = 0.0
-shader_param/outline_color = Color( 0.054902, 0.933333, 0.603922, 1 )
+[sub_resource type="ShaderMaterial" id="8"]
+render_priority = 0
+shader = ExtResource("3")
+shader_parameter/thickness = 0.0
+shader_parameter/outline_color = Color(0.054902, 0.933333, 0.603922, 1)
 
-[sub_resource type="SpatialMaterial" id=9]
-next_pass = SubResource( 8 )
+[sub_resource type="StandardMaterial3D" id="9"]
+next_pass = SubResource("8")
 
-[sub_resource type="SphereShape" id=10]
+[sub_resource type="SphereShape3D" id="10"]
 radius = 1.1
 
-[sub_resource type="CylinderMesh" id=11]
+[sub_resource type="CylinderMesh" id="11"]
 
-[sub_resource type="ShaderMaterial" id=12]
-shader = ExtResource( 3 )
-shader_param/thickness = 0.0
-shader_param/outline_color = Color( 0.0705882, 0.509804, 0.933333, 1 )
+[sub_resource type="ShaderMaterial" id="12"]
+render_priority = 0
+shader = ExtResource("3")
+shader_parameter/thickness = 0.0
+shader_parameter/outline_color = Color(0.0705882, 0.509804, 0.933333, 1)
 
-[sub_resource type="SpatialMaterial" id=13]
-next_pass = SubResource( 12 )
+[sub_resource type="StandardMaterial3D" id="13"]
+next_pass = SubResource("12")
 
-[sub_resource type="CylinderShape" id=14]
-radius = 1.1
+[sub_resource type="CylinderShape3D" id="14"]
 height = 2.2
+radius = 1.1
 
-[sub_resource type="ShaderMaterial" id=15]
-shader = ExtResource( 1 )
-shader_param/thickness = 0.0
-shader_param/outline_color = Color( 0.0705882, 0.509804, 0.933333, 1 )
+[sub_resource type="ShaderMaterial" id="15"]
+render_priority = 0
+shader = ExtResource("1")
+shader_parameter/thickness = 0.0
+shader_parameter/outline_color = Color(0.0705882, 0.509804, 0.933333, 1)
 
-[sub_resource type="SpatialMaterial" id=16]
-next_pass = SubResource( 15 )
+[sub_resource type="StandardMaterial3D" id="16"]
+next_pass = SubResource("15")
 
-[node name="Outline3D" type="Spatial"]
+[node name="Outline3D" type="Node3D"]
 
-[node name="CubeSmoothed" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5.5 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 3 )
-script = ExtResource( 2 )
+[node name="CubeSmoothed" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5.5)
+mesh = SubResource("1")
+material/0 = SubResource("3")
+script = ExtResource("2")
 
-[node name="Area" type="Area" parent="CubeSmoothed"]
-script = ExtResource( 5 )
+[node name="Area3D" type="Area3D" parent="CubeSmoothed"]
+script = ExtResource("5")
 
-[node name="CollisionShape" type="CollisionShape" parent="CubeSmoothed/Area"]
-shape = SubResource( 4 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CubeSmoothed/Area3D"]
+shape = SubResource("4")
 
 [node name="Tween" type="Tween" parent="CubeSmoothed"]
 
-[node name="Cube" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2.5 )
-mesh = SubResource( 1 )
-material/0 = SubResource( 6 )
+[node name="Cube" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2.5)
+mesh = SubResource("1")
+material/0 = SubResource("6")
 
-[node name="Area" type="Area" parent="Cube"]
-script = ExtResource( 5 )
+[node name="Area3D" type="Area3D" parent="Cube"]
+script = ExtResource("5")
 
-[node name="CollisionShape" type="CollisionShape" parent="Cube/Area"]
-shape = SubResource( 4 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube/Area3D"]
+shape = SubResource("4")
 
 [node name="Tween" type="Tween" parent="Cube"]
 
-[node name="Sphere" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-mesh = SubResource( 7 )
-material/0 = SubResource( 9 )
+[node name="Sphere" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("7")
+material/0 = SubResource("9")
 
-[node name="Area" type="Area" parent="Sphere"]
-script = ExtResource( 5 )
+[node name="Area3D" type="Area3D" parent="Sphere"]
+script = ExtResource("5")
 
-[node name="CollisionShape" type="CollisionShape" parent="Sphere/Area"]
-shape = SubResource( 10 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sphere/Area3D"]
+shape = SubResource("10")
 
 [node name="Tween" type="Tween" parent="Sphere"]
 
-[node name="Cylinder" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2.5 )
-mesh = SubResource( 11 )
-material/0 = SubResource( 13 )
+[node name="Cylinder" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2.5)
+mesh = SubResource("11")
+material/0 = SubResource("13")
 
-[node name="Area" type="Area" parent="Cylinder"]
-script = ExtResource( 5 )
+[node name="Area3D" type="Area3D" parent="Cylinder"]
+script = ExtResource("5")
 
-[node name="CollisionShape" type="CollisionShape" parent="Cylinder/Area"]
-shape = SubResource( 14 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cylinder/Area3D"]
+shape = SubResource("14")
 
 [node name="Tween" type="Tween" parent="Cylinder"]
 
-[node name="CylinderSmoothed" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5.5 )
-mesh = SubResource( 11 )
-material/0 = SubResource( 16 )
-script = ExtResource( 2 )
+[node name="CylinderSmoothed" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5.5)
+mesh = SubResource("11")
+material/0 = SubResource("16")
+script = ExtResource("2")
 use_area_weighed_normals = false
 
-[node name="Area" type="Area" parent="CylinderSmoothed"]
-script = ExtResource( 5 )
+[node name="Area3D" type="Area3D" parent="CylinderSmoothed"]
+script = ExtResource("5")
 
-[node name="CollisionShape" type="CollisionShape" parent="CylinderSmoothed/Area"]
-shape = SubResource( 14 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CylinderSmoothed/Area3D"]
+shape = SubResource("14")
 
 [node name="Tween" type="Tween" parent="CylinderSmoothed"]
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.0148172, 0.332849, -0.942864, 0, 0.942967, 0.332886, 0.99989, -0.00493243, 0.0139721, -8.692, 3.743, 0 )
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.0148172, 0.332849, -0.942864, 0, 0.942967, 0.332886, 0.99989, -0.00493243, 0.0139721, -8.692, 3.743, 0)
 current = true
-script = ExtResource( 4 )
+script = ExtResource("4")
 
-[node name="RayCast" type="RayCast" parent="Camera"]
-cast_to = Vector3( 0, 1, -20 )
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 1, -20)
 collide_with_areas = true
 collide_with_bodies = false

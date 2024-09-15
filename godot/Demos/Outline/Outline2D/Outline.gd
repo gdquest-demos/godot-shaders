@@ -1,14 +1,14 @@
-extends Sprite
+extends Sprite2D
 
-export var line_color := Color.white
+@export var line_color := Color.WHITE
 
-onready var _tween: Tween = $Tween
-onready var _area: Area2D = $Area2D
+@onready var _tween: Tween = $Tween
+@onready var _area: Area2D = $Area2D
 
 
 func _ready() -> void:
-	_area.connect("mouse_entered", self, "_on_Area2D_mouse_entered")
-	_area.connect("mouse_exited", self, "_on_Area2D_mouse_exited")
+	_area.connect("mouse_entered", Callable(self, "_on_Area2D_mouse_entered"))
+	_area.connect("mouse_exited", Callable(self, "_on_Area2D_mouse_exited"))
 	line_color.a = 0
 
 
@@ -28,4 +28,4 @@ func _on_Area2D_mouse_exited() -> void:
 
 func outline_alpha(value: float) -> void:
 	line_color.a = value
-	material.set_shader_param("line_color", line_color)
+	material.set_shader_parameter("line_color", line_color)

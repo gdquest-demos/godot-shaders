@@ -1,6 +1,6 @@
-[gd_resource type="DynamicFont" load_steps=2 format=2]
+[gd_resource type="FontFile" load_steps=2 format=2]
 
-[ext_resource path="res://Shared/theme/fonts/source_code_pro/SourceCodePro-Medium.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://Shared/theme/fonts/source_code_pro/SourceCodePro-Medium.otf" type="FontFile" id=1]
 
 
 

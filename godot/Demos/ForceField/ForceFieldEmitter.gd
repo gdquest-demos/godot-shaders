@@ -1,11 +1,11 @@
-extends RigidBody
+extends RigidBody3D
 
 var _thrown := false
-onready var _animation_player: AnimationPlayer = $ForceField/AnimationPlayer
+@onready var _animation_player: AnimationPlayer = $ForceField/AnimationPlayer
 
 
 func _ready() -> void:
-	connect("body_entered", self, "_on_RigidBody_body_entered", [], CONNECT_ONESHOT)
+	connect("body_entered", Callable(self, "_on_RigidBody_body_entered").bind(), CONNECT_ONE_SHOT)
 
 
 func _unhandled_input(event: InputEvent) -> void:

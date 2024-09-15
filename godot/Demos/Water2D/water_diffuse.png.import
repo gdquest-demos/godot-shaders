@@ -1,8 +1,9 @@
 [remap]
 
 importer="texture"
-type="StreamTexture"
-path="res://.import/water_diffuse.png-14571dc9f01ed2f9cf5d9cdd018173b8.stex"
+type="CompressedTexture2D"
+uid="uid://cpypwjmxudcob"
+path="res://.godot/imported/water_diffuse.png-14571dc9f01ed2f9cf5d9cdd018173b8.ctex"
 metadata={
 "vram_texture": false
 }
@@ -10,25 +11,24 @@ metadata={
 [deps]
 
 source_file="res://Demos/Water2D/water_diffuse.png"
-dest_files=[ "res://.import/water_diffuse.png-14571dc9f01ed2f9cf5d9cdd018173b8.stex" ]
+dest_files=["res://.godot/imported/water_diffuse.png-14571dc9f01ed2f9cf5d9cdd018173b8.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
-compress/hdr_mode=0
-compress/bptc_ldr=0
+compress/hdr_compression=1
 compress/normal_map=1
-flags/repeat=1
-flags/filter=true
-flags/mipmaps=false
-flags/anisotropic=false
-flags/srgb=2
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
-process/HDR_as_SRGB=false
-process/invert_color=false
-stream=false
-size_limit=0
-detect_3d=true
-svg/scale=1.0
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

@@ -1,11 +1,11 @@
-extends Area
+extends Area3D
 
 var animated_outline: AnimatedOutline
 
 
 func _ready() -> void:
 	animated_outline = AnimatedOutline.new(
-		get_parent().get_node("Tween"), get_parent().get_surface_material(0).next_pass, 0.5, 0.15
+		get_parent().get_node("Tween"), get_parent().get_surface_override_material(0).next_pass, 0.5, 0.15
 	)
 
 

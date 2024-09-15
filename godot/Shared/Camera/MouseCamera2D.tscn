@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Shared/Camera/MouseCamera2D.gd" type="Script" id=1]
+[ext_resource path="res://Shared/Camera3D/MouseCamera2D.gd" type="Script" id=1]
 
 
 

@@ -1,10 +1,10 @@
+@tool
 # Forwards the Y zoom and Y scale values to the mirror shader
-tool
 extends TextureRect
 
 
 func _ready() -> void:
-	connect("item_rect_changed", self, "_on_item_rect_changed")
+	connect("item_rect_changed", Callable(self, "_on_item_rect_changed"))
 
 
 func _process(_delta: float) -> void:
@@ -12,11 +12,11 @@ func _process(_delta: float) -> void:
 
 
 func update_zoom(value: float) -> void:
-	material.set_shader_param("zoom_y", value)
+	material.set_shader_parameter("zoom_y", value)
 
 
 func _on_item_rect_changed() -> void:
-	var scale_y = rect_size.y / texture.get_size().y
-	scale_y *= rect_scale.y
+	var scale_y = size.y / texture.get_size().y
+	scale_y *= scale.y
 
-	material.set_shader_param("scale_y", scale_y)
+	material.set_shader_parameter("scale_y", scale_y)

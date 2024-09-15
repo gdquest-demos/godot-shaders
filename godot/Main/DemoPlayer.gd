@@ -7,7 +7,7 @@ func load_demo(scene_path: String) -> void:
 
 	var demo := load(scene_path)
 	if demo:
-		add_child(demo.instance())
+		add_child(demo.instantiate())
 
 
 func unload() -> void:

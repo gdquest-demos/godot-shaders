@@ -1,5 +1,5 @@
+@tool
 # Computes a gaussian kernels with `SAMPLES` samples and prints it as ShaderScript
-tool
 extends EditorScript
 
 const SAMPLES := 71

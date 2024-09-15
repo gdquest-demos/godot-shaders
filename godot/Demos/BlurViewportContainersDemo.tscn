@@ -1,22 +1,20 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=12 format=3 uid="uid://ck1k4r1juqu2p"]
 
-[ext_resource path="res://Demos/Blur/Ship.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Demos/Blur/SpaceBackground.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Demos/Blur/BlurDirection.gd" type="Script" id=3]
-[ext_resource path="res://Shaders/gaussian_blur.shader" type="Shader" id=4]
-[ext_resource path="res://Utils/DebugViewer.gd" type="Script" id=5]
-[ext_resource path="res://Shared/DemoInterface.tscn" type="PackedScene" id=6]
-[ext_resource path="res://addons/ShaderSecretsHelper/DemoScreen.gd" type="Script" id=7]
+[ext_resource type="PackedScene" uid="uid://g8f67e4t4v2u" path="res://Demos/Blur/Ship.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://xhacbxqwq2bs" path="res://Demos/Blur/SpaceBackground.tscn" id="2"]
+[ext_resource type="Script" path="res://Demos/Blur/BlurDirection.gd" id="3"]
+[ext_resource type="Shader" path="res://Shaders/gaussian_blur.gdshader" id="4"]
+[ext_resource type="Script" path="res://Utils/DebugViewer.gd" id="5"]
+[ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="6"]
+[ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="7"]
 
-[sub_resource type="ShaderMaterial" id=1]
-shader = ExtResource( 4 )
-shader_param/blur_scale = Vector2( 0, 0 )
+[sub_resource type="ShaderMaterial" id="1"]
+shader = ExtResource("4")
 
-[sub_resource type="ShaderMaterial" id=2]
-shader = ExtResource( 4 )
-shader_param/blur_scale = Vector2( 0, 0 )
+[sub_resource type="ShaderMaterial" id="2"]
+shader = ExtResource("4")
 
-[sub_resource type="Shader" id=3]
+[sub_resource type="Shader" id="3"]
 code = "shader_type canvas_item;
 
 void fragment() {
@@ -25,13 +23,13 @@ void fragment() {
 	COLOR = vec4(out_color.rgb, min(1.0, out_color.r + out_color.g + out_color.b));
 }"
 
-[sub_resource type="ShaderMaterial" id=4]
-shader = SubResource( 3 )
+[sub_resource type="ShaderMaterial" id="4"]
+shader = SubResource("3")
 
 [node name="BlurViewportContainersDemo" type="CanvasLayer"]
-script = ExtResource( 7 )
+script = ExtResource("7")
 
-[node name="Presentation" type="ViewportContainer" parent="."]
+[node name="Presentation" type="SubViewportContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -40,52 +38,52 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BlurView2" type="ViewportContainer" parent="Presentation"]
-material = SubResource( 1 )
+[node name="BlurView2" type="SubViewportContainer" parent="Presentation"]
+material = SubResource("1")
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 stretch = true
-script = ExtResource( 3 )
-direction_provider_path = NodePath("Viewport/BlurView/Viewport/MotionBlurSceneBackground")
-blur_scale = Vector2( 1, -1 )
+script = ExtResource("3")
+direction_provider_path = NodePath("SubViewport/BlurView/SubViewport/MotionBlurSceneBackground")
+blur_scale = Vector2(1, -1)
 
-[node name="Viewport" type="Viewport" parent="Presentation/BlurView2"]
-size = Vector2( 1920, 1080 )
+[node name="SubViewport" type="SubViewport" parent="Presentation/BlurView2"]
+size = Vector2(1920, 1080)
 handle_input_locally = false
 usage = 0
 render_target_update_mode = 3
 
-[node name="BlurView" type="ViewportContainer" parent="Presentation/BlurView2/Viewport"]
-material = SubResource( 2 )
+[node name="BlurView" type="SubViewportContainer" parent="Presentation/BlurView2/SubViewport"]
+material = SubResource("2")
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 stretch = true
-script = ExtResource( 3 )
-direction_provider_path = NodePath("Viewport/MotionBlurSceneBackground")
-blur_scale = Vector2( 4, -4 )
+script = ExtResource("3")
+direction_provider_path = NodePath("SubViewport/MotionBlurSceneBackground")
+blur_scale = Vector2(4, -4)
 
-[node name="Viewport" type="Viewport" parent="Presentation/BlurView2/Viewport/BlurView"]
-size = Vector2( 1920, 1080 )
+[node name="SubViewport" type="SubViewport" parent="Presentation/BlurView2/SubViewport/BlurView"]
+size = Vector2(1920, 1080)
 handle_input_locally = false
 usage = 0
 render_target_update_mode = 3
 
-[node name="MotionBlurSceneBackground" parent="Presentation/BlurView2/Viewport/BlurView/Viewport" instance=ExtResource( 2 )]
+[node name="MotionBlurSceneBackground" parent="Presentation/BlurView2/SubViewport/BlurView/SubViewport" instance=ExtResource("2")]
 trail_length = 24000.0
 
-[node name="ShakingCamera" parent="Presentation/BlurView2/Viewport/BlurView/Viewport/MotionBlurSceneBackground" index="0"]
+[node name="ShakingCamera" parent="Presentation/BlurView2/SubViewport/BlurView/SubViewport/MotionBlurSceneBackground" index="0"]
 damp_easing = 6.0
 
-[node name="AsteroidTrail" parent="Presentation/BlurView2/Viewport/BlurView/Viewport/MotionBlurSceneBackground" index="1"]
+[node name="AsteroidTrail" parent="Presentation/BlurView2/SubViewport/BlurView/SubViewport/MotionBlurSceneBackground" index="1"]
 spawn_radius = 960.0
 
-[node name="TextureRect" parent="Presentation/BlurView2/Viewport/BlurView/Viewport/MotionBlurSceneBackground/CanvasLayer" index="0"]
+[node name="TextureRect" parent="Presentation/BlurView2/SubViewport/BlurView/SubViewport/MotionBlurSceneBackground/CanvasLayer" index="0"]
 mouse_filter = 2
 
-[node name="ShipView" type="ViewportContainer" parent="."]
-material = SubResource( 4 )
+[node name="ShipView" type="SubViewportContainer" parent="."]
+material = SubResource("4")
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -94,38 +92,38 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Viewport" type="Viewport" parent="ShipView"]
-size = Vector2( 1920, 1080 )
+[node name="SubViewport" type="SubViewport" parent="ShipView"]
+size = Vector2(1920, 1080)
 transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 3
 
-[node name="Ship" parent="ShipView/Viewport" instance=ExtResource( 1 )]
-position = Vector2( 960, 540 )
+[node name="Ship" parent="ShipView/SubViewport" instance=ExtResource("1")]
+position = Vector2(960, 540)
 travel_speed = 10000.0
-blur_provider_path = NodePath("../../../Presentation/BlurView2/Viewport/BlurView/Viewport/MotionBlurSceneBackground")
-shaking_camera_background_path = NodePath("../../../Presentation/BlurView2/Viewport/BlurView/Viewport/MotionBlurSceneBackground/ShakingCamera")
+blur_provider_path = NodePath("../../../Presentation/BlurView2/SubViewport/BlurView/SubViewport/MotionBlurSceneBackground")
+shaking_camera_background_path = NodePath("../../../Presentation/BlurView2/SubViewport/BlurView/SubViewport/MotionBlurSceneBackground/ShakingCamera")
 
-[node name="BackgroundRemoteTransform" parent="ShipView/Viewport/Ship" index="0"]
-remote_path = NodePath("../../../../Presentation/BlurView2/Viewport/BlurView/Viewport/MotionBlurSceneBackground/ShakingCamera")
+[node name="BackgroundRemoteTransform" parent="ShipView/SubViewport/Ship" index="0"]
+remote_path = NodePath("../../../../Presentation/BlurView2/SubViewport/BlurView/SubViewport/MotionBlurSceneBackground/ShakingCamera")
 
-[node name="Camera2D" type="Camera2D" parent="ShipView/Viewport"]
-position = Vector2( 960, 540 )
+[node name="Camera2D" type="Camera2D" parent="ShipView/SubViewport"]
+position = Vector2(960, 540)
 current = true
-zoom = Vector2( 2, 2 )
-smoothing_enabled = true
-smoothing_speed = 15.0
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+position_smoothing_speed = 15.0
 
 [node name="DebugViewer" type="Control" parent="."]
-margin_top = 120.0
-margin_right = 40.0
-margin_bottom = 160.0
-script = ExtResource( 5 )
+offset_top = 120.0
+offset_right = 40.0
+offset_bottom = 160.0
+script = ExtResource("5")
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DemoInterface" parent="." instance=ExtResource( 6 )]
+[node name="DemoInterface" parent="." instance=ExtResource("6")]
 
-[editable path="Presentation/BlurView2/Viewport/BlurView/Viewport/MotionBlurSceneBackground"]
-[editable path="ShipView/Viewport/Ship"]
+[editable path="Presentation/BlurView2/SubViewport/BlurView/SubViewport/MotionBlurSceneBackground"]
+[editable path="ShipView/SubViewport/Ship"]

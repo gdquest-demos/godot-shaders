@@ -1,10 +1,10 @@
 [gd_resource type="ShaderMaterial" load_steps=6 format=2]
 
 [ext_resource path="res://Demos/WindTrees/foliage_wind_tree_trunk.gdshader" type="Shader" id=1]
-[ext_resource path="res://Demos/WindTrees/Textures/bark_albedo.png" type="Texture" id=2]
-[ext_resource path="res://Demos/WindTrees/Textures/bark_normal.png" type="Texture" id=3]
+[ext_resource path="res://Demos/WindTrees/Textures/bark_albedo.png" type="Texture2D" id=2]
+[ext_resource path="res://Demos/WindTrees/Textures/bark_normal.png" type="Texture2D" id=3]
 
-[sub_resource type="OpenSimplexNoise" id=5]
+[sub_resource type="FastNoiseLite" id=5]
 octaves = 1
 
 [sub_resource type="NoiseTexture" id=6]

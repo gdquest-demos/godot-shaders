@@ -1,6 +1,6 @@
-extends MeshInstance
+extends MeshInstance3D
 
-onready var _animation_player: AnimationPlayer = $AnimationPlayer
+@onready var _animation_player: AnimationPlayer = $AnimationPlayer
 
 
 func _unhandled_input(event: InputEvent) -> void:

@@ -1,6 +1,6 @@
 [gd_resource type="NoiseTexture" load_steps=2 format=2]
 
-[sub_resource type="OpenSimplexNoise" id=1]
+[sub_resource type="FastNoiseLite" id=1]
 seed = 211
 octaves = 6
 period = 8.0

@@ -1,15 +1,15 @@
 extends Node2D
 
-export var asteroid: Texture
-export var spawn_radius := 960.0
+@export var asteroid: Texture2D
+@export var spawn_radius := 960.0
 
-onready var rng := RandomNumberGenerator.new()
+@onready var rng := RandomNumberGenerator.new()
 
 
 func _ready() -> void:
 	rng.randomize()
 
-	var spawn_direction := Vector2.UP.rotated(deg2rad(owner.direction_degrees))
+	var spawn_direction := Vector2.UP.rotated(deg_to_rad(owner.direction_degrees))
 
 	var trail_length: float = owner.trail_length
 
@@ -27,7 +27,7 @@ func _ready() -> void:
 				rng.randf_range(cell_min.x, cell_max.x), rng.randf_range(cell_min.y, cell_max.y)
 			)
 
-			var spawned_asteroid := Sprite.new()
+			var spawned_asteroid := Sprite2D.new()
 			spawned_asteroid.texture = asteroid
 			add_child(spawned_asteroid)
 			spawned_asteroid.global_position = cell_spawn

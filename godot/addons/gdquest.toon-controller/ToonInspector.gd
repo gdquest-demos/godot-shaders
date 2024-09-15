@@ -1,4 +1,4 @@
-tool
+@tool
 class_name ToonInspector
 extends EditorInspectorPlugin
 
@@ -14,13 +14,13 @@ func parse_category(object: Object, category: String) -> void:
 		if not connect_button:
 			connect_button = Button.new()
 			connect_button.text = "Connect ViewportTextures"
-			connect_button.connect("button_down", self, "_on_Connect_Button_down", [object])
+			connect_button.connect("button_down", Callable(self, "_on_Connect_Button_down").bind(object))
 			add_custom_control(connect_button)
 
 
 func _on_Connect_Button_down(builder: ToonSceneBuilder) -> void:
-	var light_data: Viewport = builder.light_data
-	var specular_data: Viewport = builder.specular_data
+	var light_data: SubViewport = builder.light_data
+	var specular_data: SubViewport = builder.specular_data
 
 	var light_texture := light_data.get_texture()
 	var specular_texture := specular_data.get_texture()
@@ -33,11 +33,11 @@ func _on_Connect_Button_down(builder: ToonSceneBuilder) -> void:
 
 
 func _set_materials(parent: Node, light_data: ViewportTexture, specular_data: ViewportTexture) -> void:
-	if parent is MeshInstance:
-		for mat in parent.get_surface_material_count():
-			var material: Material = parent.get_surface_material(mat)
+	if parent is MeshInstance3D:
+		for mat in parent.get_surface_override_material_count():
+			var material: Material = parent.get_surface_override_material(mat)
 			if material and material is ShaderMaterial:
-				material.set_shader_param("light_data", light_data)
-				material.set_shader_param("specular_data", specular_data)
+				material.set_shader_parameter("light_data", light_data)
+				material.set_shader_parameter("specular_data", specular_data)
 	for child in parent.get_children():
 		_set_materials(child, light_data, specular_data)

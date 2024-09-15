@@ -1,34 +1,33 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://xhacbxqwq2bs"]
 
-[ext_resource path="res://Demos/Blur/MotionBlurScene.gd" type="Script" id=1]
-[ext_resource path="res://Demos/Blur/ShakingCamera.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Demos/Blur/AsteroidTrail.gd" type="Script" id=3]
-[ext_resource path="res://Demos/Blur/asteroid-round.svg" type="Texture" id=4]
+[ext_resource type="Script" path="res://Demos/Blur/MotionBlurScene.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://dkvt3w3hayp4j" path="res://Demos/Blur/ShakingCamera.tscn" id="2"]
+[ext_resource type="Script" path="res://Demos/Blur/AsteroidTrail.gd" id="3"]
 
-[sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0.0561224 )
-colors = PoolColorArray( 0.117647, 0.105882, 0.25098, 1 )
+[sub_resource type="Gradient" id="1"]
+offsets = PackedFloat32Array(0.0561224)
+colors = PackedColorArray(0.117647, 0.105882, 0.25098, 1)
 
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
+[sub_resource type="GradientTexture2D" id="2"]
+gradient = SubResource("1")
 
 [node name="SpaceBackground" type="Node2D"]
-script = ExtResource( 1 )
+script = ExtResource("1")
 trail_length = 10000.0
 direction_degrees = 50.0
 
-[node name="ShakingCamera" parent="." instance=ExtResource( 2 )]
-position = Vector2( 960, 540 )
-zoom = Vector2( 2, 2 )
-smoothing_speed = 15.0
+[node name="ShakingCamera" parent="." instance=ExtResource("2")]
+position = Vector2(960, 540)
+zoom = Vector2(2, 2)
+position_smoothing_speed = 15.0
 amplitude = 6.0
 DAMP_EASING = 1.0
 is_shaking = false
 
 [node name="AsteroidTrail" type="Node2D" parent="."]
-position = Vector2( 960, 540 )
-script = ExtResource( 3 )
-asteroid = ExtResource( 4 )
+position = Vector2(960, 540)
+script = ExtResource("3")
+asteroid = null
 spawn_radius = 640.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -37,7 +36,7 @@ layer = -1
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = SubResource( 2 )
+texture = SubResource("2")
 expand = true
 stretch_mode = 1
 __meta__ = {
