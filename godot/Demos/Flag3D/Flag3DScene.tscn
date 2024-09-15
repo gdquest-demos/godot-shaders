@@ -3,6 +3,8 @@
 [ext_resource type="Shader" path="res://Shaders/flag_3d.gdshader" id="1"]
 
 [sub_resource type="FastNoiseLite" id="1"]
+frequency = 0.007
+fractal_octaves = 3
 
 [sub_resource type="NoiseTexture2D" id="2"]
 seamless = true
@@ -11,10 +13,13 @@ noise = SubResource("1")
 [sub_resource type="ShaderMaterial" id="3"]
 render_priority = 0
 shader = ExtResource("1")
-shader_parameter/wave_size = 1.0
-shader_parameter/face_distortion = 0.5
-shader_parameter/time_scale = Vector2(0.3, 0)
-shader_parameter/uv_offset_scale = Vector2(-0.2, -0.1)
+shader_parameter/display_dampening = false
+shader_parameter/display_deformation = false
+shader_parameter/flag_color = Color(1, 1, 1, 1)
+shader_parameter/wave_size = 0.485
+shader_parameter/face_distortion = 0.135
+shader_parameter/time_scale = 0.085
+shader_parameter/uv_offset_scale = Vector2(-0.275, 0.015)
 shader_parameter/uv_offset_texture = SubResource("2")
 
 [sub_resource type="PlaneMesh" id="4"]
@@ -40,12 +45,10 @@ height = 4.105
 [node name="Flag" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 2.82459, 0)
 mesh = SubResource("4")
-material/0 = null
 
 [node name="Pole" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 1.82459, 0)
 mesh = SubResource("6")
-material/0 = null
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.951707, 0.0943711, -0.292144, 0, 0.951584, 0.30739, 0.307008, -0.292545, 0.905629, -0.961, 3.671, 2.573)
