@@ -24,7 +24,7 @@ group_uniforms;
 
 group_uniforms Pulsing;
 /** Magnitude of the pulsing effect.
-* This is the amplitude of the sine wave used to move the vertices. The pulsing is additive and done in model space, so if you scale the mesh or the mesh isntance, you'll need to adjust this value.
+* This is the amplitude of the sine wave used to move the vertices. The pulsing is additive and done in model space, so if you scale the mesh or the mesh instance, you'll need to adjust this value.
 */
 uniform float pulsing_strength = 0.25;
 /** Speed of the pulsing effect. Higher values are faster.
@@ -34,7 +34,7 @@ uniform float pulsing_speed = 1.0;
 group_uniforms;
 
 group_uniforms Scanlines;
-/** The frequency of the scanline effect. Higher values means the scanlines repeat more often.
+/** The frequency of the scanline effect. Higher values mean the scanlines repeat more often.
 */
 uniform float scanline_frequency = 0.5;
 /** The width of the scanlines. */
@@ -58,7 +58,7 @@ float get_linear_depth(sampler2D depth_texture, vec2 screen_uv, mat4 inv_project
 		ndc = vec3(screen_uv, depth_raw) * 2.0 - 1.0;
 	} else {
 		// Forward+ or Mobile. Uses Vulkan NDC space: range of [-1,1] for NDC.xy, range of [0,1] for NDC.z
-		ndc = vec3(screen_uv * 2.0 - 1.0, depth_raw); 
+		ndc = vec3(screen_uv * 2.0 - 1.0, depth_raw);
 	}
 	vec4 position_view = inv_projection_matrix * vec4(ndc, 1.0);
 	position_view.xyz /= position_view.w;
@@ -68,35 +68,35 @@ float get_linear_depth(sampler2D depth_texture, vec2 screen_uv, mat4 inv_project
 void fragment() {
 	// Create a fresnel effect from the NORMAL and VIEW vectors.
 	float fresnel = pow(1.0 - dot(NORMAL, VIEW), fresnel_power) * edge_intensity;
-	
+
 	// Add back transparency in the middle
 	fresnel = fresnel + center_intensity;
 
 	// Get the linear depth.
 	float depth = get_linear_depth(DEPTH_TEXTURE, SCREEN_UV, INV_PROJECTION_MATRIX, OUTPUT_IS_SRGB);
 
-	// Get the difference between the linear depth of and the fragment's linear depth.
+	// Get the difference between the linear depth and the fragment's linear depth.
 	// VERTEX is the interpolated position of each fragment, in view space.
 	// VERTEX.z is the linear depth of each fragment.
 	depth = depth + VERTEX.z;
-	
+
 	// Intensity intersection effect
 	depth = pow(1.0 - clamp(depth, 0, 1), fresnel_power) * edge_intensity;
-	
+
 	// Calculate final alpha using fresnel and depth joined together.
 	fresnel = fresnel + depth;
-	
+
 	// Calculate UV scrolling pattern.
 	float scrolling_time = TIME * pattern_scroll_speed;
 	vec4 pattern = texture(pattern_texture, (UV * pattern_uv_scale) + vec2(scrolling_time));
-	
+
 	// Use pattern to cut holes in alpha.
 	fresnel *= pattern.r;
-	
+
 	float uv_offset = mod(-TIME * scanline_frequency, 2.0) - 1.0;
-	float scanline = smoothstep(0.5 - scanline_width, 0.5, UV.y + uv_offset) 
+	float scanline = smoothstep(0.5 - scanline_width, 0.5, UV.y + uv_offset)
 			* (1.0 - smoothstep(0.5, 0.5 + scanline_width, UV.y + uv_offset)) * pattern.r;
-	
+
 	// Apply final color.
 	ALBEDO = vec3(0);
 	EMISSION = color.rgb;
