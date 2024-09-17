@@ -1,10 +1,79 @@
-[gd_scene load_steps=7 format=3 uid="uid://belth5nhg7do1"]
+[gd_scene load_steps=9 format=3 uid="uid://belth5nhg7do1"]
 
 [ext_resource type="PackedScene" uid="uid://c0vr8gmnaba4r" path="res://Shared/models/3D-environment/ShockwaveScene.glb" id="1"]
-[ext_resource type="Material" path="res://Demos/UnlitDirectionalTint/UnlitDirectionalTint.tres" id="2"]
-[ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="3"]
-[ext_resource type="PackedScene" path="res://Shared/Demo3DEnvironment.tscn" id="4"]
+[ext_resource type="Material" uid="uid://b728wkr1lafxb" path="res://Demos/UnlitDirectionalTint/UnlitDirectionalTint.tres" id="2"]
+[ext_resource type="PackedScene" uid="uid://diofpwcvq5elu" path="res://Shared/DemoInterface.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://dquhei2qv5csj" path="res://Shared/Demo3DEnvironment.tscn" id="4"]
 [ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="5"]
+
+[sub_resource type="Animation" id="Animation_4peom"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ShockwaveScene2:rotation_degrees:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShockwaveScene2:rotation_degrees:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ShockwaveScene2:rotation_degrees:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ShockwaveScene:rotation_degrees:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ShockwaveScene:rotation_degrees:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ShockwaveScene:rotation_degrees:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="1"]
 resource_name = "show"
@@ -17,9 +86,9 @@ tracks/0/path = NodePath("ShockwaveScene2:rotation_degrees:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(0, 0, 0, 1.66667, 0, 0, -1.66667, 0, 0, 0),
+"times": PackedFloat32Array(0, 5)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -28,9 +97,9 @@ tracks/1/path = NodePath("ShockwaveScene2:rotation_degrees:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(2, 2, 2, 2, 2),
+"points": PackedFloat32Array(0, 0, 0, 0.5, 0, 90, -0.5, 0, 0.333333, 0, 90, -0.333333, 0, 0.5, 0, 0, -0.5, 0, 0.333333, 0, 0, -0.333333, 0, 0, 0),
+"times": PackedFloat32Array(0, 1.5, 2.5, 4, 5)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -39,9 +108,9 @@ tracks/2/path = NodePath("ShockwaveScene2:rotation_degrees:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(0, 0, 0, 1.66667, 0, 0, -1.66667, 0, 0, 0),
+"times": PackedFloat32Array(0, 5)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
@@ -50,9 +119,9 @@ tracks/3/path = NodePath("ShockwaveScene:rotation_degrees:x")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(0, 0, 0, 1.66667, 0, 0, -1.66667, 0, 0, 0),
+"times": PackedFloat32Array(0, 5)
 }
 tracks/4/type = "bezier"
 tracks/4/imported = false
@@ -61,9 +130,9 @@ tracks/4/path = NodePath("ShockwaveScene:rotation_degrees:y")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(2, 2, 2, 2, 2),
+"points": PackedFloat32Array(0, 0, 0, 0.5, 0, 90, -0.5, 0, 0.333333, 0, 90, -0.333333, 0, 0.5, 0, 0, -0.5, 0, 0.333333, 0, 0, -0.333333, 0, 0, 0),
+"times": PackedFloat32Array(0, 1.5, 2.5, 4, 5)
 }
 tracks/5/type = "bezier"
 tracks/5/imported = false
@@ -72,9 +141,15 @@ tracks/5/path = NodePath("ShockwaveScene:rotation_degrees:z")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(0, 0, 0, 1.66667, 0, 0, -1.66667, 0, 0, 0),
+"times": PackedFloat32Array(0, 5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hujme"]
+_data = {
+"RESET": SubResource("Animation_4peom"),
+"show": SubResource("1")
 }
 
 [node name="UnlitDirectionalTintDemo" type="CanvasLayer"]
@@ -95,13 +170,13 @@ material_override = ExtResource("2")
 [node name="tree_forest" parent="ShockwaveScene" index="2"]
 material_override = ExtResource("2")
 
-[node name="detail_forest001" parent="ShockwaveScene" index="3"]
+[node name="detail_forest_001" parent="ShockwaveScene" index="3"]
 material_override = ExtResource("2")
 
-[node name="tree_forest001" parent="ShockwaveScene" index="4"]
+[node name="tree_forest_001" parent="ShockwaveScene" index="4"]
 material_override = ExtResource("2")
 
-[node name="tree_forest002" parent="ShockwaveScene" index="5"]
+[node name="tree_forest_002" parent="ShockwaveScene" index="5"]
 material_override = ExtResource("2")
 
 [node name="Demo3DEnvironment" parent="." instance=ExtResource("4")]
@@ -110,9 +185,12 @@ material_override = ExtResource("2")
 transform = Transform3D(1, 0, 0, 0, 0.970321, 0.24182, 0, -0.24182, 0.970321, 0, 5.79023, 12.0303)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hujme")
+}
 autoplay = "show"
-anims/show = SubResource("1")
 
 [node name="DemoInterface" parent="." instance=ExtResource("3")]
+anchors_preset = 10
 
 [editable path="ShockwaveScene"]

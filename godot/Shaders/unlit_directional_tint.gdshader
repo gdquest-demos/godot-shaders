@@ -2,31 +2,44 @@
 shader_type spatial;
 render_mode unshaded;
 
-uniform sampler2D color_texture: source_color;
+/** Albedo texture. Base color. */
+uniform sampler2D albedo_texture: source_color;
 
-uniform vec4 modulate_color : source_color = vec4(1.0);
-uniform vec4 colorA : source_color = vec4(1.0);
-uniform vec4 colorB : source_color = vec4(1.0);
-uniform vec4 colorC : source_color = vec4(1.0);
+/** The tint for the sides of the mesh, along the global x-axis.*/
+uniform vec4 tint_x : source_color = vec4(.4, 0.6, 0.8, 1.0);
+/** The tint for the top of the mesh, along the global y-axis.*/
+uniform vec4 tint_y : source_color =  vec4(0.9, 0.9, 0.9, 1.0);
+/** The tint for the sides of the mesh, along the global z-axis.*/
+uniform vec4 tint_z : source_color =  vec4(0.6, 0.8, 0.7, 1.0);
+/** Use this color to control the overall tint after tinting per-axis. */
+uniform vec4 overall_tint : source_color = vec4(1.0);
 
-varying vec3 color;
+varying vec4 tint;
 
 void vertex() {
 	// In this shader, we use the world normal to mix the tints of the object.
+	
+	// Transform the normal from model space to world space.
 	vec3 world_normal = (MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz;
 	world_normal = normalize(world_normal);
-	// because we will use each component in a mix() function, we want to ensure
-	// that they will be positive. We could do abs(), but using pow also gives us
-	// a nice, non linear curve.
-	world_normal = pow(world_normal, vec3(2.0));
-	vec4 mod_x = modulate_color * colorA;
-	COLOR = mix(mix(mix(mod_x, modulate_color * colorB, world_normal.x), mod_x, world_normal.y),
-			modulate_color * colorC,
-			world_normal.z);
-	
-	color = world_normal;
+
+	// Because we will use each component in a mix() function, we want to ensure
+	// that they will be positive. We could use abs(), but using pow() also gives
+	// us a nice, non linear curve.
+
+	// Equivalent to pow(world_normal, vec3(2.0));
+	// But using pow() produces very bright glow in Forward+.
+	world_normal = world_normal * world_normal;
+
+	// Start with a neutral white, then mix in each world axis color.
+	tint = mix(vec4(1.0), tint_y, world_normal.y);
+	tint = mix(tint, tint_x, world_normal.x);
+	tint = mix(tint, tint_z, world_normal.z);
+	// Then, modulate by an overall tint.
+	// This will be passed along to the fragment shader.
+	tint = overall_tint * tint; 
 }
 
 void fragment() {
-	ALBEDO = COLOR.rgb * texture(color_texture, UV).rgb;
+	ALBEDO = tint.rgb * texture(albedo_texture, UV).rgb;
 }
