@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cp7fpmko6heid"]
+
+[ext_resource type="Shader" path="res://Shaders/force_field.gdshader" id="1_hm6s7"]
+[ext_resource type="Texture2D" uid="uid://b2skoftifgi55" path="res://Demos/ForceField/hexagon_grid.png" id="2_tm5w2"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_hm6s7")
+shader_parameter/color = Color(0.607843, 0.219608, 1, 1)
+shader_parameter/pattern_scroll_speed = 0.025
+shader_parameter/pattern_uv_scale = Vector2(6, 3)
+shader_parameter/pattern_texture = ExtResource("2_tm5w2")
+shader_parameter/fresnel_power = 4.0
+shader_parameter/edge_intensity = 2.0
+shader_parameter/center_intensity = 0.1
+shader_parameter/pulsing_strength = 0.25
+shader_parameter/pulsing_speed = 1.0
+shader_parameter/scanline_frequency = 0.5
+shader_parameter/scanline_width = 0.1
+shader_parameter/scanline_intensity = 0.35
