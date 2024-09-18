@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cuyb4titahnjj"]
 
 [ext_resource type="PackedScene" uid="uid://2afwiadywkor" path="res://Demos/Shockwave3D/Shockwave3DScene.tscn" id="1"]
-[ext_resource type="PackedScene" path="res://Shared/Demo3DEnvironment.tscn" id="2"]
-[ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://dquhei2qv5csj" path="res://Shared/Demo3DEnvironment.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://diofpwcvq5elu" path="res://Shared/DemoInterface.tscn" id="3"]
 [ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="4"]
 
 [node name="Shockwave3DDemo" type="CanvasLayer"]
@@ -16,6 +16,7 @@ script = ExtResource("4")
 visible = false
 
 [node name="DemoInterface" parent="." instance=ExtResource("3")]
+anchors_preset = 10
 text_bbcode = "Press Enter to launch a shockwave. Uses a vertex shader to propagate a spherical shockwave through the geometry, instead of as a post-process effect."
 
 [editable path="Demo3DEnvironment"]
