@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cg217bygmqp72"]
+
+[ext_resource type="Shader" path="res://Shaders/shockwave_3d.gdshader" id="1_twfkb"]
+[ext_resource type="Texture2D" uid="uid://dklympjuioh10" path="res://Shared/models/3D-environment/SceneColorAtlas.tres" id="2_a4p71"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_twfkb")
+shader_parameter/shockwave_origin = Vector3(0, 0.5, 0)
+shader_parameter/shockwave_radius = 16.0
+shader_parameter/shockwave_percentage = 0.0
+shader_parameter/shockwave_width = 1.0
+shader_parameter/shockwave_strength = 0.5
+shader_parameter/albedo_texture = ExtResource("2_a4p71")
