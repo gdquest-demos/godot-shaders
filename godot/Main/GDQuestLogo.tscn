@@ -1,16 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmg7vob2jhnek"]
+[gd_scene load_steps=3 format=3 uid="uid://cmg7vob2jhnek"]
 
+[ext_resource type="Texture2D" uid="uid://dieoxafgevoay" path="res://Main/gdquest_logo_white.svg" id="1_wf1i5"]
 [ext_resource type="Script" path="res://Main/GDQuestLogo.gd" id="2"]
 
 [node name="GDQuestLogo" type="TextureButton"]
+anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -311.082
-offset_top = -127.947
-offset_right = -57.082
-offset_bottom = -49.9467
+offset_left = -1920.0
+offset_top = -1080.0
+offset_right = -1666.0
+offset_bottom = -1001.0
 mouse_default_cursor_shape = 2
-texture_normal = null
+texture_normal = ExtResource("1_wf1i5")
 script = ExtResource("2")

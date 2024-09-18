@@ -10,6 +10,11 @@ cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
 cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
+cache/0/28/0/ascent = 0.0
+cache/0/28/0/descent = 0.0
+cache/0/28/0/underline_position = 0.0
+cache/0/28/0/underline_thickness = 0.0
+cache/0/28/0/scale = 1.0
 
 [sub_resource type="StyleBoxTexture" id="2"]
 region_rect = Rect2(0, 0, 199, 128)
@@ -45,12 +50,14 @@ expand_margin_bottom = 20.0
 
 [resource]
 default_font = ExtResource("1")
+default_font_size = 36
 Button/colors/font_color = Color(0.760784, 0.760784, 0.819608, 1)
 Button/colors/font_color_disabled = Color(0.196078, 0.160784, 0.278431, 0.619608)
 Button/colors/font_color_focus = Color(0.760784, 0.760784, 0.819608, 1)
 Button/colors/font_color_hover = Color(0.760784, 0.760784, 0.819608, 1)
 Button/colors/font_color_pressed = Color(0.494118, 0.494118, 0.560784, 1)
 Button/constants/hseparation = 2
+Button/font_sizes/font_size = 28
 Button/fonts/font = SubResource("1")
 Button/styles/disabled = SubResource("2")
 Button/styles/focus = SubResource("3")
@@ -72,6 +79,7 @@ ItemList/constants/hseparation = 4
 ItemList/constants/icon_margin = 4
 ItemList/constants/line_separation = 2
 ItemList/constants/vseparation = 2
+ItemList/font_sizes/font_size = 36
 ItemList/fonts/font = ExtResource("1")
 ItemList/styles/bg = SubResource("7")
 ItemList/styles/bg_focus = null
@@ -87,6 +95,7 @@ LineEdit/colors/font_color_selected = Color(0, 0, 0, 1)
 LineEdit/colors/font_color_uneditable = Color(0.88, 0.88, 0.88, 0.5)
 LineEdit/colors/selection_color = Color(0.49, 0.49, 0.49, 1)
 LineEdit/constants/minimum_spaces = 12
+LineEdit/font_sizes/font_size = 36
 LineEdit/fonts/font = ExtResource("1")
 LineEdit/icons/clear = null
 LineEdit/styles/focus = null
