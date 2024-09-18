@@ -4,7 +4,7 @@ extends Node
 
 enum LightRole { KEY, FILL, KICK }
 
-@export (LightRole) var light_role := 0: set = _set_light_role
+@export var light_role: LightRole = 0: set = _set_light_role
 @export var emits_shadows := false: set = _set_emits_shadows
 @export var specular_material: ShaderMaterial: set = _set_specular_material
 
@@ -182,9 +182,7 @@ func _on_parent_renamed() -> void:
 
 func _on_parent_tree_exiting() -> void:
 	abort_deletion = false
-	Engine.get_main_loop().connect(
-		"idle_frame", self, "_on_SceneTree_idle_frame", [], CONNECT_ONE_SHOT
-	)
+	get_tree().process_frame.connect(_on_SceneTree_idle_frame, ConnectFlags.CONNECT_ONE_SHOT)
 
 
 func _on_SceneTree_idle_frame() -> void:

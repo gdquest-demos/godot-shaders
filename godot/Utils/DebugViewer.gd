@@ -1,7 +1,7 @@
 class_name DebugViewer
 extends Control
 
-@export (float, 0.1, 1, 0.025) var size_multiplier = 0.125
+@export_range(0.1, 1, 0.025) var size_multiplier := 0.125
 @export var enabled := true: set = _set_enabled
 
 

@@ -32,9 +32,9 @@ func handles(object: Object) -> bool:
 	return false
 
 
-func _forward_3d_gui_input(camera: Camera3D, event: InputEvent) -> bool:
+func _forward_3d_gui_input(camera: Camera3D, event: InputEvent) -> int:
 	_set_camera_and_viewports(camera.global_transform)
-	return false
+	return EditorPlugin.AFTER_GUI_INPUT_STOP
 
 
 func _on_Preview_pressed() -> void:
