@@ -1,7 +1,7 @@
 class_name PostProcessBuilder
 extends Control
 
-@export (Array, Resource) var processing_steps := []
+@export var processing_steps: Array[Resource] = []
 @export var scene: PackedScene
 
 

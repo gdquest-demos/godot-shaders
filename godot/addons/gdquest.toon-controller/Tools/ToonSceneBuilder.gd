@@ -36,10 +36,10 @@ func _ready() -> void:
 			scene_root.call_deferred("move_child", self, 0)
 
 		if not light_data:
-			light_data = await _build_data(DataType.LIGHT).completed
+			light_data = await _build_data(DataType.LIGHT)
 
 		if not specular_data:
-			specular_data = await _build_data(DataType.SPECULAR).completed
+			specular_data = await _build_data(DataType.SPECULAR)
 
 
 func get_class() -> String:
@@ -67,8 +67,8 @@ func _build_data(type: int) -> SubViewport:
 
 	var viewport := SubViewport.new()
 	viewport.transparent_bg = true
-	viewport.world = World.new()
-	viewport.usage = SubViewport.USAGE_3D_NO_EFFECTS
+	viewport.world_3d = World3D.new()
+	#viewport.usage = Viewport.USAGE_3D_NO_EFFECTS
 	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 	viewport.msaa = ProjectSettings.get_setting("rendering/quality/filters/msaa")
 	viewport.shadow_atlas_size = shadow_resolution

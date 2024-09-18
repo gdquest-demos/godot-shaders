@@ -22,12 +22,12 @@ window/size/viewport_height=1080
 window/size/always_on_top=true
 window/size/window_width_override=1280
 window/size/window_height_override=720
-window/stretch/mode="2d"
+window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("gdquest.toon-controller")
+enabled=PackedStringArray("res://addons/gdquest.toon-controller/plugin.cfg")
 
 [filesystem]
 
