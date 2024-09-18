@@ -1,12 +1,13 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://b728wkr1lafxb"]
 
-[ext_resource path="res://Shaders/unlit_directional_tint.gdshader" type="Shader" id=1]
-[ext_resource path="res://Shared/models/3D-environment/SceneColorAtlas.tres" type="Texture2D" id=2]
+[ext_resource type="Shader" path="res://Shaders/unlit_directional_tint.gdshader" id="1"]
+[ext_resource type="Texture2D" uid="uid://dklympjuioh10" path="res://Shared/models/3D-environment/SceneColorAtlas.tres" id="2"]
 
 [resource]
-shader = ExtResource( 1 )
-shader_param/modulate_color = Color( 1, 1, 1, 1 )
-shader_param/colorA = Color( 0.815686, 0.823529, 0.980392, 1 )
-shader_param/colorB = Color( 0.411765, 0.588235, 0.92549, 1 )
-shader_param/colorC = Color( 0.741176, 0.898039, 0.913725, 1 )
-shader_param/color_texture = ExtResource( 2 )
+render_priority = 0
+shader = ExtResource("1")
+shader_parameter/tint_x = Color(0.4, 0.6, 0.8, 1)
+shader_parameter/tint_y = Color(0.9, 0.9, 0.9, 1)
+shader_parameter/tint_z = Color(0.6, 0.8, 0.7, 1)
+shader_parameter/overall_tint = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("2")
