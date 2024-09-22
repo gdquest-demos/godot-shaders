@@ -32,7 +32,7 @@ void vertex() {
 	// END: matworld_1
 	// ANCHOR: matworld_2
 	mat_world *= mat4(
-			vec4(cos(INSTANCE_CUSTOM.x), -sin(INSTANCE_CUSTOM.x), 0.0, 0.0), 
+			vec4(cos(INSTANCE_CUSTOM.x), -sin(INSTANCE_CUSTOM.x), 0.0, 0.0),
 			vec4(sin(INSTANCE_CUSTOM.x), cos(INSTANCE_CUSTOM.x), 0.0, 0.0),
 			vec4(0.0, 0.0, 1.0, 0.0),
 			vec4(0.0, 0.0, 0.0, 1.0));
@@ -68,7 +68,7 @@ void fragment() {
 	// The additional offset on the zy noise is to avoid mirroring effects when
 	// the view vector is between same-sign x and z axes
 	float noise_xy = texture(noise_texture, world_coord.xy * texture_scale + time_based_pan).r;
-	float noise_zy = texture(noise_texture, 
+	float noise_zy = texture(noise_texture,
 			world_coord.zy * texture_scale + time_based_pan + vec2(0.7, 0.3)).r;
 	// END: noise_planes
 	// ANCHOR: noise_mix

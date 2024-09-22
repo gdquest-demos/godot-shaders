@@ -1,9 +1,7 @@
-[gd_resource type="NoiseTexture" load_steps=2 format=2]
+[gd_resource type="NoiseTexture2D" load_steps=2 format=3 uid="uid://dnre508h7bl23"]
 
-[sub_resource type="FastNoiseLite" id=1]
-period = 119.4
-persistence = 0.449
+[sub_resource type="FastNoiseLite" id="1"]
 
 [resource]
 seamless = true
-noise = SubResource( 1 )
+noise = SubResource("1")
