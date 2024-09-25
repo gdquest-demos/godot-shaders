@@ -1,10 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://drlmm16er32et"]
+[gd_scene load_steps=18 format=3 uid="uid://drlmm16er32et"]
 
-[ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="1"]
-[ext_resource type="Texture2D" path="res://Demos/StylizedFire/GreenFireGradient.tres" id="4"]
+[ext_resource type="PackedScene" uid="uid://diofpwcvq5elu" path="res://Shared/DemoInterface.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://flldwuhtdvhp" path="res://Demos/StylizedFire/HoleNoise.png" id="3_tg5uj"]
+[ext_resource type="Texture2D" uid="uid://b8wh1wkibxdsi" path="res://Demos/StylizedFire/GreenFireGradient.tres" id="4"]
+[ext_resource type="Texture2D" uid="uid://bko6oayqcslrd" path="res://Demos/StylizedFire/FireMask.png" id="4_58wat"]
 [ext_resource type="Shader" path="res://Shaders/stylized_fire.gdshader" id="5"]
-[ext_resource type="PackedScene" path="res://Shared/Demo3DEnvironmentDark.tscn" id="6"]
-[ext_resource type="Texture2D" path="res://Demos/StylizedFire/BlueFireGradient.tres" id="7"]
+[ext_resource type="PackedScene" uid="uid://n87x06o26w4p" path="res://Shared/Demo3DEnvironmentDark.tscn" id="6"]
+[ext_resource type="Texture2D" uid="uid://xl22pmkk0nsk" path="res://Demos/StylizedFire/BlueFireGradient.tres" id="7"]
 [ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="8"]
 
 [sub_resource type="ShaderMaterial" id="1"]
@@ -14,6 +16,8 @@ shader_parameter/emission_intensity = 2.0
 shader_parameter/time_scale = 3.0
 shader_parameter/texture_scale = Vector2(1, 1)
 shader_parameter/edge_softness = 0.1
+shader_parameter/noise_texture = ExtResource("3_tg5uj")
+shader_parameter/texture_mask = ExtResource("4_58wat")
 
 [sub_resource type="Gradient" id="2"]
 colors = PackedColorArray(0.980957, 0.801817, 0, 1, 1, 0, 0.447059, 0)
@@ -34,7 +38,12 @@ curve = SubResource("4")
 lifetime_randomness = 0.81
 direction = Vector3(0, 1, 0)
 spread = 0.0
+initial_velocity_min = 0.5
+initial_velocity_max = 0.5
 gravity = Vector3(0, 0, 0)
+linear_accel_min = 4.0
+linear_accel_max = 4.0
+scale_max = 2.0
 scale_curve = SubResource("5")
 color_ramp = SubResource("3")
 
@@ -45,7 +54,12 @@ size = Vector2(0.5, 0.5)
 lifetime_randomness = 0.81
 direction = Vector3(0, 1, 0)
 spread = 0.0
+initial_velocity_min = 0.5
+initial_velocity_max = 0.5
 gravity = Vector3(0, 0, 0)
+linear_accel_min = 4.0
+linear_accel_max = 4.0
+scale_max = 2.0
 scale_curve = SubResource("5")
 color_ramp = ExtResource("7")
 
@@ -53,20 +67,24 @@ color_ramp = ExtResource("7")
 lifetime_randomness = 0.81
 direction = Vector3(0, 1, 0)
 spread = 0.0
+initial_velocity_min = 0.5
+initial_velocity_max = 0.5
 gravity = Vector3(0, 0, 0)
+linear_accel_min = 4.0
+linear_accel_max = 4.0
+scale_max = 2.0
 scale_curve = SubResource("5")
 color_ramp = ExtResource("4")
 
 [node name="StylizedFireDemo" type="CanvasLayer"]
 script = ExtResource("8")
 
-[node name="Fire" type="Particles" parent="."]
+[node name="Fire" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26708, 0)
 material_override = SubResource("1")
 cast_shadow = 0
 amount = 50
 randomness = 0.74
-local_coords = false
 draw_order = 1
 process_material = SubResource("6")
 draw_pass_1 = SubResource("7")
@@ -75,13 +93,12 @@ draw_pass_1 = SubResource("7")
 light_color = Color(1, 0.901961, 0.560784, 1)
 light_energy = 2.0
 
-[node name="BlueFire" type="Particles" parent="."]
+[node name="BlueFire" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.78327, 1.26708, 0)
 material_override = SubResource("1")
 cast_shadow = 0
 amount = 50
 randomness = 0.74
-local_coords = false
 draw_order = 1
 process_material = SubResource("8")
 draw_pass_1 = SubResource("7")
@@ -90,13 +107,12 @@ draw_pass_1 = SubResource("7")
 light_color = Color(0.560784, 0.752941, 1, 1)
 light_energy = 2.0
 
-[node name="GreenFire" type="Particles" parent="."]
+[node name="GreenFire" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66113, 1.26708, 0)
 material_override = SubResource("1")
 cast_shadow = 0
 amount = 50
 randomness = 0.74
-local_coords = false
 draw_order = 1
 process_material = SubResource("9")
 draw_pass_1 = SubResource("7")
@@ -112,3 +128,4 @@ transform = Transform3D(1, 0, 0, 0, 0.950814, 0.309764, 0, -0.309764, 0.950814, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0586119, 0.168849, 0.13654)
 
 [node name="DemoInterface" parent="." instance=ExtResource("1")]
+anchors_preset = 10
