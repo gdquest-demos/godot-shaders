@@ -1,33 +1,39 @@
 shader_type canvas_item;
 
 uniform vec2 scale = vec2(10.0);
+uniform int seed = 1;
 
-float rand(vec2 coord) {
-	return fract(sin(dot(coord, vec2(12.9898, 78.233))) * 43758.5453);
+float rand(vec2 p) {
+    vec3 p3  = fract(vec3(p.xyx) * float(seed) * 1.031);
+    p3 += dot(p3, p3.yzx + 33.33);
+    return fract((p3.x + p3.y) * p3.z);
 }
 
-float value_noise(vec2 coord) {
-	vec2 i = floor(coord);
-	vec2 f = fract(coord);
-	
-	float t_l = rand(i);
-	float t_r = rand(i + vec2(1, 0));
-	float b_l = rand(i + vec2(0, 1));
-	float b_r = rand(i + vec2(1));
-	
-	vec2 cubic = f * f * (3.0 - 2.0 * f);
-	
-	float top_mix = mix(t_l, t_r, cubic.x);
-	float bot_mix = mix(b_l, b_r, cubic.x);
-	float whole_mix = mix(top_mix, bot_mix, cubic.y);
-	
-	return whole_mix;
+float noise(vec2 coord) {
+    vec2 i = floor(coord);
+    vec2 f = fract(coord);
+
+    // Four corners in 2D of a tile
+    float b_l = rand(i);
+    float b_r = rand(i + vec2(1.0, 0.0));
+    float t_l = rand(i + vec2(0.0, 1.0));
+    float t_r = rand(i + vec2(1.0, 1.0));
+
+    // We use smooth interpolation technique called Cubic Hermine Curve.
+    // Same as smoothstep()
+    vec2 cubic = f * f * (3.0 - 2.0 * f);
+    // cubic = smoothstep(0.,1.,f);
+
+    float b_mix = mix(b_l, b_r, cubic.x);
+    float t_mix = mix(t_l, t_r, cubic.x);
+
+    return mix(b_mix, t_mix, cubic.y);
 }
 
 void fragment() {
-	vec2 coord = UV * scale;
-	
-	float value = value_noise(coord);
-	
-	COLOR = vec4(vec3(value), 1.0);
+    vec2 coord = UV * scale;
+
+    float value = noise(coord);
+
+    COLOR = vec4(vec3(value), 1.0);
 }
