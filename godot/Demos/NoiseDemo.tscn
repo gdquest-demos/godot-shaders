@@ -1,11 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://j4aa5qjcj4vh"]
+[gd_scene load_steps=18 format=3 uid="uid://j4aa5qjcj4vh"]
 
 [ext_resource type="Shader" path="res://Shaders/random_noise.gdshader" id="1"]
 [ext_resource type="Shader" path="res://Shaders/value_noise.gdshader" id="2"]
 [ext_resource type="Shader" path="res://Shaders/perlin_noise.gdshader" id="3"]
 [ext_resource type="Shader" path="res://Shaders/voronoi_noise.gdshader" id="4"]
-[ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="5"]
-[ext_resource type="PackedScene" path="res://Shared/Background2D/Demo2DBackground.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://diofpwcvq5elu" path="res://Shared/DemoInterface.tscn" id="5"]
+[ext_resource type="Shader" path="res://Shaders/value_noise_layered.gdshader" id="5_rxcmu"]
+[ext_resource type="PackedScene" uid="uid://7mqdkojagyav" path="res://Shared/Background2D/Demo2DBackground.tscn" id="6"]
 [ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="7"]
 
 [sub_resource type="ShaderMaterial" id="1"]
@@ -15,11 +16,18 @@ shader_parameter/scale = Vector2(10, 10)
 [sub_resource type="ShaderMaterial" id="2"]
 shader = ExtResource("2")
 shader_parameter/scale = Vector2(10, 10)
+shader_parameter/seed = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aql0j"]
+shader = ExtResource("5_rxcmu")
+shader_parameter/scale = Vector2(10, 10)
+shader_parameter/seed = 1
+shader_parameter/layers = 3
 
 [sub_resource type="ShaderMaterial" id="3"]
 shader = ExtResource("3")
 shader_parameter/scale = Vector2(10, 10)
-shader_parameter/seamless = true
+shader_parameter/seed = 1
 
 [sub_resource type="ShaderMaterial" id="4"]
 shader = ExtResource("4")
@@ -51,64 +59,48 @@ script = ExtResource("7")
 [node name="ParallaxBackground" parent="." instance=ExtResource("6")]
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = -1
 anchor_top = 0.11
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="GridContainer" type="GridContainer" parent="CenterContainer"]
-offset_left = 310.0
-offset_top = 55.0
-offset_right = 1610.0
-offset_bottom = 905.0
-theme_override_constants/v_separation = 50
+layout_mode = 2
 theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 50
 columns = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RandomNoise" type="ColorRect" parent="CenterContainer/GridContainer"]
 material = SubResource("1")
-offset_right = 400.0
-offset_bottom = 400.0
 custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
 
 [node name="ValueNoise" type="ColorRect" parent="CenterContainer/GridContainer"]
 material = SubResource("2")
-offset_left = 450.0
-offset_right = 850.0
-offset_bottom = 400.0
 custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+
+[node name="ValueNoiseLayered" type="ColorRect" parent="CenterContainer/GridContainer"]
+material = SubResource("ShaderMaterial_aql0j")
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
 
 [node name="PerlinNoise" type="ColorRect" parent="CenterContainer/GridContainer"]
 material = SubResource("3")
-offset_left = 900.0
-offset_right = 1300.0
-offset_bottom = 400.0
 custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
 
 [node name="VoronoiNoise" type="ColorRect" parent="CenterContainer/GridContainer"]
 material = SubResource("4")
-offset_top = 450.0
-offset_right = 400.0
-offset_bottom = 850.0
 custom_minimum_size = Vector2(400, 400)
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 2
 
 [node name="SimplexNoise" type="ColorRect" parent="CenterContainer/GridContainer"]
 material = SubResource("8")
-offset_left = 450.0
-offset_top = 450.0
-offset_right = 850.0
-offset_bottom = 850.0
 custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
 
 [node name="DemoInterface" parent="." instance=ExtResource("5")]
+custom_minimum_size = Vector2(0, 120)
 anchor_right = 0.0
 offset_right = 1920.0
-custom_minimum_size = Vector2(0, 120)
