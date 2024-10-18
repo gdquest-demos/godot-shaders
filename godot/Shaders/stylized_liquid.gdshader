@@ -6,7 +6,7 @@ uniform float liquid_height = 0.5;
 // ANCHOR: surface_color
 uniform vec4 liquid_surface_color: source_color = vec4(0.7, 0.5, 1.0, 1.0);
 // END: surface_color
-uniform sampler2D liquid_rim_gradient;
+uniform sampler2D liquid_rim_gradient: repeat_disable;
 uniform float rim_emission_intensity: hint_range(0.0, 2.0) = 0.2;
 uniform float rim_exponent: hint_range(1.0, 10.0) = 3.0;
 uniform float emission_intensity:hint_range(0.0, 3.0) = 0.1;
