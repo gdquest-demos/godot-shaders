@@ -1,9 +1,0 @@
-[gd_resource type="NoiseTexture" load_steps=2 format=2]
-
-[sub_resource type="FastNoiseLite" id=1]
-seed = 154
-octaves = 6
-period = 8.0
-
-[resource]
-noise = SubResource( 1 )
