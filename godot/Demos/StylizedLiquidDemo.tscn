@@ -1,30 +1,30 @@
-[gd_scene load_steps=19 format=3 uid="uid://t26p5iy0f4ye"]
+[gd_scene load_steps=21 format=3 uid="uid://t26p5iy0f4ye"]
 
-[ext_resource type="PackedScene" path="res://Shared/Demo3DEnvironmentDark.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://n87x06o26w4p" path="res://Shared/Demo3DEnvironmentDark.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://bco47y45kysaw" path="res://Demos/StylizedLiquid/PotionLarge.tscn" id="2"]
 [ext_resource type="Shader" path="res://Shaders/stylized_liquid.gdshader" id="3"]
-[ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://diofpwcvq5elu" path="res://Shared/DemoInterface.tscn" id="4"]
 [ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="5"]
+[ext_resource type="Script" path="res://Demos/StylizedLiquid/LiquidWobble.gd" id="5_guj11"]
 
-[sub_resource type="StandardMaterial3D" id="1"]
-resource_name = "Glass"
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d2er3"]
 transparency = 1
 cull_mode = 1
+depth_draw_mode = 1
 albedo_color = Color(0.996078, 0.831373, 0.619608, 0.294118)
-metallic = 0.113636
+metallic = 0.11
 roughness = 0.77
 rim_enabled = true
 rim = 0.89
 rim_tint = 0.66
 
-[sub_resource type="Gradient" id="2"]
-colors = PackedColorArray(0, 0.433594, 0.169373, 1, 0.439216, 1, 0.156863, 1)
+[sub_resource type="Gradient" id="Gradient_bu50p"]
+colors = PackedColorArray(0, 0.435294, 0.168627, 1, 0.439216, 1, 0.156863, 1)
 
-[sub_resource type="GradientTexture2D" id="3"]
-gradient = SubResource("2")
-width = 128
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1leg4"]
+gradient = SubResource("Gradient_bu50p")
 
-[sub_resource type="ShaderMaterial" id="4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_41q5w"]
 render_priority = 0
 shader = ExtResource("3")
 shader_parameter/liquid_height = 0.17
@@ -33,28 +33,28 @@ shader_parameter/rim_emission_intensity = 1.031
 shader_parameter/rim_exponent = 3.0
 shader_parameter/emission_intensity = 0.438
 shader_parameter/liquid_surface_gradient_size = 0.02
-shader_parameter/wobble = Vector2(0, 0)
-shader_parameter/liquid_rim_gradient = SubResource("3")
+shader_parameter/wobble = Vector2(0.00230302, 0.00253308)
+shader_parameter/liquid_rim_gradient = SubResource("GradientTexture1D_1leg4")
 
-[sub_resource type="StandardMaterial3D" id="5"]
-resource_name = "Glass"
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pjqlo"]
 transparency = 1
 cull_mode = 1
-albedo_color = Color(0.745098, 0.407843, 1, 0.294118)
-metallic = 0.113636
+depth_draw_mode = 1
+albedo_color = Color(0.55825, 0.3075, 0.75, 0.294118)
+metallic = 0.11
 roughness = 0.83
 rim_enabled = true
 rim = 0.89
 rim_tint = 0.66
 
-[sub_resource type="Gradient" id="6"]
-colors = PackedColorArray(0.265625, 0, 1, 1, 1, 0.266667, 0.505882, 1)
+[sub_resource type="Gradient" id="Gradient_pwuc0"]
+offsets = PackedFloat32Array(0.00108696, 1)
+colors = PackedColorArray(0.266667, 0, 1, 1, 1, 0.266667, 0.505882, 1)
 
-[sub_resource type="GradientTexture2D" id="7"]
-gradient = SubResource("6")
-width = 128
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mcxb7"]
+gradient = SubResource("Gradient_pwuc0")
 
-[sub_resource type="ShaderMaterial" id="8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tnftr"]
 render_priority = 0
 shader = ExtResource("3")
 shader_parameter/liquid_height = 0.0
@@ -64,26 +64,26 @@ shader_parameter/rim_exponent = 3.0
 shader_parameter/emission_intensity = 0.438
 shader_parameter/liquid_surface_gradient_size = 0.174
 shader_parameter/wobble = Vector2(0, 0)
-shader_parameter/liquid_rim_gradient = SubResource("7")
+shader_parameter/liquid_rim_gradient = SubResource("GradientTexture1D_mcxb7")
 
-[sub_resource type="StandardMaterial3D" id="9"]
-resource_name = "Glass"
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gc6tk"]
 transparency = 1
 cull_mode = 1
-albedo_color = Color(0.619608, 0.996078, 0.92549, 0.294118)
-metallic = 0.113636
+depth_draw_mode = 1
+albedo_color = Color(0.294118, 0.619608, 0.996078, 0.92549)
+metallic = 0.11
 roughness = 0.61
 rim_enabled = true
-rim_tint = 1.0
+rim = 0.89
+rim_tint = 0.66
 
-[sub_resource type="Gradient" id="10"]
-colors = PackedColorArray(0.00982666, 0.0972137, 0.359375, 1, 0.396078, 0.905882, 0.988235, 1)
+[sub_resource type="Gradient" id="Gradient_35pkh"]
+colors = PackedColorArray(0.0117647, 0.0980392, 0.360784, 1, 0.396078, 0.905882, 0.988235, 1)
 
-[sub_resource type="GradientTexture2D" id="11"]
-gradient = SubResource("10")
-width = 128
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lvpoc"]
+gradient = SubResource("Gradient_35pkh")
 
-[sub_resource type="ShaderMaterial" id="12"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a1awt"]
 render_priority = 0
 shader = ExtResource("3")
 shader_parameter/liquid_height = 0.139
@@ -93,9 +93,9 @@ shader_parameter/rim_exponent = 3.0
 shader_parameter/emission_intensity = 0.438
 shader_parameter/liquid_surface_gradient_size = 0.02
 shader_parameter/wobble = Vector2(0, 0)
-shader_parameter/liquid_rim_gradient = SubResource("11")
+shader_parameter/liquid_rim_gradient = SubResource("GradientTexture1D_lvpoc")
 
-[sub_resource type="Animation" id="13"]
+[sub_resource type="Animation" id="Animation_b5pxi"]
 resource_name = "show_potions"
 length = 10.0
 loop_mode = 1
@@ -131,9 +131,9 @@ tracks/2/path = NodePath("PinkPotionAnchor:position:x")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3.6, 4, 5.2, 5.55)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
@@ -142,9 +142,9 @@ tracks/3/path = NodePath("PinkPotionAnchor:position:y")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(2.70025, -0.25, 0, 0.25, 0, 2.70025, -0.25, 0, 0.19, -0.00202656, 2.70025, -0.25, 0, 0.25, 0, 2.70025, -0.25, 0, 0.25, 0, 2.70025, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3.6, 4, 5.2, 5.55)
 }
 tracks/4/type = "bezier"
 tracks/4/imported = false
@@ -153,9 +153,9 @@ tracks/4/path = NodePath("PinkPotionAnchor:position:z")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.0294263, 0.46234, 2.07889, -0.25, 0, 0.25, 0, 2.07889, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.0294263, 0.46234),
+"times": PackedFloat32Array(0, 3.6, 4, 5.2, 5.55)
 }
 tracks/5/type = "bezier"
 tracks/5/imported = false
@@ -164,9 +164,9 @@ tracks/5/path = NodePath("PinkPotionAnchor/PotionPink/potionLarge_red/potionLarg
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.36, -0.25, 0, 0.25, 0, 0.36, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(4.2, 5, 5.55)
 }
 tracks/6/type = "bezier"
 tracks/6/imported = false
@@ -175,9 +175,9 @@ tracks/6/path = NodePath("PotionBlue:position:x")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, -0.0190959, 0, -0.0600004, 0.229891, 0.25, 0, 0, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, -0.0190959),
+"times": PackedFloat32Array(6.05, 6.5, 8, 8.55)
 }
 tracks/7/type = "bezier"
 tracks/7/imported = false
@@ -186,9 +186,9 @@ tracks/7/path = NodePath("PotionBlue:position:y")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1.51328, -0.25, 0, 0.25, 0, 1.51328, -0.25, 0, 0.25, 0, 1.51328, -0.25, 0, 0.25, 0, 1.51328, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(6.05, 6.5, 8, 8.55)
 }
 tracks/8/type = "bezier"
 tracks/8/imported = false
@@ -197,9 +197,9 @@ tracks/8/path = NodePath("PotionBlue:position:z")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 2, -0.0100002, -0.698368, 0.25, 0, 2, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(6.05, 6.5, 8, 8.55)
 }
 tracks/9/type = "bezier"
 tracks/9/imported = false
@@ -208,9 +208,9 @@ tracks/9/path = NodePath("PotionBlue:rotation_degrees:x")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(6.5, 7, 7.5)
 }
 tracks/10/type = "bezier"
 tracks/10/imported = false
@@ -219,9 +219,9 @@ tracks/10/path = NodePath("PotionBlue:rotation_degrees:y")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(6.5, 7, 7.5)
 }
 tracks/11/type = "bezier"
 tracks/11/imported = false
@@ -230,9 +230,14 @@ tracks/11/path = NodePath("PotionBlue:rotation_degrees:z")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 58.707, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(6.5, 7, 7.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h3s76"]
+_data = {
+"show_potions": SubResource("Animation_b5pxi")
 }
 
 [node name="StylizedLiquidDemo" type="CanvasLayer"]
@@ -245,50 +250,48 @@ transform = Transform3D(1, 0, 0, 0, 0.91644, 0.400173, 0, -0.400173, 0.91644, 0,
 
 [node name="PostionGreenAnchor" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.705, 0)
-__meta__ = {
-"_editor_description_": ""
-}
 
 [node name="PotionGreen" parent="PostionGreenAnchor" instance=ExtResource("2")]
 transform = Transform3D(0.859013, 0.511953, 0, -0.511953, 0.859013, 0, 0, 0, 1, 0, -1.193, 0)
 
 [node name="potionLarge_red" parent="PostionGreenAnchor/PotionGreen" index="0"]
-material/0 = SubResource("1")
+surface_material_override/0 = SubResource("StandardMaterial3D_d2er3")
 
-[node name="potionLarge_red001" parent="PostionGreenAnchor/PotionGreen/potionLarge_red" index="0"]
-material_override = SubResource("4")
-wobble_decay_time = 3.0
+[node name="potionLarge_red_001" parent="PostionGreenAnchor/PotionGreen/potionLarge_red" index="0"]
+material_override = SubResource("ShaderMaterial_41q5w")
+script = ExtResource("5_guj11")
 
 [node name="PinkPotionAnchor" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.70025, 0)
 
 [node name="PotionPink" parent="PinkPotionAnchor" instance=ExtResource("2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.18178, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.241325, -1.18178, 0)
 
 [node name="potionLarge_red" parent="PinkPotionAnchor/PotionPink" index="0"]
-material/0 = SubResource("5")
+surface_material_override/0 = SubResource("StandardMaterial3D_pjqlo")
 
-[node name="potionLarge_red001" parent="PinkPotionAnchor/PotionPink/potionLarge_red" index="0"]
-material_override = SubResource("8")
-wobble_decay_time = 0.3
+[node name="potionLarge_red_001" parent="PinkPotionAnchor/PotionPink/potionLarge_red" index="0"]
+material_override = SubResource("ShaderMaterial_tnftr")
+script = ExtResource("5_guj11")
 
 [node name="PotionBlue" parent="." instance=ExtResource("2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.51328, 0)
 
 [node name="potionLarge_red" parent="PotionBlue" index="0"]
-material/0 = SubResource("9")
+surface_material_override/0 = SubResource("StandardMaterial3D_gc6tk")
 
-[node name="potionLarge_red001" parent="PotionBlue/potionLarge_red" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.25064e-05, 0.444676, -2.72244e-05)
-material_override = SubResource("12")
-max_wobble = 0.2
-wobble_decay_time = 0.3
+[node name="potionLarge_red_001" parent="PotionBlue/potionLarge_red" index="0"]
+material_override = SubResource("ShaderMaterial_a1awt")
+script = ExtResource("5_guj11")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_h3s76")
+}
 autoplay = "show_potions"
-anims/show_potions = SubResource("13")
 
 [node name="DemoInterface" parent="." instance=ExtResource("4")]
+anchors_preset = 10
 
 [editable path="PostionGreenAnchor/PotionGreen"]
 [editable path="PinkPotionAnchor/PotionPink"]
