@@ -2,9 +2,13 @@ shader_type canvas_item;
 
 uniform vec2 scale = vec2(10.0);
 uniform bool seamless = false;
+uniform int seed = 1;
 
-float rand(vec2 coord) {
-	return fract(sin(dot(coord, vec2(12.9898, 78.233))) * 43758.5453);
+// Generate a random value based on a 2D point and seed
+float rand(vec2 point) {
+    vec3 p3 = fract(vec3(point.xyx) * float(seed) * 1.031);
+    p3 += dot(p3, p3.yzx + 33.33);
+    return fract((p3.x + p3.y) * p3.z);
 }
 
 float perlin_noise(vec2 coord) {
