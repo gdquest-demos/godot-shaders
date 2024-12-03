@@ -27,6 +27,7 @@ shader_parameter/layers = 3
 [sub_resource type="ShaderMaterial" id="3"]
 shader = ExtResource("3")
 shader_parameter/scale = Vector2(10, 10)
+shader_parameter/seamless = false
 shader_parameter/seed = 1
 
 [sub_resource type="ShaderMaterial" id="4"]
