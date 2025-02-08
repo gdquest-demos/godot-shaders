@@ -1,7 +1,7 @@
 shader_type spatial;
 render_mode cull_disabled, unshaded;
 
-uniform float wind_speed = 0.2;
+uniform float wind_speed = 0.05;
 uniform float wind_strength = 2.0;
 // How big, in world space, is the noise texture
 // wind will tile every wind_texture_tile_size
@@ -9,7 +9,7 @@ uniform float wind_texture_tile_size = 20.0;
 uniform float wind_vertical_strength = 0.3;
 uniform vec2 wind_horizontal_direction = vec2(1.0, 0.5);
 
-uniform sampler2D color_ramp : hint_default_black;
+uniform sampler2D color_ramp : source_color;
 // we need a tiling noise here!
 uniform sampler2D wind_noise : hint_default_black;
 
