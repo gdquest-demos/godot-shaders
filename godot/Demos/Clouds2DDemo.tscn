@@ -7,7 +7,8 @@
 [ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="5"]
 
 [sub_resource type="Gradient" id="1"]
-offsets = PackedFloat32Array(0.518987, 0.544304)
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.4, 0.7)
 
 [sub_resource type="GradientTexture2D" id="2"]
 gradient = SubResource("1")
@@ -16,8 +17,8 @@ gradient = SubResource("1")
 shader = ExtResource("2")
 shader_parameter/tint = Color(0.0761719, 0.244629, 0.75, 0.541176)
 shader_parameter/scroll_direction_1 = Vector2(0.7, -0.7)
-shader_parameter/time_scale_1 = 0.012
-shader_parameter/tile_factor_1 = 0.6
+shader_parameter/time_scale_1 = 0.01
+shader_parameter/tile_factor_1 = 0.235
 shader_parameter/scroll_direction_2 = Vector2(0.75, 0.25)
 shader_parameter/time_scale_2 = 0.005
 shader_parameter/tile_factor_2 = 0.3
@@ -27,9 +28,16 @@ shader_parameter/gradient_texture = SubResource("2")
 script = ExtResource("5")
 
 [node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_hu7yr")
+expand_mode = 1
 
 [node name="Clouds" type="Sprite2D" parent="."]
+texture_repeat = 2
 material = SubResource("3")
 position = Vector2(960, 540)
 scale = Vector2(1.8781, 2.12213)

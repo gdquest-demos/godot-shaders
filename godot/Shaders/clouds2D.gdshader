@@ -19,10 +19,11 @@ uniform float tile_factor_2 : hint_range(0.1, 3.0) = 0.3;
 void fragment() {
 	vec2 noise_2_uv = UV * tile_factor_2 + scroll_direction_2 * TIME * time_scale_2;
 	float noise_2 = texture(noise_texture_2, noise_2_uv).r;
-	
+
 	vec2 noise_1_uv = UV * tile_factor_1 + scroll_direction_1 * TIME * time_scale_1;
 	float noise_1 = texture(TEXTURE, noise_1_uv + noise_2 * 0.02).r;
-	
+
 	float clouds = texture(gradient_texture, vec2(noise_1, 0.0)).r;
+
 	COLOR.rgb = mix(vec3(1.0), tint.rgb, clouds * tint.a);
 }
