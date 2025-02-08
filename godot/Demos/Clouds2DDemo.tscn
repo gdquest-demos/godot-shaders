@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ctuwb82j6nkhi"]
+[gd_scene load_steps=9 format=3 uid="uid://ctuwb82j6nkhi"]
 
-[ext_resource type="Texture2D" path="res://Demos/Clouds2D/clouds_noise1.tres" id="1"]
+[ext_resource type="Texture2D" uid="uid://bok1i4hhop0o2" path="res://Demos/Clouds2D/clouds_noise1.tres" id="1"]
 [ext_resource type="Shader" path="res://Shaders/clouds2D.gdshader" id="2"]
-[ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="3"]
+[ext_resource type="Texture2D" uid="uid://68d1kelgq6t5" path="res://Demos/Clouds2D/topdown-adventure.svg" id="2_hu7yr"]
+[ext_resource type="PackedScene" uid="uid://diofpwcvq5elu" path="res://Shared/DemoInterface.tscn" id="3"]
 [ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="5"]
 
 [sub_resource type="Gradient" id="1"]
@@ -26,10 +27,7 @@ shader_parameter/gradient_texture = SubResource("2")
 script = ExtResource("5")
 
 [node name="Background" type="TextureRect" parent="."]
-texture = null
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture = ExtResource("2_hu7yr")
 
 [node name="Clouds" type="Sprite2D" parent="."]
 material = SubResource("3")
@@ -38,4 +36,5 @@ scale = Vector2(1.8781, 2.12213)
 texture = ExtResource("1")
 
 [node name="DemoInterface" parent="." instance=ExtResource("3")]
+anchors_preset = 10
 offset_right = 0.00012207
