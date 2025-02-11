@@ -26,12 +26,12 @@ noise = SubResource("5")
 [resource]
 render_priority = 0
 shader = ExtResource("1")
-shader_parameter/wind_speed = 0.2
+shader_parameter/wind_speed = 0.05
 shader_parameter/wind_strength = 2.0
 shader_parameter/wind_texture_tile_size = 20.0
 shader_parameter/wind_vertical_strength = 0.3
 shader_parameter/wind_horizontal_direction = Vector2(1, 0.5)
-shader_parameter/character_position = Vector3(0, 1.22062, 0)
+shader_parameter/character_position = Vector3(0, -2, 0)
 shader_parameter/character_radius = 3.0
 shader_parameter/character_push_strength = 1.0
 shader_parameter/color_ramp = SubResource("4")

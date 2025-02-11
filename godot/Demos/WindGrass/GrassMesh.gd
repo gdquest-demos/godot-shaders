@@ -9,7 +9,7 @@ extends MultiMeshInstance3D
 @onready var _character: Node3D = get_node(character_path)
 
 func _enter_tree() -> void:
-	connect("visibility_changed", Callable(self, "_on_WindGrass_visibility_changed"))
+	visibility_changed.connect(_on_WindGrass_visibility_changed)
 
 
 func _ready() -> void:
@@ -21,7 +21,7 @@ func _ready() -> void:
 	var center: Vector3 = get_parent().global_transform.origin
 
 	for instance_index in multimesh.instance_count:
-		var transform := Transform3D().rotated(Vector3.UP, rng.randf_range(-PI / 2, PI / 2))
+		var trans := Transform3D().rotated(Vector3.UP, rng.randf_range(-PI / 2, PI / 2))
 		var x: float
 		var z: float
 		if spawn_outside_circle:
@@ -32,15 +32,14 @@ func _ready() -> void:
 			x = rng.randf_range(-extents.x, extents.x)
 			z = rng.randf_range(-extents.y, extents.y)
 			
-		transform.origin = Vector3(x, 0, z)
+		trans.origin = Vector3(x, 0, z)
 
-		multimesh.set_instance_transform(instance_index, transform)
+		multimesh.set_instance_transform(instance_index, trans)
 
 
 func _on_WindGrass_visibility_changed() -> void:
 	if visible:
 		_ready()
-
 
 func _process(_delta: float) -> void:
 	material_override.set_shader_parameter(
