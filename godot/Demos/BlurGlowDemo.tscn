@@ -1,19 +1,22 @@
-[gd_scene load_steps=15 format=3 uid="uid://ci11oo63dcfuh"]
+[gd_scene load_steps=16 format=3 uid="uid://ci11oo63dcfuh"]
 
 [ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://dnei3uy5bhpha" path="res://Demos/Glow2D/BlurGlow/Scene.tscn" id="2"]
 [ext_resource type="Shader" path="res://Shaders/gaussian_blur.gdshader" id="3"]
 [ext_resource type="Shader" path="res://Shaders/compose.gdshader" id="4"]
 [ext_resource type="Shader" path="res://Shaders/glow_prepass.gdshader" id="5"]
-[ext_resource type="PackedScene" path="res://Shared/Background2D/Demo2DBackground.tscn" id="7"]
+[ext_resource type="Texture2D" uid="uid://7giw201cbixu" path="res://Shared/sprites/robi_shaded.png" id="5_bxej1"]
+[ext_resource type="PackedScene" uid="uid://7mqdkojagyav" path="res://Shared/Background2D/Demo2DBackground.tscn" id="7"]
 [ext_resource type="Script" path="res://Utils/DebugViewer.gd" id="8"]
-[ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://diofpwcvq5elu" path="res://Shared/DemoInterface.tscn" id="9"]
 
 [sub_resource type="ShaderMaterial" id="1"]
 shader = ExtResource("3")
+shader_parameter/blur_scale = Vector2(1, 1)
 
 [sub_resource type="ShaderMaterial" id="2"]
 shader = ExtResource("3")
+shader_parameter/blur_scale = Vector2(1, 1)
 
 [sub_resource type="ShaderMaterial" id="3"]
 shader = ExtResource("5")
@@ -39,95 +42,100 @@ script = ExtResource("1")
 
 [node name="MaskView" type="SubViewportContainer" parent="."]
 self_modulate = Color(1, 1, 1, 0)
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 stretch = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="SubViewport" type="SubViewport" parent="MaskView"]
-size = Vector2(1920, 1080)
 transparent_bg = true
 handle_input_locally = false
-usage = 0
-render_target_update_mode = 3
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
 
 [node name="Blur2" type="SubViewportContainer" parent="MaskView/SubViewport"]
 material = SubResource("1")
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 stretch = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="SubViewport" type="SubViewport" parent="MaskView/SubViewport/Blur2"]
-size = Vector2(1920, 1080)
 transparent_bg = true
 handle_input_locally = false
-usage = 0
-render_target_update_mode = 3
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
 
 [node name="Blur1" type="SubViewportContainer" parent="MaskView/SubViewport/Blur2/SubViewport"]
 material = SubResource("2")
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 stretch = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="SubViewport" type="SubViewport" parent="MaskView/SubViewport/Blur2/SubViewport/Blur1"]
-size = Vector2(1920, 1080)
 transparent_bg = true
 handle_input_locally = false
-usage = 0
-render_target_update_mode = 3
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="MaskView/SubViewport/Blur2/SubViewport/Blur1/SubViewport"]
 material = SubResource("3")
 position = Vector2(960, 540)
-texture = null
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_bxej1")
 
 [node name="MainView" type="SubViewportContainer" parent="."]
 material = SubResource("6")
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 stretch = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="SubViewport" type="SubViewport" parent="MainView"]
-size = Vector2(1920, 1080)
 transparent_bg = true
 handle_input_locally = false
-usage = 0
-render_target_update_mode = 3
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
 
 [node name="Scene" parent="MainView/SubViewport" instance=ExtResource("2")]
 
 [node name="Sprite2D" parent="MainView/SubViewport/Scene" index="0"]
 position = Vector2(960, 540)
-scale = Vector2(1, 1)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="MainView/SubViewport/Scene/Sprite2D" index="0"]
 remote_path = NodePath("../../../../../MaskView/SubViewport/Blur2/SubViewport/Blur1/SubViewport/Sprite2D")
 
 [node name="DebugViewer" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
 offset_top = 120.0
 offset_right = 40.0
 offset_bottom = 160.0
 script = ExtResource("8")
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="DemoInterface" parent="." instance=ExtResource("9")]
+anchors_preset = 10
 
 [editable path="MainView/SubViewport/Scene"]

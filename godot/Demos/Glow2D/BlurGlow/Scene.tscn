@@ -1,8 +1,10 @@
-[gd_scene format=3 uid="uid://dnei3uy5bhpha"]
+[gd_scene load_steps=2 format=3 uid="uid://dnei3uy5bhpha"]
+
+[ext_resource type="Texture2D" uid="uid://7giw201cbixu" path="res://Shared/sprites/robi_shaded.png" id="1_ocuod"]
 
 [node name="Scene" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(640, 360)
 scale = Vector2(0.75, 0.75)
-texture = null
+texture = ExtResource("1_ocuod")
