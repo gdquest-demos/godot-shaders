@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6cldif6wl6m5"]
+[gd_scene load_steps=5 format=3 uid="uid://c6cldif6wl6m5"]
 
 [ext_resource type="Script" path="res://Demos/Outline/Outline2D/Outline.gd" id="1"]
 [ext_resource type="Shader" path="res://Shaders/outline2D_inner.gdshader" id="2"]
+[ext_resource type="Texture2D" uid="uid://7giw201cbixu" path="res://Shared/sprites/robi_shaded.png" id="2_5rreo"]
 
 [sub_resource type="ShaderMaterial" id="1"]
 shader = ExtResource("2")
@@ -11,12 +12,10 @@ shader_parameter/line_thickness = 5.0
 [node name="OutlineInner" type="Sprite2D"]
 material = SubResource("1")
 scale = Vector2(0.644905, 0.644905)
-texture = null
+texture = ExtResource("2_5rreo")
 flip_h = true
 script = ExtResource("1")
 line_color = Color(0.121569, 0.898039, 0.427451, 1)
-
-[node name="Tween" type="Tween" parent="."]
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(-1, 1)
