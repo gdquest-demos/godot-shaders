@@ -1,7 +1,5 @@
 shader_type spatial;
 
-shader_type spatial;
-
 group_uniforms Snow;
 /** Mask texture for the snow and dirt mix. This is the texture to which the game writes the ball trail. */
 uniform sampler2D mask_texture: hint_default_white, repeat_disable, filter_linear_mipmap;
