@@ -76,10 +76,3 @@ If you want to contribute to the project, for instance by fixing a bug or adding
 ## Credits
 
 Stylized fire adapted from a Unity tutorial by [@minionsart](https://twitter.com/minionsart/).
-
-## Licenses
-
-This project is dual-licensed:
-
-- The source code is available under the MIT license.
-- Art assets (images, audio files) are [CC-By 4.0](https://creativecommons.org/licenses/by/4.0/). You can attribute them to `GDQuest and contributors (https://www.gdquest.com/)`.
