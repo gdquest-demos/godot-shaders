@@ -10,9 +10,11 @@
 
 [sub_resource type="ShaderMaterial" id="1"]
 shader = ExtResource("4")
+shader_parameter/blur_scale = Vector2( 0, 0 )
 
 [sub_resource type="ShaderMaterial" id="2"]
 shader = ExtResource("4")
+shader_parameter/blur_scale = Vector2( 0, 0 )
 
 [sub_resource type="Shader" id="3"]
 code = "shader_type canvas_item;
@@ -51,8 +53,7 @@ blur_scale = Vector2(1, -1)
 [node name="SubViewport" type="SubViewport" parent="Presentation/BlurView2"]
 size = Vector2(1920, 1080)
 handle_input_locally = false
-usage = 0
-render_target_update_mode = 3
+render_target_update_mode = 4
 
 [node name="BlurView" type="SubViewportContainer" parent="Presentation/BlurView2/SubViewport"]
 material = SubResource("2")
@@ -67,8 +68,7 @@ blur_scale = Vector2(4, -4)
 [node name="SubViewport" type="SubViewport" parent="Presentation/BlurView2/SubViewport/BlurView"]
 size = Vector2(1920, 1080)
 handle_input_locally = false
-usage = 0
-render_target_update_mode = 3
+render_target_update_mode = 4
 
 [node name="MotionBlurSceneBackground" parent="Presentation/BlurView2/SubViewport/BlurView/SubViewport" instance=ExtResource("2")]
 trail_length = 24000.0
@@ -96,7 +96,7 @@ __meta__ = {
 size = Vector2(1920, 1080)
 transparent_bg = true
 handle_input_locally = false
-render_target_update_mode = 3
+render_target_update_mode = 4
 
 [node name="Ship" parent="ShipView/SubViewport" instance=ExtResource("1")]
 position = Vector2(960, 540)
@@ -109,7 +109,7 @@ remote_path = NodePath("../../../../Presentation/BlurView2/SubViewport/BlurView/
 
 [node name="Camera2D" type="Camera2D" parent="ShipView/SubViewport"]
 position = Vector2(960, 540)
-current = true
+enabled = true
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 15.0

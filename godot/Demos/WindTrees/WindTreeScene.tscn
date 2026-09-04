@@ -46,7 +46,7 @@ _wind_angle = 270.0
 
 [node name="Terrain" type="MeshInstance3D" parent="."]
 mesh = ExtResource("13")
-material/0 = SubResource("17")
+surface_material_override/0 = SubResource("17")
 
 [node name="Grass" type="MultiMeshInstance3D" parent="."]
 material_override = ExtResource("3")
@@ -57,74 +57,74 @@ multimesh = SubResource("16")
 [node name="Tree4" parent="Trees" instance=ExtResource("1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.51802, 2.12399, 5.39008)
 
-[node name="Tree_0001" parent="Trees/Tree4" index="0"]
+[node name="Tree_0_001" parent="Trees/Tree4" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.53674e-07)
-material/0 = ExtResource("2")
-material/1 = ExtResource("4")
+surface_material_override/0 = ExtResource("2")
+surface_material_override/1 = ExtResource("4")
 
 [node name="Tree7" parent="Trees" instance=ExtResource("1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.51802, 1.17435, -2.60994)
 
-[node name="Tree_0001" parent="Trees/Tree7" index="0"]
+[node name="Tree_0_001" parent="Trees/Tree7" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.53674e-07)
-material/0 = ExtResource("2")
-material/1 = ExtResource("4")
+surface_material_override/0 = ExtResource("2")
+surface_material_override/1 = ExtResource("4")
 
 [node name="Tree8" parent="Trees" instance=ExtResource("1")]
 transform = Transform3D(-0.656731, 0, -0.754125, 0, 1, 0, 0.754125, 0, -0.656731, 5.9294, 0.944386, -4.60994)
 
-[node name="Tree_0001" parent="Trees/Tree8" index="0"]
+[node name="Tree_0_001" parent="Trees/Tree8" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.53674e-07)
-material/0 = ExtResource("2")
-material/1 = ExtResource("4")
+surface_material_override/0 = ExtResource("2")
+surface_material_override/1 = ExtResource("4")
 
 [node name="Tree9" parent="Trees" instance=ExtResource("1")]
 transform = Transform3D(0.460386, 0, 0.887719, 0, 1, 0, -0.887719, 0, 0.460386, -2.48198, 0.816107, -6.60994)
 
-[node name="Tree_0001" parent="Trees/Tree9" index="0"]
+[node name="Tree_0_001" parent="Trees/Tree9" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.53674e-07)
-material/0 = ExtResource("2")
-material/1 = ExtResource("4")
+surface_material_override/0 = ExtResource("2")
+surface_material_override/1 = ExtResource("4")
 
 [node name="Tree5" parent="Trees" instance=ExtResource("1")]
 transform = Transform3D(0.61639, 0, 0.787441, 0, 1, 0, -0.787441, 0, 0.61639, -3.37929, 1.72331, 2.07108)
 
-[node name="Tree_0001" parent="Trees/Tree5" index="0"]
+[node name="Tree_0_001" parent="Trees/Tree5" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.53674e-07)
-material/0 = ExtResource("2")
-material/1 = ExtResource("4")
+surface_material_override/0 = ExtResource("2")
+surface_material_override/1 = ExtResource("4")
 
 [node name="Tree6" parent="Trees" instance=ExtResource("1")]
 transform = Transform3D(0.200856, 0, 0.979621, 0, 1, 0, -0.979621, 0, 0.200856, 3.90035, 1.62404, 1.41768)
 
-[node name="Tree_0001" parent="Trees/Tree6" index="0"]
+[node name="Tree_0_001" parent="Trees/Tree6" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.53674e-07)
-material/0 = ExtResource("2")
-material/1 = ExtResource("4")
+surface_material_override/0 = ExtResource("2")
+surface_material_override/1 = ExtResource("4")
 
 [node name="Tree10" parent="Trees" instance=ExtResource("1")]
 transform = Transform3D(0.800606, 0, 0.599191, 0, 1, 0, -0.599191, 0, 0.800606, 3.80619, 2.37768, 7.42935)
 
-[node name="Tree_0001" parent="Trees/Tree10" index="0"]
+[node name="Tree_0_001" parent="Trees/Tree10" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.53674e-07)
-material/0 = ExtResource("2")
-material/1 = ExtResource("4")
+surface_material_override/0 = ExtResource("2")
+surface_material_override/1 = ExtResource("4")
 
 [node name="Tree11" parent="Trees" instance=ExtResource("1")]
 transform = Transform3D(-0.713251, 0, -0.700909, 0, 1, 0, 0.700909, 0, -0.713251, 2.72477, 0.762666, -11.0159)
 
-[node name="Tree_0001" parent="Trees/Tree11" index="0"]
+[node name="Tree_0_001" parent="Trees/Tree11" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.53674e-07)
-material/0 = ExtResource("2")
-material/1 = ExtResource("4")
+surface_material_override/0 = ExtResource("2")
+surface_material_override/1 = ExtResource("4")
 
 [node name="Tree12" parent="Trees" instance=ExtResource("1")]
 transform = Transform3D(-0.528379, 0, 0.849009, 0, 1, 0, -0.849009, 0, -0.528379, -4.25701, 0.52269, -12.2788)
 
-[node name="Tree_0001" parent="Trees/Tree12" index="0"]
+[node name="Tree_0_001" parent="Trees/Tree12" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.53674e-07)
-material/0 = ExtResource("2")
-material/1 = ExtResource("4")
+surface_material_override/0 = ExtResource("2")
+surface_material_override/1 = ExtResource("4")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.5, 0.866025, 0, -0.866025, -0.5, 0, 0, 0)
@@ -132,8 +132,7 @@ light_color = Color(1, 0.945098, 0.835294, 1)
 shadow_enabled = true
 shadow_bias = 0.02
 directional_shadow_blend_splits = true
-directional_shadow_normal_bias = 0.2
-directional_shadow_bias_split_scale = 0.065
+shadow_normal_bias = 0.2
 directional_shadow_max_distance = 50.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

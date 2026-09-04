@@ -8,7 +8,7 @@ extends Camera2D
 
 @export var amplitude := 4.0
 @export var duration := 0.3: set = set_duration
-@export var damp_easing # (float, EASE)
+@export_exp_easing var damp_easing := 1.0
 @export var is_shaking := false: set = set_is_shaking
 
 enum States { IDLE, SHAKING }
@@ -30,8 +30,8 @@ func _process(_delta: float) -> void:
 	) * damping
 
 
-func _get_configuration_warnings() -> String:
-	return "" if timer else "%s requires a Timer child named Timer" % name
+func _get_configuration_warnings() -> PackedStringArray:
+	return PackedStringArray() if timer else PackedStringArray(["%s requires a Timer child named Timer" % name])
 
 
 func set_duration(value: float) -> void:

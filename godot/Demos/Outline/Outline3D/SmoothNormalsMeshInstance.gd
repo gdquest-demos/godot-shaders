@@ -35,7 +35,7 @@ func _ready() -> void:
 
 		surface_tool.begin(Mesh.PRIMITIVE_TRIANGLES)
 
-		surface_tool.add_smooth_group(true)
+		surface_tool.set_smooth_group(0)
 
 		for vertex in data[ArrayMesh.ARRAY_VERTEX]:
 			surface_tool.add_vertex(vertex)

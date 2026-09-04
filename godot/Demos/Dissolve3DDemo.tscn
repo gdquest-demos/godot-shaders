@@ -14,7 +14,7 @@ length = 3.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:material/0:shader_param/dissolve_amount")
+tracks/0/path = NodePath(".:surface_material_override/0:shader_parameter/dissolve_amount")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -41,7 +41,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:material/0:shader_param/dissolve_amount")
+tracks/0/path = NodePath(".:surface_material_override/0:shader_parameter/dissolve_amount")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -73,7 +73,7 @@ transform = Transform3D(0.965167, 0.12949, -0.227342, 0, 0.868934, 0.494928, 0.2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("1")
 skeleton = NodePath("")
-material/0 = ExtResource("3")
+surface_material_override/0 = ExtResource("3")
 script = ExtResource("2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DissolvingSphere"]

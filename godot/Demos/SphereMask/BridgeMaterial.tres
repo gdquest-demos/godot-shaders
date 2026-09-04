@@ -3,20 +3,22 @@
 [ext_resource path="res://Shaders/sphere_mask.gdshader" type="Shader" id=1]
 
 [sub_resource type="FastNoiseLite" id=1]
-period = 26.7
-persistence = 0.151
-lacunarity = 2.08
+frequency = 0.03745318
+fractal_octaves = 3
+fractal_gain = 0.151
+fractal_lacunarity = 2.08
 
-[sub_resource type="NoiseTexture" id=2]
+
+[sub_resource type="NoiseTexture2D" id=2]
 seamless = true
 noise = SubResource( 1 )
 
 [resource]
 shader = ExtResource( 1 )
-shader_param/mask_center = Vector3( -3.42114, 4.25289, -4.76837e-07 )
-shader_param/mask_radius = 0.0
-shader_param/mask_border_radius = 4.0
-shader_param/emission_energy = 4.317
-shader_param/object_color = Color( 0.443137, 0.286275, 0.0470588, 1 )
-shader_param/mask_color = Color( 1, 0.980392, 0.505882, 1 )
-shader_param/ghost_noise = SubResource( 2 )
+shader_parameter/mask_center = Vector3( -3.42114, 4.25289, -4.76837e-07 )
+shader_parameter/mask_radius = 0.0
+shader_parameter/mask_border_radius = 4.0
+shader_parameter/emission_energy = 4.317
+shader_parameter/object_color = Color( 0.443137, 0.286275, 0.0470588, 1 )
+shader_parameter/mask_color = Color( 1, 0.980392, 0.505882, 1 )
+shader_parameter/ghost_noise = SubResource( 2 )

@@ -255,11 +255,11 @@ anims/RESET = SubResource("6")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 size = Vector2(1920, 1080)
-own_world = true
-world = SubResource("1")
+own_world_3d = true
+world_3d = SubResource("1")
 handle_input_locally = false
-msaa = 4
-render_target_update_mode = 3
+msaa_3d = 4
+render_target_update_mode = 4
 
 [node name="Node3D" parent="SubViewport" instance=ExtResource("1")]
 
@@ -272,7 +272,7 @@ anchor_bottom = 1.0
 offset_right = 7.62939e-06
 offset_bottom = 3.8147e-06
 texture = SubResource("2")
-expand = true
+expand_mode = 1
 stretch_mode = 1
 flip_v = true
 
@@ -280,7 +280,7 @@ flip_v = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = SubResource("3")
-expand = true
+expand_mode = 1
 stretch_mode = 1
 flip_v = true
 __meta__ = {
@@ -292,7 +292,7 @@ modulate = Color(1, 1, 1, 0)
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = SubResource("4")
-expand = true
+expand_mode = 1
 stretch_mode = 1
 flip_v = true
 __meta__ = {
@@ -306,7 +306,7 @@ offset_bottom = 63.0
 theme = ExtResource("4")
 theme_override_fonts/font = ExtResource("12")
 text = "Raw Vertex Data"
-align = 1
+horizontal_alignment = 1
 script = ExtResource("8")
 __meta__ = {
 "_edit_use_anchors_": false

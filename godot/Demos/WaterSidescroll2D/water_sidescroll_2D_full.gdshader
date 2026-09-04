@@ -1,7 +1,9 @@
 shader_type canvas_item;
 
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+
 uniform sampler2D transition_gradient :hint_default_black;
-uniform sampler2D distortion_map : hint_default_black;
+uniform sampler2D distortion_map : hint_default_black, repeat_enable;
 
 uniform vec4 water_tint :source_color;
 uniform vec4 shadow_color :source_color;

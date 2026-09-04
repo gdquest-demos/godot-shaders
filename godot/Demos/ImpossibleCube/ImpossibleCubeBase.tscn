@@ -81,9 +81,7 @@ remote_path = NodePath("../../StencilView/Camera3D")
 [node name="StencilView" type="SubViewport" parent="."]
 size = Vector2(1920, 1080)
 transparent_bg = true
-keep_3d_linear = true
-usage = 3
-render_target_update_mode = 3
+render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="StencilView"]
 transform = Transform3D(0.296699, -0.185551, 0.936771, -0.020768, 0.979456, 0.200584, -0.954745, -0.0789679, 0.28675, 3.98713, 3.1131, 1.61636)
@@ -92,32 +90,32 @@ cull_mask = 4
 [node name="CubeShell" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.5, 0)
 mesh = ExtResource("6")
-material/0 = SubResource("1")
+surface_material_override/0 = SubResource("1")
 script = ExtResource("5")
 
 [node name="Sphere" type="MeshInstance3D" parent="CubeShell"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 layers = 2
 mesh = SubResource("2")
-material/0 = SubResource("4")
+surface_material_override/0 = SubResource("4")
 
 [node name="Cylinder" type="MeshInstance3D" parent="CubeShell"]
 transform = Transform3D(0.25, 0, 0, 0, 0.176777, -0.176777, 0, 0.176777, 0.176777, 0, 0, 0)
 layers = 2
 mesh = SubResource("5")
-material/0 = SubResource("7")
+surface_material_override/0 = SubResource("7")
 
 [node name="Capsule" type="MeshInstance3D" parent="CubeShell"]
 transform = Transform3D(0.25, 0, 0, 0, -4.07302e-08, -0.25, 0, 0.25, -4.07302e-08, 0, 0, 0)
 layers = 2
 mesh = SubResource("8")
-material/0 = SubResource("10")
+surface_material_override/0 = SubResource("10")
 
 [node name="Cube" type="MeshInstance3D" parent="CubeShell"]
 transform = Transform3D(0.106066, -0.075, -0.075, 0, 0.106066, -0.106066, 0.106066, 0.075, 0.075, 0, 0, 0)
 layers = 2
 mesh = SubResource("11")
-material/0 = SubResource("13")
+surface_material_override/0 = SubResource("13")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="CubeShell"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.0194656, 0)
@@ -132,4 +130,4 @@ omni_attenuation = 1.7411
 layers = 4
 cast_shadow = 0
 mesh = ExtResource("2")
-material/0 = SubResource("14")
+surface_material_override/0 = SubResource("14")

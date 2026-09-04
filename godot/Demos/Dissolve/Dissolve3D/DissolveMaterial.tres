@@ -5,9 +5,9 @@
 
 [resource]
 shader = ExtResource( 3 )
-shader_param/albedo = Color( 0.972549, 0.654902, 0.0509804, 1 )
-shader_param/emission_color = Color( 0.972549, 0.164706, 0.0588235, 1 )
-shader_param/emission_amount = 3.064
-shader_param/burn_size = 0.1
-shader_param/dissolve_amount = 0.0
-shader_param/dissolve_texture = ExtResource( 1 )
+shader_parameter/albedo = Color( 0.972549, 0.654902, 0.0509804, 1 )
+shader_parameter/emission_color = Color( 0.972549, 0.164706, 0.0588235, 1 )
+shader_parameter/emission_amount = 3.064
+shader_parameter/burn_size = 0.1
+shader_parameter/dissolve_amount = 0.0
+shader_parameter/dissolve_texture = ExtResource( 1 )

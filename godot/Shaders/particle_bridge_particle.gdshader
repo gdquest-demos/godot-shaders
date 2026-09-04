@@ -14,10 +14,13 @@ uniform float animation_speed = 10.0;
 uniform int bridge_width_particles = 12;
 uniform float spacing = 0.3;
 
-void vertex() {
+// Godot 4 splits the old particles vertex() function into start() (run when a
+// particle is emitted) and process() (run every frame). This effect only needs
+// the per-frame pass.
+void process() {
 	// Place the particles of the bridge in a grid
-	TRANSFORM[3].x = float(INDEX % bridge_width_particles) * spacing;
-	TRANSFORM[3].z = float(INDEX / bridge_width_particles) * spacing;
+	TRANSFORM[3].x = float(int(INDEX) % bridge_width_particles) * spacing;
+	TRANSFORM[3].z = float(int(INDEX) / bridge_width_particles) * spacing;
 // END: grid
 // ANCHOR: distance
 	// Find the distance from the character, normalized between zero and one.

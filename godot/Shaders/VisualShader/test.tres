@@ -46,7 +46,7 @@ function = 4
 
 [resource]
 code = "shader_type spatial;
-render_mode blend_add, depth_draw_never, depth_test_disable, ambient_light_disabled;
+render_mode blend_add, depth_draw_never, depth_test_disabled, ambient_light_disabled;
 
 
 

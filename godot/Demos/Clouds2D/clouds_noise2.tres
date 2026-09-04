@@ -1,12 +1,12 @@
-[gd_resource type="NoiseTexture" load_steps=2 format=2]
+[gd_resource type="NoiseTexture2D" load_steps=2 format=2]
 
 [sub_resource type="FastNoiseLite" id=1]
-octaves = 2
-period = 11.1
-persistence = 1.0
-lacunarity = 2.06
+frequency = 0.09009009
+fractal_octaves = 2
+fractal_gain = 1.0
+fractal_lacunarity = 2.06
+
 
 [resource]
-flags = 6
 seamless = true
 noise = SubResource( 1 )

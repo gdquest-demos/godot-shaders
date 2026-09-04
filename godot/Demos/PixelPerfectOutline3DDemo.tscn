@@ -75,16 +75,16 @@ size = 2.73443
 [node name="rat" parent="." instance=ExtResource("2")]
 
 [node name="body1" parent="rat" index="0"]
-material/0 = SubResource("4")
+surface_material_override/0 = SubResource("4")
 
 [node name="eyes1" parent="rat" index="1"]
-material/0 = SubResource("4")
+surface_material_override/0 = SubResource("4")
 
 [node name="head1" parent="rat" index="2"]
-material/0 = SubResource("4")
+surface_material_override/0 = SubResource("4")
 
 [node name="teeth1" parent="rat" index="3"]
-material/0 = SubResource("4")
+surface_material_override/0 = SubResource("4")
 
 [node name="AnimationPlayer" parent="rat" index="4"]
 autoplay = "Rotate"

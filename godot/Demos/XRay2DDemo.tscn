@@ -39,8 +39,7 @@ __meta__ = {
 size = Vector2(1920, 1080)
 transparent_bg = true
 handle_input_locally = false
-render_target_v_flip = true
-render_target_update_mode = 3
+render_target_update_mode = 4
 
 [node name="MainScene" parent="MainView/SubViewport" instance=ExtResource("2")]
 
@@ -75,8 +74,7 @@ __meta__ = {
 size = Vector2(1920, 1080)
 transparent_bg = true
 handle_input_locally = false
-render_target_v_flip = true
-render_target_update_mode = 3
+render_target_update_mode = 4
 
 [node name="GearTrain" parent="XRayView/SubViewport" instance=ExtResource("3")]
 position = Vector2(1440, 540)
@@ -95,8 +93,7 @@ __meta__ = {
 size = Vector2(1920, 1080)
 transparent_bg = true
 handle_input_locally = false
-render_target_v_flip = true
-render_target_update_mode = 3
+render_target_update_mode = 4
 
 [node name="Cone" type="Polygon2D" parent="MaskView/SubViewport"]
 position = Vector2(480, 540)

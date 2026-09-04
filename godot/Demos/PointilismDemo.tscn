@@ -24,9 +24,9 @@ __meta__ = {
 [node name="SubViewport" type="SubViewport" parent="DemoView"]
 size = Vector2(1920, 1080)
 handle_input_locally = false
-msaa = 2
-render_target_update_mode = 3
-shadow_atlas_size = 8192
+msaa_3d = 2
+render_target_update_mode = 4
+positional_shadow_atlas_size = 8192
 
 [node name="ImpossibleCubeDemo" parent="DemoView/SubViewport" instance=ExtResource("2")]
 

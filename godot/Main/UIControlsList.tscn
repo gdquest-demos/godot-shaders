@@ -36,7 +36,7 @@ theme_override_styles/focus = ExtResource("2")
 theme_override_styles/normal = ExtResource("2")
 toggle_mode = true
 shortcut_in_tooltip = false
-pressed = true
+button_pressed = true
 text = "<"
 
 [node name="ControlsPanel" type="PanelContainer" parent="."]
@@ -74,7 +74,7 @@ offset_right = 216.0
 offset_bottom = 45.0
 theme_override_fonts/font = ExtResource("3")
 text = "Controls"
-align = 1
+horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="ControlsPanel/MarginContainer/Column"]
 offset_top = 53.0

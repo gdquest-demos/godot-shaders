@@ -1,10 +1,45 @@
-[gd_scene load_steps=13 format=3 uid="uid://b5iflbghs0ywo"]
+[gd_scene load_steps=19 format=3 uid="uid://b5iflbghs0ywo"]
 
 [ext_resource type="PackedScene" uid="uid://dpp7narpdag6n" path="res://Shared/models/rat_model/rat.dae" id="4"]
 [ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="5"]
 [ext_resource type="PackedScene" path="res://Shared/Demo3DEnvironment.tscn" id="8"]
 [ext_resource type="Shader" path="res://Shaders/water_3d.gdshader" id="9"]
 [ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="10"]
+
+[sub_resource type="FastNoiseLite" id="rp_s11"]
+seed = 115
+frequency = 0.02341920
+fractal_octaves = 3
+fractal_gain = 0.5
+fractal_lacunarity = 1.05
+
+[sub_resource type="NoiseTexture2D" id="rp_s12"]
+seamless = true
+as_normal_map = true
+bump_strength = 3.0
+noise = SubResource("rp_s11")
+
+[sub_resource type="FastNoiseLite" id="rp_s9"]
+seed = 197
+frequency = 0.03289474
+fractal_octaves = 3
+fractal_gain = 0.5
+fractal_lacunarity = 0.89
+
+[sub_resource type="NoiseTexture2D" id="rp_s10"]
+seamless = true
+noise = SubResource("rp_s9")
+
+[sub_resource type="FastNoiseLite" id="rp_s7"]
+seed = 197
+frequency = 0.01068376
+fractal_octaves = 3
+fractal_gain = 0.5
+fractal_lacunarity = 0.75
+
+[sub_resource type="NoiseTexture2D" id="rp_s8"]
+seamless = true
+noise = SubResource("rp_s7")
 
 [sub_resource type="ArrayMesh" id="1"]
 resource_name = "Rocks"
@@ -42,6 +77,19 @@ subdivide_depth = 100
 [sub_resource type="ShaderMaterial" id="13"]
 render_priority = 0
 shader = ExtResource("9")
+shader_parameter/deep_color = Color( 0.101961, 0.027451, 0.152941, 0.866667 )
+shader_parameter/shallow_color = Color( 0.270588, 0.47451, 0.764706, 0.109804 )
+shader_parameter/refraction_speed = 0.094
+shader_parameter/refraction_strength = 0.159
+shader_parameter/foam_amount = 0.146
+shader_parameter/foam_cutoff = 0.821
+shader_parameter/foam_color = Color( 0.654902, 0.835294, 0.956863, 1 )
+shader_parameter/displacement_strength = 0.1
+shader_parameter/depth_distance = 1.0
+shader_parameter/movement_direction = Vector2( 1, 0 )
+shader_parameter/refraction_noise = SubResource("rp_s12")
+shader_parameter/foam_noise = SubResource("rp_s10")
+shader_parameter/displacement_noise = SubResource("rp_s8")
 
 [node name="Water3DDemo" type="CanvasLayer"]
 script = ExtResource("10")
@@ -51,12 +99,12 @@ script = ExtResource("10")
 [node name="Rocks" type="MeshInstance3D" parent="Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 0)
 mesh = SubResource("1")
-material/0 = SubResource("2")
+surface_material_override/0 = SubResource("2")
 
 [node name="Rocks2" type="MeshInstance3D" parent="Wall"]
 transform = Transform3D(1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 1, -0.5, 0)
 mesh = SubResource("1")
-material/0 = SubResource("2")
+surface_material_override/0 = SubResource("2")
 
 [node name="Wall2" type="Node3D" parent="."]
 transform = Transform3D(-1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0)
@@ -64,12 +112,12 @@ transform = Transform3D(-1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 
 [node name="Rocks" type="MeshInstance3D" parent="Wall2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 0)
 mesh = SubResource("1")
-material/0 = SubResource("2")
+surface_material_override/0 = SubResource("2")
 
 [node name="Rocks2" type="MeshInstance3D" parent="Wall2"]
 transform = Transform3D(1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 1, -0.5, 0)
 mesh = SubResource("1")
-material/0 = SubResource("2")
+surface_material_override/0 = SubResource("2")
 
 [node name="Wall3" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0)
@@ -77,12 +125,12 @@ transform = Transform3D(-1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 
 [node name="Rocks" type="MeshInstance3D" parent="Wall3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 0)
 mesh = SubResource("1")
-material/0 = SubResource("2")
+surface_material_override/0 = SubResource("2")
 
 [node name="Rocks2" type="MeshInstance3D" parent="Wall3"]
 transform = Transform3D(1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 1, -0.5, 0)
 mesh = SubResource("1")
-material/0 = SubResource("2")
+surface_material_override/0 = SubResource("2")
 
 [node name="Wall4" type="Node3D" parent="."]
 transform = Transform3D(-1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, 0, 0)
@@ -90,12 +138,12 @@ transform = Transform3D(-1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, 0, 
 [node name="Rocks" type="MeshInstance3D" parent="Wall4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 0)
 mesh = SubResource("1")
-material/0 = SubResource("2")
+surface_material_override/0 = SubResource("2")
 
 [node name="Rocks2" type="MeshInstance3D" parent="Wall4"]
 transform = Transform3D(1, 0, 0, 0, -1, 3.25841e-07, 0, -3.25841e-07, -1, 1, -0.5, 0)
 mesh = SubResource("1")
-material/0 = SubResource("2")
+surface_material_override/0 = SubResource("2")
 
 [node name="Floor" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.421065, 0)
@@ -103,32 +151,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.421065, 0)
 [node name="Rocks" type="MeshInstance3D" parent="Floor"]
 transform = Transform3D(-1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0, 1, 0.4, -1, 0)
 mesh = SubResource("1")
-material/0 = SubResource("2")
+surface_material_override/0 = SubResource("2")
 
 [node name="Rocks2" type="MeshInstance3D" parent="Floor"]
 transform = Transform3D(-1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -0.4, -1, 0)
 mesh = SubResource("1")
-material/0 = SubResource("2")
+surface_material_override/0 = SubResource("2")
 
 [node name="rat" parent="." instance=ExtResource("4")]
 transform = Transform3D(0.119103, 0, 0.0911833, 0, 0.15, 0, -0.0911833, 0, 0.119103, -0.137245, -0.29888, -0.179269)
 
 [node name="body1" parent="rat" index="0"]
-material/0 = SubResource("3")
+surface_material_override/0 = SubResource("3")
 
 [node name="eyes1" parent="rat" index="1"]
-material/0 = SubResource("4")
+surface_material_override/0 = SubResource("4")
 
 [node name="head1" parent="rat" index="2"]
-material/0 = SubResource("5")
+surface_material_override/0 = SubResource("5")
 
 [node name="teeth1" parent="rat" index="3"]
-material/0 = SubResource("5")
+surface_material_override/0 = SubResource("5")
 
 [node name="Water" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.006, 0.704042, 0)
 mesh = SubResource("6")
-material/0 = SubResource("13")
+surface_material_override/0 = SubResource("13")
 
 [node name="Demo3DEnvironment" parent="." instance=ExtResource("8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.12067, 0)

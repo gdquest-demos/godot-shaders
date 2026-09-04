@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2jsb4wqmuk1t"]
+[gd_scene load_steps=16 format=3 uid="uid://b2jsb4wqmuk1t"]
 
 [ext_resource type="Shader" path="res://Demos/WaterSidescroll2D/water_sidescroll_2D_full.gdshader" id="1"]
 [ext_resource type="Script" path="res://Demos/WaterSidescroll2D/WaterSidescroll2D.gd" id="2"]
@@ -6,12 +6,59 @@
 [ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://Shared/Background2D/Demo2DBackground.tscn" id="8"]
 [ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="10"]
+[ext_resource type="Texture2D" path="res://Demos/Water2D/water_diffuse.png" id="restored_2"]
+[ext_resource type="Texture2D" path="res://Shared/sprites/robi_shaded.png" id="restored_1"]
+[ext_resource type="Texture2D" path="res://Demos/Water2D/water_normal.png" id="restored_normal"]
+[ext_resource type="Texture2D" path="res://Demos/Water2D/water_uv_offset.png" id="rp_e5"]
+
+[sub_resource type="Gradient" id="rp_s1"]
+offsets = PackedFloat32Array( 0.37037, 0.548148, 1 )
+colors = PackedColorArray( 0, 0, 0, 1, 0.211765, 0.211765, 0.211765, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture1D" id="rp_s2"]
+gradient = SubResource("rp_s1")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_Water2DSide"]
+diffuse_texture = ExtResource("restored_2")
+normal_texture = ExtResource("restored_normal")
 
 [sub_resource type="ShaderMaterial" id="3"]
 shader = ExtResource("1")
+shader_parameter/water_tint = Color( 0.223529, 0.458824, 0.733333, 1 )
+shader_parameter/shadow_color = Color( 0.0862745, 0.109804, 0.462745, 1 )
+shader_parameter/distortion_scale = Vector2( 0.385, 0.312 )
+shader_parameter/distortion_time_scale = 0.015
+shader_parameter/distortion_amplitude = 0.004
+shader_parameter/tile_factor = 0.382
+shader_parameter/water_time_scale = 0.049
+shader_parameter/reflection_intensity = 0.908
+shader_parameter/transform = Basis( 1, 0, 0, 0.291, 1.822, 0.555, 0, 0, 1 )
+shader_parameter/parallax_factor = 0.462
+shader_parameter/shore_color = Color( 0.137255, 0.411765, 0.670588, 1 )
+shader_parameter/shore_size = 0.038
+shader_parameter/shore_smoothness = 0.017
+shader_parameter/shore_height_factor = 0.127
+shader_parameter/scale = Vector2( 7.49668, 1.51649 )
+shader_parameter/zoom_y = 0.749154
+shader_parameter/aspect_ratio = 1.0
+shader_parameter/transition_gradient = SubResource("rp_s2")
+shader_parameter/distortion_map = ExtResource("rp_e5")
 
 [sub_resource type="ShaderMaterial" id="4"]
 shader = ExtResource("3")
+shader_parameter/water_tint = Color( 0.223529, 0.458824, 0.733333, 1 )
+shader_parameter/distortion_scale = Vector2( 0.385, 0.312 )
+shader_parameter/distortion_amplitude = 0.018
+shader_parameter/distortion_time_scale = 0.017
+shader_parameter/water_time_scale = 0.05
+shader_parameter/scale_y_factor = 2.0
+shader_parameter/tile_factor = 0.321
+shader_parameter/reflection_intensity = 0.908
+shader_parameter/scale = Vector2( 7.49668, 1.51649 )
+shader_parameter/zoom_y = 0.749154
+shader_parameter/aspect_ratio = 1.0
+shader_parameter/transition_gradient = SubResource("rp_s2")
+shader_parameter/distortion_map = ExtResource("rp_e5")
 
 [node name="WaterSidescroll2DDemo" type="CanvasLayer"]
 script = ExtResource("10")
@@ -22,33 +69,37 @@ script = ExtResource("10")
 position = Vector2(504.151, 466.506)
 rotation = -0.147885
 scale = Vector2(0.563456, 0.563456)
-texture = null
+texture = ExtResource("restored_1")
 
 [node name="Robi2" type="Sprite2D" parent="."]
 position = Vector2(1381.09, 496.752)
 rotation = 0.103686
 scale = Vector2(0.471994, 0.471994)
-texture = null
+texture = ExtResource("restored_1")
 
 [node name="Robi3" type="Sprite2D" parent="."]
 position = Vector2(963.357, 402.478)
 scale = Vector2(0.630556, 0.630556)
-texture = null
+texture = ExtResource("restored_1")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+copy_mode = 2
 
 [node name="Water2DSide" type="Sprite2D" parent="."]
+texture_repeat = 2
 material = SubResource("3")
 position = Vector2(961.506, 901.105)
 scale = Vector2(7.49668, 1.51649)
-texture = null
-normal_map = null
+texture = SubResource("CanvasTexture_Water2DSide")
 script = ExtResource("2")
 
 [node name="Water2DSideSimple" type="Sprite2D" parent="."]
+texture_repeat = 2
 visible = false
 material = SubResource("4")
 position = Vector2(961.506, 901.105)
 scale = Vector2(7.49668, 1.51649)
-texture = null
+texture = ExtResource("restored_2")
 script = ExtResource("2")
 
 [node name="DemoInterface" parent="." instance=ExtResource("6")]

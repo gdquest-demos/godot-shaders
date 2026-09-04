@@ -5,7 +5,7 @@ uniform vec4 shadow_color : source_color;
 uniform float tile_factor = 10.0;
 uniform float aspect_ratio = 0.5;
 
-uniform sampler2D texture_offset_uv : hint_default_black;
+uniform sampler2D texture_offset_uv : hint_default_black, repeat_enable;
 uniform vec2 texture_offset_scale = vec2(0.2, 0.2);
 uniform float texture_offset_height = 0.1;
 

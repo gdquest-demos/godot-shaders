@@ -1,39 +1,46 @@
-[gd_scene load_steps=5 format=3 uid="uid://djjqjfs0768ni"]
+[gd_scene load_steps=9 format=3 uid="uid://djjqjfs0768ni"]
 
 [ext_resource type="Script" path="res://Demos/Water2D/Water2D.gd" id="1"]
 [ext_resource type="Material" path="res://Demos/Water2D/water_2D_material.tres" id="4"]
 [ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="5"]
 [ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="7"]
+[ext_resource type="Texture2D" path="res://Demos/Water2D/disk_mask.png" id="restored_2"]
+[ext_resource type="Texture2D" path="res://Demos/Water2D/water_diffuse.png" id="restored_1"]
+[ext_resource type="Texture2D" path="res://Demos/Water2D/water_normal.png" id="restored_normal"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_Water2D"]
+diffuse_texture = ExtResource("restored_1")
+normal_texture = ExtResource("restored_normal")
 
 [node name="Water2DDemo" type="CanvasLayer"]
 layer = 0
 script = ExtResource("7")
 
 [node name="Water2D" type="Sprite2D" parent="."]
+texture_repeat = 2
 modulate = Color(0.27451, 0.32549, 0.517647, 1)
 material = ExtResource("4")
 position = Vector2(960, 540)
 scale = Vector2(7.5, 4.218)
-texture = null
-normal_map = null
+texture = SubResource("CanvasTexture_Water2D")
 script = ExtResource("1")
 
 [node name="PointLight2D" type="PointLight2D" parent="Water2D"]
 position = Vector2(-48, 5.6889)
 scale = Vector2(0.203903, 0.355556)
-texture = null
+texture = ExtResource("restored_2")
 texture_scale = 1.54
 color = Color(0.909804, 0.698039, 0.2, 1)
 energy = 1.1
-range_height = 66.4
+height = 66.4
 
 [node name="Light2D2" type="PointLight2D" parent="Water2D"]
 position = Vector2(88, 79.6445)
 scale = Vector2(0.203903, 0.355556)
-texture = null
+texture = ExtResource("restored_2")
 texture_scale = 1.54
 color = Color(0.909804, 0.698039, 0.2, 1)
 energy = 1.1
-range_height = 66.4
+height = 66.4
 
 [node name="DemoInterface" parent="." instance=ExtResource("5")]

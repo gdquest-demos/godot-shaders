@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://g8f67e4t4v2u"]
+[gd_scene load_steps=11 format=3 uid="uid://g8f67e4t4v2u"]
 
 [ext_resource type="Script" path="res://Demos/Blur/Ship.gd" id="1"]
 [ext_resource type="Environment" path="res://Shared/environments/2d_level_environment.tres" id="4"]
+[ext_resource type="Texture2D" path="res://Shared/sprites/cloud1.png" id="restored_2"]
+[ext_resource type="Texture2D" path="res://Demos/Blur/topdown-player.svg" id="restored_1"]
 
 [sub_resource type="Gradient" id="1"]
 offsets = PackedFloat32Array(0, 0.152439, 0.768293, 1)
@@ -76,7 +78,7 @@ tracks/1/keys = {
 }
 
 [node name="Ship" type="Sprite2D"]
-texture = null
+texture = ExtResource("restored_1")
 script = ExtResource("1")
 
 [node name="BackgroundRemoteTransform" type="RemoteTransform2D" parent="."]
@@ -93,14 +95,15 @@ lifetime = 1.4
 one_shot = true
 randomness = 1.0
 local_coords = false
-texture = null
+texture = ExtResource("restored_2")
 emission_shape = 4
 emission_points = PackedVector2Array(0, -50, 0, 50, -50, 0, 50, 0, -25, -25, 25, -25, -25, 25, 25, 25)
 emission_normals = PackedVector2Array(0, 50, 0, -50, 50, 0, -50, 0, 25, 25, -25, 25, 25, -25, -25, -25)
 emission_colors = PackedColorArray()
-flag_align_y = true
+particle_flag_align_y = true
 gravity = Vector2(0, 0)
-scale_amount = 0.25
+scale_amount_min = 0.25
+scale_amount_max = 0.25
 color_ramp = SubResource("1")
 
 [node name="ParticlesBoost" type="GPUParticles2D" parent="."]
@@ -113,7 +116,7 @@ explosiveness = 0.9
 randomness = 0.89
 local_coords = false
 process_material = SubResource("4")
-texture = null
+texture = ExtResource("restored_2")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("4")

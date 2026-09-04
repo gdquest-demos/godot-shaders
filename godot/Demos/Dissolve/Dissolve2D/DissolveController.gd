@@ -5,7 +5,6 @@ extends Sprite2D
 
 var debug_dissolve_control := 0.0: set = _set_debug_control
 
-@onready var _tween: Tween = $Tween
 @onready var _animation_player: AnimationPlayer = $AnimationPlayer
 
 
@@ -16,8 +15,8 @@ func _ready() -> void:
 
 func dissolve() -> void:
 	_animation_player.play("Dissolve")
-	_tween.interpolate_method(self, "dissolve_color", 0, 1, 3.0, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-	_tween.start()
+	var tween = create_tween()
+	tween.tween_method(dissolve_color, 0.0, 1.0, 3.0).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
 
 
 func dissolve_color(value: float) -> void:

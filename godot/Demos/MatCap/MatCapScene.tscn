@@ -1,188 +1,206 @@
-[gd_scene load_steps=12 format=3 uid="uid://cardfqb2rrmre"]
+[gd_scene load_steps=21 format=3 uid="uid://cardfqb2rrmre"]
 
 [ext_resource type="PackedScene" path="res://Shared/models/rat_model/rat.tscn" id="10"]
 [ext_resource type="Shader" path="res://Shaders/matcap.gdshader" id="12"]
+[ext_resource type="Texture2D" path="res://Demos/MatCap/skin_matcap.png" id="rp_e5"]
+[ext_resource type="Texture2D" path="res://Demos/MatCap/red_matcap.png" id="rp_e9"]
+[ext_resource type="Texture2D" path="res://Demos/MatCap/copper_matcap.png" id="rp_e7"]
+[ext_resource type="Texture2D" path="res://Demos/MatCap/redjade_matcap.png" id="rp_e6"]
+[ext_resource type="Texture2D" path="res://Demos/MatCap/plastic_matcap.jpg" id="rp_e8"]
+[ext_resource type="Texture2D" path="res://Demos/MatCap/flat_sketch_matcap.png" id="rp_e3"]
+[ext_resource type="Texture2D" path="res://Demos/MatCap/Chrome_matcap.png" id="rp_e2"]
+[ext_resource type="Texture2D" path="res://Demos/MatCap/glowy_matcap.jpeg" id="rp_e4"]
+[ext_resource type="Texture2D" path="res://Demos/MatCap/black_glass_matcap.jpeg" id="rp_e1"]
 
 [sub_resource type="ShaderMaterial" id="1"]
 render_priority = 0
 shader = ExtResource("12")
 shader_parameter/use_world_normals = false
+shader_parameter/matcap_texture = ExtResource("rp_e5")
 
 [sub_resource type="ShaderMaterial" id="2"]
 render_priority = 0
 shader = ExtResource("12")
 shader_parameter/use_world_normals = false
+shader_parameter/matcap_texture = ExtResource("rp_e9")
 
 [sub_resource type="ShaderMaterial" id="3"]
 render_priority = 0
 shader = ExtResource("12")
 shader_parameter/use_world_normals = false
+shader_parameter/matcap_texture = ExtResource("rp_e7")
 
 [sub_resource type="ShaderMaterial" id="4"]
 render_priority = 0
 shader = ExtResource("12")
 shader_parameter/use_world_normals = false
+shader_parameter/matcap_texture = ExtResource("rp_e6")
 
 [sub_resource type="ShaderMaterial" id="5"]
 render_priority = 0
 shader = ExtResource("12")
 shader_parameter/use_world_normals = false
+shader_parameter/matcap_texture = ExtResource("rp_e8")
 
 [sub_resource type="ShaderMaterial" id="6"]
 render_priority = 0
 shader = ExtResource("12")
 shader_parameter/use_world_normals = false
+shader_parameter/matcap_texture = ExtResource("rp_e3")
 
 [sub_resource type="ShaderMaterial" id="7"]
 render_priority = 0
 shader = ExtResource("12")
 shader_parameter/use_world_normals = false
+shader_parameter/matcap_texture = ExtResource("rp_e2")
 
 [sub_resource type="ShaderMaterial" id="8"]
 render_priority = 0
 shader = ExtResource("12")
 shader_parameter/use_world_normals = false
+shader_parameter/matcap_texture = ExtResource("rp_e4")
 
 [sub_resource type="ShaderMaterial" id="9"]
 render_priority = 0
 shader = ExtResource("12")
 shader_parameter/use_world_normals = false
+shader_parameter/matcap_texture = ExtResource("rp_e1")
 
 [node name="MatCapScene" type="Node3D"]
 
 [node name="SkinRat" parent="." instance=ExtResource("10")]
 
 [node name="body1" parent="SkinRat" index="0"]
-material/0 = SubResource("1")
+surface_material_override/0 = SubResource("1")
 
 [node name="eyes1" parent="SkinRat" index="1"]
-material/0 = SubResource("1")
+surface_material_override/0 = SubResource("1")
 
 [node name="head1" parent="SkinRat" index="2"]
-material/0 = SubResource("1")
+surface_material_override/0 = SubResource("1")
 
 [node name="teeth1" parent="SkinRat" index="3"]
-material/0 = SubResource("1")
+surface_material_override/0 = SubResource("1")
 
 [node name="RubberRat" parent="." instance=ExtResource("10")]
 transform = Transform3D(0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, -2, 0, -0.5)
 
 [node name="body1" parent="RubberRat" index="0"]
-material/0 = SubResource("2")
+surface_material_override/0 = SubResource("2")
 
 [node name="eyes1" parent="RubberRat" index="1"]
-material/0 = SubResource("2")
+surface_material_override/0 = SubResource("2")
 
 [node name="head1" parent="RubberRat" index="2"]
-material/0 = SubResource("2")
+surface_material_override/0 = SubResource("2")
 
 [node name="teeth1" parent="RubberRat" index="3"]
-material/0 = SubResource("2")
+surface_material_override/0 = SubResource("2")
 
 [node name="CopperRat" parent="." instance=ExtResource("10")]
 transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -4, 0, -1)
 
 [node name="body1" parent="CopperRat" index="0"]
-material/0 = SubResource("3")
+surface_material_override/0 = SubResource("3")
 
 [node name="eyes1" parent="CopperRat" index="1"]
-material/0 = SubResource("3")
+surface_material_override/0 = SubResource("3")
 
 [node name="head1" parent="CopperRat" index="2"]
-material/0 = SubResource("3")
+surface_material_override/0 = SubResource("3")
 
 [node name="teeth1" parent="CopperRat" index="3"]
-material/0 = SubResource("3")
+surface_material_override/0 = SubResource("3")
 
 [node name="RedJadeRat" parent="." instance=ExtResource("10")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -6, 0, -1.5)
 
 [node name="body1" parent="RedJadeRat" index="0"]
-material/0 = SubResource("4")
+surface_material_override/0 = SubResource("4")
 
 [node name="eyes1" parent="RedJadeRat" index="1"]
-material/0 = SubResource("4")
+surface_material_override/0 = SubResource("4")
 
 [node name="head1" parent="RedJadeRat" index="2"]
-material/0 = SubResource("4")
+surface_material_override/0 = SubResource("4")
 
 [node name="teeth1" parent="RedJadeRat" index="3"]
-material/0 = SubResource("4")
+surface_material_override/0 = SubResource("4")
 
 [node name="PlasticRat" parent="." instance=ExtResource("10")]
 transform = Transform3D(0.766044, 0, -0.642787, 0, 1, 0, 0.642787, 0, 0.766044, -8, 0, -2)
 
 [node name="body1" parent="PlasticRat" index="0"]
-material/0 = SubResource("5")
+surface_material_override/0 = SubResource("5")
 
 [node name="eyes1" parent="PlasticRat" index="1"]
-material/0 = SubResource("5")
+surface_material_override/0 = SubResource("5")
 
 [node name="head1" parent="PlasticRat" index="2"]
-material/0 = SubResource("5")
+surface_material_override/0 = SubResource("5")
 
 [node name="teeth1" parent="PlasticRat" index="3"]
-material/0 = SubResource("5")
+surface_material_override/0 = SubResource("5")
 
 [node name="SketchRat" parent="." instance=ExtResource("10")]
 transform = Transform3D(0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, 2, 0, -0.5)
 
 [node name="body1" parent="SketchRat" index="0"]
-material/0 = SubResource("6")
+surface_material_override/0 = SubResource("6")
 
 [node name="eyes1" parent="SketchRat" index="1"]
-material/0 = SubResource("6")
+surface_material_override/0 = SubResource("6")
 
 [node name="head1" parent="SketchRat" index="2"]
-material/0 = SubResource("6")
+surface_material_override/0 = SubResource("6")
 
 [node name="teeth1" parent="SketchRat" index="3"]
-material/0 = SubResource("6")
+surface_material_override/0 = SubResource("6")
 
 [node name="ChromeRat" parent="." instance=ExtResource("10")]
 transform = Transform3D(0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, 4, 0, -1)
 
 [node name="body1" parent="ChromeRat" index="0"]
-material/0 = SubResource("7")
+surface_material_override/0 = SubResource("7")
 
 [node name="eyes1" parent="ChromeRat" index="1"]
-material/0 = SubResource("7")
+surface_material_override/0 = SubResource("7")
 
 [node name="head1" parent="ChromeRat" index="2"]
-material/0 = SubResource("7")
+surface_material_override/0 = SubResource("7")
 
 [node name="teeth1" parent="ChromeRat" index="3"]
-material/0 = SubResource("7")
+surface_material_override/0 = SubResource("7")
 
 [node name="NeonRat" parent="." instance=ExtResource("10")]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 6, 0, -1.5)
 
 [node name="body1" parent="NeonRat" index="0"]
-material/0 = SubResource("8")
+surface_material_override/0 = SubResource("8")
 
 [node name="eyes1" parent="NeonRat" index="1"]
-material/0 = SubResource("8")
+surface_material_override/0 = SubResource("8")
 
 [node name="head1" parent="NeonRat" index="2"]
-material/0 = SubResource("8")
+surface_material_override/0 = SubResource("8")
 
 [node name="teeth1" parent="NeonRat" index="3"]
-material/0 = SubResource("8")
+surface_material_override/0 = SubResource("8")
 
 [node name="BlackGlassRat" parent="." instance=ExtResource("10")]
 transform = Transform3D(0.766044, 0, 0.642787, 0, 1, 0, -0.642787, 0, 0.766044, 8, 0, -2)
 
 [node name="body1" parent="BlackGlassRat" index="0"]
-material/0 = SubResource("9")
+surface_material_override/0 = SubResource("9")
 
 [node name="eyes1" parent="BlackGlassRat" index="1"]
-material/0 = SubResource("9")
+surface_material_override/0 = SubResource("9")
 
 [node name="head1" parent="BlackGlassRat" index="2"]
-material/0 = SubResource("9")
+surface_material_override/0 = SubResource("9")
 
 [node name="teeth1" parent="BlackGlassRat" index="3"]
-material/0 = SubResource("9")
+surface_material_override/0 = SubResource("9")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.978213, -0.0649006, 0.197199, 0, 0.949879, 0.312617, -0.207604, -0.305806, 0.929184, 4.322, 6.868, 14.885)

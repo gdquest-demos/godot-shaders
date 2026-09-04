@@ -10,39 +10,42 @@ colors = PackedColorArray( 0.164706, 0.92549, 0.67451, 0.615686, 0, 0.0862745, 1
 gradient = SubResource( 1 )
 
 [sub_resource type="FastNoiseLite" id=3]
-octaves = 5
-period = 84.1
-persistence = 0.764
-lacunarity = 1.74
+frequency = 0.01189061
+fractal_octaves = 5
+fractal_gain = 0.764
+fractal_lacunarity = 1.74
 
-[sub_resource type="NoiseTexture" id=4]
+
+[sub_resource type="NoiseTexture2D" id=4]
 seamless = true
 noise = SubResource( 3 )
 
 [sub_resource type="FastNoiseLite" id=5]
-period = 145.1
-persistence = 0.215
-lacunarity = 1.86
+frequency = 0.00689180
+fractal_octaves = 3
+fractal_gain = 0.215
+fractal_lacunarity = 1.86
 
-[sub_resource type="NoiseTexture" id=6]
+
+[sub_resource type="NoiseTexture2D" id=6]
 seamless = true
 noise = SubResource( 5 )
 
 [resource]
 shader = ExtResource( 1 )
-shader_param/main_noise_scale = Vector2( 5.7, 1 )
-shader_param/detail_noise_scale = Vector2( 2.5, 2.5 )
-shader_param/water_speed = 0.2
-shader_param/displacement = 0.444
-shader_param/foam_color = Color( 0.756863, 0.890196, 0.878431, 1 )
-shader_param/foam_threshold = 0.5
-shader_param/foam_detail_threshold = 0.7
-shader_param/foam_smoothness = 0.063
-shader_param/max_depth = 1.0
-shader_param/depth_foam_offset = 0.25
-shader_param/debug_vertex_color = false
-shader_param/debug_uv = false
-shader_param/main_noise = SubResource( 6 )
-shader_param/detail_noise = SubResource( 4 )
-shader_param/depth_color_curve = SubResource( 2 )
-shader_param/debug_uv_color_grid = ExtResource( 2 )
+shader_parameter/main_noise_scale = Vector2( 5.7, 1 )
+shader_parameter/detail_noise_scale = Vector2( 2.5, 2.5 )
+shader_parameter/water_speed = 0.2
+shader_parameter/displacement = 0.444
+shader_parameter/foam_color = Color( 0.756863, 0.890196, 0.878431, 1 )
+shader_parameter/foam_threshold = 0.5
+shader_parameter/foam_detail_threshold = 0.7
+shader_parameter/foam_smoothness = 0.063
+shader_parameter/max_depth = 1.0
+shader_parameter/depth_foam_offset = 0.25
+shader_parameter/debug_vertex_color = false
+shader_parameter/debug_uv = false
+shader_parameter/main_noise = SubResource( 6 )
+shader_parameter/detail_noise = SubResource( 4 )
+shader_parameter/depth_color_curve = SubResource( 2 )
+shader_parameter/debug_uv_color_grid = ExtResource( 2 )

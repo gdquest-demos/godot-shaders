@@ -11,22 +11,22 @@
 [node name="Cube1" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.42176, 1, -4.20731)
 mesh = SubResource("1")
-material/0 = ExtResource("2")
+surface_material_override/0 = ExtResource("2")
 
 [node name="Cube2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.272, 1, -15.988)
 mesh = SubResource("1")
-material/0 = ExtResource("2")
+surface_material_override/0 = ExtResource("2")
 
 [node name="Sphere1" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.93966, 1, 2.68602)
 mesh = SubResource("2")
-material/0 = ExtResource("2")
+surface_material_override/0 = ExtResource("2")
 
 [node name="Sphere2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.954, 1, -1.604)
 mesh = SubResource("2")
-material/0 = ExtResource("2")
+surface_material_override/0 = ExtResource("2")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.907712, -0.114994, 0.40353, 0, 0.961713, 0.27406, -0.419595, -0.248767, 0.872958, 8.89379, 6.41813, 14.8949)

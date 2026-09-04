@@ -6,7 +6,6 @@ extends SubViewportContainer
 
 var torus_radius := -0.25: set = _set_torus_radius
 
-@onready var _tween: Tween = $Tween
 @onready var _mask: ColorRect = get_node(mask_path)
 
 
@@ -16,10 +15,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func blast() -> void:
-	_tween.interpolate_property(
-		self, "torus_radius", -0.25, 2.0, shockwave_duration, Tween.TRANS_LINEAR, Tween.EASE_OUT
-	)
-	_tween.start()
+	var tween = create_tween()
+	tween.tween_property(self, "torus_radius", 2.0, shockwave_duration).from(-0.25).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT)
 
 
 func _set_torus_radius(value: float) -> void:

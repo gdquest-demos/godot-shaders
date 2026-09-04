@@ -7,7 +7,7 @@ offset_left = 16.0
 offset_top = 24.0
 offset_right = 666.0
 offset_bottom = 361.0
-scroll_horizontal_enabled = false
+horizontal_scroll_mode = 0
 script = ExtResource("1")
 __meta__ = {
 "_edit_use_anchors_": false

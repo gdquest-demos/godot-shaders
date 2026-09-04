@@ -27,4 +27,6 @@ func update_zoom() -> void:
 
 # Sets the aspect ratio of the texture
 func update_aspect_ratio() -> void:
+	if texture == null:
+		return
 	material.set_shader_parameter("aspect_ratio", texture.get_size().aspect())

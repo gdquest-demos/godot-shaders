@@ -1,9 +1,13 @@
-[gd_scene load_steps=25 format=3 uid="uid://hl7owlhh5hbh"]
+[gd_scene load_steps=29 format=3 uid="uid://hl7owlhh5hbh"]
 
 [ext_resource type="PackedScene" path="res://Shared/Demo3DEnvironment.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="2"]
 [ext_resource type="Script" path="res://Utils/DebugViewer.gd" id="6"]
 [ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="10"]
+[ext_resource type="Texture2D" path="res://Shared/models/rat_model/rat_albedo.png" id="rp_e5"]
+[ext_resource type="Texture2D" path="res://Shared/models/rat_model/rat_body_ao.png" id="rp_e7"]
+[ext_resource type="Texture2D" path="res://Shared/models/rat_model/rat_head_albedo.png" id="rp_e4"]
+[ext_resource type="Texture2D" path="res://Shared/models/rat_model/rat_head_ao.png" id="rp_e8"]
 
 [sub_resource type="BoxMesh" id="1"]
 size = Vector3(10, 5, 2)
@@ -56,7 +60,7 @@ void fragment() {
 	METALLIC = metallic;
 	ROUGHNESS = roughness;
 	SPECULAR = specular;
-	ALPHA = 1f;
+	ALPHA = 1.0;
 	AO = dot(texture(texture_ambient_occlusion,base_uv),ao_texture_channel);
 	AO_LIGHT_AFFECT = ao_light_affect;
 }
@@ -65,10 +69,23 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="16"]
 render_priority = 1
 shader = SubResource("15")
+shader_parameter/albedo = Color( 1, 1, 1, 1 )
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 1.0
+shader_parameter/point_size = 1.0
+shader_parameter/ao_texture_channel = Plane( 1, 0, 0, 0 )
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3( 1, 1, 1 )
+shader_parameter/uv1_offset = Vector3( 0, 0, 0 )
+shader_parameter/uv2_scale = Vector3( 1, 1, 1 )
+shader_parameter/uv2_offset = Vector3( 0, 0, 0 )
+shader_parameter/texture_albedo = ExtResource("rp_e5")
+shader_parameter/texture_ambient_occlusion = ExtResource("rp_e7")
 
 [sub_resource type="Shader" id="7"]
 code = "shader_type spatial;
-render_mode ambient_light_disabled, depth_test_disable, cull_front;
+render_mode ambient_light_disabled, depth_test_disabled, cull_front;
 
 uniform float xray_color_intensity = 1.0;
 uniform float outline_sharpness = 2.0;
@@ -83,6 +100,9 @@ void fragment() {
 render_priority = 0
 next_pass = SubResource("16")
 shader = SubResource("7")
+shader_parameter/xray_color_intensity = 3.0
+shader_parameter/outline_sharpness = 1.0
+shader_parameter/outline_color = Color( 0.87451, 0.254902, 0.0901961, 1 )
 
 [sub_resource type="ArrayMesh" id="2"]
 resource_name = "eyes1Mesh"
@@ -130,7 +150,7 @@ void fragment() {
 	vec4 albedo_tex = texture(texture_albedo,base_uv);
 	ALBEDO = albedo.rgb * albedo_tex.rgb;
 	METALLIC = metallic;
-	ALPHA = 1f;
+	ALPHA = 1.0;
 	ROUGHNESS = roughness;
 	SPECULAR = specular;
 	vec3 emission_tex = texture(texture_emission,base_uv).rgb;
@@ -141,11 +161,25 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="18"]
 render_priority = 1
 shader = SubResource("17")
+shader_parameter/albedo = Color( 0, 0, 0, 1 )
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 1.0
+shader_parameter/point_size = 1.0
+shader_parameter/emission = Color( 0.898039, 0.741176, 0.133333, 1 )
+shader_parameter/emission_energy = 3.0
+shader_parameter/uv1_scale = Vector3( 1, 1, 1 )
+shader_parameter/uv1_offset = Vector3( 0, 0, 0 )
+shader_parameter/uv2_scale = Vector3( 1, 1, 1 )
+shader_parameter/uv2_offset = Vector3( 0, 0, 0 )
 
 [sub_resource type="ShaderMaterial" id="24"]
 render_priority = 0
 next_pass = SubResource("18")
 shader = SubResource("7")
+shader_parameter/xray_color_intensity = 3.0
+shader_parameter/outline_sharpness = 1.0
+shader_parameter/outline_color = Color( 0.87451, 0.254902, 0.0901961, 1 )
 
 [sub_resource type="ArrayMesh" id="3"]
 resource_name = "head1Mesh"
@@ -195,7 +229,7 @@ void fragment() {
 	METALLIC = metallic;
 	ROUGHNESS = roughness;
 	SPECULAR = specular;
-	ALPHA = 1f;
+	ALPHA = 1.0;
 	AO = dot(texture(texture_ambient_occlusion,base_uv),ao_texture_channel);
 	AO_LIGHT_AFFECT = ao_light_affect;
 }
@@ -204,11 +238,27 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="20"]
 render_priority = 1
 shader = SubResource("19")
+shader_parameter/albedo = Color( 1, 1, 1, 1 )
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 1.0
+shader_parameter/point_size = 1.0
+shader_parameter/ao_texture_channel = Plane( 1, 0, 0, 0 )
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3( 1, 1, 1 )
+shader_parameter/uv1_offset = Vector3( 0, 0, 0 )
+shader_parameter/uv2_scale = Vector3( 1, 1, 1 )
+shader_parameter/uv2_offset = Vector3( 0, 0, 0 )
+shader_parameter/texture_albedo = ExtResource("rp_e4")
+shader_parameter/texture_ambient_occlusion = ExtResource("rp_e8")
 
 [sub_resource type="ShaderMaterial" id="25"]
 render_priority = 0
 next_pass = SubResource("20")
 shader = SubResource("7")
+shader_parameter/xray_color_intensity = 3.0
+shader_parameter/outline_sharpness = 1.0
+shader_parameter/outline_color = Color( 0.87451, 0.254902, 0.0901961, 1 )
 
 [sub_resource type="ArrayMesh" id="4"]
 resource_name = "teeth1Mesh"
@@ -258,7 +308,7 @@ void fragment() {
 	METALLIC = metallic;
 	ROUGHNESS = roughness;
 	SPECULAR = specular;
-	ALPHA = 1f;
+	ALPHA = 1.0;
 	AO = dot(texture(texture_ambient_occlusion,base_uv),ao_texture_channel);
 	AO_LIGHT_AFFECT = ao_light_affect;
 }
@@ -267,11 +317,27 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="22"]
 render_priority = 1
 shader = SubResource("21")
+shader_parameter/albedo = Color( 1, 1, 1, 1 )
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 1.0
+shader_parameter/point_size = 1.0
+shader_parameter/ao_texture_channel = Plane( 1, 0, 0, 0 )
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/uv1_scale = Vector3( 1, 1, 1 )
+shader_parameter/uv1_offset = Vector3( 0, 0, 0 )
+shader_parameter/uv2_scale = Vector3( 1, 1, 1 )
+shader_parameter/uv2_offset = Vector3( 0, 0, 0 )
+shader_parameter/texture_albedo = ExtResource("rp_e4")
+shader_parameter/texture_ambient_occlusion = ExtResource("rp_e8")
 
 [sub_resource type="ShaderMaterial" id="26"]
 render_priority = 0
 next_pass = SubResource("22")
 shader = SubResource("7")
+shader_parameter/xray_color_intensity = 3.0
+shader_parameter/outline_sharpness = 1.0
+shader_parameter/outline_color = Color( 0.87451, 0.254902, 0.0901961, 1 )
 
 [sub_resource type="Animation" id="13"]
 length = 0.001
@@ -313,26 +379,26 @@ script = ExtResource("10")
 [node name="Wall" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00390244, 2.51279, 4.1794)
 mesh = SubResource("1")
-material/0 = null
+surface_material_override/0 = null
 
 [node name="XrayRat" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.26067)
 
 [node name="body" type="MeshInstance3D" parent="XrayRat"]
 mesh = SubResource("27")
-material/0 = SubResource("23")
+surface_material_override/0 = SubResource("23")
 
 [node name="eyes" type="MeshInstance3D" parent="XrayRat"]
 mesh = SubResource("2")
-material/0 = SubResource("24")
+surface_material_override/0 = SubResource("24")
 
 [node name="head" type="MeshInstance3D" parent="XrayRat"]
 mesh = SubResource("3")
-material/0 = SubResource("25")
+surface_material_override/0 = SubResource("25")
 
 [node name="teeth" type="MeshInstance3D" parent="XrayRat"]
 mesh = SubResource("4")
-material/0 = SubResource("26")
+surface_material_override/0 = SubResource("26")
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(0.999977, 0, 0, 0, 1, 0, 0, 0, 0.999977, 0, 0, 8.68621)

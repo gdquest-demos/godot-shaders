@@ -5,23 +5,27 @@
 [ext_resource path="res://Demos/WindTrees/Textures/bark_normal.png" type="Texture2D" id=3]
 
 [sub_resource type="FastNoiseLite" id=5]
-octaves = 1
+frequency = 0.01562500
+fractal_octaves = 1
+fractal_gain = 0.5
+fractal_lacunarity = 2.0
 
-[sub_resource type="NoiseTexture" id=6]
+
+[sub_resource type="NoiseTexture2D" id=6]
 seamless = true
 noise = SubResource( 5 )
 
 [resource]
 shader = ExtResource( 1 )
-shader_param/albedo = Color( 1, 1, 1, 1 )
-shader_param/roughness = 1.0
-shader_param/normal_scale = 1.0
-shader_param/tree_height = 12.0
-shader_param/wind_angle = 270.0
-shader_param/wind_strength = 0.5
-shader_param/wind_frequency = 0.75
-shader_param/wind_speed = 0.35
-shader_param/stretch_correction = 0.02
-shader_param/texture_albedo = ExtResource( 2 )
-shader_param/texture_normal = ExtResource( 3 )
-shader_param/texture_wind_noise = SubResource( 6 )
+shader_parameter/albedo = Color( 1, 1, 1, 1 )
+shader_parameter/roughness = 1.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/tree_height = 12.0
+shader_parameter/wind_angle = 270.0
+shader_parameter/wind_strength = 0.5
+shader_parameter/wind_frequency = 0.75
+shader_parameter/wind_speed = 0.35
+shader_parameter/stretch_correction = 0.02
+shader_parameter/texture_albedo = ExtResource( 2 )
+shader_parameter/texture_normal = ExtResource( 3 )
+shader_parameter/texture_wind_noise = SubResource( 6 )

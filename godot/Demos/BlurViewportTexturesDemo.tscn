@@ -10,12 +10,14 @@
 
 [sub_resource type="ShaderMaterial" id="1"]
 shader = ExtResource("4")
+shader_parameter/blur_scale = Vector2( 0, 0 )
 
 [sub_resource type="ViewportTexture" id="2"]
 viewport_path = NodePath("SceneView/SubViewport")
 
 [sub_resource type="ShaderMaterial" id="3"]
 shader = ExtResource("4")
+shader_parameter/blur_scale = Vector2( 0, 0 )
 
 [sub_resource type="ViewportTexture" id="4"]
 viewport_path = NodePath("BlurView1/SubViewport")
@@ -55,8 +57,7 @@ __meta__ = {
 [node name="SubViewport" type="SubViewport" parent="SceneView"]
 size = Vector2(1920, 1080)
 handle_input_locally = false
-usage = 0
-render_target_update_mode = 3
+render_target_update_mode = 4
 
 [node name="MotionBlurScene" parent="SceneView/SubViewport" instance=ExtResource("3")]
 trail_length = 24000.0
@@ -87,7 +88,7 @@ __meta__ = {
 size = Vector2(1920, 1080)
 transparent_bg = true
 handle_input_locally = false
-render_target_update_mode = 3
+render_target_update_mode = 4
 
 [node name="Ship" parent="ShipView/SubViewport" instance=ExtResource("2")]
 position = Vector2(960, 540)
@@ -100,7 +101,7 @@ remote_path = NodePath("../../../../SceneView/SubViewport/MotionBlurScene/Shakin
 
 [node name="Camera2D" type="Camera2D" parent="ShipView/SubViewport"]
 position = Vector2(960, 540)
-current = true
+enabled = true
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 25.0
@@ -118,8 +119,7 @@ __meta__ = {
 [node name="SubViewport" type="SubViewport" parent="BlurView1"]
 size = Vector2(1920, 1080)
 handle_input_locally = false
-usage = 0
-render_target_update_mode = 3
+render_target_update_mode = 4
 
 [node name="TextureRect" type="TextureRect" parent="BlurView1/SubViewport"]
 material = SubResource("1")
@@ -127,7 +127,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 texture = SubResource("2")
-expand = true
+expand_mode = 1
 stretch_mode = 1
 script = ExtResource("1")
 direction_provider_path = NodePath("../../../../BlurViewportTexturesDemo/SceneView/SubViewport/MotionBlurScene")
@@ -146,8 +146,7 @@ __meta__ = {
 [node name="SubViewport" type="SubViewport" parent="BlurView2"]
 size = Vector2(1920, 1080)
 handle_input_locally = false
-usage = 0
-render_target_update_mode = 3
+render_target_update_mode = 4
 
 [node name="TextureRect" type="TextureRect" parent="BlurView2/SubViewport"]
 material = SubResource("3")
@@ -155,7 +154,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 texture = SubResource("4")
-expand = true
+expand_mode = 1
 stretch_mode = 1
 script = ExtResource("1")
 direction_provider_path = NodePath("../../../../BlurViewportTexturesDemo/SceneView/SubViewport/MotionBlurScene")
@@ -166,7 +165,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 texture = SubResource("5")
-expand = true
+expand_mode = 1
 stretch_mode = 1
 flip_v = true
 __meta__ = {
@@ -179,7 +178,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 texture = SubResource("8")
-expand = true
+expand_mode = 1
 stretch_mode = 1
 flip_v = true
 __meta__ = {

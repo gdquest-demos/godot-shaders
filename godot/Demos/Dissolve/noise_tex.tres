@@ -1,9 +1,11 @@
-[gd_resource type="NoiseTexture" load_steps=2 format=2]
+[gd_resource type="NoiseTexture2D" load_steps=2 format=2]
 
 [sub_resource type="FastNoiseLite" id=1]
-period = 34.0
-persistence = 0.141
-lacunarity = 2.84
+frequency = 0.02941176
+fractal_octaves = 3
+fractal_gain = 0.141
+fractal_lacunarity = 2.84
+
 
 [resource]
 seamless = true

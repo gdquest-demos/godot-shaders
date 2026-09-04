@@ -1,12 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7a8wto2qrdx6"]
+[gd_scene load_steps=11 format=3 uid="uid://b7a8wto2qrdx6"]
 
 [ext_resource type="PackedScene" path="res://Shared/Background2D/Demo2DBackground.tscn" id="1"]
 [ext_resource type="Script" path="res://Demos/Reflection2D/Reflection2D.gd" id="3"]
 [ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="4"]
 [ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="6"]
+[ext_resource type="Texture2D" path="res://Demos/Outline/Outline2D/mouse_cursor.png" id="restored_2"]
+[ext_resource type="Texture2D" path="res://Shared/sprites/robi_shaded.png" id="restored_1"]
+
+[sub_resource type="Gradient" id="rp_s2"]
+offsets = PackedFloat32Array( 0.257485, 0.371257, 0.646707, 1 )
+colors = PackedColorArray( 0, 0, 0, 1, 0.0843125, 0.0843125, 0.0843125, 1, 0.456693, 0.456693, 0.456693, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture1D" id="rp_s3"]
+gradient = SubResource("rp_s2")
 
 [sub_resource type="Shader" id="1"]
 code = "shader_type canvas_item;
+
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 
 uniform vec4 color :source_color;
 uniform float reflection_intensity = 0.5;
@@ -27,6 +38,11 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="4"]
 shader = SubResource("1")
+shader_parameter/color = Color( 0.207843, 0.203922, 0.615686, 1 )
+shader_parameter/reflection_intensity = 0.542
+shader_parameter/scale_y = 2.91774
+shader_parameter/zoom_y = 0.7937
+shader_parameter/transition_gradient = SubResource("rp_s3")
 
 [node name="Reflection2DDemo" type="CanvasLayer"]
 script = ExtResource("6")
@@ -37,24 +53,27 @@ script = ExtResource("6")
 position = Vector2(504.151, 466.506)
 rotation = -0.147885
 scale = Vector2(0.563456, 0.563456)
-texture = null
+texture = ExtResource("restored_1")
 
 [node name="Robi2" type="Sprite2D" parent="."]
 position = Vector2(1389.09, 490.752)
 rotation = 0.103686
 scale = Vector2(0.471994, 0.471994)
-texture = null
+texture = ExtResource("restored_1")
 
 [node name="Robi3" type="Sprite2D" parent="."]
 position = Vector2(963.357, 402.478)
 scale = Vector2(0.630556, 0.630556)
-texture = null
+texture = ExtResource("restored_1")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+copy_mode = 2
 
 [node name="MirrorYPlane" type="Sprite2D" parent="."]
 material = SubResource("4")
 position = Vector2(969.303, 893.21)
 scale = Vector2(23.8484, 2.91774)
-texture = null
+texture = ExtResource("restored_2")
 script = ExtResource("3")
 
 [node name="DemoInterface" parent="." instance=ExtResource("4")]

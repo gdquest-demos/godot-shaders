@@ -1,7 +1,7 @@
 @tool
 extends Node
 
-@export (float, 0, 1) var debug_dissolve_control := 0.0: set = _set_debug_control
+@export_range(0.0, 1.0) var debug_dissolve_control := 0.0: set = _set_debug_control
 
 @onready var mask := owner.get_node("MaskView/SubViewport/RobiMask")
 @onready var robi := owner.get_node("Robi")

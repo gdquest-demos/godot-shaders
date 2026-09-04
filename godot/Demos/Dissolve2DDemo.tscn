@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bes6p8ab5545"]
+[gd_scene load_steps=29 format=3 uid="uid://bes6p8ab5545"]
 
 [ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="1"]
 [ext_resource type="Gradient" path="res://Demos/Dissolve/Dissolve2D/color_ramp.tres" id="2"]
@@ -12,6 +12,8 @@
 [ext_resource type="Script" path="res://Demos/Dissolve/Dissolve2D/Dissolve2DControls.gd" id="14"]
 [ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="15"]
 [ext_resource type="Script" path="res://Demos/Dissolve/Dissolve2D/Particles2D.gd" id="16"]
+[ext_resource type="Texture2D" path="res://Shared/sprites/robi_shaded.png" id="restored_1"]
+[ext_resource type="Texture2D" path="res://Shared/sprites/cloud1.png" id="restored_1x"]
 
 [sub_resource type="ShaderMaterial" id="3"]
 shader = ExtResource("6")
@@ -27,7 +29,7 @@ length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_param/dissolve_amount")
+tracks/0/path = NodePath(".:material:shader_parameter/dissolve_amount")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -39,7 +41,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:material:shader_param/burn_color")
+tracks/1/path = NodePath(".:material:shader_parameter/burn_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -54,7 +56,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_param/dissolve_amount")
+tracks/0/path = NodePath(".:material:shader_parameter/dissolve_amount")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -66,7 +68,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:material:shader_param/burn_color")
+tracks/1/path = NodePath(".:material:shader_parameter/burn_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -91,7 +93,7 @@ length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_param/dissolve_amount")
+tracks/0/path = NodePath(".:material:shader_parameter/dissolve_amount")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -106,7 +108,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_param/dissolve_amount")
+tracks/0/path = NodePath(".:material:shader_parameter/dissolve_amount")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -161,11 +163,10 @@ debug_dissolve_control = 0.538
 [node name="Robi" type="Sprite2D" parent="."]
 material = SubResource("3")
 position = Vector2(960, 540)
-texture = null
+texture = ExtResource("restored_1")
 script = ExtResource("8")
 emission_color = ExtResource("2")
 
-[node name="Tween" type="Tween" parent="Robi"]
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Robi"]
 remote_path = NodePath("../../MaskView/SubViewport/RobiMask")
@@ -188,15 +189,14 @@ __meta__ = {
 [node name="SubViewport" type="SubViewport" parent="ScaledView"]
 size = Vector2(240, 135)
 handle_input_locally = false
-usage = 0
-render_target_update_mode = 3
+render_target_update_mode = 4
 
 [node name="TextureRect" type="TextureRect" parent="ScaledView/SubViewport"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 texture = SubResource("2")
-expand = true
+expand_mode = 1
 
 [node name="MaskView" type="SubViewportContainer" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -212,13 +212,12 @@ __meta__ = {
 size = Vector2(1920, 1080)
 transparent_bg = true
 handle_input_locally = false
-usage = 0
-render_target_update_mode = 3
+render_target_update_mode = 4
 
 [node name="RobiMask" type="Sprite2D" parent="MaskView/SubViewport"]
 material = SubResource("1")
 position = Vector2(960, 540)
-texture = null
+texture = ExtResource("restored_1")
 script = ExtResource("7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MaskView/SubViewport/RobiMask"]
@@ -233,7 +232,7 @@ lifetime = 1.5
 visibility_rect = Rect2(-250, -350, 500, 700)
 local_coords = false
 process_material = SubResource("10")
-texture = null
+texture = ExtResource("restored_1x")
 script = ExtResource("16")
 emission_mask = SubResource("11")
 

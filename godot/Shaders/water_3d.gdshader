@@ -21,6 +21,23 @@ uniform sampler2D refraction_noise : hint_normal;
 uniform sampler2D foam_noise : hint_default_black;
 uniform sampler2D displacement_noise : hint_default_black;
 
+// In Godot 4 the screen and depth buffers are reached through uniforms with
+// these hints instead of the built-ins SCREEN_TEXTURE / DEPTH_TEXTURE.
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+uniform sampler2D DEPTH_TEXTURE : hint_depth_texture, filter_linear_mipmap;
+
+// Returns the positive view-space distance from the camera to the geometry
+// already drawn behind this fragment.
+// Godot 4 stores depth in the [0, 1] range (reverse-Z), so unlike in Godot 3 we
+// only remap the screen UV to NDC and leave the depth value untouched.
+float get_scene_distance(vec2 uv, mat4 inv_projection_matrix) {
+	float depth_raw = texture(DEPTH_TEXTURE, uv).r;
+	vec3 ndc = vec3(uv * 2.0 - 1.0, depth_raw);
+	vec4 position_view = inv_projection_matrix * vec4(ndc, 1.0);
+	position_view.xyz /= position_view.w;
+	return -position_view.z;
+}
+
 void vertex() {
 	float displacement = textureLod(
 			displacement_noise, 
@@ -35,19 +52,17 @@ void fragment() {
 			* (texture(refraction_noise, UV + (TIME * movement_direction) * refraction_speed).rg 
 			* 2.0 - 1.0);
 	
-	float real_depth = texture(DEPTH_TEXTURE, SCREEN_UV).r * 2.0 - 1.0;
-	real_depth = PROJECTION_MATRIX[3][2] / (real_depth + PROJECTION_MATRIX[2][2]) + VERTEX.z;
+	// Unrefracted depth, so the water never samples geometry in front of it.
+	float real_depth = get_scene_distance(SCREEN_UV, INV_PROJECTION_MATRIX) + VERTEX.z;
 	
-	// Get the raw linear depth from the depth texture into a  [-1, 1] range
-	float depth = texture(DEPTH_TEXTURE, uv).r * 2.0 - 1.0;
-	// Recreate linear depth of the intersecting geometry using projection matrix, and subtract the vertex of the sphere
-	depth = PROJECTION_MATRIX[3][2] / (depth + PROJECTION_MATRIX[2][2]) + VERTEX.z;
+	// Depth of the geometry seen through the refracted UV, relative to the water surface.
+	float depth = get_scene_distance(uv, INV_PROJECTION_MATRIX) + VERTEX.z;
 	
 	depth = max(depth, real_depth);
 	
-	float intersection = clamp(depth / foam_amount, 0, 1) * foam_cutoff;
+	float intersection = clamp(depth / foam_amount, 0.0, 1.0) * foam_cutoff;
 	
-	vec4 out_color = mix(shallow_color, deep_color, clamp((depth / depth_distance), 0, 1));
+	vec4 out_color = mix(shallow_color, deep_color, clamp((depth / depth_distance), 0.0, 1.0));
 	vec4 scene_color = texture(SCREEN_TEXTURE, uv);
 	out_color = mix(scene_color, out_color, out_color.a);
 	

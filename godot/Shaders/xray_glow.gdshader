@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode blend_add, depth_draw_never, depth_test_disable;
+render_mode blend_add, depth_draw_never, depth_test_disabled;
 
 uniform vec4 outline_color : source_color;
 uniform float color_intensity = 1.0;

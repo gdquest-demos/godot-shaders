@@ -1,5 +1,9 @@
 shader_type spatial;
 
+// In Godot 4 the depth buffer is reached through a uniform with this hint
+// instead of the DEPTH_TEXTURE built-in.
+uniform sampler2D DEPTH_TEXTURE : hint_depth_texture, filter_linear_mipmap;
+
 // ANCHOR: main_noise
 uniform sampler2D main_noise;
 uniform vec2 main_noise_scale = vec2(5.7, 1.0);
@@ -93,7 +97,7 @@ void fragment() {
 		float depth_value = texture(DEPTH_TEXTURE, SCREEN_UV).r;
 		// END: depth_texture
 		// ANCHOR: ndc
-		vec3 ndc = vec3(SCREEN_UV, depth_value) * 2.0 - vec3(1.0);
+		vec3 ndc = vec3(SCREEN_UV * 2.0 - 1.0, depth_value);
 		vec4 view_depth = INV_PROJECTION_MATRIX * vec4(ndc, 1.0);
 		view_depth.xyz /= view_depth.w;
 		// END: ndc

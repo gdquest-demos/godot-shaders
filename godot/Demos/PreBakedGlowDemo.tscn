@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ulisth7wup6e"]
+[gd_scene load_steps=9 format=3 uid="uid://ulisth7wup6e"]
 
 [ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="1"]
 [ext_resource type="Shader" path="res://Shaders/baked_sprite_glow.gdshader" id="4"]
 [ext_resource type="PackedScene" path="res://Shared/Background2D/Demo2DBackground.tscn" id="5"]
 [ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="6"]
+[ext_resource type="Texture2D" path="res://Demos/Glow2D/glowy_arrow.png" id="restored_1"]
 
 [sub_resource type="ShaderMaterial" id="1"]
 shader = ExtResource("4")
@@ -21,7 +22,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_param/alpha_falloff_back")
+tracks/0/path = NodePath(".:material:shader_parameter/alpha_falloff_back")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -36,7 +37,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_param/alpha_falloff_back")
+tracks/0/path = NodePath(".:material:shader_parameter/alpha_falloff_back")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -55,7 +56,7 @@ script = ExtResource("1")
 material = SubResource("1")
 position = Vector2(960, 540)
 rotation = 1.5708
-texture = null
+texture = ExtResource("restored_1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
 autoplay = "Fade"
