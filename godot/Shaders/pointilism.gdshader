@@ -1,7 +1,6 @@
 shader_type canvas_item;
 
 const float SQUARE_SIZE_MAX = 8.0;
-const float PI = 3.14159;
 const float R_LUMINANCE = 0.298912;
 const float G_LUMINANCE = 0.586611;
 const float B_LUMINANCE = 0.114478;
