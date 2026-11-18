@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://b5iflbghs0ywo"]
+[gd_scene load_steps=22 format=4 uid="uid://b5iflbghs0ywo"]
 
 [ext_resource type="Texture2D" uid="uid://ddv3mmgjndlhs" path="res://Demos/Water3D/diffuse.png" id="2_y2g77"]
 [ext_resource type="Texture2D" uid="uid://drdcg4crc6qjc" path="res://Demos/Water3D/normal.png" id="3_0fxww"]
@@ -83,6 +83,30 @@ shader_parameter/refraction_noise = SubResource("NoiseTexture2D_hu5ti")
 shader_parameter/foam_noise = SubResource("NoiseTexture2D_d6r8h")
 shader_parameter/displacement_noise = SubResource("NoiseTexture2D_arhkg")
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ijj6m"]
+sky_top_color = Color(0.309804, 0.694118, 0.847059, 1)
+sky_horizon_color = Color(0.882353, 0.937255, 0.980392, 1)
+ground_bottom_color = Color(0.309804, 0.435294, 0.560784, 1)
+ground_horizon_color = Color(0.882353, 0.937255, 0.980392, 1)
+
+[sub_resource type="Sky" id="Sky_mwum2"]
+sky_material = SubResource("ProceduralSkyMaterial_ijj6m")
+radiance_size = 1
+
+[sub_resource type="Environment" id="Environment_s1onm"]
+background_mode = 2
+sky = SubResource("Sky_mwum2")
+ambient_light_color = Color(1, 1, 1, 1)
+tonemap_mode = 3
+tonemap_white = 2.0
+ssao_enabled = true
+ssao_light_affect = 0.31
+glow_enabled = true
+glow_levels/2 = 1.0
+glow_levels/4 = 1.0
+glow_strength = 0.78
+glow_blend_mode = 0
+
 [node name="Water3DDemo" type="CanvasLayer"]
 script = ExtResource("10")
 
@@ -160,6 +184,9 @@ surface_material_override/0 = SubResource("ShaderMaterial_v3ykp")
 
 [node name="Demo3DEnvironment" parent="." instance=ExtResource("8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.12067, 0)
+
+[node name="BaseWorldEnvironment" parent="Demo3DEnvironment" index="0"]
+environment = SubResource("Environment_s1onm")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.650198, 0.53864, -0.535826, -0.0367183, 0.726706, 0.685966, 0.758877, -0.426339, 0.492281, -1.06504, 1.76133, 0.925944)
