@@ -1,6 +1,6 @@
 @tool
 # ANCHOR: setup
-extends Particles
+extends GPUParticles3D
 
 @export var character_node := NodePath()
 # END: setup
