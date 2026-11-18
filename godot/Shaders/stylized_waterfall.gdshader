@@ -1,5 +1,7 @@
 shader_type spatial;
 
+render_mode depth_prepass_alpha;
+
 // ANCHOR: main_noise
 uniform sampler2D main_noise;
 uniform vec2 main_noise_scale = vec2(5.7, 1.0);
@@ -30,7 +32,7 @@ uniform float foam_smoothness = 0.063;
 uniform float max_depth = 1.0;
 // END: max_depth
 // ANCHOR: depth_color
-uniform sampler2D depth_color_curve;
+uniform sampler2D depth_color_curve : source_color, repeat_disable;
 // END: depth_color
 // ANCHOR: depth_foam_offset
 uniform float depth_foam_offset= 0.25;
