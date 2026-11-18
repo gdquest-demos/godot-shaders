@@ -21,6 +21,9 @@ uniform sampler2D refraction_noise : hint_normal;
 uniform sampler2D foam_noise : hint_default_black;
 uniform sampler2D displacement_noise : hint_default_black;
 
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+uniform sampler2D DEPTH_TEXTURE: hint_depth_texture, filter_linear_mipmap;
+
 void vertex() {
 	float displacement = textureLod(
 			displacement_noise, 
@@ -35,11 +38,22 @@ void fragment() {
 			* (texture(refraction_noise, UV + (TIME * movement_direction) * refraction_speed).rg 
 			* 2.0 - 1.0);
 	
-	float real_depth = texture(DEPTH_TEXTURE, SCREEN_UV).r * 2.0 - 1.0;
+	float real_depth = texture(DEPTH_TEXTURE, SCREEN_UV).r;
+	
+	if (OUTPUT_IS_SRGB) {
+		// Normally, NDC.z has range [0, 1], but on the Compatibility renderer (based on OpenGL) it has range [-1, 1]
+		real_depth = real_depth * 2.0 - 1.0;
+	}
+	
 	real_depth = PROJECTION_MATRIX[3][2] / (real_depth + PROJECTION_MATRIX[2][2]) + VERTEX.z;
 	
-	// Get the raw linear depth from the depth texture into a  [-1, 1] range
-	float depth = texture(DEPTH_TEXTURE, uv).r * 2.0 - 1.0;
+	float depth = texture(DEPTH_TEXTURE, uv).r;
+	
+	if (OUTPUT_IS_SRGB) {
+		// Normally, NDC.z has range [0, 1], but on the Compatibility renderer (based on OpenGL) it has range [-1, 1]
+		depth = depth * 2.0 - 1.0;
+	}
+	
 	// Recreate linear depth of the intersecting geometry using projection matrix, and subtract the vertex of the sphere
 	depth = PROJECTION_MATRIX[3][2] / (depth + PROJECTION_MATRIX[2][2]) + VERTEX.z;
 	
