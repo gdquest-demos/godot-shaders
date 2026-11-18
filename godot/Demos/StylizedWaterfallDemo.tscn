@@ -136,6 +136,9 @@ material_override = ExtResource("4")
 [node name="Water" parent="WaterfallMesh" index="1"]
 surface_material_override/0 = ExtResource("3")
 
+[node name="BottomWaterfall" parent="WaterfallMesh" index="2"]
+surface_material_override/0 = ExtResource("4")
+
 [node name="Water_001" parent="WaterfallMesh" index="3"]
 surface_material_override/0 = ExtResource("3")
 
