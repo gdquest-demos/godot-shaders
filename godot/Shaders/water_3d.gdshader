@@ -55,12 +55,14 @@ void fragment() {
 			* (texture(refraction_noise, UV + (TIME * movement_direction) * refraction_speed).rg
 			* 2.0 - 1.0);
 
+	// Get the scene depth without UV displacement
 	float real_depth = texture(DEPTH_TEXTURE, SCREEN_UV).r;
 	real_depth = depthToViewZ(PROJECTION_MATRIX, real_depth, OUTPUT_IS_SRGB);
 
 	// Get the difference in depth between the water plane and the scene geometry underneath it
 	real_depth = VERTEX.z - real_depth;
 
+	// Get the scene depth with UV displacement
 	float depth = texture(DEPTH_TEXTURE, uv).r;
 	depth = depthToViewZ(PROJECTION_MATRIX, depth, OUTPUT_IS_SRGB);
 
