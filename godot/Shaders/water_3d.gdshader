@@ -24,15 +24,6 @@ uniform sampler2D displacement_noise : hint_default_black;
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 uniform sampler2D DEPTH_TEXTURE: hint_depth_texture, filter_linear_mipmap;
 
-void vertex() {
-	float displacement = textureLod(
-			displacement_noise,
-			UV + (TIME * movement_direction) * refraction_speed,
-			0.0).r * 2.0 - 1.0;
-
-	VERTEX.y += displacement * displacement_strength;
-}
-
 // Helper function to get the view space Z coordinate from depth texture sample
 float depthToViewZ(mat4 projection_matrix, float depth, bool using_opengl) {
 	// Just a sanity check
@@ -48,6 +39,15 @@ float depthToViewZ(mat4 projection_matrix, float depth, bool using_opengl) {
 
 	// Apply the depth linearization formula
 	return -projection_matrix[3][2] / (depth + projection_matrix[2][2]);
+}
+
+void vertex() {
+	float displacement = textureLod(
+			displacement_noise,
+			UV + (TIME * movement_direction) * refraction_speed,
+			0.0).r * 2.0 - 1.0;
+
+	VERTEX.y += displacement * displacement_strength;
 }
 
 void fragment() {
