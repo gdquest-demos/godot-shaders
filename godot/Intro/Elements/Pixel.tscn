@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjviglpqq1vre"]
+[gd_scene format=3 uid="uid://cjviglpqq1vre"]
 
-[ext_resource type="Script" path="res://Intro/Elements/Pixel.gd" id="1"]
+[ext_resource type="Script" uid="uid://cdbsxphbc8cgk" path="res://Intro/Elements/Pixel.gd" id="1"]
 
-[node name="Pixel" type="Node2D"]
+[node name="Pixel" type="Node2D" unique_id=1079792550]
 script = ExtResource("1")
 
-[node name="Tween" type="Tween" parent="."]
+[node name="Tween" type="Tween" parent="." unique_id=617771965]

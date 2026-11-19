@@ -1,6 +1,6 @@
-[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://b4lr8jmejpa8t"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b4lr8jmejpa8t"]
 
-[ext_resource type="Shader" path="res://Shaders/wind_grass.gdshader" id="1"]
+[ext_resource type="Shader" uid="uid://drbmefov8kx10" path="res://Shaders/wind_grass.gdshader" id="1"]
 
 [sub_resource type="Curve" id="1"]
 _data = [Vector2(0, 0), 0.0, 2.71765, 0, 0, Vector2(1, 1), -0.129412, 0.0, 0, 0]
@@ -20,8 +20,8 @@ gradient = SubResource("3")
 [sub_resource type="FastNoiseLite" id="5"]
 
 [sub_resource type="NoiseTexture2D" id="6"]
-seamless = true
 noise = SubResource("5")
+seamless = true
 
 [resource]
 render_priority = 0
@@ -31,9 +31,9 @@ shader_parameter/wind_strength = 2.0
 shader_parameter/wind_texture_tile_size = 20.0
 shader_parameter/wind_vertical_strength = 0.3
 shader_parameter/wind_horizontal_direction = Vector2(1, 0.5)
-shader_parameter/character_position = Vector3(0, -2, 0)
-shader_parameter/character_radius = 3.0
-shader_parameter/character_push_strength = 1.0
 shader_parameter/color_ramp = SubResource("4")
 shader_parameter/wind_noise = SubResource("6")
+shader_parameter/character_position = Vector3(0, -2, 0)
+shader_parameter/character_radius = 3.0
 shader_parameter/character_distance_falloff_curve = SubResource("2")
+shader_parameter/character_push_strength = 1.0

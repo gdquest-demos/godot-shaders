@@ -1,17 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://cslaml3dy0asm"]
+[gd_scene format=3 uid="uid://cslaml3dy0asm"]
 
 [ext_resource type="PackedScene" uid="uid://03bjah3n70ep" path="res://Demos/WindGrass/WindGrassScene.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://diofpwcvq5elu" path="res://Shared/DemoInterface.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://dquhei2qv5csj" path="res://Shared/Demo3DEnvironment.tscn" id="3"]
-[ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="4"]
+[ext_resource type="Script" uid="uid://ynusbd8ioqt0" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="4"]
 
-[node name="WindGrassDemo" type="CanvasLayer"]
+[node name="WindGrassDemo" type="CanvasLayer" unique_id=733684125]
 script = ExtResource("4")
 
-[node name="WindGrass" parent="." instance=ExtResource("1")]
+[node name="WindGrass" parent="." unique_id=986355152 instance=ExtResource("1")]
 
-[node name="Demo3DEnvironment" parent="." instance=ExtResource("3")]
+[node name="Demo3DEnvironment" parent="." unique_id=1780774057 instance=ExtResource("3")]
 
-[node name="DemoInterface" parent="." instance=ExtResource("2")]
+[node name="DemoInterface" parent="." unique_id=1563386669 instance=ExtResource("2")]
 anchors_preset = 10
 text_bbcode = "A wind shader that uses MultiMesh to create the blades of grass and a noise texture for the wind. This shader also supports one character interacting with the grass."

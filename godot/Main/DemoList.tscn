@@ -1,28 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://b176ml0gceo5m"]
+[gd_scene format=3 uid="uid://b176ml0gceo5m"]
 
-[ext_resource type="Script" path="res://Main/DemoList.gd" id="1"]
+[ext_resource type="Script" uid="uid://cqrsauu04vbbo" path="res://Main/DemoList.gd" id="1"]
 
-[node name="DemoList" type="ScrollContainer"]
+[node name="DemoList" type="ScrollContainer" unique_id=127552588]
 offset_left = 16.0
 offset_top = 24.0
 offset_right = 666.0
 offset_bottom = 361.0
-scroll_horizontal_enabled = false
 script = ExtResource("1")
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_right = 650.0
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2055988301]
+layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 4
 
-[node name="NoResultsLabel" type="Label" parent="."]
-offset_right = 66.0
-offset_bottom = 14.0
+[node name="NoResultsLabel" type="Label" parent="." unique_id=1739160676]
+layout_mode = 2
 theme_override_colors/font_color = Color(0.439216, 0.482353, 0.662745, 1)
 text = "No results"
-__meta__ = {
-"_edit_use_anchors_": false
-}

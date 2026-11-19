@@ -1,19 +1,19 @@
-[gd_scene load_steps=20 format=3 uid="uid://nfic3yg51o56"]
+[gd_scene format=3 uid="uid://nfic3yg51o56"]
 
-[ext_resource type="Script" path="res://Demos/InteractiveSnow/InteractiveSnowball.gd" id="1"]
+[ext_resource type="Script" uid="uid://sr4omp6ho1bk" path="res://Demos/InteractiveSnow/InteractiveSnowball.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://dquhei2qv5csj" path="res://Shared/Demo3DEnvironment.tscn" id="3"]
 [ext_resource type="Texture2D" uid="uid://cjbg8w0bk26ow" path="res://Demos/InteractiveSnow/TrailTip.png" id="4_e7bre"]
-[ext_resource type="Script" path="res://Demos/InteractiveSnow/InteractiveSnowViewport.gd" id="6"]
+[ext_resource type="Script" uid="uid://dfiilb6q41m5d" path="res://Demos/InteractiveSnow/InteractiveSnowViewport.gd" id="6"]
 [ext_resource type="Texture2D" uid="uid://helqj7rhelpo" path="res://Demos/InteractiveSnow/Textures/BlendTexture.jpg" id="6_tq21o"]
 [ext_resource type="Texture2D" uid="uid://gljicbvrgvk7" path="res://Demos/InteractiveSnow/Textures/Ground039_1K_Color.jpg" id="7_wd7fo"]
 [ext_resource type="Texture2D" uid="uid://c1wc28h24ah8y" path="res://Demos/InteractiveSnow/Textures/Ground039_1K_Normal.jpg" id="8_jym6r"]
 [ext_resource type="Texture2D" uid="uid://c707qn6u4iit8" path="res://Demos/InteractiveSnow/Textures/Ground039_1K_Roughness.jpg" id="9_j2x6u"]
-[ext_resource type="Shader" path="res://Shaders/interactive_snow.gdshader" id="10"]
+[ext_resource type="Shader" uid="uid://o2wsrmj4lf5o" path="res://Shaders/interactive_snow.gdshader" id="10"]
 [ext_resource type="Texture2D" uid="uid://rs30pkl750jy" path="res://Demos/InteractiveSnow/Textures/Snow004_1K_Color.jpg" id="10_qtd4h"]
 [ext_resource type="Texture2D" uid="uid://b77r8ljh6q8g4" path="res://Demos/InteractiveSnow/Textures/Snow004_1K_Normal.jpg" id="11_065p6"]
 [ext_resource type="Texture2D" uid="uid://dh02me8l20id5" path="res://Demos/InteractiveSnow/Textures/Snow004_1K_Roughness.jpg" id="12_yr7wr"]
 [ext_resource type="PackedScene" uid="uid://diofpwcvq5elu" path="res://Shared/DemoInterface.tscn" id="15"]
-[ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="16"]
+[ext_resource type="Script" uid="uid://ynusbd8ioqt0" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="16"]
 
 [sub_resource type="ViewportTexture" id="1"]
 viewport_path = NodePath("SubViewport")
@@ -22,11 +22,11 @@ viewport_path = NodePath("SubViewport")
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("10")
+shader_parameter/mask_texture = SubResource("1")
 shader_parameter/mask_texture_world_size = Vector2(16, 16)
 shader_parameter/snow_height = 0.3
 shader_parameter/snow_sharpness = 3.0
 shader_parameter/textures_tiling = Vector2(4, 4)
-shader_parameter/mask_texture = SubResource("1")
 shader_parameter/snow_texture = ExtResource("10_qtd4h")
 shader_parameter/snow_texture_normal = ExtResource("11_065p6")
 shader_parameter/snow_texture_roughness = ExtResource("12_yr7wr")
@@ -45,10 +45,10 @@ subdivide_depth = 128
 [sub_resource type="ViewportTexture" id="4"]
 viewport_path = NodePath("SubViewport")
 
-[node name="InteractiveSnowDemo" type="CanvasLayer"]
+[node name="InteractiveSnowDemo" type="CanvasLayer" unique_id=451343009]
 script = ExtResource("16")
 
-[node name="Demo3DEnvironment" parent="." instance=ExtResource("3")]
+[node name="Demo3DEnvironment" parent="." unique_id=1628495198 instance=ExtResource("3")]
 
 [node name="Sun" parent="Demo3DEnvironment" index="1"]
 transform = Transform3D(0.919232, 0.13994, -0.368008, 0, 0.934702, 0.355433, 0.393717, -0.326725, 0.859208, 0, 3.77878, 6.87228)
@@ -57,36 +57,36 @@ shadow_enabled = false
 [node name="Ground" parent="Demo3DEnvironment" index="2"]
 visible = false
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="SubViewport" type="SubViewport" parent="." unique_id=814690450]
 transparent_bg = true
 size = Vector2i(128, 128)
 render_target_clear_mode = 1
 script = ExtResource("6")
 
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport"]
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport" unique_id=2089140003]
 self_modulate = Color(1, 1, 1, 0.498039)
 position = Vector2(64, 64)
 texture = ExtResource("4_e7bre")
 
-[node name="SnowPlane" type="MeshInstance3D" parent="."]
+[node name="SnowPlane" type="MeshInstance3D" parent="." unique_id=1861909621]
 material_override = SubResource("2")
 mesh = SubResource("5")
 
-[node name="InteractiveSnowball" type="MeshInstance3D" parent="."]
+[node name="InteractiveSnowball" type="MeshInstance3D" parent="." unique_id=322403260]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("3")
 script = ExtResource("1")
 
-[node name="Camera3D" type="Camera3D" parent="InteractiveSnowball"]
+[node name="Camera3D" type="Camera3D" parent="InteractiveSnowball" unique_id=136690660]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 2, 4)
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=857989205]
 offset_top = 123.678
 offset_right = 128.0
 offset_bottom = 251.678
 texture = SubResource("4")
 
-[node name="DemoInterface" parent="." instance=ExtResource("15")]
+[node name="DemoInterface" parent="." unique_id=1598713622 instance=ExtResource("15")]
 anchors_preset = 10
 
 [editable path="Demo3DEnvironment"]

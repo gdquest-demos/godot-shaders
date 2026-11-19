@@ -1,21 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://cuyb4titahnjj"]
+[gd_scene format=3 uid="uid://cuyb4titahnjj"]
 
 [ext_resource type="PackedScene" uid="uid://2afwiadywkor" path="res://Demos/Shockwave3D/Shockwave3DScene.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://dquhei2qv5csj" path="res://Shared/Demo3DEnvironment.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://diofpwcvq5elu" path="res://Shared/DemoInterface.tscn" id="3"]
-[ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="4"]
+[ext_resource type="Script" uid="uid://ynusbd8ioqt0" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="4"]
 
-[node name="Shockwave3DDemo" type="CanvasLayer"]
+[node name="Shockwave3DDemo" type="CanvasLayer" unique_id=2044036117]
 script = ExtResource("4")
 
-[node name="Shockwave3D" parent="." instance=ExtResource("1")]
+[node name="Shockwave3D" parent="." unique_id=717830800 instance=ExtResource("1")]
 
-[node name="Demo3DEnvironment" parent="." instance=ExtResource("2")]
+[node name="Demo3DEnvironment" parent="." unique_id=1765055434 instance=ExtResource("2")]
 
 [node name="Ground" parent="Demo3DEnvironment" index="2"]
 visible = false
 
-[node name="DemoInterface" parent="." instance=ExtResource("3")]
+[node name="DemoInterface" parent="." unique_id=268480307 instance=ExtResource("3")]
 anchors_preset = 10
 text_bbcode = "Press Enter to launch a shockwave. Uses a vertex shader to propagate a spherical shockwave through the geometry, instead of as a post-process effect."
 

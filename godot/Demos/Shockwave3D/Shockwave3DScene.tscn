@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://2afwiadywkor"]
+[gd_scene format=3 uid="uid://2afwiadywkor"]
 
-[ext_resource type="Script" path="res://Demos/Shockwave3D/Shockwave.gd" id="1"]
+[ext_resource type="Script" uid="uid://cs7sfwswnrtd0" path="res://Demos/Shockwave3D/Shockwave.gd" id="1"]
 [ext_resource type="Material" uid="uid://cg217bygmqp72" path="res://Demos/Shockwave3D/Shockwave3DMaterial.tres" id="3"]
 [ext_resource type="PackedScene" uid="uid://c0vr8gmnaba4r" path="res://Shared/models/3D-environment/ShockwaveScene.glb" id="4"]
 
@@ -51,40 +51,38 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dq013"]
 _data = {
-"RESET": SubResource("1"),
-"Shockwave": SubResource("2")
+&"RESET": SubResource("1"),
+&"Shockwave": SubResource("2")
 }
 
-[node name="Shockwave3D" type="Node3D"]
+[node name="Shockwave3D" type="Node3D" unique_id=215472230]
 script = ExtResource("1")
 shockwave_material = ExtResource("3")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_dq013")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1965010310]
+libraries/ = SubResource("AnimationLibrary_dq013")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2109579236]
 transform = Transform3D(0.783064, -0.255235, 0.567156, 0, 0.911913, 0.410385, -0.621941, -0.321358, 0.714086, 4.22553, 5.06675, 4.81413)
 
-[node name="ShockwaveScene" parent="." instance=ExtResource("4")]
+[node name="ShockwaveScene" parent="." unique_id=1076805013 instance=ExtResource("4")]
 
-[node name="detail_forest" parent="ShockwaveScene" index="0"]
+[node name="detail_forest" parent="ShockwaveScene" index="0" unique_id=599574942]
 material_override = ExtResource("3")
 
-[node name="tileLarge_forest" parent="ShockwaveScene" index="1"]
+[node name="tileLarge_forest" parent="ShockwaveScene" index="1" unique_id=491044251]
 material_override = ExtResource("3")
 
-[node name="tree_forest" parent="ShockwaveScene" index="2"]
+[node name="tree_forest" parent="ShockwaveScene" index="2" unique_id=1986069822]
 material_override = ExtResource("3")
 
-[node name="detail_forest_001" parent="ShockwaveScene" index="3"]
+[node name="detail_forest_001" parent="ShockwaveScene" index="3" unique_id=1097358596]
 material_override = ExtResource("3")
 
-[node name="tree_forest_001" parent="ShockwaveScene" index="4"]
+[node name="tree_forest_001" parent="ShockwaveScene" index="4" unique_id=1929698644]
 material_override = ExtResource("3")
 
-[node name="tree_forest_002" parent="ShockwaveScene" index="5"]
+[node name="tree_forest_002" parent="ShockwaveScene" index="5" unique_id=671708257]
 material_override = ExtResource("3")
 
 [editable path="ShockwaveScene"]

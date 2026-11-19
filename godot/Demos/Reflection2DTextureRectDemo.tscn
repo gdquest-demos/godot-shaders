@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bly1goqj5isle"]
+[gd_scene format=3 uid="uid://bly1goqj5isle"]
 
-[ext_resource type="Script" path="res://Demos/Reflection2D/Reflection2DTextureRect.gd" id="1"]
-[ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="2"]
-[ext_resource type="PackedScene" path="res://Shared/Background2D/Demo2DBackground.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="7"]
+[ext_resource type="Script" uid="uid://bggl4tbxlgmr5" path="res://Demos/Reflection2D/Reflection2DTextureRect.gd" id="1"]
+[ext_resource type="Script" uid="uid://ynusbd8ioqt0" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://7mqdkojagyav" path="res://Shared/Background2D/Demo2DBackground.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://diofpwcvq5elu" path="res://Shared/DemoInterface.tscn" id="7"]
 
 [sub_resource type="Shader" id="1"]
 code = "shader_type canvas_item;
@@ -28,39 +28,34 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="4"]
 shader = SubResource("1")
 
-[node name="Reflection2DTextureRectDemo" type="CanvasLayer"]
+[node name="Reflection2DTextureRectDemo" type="CanvasLayer" unique_id=1220619207]
 script = ExtResource("2")
 
-[node name="ParallaxBackground" parent="." instance=ExtResource("4")]
+[node name="ParallaxBackground" parent="." unique_id=658253658 instance=ExtResource("4")]
 
-[node name="Robi" type="Sprite2D" parent="."]
+[node name="Robi" type="Sprite2D" parent="." unique_id=1049220691]
 position = Vector2(504.151, 466.506)
 rotation = -0.147885
 scale = Vector2(0.563456, 0.563456)
-texture = null
 
-[node name="Robi2" type="Sprite2D" parent="."]
+[node name="Robi2" type="Sprite2D" parent="." unique_id=1610387009]
 position = Vector2(1389.09, 490.752)
 rotation = 0.103686
 scale = Vector2(0.471994, 0.471994)
-texture = null
 
-[node name="Robi3" type="Sprite2D" parent="."]
+[node name="Robi3" type="Sprite2D" parent="." unique_id=1231430610]
 position = Vector2(963.357, 402.478)
 scale = Vector2(0.630556, 0.630556)
-texture = null
 
-[node name="MirrorYPlane" type="TextureRect" parent="."]
+[node name="MirrorYPlane" type="TextureRect" parent="." unique_id=109867613]
 material = SubResource("4")
+anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -376.0
-texture = null
-expand = true
+expand_mode = 1
 script = ExtResource("1")
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="DemoInterface" parent="." instance=ExtResource("7")]
+[node name="DemoInterface" parent="." unique_id=290688322 instance=ExtResource("7")]
+anchors_preset = 10

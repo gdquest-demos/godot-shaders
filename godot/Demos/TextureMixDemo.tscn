@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://deigjt04b1hfo"]
+[gd_scene format=3 uid="uid://deigjt04b1hfo"]
 
 [ext_resource type="Material" uid="uid://bhh1xjf8gsnti" path="res://Demos/TextureMix/MixMaterial.tres" id="1"]
 [ext_resource type="PackedScene" uid="uid://diofpwcvq5elu" path="res://Shared/DemoInterface.tscn" id="4"]
@@ -9,14 +9,19 @@
 [ext_resource type="Texture2D" uid="uid://m1m8w0a5l2li" path="res://Demos/TextureMix/textures/lambert2_normal.jpg" id="7_32ogr"]
 [ext_resource type="PackedScene" uid="uid://dn7g2sa1f3j3n" path="res://Demos/TextureMix/scene.glb" id="8"]
 [ext_resource type="Texture2D" uid="uid://dpjngtoswnty5" path="res://Demos/TextureMix/textures/Moss003_1K_Color.jpg" id="8_tgyyl"]
-[ext_resource type="Shader" path="res://Shaders/texture_mix.gdshader" id="9"]
+[ext_resource type="Shader" uid="uid://b4onk8qtoqkwg" path="res://Shaders/texture_mix.gdshader" id="9"]
 [ext_resource type="Texture2D" uid="uid://dpqhhrxbnxiga" path="res://Demos/TextureMix/textures/Moss003_1K_Normal.jpg" id="9_s0g36"]
-[ext_resource type="Script" path="res://Demos/TextureMix/TextureMixDemo.gd" id="12"]
-[ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="13"]
+[ext_resource type="Script" uid="uid://byjw1a5ncrydu" path="res://Demos/TextureMix/TextureMixDemo.gd" id="12"]
+[ext_resource type="Script" uid="uid://ynusbd8ioqt0" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="13"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7e6og"]
 render_priority = 0
 shader = ExtResource("9")
+shader_parameter/tex_1_albedo = ExtResource("5_aldb3")
+shader_parameter/tex_1_ao = ExtResource("6_i1xyj")
+shader_parameter/tex_1_normal = ExtResource("7_32ogr")
+shader_parameter/tex_2_albedo = ExtResource("8_tgyyl")
+shader_parameter/tex_2_normal = ExtResource("9_s0g36")
 shader_parameter/blend_smoothness = 0.2
 shader_parameter/threshold = 0.0
 shader_parameter/additive_mix = false
@@ -24,15 +29,15 @@ shader_parameter/use_red_vertex_color = true
 shader_parameter/use_ao_occlusion = false
 shader_parameter/use_world_direction = false
 shader_parameter/world_direction = Vector3(0, 1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_awrai"]
+render_priority = 0
+shader = ExtResource("9")
 shader_parameter/tex_1_albedo = ExtResource("5_aldb3")
 shader_parameter/tex_1_ao = ExtResource("6_i1xyj")
 shader_parameter/tex_1_normal = ExtResource("7_32ogr")
 shader_parameter/tex_2_albedo = ExtResource("8_tgyyl")
 shader_parameter/tex_2_normal = ExtResource("9_s0g36")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_awrai"]
-render_priority = 0
-shader = ExtResource("9")
 shader_parameter/blend_smoothness = 0.2
 shader_parameter/threshold = 0.0
 shader_parameter/additive_mix = false
@@ -40,15 +45,15 @@ shader_parameter/use_red_vertex_color = false
 shader_parameter/use_ao_occlusion = true
 shader_parameter/use_world_direction = false
 shader_parameter/world_direction = Vector3(0, 1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5a6av"]
+render_priority = 0
+shader = ExtResource("9")
 shader_parameter/tex_1_albedo = ExtResource("5_aldb3")
 shader_parameter/tex_1_ao = ExtResource("6_i1xyj")
 shader_parameter/tex_1_normal = ExtResource("7_32ogr")
 shader_parameter/tex_2_albedo = ExtResource("8_tgyyl")
 shader_parameter/tex_2_normal = ExtResource("9_s0g36")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5a6av"]
-render_priority = 0
-shader = ExtResource("9")
 shader_parameter/blend_smoothness = 0.2
 shader_parameter/threshold = 0.0
 shader_parameter/additive_mix = false
@@ -56,11 +61,6 @@ shader_parameter/use_red_vertex_color = false
 shader_parameter/use_ao_occlusion = false
 shader_parameter/use_world_direction = true
 shader_parameter/world_direction = Vector3(0, 1, 0)
-shader_parameter/tex_1_albedo = ExtResource("5_aldb3")
-shader_parameter/tex_1_ao = ExtResource("6_i1xyj")
-shader_parameter/tex_1_normal = ExtResource("7_32ogr")
-shader_parameter/tex_2_albedo = ExtResource("8_tgyyl")
-shader_parameter/tex_2_normal = ExtResource("9_s0g36")
 
 [sub_resource type="Animation" id="4"]
 length = 11.0
@@ -158,42 +158,42 @@ tracks/7/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vd51s"]
 _data = {
-"show-mix": SubResource("4")
+&"show-mix": SubResource("4")
 }
 
-[node name="TextureMixDemo" type="CanvasLayer"]
+[node name="TextureMixDemo" type="CanvasLayer" unique_id=173811792]
 script = ExtResource("13")
 
-[node name="Demo3DEnvironment" parent="." instance=ExtResource("5")]
+[node name="Demo3DEnvironment" parent="." unique_id=556085619 instance=ExtResource("5")]
 
 [node name="Sun" parent="Demo3DEnvironment" index="1"]
 transform = Transform3D(0.866365, 0.424523, 0.263041, 0, -0.526703, 0.850049, 0.49941, -0.736453, -0.456318, 0, 2.76507, 0.0411971)
 
-[node name="MixVertexColor" parent="." instance=ExtResource("8")]
+[node name="MixVertexColor" parent="." unique_id=1596309417 instance=ExtResource("8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 
-[node name="rockFInal_LOD0_lambert2_0" parent="MixVertexColor/RootNode/RootNode2/RootNode3/RootNode_001/rockFInal_LOD0" index="0"]
+[node name="rockFInal_LOD0_lambert2_0" parent="MixVertexColor/RootNode/RootNode2/RootNode3/RootNode_001/rockFInal_LOD0" parent_id_path=PackedInt32Array(1596309417, 1063443378) index="0" unique_id=244456944]
 material_override = SubResource("ShaderMaterial_7e6og")
 
-[node name="MixAmbientOcclusion" parent="." instance=ExtResource("8")]
+[node name="MixAmbientOcclusion" parent="." unique_id=2020484347 instance=ExtResource("8")]
 
-[node name="rockFInal_LOD0_lambert2_0" parent="MixAmbientOcclusion/RootNode/RootNode2/RootNode3/RootNode_001/rockFInal_LOD0" index="0"]
+[node name="rockFInal_LOD0_lambert2_0" parent="MixAmbientOcclusion/RootNode/RootNode2/RootNode3/RootNode_001/rockFInal_LOD0" parent_id_path=PackedInt32Array(2020484347, 1063443378) index="0" unique_id=244456944]
 material_override = SubResource("ShaderMaterial_awrai")
 
-[node name="MixWorldNormal" parent="." instance=ExtResource("8")]
+[node name="MixWorldNormal" parent="." unique_id=872741601 instance=ExtResource("8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
 
-[node name="rockFInal_LOD0_lambert2_0" parent="MixWorldNormal/RootNode/RootNode2/RootNode3/RootNode_001/rockFInal_LOD0" index="0"]
+[node name="rockFInal_LOD0_lambert2_0" parent="MixWorldNormal/RootNode/RootNode2/RootNode3/RootNode_001/rockFInal_LOD0" parent_id_path=PackedInt32Array(872741601, 1063443378) index="0" unique_id=244456944]
 material_override = SubResource("ShaderMaterial_5a6av")
 
-[node name="Demo" parent="." instance=ExtResource("8")]
+[node name="Demo" parent="." unique_id=859558678 instance=ExtResource("8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
 
-[node name="rockFInal_LOD0_lambert2_0" parent="Demo/RootNode/RootNode2/RootNode3/RootNode_001/rockFInal_LOD0" index="0"]
+[node name="rockFInal_LOD0_lambert2_0" parent="Demo/RootNode/RootNode2/RootNode3/RootNode_001/rockFInal_LOD0" parent_id_path=PackedInt32Array(859558678, 1063443378) index="0" unique_id=244456944]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 material_override = ExtResource("1")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1844581837]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -209,17 +209,15 @@ text = "World direction"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_vd51s")
-}
-autoplay = "show-mix"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1199904848]
+libraries/ = SubResource("AnimationLibrary_vd51s")
+autoplay = &"show-mix"
 script = ExtResource("12")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1142004967]
 transform = Transform3D(-1, 0, -8.74228e-08, -4.37114e-08, 0.866025, 0.5, 7.57103e-08, 0.5, -0.866025, 0, 6.0383, -11.4515)
 
-[node name="DemoInterface" parent="." instance=ExtResource("4")]
+[node name="DemoInterface" parent="." unique_id=1561977539 instance=ExtResource("4")]
 anchors_preset = 10
 text_bbcode = "A shader that mixes albedo and normal textures based on different parameters. From left to right: mix based on red channel for vertex color, mix based on ambient occlusion map, and mix based on world space normal.
 model by https://sketchfab.com/3d-models/western-stylised-rock-24c821bbe0a1469ba66b9d5894546d9a"

@@ -1,15 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://bmy7gp4xnkbxw"]
+[gd_scene format=3 uid="uid://bmy7gp4xnkbxw"]
 
 [ext_resource type="PackedScene" uid="uid://bp7ajmh64iah3" path="res://Intro/Elements/CubeScene.tscn" id="1"]
-[ext_resource type="Script" path="res://Intro/Elements/RawVertexData.gd" id="2"]
+[ext_resource type="Script" uid="uid://bg8a0jfib5sv3" path="res://Intro/Elements/RawVertexData.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://cqvt7s5neg40c" path="res://Intro/Elements/VertexRaw.tscn" id="3"]
 [ext_resource type="Theme" path="res://Shared/theme/gdquest.theme" id="4"]
-[ext_resource type="Script" path="res://Intro/Elements/ShaderPipelineIntro.gd" id="5"]
+[ext_resource type="Script" uid="uid://cy7we85r5xso8" path="res://Intro/Elements/ShaderPipelineIntro.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://ii1vk5vmfepk" path="res://Intro/Elements/VertexCodeAnim.tscn" id="6"]
-[ext_resource type="Script" path="res://Intro/Elements/LineDrawers.gd" id="7"]
-[ext_resource type="Script" path="res://Intro/Elements/Title.gd" id="8"]
+[ext_resource type="Script" uid="uid://dsr4uamj5huv3" path="res://Intro/Elements/LineDrawers.gd" id="7"]
+[ext_resource type="Script" uid="uid://dw3rsuks603mu" path="res://Intro/Elements/Title.gd" id="8"]
 [ext_resource type="PackedScene" uid="uid://cjviglpqq1vre" path="res://Intro/Elements/Pixel.tscn" id="9"]
-[ext_resource type="Script" path="res://Intro/Elements/Pixels.gd" id="10"]
+[ext_resource type="Script" uid="uid://ba5h5mbtn4c3b" path="res://Intro/Elements/Pixels.gd" id="10"]
 [ext_resource type="Environment" path="res://Shared/environments/2d_level_environment.tres" id="11"]
 [ext_resource type="FontFile" path="res://Shared/theme/fonts/font_title.tres" id="12"]
 [ext_resource type="PackedScene" uid="uid://cepenetstu8pb" path="res://Intro/Elements/LineDrawer.tscn" id="13"]
@@ -229,7 +229,11 @@ tracks/4/keys = {
 "values": ["Raw Vertex Data"]
 }
 
-[sub_resource type="World3D" id="1"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qtysn"]
+_data = {
+&"Animate": SubResource("5"),
+&"RESET": SubResource("6")
+}
 
 [sub_resource type="ViewportTexture" id="2"]
 viewport_path = NodePath("SubViewport")
@@ -240,100 +244,91 @@ viewport_path = NodePath("ScaledView")
 [sub_resource type="ViewportTexture" id="4"]
 viewport_path = NodePath("SubViewport")
 
-[node name="ShaderPipelineIntro" type="Control"]
+[node name="ShaderPipelineIntro" type="Control" unique_id=1410616499]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource("5")
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Animate"
-anims/Animate = SubResource("5")
-anims/RESET = SubResource("6")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=964245745]
+libraries/ = SubResource("AnimationLibrary_qtysn")
+autoplay = &"Animate"
 
-[node name="SubViewport" type="SubViewport" parent="."]
-size = Vector2(1920, 1080)
-own_world = true
-world = SubResource("1")
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1935221104]
 handle_input_locally = false
-msaa = 4
+size = Vector2i(1920, 1080)
 render_target_update_mode = 3
 
-[node name="Node3D" parent="SubViewport" instance=ExtResource("1")]
+[node name="Node3D" parent="SubViewport" unique_id=1540209675 instance=ExtResource("1")]
 
-[node name="ScaledView" type="SubViewport" parent="."]
-size = Vector2(100, 56)
+[node name="ScaledView" type="SubViewport" parent="." unique_id=755424841]
+size = Vector2i(100, 56)
 
-[node name="TextureRect" type="TextureRect" parent="ScaledView"]
+[node name="TextureRect" type="TextureRect" parent="ScaledView" unique_id=1262119443]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 7.62939e-06
-offset_bottom = 3.8147e-06
 texture = SubResource("2")
-expand = true
+expand_mode = 1
 stretch_mode = 1
 flip_v = true
 
-[node name="Scaled" type="TextureRect" parent="."]
+[node name="Scaled" type="TextureRect" parent="." unique_id=2116169859]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = SubResource("3")
-expand = true
+expand_mode = 1
 stretch_mode = 1
 flip_v = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="FullRes" type="TextureRect" parent="."]
+[node name="FullRes" type="TextureRect" parent="." unique_id=963188111]
 modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = SubResource("4")
-expand = true
+expand_mode = 1
 stretch_mode = 1
 flip_v = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Title" type="Label" parent="."]
+[node name="Title" type="Label" parent="." unique_id=1417412647]
+layout_mode = 0
 anchor_right = 1.0
 offset_top = 30.0
 offset_bottom = 63.0
 theme = ExtResource("4")
 theme_override_fonts/font = ExtResource("12")
 text = "Raw Vertex Data"
-align = 1
+horizontal_alignment = 1
 script = ExtResource("8")
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Tween" type="Tween" parent="Title"]
+[node name="Tween" type="Tween" parent="Title" unique_id=582310974]
 
-[node name="Pixels" type="Node2D" parent="."]
+[node name="Pixels" type="Node2D" parent="." unique_id=894395593]
 modulate = Color(1, 1, 1, 0)
 script = ExtResource("10")
 Pixel = ExtResource("9")
 width = 23
 height = 21
 
-[node name="RawVertexData" type="Node2D" parent="."]
+[node name="RawVertexData" type="Node2D" parent="." unique_id=1655199891]
 script = ExtResource("2")
 Vertex = ExtResource("3")
 theme = ExtResource("4")
 v_code = ExtResource("6")
 
-[node name="Tween" type="Tween" parent="RawVertexData"]
+[node name="Tween" type="Tween" parent="RawVertexData" unique_id=2110638009]
 
-[node name="LineDrawers" type="Node2D" parent="."]
+[node name="LineDrawers" type="Node2D" parent="." unique_id=531987196]
 script = ExtResource("7")
 LineDrawer = ExtResource("13")
 
-[node name="Tween" type="Tween" parent="LineDrawers"]
+[node name="Tween" type="Tween" parent="LineDrawers" unique_id=1346289168]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1090181892]
 environment = ExtResource("11")

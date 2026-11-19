@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cepenetstu8pb"]
+[gd_scene format=3 uid="uid://cepenetstu8pb"]
 
-[ext_resource type="Script" path="res://Intro/Elements/LineDrawer.gd" id="1"]
+[ext_resource type="Script" uid="uid://b6abk8lguldm8" path="res://Intro/Elements/LineDrawer.gd" id="1"]
 
-[node name="LineDrawer" type="Node2D"]
+[node name="LineDrawer" type="Node2D" unique_id=1100267222]
 script = ExtResource("1")

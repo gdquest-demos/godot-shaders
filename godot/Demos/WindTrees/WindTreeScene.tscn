@@ -1,19 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://d1dkqm4e2auq"]
+[gd_scene format=3 uid="uid://d1dkqm4e2auq"]
 
 [ext_resource type="PackedScene" uid="uid://dndc23224vy53" path="res://Demos/WindTrees/Tree.tscn" id="1"]
-[ext_resource type="Material" path="res://Demos/WindTrees/FolliageWindTreeTrunkMaterial.tres" id="2"]
-[ext_resource type="Material" path="res://Demos/WindTrees/FolliageWindGrassMaterial.tres" id="3"]
-[ext_resource type="Material" path="res://Demos/WindTrees/FolliageWindTreeLeavesMaterial.tres" id="4"]
-[ext_resource type="Script" path="res://Demos/WindTrees/WindControl.gd" id="5"]
+[ext_resource type="Material" uid="uid://bn0t7b1241hoq" path="res://Demos/WindTrees/FolliageWindTreeTrunkMaterial.tres" id="2"]
+[ext_resource type="Material" uid="uid://bpgx877tg8geh" path="res://Demos/WindTrees/FolliageWindGrassMaterial.tres" id="3"]
+[ext_resource type="Material" uid="uid://cytmbgj6rmyic" path="res://Demos/WindTrees/FolliageWindTreeLeavesMaterial.tres" id="4"]
+[ext_resource type="Script" uid="uid://dw8koo0ltnvqa" path="res://Demos/WindTrees/WindControl.gd" id="5"]
 [ext_resource type="ArrayMesh" uid="uid://dbaiqvr3jwcst" path="res://Demos/WindTrees/Models/grass_clump.mesh" id="6"]
 [ext_resource type="Theme" path="res://Shared/theme/gdquest.theme" id="11"]
 [ext_resource type="ArrayMesh" uid="uid://bylmuengfvc88" path="res://Demos/WindTrees/Models/terrain.obj" id="13"]
-
-[sub_resource type="StandardMaterial3D" id="17"]
-roughness_texture_channel = 1
-normal_enabled = true
-ao_enabled = true
-uv1_scale = Vector3(16, 16, 1)
 
 [sub_resource type="MultiMesh" id="16"]
 transform_format = 1
@@ -32,9 +26,9 @@ ssao_ao_channel_affect = 1.0
 glow_blend_mode = 0
 fog_enabled = true
 
-[node name="WindTreeScene" type="Node3D"]
+[node name="WindTreeScene" type="Node3D" unique_id=845646567]
 
-[node name="WindControl" type="Node" parent="."]
+[node name="WindControl" type="Node" parent="." unique_id=30267799]
 script = ExtResource("5")
 intensity_slider_path = NodePath("../CenterContainer/PanelContainer/MarginContainer/GridContainer/WindInstensitySlider")
 intensity_value_label_path = NodePath("../CenterContainer/PanelContainer/MarginContainer/GridContainer/WindIntensityValue")
@@ -44,174 +38,106 @@ _wind_materials = [ExtResource("2"), ExtResource("4"), ExtResource("3")]
 _wind_intensity = 3.0
 _wind_angle = 270.0
 
-[node name="Terrain" type="MeshInstance3D" parent="."]
+[node name="Terrain" type="MeshInstance3D" parent="." unique_id=1928345346]
 mesh = ExtResource("13")
-material/0 = SubResource("17")
 
-[node name="Grass" type="MultiMeshInstance3D" parent="."]
+[node name="Grass" type="MultiMeshInstance3D" parent="." unique_id=1755715692]
 material_override = ExtResource("3")
 multimesh = SubResource("16")
 
-[node name="Trees" type="Node3D" parent="."]
+[node name="Trees" type="Node3D" parent="." unique_id=93111315]
 
-[node name="Tree4" parent="Trees" instance=ExtResource("1")]
+[node name="Tree4" parent="Trees" unique_id=1687225935 instance=ExtResource("1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.51802, 2.12399, 5.39008)
 
-[node name="Tree_0001" parent="Trees/Tree4" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.53674e-07)
-material/0 = ExtResource("2")
-material/1 = ExtResource("4")
-
-[node name="Tree7" parent="Trees" instance=ExtResource("1")]
+[node name="Tree7" parent="Trees" unique_id=1213997742 instance=ExtResource("1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.51802, 1.17435, -2.60994)
 
-[node name="Tree_0001" parent="Trees/Tree7" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.53674e-07)
-material/0 = ExtResource("2")
-material/1 = ExtResource("4")
-
-[node name="Tree8" parent="Trees" instance=ExtResource("1")]
+[node name="Tree8" parent="Trees" unique_id=69867467 instance=ExtResource("1")]
 transform = Transform3D(-0.656731, 0, -0.754125, 0, 1, 0, 0.754125, 0, -0.656731, 5.9294, 0.944386, -4.60994)
 
-[node name="Tree_0001" parent="Trees/Tree8" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.53674e-07)
-material/0 = ExtResource("2")
-material/1 = ExtResource("4")
-
-[node name="Tree9" parent="Trees" instance=ExtResource("1")]
+[node name="Tree9" parent="Trees" unique_id=1311463267 instance=ExtResource("1")]
 transform = Transform3D(0.460386, 0, 0.887719, 0, 1, 0, -0.887719, 0, 0.460386, -2.48198, 0.816107, -6.60994)
 
-[node name="Tree_0001" parent="Trees/Tree9" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.53674e-07)
-material/0 = ExtResource("2")
-material/1 = ExtResource("4")
-
-[node name="Tree5" parent="Trees" instance=ExtResource("1")]
+[node name="Tree5" parent="Trees" unique_id=1231860279 instance=ExtResource("1")]
 transform = Transform3D(0.61639, 0, 0.787441, 0, 1, 0, -0.787441, 0, 0.61639, -3.37929, 1.72331, 2.07108)
 
-[node name="Tree_0001" parent="Trees/Tree5" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.53674e-07)
-material/0 = ExtResource("2")
-material/1 = ExtResource("4")
-
-[node name="Tree6" parent="Trees" instance=ExtResource("1")]
+[node name="Tree6" parent="Trees" unique_id=269137229 instance=ExtResource("1")]
 transform = Transform3D(0.200856, 0, 0.979621, 0, 1, 0, -0.979621, 0, 0.200856, 3.90035, 1.62404, 1.41768)
 
-[node name="Tree_0001" parent="Trees/Tree6" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.53674e-07)
-material/0 = ExtResource("2")
-material/1 = ExtResource("4")
-
-[node name="Tree10" parent="Trees" instance=ExtResource("1")]
+[node name="Tree10" parent="Trees" unique_id=1264729838 instance=ExtResource("1")]
 transform = Transform3D(0.800606, 0, 0.599191, 0, 1, 0, -0.599191, 0, 0.800606, 3.80619, 2.37768, 7.42935)
 
-[node name="Tree_0001" parent="Trees/Tree10" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.53674e-07)
-material/0 = ExtResource("2")
-material/1 = ExtResource("4")
-
-[node name="Tree11" parent="Trees" instance=ExtResource("1")]
+[node name="Tree11" parent="Trees" unique_id=62796077 instance=ExtResource("1")]
 transform = Transform3D(-0.713251, 0, -0.700909, 0, 1, 0, 0.700909, 0, -0.713251, 2.72477, 0.762666, -11.0159)
 
-[node name="Tree_0001" parent="Trees/Tree11" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.53674e-07)
-material/0 = ExtResource("2")
-material/1 = ExtResource("4")
-
-[node name="Tree12" parent="Trees" instance=ExtResource("1")]
+[node name="Tree12" parent="Trees" unique_id=2017778485 instance=ExtResource("1")]
 transform = Transform3D(-0.528379, 0, 0.849009, 0, 1, 0, -0.849009, 0, -0.528379, -4.25701, 0.52269, -12.2788)
 
-[node name="Tree_0001" parent="Trees/Tree12" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.53674e-07)
-material/0 = ExtResource("2")
-material/1 = ExtResource("4")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1940681518]
 transform = Transform3D(1, 0, 0, 0, -0.5, 0.866025, 0, -0.866025, -0.5, 0, 0, 0)
 light_color = Color(1, 0.945098, 0.835294, 1)
 shadow_enabled = true
 shadow_bias = 0.02
 directional_shadow_blend_splits = true
-directional_shadow_normal_bias = 0.2
-directional_shadow_bias_split_scale = 0.065
 directional_shadow_max_distance = 50.0
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1736731041]
 environment = SubResource("4")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1101402340]
 transform = Transform3D(-4.37114e-08, 0.121869, 0.992546, 0, 0.992546, -0.121869, -1, -5.32707e-09, -4.33856e-08, 14, 4, 0)
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=495868550]
+anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -150.0
 
-[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
-offset_left = 593.0
-offset_top = 20.0
-offset_right = 1326.0
-offset_bottom = 130.0
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=1962268510]
+layout_mode = 2
 theme = ExtResource("11")
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
-offset_right = 733.0
-offset_bottom = 110.0
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer" unique_id=212191310]
+layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
-offset_left = 24.0
-offset_top = 24.0
-offset_right = 709.0
-offset_bottom = 86.0
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/PanelContainer/MarginContainer" unique_id=2115927536]
+layout_mode = 2
 columns = 3
 
-[node name="WindIntensityLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/GridContainer"]
-offset_right = 133.0
-offset_bottom = 23.0
+[node name="WindIntensityLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/GridContainer" unique_id=241941740]
+layout_mode = 2
 text = "Wind Intensity"
 
-[node name="WindInstensitySlider" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/GridContainer"]
-offset_left = 149.0
-offset_top = 3.0
-offset_right = 549.0
-offset_bottom = 19.0
+[node name="WindInstensitySlider" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/GridContainer" unique_id=270262888]
 custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 max_value = 4.0
 value = 3.0
 
-[node name="WindIntensityValue" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/GridContainer"]
-offset_left = 565.0
-offset_right = 685.0
-offset_bottom = 23.0
+[node name="WindIntensityValue" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/GridContainer" unique_id=1878217704]
 custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
 text = "Strong"
 
-[node name="WindAngleLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/GridContainer"]
-offset_top = 39.0
-offset_right = 133.0
-offset_bottom = 62.0
+[node name="WindAngleLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/GridContainer" unique_id=354538590]
+layout_mode = 2
 text = "Wind Angle"
 
-[node name="WindAngleSlider" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/GridContainer"]
-offset_left = 149.0
-offset_top = 42.0
-offset_right = 549.0
-offset_bottom = 58.0
+[node name="WindAngleSlider" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/GridContainer" unique_id=1464959744]
 custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 max_value = 360.0
 value = 270.0
 
-[node name="WindAngleValue" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/GridContainer"]
-offset_left = 565.0
-offset_top = 39.0
-offset_right = 685.0
-offset_bottom = 62.0
+[node name="WindAngleValue" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/GridContainer" unique_id=177766920]
 custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
 text = "270"
 
 [editable path="Trees/Tree4"]

@@ -1,6 +1,6 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cg217bygmqp72"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cg217bygmqp72"]
 
-[ext_resource type="Shader" path="res://Shaders/shockwave_3d.gdshader" id="1_twfkb"]
+[ext_resource type="Shader" uid="uid://2vpmvhv34aaq" path="res://Shaders/shockwave_3d.gdshader" id="1_twfkb"]
 [ext_resource type="Texture2D" uid="uid://dklympjuioh10" path="res://Shared/models/3D-environment/SceneColorAtlas.tres" id="2_a4p71"]
 
 [resource]

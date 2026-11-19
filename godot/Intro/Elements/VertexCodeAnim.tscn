@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://ii1vk5vmfepk"]
 
-[node name="VertexCodeAnim" type="Control"]
+[node name="VertexCodeAnim" type="Control" unique_id=189605817]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -1030.0
 offset_bottom = -620.0
-clip_contents = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=668869126]
 modulate = Color(0, 0, 0, 1)
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 14.0
 text = "
@@ -285,8 +285,5 @@ void main() {
 
 /* clang-format off */
 "
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Tween" type="Tween" parent="."]
+[node name="Tween" type="Tween" parent="." unique_id=1961089419]

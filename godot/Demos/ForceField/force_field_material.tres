@@ -1,6 +1,6 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cp7fpmko6heid"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cp7fpmko6heid"]
 
-[ext_resource type="Shader" path="res://Shaders/force_field.gdshader" id="1_hm6s7"]
+[ext_resource type="Shader" uid="uid://cn2xv66nrsyi4" path="res://Shaders/force_field.gdshader" id="1_hm6s7"]
 [ext_resource type="Texture2D" uid="uid://b2skoftifgi55" path="res://Demos/ForceField/hexagon_grid.png" id="2_tm5w2"]
 
 [resource]

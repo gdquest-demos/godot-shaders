@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://haehxmhcirdj"]
+[gd_scene format=3 uid="uid://haehxmhcirdj"]
 
 [ext_resource type="Material" uid="uid://cp7fpmko6heid" path="res://Demos/ForceField/force_field_material.tres" id="4_4jjbs"]
 
@@ -20,35 +20,35 @@ size = Vector3(20, 0.2, 20)
 radius = 1.5
 height = 3.0
 
-[node name="ForceFieldScene" type="Node3D"]
+[node name="ForceFieldScene" type="Node3D" unique_id=2117235385]
 
-[node name="WallBody" type="StaticBody3D" parent="."]
+[node name="WallBody" type="StaticBody3D" parent="." unique_id=283747262]
 transform = Transform3D(1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 1.5, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WallBody"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallBody" unique_id=94247402]
 shape = SubResource("1")
 
-[node name="Wall" type="MeshInstance3D" parent="WallBody"]
+[node name="Wall" type="MeshInstance3D" parent="WallBody" unique_id=291072289]
 mesh = SubResource("2")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2126588035]
 transform = Transform3D(0.918571, -0.125535, 0.374792, 0, 0.948224, 0.317603, -0.395257, -0.29174, 0.871011, 1.63275, 1.38087, 3.55278)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=702362246]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55994, 0.25, 1.83398)
 mesh = SubResource("4")
 
-[node name="FloorBody" type="StaticBody3D" parent="."]
+[node name="FloorBody" type="StaticBody3D" parent="." unique_id=1123482708]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FloorBody"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FloorBody" unique_id=1249240564]
 shape = SubResource("12")
 
-[node name="ForceField" type="MeshInstance3D" parent="."]
+[node name="ForceField" type="MeshInstance3D" parent="." unique_id=1313789753]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.373823, 0.612613, 0.925982)
 mesh = SubResource("SphereMesh_jwmkr")
 surface_material_override/0 = ExtResource("4_4jjbs")
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="ForceField"]
+[node name="OmniLight3D2" type="OmniLight3D" parent="ForceField" unique_id=1423322468]
 light_color = Color(0.839216, 0.521569, 1, 1)
 omni_range = 2.2

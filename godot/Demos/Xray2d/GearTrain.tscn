@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://cssqco688arys"]
+[gd_scene format=3 uid="uid://cssqco688arys"]
 
 [sub_resource type="Animation" id="1"]
 loop_mode = 1
@@ -51,36 +51,37 @@ tracks/3/keys = {
 "values": [28.6, -331.4]
 }
 
-[node name="GearTrain" type="Node2D"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fpjor"]
+_data = {
+&"rotate": SubResource("1")
+}
 
-[node name="gear" type="Sprite2D" parent="."]
+[node name="GearTrain" type="Node2D" unique_id=1059846527]
+
+[node name="gear" type="Sprite2D" parent="." unique_id=884332460]
 modulate = Color(0.141176, 0.756863, 0.968627, 1)
 position = Vector2(-20.308, -10.963)
 scale = Vector2(0.5, 0.5)
-texture = null
 
-[node name="gear2" type="Sprite2D" parent="."]
+[node name="gear2" type="Sprite2D" parent="." unique_id=1933131812]
 modulate = Color(0.568627, 0.54902, 0.54902, 1)
 position = Vector2(3.0188, 7.16968)
 rotation = 0.429351
 scale = Vector2(0.5, 0.5)
-texture = null
 
-[node name="gear3" type="Sprite2D" parent="."]
+[node name="gear3" type="Sprite2D" parent="." unique_id=1548407051]
 modulate = Color(0.309804, 0.803922, 0.384314, 1)
 position = Vector2(-16.6036, 29.0563)
 rotation = 0.0733038
 scale = Vector2(0.5, 0.5)
-texture = null
 
-[node name="gear4" type="Sprite2D" parent="."]
+[node name="gear4" type="Sprite2D" parent="." unique_id=1793567778]
 modulate = Color(0.180392, 0.905882, 0.717647, 1)
 position = Vector2(-35.0942, 12.4527)
 rotation = 0.499164
 scale = Vector2(0.35, 0.35)
-texture = null
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "rotate"
-playback_process_mode = 0
-anims/rotate = SubResource("1")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2102385203]
+callback_mode_process = 0
+libraries/ = SubResource("AnimationLibrary_fpjor")
+autoplay = &"rotate"

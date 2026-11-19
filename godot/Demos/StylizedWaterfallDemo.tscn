@@ -1,11 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnjbtscbncs56"]
+[gd_scene format=3 uid="uid://cnjbtscbncs56"]
 
 [ext_resource type="PackedScene" uid="uid://cyhrg3a1coixh" path="res://Demos/StylizedWaterfall/WaterfallMesh.dae" id="1"]
 [ext_resource type="PackedScene" uid="uid://dquhei2qv5csj" path="res://Shared/Demo3DEnvironment.tscn" id="2"]
 [ext_resource type="Material" uid="uid://d1r8hcd8noafy" path="res://Demos/StylizedWaterfall/WaterMaterial.tres" id="3"]
 [ext_resource type="Material" path="res://Demos/StylizedWaterfall/RocksMaterial.tres" id="4"]
 [ext_resource type="PackedScene" uid="uid://diofpwcvq5elu" path="res://Shared/DemoInterface.tscn" id="5"]
-[ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="6"]
+[ext_resource type="Script" uid="uid://ynusbd8ioqt0" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="6"]
 
 [sub_resource type="StandardMaterial3D" id="1"]
 transparency = 1
@@ -13,153 +13,153 @@ albedo_color = Color(1, 0, 0, 0.592157)
 
 [sub_resource type="SphereMesh" id="2"]
 
-[node name="StylizedWaterfallDemo" type="CanvasLayer"]
+[node name="StylizedWaterfallDemo" type="CanvasLayer" unique_id=885505261]
 script = ExtResource("6")
 
-[node name="WaterfallMesh" parent="." instance=ExtResource("1")]
+[node name="WaterfallMesh" parent="." unique_id=1934760713 instance=ExtResource("1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.136919, 0)
 
-[node name="Cube" parent="WaterfallMesh/Rocks" index="0"]
+[node name="Cube" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="0" unique_id=2063132328]
 material_override = ExtResource("4")
 
-[node name="Cube_001" parent="WaterfallMesh/Rocks" index="1"]
+[node name="Cube_001" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="1" unique_id=1926739131]
 material_override = ExtResource("4")
 
-[node name="Cube_002" parent="WaterfallMesh/Rocks" index="2"]
+[node name="Cube_002" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="2" unique_id=255274430]
 material_override = ExtResource("4")
 
-[node name="Cube_003" parent="WaterfallMesh/Rocks" index="3"]
+[node name="Cube_003" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="3" unique_id=678521550]
 material_override = ExtResource("4")
 
-[node name="Cube_004" parent="WaterfallMesh/Rocks" index="4"]
+[node name="Cube_004" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="4" unique_id=2011202157]
 material_override = ExtResource("4")
 
-[node name="Cube_005" parent="WaterfallMesh/Rocks" index="5"]
+[node name="Cube_005" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="5" unique_id=1583826163]
 material_override = ExtResource("4")
 
-[node name="Cube_006" parent="WaterfallMesh/Rocks" index="6"]
+[node name="Cube_006" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="6" unique_id=220028558]
 material_override = ExtResource("4")
 
-[node name="Cube_007" parent="WaterfallMesh/Rocks" index="7"]
+[node name="Cube_007" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="7" unique_id=1671978031]
 material_override = ExtResource("4")
 
-[node name="Cube_008" parent="WaterfallMesh/Rocks" index="8"]
+[node name="Cube_008" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="8" unique_id=1550489193]
 material_override = ExtResource("4")
 
-[node name="Cube_009" parent="WaterfallMesh/Rocks" index="9"]
+[node name="Cube_009" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="9" unique_id=296157143]
 material_override = ExtResource("4")
 
-[node name="Cube_010" parent="WaterfallMesh/Rocks" index="10"]
+[node name="Cube_010" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="10" unique_id=1915038490]
 material_override = ExtResource("4")
 
-[node name="Cube_011" parent="WaterfallMesh/Rocks" index="11"]
+[node name="Cube_011" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="11" unique_id=306176770]
 material_override = ExtResource("4")
 
-[node name="Cube_012" parent="WaterfallMesh/Rocks" index="12"]
+[node name="Cube_012" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="12" unique_id=1177601726]
 material_override = ExtResource("4")
 
-[node name="Cube_013" parent="WaterfallMesh/Rocks" index="13"]
+[node name="Cube_013" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="13" unique_id=142238523]
 material_override = ExtResource("4")
 
-[node name="Cube_014" parent="WaterfallMesh/Rocks" index="14"]
+[node name="Cube_014" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="14" unique_id=1155537508]
 material_override = ExtResource("4")
 
-[node name="Cube_015" parent="WaterfallMesh/Rocks" index="15"]
+[node name="Cube_015" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="15" unique_id=1417721429]
 material_override = ExtResource("4")
 
-[node name="Cube_016" parent="WaterfallMesh/Rocks" index="16"]
+[node name="Cube_016" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="16" unique_id=1732693208]
 material_override = ExtResource("4")
 
-[node name="Cube_017" parent="WaterfallMesh/Rocks" index="17"]
+[node name="Cube_017" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="17" unique_id=893530783]
 material_override = ExtResource("4")
 
-[node name="Cube_018" parent="WaterfallMesh/Rocks" index="18"]
+[node name="Cube_018" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="18" unique_id=1477682057]
 material_override = ExtResource("4")
 
-[node name="Cube_019" parent="WaterfallMesh/Rocks" index="19"]
+[node name="Cube_019" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="19" unique_id=1478427557]
 material_override = ExtResource("4")
 
-[node name="Cube_020" parent="WaterfallMesh/Rocks" index="20"]
+[node name="Cube_020" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="20" unique_id=1476881985]
 material_override = ExtResource("4")
 
-[node name="Cube_021" parent="WaterfallMesh/Rocks" index="21"]
+[node name="Cube_021" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="21" unique_id=1613623364]
 material_override = ExtResource("4")
 
-[node name="Cube_022" parent="WaterfallMesh/Rocks" index="22"]
+[node name="Cube_022" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="22" unique_id=1430195204]
 material_override = ExtResource("4")
 
-[node name="Cube_023" parent="WaterfallMesh/Rocks" index="23"]
+[node name="Cube_023" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="23" unique_id=513046768]
 material_override = ExtResource("4")
 
-[node name="Cube_024" parent="WaterfallMesh/Rocks" index="24"]
+[node name="Cube_024" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="24" unique_id=231782553]
 material_override = ExtResource("4")
 
-[node name="Cube_025" parent="WaterfallMesh/Rocks" index="25"]
+[node name="Cube_025" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="25" unique_id=688476565]
 material_override = ExtResource("4")
 
-[node name="Cube_026" parent="WaterfallMesh/Rocks" index="26"]
+[node name="Cube_026" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="26" unique_id=1193154976]
 material_override = ExtResource("4")
 
-[node name="Cube_027" parent="WaterfallMesh/Rocks" index="27"]
+[node name="Cube_027" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="27" unique_id=414852312]
 material_override = ExtResource("4")
 
-[node name="Cube_028" parent="WaterfallMesh/Rocks" index="28"]
+[node name="Cube_028" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="28" unique_id=1424666368]
 material_override = ExtResource("4")
 
-[node name="Cube_029" parent="WaterfallMesh/Rocks" index="29"]
+[node name="Cube_029" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="29" unique_id=1471692432]
 material_override = ExtResource("4")
 
-[node name="Cube_030" parent="WaterfallMesh/Rocks" index="30"]
+[node name="Cube_030" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="30" unique_id=646978453]
 material_override = ExtResource("4")
 
-[node name="Cube_031" parent="WaterfallMesh/Rocks" index="31"]
+[node name="Cube_031" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="31" unique_id=2134727369]
 material_override = ExtResource("4")
 
-[node name="Cube_032" parent="WaterfallMesh/Rocks" index="32"]
+[node name="Cube_032" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="32" unique_id=1592777836]
 material_override = ExtResource("4")
 
-[node name="Cube_033" parent="WaterfallMesh/Rocks" index="33"]
+[node name="Cube_033" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="33" unique_id=1876429209]
 material_override = ExtResource("4")
 
-[node name="Cube_034" parent="WaterfallMesh/Rocks" index="34"]
+[node name="Cube_034" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="34" unique_id=1080399765]
 material_override = ExtResource("4")
 
-[node name="Cube_035" parent="WaterfallMesh/Rocks" index="35"]
+[node name="Cube_035" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="35" unique_id=758854799]
 material_override = ExtResource("4")
 
-[node name="Cube_036" parent="WaterfallMesh/Rocks" index="36"]
+[node name="Cube_036" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="36" unique_id=975103537]
 material_override = ExtResource("4")
 
-[node name="Cube_037" parent="WaterfallMesh/Rocks" index="37"]
+[node name="Cube_037" parent="WaterfallMesh/Rocks" parent_id_path=PackedInt32Array(1934760713, 1672387014) index="37" unique_id=1649211394]
 material_override = ExtResource("4")
 
-[node name="Water" parent="WaterfallMesh" index="1"]
+[node name="Water" parent="WaterfallMesh" index="1" unique_id=1169222779]
 surface_material_override/0 = ExtResource("3")
 
-[node name="BottomWaterfall" parent="WaterfallMesh" index="2"]
+[node name="BottomWaterfall" parent="WaterfallMesh" index="2" unique_id=1298772299]
 surface_material_override/0 = ExtResource("4")
 
-[node name="Water_001" parent="WaterfallMesh" index="3"]
+[node name="Water_001" parent="WaterfallMesh" index="3" unique_id=74875932]
 surface_material_override/0 = ExtResource("3")
 
-[node name="Demo3DEnvironment" parent="." instance=ExtResource("2")]
+[node name="Demo3DEnvironment" parent="." unique_id=187616860 instance=ExtResource("2")]
 
 [node name="Ground" parent="Demo3DEnvironment" index="2"]
 visible = false
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1489833110]
 transform = Transform3D(0.944399, -0.106727, 0.310997, 0, 0.945853, 0.324594, -0.328801, -0.306546, 0.893263, 2.25991, 4.54563, 6.43317)
 
-[node name="ReflectionProbe" type="ReflectionProbe" parent="."]
+[node name="ReflectionProbe" type="ReflectionProbe" parent="." unique_id=1425297373]
 size = Vector3(16.8512, 14.8829, 15.7612)
 
-[node name="TransparecyTester" type="MeshInstance3D" parent="."]
+[node name="TransparecyTester" type="MeshInstance3D" parent="." unique_id=341470871]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45645, 2.5146, -0.306275)
 visible = false
 material_override = SubResource("1")
 mesh = SubResource("2")
 
-[node name="DemoInterface" parent="." instance=ExtResource("5")]
+[node name="DemoInterface" parent="." unique_id=336724875 instance=ExtResource("5")]
 anchors_preset = 10
 
 [editable path="WaterfallMesh"]

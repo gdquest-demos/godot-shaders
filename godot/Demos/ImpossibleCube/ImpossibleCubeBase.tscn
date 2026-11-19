@@ -1,135 +1,70 @@
-[gd_scene load_steps=19 format=3 uid="uid://ca3nxv23e3o27"]
+[gd_scene format=3 uid="uid://ca3nxv23e3o27"]
 
 [ext_resource type="ArrayMesh" uid="uid://bf02gogn681sv" path="res://Demos/ImpossibleCube/cube_full.obj" id="2"]
-[ext_resource type="Shader" path="res://Shaders/stencil_mask.gdshader" id="3"]
-[ext_resource type="Script" path="res://Demos/ImpossibleCube/Rotate.gd" id="5"]
+[ext_resource type="Script" uid="uid://dav164v5lrym" path="res://Demos/ImpossibleCube/Rotate.gd" id="5"]
 [ext_resource type="ArrayMesh" uid="uid://c135huw5eyy5e" path="res://Demos/ImpossibleCube/cube_hollow.obj" id="6"]
-
-[sub_resource type="StandardMaterial3D" id="1"]
-albedo_color = Color(0.709804, 0.713726, 0.760784, 1)
-metallic = 0.56
-metallic_specular = 0.24
-roughness = 0.63
 
 [sub_resource type="SphereMesh" id="2"]
 
-[sub_resource type="ViewportTexture" id="3"]
-viewport_path = NodePath("StencilView")
-
-[sub_resource type="ShaderMaterial" id="4"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("3")
-shader_parameter/albedo = Color(0.0431373, 0.941176, 0.921569, 1)
-shader_parameter/stencil_color = Color(0, 1, 1, 1)
-shader_parameter/stencil = SubResource("3")
-
 [sub_resource type="CylinderMesh" id="5"]
-
-[sub_resource type="ViewportTexture" id="6"]
-viewport_path = NodePath("StencilView")
-
-[sub_resource type="ShaderMaterial" id="7"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("3")
-shader_parameter/albedo = Color(0.956863, 0.376471, 0.0588235, 1)
-shader_parameter/stencil_color = Color(1, 0, 0, 1)
-shader_parameter/stencil = SubResource("6")
 
 [sub_resource type="CapsuleMesh" id="8"]
 
-[sub_resource type="ViewportTexture" id="9"]
-viewport_path = NodePath("StencilView")
-
-[sub_resource type="ShaderMaterial" id="10"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("3")
-shader_parameter/albedo = Color(0.0470588, 0.168627, 0.945098, 1)
-shader_parameter/stencil_color = Color(0, 0, 1, 1)
-shader_parameter/stencil = SubResource("9")
-
 [sub_resource type="BoxMesh" id="11"]
 
-[sub_resource type="ViewportTexture" id="12"]
-viewport_path = NodePath("StencilView")
+[node name="ImpossibleCubeDemo" type="Node3D" unique_id=1863172869]
 
-[sub_resource type="ShaderMaterial" id="13"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("3")
-shader_parameter/albedo = Color(0.0705882, 0.94902, 0.290196, 1)
-shader_parameter/stencil_color = Color(0, 1, 0, 1)
-shader_parameter/stencil = SubResource("12")
-
-[sub_resource type="StandardMaterial3D" id="14"]
-shading_mode = 0
-disable_ambient_light = true
-disable_receive_shadows = true
-
-[node name="ImpossibleCubeDemo" type="Node3D"]
-
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=4658325]
 transform = Transform3D(0.296699, -0.185551, 0.936771, -0.020768, 0.979456, 0.200584, -0.954745, -0.0789679, 0.28675, 3.98713, 3.1131, 1.61636)
 cull_mask = 1048571
 
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Camera3D"]
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Camera3D" unique_id=330221140]
 transform = Transform3D(1, 7.45058e-09, 8.9407e-08, 0, 1, -3.91155e-08, 5.96046e-08, -2.6077e-08, 1, 0, 0, 0)
 remote_path = NodePath("../../StencilView/Camera3D")
 
-[node name="StencilView" type="SubViewport" parent="."]
-size = Vector2(1920, 1080)
+[node name="StencilView" type="SubViewport" parent="." unique_id=944708095]
 transparent_bg = true
-keep_3d_linear = true
-usage = 3
+size = Vector2i(1920, 1080)
 render_target_update_mode = 3
 
-[node name="Camera3D" type="Camera3D" parent="StencilView"]
-transform = Transform3D(0.296699, -0.185551, 0.936771, -0.020768, 0.979456, 0.200584, -0.954745, -0.0789679, 0.28675, 3.98713, 3.1131, 1.61636)
+[node name="Camera3D" type="Camera3D" parent="StencilView" unique_id=1932374754]
+transform = Transform3D(0.2966991, -0.18555112, 0.9367714, -0.020767994, 0.9794564, 0.20058365, -0.95474523, -0.07896787, 0.28675014, 3.98713, 3.1131, 1.61636)
 cull_mask = 4
 
-[node name="CubeShell" type="MeshInstance3D" parent="."]
+[node name="CubeShell" type="MeshInstance3D" parent="." unique_id=963804525]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.5, 0)
 mesh = ExtResource("6")
-material/0 = SubResource("1")
 script = ExtResource("5")
 
-[node name="Sphere" type="MeshInstance3D" parent="CubeShell"]
+[node name="Sphere" type="MeshInstance3D" parent="CubeShell" unique_id=811336713]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 layers = 2
 mesh = SubResource("2")
-material/0 = SubResource("4")
 
-[node name="Cylinder" type="MeshInstance3D" parent="CubeShell"]
+[node name="Cylinder" type="MeshInstance3D" parent="CubeShell" unique_id=102351473]
 transform = Transform3D(0.25, 0, 0, 0, 0.176777, -0.176777, 0, 0.176777, 0.176777, 0, 0, 0)
 layers = 2
 mesh = SubResource("5")
-material/0 = SubResource("7")
 
-[node name="Capsule" type="MeshInstance3D" parent="CubeShell"]
+[node name="Capsule" type="MeshInstance3D" parent="CubeShell" unique_id=2092461020]
 transform = Transform3D(0.25, 0, 0, 0, -4.07302e-08, -0.25, 0, 0.25, -4.07302e-08, 0, 0, 0)
 layers = 2
 mesh = SubResource("8")
-material/0 = SubResource("10")
 
-[node name="Cube" type="MeshInstance3D" parent="CubeShell"]
+[node name="Cube" type="MeshInstance3D" parent="CubeShell" unique_id=535602289]
 transform = Transform3D(0.106066, -0.075, -0.075, 0, 0.106066, -0.106066, 0.106066, 0.075, 0.075, 0, 0, 0)
 layers = 2
 mesh = SubResource("11")
-material/0 = SubResource("13")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="CubeShell"]
+[node name="OmniLight3D" type="OmniLight3D" parent="CubeShell" unique_id=22101940]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.0194656, 0)
 light_color = Color(0.313726, 0.54902, 1, 1)
 light_energy = 3.44
 light_specular = 1.0
-light_bake_mode = 2
 light_cull_mask = 4294967294
 omni_attenuation = 1.7411
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CubeShell"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CubeShell" unique_id=612704684]
 layers = 4
 cast_shadow = 0
 mesh = ExtResource("2")
-material/0 = SubResource("14")

@@ -1,31 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://bco47y45kysaw"]
+[gd_scene format=3 uid="uid://bco47y45kysaw"]
 
 [ext_resource type="PackedScene" uid="uid://yprqir76mk7w" path="res://Demos/StylizedLiquid/Models/potionLarge_red.gltf.glb" id="1"]
-[ext_resource type="Shader" path="res://Shaders/stylized_liquid.gdshader" id="2"]
-[ext_resource type="Script" path="res://Demos/StylizedLiquid/LiquidWobble.gd" id="3"]
 
-[sub_resource type="Gradient" id="1"]
-colors = PackedColorArray(0, 0, 0, 1, 0.701961, 0.501961, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="2"]
-gradient = SubResource("1")
-width = 128
-
-[sub_resource type="ShaderMaterial" id="3"]
-render_priority = 0
-shader = ExtResource("2")
-shader_parameter/liquid_height = 0.5
-shader_parameter/liquid_surface_color = Color(0.701961, 0.501961, 1, 1)
-shader_parameter/rim_emission_intensity = 1.031
-shader_parameter/rim_exponent = 3.0
-shader_parameter/emission_intensity = 0.438
-shader_parameter/liquid_surface_gradient_size = 0.05
-shader_parameter/wobble = Vector2(0.00293433, -0.0088507)
-shader_parameter/liquid_rim_gradient = SubResource("2")
-
-[node name="potionLarge_redgltf" instance=ExtResource("1")]
-
-[node name="potionLarge_red001" parent="potionLarge_red" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.2417e-05, 0.444676, -2.72244e-05)
-material_override = SubResource("3")
-script = ExtResource("3")
+[node name="potionLarge_redgltf" unique_id=1896283781 instance=ExtResource("1")]

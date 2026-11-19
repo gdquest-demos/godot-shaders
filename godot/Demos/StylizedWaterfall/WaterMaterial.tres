@@ -1,6 +1,6 @@
-[gd_resource type="ShaderMaterial" load_steps=11 format=3 uid="uid://d1r8hcd8noafy"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d1r8hcd8noafy"]
 
-[ext_resource type="Shader" path="res://Shaders/stylized_waterfall.gdshader" id="1"]
+[ext_resource type="Shader" uid="uid://eilh63gv4ih" path="res://Shaders/stylized_waterfall.gdshader" id="1"]
 [ext_resource type="Texture2D" uid="uid://7odxh76ikyoc" path="res://Demos/StylizedWaterfall/color-uv.png" id="2"]
 
 [sub_resource type="Gradient" id="1"]
@@ -18,9 +18,9 @@ fractal_lacunarity = 1.74
 fractal_gain = 0.7
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6p8ml"]
-seamless = true
-color_ramp = SubResource("Gradient_xjxmg")
 noise = SubResource("5")
+color_ramp = SubResource("Gradient_xjxmg")
+seamless = true
 
 [sub_resource type="Gradient" id="Gradient_srbm8"]
 colors = PackedColorArray(0.262932, 0.262932, 0.262932, 1, 0.699654, 0.699653, 0.699653, 1)
@@ -32,14 +32,16 @@ fractal_lacunarity = 1.74
 fractal_gain = 0.2
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_m3sx4"]
-seamless = true
-color_ramp = SubResource("Gradient_srbm8")
 noise = SubResource("FastNoiseLite_6peti")
+color_ramp = SubResource("Gradient_srbm8")
+seamless = true
 
 [resource]
 render_priority = 0
 shader = ExtResource("1")
+shader_parameter/main_noise = SubResource("NoiseTexture2D_m3sx4")
 shader_parameter/main_noise_scale = Vector2(5.7, 1)
+shader_parameter/detail_noise = SubResource("NoiseTexture2D_6p8ml")
 shader_parameter/detail_noise_scale = Vector2(2.5, 2.5)
 shader_parameter/water_speed = 0.2
 shader_parameter/displacement = 0.444
@@ -48,10 +50,8 @@ shader_parameter/foam_threshold = 0.38
 shader_parameter/foam_detail_threshold = 0.4
 shader_parameter/foam_smoothness = 0.46
 shader_parameter/max_depth = 1.0
+shader_parameter/depth_color_curve = SubResource("2")
 shader_parameter/depth_foam_offset = 0.25
 shader_parameter/debug_vertex_color = false
 shader_parameter/debug_uv = false
-shader_parameter/main_noise = SubResource("NoiseTexture2D_m3sx4")
-shader_parameter/detail_noise = SubResource("NoiseTexture2D_6p8ml")
-shader_parameter/depth_color_curve = SubResource("2")
 shader_parameter/debug_uv_color_grid = ExtResource("2")

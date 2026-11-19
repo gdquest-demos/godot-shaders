@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://deqvqad7wwsyy"]
+[gd_scene format=3 uid="uid://deqvqad7wwsyy"]
 
 [sub_resource type="Shader" id="1"]
 code = "//Affects 2D sprites and GUI controls
@@ -64,29 +64,24 @@ shader_parameter/tint2 = Color(0.8, 0.0862745, 0.901961, 1)
 shader_parameter/tint_proportion = 0.5
 shader_parameter/tint_amount = 0.5
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" unique_id=2030317697]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=648045326]
 material = SubResource("2")
 position = Vector2(64, 64)
-texture = null
 
-[node name="Sprite2" type="Sprite2D" parent="."]
+[node name="Sprite2" type="Sprite2D" parent="." unique_id=1663359576]
 material = SubResource("3")
 position = Vector2(192, 64)
-texture = null
 
-[node name="Sprite3" type="Sprite2D" parent="."]
+[node name="Sprite3" type="Sprite2D" parent="." unique_id=637448843]
 material = SubResource("4")
 position = Vector2(320, 64)
-texture = null
 
-[node name="Sprite4" type="Sprite2D" parent="."]
+[node name="Sprite4" type="Sprite2D" parent="." unique_id=1715738179]
 material = SubResource("5")
 position = Vector2(448, 64)
-texture = null
 
-[node name="Sprite5" type="Sprite2D" parent="."]
+[node name="Sprite5" type="Sprite2D" parent="." unique_id=1036526562]
 material = SubResource("6")
 position = Vector2(576, 64)
-texture = null

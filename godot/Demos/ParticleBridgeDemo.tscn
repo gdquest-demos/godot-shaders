@@ -1,12 +1,12 @@
-[gd_scene load_steps=37 format=3 uid="uid://rpoxm6j5rsnv"]
+[gd_scene format=3 uid="uid://rpoxm6j5rsnv"]
 
-[ext_resource type="Shader" path="res://Shaders/particle_bridge_spatial.gdshader" id="1"]
-[ext_resource type="Shader" path="res://Shaders/particle_bridge_particle.gdshader" id="2"]
+[ext_resource type="Shader" uid="uid://2k6hfdj2c4e8" path="res://Shaders/particle_bridge_spatial.gdshader" id="1"]
+[ext_resource type="Shader" uid="uid://bwtst35y71sjd" path="res://Shaders/particle_bridge_particle.gdshader" id="2"]
 [ext_resource type="PackedScene" uid="uid://n87x06o26w4p" path="res://Shared/Demo3DEnvironmentDark.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://diofpwcvq5elu" path="res://Shared/DemoInterface.tscn" id="4"]
-[ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="5"]
-[ext_resource type="Script" path="res://Demos/ParticleBridge/RigidPlayer.gd" id="6"]
-[ext_resource type="Script" path="res://Demos/ParticleBridge/ParticleBridgeDemo.gd" id="7"]
+[ext_resource type="Script" uid="uid://ynusbd8ioqt0" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="5"]
+[ext_resource type="Script" uid="uid://cvlwnebk81ld3" path="res://Demos/ParticleBridge/RigidPlayer.gd" id="6"]
+[ext_resource type="Script" uid="uid://ba6yi6u883uuh" path="res://Demos/ParticleBridge/ParticleBridgeDemo.gd" id="7"]
 
 [sub_resource type="StandardMaterial3D" id="14"]
 albedo_color = Color(0.227451, 0.207843, 0.266667, 1)
@@ -48,7 +48,7 @@ size = Vector3(4, 4, 2)
 
 [sub_resource type="ShaderMaterial" id="1"]
 shader = ExtResource("2")
-shader_parameter/character_position = Vector3(1.51, 0.963, 2.36181)
+shader_parameter/character_position = Vector3(1.5, 1, -1)
 shader_parameter/radius = 0.0
 shader_parameter/animation_speed = 10.0
 shader_parameter/bridge_width_particles = 12
@@ -62,7 +62,7 @@ point_count = 2
 curve = SubResource("33")
 
 [sub_resource type="Curve" id="2"]
-max_value = 1.3
+_limits = [0.0, 1.3, 0.0, 1.0]
 _data = [Vector2(0.412587, 0), 0.0, 0.0, 0, 0, Vector2(0.765734, 1.3), 3.51, -1.17265, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 3
 
@@ -70,7 +70,7 @@ point_count = 3
 curve = SubResource("2")
 
 [sub_resource type="Curve" id="6"]
-min_value = -1.0
+_limits = [-1.0, 1.0, 0.0, 1.0]
 _data = [Vector2(0.922343, -0.567567), 0.0, 5.96219, 0, 0, Vector2(1, 0.018018), 35.2673, 0.0, 0, 0]
 point_count = 2
 
@@ -78,8 +78,7 @@ point_count = 2
 curve = SubResource("6")
 
 [sub_resource type="Curve" id="8"]
-min_value = -3.0
-max_value = 0.4
+_limits = [-3.0, 0.4, 0.0, 1.0]
 _data = [Vector2(0, -3), 0.0, 0.17333, 0, 0, Vector2(1, 0.307273), 10.983, 0.0, 0, 0]
 point_count = 2
 
@@ -90,12 +89,12 @@ curve = SubResource("8")
 render_priority = 0
 shader = ExtResource("1")
 shader_parameter/oscillation_size = 2.0
-shader_parameter/emission_color = Color(0, 1, 0.976471, 1)
-shader_parameter/albedo_color = Color(0.227451, 0.207843, 0.266667, 1)
 shader_parameter/y_curve_ascend = SubResource("7")
 shader_parameter/y_curve_descend = SubResource("9")
 shader_parameter/xz_curve_ascend = SubResource("5")
 shader_parameter/xz_curve_descend = SubResource("3")
+shader_parameter/emission_color = Color(0, 1, 0.976471, 1)
+shader_parameter/albedo_color = Color(0.227451, 0.207843, 0.266667, 1)
 
 [sub_resource type="BoxMesh" id="11"]
 material = SubResource("10")
@@ -138,8 +137,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_drjve"]
 _data = {
-"RESET": SubResource("38"),
-"show": SubResource("39")
+&"RESET": SubResource("38"),
+&"show": SubResource("39")
 }
 
 [sub_resource type="SphereMesh" id="13"]
@@ -244,106 +243,106 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qp5yy"]
 _data = {
-"RESET": SubResource("Animation_lhkll"),
-"show": SubResource("16")
+&"RESET": SubResource("Animation_lhkll"),
+&"show": SubResource("16")
 }
 
-[node name="ParticleBridgeDemo" type="CanvasLayer"]
+[node name="ParticleBridgeDemo" type="CanvasLayer" unique_id=1750573468]
 script = ExtResource("5")
 
-[node name="Demo3DEnvironmentDark" parent="." instance=ExtResource("3")]
+[node name="Demo3DEnvironmentDark" parent="." unique_id=2098055614 instance=ExtResource("3")]
 
 [node name="Ground" parent="Demo3DEnvironmentDark" index="2"]
 visible = false
 
-[node name="Environment" type="Node3D" parent="."]
+[node name="Environment" type="Node3D" parent="." unique_id=1221565740]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment" unique_id=747126311]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.67604, -1.27915, -3.52664)
 material_override = SubResource("14")
 mesh = SubResource("15")
 
-[node name="MeshInstance5" type="MeshInstance3D" parent="Environment"]
+[node name="MeshInstance5" type="MeshInstance3D" parent="Environment" unique_id=718731190]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95629, -0.40156, -3.32464)
 material_override = SubResource("14")
 mesh = SubResource("15")
 
-[node name="MeshInstance6" type="MeshInstance3D" parent="Environment"]
+[node name="MeshInstance6" type="MeshInstance3D" parent="Environment" unique_id=1057121608]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95629, -0.666597, -2.60536)
 material_override = SubResource("14")
 mesh = SubResource("15")
 
-[node name="MeshInstance3" type="MeshInstance3D" parent="Environment"]
+[node name="MeshInstance3" type="MeshInstance3D" parent="Environment" unique_id=2010456436]
 transform = Transform3D(1.14319, 0, 0, 0, 1.14319, 0, 0, 0, 1.14319, -0.498635, 0.0929141, -2.66452)
 material_override = SubResource("14")
 mesh = SubResource("15")
 
-[node name="MeshInstance4" type="MeshInstance3D" parent="Environment"]
+[node name="MeshInstance4" type="MeshInstance3D" parent="Environment" unique_id=1499940741]
 transform = Transform3D(0.473173, 0, 0, 0, 0.473173, 0, 0, 0, 0.473173, -1.21155, 1.15132, -1.32348)
 material_override = SubResource("14")
 mesh = SubResource("15")
 
-[node name="MeshInstance2" type="MeshInstance3D" parent="Environment"]
+[node name="MeshInstance2" type="MeshInstance3D" parent="Environment" unique_id=214292264]
 transform = Transform3D(1.50835, 0, 0, 0, 1.50835, 0, 0, 0, 1.50835, 1.26811, -1.33713, -1.67108)
 material_override = SubResource("14")
 mesh = SubResource("15")
 
-[node name="MeshInstance7" type="MeshInstance3D" parent="Environment"]
+[node name="MeshInstance7" type="MeshInstance3D" parent="Environment" unique_id=197538287]
 transform = Transform3D(1.50835, 0, 0, 0, 1.50835, 0, 0, 0, 1.50835, 1.26811, -1.33818, 26.2441)
 material_override = SubResource("14")
 mesh = SubResource("15")
 
-[node name="MeshInstance8" type="MeshInstance3D" parent="Environment"]
+[node name="MeshInstance8" type="MeshInstance3D" parent="Environment" unique_id=1577048944]
 transform = Transform3D(1.50835, 0, 0, 0, 1.50835, 0, 0, 0, 1.50835, -1.01346, -0.570083, 28.2913)
 material_override = SubResource("14")
 mesh = SubResource("15")
 
-[node name="MeshInstance9" type="MeshInstance3D" parent="Environment"]
+[node name="MeshInstance9" type="MeshInstance3D" parent="Environment" unique_id=1013957481]
 transform = Transform3D(2.98732, 0, 0, 0, 2.98732, 0, 0, 0, 2.98732, 4.87479, -2.71731, 29.3602)
 material_override = SubResource("14")
 mesh = SubResource("15")
 
-[node name="MeshInstance15" type="MeshInstance3D" parent="Environment"]
+[node name="MeshInstance15" type="MeshInstance3D" parent="Environment" unique_id=1369689670]
 transform = Transform3D(2.98732, 0, 0, 0, 2.98732, 0, 0, 0, 2.98732, 4.87479, -4.78104, -8.29915)
 material_override = SubResource("14")
 mesh = SubResource("15")
 
-[node name="MeshInstance16" type="MeshInstance3D" parent="Environment"]
+[node name="MeshInstance16" type="MeshInstance3D" parent="Environment" unique_id=1770887956]
 transform = Transform3D(2.98732, 0, 0, 0, 2.98732, 0, 0, 0, 2.98732, 0.462523, -3.30955, -11.2663)
 material_override = SubResource("14")
 mesh = SubResource("15")
 
-[node name="MeshInstance17" type="MeshInstance3D" parent="Environment"]
+[node name="MeshInstance17" type="MeshInstance3D" parent="Environment" unique_id=104294053]
 transform = Transform3D(2.98732, 0, 0, 0, 2.98732, 0, 0, 0, 2.98732, 4.86438, -1.46258, 35.1737)
 material_override = SubResource("14")
 mesh = SubResource("15")
 
-[node name="MeshInstance10" type="MeshInstance3D" parent="Environment"]
+[node name="MeshInstance10" type="MeshInstance3D" parent="Environment" unique_id=2043283020]
 transform = Transform3D(2.98732, 0, 0, 0, 2.98732, 0, 0, 0, 2.98732, 4.87479, -2.71731, 29.3602)
 material_override = SubResource("14")
 mesh = SubResource("15")
 
-[node name="MeshInstance11" type="MeshInstance3D" parent="Environment"]
+[node name="MeshInstance11" type="MeshInstance3D" parent="Environment" unique_id=537691775]
 transform = Transform3D(0.645052, 0, 0, 0, 2.71792, 0, 0, 0, 0.645052, 4.49499, -0.655079, 26.5435)
 material_override = SubResource("14")
 mesh = SubResource("15")
 
-[node name="MeshInstance12" type="MeshInstance3D" parent="Environment"]
+[node name="MeshInstance12" type="MeshInstance3D" parent="Environment" unique_id=961026748]
 transform = Transform3D(0.645052, 0, 0, 0, 1.54839, 0, 0, 0, 0.645052, -2.8115, 0.499449, 30.0278)
 material_override = SubResource("14")
 mesh = SubResource("15")
 
-[node name="MeshInstance14" type="MeshInstance3D" parent="Environment"]
+[node name="MeshInstance14" type="MeshInstance3D" parent="Environment" unique_id=676381129]
 transform = Transform3D(0.645052, 0, 0, 0, 1.54839, 0, 0, 0, 0.645052, 5.15443, -2.67499, 23.9164)
 material_override = SubResource("14")
 mesh = SubResource("15")
 
-[node name="MeshInstance13" type="MeshInstance3D" parent="Environment"]
+[node name="MeshInstance13" type="MeshInstance3D" parent="Environment" unique_id=900902738]
 transform = Transform3D(0.645052, 0, 0, 0, 1.54839, 0, 0, 0, 0.645052, 2.8465, 0.764487, -4.29656)
 material_override = SubResource("14")
 mesh = SubResource("15")
 
-[node name="GroundParticles" type="GPUParticles3D" parent="Environment"]
+[node name="GroundParticles" type="GPUParticles3D" parent="Environment" unique_id=817254470]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.159886, -7.01857, 11.1831)
 material_override = SubResource("17")
 amount = 25
@@ -351,25 +350,25 @@ lifetime = 2.5
 process_material = SubResource("20")
 draw_pass_1 = SubResource("21")
 
-[node name="Barrier" type="StaticBody3D" parent="Environment"]
+[node name="Barrier" type="StaticBody3D" parent="Environment" unique_id=1194180893]
 
-[node name="SideWall" type="CollisionShape3D" parent="Environment/Barrier"]
+[node name="SideWall" type="CollisionShape3D" parent="Environment/Barrier" unique_id=1969861640]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, 10)
 shape = SubResource("34")
 
-[node name="SideWall2" type="CollisionShape3D" parent="Environment/Barrier"]
+[node name="SideWall2" type="CollisionShape3D" parent="Environment/Barrier" unique_id=703466977]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 10)
 shape = SubResource("34")
 
-[node name="EndWall" type="CollisionShape3D" parent="Environment/Barrier"]
+[node name="EndWall" type="CollisionShape3D" parent="Environment/Barrier" unique_id=1368978010]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, -2.5)
 shape = SubResource("41")
 
-[node name="EndWall2" type="CollisionShape3D" parent="Environment/Barrier"]
+[node name="EndWall2" type="CollisionShape3D" parent="Environment/Barrier" unique_id=1414377058]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, 28)
 shape = SubResource("41")
 
-[node name="BridgeParticles" type="GPUParticles3D" parent="."]
+[node name="BridgeParticles" type="GPUParticles3D" parent="." unique_id=1738909019]
 amount = 996
 lifetime = 2.0
 explosiveness = 1.0
@@ -379,49 +378,45 @@ draw_pass_1 = SubResource("11")
 script = ExtResource("7")
 character_node = NodePath("../Player/Character")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="BridgeParticles"]
+[node name="StaticBody3D" type="StaticBody3D" parent="BridgeParticles" unique_id=1636981398]
 
-[node name="Floor" type="CollisionShape3D" parent="BridgeParticles/StaticBody3D"]
+[node name="Floor" type="CollisionShape3D" parent="BridgeParticles/StaticBody3D" unique_id=831919974]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -0.83, 10)
 shape = SubResource("34")
 
-[node name="Area3D" type="Area3D" parent="BridgeParticles"]
+[node name="Area3D" type="Area3D" parent="BridgeParticles" unique_id=1531832028]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23669, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BridgeParticles/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BridgeParticles/Area3D" unique_id=271501539]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 12.5)
 shape = SubResource("40")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="BridgeParticles"]
-libraries = {
-"": SubResource("AnimationLibrary_drjve")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BridgeParticles" unique_id=396749033]
+libraries/ = SubResource("AnimationLibrary_drjve")
 
-[node name="Player" type="RigidBody3D" parent="."]
+[node name="Player" type="RigidBody3D" parent="." unique_id=325952008]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, -1)
 mass = 2.0
 can_sleep = false
 linear_damp = 5.0
 script = ExtResource("6")
 
-[node name="Character" type="MeshInstance3D" parent="Player"]
+[node name="Character" type="MeshInstance3D" parent="Player" unique_id=1075283630]
 mesh = SubResource("13")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=7211432]
 shape = SubResource("35")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=43866592]
 transform = Transform3D(-4.37114e-08, 0.5, -0.866025, 0, 0.866025, 0.5, 1, 2.18557e-08, -3.78552e-08, -10, 6, 12)
 current = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_qp5yy")
-}
-autoplay = "show"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=227565451]
+libraries/ = SubResource("AnimationLibrary_qp5yy")
+autoplay = &"show"
 
-[node name="DemoInterface" parent="." instance=ExtResource("4")]
+[node name="DemoInterface" parent="." unique_id=256252265 instance=ExtResource("4")]
 anchors_preset = 10
 
 [editable path="Demo3DEnvironmentDark"]

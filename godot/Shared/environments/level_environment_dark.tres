@@ -1,4 +1,4 @@
-[gd_resource type="Environment" load_steps=2 format=3 uid="uid://ctef6o8gbkc7x"]
+[gd_resource type="Environment" format=3 uid="uid://ctef6o8gbkc7x"]
 
 [sub_resource type="Sky" id="1"]
 radiance_size = 1

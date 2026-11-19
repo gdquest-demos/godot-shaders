@@ -1,7 +1,6 @@
-[gd_resource type="Environment" format=2]
+[gd_resource type="Environment" format=3 uid="uid://db80hudd7r4h7"]
 
 [resource]
 background_mode = 4
 glow_enabled = true
 glow_blend_mode = 0
-glow_bicubic_upscale = true

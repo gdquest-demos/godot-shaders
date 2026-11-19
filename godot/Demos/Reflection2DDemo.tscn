@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7a8wto2qrdx6"]
+[gd_scene format=3 uid="uid://b7a8wto2qrdx6"]
 
-[ext_resource type="PackedScene" path="res://Shared/Background2D/Demo2DBackground.tscn" id="1"]
-[ext_resource type="Script" path="res://Demos/Reflection2D/Reflection2D.gd" id="3"]
-[ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="4"]
-[ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="6"]
+[ext_resource type="PackedScene" uid="uid://7mqdkojagyav" path="res://Shared/Background2D/Demo2DBackground.tscn" id="1"]
+[ext_resource type="Script" uid="uid://qnc27goofdog" path="res://Demos/Reflection2D/Reflection2D.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://diofpwcvq5elu" path="res://Shared/DemoInterface.tscn" id="4"]
+[ext_resource type="Script" uid="uid://ynusbd8ioqt0" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="6"]
 
 [sub_resource type="Shader" id="1"]
 code = "shader_type canvas_item;
@@ -28,36 +28,33 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="4"]
 shader = SubResource("1")
 
-[node name="Reflection2DDemo" type="CanvasLayer"]
+[node name="Reflection2DDemo" type="CanvasLayer" unique_id=614653268]
 script = ExtResource("6")
 
-[node name="ParallaxBackground" parent="." instance=ExtResource("1")]
+[node name="ParallaxBackground" parent="." unique_id=2136848325 instance=ExtResource("1")]
 
-[node name="Robi" type="Sprite2D" parent="."]
+[node name="Robi" type="Sprite2D" parent="." unique_id=1106980278]
 position = Vector2(504.151, 466.506)
 rotation = -0.147885
 scale = Vector2(0.563456, 0.563456)
-texture = null
 
-[node name="Robi2" type="Sprite2D" parent="."]
+[node name="Robi2" type="Sprite2D" parent="." unique_id=195621694]
 position = Vector2(1389.09, 490.752)
 rotation = 0.103686
 scale = Vector2(0.471994, 0.471994)
-texture = null
 
-[node name="Robi3" type="Sprite2D" parent="."]
+[node name="Robi3" type="Sprite2D" parent="." unique_id=953000279]
 position = Vector2(963.357, 402.478)
 scale = Vector2(0.630556, 0.630556)
-texture = null
 
-[node name="MirrorYPlane" type="Sprite2D" parent="."]
+[node name="MirrorYPlane" type="Sprite2D" parent="." unique_id=1377039996]
 material = SubResource("4")
 position = Vector2(969.303, 893.21)
 scale = Vector2(23.8484, 2.91774)
-texture = null
 script = ExtResource("3")
 
-[node name="DemoInterface" parent="." instance=ExtResource("4")]
+[node name="DemoInterface" parent="." unique_id=550670806 instance=ExtResource("4")]
+anchors_preset = 10
 text_bbcode = "Vertical mirror shader with a fade to a background color.
 This demo shows how to create a pure vertical mirror using the screen texture.
 You can control the way the reflection fade using a gradient texture."

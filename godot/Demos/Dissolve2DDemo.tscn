@@ -1,25 +1,25 @@
-[gd_scene load_steps=27 format=3 uid="uid://bes6p8ab5545"]
+[gd_scene format=3 uid="uid://bes6p8ab5545"]
 
-[ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="1"]
+[ext_resource type="Script" uid="uid://ynusbd8ioqt0" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="1"]
 [ext_resource type="Gradient" path="res://Demos/Dissolve/Dissolve2D/color_ramp.tres" id="2"]
-[ext_resource type="Script" path="res://Utils/DebugViewer.gd" id="4"]
-[ext_resource type="Shader" path="res://Shaders/dissolve2D.gdshader" id="6"]
-[ext_resource type="Script" path="res://Demos/Dissolve/Dissolve2D/DissolveMaskController.gd" id="7"]
-[ext_resource type="Script" path="res://Demos/Dissolve/Dissolve2D/DissolveController.gd" id="8"]
-[ext_resource type="PackedScene" path="res://Shared/Background2D/Demo2DBackground.tscn" id="11"]
-[ext_resource type="Shader" path="res://Shaders/dissolve2D_mask.gdshader" id="12"]
+[ext_resource type="Script" uid="uid://dnyvlxiqhjgo6" path="res://Utils/DebugViewer.gd" id="4"]
+[ext_resource type="Shader" uid="uid://c4kp5vkw6k8p6" path="res://Shaders/dissolve2D.gdshader" id="6"]
+[ext_resource type="Script" uid="uid://bhybgnlikcexw" path="res://Demos/Dissolve/Dissolve2D/DissolveMaskController.gd" id="7"]
+[ext_resource type="Script" uid="uid://ck5fc68tu26ru" path="res://Demos/Dissolve/Dissolve2D/DissolveController.gd" id="8"]
+[ext_resource type="PackedScene" uid="uid://7mqdkojagyav" path="res://Shared/Background2D/Demo2DBackground.tscn" id="11"]
+[ext_resource type="Shader" uid="uid://tgeoqmmnravm" path="res://Shaders/dissolve2D_mask.gdshader" id="12"]
 [ext_resource type="Texture2D" path="res://Demos/Dissolve/noise_tex.tres" id="13"]
-[ext_resource type="Script" path="res://Demos/Dissolve/Dissolve2D/Dissolve2DControls.gd" id="14"]
-[ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="15"]
-[ext_resource type="Script" path="res://Demos/Dissolve/Dissolve2D/Particles2D.gd" id="16"]
+[ext_resource type="Script" uid="uid://jhbg2yyay3q" path="res://Demos/Dissolve/Dissolve2D/Dissolve2DControls.gd" id="14"]
+[ext_resource type="PackedScene" uid="uid://diofpwcvq5elu" path="res://Shared/DemoInterface.tscn" id="15"]
+[ext_resource type="Script" uid="uid://c6jybr53ub50r" path="res://Demos/Dissolve/Dissolve2D/Particles2D.gd" id="16"]
 
 [sub_resource type="ShaderMaterial" id="3"]
 shader = ExtResource("6")
+shader_parameter/dissolve_texture = ExtResource("13")
 shader_parameter/burn_color = Color(2.73725, 0.0784314, 0.329412, 1)
 shader_parameter/burn_size = 0.15
 shader_parameter/dissolve_amount = 0.0
 shader_parameter/emission_amount = 0.5
-shader_parameter/dissolve_texture = ExtResource("13")
 
 [sub_resource type="Animation" id="15"]
 resource_name = "Dissolve"
@@ -76,14 +76,20 @@ tracks/1/keys = {
 "values": [Color(2.73725, 0.0784314, 0.329412, 1)]
 }
 
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6wr02"]
+_data = {
+&"Dissolve": SubResource("15"),
+&"RESET": SubResource("16")
+}
+
 [sub_resource type="ViewportTexture" id="2"]
 viewport_path = NodePath("MaskView/SubViewport")
 
 [sub_resource type="ShaderMaterial" id="1"]
 shader = ExtResource("12")
+shader_parameter/dissolve_texture = ExtResource("13")
 shader_parameter/burn_size = 0.15
 shader_parameter/dissolve_amount = 0.0
-shader_parameter/dissolve_texture = ExtResource("13")
 
 [sub_resource type="Animation" id="13"]
 resource_name = "Dissolve"
@@ -116,6 +122,12 @@ tracks/0/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bb8qy"]
+_data = {
+&"Dissolve": SubResource("13"),
+&"RESET": SubResource("14")
+}
+
 [sub_resource type="Gradient" id="4"]
 offsets = PackedFloat32Array(0, 0.147929, 0.715976, 1)
 colors = PackedColorArray(0.96875, 0.304626, 0.151367, 0, 1, 0.515625, 0, 1, 0.95813, 1, 0.234375, 1, 1, 1, 1, 0)
@@ -145,108 +157,96 @@ viewport_path = NodePath("ScaledView/SubViewport")
 background_mode = 4
 glow_enabled = true
 glow_levels/4 = 1.0
-glow_levels/5 = 0.0
 glow_strength = 0.87
 glow_blend_mode = 0
 
-[node name="Dissolve2DDemo" type="CanvasLayer"]
+[node name="Dissolve2DDemo" type="CanvasLayer" unique_id=932466698]
 script = ExtResource("1")
 
-[node name="Demo2DBackground" parent="." instance=ExtResource("11")]
+[node name="Demo2DBackground" parent="." unique_id=290790950 instance=ExtResource("11")]
 
-[node name="Dissolve2DControls" type="Node" parent="."]
+[node name="Dissolve2DControls" type="Node" parent="." unique_id=1805591809]
 script = ExtResource("14")
 debug_dissolve_control = 0.538
 
-[node name="Robi" type="Sprite2D" parent="."]
+[node name="Robi" type="Sprite2D" parent="." unique_id=1199270009]
 material = SubResource("3")
 position = Vector2(960, 540)
-texture = null
 script = ExtResource("8")
 emission_color = ExtResource("2")
 
-[node name="Tween" type="Tween" parent="Robi"]
+[node name="Tween" type="Tween" parent="Robi" unique_id=235039280]
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Robi"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Robi" unique_id=334222606]
 remote_path = NodePath("../../MaskView/SubViewport/RobiMask")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Robi"]
-anims/Dissolve = SubResource("15")
-anims/RESET = SubResource("16")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Robi" unique_id=1839813921]
+libraries/ = SubResource("AnimationLibrary_6wr02")
 
-[node name="ScaledView" type="SubViewportContainer" parent="."]
+[node name="ScaledView" type="SubViewportContainer" parent="." unique_id=362714171]
 self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 stretch = true
 stretch_shrink = 8
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="SubViewport" type="SubViewport" parent="ScaledView"]
-size = Vector2(240, 135)
+[node name="SubViewport" type="SubViewport" parent="ScaledView" unique_id=577062929]
 handle_input_locally = false
-usage = 0
-render_target_update_mode = 3
+size = Vector2i(240, 135)
+render_target_update_mode = 4
 
-[node name="TextureRect" type="TextureRect" parent="ScaledView/SubViewport"]
+[node name="TextureRect" type="TextureRect" parent="ScaledView/SubViewport" unique_id=597455656]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 texture = SubResource("2")
-expand = true
+expand_mode = 1
 
-[node name="MaskView" type="SubViewportContainer" parent="."]
+[node name="MaskView" type="SubViewportContainer" parent="." unique_id=1633392718]
 self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 stretch = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="SubViewport" type="SubViewport" parent="MaskView"]
-size = Vector2(1920, 1080)
+[node name="SubViewport" type="SubViewport" parent="MaskView" unique_id=455247913]
 transparent_bg = true
 handle_input_locally = false
-usage = 0
-render_target_update_mode = 3
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
 
-[node name="RobiMask" type="Sprite2D" parent="MaskView/SubViewport"]
+[node name="RobiMask" type="Sprite2D" parent="MaskView/SubViewport" unique_id=106114084]
 material = SubResource("1")
 position = Vector2(960, 540)
-texture = null
 script = ExtResource("7")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MaskView/SubViewport/RobiMask"]
-anims/Dissolve = SubResource("13")
-anims/RESET = SubResource("14")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MaskView/SubViewport/RobiMask" unique_id=1460613359]
+libraries/ = SubResource("AnimationLibrary_bb8qy")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=902783135]
 modulate = Color(2, 1.5, 1.5, 1)
 position = Vector2(960, 540)
 amount = 512
 lifetime = 1.5
 visibility_rect = Rect2(-250, -350, 500, 700)
-local_coords = false
 process_material = SubResource("10")
-texture = null
 script = ExtResource("16")
 emission_mask = SubResource("11")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1616561144]
 environment = SubResource("12")
 
-[node name="DebugViewer" type="Control" parent="."]
+[node name="DebugViewer" type="Control" parent="." unique_id=1841992960]
+layout_mode = 3
+anchors_preset = 0
 offset_top = 120.0
 offset_right = 40.0
 offset_bottom = 160.0
 script = ExtResource("4")
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="DemoInterface" parent="." instance=ExtResource("15")]
+[node name="DemoInterface" parent="." unique_id=1656512686 instance=ExtResource("15")]
+anchors_preset = 10

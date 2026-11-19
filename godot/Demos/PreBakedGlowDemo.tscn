@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ulisth7wup6e"]
+[gd_scene format=3 uid="uid://ulisth7wup6e"]
 
-[ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="1"]
-[ext_resource type="Shader" path="res://Shaders/baked_sprite_glow.gdshader" id="4"]
-[ext_resource type="PackedScene" path="res://Shared/Background2D/Demo2DBackground.tscn" id="5"]
-[ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="6"]
+[ext_resource type="Script" uid="uid://ynusbd8ioqt0" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="1"]
+[ext_resource type="Shader" uid="uid://dclgocoyk7cxc" path="res://Shaders/baked_sprite_glow.gdshader" id="4"]
+[ext_resource type="PackedScene" uid="uid://7mqdkojagyav" path="res://Shared/Background2D/Demo2DBackground.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://diofpwcvq5elu" path="res://Shared/DemoInterface.tscn" id="6"]
 
 [sub_resource type="ShaderMaterial" id="1"]
 shader = ExtResource("4")
@@ -46,20 +46,25 @@ tracks/0/keys = {
 "values": [3.0]
 }
 
-[node name="PreBakedGlowDemo" type="CanvasLayer"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rrta8"]
+_data = {
+&"Fade": SubResource("2"),
+&"RESET": SubResource("3")
+}
+
+[node name="PreBakedGlowDemo" type="CanvasLayer" unique_id=433309802]
 script = ExtResource("1")
 
-[node name="Demo2DBackground" parent="." instance=ExtResource("5")]
+[node name="Demo2DBackground" parent="." unique_id=1890618828 instance=ExtResource("5")]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=105879565]
 material = SubResource("1")
 position = Vector2(960, 540)
 rotation = 1.5708
-texture = null
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
-autoplay = "Fade"
-anims/Fade = SubResource("2")
-anims/RESET = SubResource("3")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=39771710]
+libraries/ = SubResource("AnimationLibrary_rrta8")
+autoplay = &"Fade"
 
-[node name="DemoInterface" parent="." instance=ExtResource("6")]
+[node name="DemoInterface" parent="." unique_id=394275806 instance=ExtResource("6")]
+anchors_preset = 10

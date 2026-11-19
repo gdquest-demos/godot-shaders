@@ -1,11 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://t26p5iy0f4ye"]
+[gd_scene format=3 uid="uid://t26p5iy0f4ye"]
 
 [ext_resource type="PackedScene" uid="uid://n87x06o26w4p" path="res://Shared/Demo3DEnvironmentDark.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://bco47y45kysaw" path="res://Demos/StylizedLiquid/PotionLarge.tscn" id="2"]
-[ext_resource type="Shader" path="res://Shaders/stylized_liquid.gdshader" id="3"]
+[ext_resource type="Shader" uid="uid://c3m5pnljht8l" path="res://Shaders/stylized_liquid.gdshader" id="3"]
 [ext_resource type="PackedScene" uid="uid://diofpwcvq5elu" path="res://Shared/DemoInterface.tscn" id="4"]
-[ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="5"]
-[ext_resource type="Script" path="res://Demos/StylizedLiquid/LiquidWobble.gd" id="5_guj11"]
+[ext_resource type="Script" uid="uid://ynusbd8ioqt0" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="5"]
+[ext_resource type="Script" uid="uid://cniaytdg20r4q" path="res://Demos/StylizedLiquid/LiquidWobble.gd" id="5_guj11"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d2er3"]
 transparency = 1
@@ -29,12 +29,12 @@ render_priority = 0
 shader = ExtResource("3")
 shader_parameter/liquid_height = 0.17
 shader_parameter/liquid_surface_color = Color(0.439216, 1, 0.156863, 1)
+shader_parameter/liquid_rim_gradient = SubResource("GradientTexture1D_1leg4")
 shader_parameter/rim_emission_intensity = 1.031
 shader_parameter/rim_exponent = 3.0
 shader_parameter/emission_intensity = 0.438
 shader_parameter/liquid_surface_gradient_size = 0.02
-shader_parameter/wobble = Vector2(0.00230302, 0.00253308)
-shader_parameter/liquid_rim_gradient = SubResource("GradientTexture1D_1leg4")
+shader_parameter/wobble = Vector2(0, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pjqlo"]
 transparency = 1
@@ -59,12 +59,12 @@ render_priority = 0
 shader = ExtResource("3")
 shader_parameter/liquid_height = 0.0
 shader_parameter/liquid_surface_color = Color(1, 0.266667, 0.505882, 1)
+shader_parameter/liquid_rim_gradient = SubResource("GradientTexture1D_mcxb7")
 shader_parameter/rim_emission_intensity = 1.031
 shader_parameter/rim_exponent = 3.0
 shader_parameter/emission_intensity = 0.438
 shader_parameter/liquid_surface_gradient_size = 0.174
 shader_parameter/wobble = Vector2(0, 0)
-shader_parameter/liquid_rim_gradient = SubResource("GradientTexture1D_mcxb7")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gc6tk"]
 transparency = 1
@@ -88,12 +88,12 @@ render_priority = 0
 shader = ExtResource("3")
 shader_parameter/liquid_height = 0.139
 shader_parameter/liquid_surface_color = Color(0.396078, 0.905882, 0.988235, 1)
+shader_parameter/liquid_rim_gradient = SubResource("GradientTexture1D_lvpoc")
 shader_parameter/rim_emission_intensity = 1.031
 shader_parameter/rim_exponent = 3.0
 shader_parameter/emission_intensity = 0.438
 shader_parameter/liquid_surface_gradient_size = 0.02
 shader_parameter/wobble = Vector2(0, 0)
-shader_parameter/liquid_rim_gradient = SubResource("GradientTexture1D_lvpoc")
 
 [sub_resource type="Animation" id="Animation_b5pxi"]
 resource_name = "show_potions"
@@ -237,60 +237,58 @@ tracks/11/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h3s76"]
 _data = {
-"show_potions": SubResource("Animation_b5pxi")
+&"show_potions": SubResource("Animation_b5pxi")
 }
 
-[node name="StylizedLiquidDemo" type="CanvasLayer"]
+[node name="StylizedLiquidDemo" type="CanvasLayer" unique_id=1338373159]
 script = ExtResource("5")
 
-[node name="Demo3DEnvironmentDark" parent="." instance=ExtResource("1")]
+[node name="Demo3DEnvironmentDark" parent="." unique_id=153240515 instance=ExtResource("1")]
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1180709039]
 transform = Transform3D(1, 0, 0, 0, 0.91644, 0.400173, 0, -0.400173, 0.91644, 0, 3.1376, 4.12474)
 
-[node name="PostionGreenAnchor" type="Node3D" parent="."]
+[node name="PostionGreenAnchor" type="Node3D" parent="." unique_id=443718258]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.705, 0)
 
-[node name="PotionGreen" parent="PostionGreenAnchor" instance=ExtResource("2")]
+[node name="PotionGreen" parent="PostionGreenAnchor" unique_id=507955393 instance=ExtResource("2")]
 transform = Transform3D(0.859013, 0.511953, 0, -0.511953, 0.859013, 0, 0, 0, 1, 0, -1.193, 0)
 
-[node name="potionLarge_red" parent="PostionGreenAnchor/PotionGreen" index="0"]
+[node name="potionLarge_red" parent="PostionGreenAnchor/PotionGreen" index="0" unique_id=1162271565]
 surface_material_override/0 = SubResource("StandardMaterial3D_d2er3")
 
-[node name="potionLarge_red_001" parent="PostionGreenAnchor/PotionGreen/potionLarge_red" index="0"]
+[node name="potionLarge_red_001" parent="PostionGreenAnchor/PotionGreen/potionLarge_red" index="0" unique_id=670282220]
 material_override = SubResource("ShaderMaterial_41q5w")
 script = ExtResource("5_guj11")
 
-[node name="PinkPotionAnchor" type="Node3D" parent="."]
+[node name="PinkPotionAnchor" type="Node3D" parent="." unique_id=1835120035]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.70025, 0)
 
-[node name="PotionPink" parent="PinkPotionAnchor" instance=ExtResource("2")]
+[node name="PotionPink" parent="PinkPotionAnchor" unique_id=376815122 instance=ExtResource("2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.241325, -1.18178, 0)
 
-[node name="potionLarge_red" parent="PinkPotionAnchor/PotionPink" index="0"]
+[node name="potionLarge_red" parent="PinkPotionAnchor/PotionPink" index="0" unique_id=1162271565]
 surface_material_override/0 = SubResource("StandardMaterial3D_pjqlo")
 
-[node name="potionLarge_red_001" parent="PinkPotionAnchor/PotionPink/potionLarge_red" index="0"]
+[node name="potionLarge_red_001" parent="PinkPotionAnchor/PotionPink/potionLarge_red" index="0" unique_id=670282220]
 material_override = SubResource("ShaderMaterial_tnftr")
 script = ExtResource("5_guj11")
 
-[node name="PotionBlue" parent="." instance=ExtResource("2")]
+[node name="PotionBlue" parent="." unique_id=276321685 instance=ExtResource("2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.51328, 0)
 
-[node name="potionLarge_red" parent="PotionBlue" index="0"]
+[node name="potionLarge_red" parent="PotionBlue" index="0" unique_id=1162271565]
 surface_material_override/0 = SubResource("StandardMaterial3D_gc6tk")
 
-[node name="potionLarge_red_001" parent="PotionBlue/potionLarge_red" index="0"]
+[node name="potionLarge_red_001" parent="PotionBlue/potionLarge_red" index="0" unique_id=670282220]
 material_override = SubResource("ShaderMaterial_a1awt")
 script = ExtResource("5_guj11")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_h3s76")
-}
-autoplay = "show_potions"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1598901820]
+libraries/ = SubResource("AnimationLibrary_h3s76")
+autoplay = &"show_potions"
 
-[node name="DemoInterface" parent="." instance=ExtResource("4")]
+[node name="DemoInterface" parent="." unique_id=438023448 instance=ExtResource("4")]
 anchors_preset = 10
 
 [editable path="PostionGreenAnchor/PotionGreen"]

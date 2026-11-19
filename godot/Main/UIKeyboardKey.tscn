@@ -1,14 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://g82ioqud1tka"]
+[gd_scene format=3 uid="uid://g82ioqud1tka"]
 
 [ext_resource type="FontFile" path="res://Main/UI/fonts/KeyboardKeyFont.tres" id="1"]
 [ext_resource type="StyleBox" path="res://Main/keyboard_key_panel.tres" id="2"]
 
-[node name="UIKeyboardKey" type="Label"]
+[node name="UIKeyboardKey" type="Label" unique_id=1301696729]
 offset_right = 27.0
 offset_bottom = 31.0
 size_flags_vertical = 1
-theme_override_styles/normal = ExtResource("2")
 theme_override_fonts/font = ExtResource("1")
-__meta__ = {
-"_edit_use_anchors_": false
-}
+theme_override_styles/normal = ExtResource("2")

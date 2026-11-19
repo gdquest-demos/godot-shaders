@@ -1,17 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://dkyf4721wih60"]
+[gd_scene format=3 uid="uid://dkyf4721wih60"]
 
 [ext_resource type="PackedScene" uid="uid://ccoj1forkve0h" path="res://Demos/Flag3D/Flag3DScene.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://dquhei2qv5csj" path="res://Shared/Demo3DEnvironment.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://diofpwcvq5elu" path="res://Shared/DemoInterface.tscn" id="3"]
-[ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="4"]
+[ext_resource type="Script" uid="uid://ynusbd8ioqt0" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="4"]
 
-[node name="Flag3DDemo" type="CanvasLayer"]
+[node name="Flag3DDemo" type="CanvasLayer" unique_id=1859765463]
 script = ExtResource("4")
 
-[node name="Flag3DScene" parent="." instance=ExtResource("1")]
+[node name="Flag3DScene" parent="." unique_id=1210235759 instance=ExtResource("1")]
 
-[node name="Demo3DEnvironment" parent="." instance=ExtResource("2")]
+[node name="Demo3DEnvironment" parent="." unique_id=1714332826 instance=ExtResource("2")]
 
-[node name="DemoInterface" parent="." instance=ExtResource("3")]
+[node name="DemoInterface" parent="." unique_id=1094942938 instance=ExtResource("3")]
 anchors_preset = 10
 text_bbcode = "The shader samples FastNoiseLite to give the impression of a flag blowing in the wind."

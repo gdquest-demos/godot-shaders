@@ -1,7 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://bjmid3jo8m8n1"]
+[gd_scene format=3 uid="uid://bjmid3jo8m8n1"]
 
 [ext_resource type="PackedScene" uid="uid://b176ml0gceo5m" path="res://Main/DemoList.tscn" id="2"]
-[ext_resource type="Script" path="res://Main/DemoPickerUI.gd" id="3"]
+[ext_resource type="Script" uid="uid://brtm1atns2ek2" path="res://Main/DemoPickerUI.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://djonil8al43ey" path="res://Main/background.png" id="3_npgvx"]
 [ext_resource type="Theme" uid="uid://b2rktjpfj58fv" path="res://Main/UI/ui_theme.tres" id="4"]
 [ext_resource type="Texture2D" uid="uid://tp7uln81cgxx" path="res://Main/planet.png" id="4_s1iv8"]
@@ -17,16 +17,14 @@
 [ext_resource type="Texture2D" uid="uid://btj70s4v4l2n3" path="res://Main/UI/node-icons/Node.svg" id="10_6gayy"]
 [ext_resource type="PackedScene" uid="uid://dd7qh25r60ptt" path="res://Main/UIControlsList.tscn" id="17"]
 
+[sub_resource type="StyleBoxEmpty" id="1"]
+
 [sub_resource type="StyleBoxFlat" id="2"]
 draw_center = false
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-
-[sub_resource type="StyleBoxEmpty" id="1"]
-
-[sub_resource type="StyleBoxEmpty" id="3"]
 
 [sub_resource type="StyleBoxTexture" id="4"]
 content_margin_top = 24.0
@@ -40,13 +38,15 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 region_rect = Rect2(0, 0, 128, 128)
 
-[sub_resource type="StyleBoxEmpty" id="5"]
+[sub_resource type="StyleBoxEmpty" id="3"]
 
 [sub_resource type="StyleBoxEmpty" id="6"]
 
+[sub_resource type="StyleBoxEmpty" id="5"]
+
 [sub_resource type="Shortcut" id="8"]
 
-[node name="DemoPickerUI" type="Control"]
+[node name="DemoPickerUI" type="Control" unique_id=1343180884]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,7 +56,7 @@ grow_vertical = 2
 theme = ExtResource("4")
 script = ExtResource("3")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1708997508]
 custom_minimum_size = Vector2(1024, 600)
 layout_mode = 0
 anchor_right = 1.0
@@ -67,16 +67,16 @@ texture = ExtResource("3_npgvx")
 expand_mode = 1
 stretch_mode = 2
 
-[node name="planet" type="Sprite2D" parent="TextureRect"]
+[node name="planet" type="Sprite2D" parent="TextureRect" unique_id=1219763637]
 position = Vector2(1719.03, 225.17)
 texture = ExtResource("4_s1iv8")
 
-[node name="planet2" type="Sprite2D" parent="TextureRect"]
+[node name="planet2" type="Sprite2D" parent="TextureRect" unique_id=291962042]
 position = Vector2(39.3873, 1036.48)
 scale = Vector2(1.09002, 1.09002)
 texture = ExtResource("5_jfepq")
 
-[node name="FilterButtons" type="VBoxContainer" parent="."]
+[node name="FilterButtons" type="VBoxContainer" parent="." unique_id=348293221]
 layout_mode = 0
 offset_left = 1325.64
 offset_top = 499.122
@@ -84,16 +84,16 @@ offset_right = 1556.64
 offset_bottom = 800.122
 alignment = 1
 
-[node name="All" type="Button" parent="FilterButtons"]
+[node name="All" type="Button" parent="FilterButtons" unique_id=1884543296]
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.596078, 0.639216, 0.839216, 1)
 theme_override_colors/font_color = Color(0.831373, 0.847059, 0.92549, 1)
-theme_override_styles/focus = SubResource("2")
-theme_override_styles/disabled = SubResource("1")
-theme_override_styles/hover = SubResource("1")
-theme_override_styles/pressed = SubResource("1")
+theme_override_colors/font_pressed_color = Color(0.596078, 0.639216, 0.839216, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("1")
+theme_override_styles/pressed = SubResource("1")
+theme_override_styles/hover = SubResource("1")
+theme_override_styles/disabled = SubResource("1")
+theme_override_styles/focus = SubResource("2")
 toggle_mode = true
 text = "ALL"
 icon = ExtResource("6_aj65i")
@@ -101,17 +101,17 @@ flat = true
 alignment = 0
 expand_icon = true
 
-[node name="2D" type="Button" parent="FilterButtons"]
+[node name="2D" type="Button" parent="FilterButtons" unique_id=838561026]
 visible = false
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.596078, 0.639216, 0.839216, 1)
 theme_override_colors/font_color = Color(0.831373, 0.847059, 0.92549, 1)
-theme_override_styles/focus = SubResource("2")
-theme_override_styles/disabled = SubResource("1")
-theme_override_styles/hover = SubResource("1")
-theme_override_styles/pressed = SubResource("1")
+theme_override_colors/font_pressed_color = Color(0.596078, 0.639216, 0.839216, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("1")
+theme_override_styles/pressed = SubResource("1")
+theme_override_styles/hover = SubResource("1")
+theme_override_styles/disabled = SubResource("1")
+theme_override_styles/focus = SubResource("2")
 toggle_mode = true
 text = "2D"
 icon = ExtResource("7_wv5qu")
@@ -119,17 +119,17 @@ flat = true
 alignment = 0
 expand_icon = true
 
-[node name="3D" type="Button" parent="FilterButtons"]
+[node name="3D" type="Button" parent="FilterButtons" unique_id=37811816]
 visible = false
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.596078, 0.639216, 0.839216, 1)
 theme_override_colors/font_color = Color(0.831373, 0.847059, 0.92549, 1)
-theme_override_styles/focus = SubResource("2")
-theme_override_styles/disabled = SubResource("1")
-theme_override_styles/hover = SubResource("1")
-theme_override_styles/pressed = SubResource("1")
+theme_override_colors/font_pressed_color = Color(0.596078, 0.639216, 0.839216, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("1")
+theme_override_styles/pressed = SubResource("1")
+theme_override_styles/hover = SubResource("1")
+theme_override_styles/disabled = SubResource("1")
+theme_override_styles/focus = SubResource("2")
 toggle_mode = true
 text = "3D"
 icon = ExtResource("8_uthbi")
@@ -137,17 +137,17 @@ flat = true
 alignment = 0
 expand_icon = true
 
-[node name="UI" type="Button" parent="FilterButtons"]
+[node name="UI" type="Button" parent="FilterButtons" unique_id=861210445]
 visible = false
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.596078, 0.639216, 0.839216, 1)
 theme_override_colors/font_color = Color(0.831373, 0.847059, 0.92549, 1)
-theme_override_styles/focus = SubResource("2")
-theme_override_styles/disabled = SubResource("1")
-theme_override_styles/hover = SubResource("1")
-theme_override_styles/pressed = SubResource("1")
+theme_override_colors/font_pressed_color = Color(0.596078, 0.639216, 0.839216, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("1")
+theme_override_styles/pressed = SubResource("1")
+theme_override_styles/hover = SubResource("1")
+theme_override_styles/disabled = SubResource("1")
+theme_override_styles/focus = SubResource("2")
 toggle_mode = true
 text = "UI"
 icon = ExtResource("9_tkvaf")
@@ -155,17 +155,17 @@ flat = true
 alignment = 0
 expand_icon = true
 
-[node name="General" type="Button" parent="FilterButtons"]
+[node name="General" type="Button" parent="FilterButtons" unique_id=928842122]
 visible = false
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.596078, 0.639216, 0.839216, 1)
 theme_override_colors/font_color = Color(0.831373, 0.847059, 0.92549, 1)
-theme_override_styles/focus = SubResource("2")
-theme_override_styles/disabled = SubResource("1")
-theme_override_styles/hover = SubResource("1")
-theme_override_styles/pressed = SubResource("1")
+theme_override_colors/font_pressed_color = Color(0.596078, 0.639216, 0.839216, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("1")
+theme_override_styles/pressed = SubResource("1")
+theme_override_styles/hover = SubResource("1")
+theme_override_styles/disabled = SubResource("1")
+theme_override_styles/focus = SubResource("2")
 toggle_mode = true
 text = "GENERAL"
 icon = ExtResource("10_6gayy")
@@ -173,7 +173,7 @@ flat = true
 alignment = 0
 expand_icon = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1442673602]
 custom_minimum_size = Vector2(682, 0)
 layout_mode = 0
 anchor_left = 0.5
@@ -189,26 +189,26 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="title" type="TextureRect" parent="VBoxContainer"]
+[node name="title" type="TextureRect" parent="VBoxContainer" unique_id=1148795182]
 custom_minimum_size = Vector2(0, 240)
 layout_mode = 2
 texture = ExtResource("6_eh3bb")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=787523166]
 layout_mode = 2
 
-[node name="SearchBar" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+[node name="SearchBar" type="LineEdit" parent="VBoxContainer/HBoxContainer" unique_id=380329044]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_top = NodePath(".")
 focus_next = NodePath("../../NinePatchRect/MarginContainer/DemoList")
 focus_previous = NodePath("../../../HBoxContainer/HelpButton")
-theme_override_styles/focus = SubResource("3")
 theme_override_styles/normal = SubResource("4")
+theme_override_styles/focus = SubResource("3")
 
-[node name="SearchLabel" type="Label" parent="VBoxContainer/HBoxContainer/SearchBar"]
+[node name="SearchLabel" type="Label" parent="VBoxContainer/HBoxContainer/SearchBar" unique_id=1342395494]
 modulate = Color(1, 1, 1, 0.25098)
 layout_mode = 0
 anchor_right = 1.0
@@ -218,7 +218,7 @@ offset_right = -49.0
 text = "Search"
 vertical_alignment = 1
 
-[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer" unique_id=412486939]
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("8_optbv")
@@ -229,7 +229,7 @@ patch_margin_bottom = 32
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/NinePatchRect"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/NinePatchRect" unique_id=295944696]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -238,14 +238,14 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 27
 
-[node name="DemoList" parent="VBoxContainer/NinePatchRect/MarginContainer" instance=ExtResource("2")]
+[node name="DemoList" parent="VBoxContainer/NinePatchRect/MarginContainer" unique_id=805741318 instance=ExtResource("2")]
 layout_mode = 2
 focus_neighbor_top = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath("../../../LoadButton")
 focus_previous = NodePath("../../../HBoxContainer/SearchBar")
 
-[node name="LoadButton" type="Button" parent="VBoxContainer"]
+[node name="LoadButton" type="Button" parent="VBoxContainer" unique_id=370809630]
 custom_minimum_size = Vector2(280, 100)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -254,7 +254,7 @@ focus_neighbor_top = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
 text = "LOAD SCENE"
 
-[node name="GDQuestLogo" parent="." instance=ExtResource("9")]
+[node name="GDQuestLogo" parent="." unique_id=1924306409 instance=ExtResource("9")]
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
@@ -266,31 +266,31 @@ offset_top = 952.0
 offset_right = 1863.0
 offset_bottom = 1031.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1320162730]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 24.0
 offset_right = 184.0
 offset_bottom = 64.0
 
-[node name="QuitButton" type="Button" parent="HBoxContainer"]
+[node name="QuitButton" type="Button" parent="HBoxContainer" unique_id=2029201788]
 custom_minimum_size = Vector2(96, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 13
-theme_override_colors/font_disabled_color = Color(0.439216, 0.482353, 0.662745, 1)
-theme_override_colors/font_hover_color = Color(0.643137, 0.682353, 0.85098, 1)
-theme_override_colors/font_pressed_color = Color(0.337255, 0.376471, 0.568627, 1)
 theme_override_colors/font_color = Color(0.439216, 0.482353, 0.662745, 1)
-theme_override_styles/focus = SubResource("5")
-theme_override_styles/disabled = SubResource("5")
-theme_override_styles/hover = SubResource("5")
-theme_override_styles/pressed = SubResource("5")
+theme_override_colors/font_pressed_color = Color(0.337255, 0.376471, 0.568627, 1)
+theme_override_colors/font_hover_color = Color(0.643137, 0.682353, 0.85098, 1)
+theme_override_colors/font_disabled_color = Color(0.439216, 0.482353, 0.662745, 1)
 theme_override_styles/normal = SubResource("6")
+theme_override_styles/pressed = SubResource("5")
+theme_override_styles/hover = SubResource("5")
+theme_override_styles/disabled = SubResource("5")
+theme_override_styles/focus = SubResource("5")
 text = "QUIT"
 flat = true
 
-[node name="HelpButton" type="Button" parent="HBoxContainer"]
+[node name="HelpButton" type="Button" parent="HBoxContainer" unique_id=1440183254]
 visible = false
 custom_minimum_size = Vector2(96, 60)
 layout_mode = 2
@@ -298,34 +298,34 @@ size_flags_horizontal = 4
 size_flags_vertical = 13
 focus_next = NodePath("../../VBoxContainer/HBoxContainer/SearchBar")
 focus_previous = NodePath("../QuitButton")
-theme_override_colors/font_disabled_color = Color(0.439216, 0.482353, 0.662745, 1)
-theme_override_colors/font_hover_color = Color(0.643137, 0.682353, 0.85098, 1)
-theme_override_colors/font_pressed_color = Color(0.337255, 0.376471, 0.568627, 1)
 theme_override_colors/font_color = Color(0.439216, 0.482353, 0.662745, 1)
-theme_override_styles/focus = SubResource("5")
-theme_override_styles/disabled = SubResource("5")
-theme_override_styles/hover = SubResource("5")
-theme_override_styles/pressed = SubResource("5")
+theme_override_colors/font_pressed_color = Color(0.337255, 0.376471, 0.568627, 1)
+theme_override_colors/font_hover_color = Color(0.643137, 0.682353, 0.85098, 1)
+theme_override_colors/font_disabled_color = Color(0.439216, 0.482353, 0.662745, 1)
 theme_override_styles/normal = SubResource("6")
+theme_override_styles/pressed = SubResource("5")
+theme_override_styles/hover = SubResource("5")
+theme_override_styles/disabled = SubResource("5")
+theme_override_styles/focus = SubResource("5")
 shortcut = SubResource("8")
 shortcut_in_tooltip = false
 text = "HELP"
 flat = true
 
-[node name="HelpWindow" type="ColorRect" parent="."]
+[node name="HelpWindow" type="ColorRect" parent="." unique_id=539738850]
 visible = false
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0.0980392, 0.0784314, 0.141176, 0.701961)
 
-[node name="CenterContainer" type="CenterContainer" parent="HelpWindow"]
+[node name="CenterContainer" type="CenterContainer" parent="HelpWindow" unique_id=1345052339]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="UIControlsList" parent="HelpWindow/CenterContainer" instance=ExtResource("17")]
+[node name="UIControlsList" parent="HelpWindow/CenterContainer" unique_id=1108921053 instance=ExtResource("17")]
 layout_mode = 2
 is_foldable = false
 title = "Demo controls"

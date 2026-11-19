@@ -1,35 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://diofpwcvq5elu"]
+[gd_scene format=3 uid="uid://diofpwcvq5elu"]
 
 [ext_resource type="Theme" path="res://Shared/theme/gdquest.theme" id="1"]
-[ext_resource type="Script" path="res://Shared/DemoInterface.gd" id="2"]
+[ext_resource type="Script" uid="uid://up7ttg7a7a1o" path="res://Shared/DemoInterface.gd" id="2"]
 [ext_resource type="FontFile" path="res://Shared/theme/fonts/default_font_bold.tres" id="3"]
 
-[node name="DemoInterface" type="PanelContainer"]
+[node name="DemoInterface" type="PanelContainer" unique_id=18358345]
+anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 120.0
 mouse_filter = 2
 theme = ExtResource("1")
 script = ExtResource("2")
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-offset_right = 1920.0
-offset_bottom = 120.0
-theme_override_constants/margin_right = 14
-theme_override_constants/margin_top = 14
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=174378479]
+layout_mode = 2
 theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 14
 theme_override_constants/margin_bottom = 14
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer"]
-offset_left = 14.0
-offset_top = 14.0
-offset_right = 1906.0
-offset_bottom = 106.0
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer" unique_id=276175139]
+layout_mode = 2
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("3")
 bbcode_enabled = true
-__meta__ = {
-"_edit_use_anchors_": false
-}

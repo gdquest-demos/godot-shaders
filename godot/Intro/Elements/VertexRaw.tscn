@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqvt7s5neg40c"]
+[gd_scene format=3 uid="uid://cqvt7s5neg40c"]
 
-[ext_resource type="Script" path="res://Intro/Elements/VertexRaw.gd" id="1"]
+[ext_resource type="Script" uid="uid://dgfwrbjfhv1w3" path="res://Intro/Elements/VertexRaw.gd" id="1"]
 
-[node name="Vertex" type="Node2D"]
+[node name="Vertex" type="Node2D" unique_id=149050242]
 script = ExtResource("1")

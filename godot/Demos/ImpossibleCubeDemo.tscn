@@ -1,26 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkoun8gifywws"]
+[gd_scene format=3 uid="uid://dkoun8gifywws"]
 
-[ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="1"]
+[ext_resource type="Script" uid="uid://ynusbd8ioqt0" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://ca3nxv23e3o27" path="res://Demos/ImpossibleCube/ImpossibleCubeBase.tscn" id="2"]
-[ext_resource type="Script" path="res://Utils/DebugViewer.gd" id="3"]
-[ext_resource type="PackedScene" path="res://Shared/Demo3DEnvironment.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://Shared/DemoInterface.tscn" id="5"]
+[ext_resource type="Script" uid="uid://dnyvlxiqhjgo6" path="res://Utils/DebugViewer.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://dquhei2qv5csj" path="res://Shared/Demo3DEnvironment.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://diofpwcvq5elu" path="res://Shared/DemoInterface.tscn" id="5"]
 
-[node name="ImpossibleCubeDemo" type="CanvasLayer"]
+[node name="ImpossibleCubeDemo" type="CanvasLayer" unique_id=742352231]
 script = ExtResource("1")
 
-[node name="ImpossibleCubeDemo" parent="." instance=ExtResource("2")]
+[node name="ImpossibleCubeDemo" parent="." unique_id=1966829907 instance=ExtResource("2")]
 
-[node name="Demo3DEnvironment" parent="." instance=ExtResource("4")]
+[node name="Demo3DEnvironment" parent="." unique_id=1022527464 instance=ExtResource("4")]
 
-[node name="DemoInterface" parent="." instance=ExtResource("5")]
+[node name="DemoInterface" parent="." unique_id=792469483 instance=ExtResource("5")]
+anchors_preset = 10
 
-[node name="DebugViewer" type="Control" parent="."]
+[node name="DebugViewer" type="Control" parent="." unique_id=321830345]
+layout_mode = 3
+anchors_preset = 0
 offset_top = 120.0
 offset_right = 40.0
 offset_bottom = 160.0
 scale = Vector2(0.9, 0.9)
 script = ExtResource("3")
-__meta__ = {
-"_edit_use_anchors_": false
-}

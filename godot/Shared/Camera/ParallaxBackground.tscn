@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://bfa5ti6ns02be"]
+[gd_scene format=3 uid="uid://bfa5ti6ns02be"]
 
-[ext_resource type="Shader" path="res://Shared/Background2D/gaussian_blur_lod_15_samples.gdshader" id="3"]
+[ext_resource type="Shader" uid="uid://8ci3xst1n5vb" path="res://Shared/Background2D/gaussian_blur_lod_15_samples.gdshader" id="3"]
 
 [sub_resource type="ShaderMaterial" id="1"]
 shader = ExtResource("3")
@@ -33,120 +33,105 @@ shader = ExtResource("3")
 shader_parameter/blur_size = 1.499
 shader_parameter/texture_lod = 1.336
 
-[node name="ParallaxBackground" type="ParallaxBackground"]
+[node name="ParallaxBackground" type="ParallaxBackground" unique_id=20057898]
 layer = -1
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=851727440]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = null
-expand = true
+expand_mode = 1
 stretch_mode = 7
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="." unique_id=964957218]
 modulate = Color(0.493, 0.58225, 0.85, 0.235294)
 motion_scale = Vector2(0.08, 0.08)
 motion_offset = Vector2(-911, -422)
 
-[node name="graph" type="Sprite2D" parent="ParallaxLayer"]
+[node name="graph" type="Sprite2D" parent="ParallaxLayer" unique_id=670023247]
 material = SubResource("1")
 position = Vector2(1848.19, 602.492)
 rotation = 0.0821193
 scale = Vector2(1.02447, 1.02447)
-texture = null
 
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="." unique_id=244567014]
 modulate = Color(0.493, 0.58225, 0.85, 0.235294)
 motion_scale = Vector2(0.065, 0.065)
 motion_offset = Vector2(-911, -422)
 
-[node name="graph3" type="Sprite2D" parent="ParallaxLayer3"]
+[node name="graph3" type="Sprite2D" parent="ParallaxLayer3" unique_id=1575368391]
 material = SubResource("1")
 position = Vector2(630.447, 369.214)
 rotation = -0.0943065
 scale = Vector2(1.08515, 1.08515)
-texture = null
 
-[node name="graph4" type="Sprite2D" parent="ParallaxLayer3"]
+[node name="graph4" type="Sprite2D" parent="ParallaxLayer3" unique_id=1909097403]
 material = SubResource("1")
 position = Vector2(1757.38, -40.4198)
 rotation = 0.159706
 scale = Vector2(1.08515, 1.08515)
-texture = null
 flip_h = true
 flip_v = true
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="ParallaxLayer3"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ParallaxLayer3" unique_id=2137120231]
 modulate = Color(0.654902, 0.658824, 0.94902, 0.764706)
 material = SubResource("2")
 position = Vector2(960, 537.728)
 amount = 80
 lifetime = 7.0
 process_material = SubResource("5")
-texture = null
 
-[node name="ParallaxLayer4" type="ParallaxLayer" parent="."]
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="." unique_id=1325393022]
 modulate = Color(0.65098, 0.733333, 0.984314, 0.215686)
 motion_scale = Vector2(0.1, 0.1)
 motion_offset = Vector2(-911, -422)
 
-[node name="graph2" type="Sprite2D" parent="ParallaxLayer4"]
+[node name="graph2" type="Sprite2D" parent="ParallaxLayer4" unique_id=1344882592]
 material = SubResource("6")
 position = Vector2(1016.09, 671.751)
 rotation = 0.223291
 scale = Vector2(1.00669, 1.00669)
-texture = null
 
-[node name="graph5" type="Sprite2D" parent="ParallaxLayer4"]
+[node name="graph5" type="Sprite2D" parent="ParallaxLayer4" unique_id=363931765]
 material = SubResource("6")
 position = Vector2(1904.47, 12.8508)
 rotation = 3.79454
 scale = Vector2(1.19873, 1.19873)
-texture = null
 
-[node name="graph4" type="Sprite2D" parent="ParallaxLayer4"]
+[node name="graph4" type="Sprite2D" parent="ParallaxLayer4" unique_id=228319071]
 material = SubResource("6")
 position = Vector2(226.379, -6.65726)
 rotation = -0.29064
 scale = Vector2(1.11454, 1.11454)
-texture = null
 flip_h = true
 flip_v = true
 
-[node name="graph3" type="Sprite2D" parent="ParallaxLayer4"]
+[node name="graph3" type="Sprite2D" parent="ParallaxLayer4" unique_id=1170977580]
 material = SubResource("6")
 position = Vector2(357.67, 1073.53)
 rotation = 0.264829
 scale = Vector2(1.00669, 1.00669)
-texture = null
 flip_h = true
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="." unique_id=1309828428]
 modulate = Color(0.4186, 0.43498, 0.91, 0.156863)
 motion_scale = Vector2(0.05, 0.05)
 motion_offset = Vector2(-682, -450)
 
-[node name="graph" type="Sprite2D" parent="ParallaxLayer2"]
+[node name="graph" type="Sprite2D" parent="ParallaxLayer2" unique_id=747546753]
 material = SubResource("7")
 position = Vector2(1416.92, 189.546)
 rotation = 0.233271
 scale = Vector2(1.4378, 1.4378)
-texture = null
 
-[node name="graph3" type="Sprite2D" parent="ParallaxLayer2"]
+[node name="graph3" type="Sprite2D" parent="ParallaxLayer2" unique_id=1862546808]
 material = SubResource("7")
 position = Vector2(36.2523, 144.495)
 rotation = -0.34288
 scale = Vector2(1.4378, 1.4378)
-texture = null
 
-[node name="graph2" type="Sprite2D" parent="ParallaxLayer2"]
+[node name="graph2" type="Sprite2D" parent="ParallaxLayer2" unique_id=1345425633]
 material = SubResource("7")
 position = Vector2(482.693, 951.649)
 rotation = 0.255997
 scale = Vector2(1.3634, 1.3634)
-texture = null

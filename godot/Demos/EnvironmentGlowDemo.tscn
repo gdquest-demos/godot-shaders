@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://djb0pquvtqmrr"]
+[gd_scene format=3 uid="uid://djb0pquvtqmrr"]
 
-[ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="1"]
+[ext_resource type="Script" uid="uid://ynusbd8ioqt0" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://7mqdkojagyav" path="res://Shared/Background2D/Demo2DBackground.tscn" id="2"]
-[ext_resource type="Shader" path="res://Shaders/outline2D_outer.gdshader" id="3"]
+[ext_resource type="Shader" uid="uid://cn00imnr1ufiu" path="res://Shaders/outline2D_outer.gdshader" id="3"]
 [ext_resource type="PackedScene" uid="uid://diofpwcvq5elu" path="res://Shared/DemoInterface.tscn" id="5"]
 
 [sub_resource type="ShaderMaterial" id="1"]
@@ -17,18 +17,18 @@ glow_enabled = true
 glow_levels/4 = 1.0
 glow_blend_mode = 0
 
-[node name="EnvironmentGlowDemo" type="CanvasLayer"]
+[node name="EnvironmentGlowDemo" type="CanvasLayer" unique_id=600712856]
 script = ExtResource("1")
 
-[node name="Demo2DBackground" parent="." instance=ExtResource("2")]
+[node name="Demo2DBackground" parent="." unique_id=1627144364 instance=ExtResource("2")]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=726472842]
 material = SubResource("1")
 position = Vector2(960, 540)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1440699995]
 environment = SubResource("2")
 
-[node name="DemoInterface" parent="." instance=ExtResource("5")]
+[node name="DemoInterface" parent="." unique_id=437850378 instance=ExtResource("5")]
 anchors_preset = 10
 text_bbcode = "Achieves a glow on 2D objects with a WorldEnvironment node."

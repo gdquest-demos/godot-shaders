@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://xhacbxqwq2bs"]
+[gd_scene format=3 uid="uid://xhacbxqwq2bs"]
 
-[ext_resource type="Script" path="res://Demos/Blur/MotionBlurScene.gd" id="1"]
+[ext_resource type="Script" uid="uid://bwogcopo8n1qr" path="res://Demos/Blur/MotionBlurScene.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://dkvt3w3hayp4j" path="res://Demos/Blur/ShakingCamera.tscn" id="2"]
-[ext_resource type="Script" path="res://Demos/Blur/AsteroidTrail.gd" id="3"]
+[ext_resource type="Script" uid="uid://c7otiaatfbvta" path="res://Demos/Blur/AsteroidTrail.gd" id="3"]
 
 [sub_resource type="Gradient" id="1"]
 offsets = PackedFloat32Array(0.0561224)
@@ -11,12 +11,12 @@ colors = PackedColorArray(0.117647, 0.105882, 0.25098, 1)
 [sub_resource type="GradientTexture2D" id="2"]
 gradient = SubResource("1")
 
-[node name="SpaceBackground" type="Node2D"]
+[node name="SpaceBackground" type="Node2D" unique_id=1938997590]
 script = ExtResource("1")
 trail_length = 10000.0
 direction_degrees = 50.0
 
-[node name="ShakingCamera" parent="." instance=ExtResource("2")]
+[node name="ShakingCamera" parent="." unique_id=1791557003 instance=ExtResource("2")]
 position = Vector2(960, 540)
 zoom = Vector2(2, 2)
 position_smoothing_speed = 15.0
@@ -24,21 +24,18 @@ amplitude = 6.0
 DAMP_EASING = 1.0
 is_shaking = false
 
-[node name="AsteroidTrail" type="Node2D" parent="."]
+[node name="AsteroidTrail" type="Node2D" parent="." unique_id=1747723220]
 position = Vector2(960, 540)
 script = ExtResource("3")
-asteroid = null
 spawn_radius = 640.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=248294021]
 layer = -1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=745179425]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = SubResource("2")
-expand = true
+expand_mode = 1
 stretch_mode = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}

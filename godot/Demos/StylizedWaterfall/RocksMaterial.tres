@@ -1,12 +1,12 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=2]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://vk711u8f7loa"]
 
-[ext_resource path="res://Demos/StylizedWaterfall/rock-color.jpg" type="Texture2D" id=1]
+[ext_resource type="Texture2D" uid="uid://b0igw80sapwjy" path="res://Demos/StylizedWaterfall/rock-color.jpg" id="1"]
 
 [resource]
 resource_name = "RocksMaterial"
-params_cull_mode = 2
-albedo_color = Color( 0.906332, 0.906332, 0.906332, 1 )
-albedo_texture = ExtResource( 1 )
+cull_mode = 2
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+albedo_texture = ExtResource("1")
 roughness = 0.98
-uv1_scale = Vector3( 0.2, 0.2, 0.2 )
+uv1_scale = Vector3(0.2, 0.2, 0.2)
 uv1_triplanar = true

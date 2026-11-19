@@ -1,13 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://j4aa5qjcj4vh"]
+[gd_scene format=3 uid="uid://j4aa5qjcj4vh"]
 
-[ext_resource type="Shader" path="res://Shaders/random_noise.gdshader" id="1"]
-[ext_resource type="Shader" path="res://Shaders/value_noise.gdshader" id="2"]
-[ext_resource type="Shader" path="res://Shaders/perlin_noise.gdshader" id="3"]
-[ext_resource type="Shader" path="res://Shaders/voronoi_noise.gdshader" id="4"]
+[ext_resource type="Shader" uid="uid://pqjj1y6w667v" path="res://Shaders/random_noise.gdshader" id="1"]
+[ext_resource type="Shader" uid="uid://b3iqsad3vhq50" path="res://Shaders/value_noise.gdshader" id="2"]
+[ext_resource type="Shader" uid="uid://dx7ndisy56m3f" path="res://Shaders/perlin_noise.gdshader" id="3"]
+[ext_resource type="Shader" uid="uid://cy7dhlyxdlrrb" path="res://Shaders/voronoi_noise.gdshader" id="4"]
 [ext_resource type="PackedScene" uid="uid://diofpwcvq5elu" path="res://Shared/DemoInterface.tscn" id="5"]
-[ext_resource type="Shader" path="res://Shaders/value_noise_layered.gdshader" id="5_rxcmu"]
+[ext_resource type="Shader" uid="uid://cd0mrb1uvb5kx" path="res://Shaders/value_noise_layered.gdshader" id="5_rxcmu"]
 [ext_resource type="PackedScene" uid="uid://7mqdkojagyav" path="res://Shared/Background2D/Demo2DBackground.tscn" id="6"]
-[ext_resource type="Script" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="7"]
+[ext_resource type="Script" uid="uid://ynusbd8ioqt0" path="res://addons/ShaderSecretsHelper/DemoScreen.gd" id="7"]
 
 [sub_resource type="ShaderMaterial" id="1"]
 shader = ExtResource("1")
@@ -54,54 +54,54 @@ noise = SubResource("6")
 shader = SubResource("5")
 shader_parameter/simplex_noise = SubResource("7")
 
-[node name="NoiseDemo" type="CanvasLayer"]
+[node name="NoiseDemo" type="CanvasLayer" unique_id=1492671490]
 script = ExtResource("7")
 
-[node name="ParallaxBackground" parent="." instance=ExtResource("6")]
+[node name="ParallaxBackground" parent="." unique_id=253015060 instance=ExtResource("6")]
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1670840698]
 anchors_preset = -1
 anchor_top = 0.11
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="GridContainer" type="GridContainer" parent="CenterContainer"]
+[node name="GridContainer" type="GridContainer" parent="CenterContainer" unique_id=1201712185]
 layout_mode = 2
 theme_override_constants/h_separation = 50
 theme_override_constants/v_separation = 50
 columns = 3
 
-[node name="RandomNoise" type="ColorRect" parent="CenterContainer/GridContainer"]
+[node name="RandomNoise" type="ColorRect" parent="CenterContainer/GridContainer" unique_id=1755835079]
 material = SubResource("1")
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
 
-[node name="ValueNoise" type="ColorRect" parent="CenterContainer/GridContainer"]
+[node name="ValueNoise" type="ColorRect" parent="CenterContainer/GridContainer" unique_id=55143408]
 material = SubResource("2")
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
 
-[node name="ValueNoiseLayered" type="ColorRect" parent="CenterContainer/GridContainer"]
+[node name="ValueNoiseLayered" type="ColorRect" parent="CenterContainer/GridContainer" unique_id=1383875049]
 material = SubResource("ShaderMaterial_aql0j")
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
 
-[node name="PerlinNoise" type="ColorRect" parent="CenterContainer/GridContainer"]
+[node name="PerlinNoise" type="ColorRect" parent="CenterContainer/GridContainer" unique_id=1901339809]
 material = SubResource("3")
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
 
-[node name="VoronoiNoise" type="ColorRect" parent="CenterContainer/GridContainer"]
+[node name="VoronoiNoise" type="ColorRect" parent="CenterContainer/GridContainer" unique_id=1918342951]
 material = SubResource("4")
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
 
-[node name="SimplexNoise" type="ColorRect" parent="CenterContainer/GridContainer"]
+[node name="SimplexNoise" type="ColorRect" parent="CenterContainer/GridContainer" unique_id=2061805088]
 material = SubResource("8")
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
 
-[node name="DemoInterface" parent="." instance=ExtResource("5")]
+[node name="DemoInterface" parent="." unique_id=687403152 instance=ExtResource("5")]
 custom_minimum_size = Vector2(0, 120)
 anchor_right = 0.0
 offset_right = 1920.0
