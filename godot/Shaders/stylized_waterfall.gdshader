@@ -1,5 +1,7 @@
 shader_type spatial;
 
+render_mode depth_prepass_alpha;
+
 // ANCHOR: main_noise
 uniform sampler2D main_noise;
 uniform vec2 main_noise_scale = vec2(5.7, 1.0);
@@ -30,7 +32,7 @@ uniform float foam_smoothness = 0.063;
 uniform float max_depth = 1.0;
 // END: max_depth
 // ANCHOR: depth_color
-uniform sampler2D depth_color_curve;
+uniform sampler2D depth_color_curve : source_color, repeat_disable;
 // END: depth_color
 // ANCHOR: depth_foam_offset
 uniform float depth_foam_offset= 0.25;
@@ -42,6 +44,27 @@ uniform float depth_foam_offset= 0.25;
 uniform bool debug_vertex_color = false;
 uniform bool debug_uv = false;
 uniform sampler2D debug_uv_color_grid: source_color;
+
+
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+uniform sampler2D DEPTH_TEXTURE: hint_depth_texture, filter_linear_mipmap;
+
+// Helper function to get the view space Z coordinate from depth texture sample
+float depthToViewZ(mat4 projection_matrix, float depth, bool using_opengl) {
+	// Just a sanity check
+	if (projection_matrix[2][3] > -0.5) {
+		// This matrix won't work with the depth linearization formula given below
+		return 0.0;
+	}
+
+	if (using_opengl) {
+		// Normally, NDC.z has range [0, 1], but on the Compatibility renderer (based on OpenGL) it has range [-1, 1]
+		depth = depth * 2.0 - 1.0;
+	}
+
+	// Apply the depth linearization formula
+	return -projection_matrix[3][2] / (depth + projection_matrix[2][2]);
+}
 
 // ANCHOR: overlay_blend
 // Overlay blend makes everything better.
@@ -60,14 +83,14 @@ void vertex() {
 		// END: noise_uv_offset
 		// ANCHOR: sample_main_noise
 		float main_noise_value = textureLod(
-				main_noise, 
-				noise_uv_offset, 
+				main_noise,
+				noise_uv_offset,
 				3.0).r;
 		// END: sample_main_noise
 		// ANCHOR: foam_smoothstep
 		float foam_factor = smoothstep(
-				0.0, 
-				(1.0 - foam_threshold), 
+				0.0,
+				(1.0 - foam_threshold),
 				main_noise_value - foam_threshold + COLOR.r * 0.2);
 		// END: foam_smoothstep
 		// ANCHOR: vertex_overlay
@@ -93,12 +116,10 @@ void fragment() {
 		float depth_value = texture(DEPTH_TEXTURE, SCREEN_UV).r;
 		// END: depth_texture
 		// ANCHOR: ndc
-		vec3 ndc = vec3(SCREEN_UV, depth_value) * 2.0 - vec3(1.0);
-		vec4 view_depth = INV_PROJECTION_MATRIX * vec4(ndc, 1.0);
-		view_depth.xyz /= view_depth.w;
+		float view_depth = depthToViewZ(PROJECTION_MATRIX, depth_value, OUTPUT_IS_SRGB);
 		// END: ndc
 		// ANCHOR: linear_depth
-		float depth_delta = VERTEX.z - view_depth.z;
+		float depth_delta = VERTEX.z - view_depth;
 		// END: linear_depth
 		// ANCHOR: depth_normalized
 		float depth_normalized = smoothstep(0.0, max_depth, depth_delta);
@@ -114,7 +135,7 @@ void fragment() {
 		// different color format that Godot 3.2.3 cannot read.
 		// In the red channel, we have encoded how foamy we want the water to be
 		float main_foam_intensity = COLOR.r;
-		
+
 		// Instead of using some complex mapping with world coordinates, or even flow maps,
 		// we can directly pan on UV.y.
 		// This is possible because the mesh is unwrapped in a way where the y direction is the same direction as we
@@ -131,7 +152,7 @@ void fragment() {
 		// ANCHOR: detail_noise
 		// we sample the detail noise, and offset it by the reverse depth factor. This means that
 		// the secondary noise will appear also when the water is more shallow
-		float detail_noise_value = texture(detail_noise, detail_noise_uv).r 
+		float detail_noise_value = texture(detail_noise, detail_noise_uv).r
 				+ (1.0 - depth_normalized) * depth_foam_offset;
 		// END: detail_noise
 		// ANCHOR: total_noise
@@ -139,16 +160,16 @@ void fragment() {
 		// END: total_noise
 		// ANCHOR: smoothstep_main_noise
 		float foam_upper_bound = foam_smoothness * (1.0 - foam_threshold);
-		float foam_factor = smoothstep(0.0, 
-				foam_upper_bound, 
+		float foam_factor = smoothstep(0.0,
+				foam_upper_bound,
 				(total_noise - foam_threshold + main_foam_intensity * 0.1) * main_foam_intensity);
 		foam_factor = overlay_blend(foam_factor, main_foam_intensity);
 		// END: smoothstep_main_noise
 		// ANCHOR: smoothstep_detail_noise
-		foam_factor += smoothstep(0.0, 
-				foam_upper_bound, 
+		foam_factor += smoothstep(0.0,
+				foam_upper_bound,
 				(detail_noise_value - foam_detail_threshold + main_foam_intensity * 0.1));
-		
+
 		foam_factor = clamp(foam_factor, 0.0, 1.0);
 		// END: smoothstep_detail_noise
 		// ANCHOR: albedo

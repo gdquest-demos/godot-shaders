@@ -3,15 +3,15 @@ shader_type spatial;
 
 uniform float oscillation_size = 0.2;
 
-// Share CUSTOM data between the vertex() and fragment() functions. 
+// Share CUSTOM data between the vertex() and fragment() functions.
 varying float normalized_distance;
 varying float ascend_factor;
 // END: setup
 // Four curves for controlling scale and position animation on ascent and descent
-uniform sampler2D y_curve_ascend;
-uniform sampler2D y_curve_descend;
-uniform sampler2D xz_curve_ascend;
-uniform sampler2D xz_curve_descend;
+uniform sampler2D y_curve_ascend : repeat_disable;
+uniform sampler2D y_curve_descend : repeat_disable;
+uniform sampler2D xz_curve_ascend : repeat_disable;
+uniform sampler2D xz_curve_descend : repeat_disable;
 
 uniform vec4 emission_color: source_color;
 uniform vec4 albedo_color: source_color;
@@ -48,7 +48,7 @@ void vertex() {
 	// note that because we place particles in a grid, we could observe repeating patterns.
 	// Try to change the 133.0 below with different numbers and observe what happens!
 	// pow is used to create a steeper curve of influence for the oscillation
-	VERTEX.y += sin(TIME + float(rand_from_seed(INSTANCE_ID) * 133.0)) 
+	VERTEX.y += sin(TIME + float(rand_from_seed(INSTANCE_ID) * 133.0))
 			* pow(normalized_distance, 3.0) * oscillation_size;
 // END: oscillation
 // ANCHOR: y_offset

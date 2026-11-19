@@ -1,48 +1,57 @@
-[gd_resource type="ShaderMaterial" load_steps=9 format=2]
+[gd_resource type="ShaderMaterial" load_steps=11 format=3 uid="uid://d1r8hcd8noafy"]
 
-[ext_resource path="res://Shaders/stylized_waterfall.gdshader" type="Shader" id=1]
-[ext_resource path="res://Demos/StylizedWaterfall/color-uv.png" type="Texture2D" id=2]
+[ext_resource type="Shader" path="res://Shaders/stylized_waterfall.gdshader" id="1"]
+[ext_resource type="Texture2D" uid="uid://7odxh76ikyoc" path="res://Demos/StylizedWaterfall/color-uv.png" id="2"]
 
-[sub_resource type="Gradient" id=1]
-colors = PackedColorArray( 0.164706, 0.92549, 0.67451, 0.615686, 0, 0.0862745, 1, 0.956863 )
+[sub_resource type="Gradient" id="1"]
+colors = PackedColorArray(0, 0.933333, 1, 0.615686, 0.08, 0.356, 1, 0.960784)
 
-[sub_resource type="GradientTexture2D" id=2]
-gradient = SubResource( 1 )
+[sub_resource type="GradientTexture2D" id="2"]
+gradient = SubResource("1")
 
-[sub_resource type="FastNoiseLite" id=3]
-octaves = 5
-period = 84.1
-persistence = 0.764
-lacunarity = 1.74
+[sub_resource type="Gradient" id="Gradient_xjxmg"]
+colors = PackedColorArray(0.138637, 0.138638, 0.138637, 1, 0.442911, 0.442911, 0.44291, 1)
 
-[sub_resource type="NoiseTexture" id=4]
+[sub_resource type="FastNoiseLite" id="5"]
+frequency = 0.0119
+fractal_lacunarity = 1.74
+fractal_gain = 0.7
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6p8ml"]
 seamless = true
-noise = SubResource( 3 )
+color_ramp = SubResource("Gradient_xjxmg")
+noise = SubResource("5")
 
-[sub_resource type="FastNoiseLite" id=5]
-period = 145.1
-persistence = 0.215
-lacunarity = 1.86
+[sub_resource type="Gradient" id="Gradient_srbm8"]
+colors = PackedColorArray(0.262932, 0.262932, 0.262932, 1, 0.699654, 0.699653, 0.699653, 1)
 
-[sub_resource type="NoiseTexture" id=6]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6peti"]
+frequency = 0.0019
+fractal_octaves = 3
+fractal_lacunarity = 1.74
+fractal_gain = 0.2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_m3sx4"]
 seamless = true
-noise = SubResource( 5 )
+color_ramp = SubResource("Gradient_srbm8")
+noise = SubResource("FastNoiseLite_6peti")
 
 [resource]
-shader = ExtResource( 1 )
-shader_param/main_noise_scale = Vector2( 5.7, 1 )
-shader_param/detail_noise_scale = Vector2( 2.5, 2.5 )
-shader_param/water_speed = 0.2
-shader_param/displacement = 0.444
-shader_param/foam_color = Color( 0.756863, 0.890196, 0.878431, 1 )
-shader_param/foam_threshold = 0.5
-shader_param/foam_detail_threshold = 0.7
-shader_param/foam_smoothness = 0.063
-shader_param/max_depth = 1.0
-shader_param/depth_foam_offset = 0.25
-shader_param/debug_vertex_color = false
-shader_param/debug_uv = false
-shader_param/main_noise = SubResource( 6 )
-shader_param/detail_noise = SubResource( 4 )
-shader_param/depth_color_curve = SubResource( 2 )
-shader_param/debug_uv_color_grid = ExtResource( 2 )
+render_priority = 0
+shader = ExtResource("1")
+shader_parameter/main_noise_scale = Vector2(5.7, 1)
+shader_parameter/detail_noise_scale = Vector2(2.5, 2.5)
+shader_parameter/water_speed = 0.2
+shader_parameter/displacement = 0.444
+shader_parameter/foam_color = Color(0.85, 1, 0.9875, 1)
+shader_parameter/foam_threshold = 0.38
+shader_parameter/foam_detail_threshold = 0.4
+shader_parameter/foam_smoothness = 0.46
+shader_parameter/max_depth = 1.0
+shader_parameter/depth_foam_offset = 0.25
+shader_parameter/debug_vertex_color = false
+shader_parameter/debug_uv = false
+shader_parameter/main_noise = SubResource("NoiseTexture2D_m3sx4")
+shader_parameter/detail_noise = SubResource("NoiseTexture2D_6p8ml")
+shader_parameter/depth_color_curve = SubResource("2")
+shader_parameter/debug_uv_color_grid = ExtResource("2")

@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode blend_add, depth_draw_never, depth_test_disable;
+render_mode blend_add, depth_draw_never, depth_test_disabled;
 
 uniform vec4 outline_color : source_color;
 uniform float color_intensity = 1.0;
@@ -11,10 +11,10 @@ uniform sampler2D stencil : hint_default_black;
 void fragment() {
 	vec4 stencil_test = textureLod(stencil, SCREEN_UV, 0.0);
 	vec4 color_test = stencil_color;
-	
+
 	float stencil_id = stencil_test.r * 10.0 + stencil_test.g + 100.0 * stencil_test.b + 1000.0;
 	float mask_id = stencil_color.r * 10.0 + stencil_color.g + 100.0 * stencil_color.b + 1000.0;
-	
+
 	float mask_result = abs(stencil_id - mask_id);
 
 
